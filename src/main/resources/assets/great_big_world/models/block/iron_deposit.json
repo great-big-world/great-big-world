@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "world_of_plenty:block/iron_deposit"
+    "all": "great_big_world:block/iron_deposit"
   }
 }

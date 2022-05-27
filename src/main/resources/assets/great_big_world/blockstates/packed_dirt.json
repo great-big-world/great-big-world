@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "world_of_plenty:block/packed_dirt"
+      "model": "great_big_world:block/packed_dirt"
     }
   }
 }

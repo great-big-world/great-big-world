@@ -14,7 +14,6 @@
   "license": "MIT",
   "icon": "icon-packed_dirt.png",
   "environment": "*",
-  "accessWidener": "great-big-world.accesswidener",
   "entrypoints": {
     "main": [
       "com.github.creoii.greatbigworld.main.GreatBigWorld"
@@ -23,6 +22,7 @@
       "com.github.creoii.greatbigworld.client.GreatBigWorldClient"
     ]
   },
+  "accessWidener": "great-big-world.accesswidener",
   "mixins": [
     "great_big_world.mixins.json"
   ],

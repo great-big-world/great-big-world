@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "world_of_plenty:block/iron_deposit"
+      "model": "great_big_world:block/iron_deposit"
     }
   }
 }

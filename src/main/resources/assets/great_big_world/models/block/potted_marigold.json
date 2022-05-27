@@ -1,6 +1,6 @@
 {
   "parent": "block/flower_pot_cross",
   "textures": {
-    "plant": "world_of_plenty:block/marigold"
+    "plant": "great_big_world:block/marigold"
   }
 }

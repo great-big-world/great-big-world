@@ -4,7 +4,8 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "LevelPropertiesMixin"
+    "LevelPropertiesMixin",
+    "VanillaBiomeParametersMixin"
   ],
   "client": [
   ],

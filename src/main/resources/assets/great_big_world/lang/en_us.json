@@ -18,5 +18,10 @@
   "block.great_big_world.peat_deposit": "Peat Deposit",
   "block.great_big_world.apple_pie": "Apple Pie",
   "block.great_big_world.marigold": "Marigold",
-  "block.great_big_world.potted_marigold": "Potted Marigold"
+  "block.great_big_world.potted_marigold": "Potted Marigold",
+
+  "item.great_big_world.copper_nugget": "Copper Nugget",
+  "item.great_big_world.peat": "Peat",
+
+  "biome.great_big_world.dirt_caves": "Dirt Caves"
 }

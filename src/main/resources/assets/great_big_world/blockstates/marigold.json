@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "world_of_plenty:block/marigold"
+      "model": "great_big_world:block/marigold"
     }
   }
 }

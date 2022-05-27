@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "great_big_world:packed_dirt",
+    "great_big_world:gold_deposit",
+    "great_big_world:iron_deposit",
+    "great_big_world:copper_deposit",
+    "great_big_world:clay_deposit",
+    "great_big_world:peat_deposit"
+  ]
+}

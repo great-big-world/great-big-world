@@ -1,6 +1,6 @@
 {
   "parent": "block/wall_inventory",
   "textures": {
-    "wall": "world_of_plenty:block/dirt_bricks"
+    "wall": "great_big_world:block/dirt_bricks"
   }
 }

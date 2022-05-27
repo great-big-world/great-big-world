@@ -1,6 +1,6 @@
 {
   "parent": "block/template_wall_side_tall",
   "textures": {
-    "wall": "world_of_plenty:block/dirt_bricks"
+    "wall": "great_big_world:block/dirt_bricks"
   }
 }

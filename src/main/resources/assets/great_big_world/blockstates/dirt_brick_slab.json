@@ -1,13 +1,13 @@
 {
   "variants": {
     "type=bottom": {
-      "model": "world_of_plenty:block/dirt_brick_slab"
+      "model": "great_big_world:block/dirt_brick_slab"
     },
     "type=double": {
-      "model": "world_of_plenty:block/dirt_bricks"
+      "model": "great_big_world:block/dirt_bricks"
     },
     "type=top": {
-      "model": "world_of_plenty:block/dirt_brick_slab_top"
+      "model": "great_big_world:block/dirt_brick_slab_top"
     }
   }
 }

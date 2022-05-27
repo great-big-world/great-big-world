@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "world_of_plenty:block/packed_dirt"
+    "all": "great_big_world:block/packed_dirt"
   }
 }

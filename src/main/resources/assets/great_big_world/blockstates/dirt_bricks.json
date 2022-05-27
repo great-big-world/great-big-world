@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "world_of_plenty:block/dirt_bricks"
+      "model": "great_big_world:block/dirt_bricks"
     }
   }
 }
