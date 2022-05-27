@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D  ",
+    "DD ",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "great_big_world:dirt_bricks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:dirt_brick_stairs",
+    "count": 4
+  }
+}

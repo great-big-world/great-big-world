@@ -1,0 +1,9 @@
+{
+  "parent": "block/cake",
+  "textures": {
+    "particle": "world_of_plenty:block/apple_pie_side",
+    "bottom": "world_of_plenty:block/apple_pie_bottom",
+    "top": "world_of_plenty:block/apple_pie_top",
+    "side": "world_of_plenty:block/apple_pie_side"
+  }
+}

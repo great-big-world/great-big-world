@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "great_big_world",
+  "version": "${version}",
+  "name": "Great Big World",
+  "description": "",
+  "authors": [
+    "creoii"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/change-the-world/world-of-plenty"
+  },
+  "license": "MIT",
+  "icon": "icon-packed_dirt.png",
+  "environment": "*",
+  "accessWidener": "great-big-world.accesswidener",
+  "entrypoints": {
+    "main": [
+      "com.github.creoii.greatbigworld.main.GreatBigWorld"
+    ],
+    "client": [
+      "com.github.creoii.greatbigworld.client.GreatBigWorldClient"
+    ]
+  },
+  "mixins": [
+    "great_big_world.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": "1.18.2",
+    "java": ">=17"
+  }
+}

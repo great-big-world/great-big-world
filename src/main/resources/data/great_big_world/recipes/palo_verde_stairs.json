@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P  ",
+    "PP ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:palo_verde_planks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:palo_verde_stairs",
+    "count": 4
+  }
+}

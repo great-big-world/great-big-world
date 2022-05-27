@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "top": "world_of_plenty:block/dirt_bricks",
+    "bottom": "world_of_plenty:block/dirt_bricks",
+    "side": "world_of_plenty:block/dirt_bricks"
+  }
+}

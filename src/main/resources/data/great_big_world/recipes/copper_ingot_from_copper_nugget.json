@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "great_big_world:copper_nugget"
+    }
+  },
+  "result": {
+    "item": "minecraft:copper_ingot"
+  }
+}

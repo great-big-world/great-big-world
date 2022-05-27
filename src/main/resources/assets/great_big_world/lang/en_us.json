@@ -1,0 +1,22 @@
+{
+  "block.great_big_world.permafrost": "Permafrost",
+  "block.great_big_world.palo_verde_log": "Palo Verde Log",
+  "block.great_big_world.stripped_palo_verde_log": "Stripped Palo Verde Log",
+  "block.great_big_world.palo_verde_planks": "Palo Verde Planks",
+  "block.great_big_world.redwood_log": "Redwood Log",
+  "block.great_big_world.stripped_redwood_log": "Stripped Redwood Log",
+  "block.great_big_world.redwood_planks": "Redwood Planks",
+  "block.great_big_world.packed_dirt": "Packed Dirt",
+  "block.great_big_world.dirt_bricks": "Dirt Bricks",
+  "block.great_big_world.dirt_brick_slab": "Dirt Brick Slab",
+  "block.great_big_world.dirt_brick_stairs": "Dirt Brick Stairs",
+  "block.great_big_world.dirt_brick_wall": "Dirt Brick Wall",
+  "block.great_big_world.gold_deposit": "Gold Deposit",
+  "block.great_big_world.iron_deposit": "Iron Deposit",
+  "block.great_big_world.copper_deposit": "Copper Deposit",
+  "block.great_big_world.clay_deposit": "Clay Deposit",
+  "block.great_big_world.peat_deposit": "Peat Deposit",
+  "block.great_big_world.apple_pie": "Apple Pie",
+  "block.great_big_world.marigold": "Marigold",
+  "block.great_big_world.potted_marigold": "Potted Marigold"
+}
