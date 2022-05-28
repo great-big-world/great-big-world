@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "great_big_world:palo_verde_log"
+    }
+  ],
+  "result": {
+    "item": "great_big_world:palo_verde_planks",
+    "count": 4
+  }
+}

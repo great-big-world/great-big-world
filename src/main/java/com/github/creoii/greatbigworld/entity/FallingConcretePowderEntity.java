@@ -68,7 +68,7 @@ public class FallingConcretePowderEntity extends Entity {
         if (state.getBlock() instanceof ConcretePowderBlock) {
             state = LayerConcretePowderBlock.POWDER_TO_LAYER.get(state.getBlock()).getDefaultState();
         }
-        
+
         FallingConcretePowderEntity fallingBlockEntity = new FallingConcretePowderEntity(world, (double)pos.getX() + .5d, pos.getY(), (double)pos.getZ() + .5d, state.get(LayerConcretePowderBlock.LAYERS), state.contains(Properties.WATERLOGGED) ? state.with(Properties.WATERLOGGED, false) : state);
         world.setBlockState(pos, state.getFluidState().getBlockState(), 3);
         world.spawnEntity(fallingBlockEntity);

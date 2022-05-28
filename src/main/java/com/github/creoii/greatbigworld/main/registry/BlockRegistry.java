@@ -80,6 +80,10 @@ public class BlockRegistry {
     public static Block STRIPPED_REDWOOD_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN));
     public static Block REDWOOD_PLANKS = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_RED));
     public static Block REDWOOD_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static Block MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static Block STRIPPED_MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static Block MAHOGANY_PLANKS = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_ORANGE));
+    public static Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //endregion
 
     public static void register() {
@@ -158,6 +162,10 @@ public class BlockRegistry {
         registerBlock(new Identifier(GreatBigWorld.MOD_ID, "stripped_redwood_log"), STRIPPED_REDWOOD_LOG, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(GreatBigWorld.MOD_ID, "redwood_planks"), REDWOOD_PLANKS, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(GreatBigWorld.MOD_ID, "redwood_leaves"), REDWOOD_LEAVES, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(GreatBigWorld.MOD_ID, "mahogany_log"), MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(GreatBigWorld.MOD_ID, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(GreatBigWorld.MOD_ID, "mahogany_planks"), MAHOGANY_PLANKS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(GreatBigWorld.MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES, ItemGroup.DECORATIONS);
 
         flammables();
         strippables();

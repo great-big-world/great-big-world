@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "great_big_world:dirt_brick_stairs"
+    "great_big_world:dirt_brick_stairs",
+    "great_big_world:palo_verde_stairs",
+    "great_big_world:redwood_stairs",
+    "great_big_world:mahogany_stairs"
   ]
 }

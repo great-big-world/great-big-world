@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "great_big_world:dirt_brick_slab"
+    "great_big_world:dirt_brick_slab",
+    "great_big_world:palo_verde_slab",
+    "great_big_world:redwood_slab",
+    "great_big_world:mahogany_slab"
   ]
 }
