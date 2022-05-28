@@ -1,10 +1,10 @@
 {
   "parent": "block/cake_slice2",
   "textures": {
-    "particle": "world_of_plenty:block/apple_pie_side",
-    "bottom": "world_of_plenty:block/apple_pie_bottom",
-    "top": "world_of_plenty:block/apple_pie_top",
-    "side": "world_of_plenty:block/apple_pie_side",
-    "inside": "world_of_plenty:block/apple_pie_inner"
+    "particle": "great_big_world:block/apple_pie_side",
+    "bottom": "great_big_world:block/apple_pie_bottom",
+    "top": "great_big_world:block/apple_pie_top",
+    "side": "great_big_world:block/apple_pie_side",
+    "inside": "great_big_world:block/apple_pie_inner"
   }
 }

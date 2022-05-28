@@ -23,5 +23,7 @@
   "item.great_big_world.copper_nugget": "Copper Nugget",
   "item.great_big_world.peat": "Peat",
 
+  "entity.great_big_world.falling_concrete": "Falling Concrete",
+
   "biome.great_big_world.dirt_caves": "Dirt Caves"
 }
