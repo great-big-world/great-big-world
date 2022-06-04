@@ -21,8 +21,8 @@ import net.minecraft.world.World;
 import java.util.Random;
 
 @Environment(EnvType.CLIENT)
-public class FallingConcretePowderRenderer extends EntityRenderer<FallingConcretePowderEntity> {
-    public FallingConcretePowderRenderer(EntityRendererFactory.Context context) {
+public class FallingConcretePowderEntityRenderer extends EntityRenderer<FallingConcretePowderEntity> {
+    public FallingConcretePowderEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
         shadowRadius = .5f;
     }

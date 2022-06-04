@@ -12,5 +12,6 @@ public class GreatBigWorldClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRegistry.renderLayers();
         EntityRegistry.registerClient();
+        ModelLayers.registerClient();
     }
 }

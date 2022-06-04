@@ -1,0 +1,6 @@
+{
+  "parent": "block/carpet",
+  "textures": {
+    "wool": "great_big_world:block/light_blue_quilted_wool_0"
+  }
+}

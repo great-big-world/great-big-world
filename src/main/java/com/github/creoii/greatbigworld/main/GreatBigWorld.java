@@ -11,6 +11,7 @@ public class GreatBigWorld implements ModInitializer {
     @Override
     public void onInitialize() {
         BlockRegistry.register();
+        ItemRegistry.register();
         EntityRegistry.register();
         PredicateRegistry.register();
         ConfiguredFeatureRegistry.register();
