@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=east": { "model": "great_big_world:block/bamboo_torch_wall" },
+        "facing=south": { "model": "great_big_world:block/bamboo_torch_wall", "y": 90 },
+        "facing=west": { "model": "great_big_world:block/bamboo_torch_wall", "y": 180 },
+        "facing=north": { "model": "great_big_world:block/bamboo_torch_wall", "y": 270 }
+    }
+}

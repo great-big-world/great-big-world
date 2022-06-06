@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "great_big_world:block/elder_prismarine_slab" },
+        "type=top": { "model": "great_big_world:block/elder_prismarine_slab_top" },
+        "type=double": { "model": "great_big_world:block/elder_prismarine" }
+    }
+}

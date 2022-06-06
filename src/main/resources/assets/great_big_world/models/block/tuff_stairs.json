@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "great_big_world:block/tuff",
+        "top": "great_big_world:block/tuff",
+        "side": "great_big_world:block/tuff"
+    }
+}

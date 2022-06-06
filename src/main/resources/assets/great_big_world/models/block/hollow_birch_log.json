@@ -1,0 +1,8 @@
+{
+  "parent": "great_big_world:block/hollow_log",
+  "textures": {
+    "side": "block/birch_log",
+    "end": "block/birch_log_top",
+    "inner": "block/stripped_birch_log"
+  }
+}

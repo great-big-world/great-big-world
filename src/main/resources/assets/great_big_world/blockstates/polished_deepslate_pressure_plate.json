@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "powered=false": { "model": "great_big_world:block/polished_deepslate_plate" },
+        "powered=true": { "model": "great_big_world:block/polished_deepslate_plate_down" }
+    }
+}

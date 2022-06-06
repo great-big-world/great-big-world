@@ -1,0 +1,9 @@
+{
+  "parent": "block/orientable_with_bottom",
+  "textures": {
+    "top": "great_big_world:block/kiln_top",
+    "bottom": "great_big_world:block/kiln_bottom",
+    "side": "great_big_world:block/kiln_side",
+    "front": "great_big_world:block/kiln_front"
+  }
+}

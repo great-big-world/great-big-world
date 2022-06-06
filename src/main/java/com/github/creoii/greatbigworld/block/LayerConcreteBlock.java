@@ -75,7 +75,7 @@ public class LayerConcreteBlock extends Block implements Waterloggable {
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(Registry.BLOCK.get(new Identifier(this.color.getName() + "_concrete")));
+        return new ItemStack(Registry.BLOCK.get(new Identifier(color.getName() + "_concrete")));
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

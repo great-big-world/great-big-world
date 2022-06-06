@@ -1,0 +1,8 @@
+{
+  "parent": "great_big_world:block/hollow_log",
+  "textures": {
+    "side": "block/acacia_log",
+    "end": "block/acacia_log_top",
+    "inner": "block/stripped_acacia_log"
+  }
+}

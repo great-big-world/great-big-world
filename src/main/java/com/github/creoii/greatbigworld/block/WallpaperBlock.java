@@ -15,7 +15,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 import java.util.Map;
-import java.util.function.Function;
 
 public class WallpaperBlock extends AbstractLichenBlock {
     private static final VoxelShape UP_SHAPE = Block.createCuboidShape(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D);

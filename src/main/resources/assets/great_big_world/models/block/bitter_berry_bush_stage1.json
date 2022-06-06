@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "great_big_world:block/bitter_berry_bush_stage1"
+    }
+}

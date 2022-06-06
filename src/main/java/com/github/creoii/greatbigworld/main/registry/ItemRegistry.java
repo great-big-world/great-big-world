@@ -19,12 +19,16 @@ public class ItemRegistry {
     //endregion
 
     //region Magic V Melee
-    public static final Item SOUR_BERRY = new AliasedBlockItem(BlockRegistry.SOUR_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
-    public static final Item BITTER_BERRY = new AliasedBlockItem(BlockRegistry.SOUR_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
-    public static final Item PUNGENT_BERRY = new AliasedBlockItem(BlockRegistry.SOUR_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
+    //public static final Item SOUR_BERRIES = new AliasedBlockItem(BlockRegistry.SOUR_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
+    //public static final Item BITTER_BERRIES = new AliasedBlockItem(BlockRegistry.BITTER_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
+    //public static final Item PUNGENT_BERRIES = new AliasedBlockItem(BlockRegistry.PUNGENT_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
     //endregion
 
     public static void register() {
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "quicksand_bucket"), QUICKSAND_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bear_spawn_egg"), BEAR_SPAWN_EGG);
+        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "sour_berries"), SOUR_BERRIES);
+        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bitter_berries"), BITTER_BERRIES);
+        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "pungent_berries"), PUNGENT_BERRIES);
     }
 }

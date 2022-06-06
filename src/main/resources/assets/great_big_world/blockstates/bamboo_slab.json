@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "great_big_world:block/bamboo_slab" },
+        "type=top": { "model": "great_big_world:block/bamboo_slab_top" },
+        "type=double": { "model": "great_big_world:block/bamboo_planks" }
+    }
+}

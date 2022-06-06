@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "y": 270,
+      "model": "great_big_world:block/receptor"
+    },
+    "facing=north": {
+      "y": 180,
+      "model": "great_big_world:block/receptor"
+    },
+    "facing=south": {
+      "model": "great_big_world:block/receptor"
+    },
+    "facing=west": {
+      "y": 90,
+      "model": "great_big_world:block/receptor"
+    }
+  }
+}

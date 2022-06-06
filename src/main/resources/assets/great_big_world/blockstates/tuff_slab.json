@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/tuff_slab"
+    },
+    "type=double": {
+      "model": "block/tuff"
+    },
+    "type=top": {
+      "model": "great_big_world:block/tuff_slab_top"
+    }
+  }
+}

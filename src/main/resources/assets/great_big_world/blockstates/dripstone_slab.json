@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/dripstone_slab"
+    },
+    "type=double": {
+      "model": "block/dripstone"
+    },
+    "type=top": {
+      "model": "great_big_world:block/dripstone_slab_top"
+    }
+  }
+}
