@@ -11,6 +11,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -51,6 +52,10 @@ public class BlockRegistry {
     public static final Block LAVAROCK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), FabricBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK));
+    public static final Block COBBLED_LAVAROCK = new Block(FabricBlockSettings.copy(LAVAROCK));
+    public static final Block COBBLED_LAVAROCK_SLAB = new SlabBlock(FabricBlockSettings.copy(COBBLED_LAVAROCK));
+    public static final Block COBBLED_LAVAROCK_STAIRS = new StairsBlock(COBBLED_LAVAROCK.getDefaultState(), FabricBlockSettings.copy(COBBLED_LAVAROCK));
+    public static final Block COBBLED_LAVAROCK_WALL = new WallBlock(FabricBlockSettings.copy(COBBLED_LAVAROCK));
     public static final Block LAVAROCK_BRICKS = new Block(FabricBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     public static final Block LAVAROCK_BRICK_STAIRS = new StairsBlock(LAVAROCK_BRICKS.getDefaultState(), FabricBlockSettings.copy(LAVAROCK_BRICKS));
@@ -516,17 +521,19 @@ public class BlockRegistry {
     //public static final Block CALCITE_WALL = new WallBlock(FabricBlockSettings.copy(Blocks.CALCITE));
     //public static final Block DRIPSTONE_WALL = new WallBlock(FabricBlockSettings.copy(Blocks.DRIPSTONE_BLOCK));
 
-    public static final Block BAMBOO_TORCH = new BambooTorchBlock();
-    public static final Block BAMBOO_WALL_TORCH = new BambooWallTorchBlock();
-    public static final Block BAMBOO_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.PALE_YELLOW));
-    public static final Block BAMBOO_SLAB = new SlabBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_STAIRS = new StairsBlock(BAMBOO_PLANKS.getDefaultState(), FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_FENCE = new FenceBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_DOOR = new TrapdoorBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
-    public static final Block BAMBOO_TRAPDOOR = new DoorBlock(FabricBlockSettings.copy(BAMBOO_PLANKS));
+    public static final Block BAMBOO_TORCH = new BambooTorchBlock(ParticleTypes.FLAME);
+    public static final Block BAMBOO_WALL_TORCH = new BambooWallTorchBlock(ParticleTypes.FLAME);
+    public static final Block SOUL_BAMBOO_TORCH = new BambooTorchBlock(ParticleTypes.SOUL_FIRE_FLAME);
+    public static final Block SOUL_BAMBOO_WALL_TORCH = new BambooWallTorchBlock(ParticleTypes.SOUL_FIRE_FLAME);
+    public static final Block DRIED_BAMBOO_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.PALE_YELLOW));
+    public static final Block DRIED_BAMBOO_SLAB = new SlabBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_STAIRS = new StairsBlock(DRIED_BAMBOO_PLANKS.getDefaultState(), FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_FENCE = new FenceBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_DOOR = new TrapdoorBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_TRAPDOOR = new DoorBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
 
     public static final Block CORVUS = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.DEEPSLATE_GRAY));
     public static final Block CORVUS_SLAB = new SlabBlock(FabricBlockSettings.copy(CORVUS));
@@ -699,6 +706,10 @@ public class BlockRegistry {
         registerBlock(new Identifier(MOD_ID, "lavarock_slab"), LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "lavarock_stairs"), LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "lavarock_wall"), LAVAROCK_WALL, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(MOD_ID, "cobbled_lavarock"), COBBLED_LAVAROCK, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_slab"), COBBLED_LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_stairs"), COBBLED_LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_wall"), COBBLED_LAVAROCK_WALL, ItemGroup.DECORATIONS);
         registerBlock(new Identifier(MOD_ID, "lavarock_bricks"), LAVAROCK_BRICKS, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
@@ -893,29 +904,31 @@ public class BlockRegistry {
         registerBlock(new Identifier(MOD_ID, "sour_berry_bush"), SOUR_BERRY_BUSH, ItemGroup.DECORATIONS);
         registerBlock(new Identifier(MOD_ID, "bitter_berry_bush"), BITTER_BERRY_BUSH, ItemGroup.DECORATIONS);
         registerBlock(new Identifier(MOD_ID, "pungent_berry_bush"), PUNGENT_BERRY_BUSH, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "end_stone_slab"), END_STONE_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "deepslate_slab"), DEEPSLATE_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "smooth_basalt_slab"), SMOOTH_BASALT_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "tuff_slab"), TUFF_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "calcite_slab"), CALCITE_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "dripstone_slab"), DRIPSTONE_SLAB, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "end_stone_stairs"), END_STONE_STAIRS, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "deepslate_stairs"), DEEPSLATE_STAIRS, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "smooth_basalt_stairs"), SMOOTH_BASALT_STAIRS, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "tuff_stairs"), TUFF_STAIRS, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "calcite_stairs"), CALCITE_STAIRS, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "dripstone_stairs"), DRIPSTONE_STAIRS, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(MOD_ID, "end_stone_slab"), END_STONE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "deepslate_slab"), DEEPSLATE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "smooth_basalt_slab"), SMOOTH_BASALT_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "tuff_slab"), TUFF_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "calcite_slab"), CALCITE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "dripstone_slab"), DRIPSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "end_stone_stairs"), END_STONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "deepslate_stairs"), DEEPSLATE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "smooth_basalt_stairs"), SMOOTH_BASALT_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "tuff_stairs"), TUFF_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "calcite_stairs"), CALCITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "dripstone_stairs"), DRIPSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "bamboo_torch"), BAMBOO_TORCH, ItemGroup.DECORATIONS);
         registerBlock(new Identifier(MOD_ID, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, null);
-        registerBlock(new Identifier(MOD_ID, "bamboo_planks"), BAMBOO_PLANKS, ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(MOD_ID, "bamboo_slab"), BAMBOO_SLAB, ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(MOD_ID, "bamboo_stairs"), BAMBOO_STAIRS, ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(MOD_ID, "bamboo_fence"), BAMBOO_FENCE, ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(MOD_ID, "bamboo_fence_gate"), BAMBOO_FENCE_GATE, ItemGroup.REDSTONE);
-        registerBlock(new Identifier(MOD_ID, "bamboo_button"), BAMBOO_BUTTON, ItemGroup.REDSTONE);
-        registerBlock(new Identifier(MOD_ID, "bamboo_pressure_plate"), BAMBOO_PRESSURE_PLATE, ItemGroup.REDSTONE);
-        registerBlock(new Identifier(MOD_ID, "bamboo_door"), BAMBOO_DOOR, ItemGroup.REDSTONE);
-        registerBlock(new Identifier(MOD_ID, "bamboo_trapdoor"), BAMBOO_TRAPDOOR, ItemGroup.REDSTONE);
+        registerBlock(new Identifier(MOD_ID, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(MOD_ID, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_planks"), DRIED_BAMBOO_PLANKS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_slab"), DRIED_BAMBOO_SLAB, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_stairs"), DRIED_BAMBOO_STAIRS, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_fence"), DRIED_BAMBOO_FENCE, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_fence_gate"), DRIED_BAMBOO_FENCE_GATE, ItemGroup.REDSTONE);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_button"), DRIED_BAMBOO_BUTTON, ItemGroup.REDSTONE);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_pressure_plate"), DRIED_BAMBOO_PRESSURE_PLATE, ItemGroup.REDSTONE);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_door"), DRIED_BAMBOO_DOOR, ItemGroup.REDSTONE);
+        registerBlock(new Identifier(MOD_ID, "dried_bamboo_trapdoor"), DRIED_BAMBOO_TRAPDOOR, ItemGroup.REDSTONE);
         registerBlock(new Identifier(MOD_ID, "corvus"), CORVUS, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "corvus_slab"), CORVUS_SLAB, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(MOD_ID, "corvus_stairs"), CORVUS_STAIRS, ItemGroup.BUILDING_BLOCKS);
@@ -926,7 +939,7 @@ public class BlockRegistry {
         registerBlock(new Identifier(MOD_ID, "corvus_brick_wall"), CORVUS_BRICK_WALL, ItemGroup.DECORATIONS);
 
         //if (GreatBigWorld.isLoaded("redstone_refurbished"))
-        registerBlock(new Identifier(MOD_ID, "receptor"), RECEPTOR, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(MOD_ID, "receptor"), RECEPTOR, ItemGroup.REDSTONE);
 
         //if (GreatBigWorld.isLoaded("twisted_nether"))
         registerBlock(new Identifier(MOD_ID, "warped_shroomlight"), WARPED_SHROOMLIGHT, ItemGroup.BUILDING_BLOCKS);
@@ -1010,6 +1023,8 @@ public class BlockRegistry {
     public static void renderLayers() {
         RenderLayers.BLOCKS.put(MARIGOLD, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(POTTED_MARIGOLD, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
     }
 
     public static void registerBlock(Identifier id, Block block, ItemGroup group) {

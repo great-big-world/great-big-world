@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BambooLeaves;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -26,9 +28,9 @@ public class BambooTorchBlock extends TorchBlock {
 	protected static final BooleanProperty LARGE = BooleanProperty.of("large");
 	protected static final BooleanProperty LEAVES = BooleanProperty.of("leaves");
 
-	public BambooTorchBlock() {
-		super(FabricBlockSettings.copy(Blocks.TORCH), ParticleTypes.FLAME);
-		this.setDefaultState(this.getDefaultState().with(LARGE, false).with(LEAVES, false));
+	public BambooTorchBlock(ParticleEffect particle) {
+		super(FabricBlockSettings.copy(Blocks.TORCH), particle);
+		setDefaultState(getStateManager().getDefaultState().with(LARGE, false).with(LEAVES, false));
 	}
 
 	@Override

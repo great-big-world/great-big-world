@@ -1,8 +1,8 @@
 {
     "parent": "block/stairs",
     "textures": {
-        "bottom": "great_big_world:block/deepslate_top",
-        "top": "great_big_world:block/deepslate_top",
-        "side": "great_big_world:block/deepslate"
+        "bottom": "block/deepslate_top",
+        "top": "block/deepslate_top",
+        "side": "block/deepslate"
     }
 }

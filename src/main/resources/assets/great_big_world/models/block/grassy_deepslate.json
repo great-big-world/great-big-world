@@ -2,7 +2,7 @@
     "parent": "block/cube_bottom_top",
     "textures": {
         "bottom": "block/deepslate_top",
-        "top": "great_big_world:block/grassy_deepslate",
-        "side": "block/grass_block_top"
+        "top": "block/grass_block_top",
+        "side": "great_big_world:block/grassy_deepslate"
     }
 }
