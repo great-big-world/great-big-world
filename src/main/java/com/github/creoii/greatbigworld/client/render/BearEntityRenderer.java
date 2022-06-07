@@ -1,9 +1,9 @@
 package com.github.creoii.greatbigworld.client.render;
 
+import com.github.creoii.greatbigworld.client.ModelLayers;
 import com.github.creoii.greatbigworld.client.model.BearEntityModel;
 import com.github.creoii.greatbigworld.entity.BearEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.client.ModelLayers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;

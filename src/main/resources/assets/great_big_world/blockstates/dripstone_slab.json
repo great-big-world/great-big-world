@@ -4,7 +4,7 @@
       "model": "great_big_world:block/dripstone_slab"
     },
     "type=double": {
-      "model": "block/dripstone"
+      "model": "block/dripstone_block"
     },
     "type=top": {
       "model": "great_big_world:block/dripstone_slab_top"

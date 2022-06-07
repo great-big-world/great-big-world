@@ -7,6 +7,7 @@ import net.fabricmc.loader.api.FabricLoader;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String MOD_ID = "great_big_world";
+    private static final boolean DEV_ENV = true;
 
     @Override
     public void onInitialize() {
@@ -23,5 +24,9 @@ public class GreatBigWorld implements ModInitializer {
 
     public static boolean isLoaded(String modid) {
         return FabricLoader.getInstance().isModLoaded(modid);
+    }
+
+    public static boolean inDev() {
+        return DEV_ENV;
     }
 }

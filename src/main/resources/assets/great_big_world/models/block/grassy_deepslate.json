@@ -1,8 +1,7 @@
 {
-    "parent": "block/cube_bottom_top",
+    "parent": "block/grass_block",
     "textures": {
         "bottom": "block/deepslate_top",
-        "top": "block/grass_block_top",
         "side": "great_big_world:block/grassy_deepslate"
     }
 }

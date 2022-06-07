@@ -1,5 +1,5 @@
 {
     "variants": {
-        "": { "model": "great_big_world:block/waxed_exposed_chiseled_cut_copper_block" }
+        "": { "model": "great_big_world:block/exposed_chiseled_cut_copper_block" }
     }
 }

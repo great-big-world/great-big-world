@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_inventory",
+    "textures": {
+        "texture": "great_big_world:block/mahogany_planks"
+    }
+}
