@@ -1,0 +1,6 @@
+{
+  "parent": "block/template_wall_side_tall",
+  "textures": {
+    "wall": "great_big_world:block/elder_prismarine"
+  }
+}
