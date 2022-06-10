@@ -476,7 +476,7 @@ public class BlockRegistry {
     public static final Block HEATHER = new FlowerBlock(StatusEffects.INSTANT_HEALTH, 1, FabricBlockSettings.copy(Blocks.DANDELION));
     public static final Block ROSE = new FlowerBlock(StatusEffects.INSTANT_DAMAGE, 1, FabricBlockSettings.copy(Blocks.DANDELION));
 
-    //public static final Block POLLEN_BOCK = new CrushableBlock(-1, FabricBlockSettings.copy(DANDELION_FLUFF));
+    public static final Block POLLEN_BOCK = new CrushableBlock(-1, FabricBlockSettings.copy(Blocks.GRASS_BLOCK).sounds(BlockSoundGroup.SAND));
     //endregion
 
     //region Magic V Melee
@@ -896,6 +896,7 @@ public class BlockRegistry {
         if (GreatBigWorld.isLoaded("honeycomb") || GreatBigWorld.inDev()) {
             registerBlock(new Identifier(MOD_ID, "heather"), HEATHER, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "rose"), ROSE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "pollen_block"), POLLEN_BOCK, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("magic_v_melee") || GreatBigWorld.inDev()) {

@@ -17,7 +17,7 @@ public class AnvilBlockMixin {
     private void great_big_world$destroyCrushables(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
         if (world.getBlockState(pos.down()).getBlock() instanceof Crushable crushable) {
             if (fallingBlockEntity.fallDistance > crushable.getMinimumFallDistance() || crushable.getMinimumFallDistance() == -1) {
-                world.breakBlock(pos, crushable.shouldDropOnBreak(), fallingBlockEntity);
+                world.breakBlock(pos.down(), crushable.shouldDropOnBreak(), fallingBlockEntity);
             }
         }
     }

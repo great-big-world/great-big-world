@@ -6,6 +6,7 @@
   "mixins": [
     "AnvilBlockMixin",
     "ConcretePowderBlockMixin",
+    "FireBlockMixin",
     "LevelPropertiesMixin",
     "VanillaBiomeParametersMixin"
   ],
