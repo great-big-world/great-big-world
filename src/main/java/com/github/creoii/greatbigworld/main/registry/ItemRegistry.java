@@ -28,8 +28,8 @@ public class ItemRegistry {
 
     //region Magic V Melee
     public static final Item SOUR_BERRIES = new AliasedBlockItem(BlockRegistry.SOUR_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
-    //public static final Item BITTER_BERRIES = new AliasedBlockItem(BlockRegistry.BITTER_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
-    //public static final Item PUNGENT_BERRIES = new AliasedBlockItem(BlockRegistry.PUNGENT_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
+    public static final Item BITTER_BERRIES = new AliasedBlockItem(BlockRegistry.BITTER_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
+    public static final Item PUNGENT_BERRIES = new AliasedBlockItem(BlockRegistry.PUNGENT_BERRY_BUSH, new FabricItemSettings().food(Foods.SOUR_BERRIES).group(ItemGroup.FOOD));
     //endregion
 
     public static void register() {
@@ -38,8 +38,8 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "sour_berries"), SOUR_BERRIES);
-        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bitter_berries"), BITTER_BERRIES);
-        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "pungent_berries"), PUNGENT_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bitter_berries"), BITTER_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "pungent_berries"), PUNGENT_BERRIES);
     }
 
     @Environment(EnvType.CLIENT)

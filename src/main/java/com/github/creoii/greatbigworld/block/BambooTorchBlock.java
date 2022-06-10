@@ -5,7 +5,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.BambooLeaves;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
@@ -17,8 +16,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class BambooTorchBlock extends TorchBlock {
 	protected static final VoxelShape TORCH_SMALL = Block.createCuboidShape(5.0D, 0.0D, 5.0D, 11.0D, 14.0D, 11.0D);
@@ -36,11 +33,6 @@ public class BambooTorchBlock extends TorchBlock {
 	public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
 		BlockState downState = worldIn.getBlockState(pos.down());
 		return sideCoversSmallSquare(worldIn, pos.down(), Direction.UP) || downState.getBlock() instanceof LeavesBlock || downState.getBlock() instanceof BambooBlock;
-	}
-
-	@Override
-    public OffsetType getOffsetType() {
-		return OffsetType.XZ;
 	}
 
 	@Override
@@ -69,16 +61,6 @@ public class BambooTorchBlock extends TorchBlock {
 			return this.getDefaultState();
 		}
 		return this.getDefaultState();
-	}
-
-	@Override
-	public void randomDisplayTick(BlockState state, World worldIn, BlockPos pos, Random rand) {
-		Vec3d offset = state.getModelOffset(worldIn.getChunkAsView(pos.getX(), pos.getY()), pos);
-		double d0 = (double) pos.getX() + 0.5D + offset.getX();
-		double d1 = (double) pos.getY() + 0.9D + offset.getY();
-		double d2 = (double) pos.getZ() + 0.5D + offset.getZ();
-		worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-		worldIn.addParticle(this.particle, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 	}
 
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

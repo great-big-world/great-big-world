@@ -16,9 +16,8 @@ import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 @Environment(EnvType.CLIENT)
 public class FallingConcretePowderEntityRenderer extends EntityRenderer<FallingConcretePowderEntity> {
@@ -36,7 +35,7 @@ public class FallingConcretePowderEntityRenderer extends EntityRenderer<FallingC
                 BlockPos blockPos = new BlockPos(entity.getX(), entity.getBoundingBox().maxY, entity.getZ());
                 matrixStack.translate(-.5d, 0d, -.5d);
                 BlockRenderManager blockRenderManager = MinecraftClient.getInstance().getBlockRenderManager();
-                blockRenderManager.getModelRenderer().render(world, blockRenderManager.getModel(blockState), blockState, blockPos, matrixStack, vertexConsumerProvider.getBuffer(RenderLayers.getMovingBlockLayer(blockState)), false, new Random(), blockState.getRenderingSeed(entity.getFallingBlockPos()), OverlayTexture.DEFAULT_UV);
+                blockRenderManager.getModelRenderer().render(world, blockRenderManager.getModel(blockState), blockState, blockPos, matrixStack, vertexConsumerProvider.getBuffer(RenderLayers.getMovingBlockLayer(blockState)), false, Random.create(), blockState.getRenderingSeed(entity.getFallingBlockPos()), OverlayTexture.DEFAULT_UV);
                 matrixStack.pop();
                 super.render(entity, f, g, matrixStack, vertexConsumerProvider, i);
             }

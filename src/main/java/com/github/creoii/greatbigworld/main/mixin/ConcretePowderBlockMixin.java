@@ -7,9 +7,8 @@ import net.minecraft.block.ConcretePowderBlock;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.Mixin;
-
-import java.util.Random;
 
 @Mixin(ConcretePowderBlock.class)
 public class ConcretePowderBlockMixin extends FallingBlock {

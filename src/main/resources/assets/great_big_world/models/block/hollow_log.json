@@ -1,5 +1,5 @@
 {
-	"parent": "block",
+	"parent": "block/block",
 	"textures": {
 		"particle": "#side"
 	},

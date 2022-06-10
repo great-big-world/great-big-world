@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.client.color.world.BiomeColors;
+import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
@@ -265,12 +266,13 @@ public class BlockRegistry {
     public static final Block KILN = null;
     public static final Block LEATHER_BLOCK = null;
 
-    //public static final Block HANGING_OAK_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_SPRUCE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_BIRCH_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_JUNGLE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_DARK_OAK_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_ACACIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block HANGING_OAK_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block HANGING_SPRUCE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.SPRUCE_LEAVES));
+    public static final Block HANGING_BIRCH_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.BIRCH_LEAVES));
+    public static final Block HANGING_JUNGLE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
+    public static final Block HANGING_DARK_OAK_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.DARK_OAK_LEAVES));
+    public static final Block HANGING_ACACIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.ACACIA_LEAVES));
+    public static final Block HANGING_MANGROVE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.MANGROVE_LEAVES));
     //public static final Block HANGING_SAKURA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //public static final Block HANGING_PALO_VERDE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //public static final Block HANGING_SEQUOIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
@@ -402,6 +404,7 @@ public class BlockRegistry {
     //public static final Block CARVED_JUNGLE_PLANKS = new Block(FabricBlockSettings.copy(Blocks.JUNGLE_PLANKS));
     //public static final Block CARVED_DARK_OAK_PLANKS = new Block(FabricBlockSettings.copy(Blocks.DARK_OAK_PLANKS));
     //public static final Block CARVED_ACACIA_PLANKS = new Block(FabricBlockSettings.copy(Blocks.ACACIA_PLANKS));
+    //public static final Block CARVED_MANGROVE_PLANKS = new Block(FabricBlockSettings.copy(Blocks.ACACIA_PLANKS));
     //public static final Block CARVED_CRIMSON_PLANKS = new Block(FabricBlockSettings.copy(Blocks.CRIMSON_PLANKS));
     //public static final Block CARVED_WARPED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.WARPED_PLANKS));
     //public static final Block CARVED_SAKURA_PLANKS = new Block(FabricBlockSettings.copy(SAKURA_PLANKS));
@@ -547,8 +550,8 @@ public class BlockRegistry {
     //public static final Block TWISTED_ROOTS = new RootsBlock(FabricBlockSettings.copy(Blocks.WARPED_ROOTS));
     public static final Block TWISTED_FUNGUS = null;
 
-    //public static final Block TWISTED_HYPHAE = new PillarBlock(FabricBlockSettings.copy(Blocks.CRIMSON_HYPHAE).mapColor(MapColor.DARK_DULL_PINK));
-    //public static final Block STRIPPED_TWISTED_HYPHAE = new PillarBlock(FabricBlockSettings.copy(TWISTED_HYPHAE).mapColor(MapColor.PURPLE));
+    public static final Block TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(MapColor.DARK_DULL_PINK));
+    //public static final Block STRIPPED_TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(TWISTED_STEM).mapColor(MapColor.PURPLE));
     //public static final Block TWISTED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_PURPLE));
     //public static final Block TWISTED_SLAB = new SlabBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
     //public static final Block TWISTED_STAIRS = new StairsBlock(TWISTED_PLANKS.getDefaultState(), FabricBlockSettings.copy(TWISTED_PLANKS));
@@ -625,7 +628,7 @@ public class BlockRegistry {
     //public static final Block HOLLOW_SEQUOIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(SEQUOIA_LOG));
     public static final Block HOLLOW_MAHOGANY_LOG = new HollowLogBlock(FabricBlockSettings.copy(MAHOGANY_LOG));
     //public static final Block HOLLOW_PALO_VERDE_LOG = new HollowLogBlock(FabricBlockSettings.copy(PALO_VERDE_LOG));
-    //public static final Block STRIPPED_HOLLOW_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG));
+    public static final Block STRIPPED_HOLLOW_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG));
 
     public static final Block COLD_WILDFLOWER = null;
     public static final Block TEMPERATE_WILDFLOWER = null;
@@ -784,6 +787,13 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "gray_quilted_carpet"), GRAY_QUILTED_CARPET, null);
             registerBlock(new Identifier(MOD_ID, "light_gray_quilted_carpet"), LIGHT_GRAY_QUILTED_CARPET, null);
             registerBlock(new Identifier(MOD_ID, "white_quilted_carpet"), WHITE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, ItemGroup.DECORATIONS);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
@@ -944,6 +954,7 @@ public class BlockRegistry {
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
+            registerBlock(new Identifier(MOD_ID, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "warped_shroomlight"), WARPED_SHROOMLIGHT, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "twisted_shroomlight"), TWISTED_SHROOMLIGHT, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "blue_nether_bricks"), BLUE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
@@ -980,6 +991,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "hollow_dark_oak_log"), HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hollow_acacia_log"), HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hollow_mahogany_log"), HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_oak_log"), STRIPPED_HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
         }
 
         flammables();
@@ -1007,6 +1019,7 @@ public class BlockRegistry {
                 .put(PALO_VERDE_LOG, STRIPPED_PALO_VERDE_LOG)
                 .put(SEQUOIA_LOG, STRIPPED_SEQUOIA_LOG)
                 .put(MAHOGANY_LOG, STRIPPED_MAHOGANY_LOG)
+                .put(HOLLOW_OAK_LOG, STRIPPED_HOLLOW_OAK_LOG)
                 .build();
     }
 
@@ -1035,13 +1048,24 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(POTTED_MARIGOLD, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
+
         RenderLayers.BLOCKS.put(GRASSY_STONE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(GRASSY_DEEPSLATE, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_OAK_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_SPRUCE_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_BIRCH_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_JUNGLE_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_DARK_OAK_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_ACACIA_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_MANGROVE_LEAVES, RenderLayer.getCutoutMipped());
     }
 
     @Environment(EnvType.CLIENT)
     public static void tintBlocks() {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_STONE, GRASSY_DEEPSLATE);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FoliageColors.getSpruceColor(), HANGING_SPRUCE_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FoliageColors.getBirchColor(), HANGING_BIRCH_LEAVES);
     }
 
     public static void registerBlock(Identifier id, Block block, ItemGroup group) {

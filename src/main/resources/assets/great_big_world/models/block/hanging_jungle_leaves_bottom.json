@@ -1,6 +1,6 @@
 {
   "parent": "great_big_world:block/hanging_leaves_bottom",
   "textures": {
-    "all": "block/jungle_leaves"
+    "all": "great_big_world:block/hanging_jungle_leaves_bottom"
   }
 }

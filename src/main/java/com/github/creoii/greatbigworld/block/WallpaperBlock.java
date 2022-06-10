@@ -16,7 +16,7 @@ import net.minecraft.world.BlockView;
 
 import java.util.Map;
 
-public class WallpaperBlock extends AbstractLichenBlock {
+public class WallpaperBlock extends MultifaceGrowthBlock {
     private static final VoxelShape UP_SHAPE = Block.createCuboidShape(0.0D, 14.0D, 0.0D, 16.0D, 16.0D, 16.0D);
     private static final VoxelShape DOWN_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
     private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
@@ -55,13 +55,13 @@ public class WallpaperBlock extends AbstractLichenBlock {
         return voxelShape.isEmpty() ? VoxelShapes.fullCube() : voxelShape;
     }
 
-    private static boolean hasDirection(BlockState state, Direction direction) {
-        BooleanProperty booleanProperty = getProperty(direction);
-        return state.contains(booleanProperty) && state.get(booleanProperty);
+    @Override
+    public LichenGrower getGrower() {
+        return null;
     }
 
     @Override
-    protected boolean canSpread(BlockState state, BlockView world, BlockPos pos, Direction from) {
+    public boolean canGrowWithDirection(BlockView world, BlockState state, BlockPos pos, Direction direction) {
         return false;
     }
 }

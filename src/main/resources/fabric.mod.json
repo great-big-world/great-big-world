@@ -12,7 +12,7 @@
     "sources": "https://github.com/change-the-world/world-of-plenty"
   },
   "license": "MIT",
-  "icon": "icon-packed_dirt.png",
+  "icon": "icon-palo_verde_log.png",
   "environment": "*",
   "entrypoints": {
     "main": [
@@ -29,7 +29,7 @@
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.18.2",
+    "minecraft": "1.19",
     "java": ">=17"
   }
 }

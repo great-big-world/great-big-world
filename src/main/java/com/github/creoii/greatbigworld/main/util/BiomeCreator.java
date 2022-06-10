@@ -14,6 +14,7 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 
+
 public class BiomeCreator {
     protected static int getSkyColor(float temperature) {
         float f = temperature / 3.0F;
@@ -45,6 +46,6 @@ public class BiomeCreator {
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.DIRT_CAVES_CEILING_VEGETATION);
         builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.DIRT_CAVES_VEGETATION);
         MusicSound musicSound = MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_LUSH_CAVES);
-        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).category(Biome.Category.UNDERGROUND).temperature(.5f).downfall(.5f).spawnSettings(builder.build()).generationSettings(builder2.build()).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(.5f)).music(musicSound).build()).build();
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).temperature(.5f).downfall(.5f).spawnSettings(builder.build()).generationSettings(builder2.build()).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(.5f)).music(musicSound).build()).build();
     }
 }
