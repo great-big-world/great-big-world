@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.client.model;
 
+import com.github.creoii.greatbigworld.entity.BearEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
@@ -7,7 +8,7 @@ import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import net.minecraft.entity.Entity;
 
 @Environment(EnvType.CLIENT)
-public class BearEntityModel<T extends Entity> extends QuadrupedEntityModel<T> {
+public class BearEntityModel<T extends BearEntity> extends QuadrupedEntityModel<T> {
 
 	public BearEntityModel(ModelPart root) {
 		super(root, false, 10f, 4f, 2f, 2f, 24);

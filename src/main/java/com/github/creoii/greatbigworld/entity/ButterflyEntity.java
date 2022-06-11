@@ -13,6 +13,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
@@ -28,42 +29,31 @@ import org.jetbrains.annotations.Nullable;
 
 public class ButterflyEntity extends PathAwareEntity {
     private static final TrackedData<Byte> BUTTERFLY_FLAGS = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.BYTE);
-    private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);;
-    private static final Identifier[] SHAPE_IDS = new Identifier[]{new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a.png"), new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_b.png")};
+    private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final Identifier[] SHAPE_IDS = new Identifier[]{
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/body.png")};
     private static final Identifier[] VARIETY_IDS = new Identifier[]{
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_1.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_2.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_3.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_4.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_5.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/fish/tropical_a_pattern_6.png")};
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_1.png"),
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_2.png"),
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_3.png"),
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_4.png"),
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_5.png"),
+            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_6.png")};
 
     public static final int[] COMMON_VARIANTS = new int[]{
-            toVariant(ButterflyEntity.Variety.STRIPEY, DyeColor.ORANGE, DyeColor.GRAY),
-            toVariant(ButterflyEntity.Variety.FLOPPER, DyeColor.GRAY, DyeColor.GRAY),
-            toVariant(ButterflyEntity.Variety.FLOPPER, DyeColor.GRAY, DyeColor.BLUE),
-            toVariant(ButterflyEntity.Variety.CLAYFISH, DyeColor.WHITE, DyeColor.GRAY),
             toVariant(ButterflyEntity.Variety.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
             toVariant(ButterflyEntity.Variety.KOB, DyeColor.ORANGE, DyeColor.WHITE),
             toVariant(ButterflyEntity.Variety.SPOTTY, DyeColor.PINK, DyeColor.LIGHT_BLUE),
-            toVariant(ButterflyEntity.Variety.BLOCKFISH, DyeColor.PURPLE, DyeColor.YELLOW),
-            toVariant(ButterflyEntity.Variety.CLAYFISH, DyeColor.WHITE, DyeColor.RED),
             toVariant(ButterflyEntity.Variety.SPOTTY, DyeColor.WHITE, DyeColor.YELLOW),
-            toVariant(ButterflyEntity.Variety.GLITTER, DyeColor.WHITE, DyeColor.GRAY),
-            toVariant(ButterflyEntity.Variety.CLAYFISH, DyeColor.WHITE, DyeColor.ORANGE),
             toVariant(ButterflyEntity.Variety.DASHER, DyeColor.CYAN, DyeColor.PINK),
             toVariant(ButterflyEntity.Variety.BRINELY, DyeColor.LIME, DyeColor.LIGHT_BLUE),
-            toVariant(ButterflyEntity.Variety.BETTY, DyeColor.RED, DyeColor.WHITE),
             toVariant(ButterflyEntity.Variety.SNOOPER, DyeColor.GRAY, DyeColor.RED),
-            toVariant(ButterflyEntity.Variety.BLOCKFISH, DyeColor.RED, DyeColor.WHITE),
-            toVariant(ButterflyEntity.Variety.FLOPPER, DyeColor.WHITE, DyeColor.YELLOW),
             toVariant(ButterflyEntity.Variety.KOB, DyeColor.RED, DyeColor.WHITE),
             toVariant(ButterflyEntity.Variety.SUNSTREAK, DyeColor.GRAY, DyeColor.WHITE),
-            toVariant(ButterflyEntity.Variety.DASHER, DyeColor.CYAN, DyeColor.YELLOW),
-            toVariant(ButterflyEntity.Variety.FLOPPER, DyeColor.YELLOW, DyeColor.YELLOW)};
+            toVariant(ButterflyEntity.Variety.DASHER, DyeColor.CYAN, DyeColor.YELLOW)};
     @Nullable private BlockPos sittingPosition;
 
-    protected ButterflyEntity(EntityType<? extends ButterflyEntity> entityType, World world) {
+    public ButterflyEntity(EntityType<? extends ButterflyEntity> entityType, World world) {
         super(entityType, world);
         moveControl = new FlightMoveControl(this, 20, true);
     }
@@ -121,12 +111,28 @@ public class ButterflyEntity extends PathAwareEntity {
         return Math.min((variant & '\uff00') >> 8, 5);
     }
 
-    public Identifier getVarietyId() {
+    public Identifier getPatternId() {
         return VARIETY_IDS[getPattern(this.getVariant())];
     }
 
     public Identifier getShapeId() {
         return SHAPE_IDS[getShape(this.getVariant())];
+    }
+
+    private static int getBaseDyeColorIndex(int variant) {
+        return (variant & 16711680) >> 16;
+    }
+
+    public float[] getBaseColorComponents() {
+        return DyeColor.byId(getBaseDyeColorIndex(this.getVariant())).getColorComponents();
+    }
+
+    private static int getPatternDyeColorIndex(int variant) {
+        return (variant & -16777216) >> 24;
+    }
+
+    public float[] getPatternColorComponents() {
+        return DyeColor.byId(getPatternDyeColorIndex(this.getVariant())).getColorComponents();
     }
 
     public void tick() {
@@ -154,16 +160,16 @@ public class ButterflyEntity extends PathAwareEntity {
             }
         }
 
-        this.updateLimbs(this, false);
+        updateLimbs(this, false);
     }
 
     protected void mobTick() {
         super.mobTick();
-        BlockPos blockPos = this.getBlockPos();
+        BlockPos blockPos = getBlockPos();
         BlockPos blockPos2 = blockPos.up();
-        if (this.isSitting()) {
-            boolean bl = this.isSilent();
-            if (this.world.getBlockState(blockPos2).isIn(Tags.Blocks.BUTTERFLY_SITTABLE)) {
+        if (isSitting()) {
+            boolean bl = isSilent();
+            if (world.getBlockState(blockPos2).isIn(Tags.Blocks.BUTTERFLY_SITTABLE)) {
                 if (this.random.nextInt(200) == 0) {
                     this.headYaw = (float)this.random.nextInt(360);
                 }
@@ -190,7 +196,7 @@ public class ButterflyEntity extends PathAwareEntity {
             this.setVelocity(vec3d2);
             float g = (float)(MathHelper.atan2(vec3d2.z, vec3d2.x) * 57.2957763671875D) - 90.0F;
             float h = MathHelper.wrapDegrees(g - this.getYaw());
-            this.forwardSpeed = 0.5F;
+            forwardSpeed = .5f;
             this.setYaw(this.getYaw() + h);
             if (this.random.nextInt(100) == 0 && this.world.getBlockState(blockPos2).isIn(Tags.Blocks.BUTTERFLY_SITTABLE)) {
                 this.setSitting(true);
@@ -214,7 +220,7 @@ public class ButterflyEntity extends PathAwareEntity {
     }
 
     public boolean damage(DamageSource source, float amount) {
-        if (this.isInvulnerableTo(source)) {
+        if (isInvulnerableTo(source)) {
             return false;
         } else {
             if (!world.isClient && isSitting()) {
@@ -226,7 +232,15 @@ public class ButterflyEntity extends PathAwareEntity {
     }
 
     public boolean hasWings() {
-        return !this.isOnGround();
+        return !isOnGround();
+    }
+
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return dimensions.height / 2f;
+    }
+
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
@@ -277,13 +291,7 @@ public class ButterflyEntity extends PathAwareEntity {
         SNOOPER(0, 2),
         DASHER(0, 3),
         BRINELY(0, 4),
-        SPOTTY(0, 5),
-        FLOPPER(1, 0),
-        STRIPEY(1, 1),
-        GLITTER(1, 2),
-        BLOCKFISH(1, 3),
-        BETTY(1, 4),
-        CLAYFISH(1, 5);
+        SPOTTY(0, 5);
 
         private final int shape;
         private final int pattern;

@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.main.util;
 
-import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.tag.TagKey;
@@ -8,12 +7,14 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class Tags {
+    public static final String COMMON_MOD_ID = "c";
+
     public static class Blocks {
-        public static final TagKey<Block> BUTTERFLY_SITTABLE = TagKey.of(Registry.BLOCK_KEY, new Identifier(GreatBigWorld.MOD_ID, "butterfly_sittable"));
+        public static final TagKey<Block> BUTTERFLY_SITTABLE = TagKey.of(Registry.BLOCK_KEY, new Identifier(COMMON_MOD_ID, "butterfly_sittable"));
     }
 
     public static class Entities {
-        public static final TagKey<EntityType<?>> MOLTEN_MAGMA_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(GreatBigWorld.MOD_ID, "molten_magma_walkable"));
-        public static final TagKey<EntityType<?>> QUICKSAND_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(GreatBigWorld.MOD_ID, "quicksand_walkable"));
+        public static final TagKey<EntityType<?>> MOLTEN_MAGMA_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(COMMON_MOD_ID, "molten_magma_walkable"));
+        public static final TagKey<EntityType<?>> QUICKSAND_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(COMMON_MOD_ID, "quicksand_walkable"));
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.PlacedFeature;
@@ -16,12 +17,15 @@ import java.util.List;
 public class PlacedFeatureRegistry {
     public static RegistryEntry<PlacedFeature> DIRT_CAVES_VEGETATION;
     public static RegistryEntry<PlacedFeature> DIRT_CAVES_CEILING_VEGETATION;
+
     public static RegistryEntry<PlacedFeature> DEPOSIT_GOLD;
     public static RegistryEntry<PlacedFeature> DEPOSIT_IRON;
     public static RegistryEntry<PlacedFeature> DEPOSIT_COPPER;
     public static RegistryEntry<PlacedFeature> DEPOSIT_CLAY;
     public static RegistryEntry<PlacedFeature> DEPOSIT_PEAT;
     public static RegistryEntry<PlacedFeature> ORE_PACKED_DIRT;
+
+    public static RegistryEntry<PlacedFeature> ALGAE_PATCH;
 
     public static void register() {
         DIRT_CAVES_VEGETATION = PlacedFeatures.register("dirt_caves_vegetation", ConfiguredFeatureRegistry.DIRT_PATCH, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of(), BlockFilterPlacementModifier.of(new SkyVisiblePredicate(BlockPos.ORIGIN, .4f)));
@@ -33,9 +37,15 @@ public class PlacedFeatureRegistry {
         DEPOSIT_CLAY = PlacedFeatures.register("deposit_clay", ConfiguredFeatureRegistry.CLAY_DEPOSIT, modifiers(42, HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop())));
         DEPOSIT_PEAT = PlacedFeatures.register("deposit_peat", ConfiguredFeatureRegistry.PEAT_DEPOSIT, modifiers(64, HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop())));
         ORE_PACKED_DIRT = PlacedFeatures.register("ore_packed_dirt", ConfiguredFeatureRegistry.ORE_PACKED_DIRT, modifiers(192, HeightRangePlacementModifier.trapezoid(YOffset.getBottom(), YOffset.getTop())));
+
+        ALGAE_PATCH = PlacedFeatures.register("algae_patch", ConfiguredFeatureRegistry.ALGAE_PATCH, heightmapModifiers(8, HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), HeightRangePlacementModifier.trapezoid(YOffset.fixed(63), YOffset.getTop())));
     }
 
     private static List<PlacementModifier> modifiers(int count, PlacementModifier heightModifier) {
         return List.of(CountPlacementModifier.of(count), SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
+    }
+
+    private static List<PlacementModifier> heightmapModifiers(int count, HeightmapPlacementModifier heightmapPlacement, PlacementModifier heightModifier) {
+        return List.of(CountPlacementModifier.of(count), SquarePlacementModifier.of(), heightModifier, heightmapPlacement, BiomePlacementModifier.of());
     }
 }

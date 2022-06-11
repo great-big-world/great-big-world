@@ -469,7 +469,7 @@ public class BlockRegistry {
     public static final Block JELLYFISH_BLOCK = null;
     public static final Block PHANTOM_GLASS = new PhantomGlassBlock();
     public static final Block NAUTILUS_FOSSIL = new Block(FabricBlockSettings.copy(Blocks.STONE));
-    //public static final Block ALGAE = new GlowLichenBlock(FabricBlockSettings.copy(Blocks.GLOW_LICHEN).luminance(state -> 0));
+    public static final Block ALGAE = new GlowLichenBlock(FabricBlockSettings.copy(Blocks.GLOW_LICHEN).luminance(state -> 0));
     //endregion
 
     //region Honeycomb
@@ -787,13 +787,13 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "gray_quilted_carpet"), GRAY_QUILTED_CARPET, null);
             registerBlock(new Identifier(MOD_ID, "light_gray_quilted_carpet"), LIGHT_GRAY_QUILTED_CARPET, null);
             registerBlock(new Identifier(MOD_ID, "white_quilted_carpet"), WHITE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
@@ -891,6 +891,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "cheese_wheel"), CHEESE_WHEEL, null);
             registerBlock(new Identifier(MOD_ID, "phantom_glass"), PHANTOM_GLASS, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "nautilus_fossil"), NAUTILUS_FOSSIL, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(MOD_ID, "algae"), ALGAE, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("honeycomb") || GreatBigWorld.inDev()) {
@@ -1049,6 +1050,7 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(POTTED_MARIGOLD, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(ALGAE, RenderLayer.getCutout());
 
         RenderLayers.BLOCKS.put(GRASSY_STONE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(GRASSY_DEEPSLATE, RenderLayer.getCutoutMipped());

@@ -1,8 +1,10 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.client.render.BearEntityRenderer;
+import com.github.creoii.greatbigworld.client.render.ButterflyEntityRenderer;
 import com.github.creoii.greatbigworld.client.render.FallingConcretePowderEntityRenderer;
 import com.github.creoii.greatbigworld.entity.BearEntity;
+import com.github.creoii.greatbigworld.entity.ButterflyEntity;
 import com.github.creoii.greatbigworld.entity.FallingConcretePowderEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
@@ -19,6 +21,7 @@ import net.minecraft.util.registry.Registry;
 public class EntityRegistry {
     //region Colormatic
     public static final EntityType<FallingConcretePowderEntity> FALLING_CONCRETE = FabricEntityTypeBuilder.<FallingConcretePowderEntity>create(SpawnGroup.MISC, FallingConcretePowderEntity::new).forceTrackedVelocityUpdates(true).dimensions(new EntityDimensions(.98f, .98f, true)).trackRangeChunks(10).trackedUpdateRate(20).build();
+    public static final EntityType<ButterflyEntity> BUTTERFLY = FabricEntityTypeBuilder.<ButterflyEntity>create(SpawnGroup.AMBIENT, ButterflyEntity::new).dimensions(new EntityDimensions(.4f, .2f, true)).trackRangeChunks(10).build();
     //endregion
 
     //region Wonders of the Wild
@@ -27,17 +30,20 @@ public class EntityRegistry {
 
     public static void register() {
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "falling_concrete"), FALLING_CONCRETE);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "butterfly"), BUTTERFLY);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "bear"), BEAR);
         registerAttributes();
     }
 
     private static void registerAttributes() {
         FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
+        FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createButterflyAttributes());
     }
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
         EntityRendererRegistry.register(FALLING_CONCRETE, FallingConcretePowderEntityRenderer::new);
+        EntityRendererRegistry.register(BUTTERFLY, ButterflyEntityRenderer::new);
         EntityRendererRegistry.register(BEAR, BearEntityRenderer::new);
     }
 }

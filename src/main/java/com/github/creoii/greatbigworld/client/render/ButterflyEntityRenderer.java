@@ -1,0 +1,50 @@
+package com.github.creoii.greatbigworld.client.render;
+
+import com.github.creoii.greatbigworld.client.ModelLayers;
+import com.github.creoii.greatbigworld.client.model.ButterflyEntityModel;
+import com.github.creoii.greatbigworld.entity.ButterflyEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.TintableCompositeModel;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
+
+@Environment(EnvType.CLIENT)
+public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, TintableCompositeModel<ButterflyEntity>> {
+    private final TintableCompositeModel<ButterflyEntity> butterflyModel = this.getModel();
+
+    public ButterflyEntityRenderer(EntityRendererFactory.Context context) {
+        super(context, new ButterflyEntityModel(context.getPart(ModelLayers.BUTTERFLY_LAYER)), .25f);
+        addFeature(new ButterflyColorFeatureRenderer(this, context.getModelLoader()));
+    }
+
+    public Identifier getTexture(ButterflyEntity butterflyEntity) {
+        return butterflyEntity.getShapeId();
+    }
+
+    public void render(ButterflyEntity butterflyEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+        model = butterflyModel;
+        float[] fs = butterflyEntity.getBaseColorComponents();
+        butterflyModel.setColorMultiplier(fs[0], fs[1], fs[2]);
+        super.render(butterflyEntity, f, g, matrixStack, vertexConsumerProvider, i);
+        butterflyModel.setColorMultiplier(1f, 1f, 1f);
+    }
+
+    protected void scale(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f) {
+        matrixStack.scale(.4f, .4f, .4f);
+    }
+
+    protected void setupTransforms(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f, float g, float h) {
+        if (butterflyEntity.isSitting()) {
+            matrixStack.translate(0d, .10000000149011612d, 0d);
+        } else {
+            matrixStack.translate(0d, MathHelper.cos(f * .3f) * .1f, 0d);
+        }
+
+        super.setupTransforms(butterflyEntity, matrixStack, f, g, h);
+    }
+}

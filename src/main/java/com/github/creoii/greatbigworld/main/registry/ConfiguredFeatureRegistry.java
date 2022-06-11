@@ -1,7 +1,10 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
+import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.state.property.Properties;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
@@ -10,6 +13,7 @@ import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
@@ -28,6 +32,8 @@ public class ConfiguredFeatureRegistry {
     public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> PEAT_DEPOSIT;
     public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> ORE_PACKED_DIRT;
 
+    public static RegistryEntry<ConfiguredFeature<MultiRandomSpreadFeatureConfig, ?>> ALGAE_PATCH;
+
     public static void register() {
         DIRT_VEGETATION = ConfiguredFeatures.register("dirt_vegetation", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DANDELION.getDefaultState(), 4).add(BlockRegistry.MARIGOLD.getDefaultState(), 4).add(Blocks.SUNFLOWER.getDefaultState(), 7).add(Blocks.MOSS_CARPET.getDefaultState(), 25).add(Blocks.GRASS.getDefaultState(), 50).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
         DIRT_ROOTS = ConfiguredFeatures.register("dirt_roots", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(SimpleBlockStateProvider.of(Blocks.HANGING_ROOTS)));
@@ -40,5 +46,7 @@ public class ConfiguredFeatureRegistry {
         CLAY_DEPOSIT = ConfiguredFeatures.register("clay_deposit", Feature.ORE, new OreFeatureConfig(List.of(OreFeatureConfig.createTarget(new TagMatchRuleTest(BlockTags.DIRT), BlockRegistry.CLAY_DEPOSIT.getDefaultState())), 12));
         PEAT_DEPOSIT = ConfiguredFeatures.register("peat_deposit", Feature.ORE, new OreFeatureConfig(List.of(OreFeatureConfig.createTarget(new TagMatchRuleTest(BlockTags.DIRT), BlockRegistry.PEAT_DEPOSIT.getDefaultState())), 14));
         ORE_PACKED_DIRT = ConfiguredFeatures.register("ore_packed_dirt", Feature.ORE, new OreFeatureConfig(List.of(OreFeatureConfig.createTarget(new TagMatchRuleTest(BlockTags.BASE_STONE_OVERWORLD), BlockRegistry.PACKED_DIRT.getDefaultState())), 64));
+
+        ALGAE_PATCH = ConfiguredFeatures.register("algae_patch", FeatureRegistry.MULTI_RANDOM_SPREAD, new MultiRandomSpreadFeatureConfig(UniformIntProvider.create(1, 4), List.of(new RandomSpreadFeatureConfig(BlockStateProvider.of(BlockRegistry.ALGAE.getDefaultState().with(Properties.NORTH, false).with(Properties.SOUTH, false).with(Properties.EAST, false).with(Properties.WEST, false).with(Properties.UP, false)), ConstantIntProvider.create(3), ConstantIntProvider.create(4), false, List.of()), new RandomSpreadFeatureConfig(BlockStateProvider.of(BlockRegistry.ALGAE.getDefaultState().with(Properties.NORTH, false).with(Properties.SOUTH, false).with(Properties.EAST, false).with(Properties.WEST, false).with(Properties.UP, false)), ConstantIntProvider.create(3), ConstantIntProvider.create(6), false, List.of())), List.of(4, 8)));
     }
 }

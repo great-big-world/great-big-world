@@ -1,0 +1,7 @@
+{
+  "parent": "block/glow_lichen",
+  "textures": {
+    "glow_lichen": "great_big_world:block/algae",
+    "particle": "great_big_world:block/algae"
+  }
+}
