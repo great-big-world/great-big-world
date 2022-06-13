@@ -7,7 +7,7 @@ import net.minecraft.util.math.Direction;
 import java.util.HashSet;
 
 public class GenerationUtil {
-    public static HashSet<BlockPos> randomWalk(BlockPos start, int iterations, int walkLength, boolean randomStart, int randomStartX, int randomStartY) {
+    public static HashSet<BlockPos> randomWalk(BlockPos start, int iterations, int walkLength, boolean randomStart, int randomStartX, int randomStartY, boolean horizontal) {
         HashSet<BlockPos> path = new HashSet<>();
         path.add(start);
         BlockPos prev = start;
@@ -17,11 +17,11 @@ public class GenerationUtil {
         {
             for (int j = 0; j < walkLength; ++j)
             {
-                next = prev.offset(Direction.random(GreatBigWorld.RANDOM));
+                next = prev.offset(horizontal ? Direction.Type.HORIZONTAL.random(GreatBigWorld.RANDOM) : Direction.random(GreatBigWorld.RANDOM));
                 path.add(next);
                 prev = next;
             }
-            prev = randomStart ? start.offset(Direction.Type.HORIZONTAL.random(GreatBigWorld.RANDOM), GreatBigWorld.RANDOM.nextBetween(randomStartX, randomStartY)) : start;
+            prev = randomStart ? start.offset(horizontal ? Direction.Type.HORIZONTAL.random(GreatBigWorld.RANDOM) : Direction.random(GreatBigWorld.RANDOM), GreatBigWorld.RANDOM.nextBetween(randomStartX, randomStartY)) : start;
         }
 
         return path;

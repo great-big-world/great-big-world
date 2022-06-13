@@ -2,13 +2,24 @@ package com.github.creoii.greatbigworld.main;
 
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Events;
+import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.VegetationConfiguredFeatures;
+
+import java.util.stream.Collectors;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String MOD_ID = "great_big_world";
@@ -23,6 +34,7 @@ public class GreatBigWorld implements ModInitializer {
         EntityRegistry.register();
         PredicateRegistry.register();
         FeatureRegistry.register();
+        DecoratorRegistry.register();
         ConfiguredFeatureRegistry.register();
         PlacedFeatureRegistry.register();
         BiomeRegistry.register();

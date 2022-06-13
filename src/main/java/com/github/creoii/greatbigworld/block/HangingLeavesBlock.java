@@ -25,6 +25,7 @@ public class HangingLeavesBlock extends Block implements Fertilizable {
 
     public HangingLeavesBlock(Settings settings) {
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(HALF, Half.SMALL));
     }
 
     @Override
@@ -50,11 +51,6 @@ public class HangingLeavesBlock extends Block implements Fertilizable {
     @SuppressWarnings("deprecation")
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         world.setBlockState(pos, state.with(HALF, world.getBlockState(pos.down()).getBlock() == this ? Half.LARGE : Half.SMALL));
-    }
-
-    @SuppressWarnings("deprecation")
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!state.canPlaceAt(world, pos)) world.breakBlock(pos, true);
     }
 
     @Override

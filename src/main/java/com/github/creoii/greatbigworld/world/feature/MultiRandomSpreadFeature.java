@@ -6,6 +6,7 @@ import com.github.creoii.greatbigworld.main.util.GenerationUtil;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
 import com.mojang.serialization.Codec;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.gen.feature.Feature;
@@ -21,8 +22,10 @@ public class MultiRandomSpreadFeature extends Feature<MultiRandomSpreadFeatureCo
         MultiRandomSpreadFeatureConfig config = context.getConfig();
         for (int i = 0; i < config.tries().get(GreatBigWorld.RANDOM); ++i) {
             RandomSpreadFeatureConfig randomSpread = config.randomSpreads().get(GreatBigWorld.RANDOM.nextInt(config.randomSpreads().size()));
-            for (BlockPos pos : GenerationUtil.randomWalk(context.getOrigin().offset(Direction.Type.HORIZONTAL.random(GreatBigWorld.RANDOM), GreatBigWorld.RANDOM.nextBetween(config.randomStartRadius().get(0), config.randomStartRadius().get(1))), randomSpread.iterations().get(GreatBigWorld.RANDOM), randomSpread.walkLength().get(GreatBigWorld.RANDOM), randomSpread.randomStart(), config.randomStartRadius().get(0), config.randomStartRadius().get(1))) {
-                context.getWorld().setBlockState(pos, randomSpread.state().getBlockState(GreatBigWorld.RANDOM, pos), 3);
+            for (BlockPos pos : GenerationUtil.randomWalk(context.getOrigin().offset(Direction.Type.HORIZONTAL.random(GreatBigWorld.RANDOM), GreatBigWorld.RANDOM.nextBetween(config.randomStartRadius().get(0), config.randomStartRadius().get(1))), randomSpread.iterations().get(GreatBigWorld.RANDOM), randomSpread.walkLength().get(GreatBigWorld.RANDOM), randomSpread.randomStart(), config.randomStartRadius().get(0), config.randomStartRadius().get(1), true)) {
+                if (context.getWorld().getFluidState(pos.down()).isOf(Fluids.WATER)) {
+                    context.getWorld().setBlockState(pos, randomSpread.state().getBlockState(GreatBigWorld.RANDOM, pos), 3);
+                }
             }
         }
         return false;
