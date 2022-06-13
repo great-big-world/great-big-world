@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.block.HangingLeavesBlock;
 import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
@@ -19,18 +20,22 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
             return config.maxLength;
         }), Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter((config) -> {
             return config.probability;
+        }), Codec.BOOL.fieldOf("with_log_positions").orElse(false).forGetter((config) -> {
+            return config.withLogPositions;
         })).apply(p_236568_0_, HangingLeavesTreeDecorator::new);
     });
     private final BlockState state;
     private final int minLength;
     private final int maxLength;
     private final float probability;
+    private final boolean withLogPositions;
 
-    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability) {
+    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability, boolean withLogPositions) {
         this.state = state;
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.probability = probability;
+        this.withLogPositions = withLogPositions;
     }
 
     @Override
@@ -43,7 +48,9 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
         BlockState blockstate;
         int length;
         BlockPos place;
-        for (BlockPos pos : generator.getLeavesPositions()) {
+        ObjectArrayList<BlockPos> positions = generator.getLeavesPositions();
+        if (withLogPositions) positions.addAll(generator.getLogPositions());
+        for (BlockPos pos : positions) {
             if (!(generator.getRandom().nextFloat() >= probability)) {
                 if (generator.isAir(pos.down()) && state.getBlock() instanceof HangingLeavesBlock) {
                     blockstate = state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);

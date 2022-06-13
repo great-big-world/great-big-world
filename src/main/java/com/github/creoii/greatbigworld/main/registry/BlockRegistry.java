@@ -276,7 +276,7 @@ public class BlockRegistry {
     //public static final Block HANGING_SAKURA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //public static final Block HANGING_PALO_VERDE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //public static final Block HANGING_SEQUOIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_MAHOGANY_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block HANGING_MAHOGANY_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
     //public static final Block HANGING_ASPEN_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     //endregion
 
@@ -794,6 +794,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, null);
             registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, null);
             registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES, null);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
@@ -1054,6 +1055,7 @@ public class BlockRegistry {
 
         RenderLayers.BLOCKS.put(GRASSY_STONE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(GRASSY_DEEPSLATE, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_OAK_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_SPRUCE_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_BIRCH_LEAVES, RenderLayer.getCutoutMipped());
@@ -1061,12 +1063,13 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(HANGING_DARK_OAK_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_ACACIA_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_MANGROVE_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
     }
 
     @Environment(EnvType.CLIENT)
     public static void tintBlocks() {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_STONE, GRASSY_DEEPSLATE);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES, HANGING_MAHOGANY_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FoliageColors.getSpruceColor(), HANGING_SPRUCE_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> FoliageColors.getBirchColor(), HANGING_BIRCH_LEAVES);
     }

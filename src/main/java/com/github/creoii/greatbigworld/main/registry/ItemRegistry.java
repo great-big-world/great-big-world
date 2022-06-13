@@ -36,6 +36,7 @@ public class ItemRegistry {
     public static final Item HANGING_DARK_OAK_LEAVES = new BlockItem(BlockRegistry.HANGING_DARK_OAK_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS));
     public static final Item HANGING_ACACIA_LEAVES = new BlockItem(BlockRegistry.HANGING_ACACIA_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS));
     public static final Item HANGING_MANGROVE_LEAVES = new BlockItem(BlockRegistry.HANGING_MANGROVE_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS));
+    public static final Item HANGING_MAHOGANY_LEAVES = new BlockItem(BlockRegistry.HANGING_MAHOGANY_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS));
     //endregion
 
     //region Honeycomb
@@ -59,6 +60,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bitter_berries"), BITTER_BERRIES);
@@ -68,7 +70,7 @@ public class ItemRegistry {
     @Environment(EnvType.CLIENT)
     public static void tintItems() {
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> GrassColors.getColor(.5d, 1d), GRASSY_STONE, GRASSY_DEEPSLATE);
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES, HANGING_MAHOGANY_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getSpruceColor(), HANGING_SPRUCE_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getBirchColor(), HANGING_BIRCH_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.method_43717(), HANGING_MANGROVE_LEAVES);

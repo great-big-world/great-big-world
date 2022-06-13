@@ -1,22 +1,20 @@
 package com.github.creoii.greatbigworld.block;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-
-import java.util.Random;
 
 public class HangingLeavesBlock extends Block implements Fertilizable {
     public static final EnumProperty<Half> HALF = EnumProperty.of("half", Half.class);
@@ -37,6 +35,12 @@ public class HangingLeavesBlock extends Block implements Fertilizable {
 
     @Override
     @SuppressWarnings("deprecation")
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!state.canPlaceAt(world, pos)) world.breakBlock(pos, true);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return state.get(HALF) == Half.SMALL ? SMALL_SHAPE : LARGE_SHAPE;
     }
@@ -49,8 +53,8 @@ public class HangingLeavesBlock extends Block implements Fertilizable {
 
     @Override
     @SuppressWarnings("deprecation")
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
-        world.setBlockState(pos, state.with(HALF, world.getBlockState(pos.down()).getBlock() == this ? Half.LARGE : Half.SMALL));
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        return !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : state.with(HALF, world.getBlockState(pos.down()).getBlock() == this ? Half.LARGE : Half.SMALL);
     }
 
     @Override
