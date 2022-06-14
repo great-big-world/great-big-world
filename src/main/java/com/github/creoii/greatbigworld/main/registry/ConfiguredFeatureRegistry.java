@@ -43,6 +43,7 @@ public class ConfiguredFeatureRegistry {
     public static RegistryEntry<ConfiguredFeature<MultiRandomSpreadFeatureConfig, ?>> ALGAE_PATCH;
 
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MAHOGANY;
+    public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PALO_VERDE;
 
     public static void register() {
         DIRT_VEGETATION = ConfiguredFeatures.register("dirt_vegetation", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DANDELION.getDefaultState(), 4).add(BlockRegistry.MARIGOLD.getDefaultState(), 4).add(Blocks.SUNFLOWER.getDefaultState(), 7).add(Blocks.MOSS_CARPET.getDefaultState(), 25).add(Blocks.GRASS.getDefaultState(), 50).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
@@ -60,5 +61,6 @@ public class ConfiguredFeatureRegistry {
         ALGAE_PATCH = ConfiguredFeatures.register("algae_patch", FeatureRegistry.MULTI_RANDOM_SPREAD, new MultiRandomSpreadFeatureConfig(UniformIntProvider.create(1, 4), List.of(new RandomSpreadFeatureConfig(BlockStateProvider.of(BlockRegistry.ALGAE.getDefaultState().with(Properties.DOWN, true)), ConstantIntProvider.create(3), ConstantIntProvider.create(4), false, List.of()), new RandomSpreadFeatureConfig(BlockStateProvider.of(BlockRegistry.ALGAE.getDefaultState().with(Properties.DOWN, true)), ConstantIntProvider.create(3), ConstantIntProvider.create(6), false, List.of())), List.of(4, 8)));
 
         MAHOGANY = ConfiguredFeatures.register("mahogany", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.MAHOGANY_LOG), new RectangledTrunkPlacer(3, 2, 0, UniformIntProvider.create(4, 6), UniformIntProvider.create(1, 2), UniformIntProvider.create(2, 3), UniformIntProvider.create(1, 2), true), BlockStateProvider.of(BlockRegistry.MAHOGANY_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1)), new TwoLayersFeatureSize(4, 2, 3)).decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_MAHOGANY_LEAVES.getDefaultState(), 1, 4, .25f, true))).ignoreVines().build());
+        PALO_VERDE = ConfiguredFeatures.register("palo_verde", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.PALO_VERDE_LOG), new RectangledTrunkPlacer(1, 1, 0, UniformIntProvider.create(3, 4), UniformIntProvider.create(1, 3), UniformIntProvider.create(1, 3), UniformIntProvider.create(1, 4), true), BlockStateProvider.of(BlockRegistry.PALO_VERDE_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1)), new TwoLayersFeatureSize(3, 1, 2)).decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_PALO_VERDE_LEAVES.getDefaultState(), 1, 2, .15f, false))).ignoreVines().build());
     }
 }

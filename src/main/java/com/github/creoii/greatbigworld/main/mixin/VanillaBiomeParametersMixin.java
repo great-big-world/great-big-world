@@ -21,6 +21,6 @@ public abstract class VanillaBiomeParametersMixin {
 
     @Inject(method = "writeCaveBiomes", at = @At("TAIL"))
     private void world_of_plenty$injectNewCaveBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
-        parameters.accept(Pair.of(MultiNoiseUtil.createNoiseHypercube(defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(0.1f, .25f), defaultParameter, 0f), BiomeKeys.DIRT_CAVES));
+        parameters.accept(Pair.of(MultiNoiseUtil.createNoiseHypercube(defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(0.08f, .25f), defaultParameter, 0f), BiomeKeys.DIRT_CAVES));
     }
 }

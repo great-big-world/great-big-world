@@ -16,7 +16,6 @@ import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
 
@@ -64,7 +63,7 @@ public class RectangledTrunkPlacer extends TrunkPlacer {
             getAndSetState(world, replacer, random, startPos.up(i), config);
         }
 
-        int branchCount = branches.get(random);
+        int branchCount = branches.get(random) - 1;
         ArrayList<Direction> directions = new ArrayList<>(HORIZONTAL);
         Direction horizontal = directions.get(random.nextInt(Math.max(1, directions.size() - 1)));
         for (int i = 0; i <= branchCount; ++i) {
@@ -79,7 +78,7 @@ public class RectangledTrunkPlacer extends TrunkPlacer {
                 if (direction == Direction.UP) length = verticalLength.get(random);
                 else length = horizontalLength.get(random);
 
-                for (int k = 0; k <= length; ++k) {
+                for (int k = 0; k <= length - 1; ++k) {
                     getAndSetState(world, replacer, random, current.offset(direction, k), config, (state) -> state.with(PillarBlock.AXIS, direction.getAxis()));
                 }
 

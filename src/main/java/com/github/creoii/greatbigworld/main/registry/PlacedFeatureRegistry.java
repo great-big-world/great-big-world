@@ -32,6 +32,7 @@ public class PlacedFeatureRegistry {
     public static RegistryEntry<PlacedFeature> ALGAE_PATCH;
 
     public static RegistryEntry<PlacedFeature> MAHOGANY;
+    public static RegistryEntry<PlacedFeature> PALO_VERDE;
 
     public static void register() {
         DIRT_CAVES_VEGETATION = PlacedFeatures.register("dirt_caves_vegetation", ConfiguredFeatureRegistry.DIRT_PATCH, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of(), BlockFilterPlacementModifier.of(new SkyVisiblePredicate(BlockPos.ORIGIN, .4f)));
@@ -46,11 +47,16 @@ public class PlacedFeatureRegistry {
 
         ALGAE_PATCH = PlacedFeatures.register("algae_patch", ConfiguredFeatureRegistry.ALGAE_PATCH, heightmapModifiers(2, HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), null, 2));
 
-        MAHOGANY = PlacedFeatures.register("mahogany", ConfiguredFeatureRegistry.MAHOGANY, CountPlacementModifier.of(UniformIntProvider.create(6, 10)), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(Blocks.JUNGLE_SAPLING));
+        MAHOGANY = PlacedFeatures.register("mahogany", ConfiguredFeatureRegistry.MAHOGANY, PlacedFeatures.createCountExtraModifier(6, .1f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(Blocks.JUNGLE_SAPLING));
+        PALO_VERDE = PlacedFeatures.register("palo_verde", ConfiguredFeatureRegistry.PALO_VERDE, PlacedFeatures.createCountExtraModifier(3, .1f, 2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(Blocks.ACACIA_SAPLING));
     }
 
     private static List<PlacementModifier> modifiers(int count, PlacementModifier heightModifier, int chance) {
         return List.of(CountPlacementModifier.of(count), SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(chance));
+    }
+
+    private static List<PlacementModifier> countExtraModifiers(int count, float extraChance, int extraCount, PlacementModifier heightModifier, int chance) {
+        return List.of(PlacedFeatures.createCountExtraModifier(count, extraChance, extraCount), SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(chance));
     }
 
     private static List<PlacementModifier> heightmapModifiers(int count, HeightmapPlacementModifier heightmapPlacement, @Nullable PlacementModifier heightModifier, int chance) {

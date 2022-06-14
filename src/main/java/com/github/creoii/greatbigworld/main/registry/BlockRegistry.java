@@ -3,6 +3,8 @@ package com.github.creoii.greatbigworld.main.registry;
 import com.github.creoii.greatbigworld.block.*;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
+import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
+import com.github.creoii.greatbigworld.world.sapling.PaloVerdeSaplingGenerator;
 import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -274,7 +276,7 @@ public class BlockRegistry {
     public static final Block HANGING_ACACIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.ACACIA_LEAVES));
     public static final Block HANGING_MANGROVE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.MANGROVE_LEAVES));
     //public static final Block HANGING_SAKURA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    //public static final Block HANGING_PALO_VERDE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block HANGING_PALO_VERDE_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.ACACIA_LEAVES));
     //public static final Block HANGING_SEQUOIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block HANGING_MAHOGANY_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
     //public static final Block HANGING_ASPEN_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
@@ -335,6 +337,7 @@ public class BlockRegistry {
     //public static final Block PALO_VERDE_DOOR = new DoorBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
     //public static final Block PALO_VERDE_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
     public static final Block PALO_VERDE_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block PALO_VERDE_SAPLING = new SaplingBlock(new PaloVerdeSaplingGenerator(), FabricBlockSettings.copy(Blocks.ACACIA_SAPLING));
 
     public static final Block SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN));
     public static final Block STRIPPED_SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN));
@@ -361,6 +364,7 @@ public class BlockRegistry {
     //public static final Block MAHOGANY_DOOR = new DoorBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
     //public static final Block MAHOGANY_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING));
 
     public static final Block PERMAFROST = new Block(FabricBlockSettings.of(Material.SOIL).strength(.65f).sounds(BlockSoundGroup.GRASS));
     public static final Block GRASSY_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.GREEN));
@@ -794,6 +798,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, null);
             registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, null);
             registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
+            registerBlock(new Identifier(MOD_ID, "hanging_palo_verde_leaves"), HANGING_PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES, null);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
@@ -841,6 +846,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "palo_verde_fence"), PALO_VERDE_FENCE, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "palo_verde_fence_gate"), PALO_VERDE_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(MOD_ID, "palo_verde_leaves"), PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "palo_verde_sapling"), PALO_VERDE_SAPLING, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "sequoia_log"), SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "stripped_sequoia_log"), STRIPPED_SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "sequoia_planks"), SEQUOIA_PLANKS, ItemGroup.BUILDING_BLOCKS);
@@ -855,6 +861,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "mahogany_fence"), MAHOGANY_FENCE, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "mahogany_sapling"), MAHOGANY_SAPLING, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "grassy_stone"), GRASSY_STONE, null);
             registerBlock(new Identifier(MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE, null);
             registerBlock(new Identifier(MOD_ID, "grass_thatch"), GRASS_THATCH, ItemGroup.BUILDING_BLOCKS);
@@ -1052,6 +1059,8 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(ALGAE, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(PALO_VERDE_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(MAHOGANY_SAPLING, RenderLayer.getCutout());
 
         RenderLayers.BLOCKS.put(GRASSY_STONE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(GRASSY_DEEPSLATE, RenderLayer.getCutoutMipped());
@@ -1063,6 +1072,7 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(HANGING_DARK_OAK_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_ACACIA_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_MANGROVE_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(HANGING_PALO_VERDE_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
     }
 
