@@ -1,10 +1,15 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -18,6 +23,11 @@ public class CalciteBlock extends Block {
     public CalciteBlock(DyeColor color) {
         super(FabricBlockSettings.copy(Blocks.CALCITE));
         this.color = color;
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.CALCITE);
     }
 
     public static void loadMap() {

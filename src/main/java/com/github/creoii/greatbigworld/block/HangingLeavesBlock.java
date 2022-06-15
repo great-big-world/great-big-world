@@ -1,11 +1,16 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.minecraft.block.*;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -24,6 +29,11 @@ public class HangingLeavesBlock extends Block implements Fertilizable {
     public HangingLeavesBlock(Settings settings) {
         super(settings);
         setDefaultState(getStateManager().getDefaultState().with(HALF, Half.SMALL));
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        ItemUtil.appendStackInGroup(stacks, new ItemStack(this), BlockRegistry.CHARRED_LEAVES.asItem());
     }
 
     @Override

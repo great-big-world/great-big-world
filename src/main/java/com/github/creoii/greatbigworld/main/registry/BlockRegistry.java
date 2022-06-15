@@ -1,8 +1,21 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.block.FenceBlock;
+import com.github.creoii.greatbigworld.block.FenceGateBlock;
+import com.github.creoii.greatbigworld.block.FlowerBlock;
+import com.github.creoii.greatbigworld.block.LeavesBlock;
+import com.github.creoii.greatbigworld.block.OxidizableBlock;
+import com.github.creoii.greatbigworld.block.PressurePlateBlock;
+import com.github.creoii.greatbigworld.block.SaplingBlock;
+import com.github.creoii.greatbigworld.block.SlabBlock;
+import com.github.creoii.greatbigworld.block.StairsBlock;
+import com.github.creoii.greatbigworld.block.StoneButtonBlock;
+import com.github.creoii.greatbigworld.block.WallBlock;
+import com.github.creoii.greatbigworld.block.WoodenButtonBlock;
 import com.github.creoii.greatbigworld.block.*;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.PaloVerdeSaplingGenerator;
 import com.google.common.collect.ImmutableMap;
@@ -22,6 +35,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.MOD_ID;
@@ -115,10 +129,30 @@ public class BlockRegistry {
     public static final Block EXPOSED_CHISELED_CUT_COPPER_BLOCK = new OxidizableBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.copy(Blocks.EXPOSED_CUT_COPPER));
     public static final Block WEATHERED_CHISELED_CUT_COPPER_BLOCK = new OxidizableBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.copy(Blocks.WEATHERED_CUT_COPPER));
     public static final Block OXIDIZED_CHISELED_CUT_COPPER_BLOCK = new OxidizableBlock(Oxidizable.OxidationLevel.OXIDIZED, FabricBlockSettings.copy(Blocks.OXIDIZED_CUT_COPPER));
-    public static final Block WAXED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.CUT_COPPER));
-    public static final Block WAXED_EXPOSED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.EXPOSED_CUT_COPPER));
-    public static final Block WAXED_WEATHERED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.WEATHERED_CUT_COPPER));
-    public static final Block WAXED_OXIDIZED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.OXIDIZED_CUT_COPPER));
+    public static final Block WAXED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.CUT_COPPER)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        }
+    };
+    public static final Block WAXED_EXPOSED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.EXPOSED_CUT_COPPER)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        }
+    };
+    public static final Block WAXED_WEATHERED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.WEATHERED_CUT_COPPER)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        }
+    };
+    public static final Block WAXED_OXIDIZED_CHISELED_CUT_COPPER_BLOCK = new Block(FabricBlockSettings.copy(Blocks.OXIDIZED_CUT_COPPER)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WAXED_OXIDIZED_CUT_COPPER_SLAB);
+        }
+    };
     //public static final Block CUT_COPPER_PILLAR = new OxidizablePillarBlock(Oxidizable.OxidationLevel.UNAFFECTED, FabricBlockSettings.copy(Blocks.CUT_COPPER));
     //public static final Block EXPOSED_CUT_COPPER_PILLAR = new OxidizablePillarBlock(Oxidizable.OxidationLevel.EXPOSED, FabricBlockSettings.copy(Blocks.EXPOSED_CUT_COPPER));
     //public static final Block WEATHERED_CUT_COPPER_PILLAR = new OxidizablePillarBlock(Oxidizable.OxidationLevel.WEATHERED, FabricBlockSettings.copy(Blocks.WEATHERED_CUT_COPPER));
@@ -325,12 +359,27 @@ public class BlockRegistry {
     //endregion
 
     //region Change The World
-    public static final Block PALO_VERDE_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_GREEN));
-    public static final Block STRIPPED_PALO_VERDE_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_GREEN));
-    public static final Block PALO_VERDE_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.PALE_GREEN));
+    public static final Block PALO_VERDE_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_GREEN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MUDDY_MANGROVE_ROOTS);
+        }
+    };
+    public static final Block STRIPPED_PALO_VERDE_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_GREEN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_MANGROVE_LOG);
+        }
+    };
+    public static final Block PALO_VERDE_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.PALE_GREEN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_PLANKS);
+        }
+    };
     public static final Block PALO_VERDE_SLAB = new SlabBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
     public static final Block PALO_VERDE_STAIRS = new StairsBlock(PALO_VERDE_PLANKS.getDefaultState(), FabricBlockSettings.copy(PALO_VERDE_PLANKS));
-    public static final Block PALO_VERDE_FENCE = new FenceBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
+    public static final Block PALO_VERDE_FENCE = new FenceBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS), false);
     public static final Block PALO_VERDE_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
     //public static final Block PALO_VERDE_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(PALO_VERDE_PLANKS));
     //public static final Block PALO_VERDE_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(PALO_VERDE_PLANKS));
@@ -339,25 +388,55 @@ public class BlockRegistry {
     public static final Block PALO_VERDE_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block PALO_VERDE_SAPLING = new SaplingBlock(new PaloVerdeSaplingGenerator(), FabricBlockSettings.copy(Blocks.ACACIA_SAPLING));
 
-    public static final Block SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN));
-    public static final Block STRIPPED_SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN));
-    public static final Block SEQUOIA_PLANKS = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MUDDY_MANGROVE_ROOTS);
+        }
+    };
+    public static final Block STRIPPED_SEQUOIA_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.SPRUCE_BROWN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_MANGROVE_LOG);
+        }
+    };
+    public static final Block SEQUOIA_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_RED)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_PLANKS);
+        }
+    };
     public static final Block SEQUOIA_SLAB = new SlabBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
     public static final Block SEQUOIA_STAIRS = new StairsBlock(SEQUOIA_PLANKS.getDefaultState(), FabricBlockSettings.copy(SEQUOIA_PLANKS));
-    //public static final Block SEQUOIA_FENCE = new FenceBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
-    //public static final Block SEQUOIA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
+    public static final Block SEQUOIA_FENCE = new FenceBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS), false);
+    public static final Block SEQUOIA_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
     //public static final Block SEQUOIA_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
     //public static final Block SEQUOIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(SEQUOIA_PLANKS));
     //public static final Block SEQUOIA_DOOR = new DoorBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
     //public static final Block SEQUOIA_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copy(SEQUOIA_PLANKS));
     public static final Block SEQUOIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 
-    public static final Block MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
-    public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
-    public static final Block MAHOGANY_PLANKS = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MUDDY_MANGROVE_ROOTS);
+        }
+    };
+    public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_BROWN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_MANGROVE_LOG);
+        }
+    };
+    public static final Block MAHOGANY_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_BROWN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_PLANKS);
+        }
+    };
     public static final Block MAHOGANY_SLAB = new SlabBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
     public static final Block MAHOGANY_STAIRS = new StairsBlock(MAHOGANY_PLANKS.getDefaultState(), FabricBlockSettings.copy(MAHOGANY_PLANKS));
-    public static final Block MAHOGANY_FENCE = new FenceBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
+    public static final Block MAHOGANY_FENCE = new FenceBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS), false);
     public static final Block MAHOGANY_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
     //public static final Block MAHOGANY_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS));
     //public static final Block MAHOGANY_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(MAHOGANY_PLANKS));
@@ -366,9 +445,24 @@ public class BlockRegistry {
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING));
 
-    public static final Block PERMAFROST = new Block(FabricBlockSettings.of(Material.SOIL).strength(.65f).sounds(BlockSoundGroup.GRASS));
-    public static final Block GRASSY_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.GREEN));
-    public static final Block GRASSY_DEEPSLATE = new Block(FabricBlockSettings.copy(Blocks.DEEPSLATE).mapColor(MapColor.GREEN));
+    public static final Block PERMAFROST = new Block(FabricBlockSettings.of(Material.SOIL).strength(.65f).sounds(BlockSoundGroup.GRASS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.PODZOL);
+        }
+    };
+    public static final Block GRASSY_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.GREEN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.GRASS_BLOCK);
+        }
+    };
+    public static final Block GRASSY_DEEPSLATE = new Block(FabricBlockSettings.copy(Blocks.DEEPSLATE).mapColor(MapColor.GREEN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.GRASS_BLOCK);
+        }
+    };
 
     public static final Block GRASS_THATCH = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.DARK_GREEN).strength(1.5F, 2.0F).sounds(BlockSoundGroup.GRASS));
     public static final Block GRASS_THATCH_SLAB = new DirectionalSlabBlock(FabricBlockSettings.copy(GRASS_THATCH));
@@ -397,7 +491,7 @@ public class BlockRegistry {
     //public static final Block MAGMA_BRICK_PILLAR = new PillarBlock(FabricBlockSettings.copy(MAGMA_BRICKS));
 
     public static final Block NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(Blocks.NETHER_BRICKS));
-    public static final Block RED_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(Blocks.RED_NETHER_BRICKS));
+    public static final Block RED_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(Blocks.RED_NETHER_BRICKS), true);
     public static final Block RED_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(Blocks.RED_NETHER_BRICKS));
     //endregion
 
@@ -524,7 +618,7 @@ public class BlockRegistry {
     public static final Block DRIED_BAMBOO_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.PALE_YELLOW));
     public static final Block DRIED_BAMBOO_SLAB = new SlabBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
     public static final Block DRIED_BAMBOO_STAIRS = new StairsBlock(DRIED_BAMBOO_PLANKS.getDefaultState(), FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
-    public static final Block DRIED_BAMBOO_FENCE = new FenceBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
+    public static final Block DRIED_BAMBOO_FENCE = new FenceBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS), false);
     public static final Block DRIED_BAMBOO_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
     public static final Block DRIED_BAMBOO_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
     public static final Block DRIED_BAMBOO_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(DRIED_BAMBOO_PLANKS));
@@ -567,21 +661,31 @@ public class BlockRegistry {
     //public static final Block TWISTED_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
     //public static final Block CARVED_TWISTED_PLANKS = new Block(FabricBlockSettings.copy(BlockRegistry.TWISTED_PLANKS));
 
-    public static final Block WARPED_SHROOMLIGHT = new Block(FabricBlockSettings.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.BRIGHT_TEAL).luminance(state -> 14));
-    public static final Block TWISTED_SHROOMLIGHT = new Block(FabricBlockSettings.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.BRIGHT_TEAL).luminance(state -> 14));
+    public static final Block WARPED_SHROOMLIGHT = new Block(FabricBlockSettings.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.BRIGHT_TEAL).luminance(state -> 14)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.SHROOMLIGHT);
+        }
+    };
+    public static final Block TWISTED_SHROOMLIGHT = new Block(FabricBlockSettings.copy(Blocks.SHROOMLIGHT).mapColor(MapColor.BRIGHT_TEAL).luminance(state -> 14)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.SHROOMLIGHT);
+        }
+    };
 
     public static final Block BLUE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TEAL));
     public static final Block BLUE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_STAIRS = new StairsBlock(BLUE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
-    //public static final Block BLUE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
+    //public static final Block BLUE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS), true);
     //public static final Block BLUE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     //public static final Block CHISELED_BLUE_NETHER_BRICK = new Block(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE));
     public static final Block PURPLE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_STAIRS = new StairsBlock(PURPLE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
-    //public static final Block PURPLE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
+    //public static final Block PURPLE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS), true);
     //public static final Block PURPLE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     //public static final Block CHISELED_PURPLE_NETHER_BRICK = new Block(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
 
@@ -860,6 +964,8 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "sequoia_planks"), SEQUOIA_PLANKS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "sequoia_slab"), SEQUOIA_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "sequoia_stairs"), SEQUOIA_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(MOD_ID, "sequoia_fence"), SEQUOIA_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "sequoia_fence_gate"), SEQUOIA_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(MOD_ID, "sequoia_leaves"), SEQUOIA_LEAVES, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "mahogany_log"), MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
@@ -868,7 +974,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "mahogany_stairs"), MAHOGANY_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(MOD_ID, "mahogany_fence"), MAHOGANY_FENCE, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES, null);
             registerBlock(new Identifier(MOD_ID, "mahogany_sapling"), MAHOGANY_SAPLING, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "grassy_stone"), GRASSY_STONE, null);
             registerBlock(new Identifier(MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE, null);
@@ -969,7 +1075,7 @@ public class BlockRegistry {
 
         if (GreatBigWorld.isLoaded("redstone_refurbished") || GreatBigWorld.inDev()) {
             registerBlock(new Identifier(MOD_ID, "receptor"), RECEPTOR, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "slime"), SLIME, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "slime"), SLIME, ItemGroup.REDSTONE);
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {

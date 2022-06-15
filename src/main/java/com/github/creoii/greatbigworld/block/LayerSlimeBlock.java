@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
@@ -10,11 +11,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
@@ -31,6 +36,11 @@ public class LayerSlimeBlock extends TransparentBlock implements Waterloggable {
     public LayerSlimeBlock() {
         super(FabricBlockSettings.copy(Blocks.SLIME_BLOCK));
         setDefaultState(getStateManager().getDefaultState().with(LAYERS, 1).with(WATERLOGGED, false));
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.SLIME_BLOCK);
     }
 
     @SuppressWarnings("deprecation")

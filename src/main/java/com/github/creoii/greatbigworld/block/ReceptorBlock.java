@@ -2,12 +2,16 @@ package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.greatbigworld.block.blockentity.ReceptorBlockEntity;
 import com.github.creoii.greatbigworld.main.registry.BlockEntityRegistry;
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -15,6 +19,7 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -30,6 +35,11 @@ public class ReceptorBlock extends BlockWithEntity {
     public ReceptorBlock() {
         super(FabricBlockSettings.copy(Blocks.REPEATER));
         setDefaultState(stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWER, 0));
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.COMPARATOR);
     }
 
     @SuppressWarnings("deprecation")

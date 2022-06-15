@@ -1,7 +1,9 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.SpawnEggItem;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -11,6 +13,7 @@ import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
 public class ItemRegistry {
@@ -21,6 +24,13 @@ public class ItemRegistry {
     //region Change The World
     public static final Item GRASSY_STONE = new BlockItem(BlockRegistry.GRASSY_STONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item GRASSY_DEEPSLATE = new BlockItem(BlockRegistry.GRASSY_DEEPSLATE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
+
+    public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.FLOWERING_AZALEA_LEAVES);
+        }
+    };
     //endregion
 
     //region Colormatic
@@ -48,6 +58,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "quicksand_bucket"), QUICKSAND_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES);
@@ -65,7 +76,7 @@ public class ItemRegistry {
     @Environment(EnvType.CLIENT)
     public static void tintItems() {
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> GrassColors.getColor(.5d, 1d), GRASSY_STONE, GRASSY_DEEPSLATE);
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES, HANGING_MAHOGANY_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, HANGING_OAK_LEAVES, HANGING_JUNGLE_LEAVES, HANGING_ACACIA_LEAVES, HANGING_DARK_OAK_LEAVES, HANGING_MANGROVE_LEAVES, HANGING_MAHOGANY_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getSpruceColor(), HANGING_SPRUCE_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getBirchColor(), HANGING_BIRCH_LEAVES);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.method_43717(), HANGING_MANGROVE_LEAVES);

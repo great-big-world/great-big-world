@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "great_big_world:block/redwood_planks"
+    "all": "great_big_world:block/sequoia_planks"
   }
 }
