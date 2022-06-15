@@ -10,6 +10,6 @@ public class DecoratorRegistry {
     public static TreeDecoratorType<?> HANGING_LEAVES_DECORATOR;
 
     public static void register() {
-        HANGING_LEAVES_DECORATOR = Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier(GreatBigWorld.MOD_ID, "hanging_leaves"), new TreeDecoratorType<HangingLeavesTreeDecorator>(HangingLeavesTreeDecorator.CODEC));
+        HANGING_LEAVES_DECORATOR = Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "hanging_leaves"), new TreeDecoratorType<HangingLeavesTreeDecorator>(HangingLeavesTreeDecorator.CODEC));
     }
 }

@@ -11,9 +11,9 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class ModelLayers {
-    public static final EntityModelLayer BEAR_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.MOD_ID, "bear"), "main");
-    public static final EntityModelLayer BUTTERFLY_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.MOD_ID, "butterfly"), "main");
-    public static final EntityModelLayer BUTTERFLY_PATTERN_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.MOD_ID, "butterfly"), "pattern");
+    public static final EntityModelLayer BEAR_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "bear"), "main");
+    public static final EntityModelLayer BUTTERFLY_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), "main");
+    public static final EntityModelLayer BUTTERFLY_PATTERN_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), "pattern");
 
     @Environment(EnvType.CLIENT)
     public static void registerClient() {

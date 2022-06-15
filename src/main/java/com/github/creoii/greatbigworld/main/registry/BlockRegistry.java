@@ -38,7 +38,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
 
-import static com.github.creoii.greatbigworld.main.GreatBigWorld.MOD_ID;
+import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class BlockRegistry {
     //region Cavier Caves
@@ -550,17 +550,32 @@ public class BlockRegistry {
     //endregion
 
     //region High Seas
-    public static final Block ELDER_PRISMARINE = new Block(FabricBlockSettings.copy(Blocks.PRISMARINE).mapColor(MapColor.PALE_YELLOW));
+    public static final Block ELDER_PRISMARINE = new Block(FabricBlockSettings.copy(Blocks.PRISMARINE).mapColor(MapColor.PALE_YELLOW)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.PRISMARINE);
+        }
+    };
     public static final Block ELDER_PRISMARINE_SLAB = new SlabBlock(FabricBlockSettings.copy(ELDER_PRISMARINE));
     public static final Block ELDER_PRISMARINE_STAIRS = new StairsBlock(ELDER_PRISMARINE.getDefaultState(), FabricBlockSettings.copy(ELDER_PRISMARINE));
     public static final Block ELDER_PRISMARINE_WALL = new WallBlock(FabricBlockSettings.copy(ELDER_PRISMARINE));
-    public static final Block ELDER_PRISMARINE_BRICKS = new Block(FabricBlockSettings.copy(ELDER_PRISMARINE));
+    public static final Block ELDER_PRISMARINE_BRICKS = new Block(FabricBlockSettings.copy(Blocks.PRISMARINE_BRICKS).mapColor(MapColor.PALE_YELLOW)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.PRISMARINE_BRICKS);
+        }
+    };
     public static final Block ELDER_PRISMARINE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_PRISMARINE_BRICK_STAIRS = new StairsBlock(ELDER_PRISMARINE_BRICKS.getDefaultState(), FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     //public static final Block CHISELED_ELDER_PRISMARINE_BRICKS = new Block(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     //public static final Block ELDER_PRISMARINE_BRICK_PILLAR = new PillarBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
-    public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
+    public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.SEA_LANTERN);
+        }
+    };
 
     public static final Block CHEESE_WHEEL = new CakelikeBlock(Foods.CHEESE, FabricBlockSettings.copy(Blocks.CAKE));
     public static final Block RED_KELP = null;
@@ -648,7 +663,12 @@ public class BlockRegistry {
     //public static final Block TWISTED_ROOTS = new RootsBlock(FabricBlockSettings.copy(Blocks.WARPED_ROOTS));
     public static final Block TWISTED_FUNGUS = null;
 
-    public static final Block TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(MapColor.DARK_DULL_PINK));
+    public static final Block TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(MapColor.DARK_DULL_PINK)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_STEM);
+        }
+    };
     //public static final Block STRIPPED_TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(TWISTED_STEM).mapColor(MapColor.PURPLE));
     //public static final Block TWISTED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_PURPLE));
     //public static final Block TWISTED_SLAB = new SlabBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
@@ -674,14 +694,24 @@ public class BlockRegistry {
         }
     };
 
-    public static final Block BLUE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TEAL));
+    public static final Block BLUE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TEAL)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.RED_NETHER_BRICKS);
+        }
+    };
     public static final Block BLUE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_STAIRS = new StairsBlock(BLUE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     //public static final Block BLUE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS), true);
     //public static final Block BLUE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     //public static final Block CHISELED_BLUE_NETHER_BRICK = new Block(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
-    public static final Block PURPLE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE));
+    public static final Block PURPLE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.RED_NETHER_BRICKS);
+        }
+    };
     public static final Block PURPLE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_STAIRS = new StairsBlock(PURPLE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
@@ -693,7 +723,12 @@ public class BlockRegistry {
     public static final Block QUARTZ_BRICK_STAIRS = new StairsBlock(Blocks.QUARTZ_BRICKS.getDefaultState(), FabricBlockSettings.copy(Blocks.QUARTZ_BRICKS));
     public static final Block QUARTZ_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(Blocks.QUARTZ_BRICKS));
 
-    public static final Block COBBLED_BASALT = new Block(FabricBlockSettings.copy(Blocks.BASALT));
+    public static final Block COBBLED_BASALT = new Block(FabricBlockSettings.copy(Blocks.BASALT)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.SMOOTH_BASALT);
+        }
+    };
     public static final Block COBBLED_BASALT_SLAB = new SlabBlock(FabricBlockSettings.copy(COBBLED_BASALT));
     public static final Block COBBLED_BASALT_STAIRS = new StairsBlock(COBBLED_BASALT.getDefaultState(), FabricBlockSettings.copy(COBBLED_BASALT));
     public static final Block COBBLED_BASALT_WALL = new WallBlock(FabricBlockSettings.copy(COBBLED_BASALT));
@@ -797,121 +832,121 @@ public class BlockRegistry {
 
     public static void register() {
         if (GreatBigWorld.isLoaded("cavier_caves") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "malachite_block"), MALACHITE_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "topaz_block"), TOPAZ_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "quicksand"), QUICKSAND, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone"), ARIDSTONE, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_slab"), ARIDSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_stairs"), ARIDSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_wall"), ARIDSTONE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_bricks"), ARIDSTONE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_brick_slab"), ARIDSTONE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_brick_stairs"), ARIDSTONE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "aridstone_brick_wall"), ARIDSTONE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "molten_magma"), MOLTEN_MAGMA, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cooled_magma"), COOLED_MAGMA, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock"), LAVAROCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_slab"), LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_stairs"), LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_wall"), LAVAROCK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_lavarock"), COBBLED_LAVAROCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_slab"), COBBLED_LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_stairs"), COBBLED_LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_lavarock_wall"), COBBLED_LAVAROCK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_bricks"), LAVAROCK_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "glacite"), GLACITE, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_slab"), GLACITE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_stairs"), GLACITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_wall"), GLACITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "glacite_bricks"), GLACITE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_brick_slab"), GLACITE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_brick_stairs"), GLACITE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "glacite_brick_wall"), GLACITE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "chiseled_cut_copper_block"), CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "exposed_chiseled_cut_copper_block"), EXPOSED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "weathered_chiseled_cut_copper_block"), WEATHERED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "oxidized_chiseled_cut_copper_block"), OXIDIZED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "waxed_chiseled_cut_copper_block"), WAXED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "waxed_exposed_chiseled_cut_copper_block"), WAXED_EXPOSED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "waxed_weathered_chiseled_cut_copper_block"), WAXED_WEATHERED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "waxed_oxidized_chiseled_cut_copper_block"), WAXED_OXIDIZED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_bricks"), TUFF_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_brick_slab"), TUFF_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_brick_stairs"), TUFF_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_brick_wall"), TUFF_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "calcite_bricks"), CALCITE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "calcite_brick_slab"), CALCITE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "calcite_brick_stairs"), CALCITE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "calcite_brick_wall"), CALCITE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_bricks"), DRIPSTONE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_brick_slab"), DRIPSTONE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_brick_stairs"), DRIPSTONE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_brick_wall"), DRIPSTONE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "polished_deepslate_button"), POLISHED_DEEPSLATE_BUTTON, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "polished_deepslate_pressure_plate"), POLISHED_DEEPSLATE_PRESSURE_PLATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "malachite_block"), MALACHITE_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "topaz_block"), TOPAZ_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "quicksand"), QUICKSAND, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone"), ARIDSTONE, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_slab"), ARIDSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_stairs"), ARIDSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_wall"), ARIDSTONE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_bricks"), ARIDSTONE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_brick_slab"), ARIDSTONE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_brick_stairs"), ARIDSTONE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "aridstone_brick_wall"), ARIDSTONE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "molten_magma"), MOLTEN_MAGMA, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cooled_magma"), COOLED_MAGMA, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock"), LAVAROCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_slab"), LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_stairs"), LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_wall"), LAVAROCK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_lavarock"), COBBLED_LAVAROCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_lavarock_slab"), COBBLED_LAVAROCK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_lavarock_stairs"), COBBLED_LAVAROCK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_lavarock_wall"), COBBLED_LAVAROCK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_bricks"), LAVAROCK_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "glacite"), GLACITE, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_slab"), GLACITE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_stairs"), GLACITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_wall"), GLACITE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_bricks"), GLACITE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_brick_slab"), GLACITE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_brick_stairs"), GLACITE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "glacite_brick_wall"), GLACITE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "chiseled_cut_copper_block"), CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "exposed_chiseled_cut_copper_block"), EXPOSED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "weathered_chiseled_cut_copper_block"), WEATHERED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "oxidized_chiseled_cut_copper_block"), OXIDIZED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "waxed_chiseled_cut_copper_block"), WAXED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "waxed_exposed_chiseled_cut_copper_block"), WAXED_EXPOSED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "waxed_weathered_chiseled_cut_copper_block"), WAXED_WEATHERED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "waxed_oxidized_chiseled_cut_copper_block"), WAXED_OXIDIZED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_bricks"), TUFF_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_brick_slab"), TUFF_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_brick_stairs"), TUFF_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_brick_wall"), TUFF_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_bricks"), CALCITE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_brick_slab"), CALCITE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_brick_stairs"), CALCITE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_brick_wall"), CALCITE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_bricks"), DRIPSTONE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_brick_slab"), DRIPSTONE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_brick_stairs"), DRIPSTONE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_brick_wall"), DRIPSTONE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "polished_deepslate_button"), POLISHED_DEEPSLATE_BUTTON, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "polished_deepslate_pressure_plate"), POLISHED_DEEPSLATE_PRESSURE_PLATE, ItemGroup.REDSTONE);
         }
 
         if (GreatBigWorld.isLoaded("colormatic") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "brown_concrete"), BROWN_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "red_concrete"), RED_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "orange_concrete"), ORANGE_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "yellow_concrete"), YELLOW_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "lime_concrete"), LIME_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "green_concrete"), GREEN_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "cyan_concrete"), CYAN_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "blue_concrete"), BLUE_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "light_blue_concrete"), LIGHT_BLUE_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "pink_concrete"), PINK_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "magenta_concrete"), MAGENTA_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "purple_concrete"), PURPLE_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "black_concrete"), BLACK_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "gray_concrete"), GRAY_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "light_gray_concrete"), LIGHT_GRAY_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "white_concrete"), WHITE_CONCRETE, null);
-            registerBlock(new Identifier(MOD_ID, "brown_concrete_powder"), BROWN_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "red_concrete_powder"), RED_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "orange_concrete_powder"), ORANGE_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "yellow_concrete_powder"), YELLOW_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "lime_concrete_powder"), LIME_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "green_concrete_powder"), GREEN_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "cyan_concrete_powder"), CYAN_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "blue_concrete_powder"), BLUE_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "light_blue_concrete_powder"), LIGHT_BLUE_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "pink_concrete_powder"), PINK_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "magenta_concrete_powder"), MAGENTA_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "purple_concrete_powder"), PURPLE_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "black_concrete_powder"), BLACK_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "gray_concrete_powder"), GRAY_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "light_gray_concrete_powder"), LIGHT_GRAY_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "white_concrete_powder"), WHITE_CONCRETE_POWDER, null);
-            registerBlock(new Identifier(MOD_ID, "brown_quilted_carpet"), BROWN_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "red_quilted_carpet"), RED_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "orange_quilted_carpet"), ORANGE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "yellow_quilted_carpet"), YELLOW_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "lime_quilted_carpet"), LIME_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "green_quilted_carpet"), GREEN_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "cyan_quilted_carpet"), CYAN_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "blue_quilted_carpet"), BLUE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "light_blue_quilted_carpet"), LIGHT_BLUE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "pink_quilted_carpet"), PINK_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "magenta_quilted_carpet"), MAGENTA_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "purple_quilted_carpet"), PURPLE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "black_quilted_carpet"), BLACK_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "gray_quilted_carpet"), GRAY_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "light_gray_quilted_carpet"), LIGHT_GRAY_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "white_quilted_carpet"), WHITE_QUILTED_CARPET, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "hanging_palo_verde_leaves"), HANGING_PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "brown_concrete"), BROWN_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "red_concrete"), RED_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "orange_concrete"), ORANGE_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "yellow_concrete"), YELLOW_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "lime_concrete"), LIME_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "green_concrete"), GREEN_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "cyan_concrete"), CYAN_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "blue_concrete"), BLUE_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "light_blue_concrete"), LIGHT_BLUE_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "pink_concrete"), PINK_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "magenta_concrete"), MAGENTA_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "purple_concrete"), PURPLE_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "black_concrete"), BLACK_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "gray_concrete"), GRAY_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "light_gray_concrete"), LIGHT_GRAY_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "white_concrete"), WHITE_CONCRETE, null);
+            registerBlock(new Identifier(NAMESPACE, "brown_concrete_powder"), BROWN_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "red_concrete_powder"), RED_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "orange_concrete_powder"), ORANGE_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "yellow_concrete_powder"), YELLOW_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "lime_concrete_powder"), LIME_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "green_concrete_powder"), GREEN_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "cyan_concrete_powder"), CYAN_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "blue_concrete_powder"), BLUE_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "light_blue_concrete_powder"), LIGHT_BLUE_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "pink_concrete_powder"), PINK_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "magenta_concrete_powder"), MAGENTA_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "purple_concrete_powder"), PURPLE_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "black_concrete_powder"), BLACK_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "gray_concrete_powder"), GRAY_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "light_gray_concrete_powder"), LIGHT_GRAY_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "white_concrete_powder"), WHITE_CONCRETE_POWDER, null);
+            registerBlock(new Identifier(NAMESPACE, "brown_quilted_carpet"), BROWN_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "red_quilted_carpet"), RED_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "orange_quilted_carpet"), ORANGE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "yellow_quilted_carpet"), YELLOW_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "lime_quilted_carpet"), LIME_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "green_quilted_carpet"), GREEN_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "cyan_quilted_carpet"), CYAN_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "blue_quilted_carpet"), BLUE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "light_blue_quilted_carpet"), LIGHT_BLUE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "pink_quilted_carpet"), PINK_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "magenta_quilted_carpet"), MAGENTA_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "purple_quilted_carpet"), PURPLE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "black_quilted_carpet"), BLACK_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "gray_quilted_carpet"), GRAY_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "light_gray_quilted_carpet"), LIGHT_GRAY_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "white_quilted_carpet"), WHITE_QUILTED_CARPET, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_oak_leaves"), HANGING_OAK_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "hanging_palo_verde_leaves"), HANGING_PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES, null);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
             LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
@@ -931,200 +966,200 @@ public class BlockRegistry {
         }
 
         if (GreatBigWorld.isLoaded("cornucopia") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "packed_dirt"), PACKED_DIRT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dirt_bricks"), DIRT_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dirt_brick_slab"), DIRT_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dirt_brick_stairs"), DIRT_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dirt_brick_wall"), DIRT_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "gold_deposit"), GOLD_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "iron_deposit"), IRON_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "copper_deposit"), COPPER_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "clay_deposit"), CLAY_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "peat_deposit"), PEAT_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "apple_pie"), APPLE_PIE, ItemGroup.FOOD);
-            registerBlock(new Identifier(MOD_ID, "marigold"), MARIGOLD, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "potted_marigold"), POTTED_MARIGOLD, null);
-            registerBlock(new Identifier(MOD_ID, "charred_log"), CHARRED_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "charred_leaves"), CHARRED_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "packed_dirt"), PACKED_DIRT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dirt_bricks"), DIRT_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dirt_brick_slab"), DIRT_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dirt_brick_stairs"), DIRT_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dirt_brick_wall"), DIRT_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "gold_deposit"), GOLD_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "iron_deposit"), IRON_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "copper_deposit"), COPPER_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "clay_deposit"), CLAY_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "peat_deposit"), PEAT_DEPOSIT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "apple_pie"), APPLE_PIE, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "marigold"), MARIGOLD, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "potted_marigold"), POTTED_MARIGOLD, null);
+            registerBlock(new Identifier(NAMESPACE, "charred_log"), CHARRED_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "charred_leaves"), CHARRED_LEAVES, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("change_the_world") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "permafrost"), PERMAFROST, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_log"), PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "stripped_palo_verde_log"), STRIPPED_PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_planks"), PALO_VERDE_PLANKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_slab"), PALO_VERDE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_stairs"), PALO_VERDE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_fence"), PALO_VERDE_FENCE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_fence_gate"), PALO_VERDE_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_leaves"), PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "palo_verde_sapling"), PALO_VERDE_SAPLING, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_log"), SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "stripped_sequoia_log"), STRIPPED_SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_planks"), SEQUOIA_PLANKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_slab"), SEQUOIA_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_stairs"), SEQUOIA_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_fence"), SEQUOIA_FENCE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "sequoia_fence_gate"), SEQUOIA_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "sequoia_leaves"), SEQUOIA_LEAVES, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_log"), MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_planks"), MAHOGANY_PLANKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_slab"), MAHOGANY_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_stairs"), MAHOGANY_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_fence"), MAHOGANY_FENCE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES, null);
-            registerBlock(new Identifier(MOD_ID, "mahogany_sapling"), MAHOGANY_SAPLING, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "grassy_stone"), GRASSY_STONE, null);
-            registerBlock(new Identifier(MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE, null);
-            registerBlock(new Identifier(MOD_ID, "grass_thatch"), GRASS_THATCH, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "grass_thatch_slab"), GRASS_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "bamboo_thatch"), BAMBOO_THATCH, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "permafrost"), PERMAFROST, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_log"), PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_palo_verde_log"), STRIPPED_PALO_VERDE_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_planks"), PALO_VERDE_PLANKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_slab"), PALO_VERDE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_stairs"), PALO_VERDE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_fence"), PALO_VERDE_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_fence_gate"), PALO_VERDE_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_leaves"), PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "palo_verde_sapling"), PALO_VERDE_SAPLING, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_log"), SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_sequoia_log"), STRIPPED_SEQUOIA_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_planks"), SEQUOIA_PLANKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_slab"), SEQUOIA_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_stairs"), SEQUOIA_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_fence"), SEQUOIA_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_fence_gate"), SEQUOIA_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "sequoia_leaves"), SEQUOIA_LEAVES, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_log"), MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_planks"), MAHOGANY_PLANKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_slab"), MAHOGANY_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_stairs"), MAHOGANY_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_fence"), MAHOGANY_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, null);
+            registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "grassy_stone"), GRASSY_STONE, null);
+            registerBlock(new Identifier(NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE, null);
+            registerBlock(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
         }
 
         if (GreatBigWorld.isLoaded("fire_and_ice") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "ice_bricks"), ICE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "ice_brick_slab"), ICE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "ice_brick_stairs"), ICE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "ice_brick_wall"), ICE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "magma_bricks"), MAGMA_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "magma_brick_slab"), MAGMA_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "magma_brick_stairs"), MAGMA_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "magma_brick_wall"), MAGMA_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "nether_brick_fence_gate"), NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "red_nether_brick_fence"), RED_NETHER_BRICK_FENCE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "red_nether_brick_fence_gate"), RED_NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "ice_bricks"), ICE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "ice_brick_slab"), ICE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "ice_brick_stairs"), ICE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "ice_brick_wall"), ICE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "magma_bricks"), MAGMA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "magma_brick_slab"), MAGMA_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "magma_brick_stairs"), MAGMA_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "magma_brick_wall"), MAGMA_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "nether_brick_fence_gate"), NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "red_nether_brick_fence"), RED_NETHER_BRICK_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "red_nether_brick_fence_gate"), RED_NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
         }
 
         if (GreatBigWorld.isLoaded("high_seas") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine"), ELDER_PRISMARINE, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_slab"), ELDER_PRISMARINE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_stairs"), ELDER_PRISMARINE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_wall"), ELDER_PRISMARINE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_bricks"), ELDER_PRISMARINE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_brick_slab"), ELDER_PRISMARINE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_brick_stairs"), ELDER_PRISMARINE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "elder_sea_lantern"), ELDER_SEA_LANTERN, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cheese_wheel"), CHEESE_WHEEL, null);
-            registerBlock(new Identifier(MOD_ID, "phantom_glass"), PHANTOM_GLASS, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "nautilus_fossil"), NAUTILUS_FOSSIL, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "algae"), ALGAE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine"), ELDER_PRISMARINE, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_slab"), ELDER_PRISMARINE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_stairs"), ELDER_PRISMARINE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_wall"), ELDER_PRISMARINE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_bricks"), ELDER_PRISMARINE_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_slab"), ELDER_PRISMARINE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_stairs"), ELDER_PRISMARINE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cheese_wheel"), CHEESE_WHEEL, null);
+            registerBlock(new Identifier(NAMESPACE, "phantom_glass"), PHANTOM_GLASS, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "algae"), ALGAE, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("honeycomb") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "heather"), HEATHER, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "rose"), ROSE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "pollen_block"), POLLEN_BOCK, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "rose"), ROSE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "pollen_block"), POLLEN_BOCK, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("magic_v_melee") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "sour_berry_bush"), SOUR_BERRY_BUSH, null);
-            registerBlock(new Identifier(MOD_ID, "bitter_berry_bush"), BITTER_BERRY_BUSH, null);
-            registerBlock(new Identifier(MOD_ID, "pungent_berry_bush"), PUNGENT_BERRY_BUSH, null);
-            registerBlock(new Identifier(MOD_ID, "end_stone_slab"), END_STONE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "deepslate_slab"), DEEPSLATE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "smooth_basalt_slab"), SMOOTH_BASALT_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_slab"), TUFF_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "calcite_slab"), CALCITE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_slab"), DRIPSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "end_stone_stairs"), END_STONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "deepslate_stairs"), DEEPSLATE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "smooth_basalt_stairs"), SMOOTH_BASALT_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "tuff_stairs"), TUFF_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "calcite_stairs"), CALCITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_stairs"), DRIPSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "end_stone_wall"), END_STONE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "smooth_basalt_wall"), SMOOTH_BASALT_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "polished_granite_wall"), POLISHED_GRANITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "polished_andesite_wall"), POLISHED_ANDESITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "polished_diorite_wall"), POLISHED_DIORITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "smooth_sandstone_wall"), SMOOTH_SANDSTONE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "smooth_red_sandstone_wall"), SMOOTH_RED_SANDSTONE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "prismarine_brick_wall"), PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "dark_prismarine_wall"), DARK_PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "tuff_wall"), TUFF_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "calcite_wall"), CALCITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "dripstone_wall"), DRIPSTONE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "bamboo_torch"), BAMBOO_TORCH, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, null);
-            registerBlock(new Identifier(MOD_ID, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_planks"), DRIED_BAMBOO_PLANKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_slab"), DRIED_BAMBOO_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_stairs"), DRIED_BAMBOO_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_fence"), DRIED_BAMBOO_FENCE, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_fence_gate"), DRIED_BAMBOO_FENCE_GATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_button"), DRIED_BAMBOO_BUTTON, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_pressure_plate"), DRIED_BAMBOO_PRESSURE_PLATE, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_door"), DRIED_BAMBOO_DOOR, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "dried_bamboo_trapdoor"), DRIED_BAMBOO_TRAPDOOR, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "corvus"), CORVUS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_slab"), CORVUS_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_stairs"), CORVUS_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_wall"), CORVUS_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "corvus_bricks"), CORVUS_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_brick_slab"), CORVUS_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_brick_stairs"), CORVUS_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "corvus_brick_wall"), CORVUS_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "sour_berry_bush"), SOUR_BERRY_BUSH, null);
+            registerBlock(new Identifier(NAMESPACE, "bitter_berry_bush"), BITTER_BERRY_BUSH, null);
+            registerBlock(new Identifier(NAMESPACE, "pungent_berry_bush"), PUNGENT_BERRY_BUSH, null);
+            registerBlock(new Identifier(NAMESPACE, "end_stone_slab"), END_STONE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "deepslate_slab"), DEEPSLATE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "smooth_basalt_slab"), SMOOTH_BASALT_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_slab"), TUFF_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_slab"), CALCITE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_slab"), DRIPSTONE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "end_stone_stairs"), END_STONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "deepslate_stairs"), DEEPSLATE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "smooth_basalt_stairs"), SMOOTH_BASALT_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_stairs"), TUFF_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_stairs"), CALCITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_stairs"), DRIPSTONE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "end_stone_wall"), END_STONE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "smooth_basalt_wall"), SMOOTH_BASALT_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "polished_granite_wall"), POLISHED_GRANITE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "polished_andesite_wall"), POLISHED_ANDESITE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "polished_diorite_wall"), POLISHED_DIORITE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "smooth_sandstone_wall"), SMOOTH_SANDSTONE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "smooth_red_sandstone_wall"), SMOOTH_RED_SANDSTONE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "prismarine_brick_wall"), PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "dark_prismarine_wall"), DARK_PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "tuff_wall"), TUFF_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "calcite_wall"), CALCITE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "dripstone_wall"), DRIPSTONE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, null);
+            registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_planks"), DRIED_BAMBOO_PLANKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_slab"), DRIED_BAMBOO_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_stairs"), DRIED_BAMBOO_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_fence"), DRIED_BAMBOO_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_fence_gate"), DRIED_BAMBOO_FENCE_GATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_button"), DRIED_BAMBOO_BUTTON, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_pressure_plate"), DRIED_BAMBOO_PRESSURE_PLATE, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_door"), DRIED_BAMBOO_DOOR, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "dried_bamboo_trapdoor"), DRIED_BAMBOO_TRAPDOOR, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "corvus"), CORVUS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_slab"), CORVUS_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_stairs"), CORVUS_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_wall"), CORVUS_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_bricks"), CORVUS_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_brick_slab"), CORVUS_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_brick_stairs"), CORVUS_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "corvus_brick_wall"), CORVUS_BRICK_WALL, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("redstone_refurbished") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "receptor"), RECEPTOR, ItemGroup.REDSTONE);
-            registerBlock(new Identifier(MOD_ID, "slime"), SLIME, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "receptor"), RECEPTOR, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(NAMESPACE, "slime"), SLIME, ItemGroup.REDSTONE);
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "warped_shroomlight"), WARPED_SHROOMLIGHT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "twisted_shroomlight"), TWISTED_SHROOMLIGHT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "blue_nether_bricks"), BLUE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "blue_nether_brick_slab"), BLUE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "blue_nether_brick_stairs"), BLUE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "blue_nether_brick_wall"), BLUE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "purple_nether_bricks"), PURPLE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "purple_nether_brick_slab"), PURPLE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "purple_nether_brick_stairs"), PURPLE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "purple_nether_brick_wall"), PURPLE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "quartz_brick_slab"), QUARTZ_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "quartz_brick_stairs"), QUARTZ_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "quartz_brick_wall"), QUARTZ_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_basalt"), COBBLED_BASALT, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_basalt_slab"), COBBLED_BASALT_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_basalt_stairs"), COBBLED_BASALT_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "cobbled_basalt_wall"), COBBLED_BASALT_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "basalt_bricks"), BASALT_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "basalt_brick_slab"), BASALT_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "basalt_brick_stairs"), BASALT_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "basalt_brick_wall"), BASALT_BRICK_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "soulshale"), SOULSHALE, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "soulshale_slab"), SOULSHALE_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "soulshale_stairs"), SOULSHALE_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(MOD_ID, "soulshale_wall"), SOULSHALE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "whispering_soulshale"), WHISPERING_SOULSHALE, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "warped_shroomlight"), WARPED_SHROOMLIGHT, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_shroomlight"), TWISTED_SHROOMLIGHT, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_bricks"), BLUE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_slab"), BLUE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_stairs"), BLUE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_wall"), BLUE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_bricks"), PURPLE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_slab"), PURPLE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_stairs"), PURPLE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_wall"), PURPLE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "quartz_brick_slab"), QUARTZ_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "quartz_brick_stairs"), QUARTZ_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "quartz_brick_wall"), QUARTZ_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_basalt"), COBBLED_BASALT, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_basalt_slab"), COBBLED_BASALT_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_basalt_stairs"), COBBLED_BASALT_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cobbled_basalt_wall"), COBBLED_BASALT_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "basalt_bricks"), BASALT_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "basalt_brick_slab"), BASALT_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "basalt_brick_stairs"), BASALT_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "basalt_brick_wall"), BASALT_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "soulshale"), SOULSHALE, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "soulshale_slab"), SOULSHALE_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "soulshale_stairs"), SOULSHALE_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "soulshale_wall"), SOULSHALE_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "whispering_soulshale"), WHISPERING_SOULSHALE, ItemGroup.BUILDING_BLOCKS);
         }
 
         if (GreatBigWorld.isLoaded("wonders_of_the_wild") || GreatBigWorld.inDev()) {
-            registerBlock(new Identifier(MOD_ID, "hollow_oak_log"), HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_spruce_log"), HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_birch_log"), HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_jungle_log"), HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_dark_oak_log"), HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_acacia_log"), HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_mangrove_log"), HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "hollow_mahogany_log"), HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_oak_log"), STRIPPED_HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_spruce_log"), STRIPPED_HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_birch_log"), STRIPPED_HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_jungle_log"), STRIPPED_HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_dark_oak_log"), STRIPPED_HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_acacia_log"), STRIPPED_HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_mangrove_log"), STRIPPED_HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(MOD_ID, "stripped_hollow_mahogany_log"), STRIPPED_HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_oak_log"), HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_spruce_log"), HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_birch_log"), HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_jungle_log"), HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_dark_oak_log"), HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_acacia_log"), HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_mangrove_log"), HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_mahogany_log"), HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_oak_log"), STRIPPED_HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_spruce_log"), STRIPPED_HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_birch_log"), STRIPPED_HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_jungle_log"), STRIPPED_HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_dark_oak_log"), STRIPPED_HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_acacia_log"), STRIPPED_HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mangrove_log"), STRIPPED_HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mahogany_log"), STRIPPED_HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
         }
 
         flammables();

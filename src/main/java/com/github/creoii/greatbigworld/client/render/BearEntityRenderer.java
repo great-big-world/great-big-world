@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class BearEntityRenderer extends MobEntityRenderer<BearEntity, BearEntityModel<BearEntity>> {
-    private static final Identifier TEXTURE = new Identifier(GreatBigWorld.MOD_ID, "textures/entity/bear.png");
+    private static final Identifier TEXTURE = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/bear.png");
 
     public BearEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new BearEntityModel<BearEntity>(context.getPart(ModelLayers.BEAR_LAYER)), .9f);

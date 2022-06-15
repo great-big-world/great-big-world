@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.SpawnEggItem;
+import com.github.creoii.greatbigworld.item.SpawnEggItem;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
@@ -55,22 +55,22 @@ public class ItemRegistry {
     //endregion
 
     public static void register() {
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "quicksand_bucket"), QUICKSAND_BUCKET);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_stone"), GRASSY_STONE);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "grassy_deepslate"), GRASSY_DEEPSLATE);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "mahogany_leaves"), MAHOGANY_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_oak_leaves"), HANGING_OAK_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bear_spawn_egg"), BEAR_SPAWN_EGG);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "sour_berries"), SOUR_BERRIES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "bitter_berries"), BITTER_BERRIES);
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.MOD_ID, "pungent_berries"), PUNGENT_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "quicksand_bucket"), QUICKSAND_BUCKET);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_oak_leaves"), HANGING_OAK_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_jungle_leaves"), HANGING_JUNGLE_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_dark_oak_leaves"), HANGING_DARK_OAK_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_acacia_leaves"), HANGING_ACACIA_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pungent_berries"), PUNGENT_BERRIES);
     }
 
     @Environment(EnvType.CLIENT)

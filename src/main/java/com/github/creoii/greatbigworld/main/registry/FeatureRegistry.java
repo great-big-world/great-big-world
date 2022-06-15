@@ -14,7 +14,7 @@ public class FeatureRegistry {
     public static final Feature<MultiRandomSpreadFeatureConfig> MULTI_RANDOM_SPREAD = new MultiRandomSpreadFeature(MultiRandomSpreadFeatureConfig.CODEC);
 
     public static void register() {
-        Registry.register(Registry.FEATURE, new Identifier(GreatBigWorld.MOD_ID, "random_spread"), RANDOM_SPREAD);
-        Registry.register(Registry.FEATURE, new Identifier(GreatBigWorld.MOD_ID, "multi_random_spread"), MULTI_RANDOM_SPREAD);
+        Registry.register(Registry.FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "random_spread"), RANDOM_SPREAD);
+        Registry.register(Registry.FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "multi_random_spread"), MULTI_RANDOM_SPREAD);
     }
 }

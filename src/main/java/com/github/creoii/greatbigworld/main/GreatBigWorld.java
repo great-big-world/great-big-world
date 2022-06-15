@@ -8,11 +8,12 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
 public class GreatBigWorld implements ModInitializer {
-    public static final String MOD_ID = "great_big_world";
+    public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
     private static final boolean DEV_ENV = true;
 
@@ -32,6 +33,12 @@ public class GreatBigWorld implements ModInitializer {
 
         modifyBiomes();
         Events.loadEvents();
+
+        Registry.BLOCK.forEach(block -> {
+            if (Registry.BLOCK.getId(block).getNamespace().equals(NAMESPACE)) {
+                System.out.println(block.getTranslationKey());
+            }
+        });
     }
 
     public static boolean isLoaded(String modid) {

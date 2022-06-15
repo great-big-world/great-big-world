@@ -11,6 +11,6 @@ public class BlockEntityRegistry {
     public static final BlockEntityType<ReceptorBlockEntity> RECEPTOR = FabricBlockEntityTypeBuilder.create(ReceptorBlockEntity::new, BlockRegistry.RECEPTOR).build();
 
     public static void register() {
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "receptor"), RECEPTOR);
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "receptor"), RECEPTOR);
     }
 }

@@ -29,9 +29,9 @@ public class EntityRegistry {
     //endregion
 
     public static void register() {
-        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "falling_concrete"), FALLING_CONCRETE);
-        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "butterfly"), BUTTERFLY);
-        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.MOD_ID, "bear"), BEAR);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "falling_concrete"), FALLING_CONCRETE);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), BUTTERFLY);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "bear"), BEAR);
         registerAttributes();
     }
 

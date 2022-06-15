@@ -12,6 +12,6 @@ public class PredicateRegistry {
     };
 
     public static void register() {
-        Registry.register(Registry.BLOCK_PREDICATE_TYPE, new Identifier(GreatBigWorld.MOD_ID, "sky_visible"), SKY_VISIBLE);
+        Registry.register(Registry.BLOCK_PREDICATE_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "sky_visible"), SKY_VISIBLE);
     }
 }

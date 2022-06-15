@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld;
+package com.github.creoii.greatbigworld.item;
 
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.minecraft.entity.EntityType;

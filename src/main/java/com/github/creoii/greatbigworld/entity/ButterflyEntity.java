@@ -31,14 +31,14 @@ public class ButterflyEntity extends PathAwareEntity {
     private static final TrackedData<Byte> BUTTERFLY_FLAGS = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final Identifier[] SHAPE_IDS = new Identifier[]{
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/body.png")};
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/body.png")};
     private static final Identifier[] VARIETY_IDS = new Identifier[]{
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_1.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_2.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_3.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_4.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_5.png"),
-            new Identifier(GreatBigWorld.MOD_ID, "textures/entity/butterfly/pattern_6.png")};
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_1.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_2.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_3.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_4.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_5.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_6.png")};
 
     public static final int[] COMMON_VARIANTS = new int[]{
             toVariant(ButterflyEntity.Variety.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
