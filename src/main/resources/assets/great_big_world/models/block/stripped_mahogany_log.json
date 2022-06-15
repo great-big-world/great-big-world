@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "great_big_world:block/stripped_mahogany_log",
+    "end": "great_big_world:block/stripped_mahogany_log_top"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "layers=1": {
+      "model": "great_big_world:block/slime_height2"
+    },
+    "layers=2": {
+      "model": "great_big_world:block/slime_height4"
+    },
+    "layers=3": {
+      "model": "great_big_world:block/slime_height6"
+    },
+    "layers=4": {
+      "model": "great_big_world:block/slime_height8"
+    },
+    "layers=5": {
+      "model": "great_big_world:block/slime_height10"
+    },
+    "layers=6": {
+      "model": "great_big_world:block/slime_height12"
+    },
+    "layers=7": {
+      "model": "great_big_world:block/slime_height14"
+    },
+    "layers=8": {
+      "model": "block/slime_block"
+    }
+  }
+}

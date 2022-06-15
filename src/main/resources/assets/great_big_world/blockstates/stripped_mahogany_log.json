@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "great_big_world:block/stripped_mahogany_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "great_big_world:block/stripped_mahogany_log"
+    },
+    "axis=z": {
+      "model": "great_big_world:block/stripped_mahogany_log",
+      "x": 90
+    }
+  }
+}

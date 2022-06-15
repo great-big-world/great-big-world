@@ -22,7 +22,7 @@
       "model": "great_big_world:block/purple_concrete_height14"
     },
     "layers=8": {
-      "model": "minecraft:block/purple_concrete"
+      "model": "block/purple_concrete"
     }
   }
 }

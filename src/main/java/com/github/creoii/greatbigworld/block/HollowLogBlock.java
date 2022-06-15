@@ -11,15 +11,22 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class HollowLogBlock extends PillarBlock {
-    private static final VoxelShape SHAPE_X_1 = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 4.0D);
-    private static final VoxelShape SHAPE_X_2 = Block.createCuboidShape(0.0D, 0.0D, 12.0D, 16.0D, 16.0D, 16.0D);
-    private static final VoxelShape SHAPE_Y_1 = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D);
-    private static final VoxelShape SHAPE_Y_2 = Block.createCuboidShape(0.0D, 12.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    private static final VoxelShape SHAPE_Z_1 = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 4.0D, 16.0D, 16.0D);
-    private static final VoxelShape SHAPE_Z_2 = Block.createCuboidShape(12.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
-    private static final VoxelShape SHAPE_X = VoxelShapes.union(SHAPE_Y_1, SHAPE_Y_2, SHAPE_Z_1, SHAPE_Z_2);
-    private static final VoxelShape SHAPE_Y = VoxelShapes.union(SHAPE_X_1, SHAPE_X_2, SHAPE_Z_1, SHAPE_Z_2);
-    private static final VoxelShape SHAPE_Z = VoxelShapes.union(SHAPE_X_1, SHAPE_X_2, SHAPE_Y_1, SHAPE_Y_2);
+    private static final VoxelShape SHAPE_X1 = Block.createCuboidShape(.25d, .75d, 0d, .75d, 1d, 1d);
+    private static final VoxelShape SHAPE_X2 = Block.createCuboidShape(.25d, 0d, 0d, .75d, .25d, 1d);
+
+    private static final VoxelShape SHAPE_Y1 = Block.createCuboidShape(0d, 0d, 0d, .25d, 1d, 1d);
+    private static final VoxelShape SHAPE_Y2 = Block.createCuboidShape(.75d, 0d, 0d, 1d, 1d, 1d);
+    private static final VoxelShape SHAPE_Y3 = Block.createCuboidShape(.25d, 0d, 0d, .75d, 1d, .25d);
+    private static final VoxelShape SHAPE_Y4 = Block.createCuboidShape(.25d, 0d, .75d, .75d, 1d, 1d);
+
+    private static final VoxelShape SHAPE_Z1 = Block.createCuboidShape(0d, 0d, 0d, 1d, 1d, 0.25d);
+    private static final VoxelShape SHAPE_Z2 = Block.createCuboidShape(0d, 0d, 0.75d, 1d, 1d, 1d);
+    private static final VoxelShape SHAPE_Z3 = Block.createCuboidShape(0d, 0.75d, 0.25d, 1d, 1d, 0.75d);
+    private static final VoxelShape SHAPE_Z4 = Block.createCuboidShape(0d, 0d, 0.25d, 1d, 0.25d, 0.75d);
+
+    private static final VoxelShape SHAPE_X = VoxelShapes.union(SHAPE_Y1, SHAPE_Y2, SHAPE_X1, SHAPE_X2);
+    private static final VoxelShape SHAPE_Y = VoxelShapes.union(SHAPE_Y1, SHAPE_Y2, SHAPE_Y3, SHAPE_Y4);
+    private static final VoxelShape SHAPE_Z = VoxelShapes.union(SHAPE_Z1, SHAPE_Z2, SHAPE_Z3, SHAPE_Z4);
 
     public HollowLogBlock(Settings settings) {
         super(settings);

@@ -22,7 +22,7 @@
       "model": "great_big_world:block/gray_concrete_powder_height14"
     },
     "layers=8": {
-      "model": "minecraft:block/gray_concrete_powder"
+      "model": "block/gray_concrete_powder"
     }
   }
 }

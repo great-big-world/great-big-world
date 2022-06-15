@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.world.feature;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.FeatureRegistry;
 import com.github.creoii.greatbigworld.main.util.GenerationUtil;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;

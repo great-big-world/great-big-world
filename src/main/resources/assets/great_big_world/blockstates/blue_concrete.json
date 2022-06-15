@@ -22,7 +22,7 @@
       "model": "great_big_world:block/blue_concrete_height14"
     },
     "layers=8": {
-      "model": "minecraft:block/blue_concrete"
+      "model": "block/blue_concrete"
     }
   }
 }

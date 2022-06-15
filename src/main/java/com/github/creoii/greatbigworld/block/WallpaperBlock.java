@@ -5,7 +5,6 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;

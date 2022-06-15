@@ -2,7 +2,6 @@ package com.github.creoii.greatbigworld.client;
 
 import com.github.creoii.greatbigworld.client.model.BearEntityModel;
 import com.github.creoii.greatbigworld.client.model.ButterflyEntityModel;
-import com.github.creoii.greatbigworld.entity.ButterflyEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

@@ -545,7 +545,7 @@ public class BlockRegistry {
 
     //region Redstone Refurbished
     public static final Block RECEPTOR = new ReceptorBlock();
-    public static final Block SLIME = null;
+    public static final Block SLIME = new LayerSlimeBlock();
     //endregion
 
     //region Twisted Nether
@@ -628,11 +628,19 @@ public class BlockRegistry {
     public static final Block HOLLOW_JUNGLE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LOG));
     public static final Block HOLLOW_DARK_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.DARK_OAK_LOG));
     public static final Block HOLLOW_ACACIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.ACACIA_LOG));
+    public static final Block HOLLOW_MANGROVE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.MANGROVE_LOG));
     //public static final Block HOLLOW_SAKURA_LOG = new HollowLogBlock(FabricBlockSettings.copy(SAKURA_LOG));
     //public static final Block HOLLOW_SEQUOIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(SEQUOIA_LOG));
     public static final Block HOLLOW_MAHOGANY_LOG = new HollowLogBlock(FabricBlockSettings.copy(MAHOGANY_LOG));
     //public static final Block HOLLOW_PALO_VERDE_LOG = new HollowLogBlock(FabricBlockSettings.copy(PALO_VERDE_LOG));
     public static final Block STRIPPED_HOLLOW_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG));
+    public static final Block STRIPPED_HOLLOW_SPRUCE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_SPRUCE_LOG));
+    public static final Block STRIPPED_HOLLOW_BIRCH_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_BIRCH_LOG));
+    public static final Block STRIPPED_HOLLOW_JUNGLE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_JUNGLE_LOG));
+    public static final Block STRIPPED_HOLLOW_DARK_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_DARK_OAK_LOG));
+    public static final Block STRIPPED_HOLLOW_ACACIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_LOG));
+    public static final Block STRIPPED_HOLLOW_MANGROVE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_MANGROVE_LOG));
+    public static final Block STRIPPED_HOLLOW_MAHOGANY_LOG = new HollowLogBlock(FabricBlockSettings.copy(STRIPPED_MAHOGANY_LOG));
 
     public static final Block COLD_WILDFLOWER = null;
     public static final Block TEMPERATE_WILDFLOWER = null;
@@ -961,6 +969,7 @@ public class BlockRegistry {
 
         if (GreatBigWorld.isLoaded("redstone_refurbished") || GreatBigWorld.inDev()) {
             registerBlock(new Identifier(MOD_ID, "receptor"), RECEPTOR, ItemGroup.REDSTONE);
+            registerBlock(new Identifier(MOD_ID, "slime"), SLIME, ItemGroup.DECORATIONS);
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
@@ -1000,8 +1009,16 @@ public class BlockRegistry {
             registerBlock(new Identifier(MOD_ID, "hollow_jungle_log"), HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hollow_dark_oak_log"), HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hollow_acacia_log"), HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "hollow_mangrove_log"), HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "hollow_mahogany_log"), HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(MOD_ID, "stripped_hollow_oak_log"), STRIPPED_HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_spruce_log"), STRIPPED_HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_birch_log"), STRIPPED_HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_jungle_log"), STRIPPED_HOLLOW_JUNGLE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_dark_oak_log"), STRIPPED_HOLLOW_DARK_OAK_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_acacia_log"), STRIPPED_HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_mangrove_log"), STRIPPED_HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(MOD_ID, "stripped_hollow_mahogany_log"), STRIPPED_HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
         }
 
         flammables();
@@ -1030,6 +1047,13 @@ public class BlockRegistry {
                 .put(SEQUOIA_LOG, STRIPPED_SEQUOIA_LOG)
                 .put(MAHOGANY_LOG, STRIPPED_MAHOGANY_LOG)
                 .put(HOLLOW_OAK_LOG, STRIPPED_HOLLOW_OAK_LOG)
+                .put(HOLLOW_SPRUCE_LOG, STRIPPED_HOLLOW_SPRUCE_LOG)
+                .put(HOLLOW_BIRCH_LOG, STRIPPED_HOLLOW_BIRCH_LOG)
+                .put(HOLLOW_JUNGLE_LOG, STRIPPED_HOLLOW_JUNGLE_LOG)
+                .put(HOLLOW_DARK_OAK_LOG, STRIPPED_HOLLOW_DARK_OAK_LOG)
+                .put(HOLLOW_ACACIA_LOG, STRIPPED_HOLLOW_ACACIA_LOG)
+                .put(HOLLOW_MANGROVE_LOG, STRIPPED_HOLLOW_MANGROVE_LOG)
+                .put(HOLLOW_MAHOGANY_LOG, STRIPPED_HOLLOW_MAHOGANY_LOG)
                 .build();
     }
 
@@ -1074,6 +1098,8 @@ public class BlockRegistry {
         RenderLayers.BLOCKS.put(HANGING_MANGROVE_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_PALO_VERDE_LEAVES, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(HANGING_MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
+
+        RenderLayers.BLOCKS.put(SLIME, RenderLayer.getTranslucent());
     }
 
     @Environment(EnvType.CLIENT)
