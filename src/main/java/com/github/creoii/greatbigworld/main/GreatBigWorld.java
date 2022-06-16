@@ -33,12 +33,6 @@ public class GreatBigWorld implements ModInitializer {
 
         modifyBiomes();
         Events.loadEvents();
-
-        Registry.BLOCK.forEach(block -> {
-            if (Registry.BLOCK.getId(block).getNamespace().equals(NAMESPACE)) {
-                System.out.println(block.getTranslationKey());
-            }
-        });
     }
 
     public static boolean isLoaded(String modid) {

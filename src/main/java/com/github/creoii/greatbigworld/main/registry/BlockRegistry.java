@@ -659,7 +659,12 @@ public class BlockRegistry {
 
     //region Twisted Nether
     //public static final Block TWISTED_WART_BLOCK = new Block(FabricBlockSettings.copy(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.PURPLE));
-    //public static final Block TWISTED_NYLIUM = new NyliumBlock(FabricBlockSettings.copy(Blocks.WARPED_NYLIUM));
+    public static final Block TWISTED_NYLIUM = new NyliumBlock(FabricBlockSettings.copy(Blocks.WARPED_NYLIUM).mapColor(MapColor.PALE_PURPLE)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_NYLIUM);
+        }
+    };
     //public static final Block TWISTED_ROOTS = new RootsBlock(FabricBlockSettings.copy(Blocks.WARPED_ROOTS));
     public static final Block TWISTED_FUNGUS = null;
 
@@ -670,11 +675,16 @@ public class BlockRegistry {
         }
     };
     //public static final Block STRIPPED_TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(TWISTED_STEM).mapColor(MapColor.PURPLE));
-    //public static final Block TWISTED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_PURPLE));
-    //public static final Block TWISTED_SLAB = new SlabBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
-    //public static final Block TWISTED_STAIRS = new StairsBlock(TWISTED_PLANKS.getDefaultState(), FabricBlockSettings.copy(TWISTED_PLANKS));
-    //public static final Block TWISTED_FENCE = new FenceBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
-    //public static final Block TWISTED_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
+    public static final Block TWISTED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_PURPLE)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_PLANKS);
+        }
+    };
+    public static final Block TWISTED_SLAB = new SlabBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
+    public static final Block TWISTED_STAIRS = new StairsBlock(TWISTED_PLANKS.getDefaultState(), FabricBlockSettings.copy(TWISTED_PLANKS));
+    public static final Block TWISTED_FENCE = new FenceBlock(FabricBlockSettings.copy(TWISTED_PLANKS), false);
+    public static final Block TWISTED_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
     //public static final Block TWISTED_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
     //public static final Block TWISTED_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(TWISTED_PLANKS));
     //public static final Block TWISTED_DOOR = new DoorBlock(FabricBlockSettings.copy(TWISTED_PLANKS));
@@ -1114,7 +1124,13 @@ public class BlockRegistry {
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
+            registerBlock(new Identifier(NAMESPACE, "twisted_nylium"), TWISTED_NYLIUM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_planks"), TWISTED_PLANKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_slab"), TWISTED_SLAB, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_stairs"), TWISTED_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_fence"), TWISTED_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_fence_gate"), TWISTED_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(NAMESPACE, "warped_shroomlight"), WARPED_SHROOMLIGHT, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "twisted_shroomlight"), TWISTED_SHROOMLIGHT, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "blue_nether_bricks"), BLUE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
