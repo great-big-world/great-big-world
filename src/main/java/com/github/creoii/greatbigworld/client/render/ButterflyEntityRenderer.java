@@ -3,6 +3,7 @@ package com.github.creoii.greatbigworld.client.render;
 import com.github.creoii.greatbigworld.client.ModelLayers;
 import com.github.creoii.greatbigworld.client.model.ButterflyEntityModel;
 import com.github.creoii.greatbigworld.entity.ButterflyEntity;
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -15,7 +16,7 @@ import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, TintableCompositeModel<ButterflyEntity>> {
-    private final TintableCompositeModel<ButterflyEntity> butterflyModel = this.getModel();
+    private final TintableCompositeModel<ButterflyEntity> butterflyModel = getModel();
 
     public ButterflyEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new ButterflyEntityModel(context.getPart(ModelLayers.BUTTERFLY_LAYER)), .25f);
@@ -23,7 +24,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     }
 
     public Identifier getTexture(ButterflyEntity butterflyEntity) {
-        return butterflyEntity.getShapeId();
+        return new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/body.png");
     }
 
     public void render(ButterflyEntity butterflyEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
@@ -35,7 +36,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     }
 
     protected void scale(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f) {
-        matrixStack.scale(.4f, .4f, .4f);
+        matrixStack.scale(.5f, .5f, .5f);
     }
 
     protected void setupTransforms(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f, float g, float h) {

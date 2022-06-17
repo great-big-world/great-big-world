@@ -49,6 +49,8 @@ public abstract class TreeConfiguredFeaturesMixin {
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> JUNGLE_TREE;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> FANCY_OAK;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> JUNGLE_TREE_NO_VINE;
+    @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> WARPED_FUNGUS;
+    @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> WARPED_FUNGUS_PLANTED;
 
     @Shadow private static TreeFeatureConfig.Builder builder(Block log, Block leaves, int baseHeight, int firstRandomHeight, int secondRandomHeight, int radius) {
         return null;
@@ -80,5 +82,7 @@ public abstract class TreeConfiguredFeaturesMixin {
         JUNGLE_TREE = ConfiguredFeatures.register("jungle_tree_hanging_leaves", Feature.TREE, jungle().decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_JUNGLE_LEAVES.getDefaultState(), 1, 3, .2f, false), new CocoaBeansTreeDecorator(0.2F), TrunkVineTreeDecorator.INSTANCE, new LeavesVineTreeDecorator(0.25F))).ignoreVines().build());
         JUNGLE_TREE_NO_VINE = ConfiguredFeatures.register("jungle_tree_no_vine_hanging_leaves", Feature.TREE, jungle().decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_JUNGLE_LEAVES.getDefaultState(), 1, 3, .2f, false))).ignoreVines().build());
         FANCY_OAK = ConfiguredFeatures.register("fancy_oak_hanging_leaves", Feature.TREE, fancyOak().decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_OAK_LEAVES.getDefaultState(), 1, 3, .2f, false))).build());
+        WARPED_FUNGUS = ConfiguredFeatures.register("warped_fungus_new", Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(Blocks.WARPED_NYLIUM.getDefaultState(), Blocks.WARPED_STEM.getDefaultState(), Blocks.WARPED_WART_BLOCK.getDefaultState(), BlockRegistry.WARPED_SHROOMLIGHT.getDefaultState(), false));
+        WARPED_FUNGUS_PLANTED = ConfiguredFeatures.register("warped_fungus_planted_new", Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(Blocks.WARPED_NYLIUM.getDefaultState(), Blocks.WARPED_STEM.getDefaultState(), Blocks.WARPED_WART_BLOCK.getDefaultState(), BlockRegistry.WARPED_SHROOMLIGHT.getDefaultState(), true));
     }
 }

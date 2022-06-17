@@ -26,11 +26,11 @@ public class ButterflyEntityModel extends TintableCompositeModel<ButterflyEntity
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData root = modelData.getRoot();
-		ModelPartData head = root.addChild("body", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -2.0F, -5.0F, 2.0F, 2.0F, 10.0F), ModelTransform.NONE);
-		head.addChild("left_wing", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, -1.0F, -8.0F, 8.0F, 0.0F, 16.0F), ModelTransform.NONE);
-		head.addChild("right_wing", ModelPartBuilder.create().uv(0, 0).cuboid(-8.0F, -1.0F, -8.0F, 8.0F, 0.0F, 16.0F), ModelTransform.NONE);
+		ModelPartData head = root.addChild("body", ModelPartBuilder.create().uv(0, 0).cuboid(-1f, -2f, -5f, 2f, 2f, 10f), ModelTransform.NONE);
+		head.addChild("left_wing", ModelPartBuilder.create().uv(-16, 12).cuboid(0f, -1f, -8f, 8f, 0f, 16f), ModelTransform.NONE);
+		head.addChild("right_wing", ModelPartBuilder.create().uv(-16, 12).mirrored().cuboid(-8f, -1f, -8f, 8f, 0f, 16f), ModelTransform.NONE);
 
-		return TexturedModelData.of(modelData, 32, 16);
+		return TexturedModelData.of(modelData, 32, 32);
 	}
 
 	public ModelPart getPart() {

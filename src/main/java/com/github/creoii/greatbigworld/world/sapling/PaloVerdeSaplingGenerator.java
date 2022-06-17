@@ -11,6 +11,6 @@ public class PaloVerdeSaplingGenerator extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ConfiguredFeatureRegistry.PALO_VERDE;
+        return random.nextInt(10) == 0 ? ConfiguredFeatureRegistry.PALO_VERDE_BIG : ConfiguredFeatureRegistry.PALO_VERDE;
     }
 }

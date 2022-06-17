@@ -18,7 +18,6 @@ public class FireBlockMixin {
     private boolean great_big_world$injectCharredWood(World world, BlockPos pos, boolean move) {
         BlockState state = world.getBlockState(pos);
         if (state.isIn(BlockTags.LOGS_THAT_BURN)) {
-            System.out.println(Registry.BLOCK.getId(state.getBlock()));
             return world.setBlockState(pos, BlockRegistry.CHARRED_LOG.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS)));
         }
         else return world.removeBlock(pos, move);

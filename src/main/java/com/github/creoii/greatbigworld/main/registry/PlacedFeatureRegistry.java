@@ -11,6 +11,7 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,8 +31,11 @@ public class PlacedFeatureRegistry {
     public static RegistryEntry<PlacedFeature> ALGAE_PATCH;
 
     public static RegistryEntry<PlacedFeature> MAHOGANY;
-    public static RegistryEntry<PlacedFeature> PALO_VERDE;
+    public static RegistryEntry<PlacedFeature> TREES_PALO_VERDE;
 
+    public static RegistryEntry<PlacedFeature> TWISTED_FUNGI;
+
+    @SuppressWarnings("deprecation")
     public static void register() {
         DIRT_CAVES_VEGETATION = PlacedFeatures.register("dirt_caves_vegetation", ConfiguredFeatureRegistry.DIRT_PATCH, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of(), BlockFilterPlacementModifier.of(new SkyVisiblePredicate(BlockPos.ORIGIN, .4f)));
         DIRT_CAVES_CEILING_VEGETATION = PlacedFeatures.register("dirt_caves_ceiling_vegetation", ConfiguredFeatureRegistry.DIRT_PATCH_CEILING, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-2)), BiomePlacementModifier.of());
@@ -45,8 +49,10 @@ public class PlacedFeatureRegistry {
 
         ALGAE_PATCH = PlacedFeatures.register("algae_patch", ConfiguredFeatureRegistry.ALGAE_PATCH, heightmapModifiers(2, HeightmapPlacementModifier.of(Heightmap.Type.WORLD_SURFACE_WG), null, 2));
 
-        MAHOGANY = PlacedFeatures.register("mahogany", ConfiguredFeatureRegistry.MAHOGANY, PlacedFeatures.createCountExtraModifier(6, .1f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(Blocks.JUNGLE_SAPLING));
-        PALO_VERDE = PlacedFeatures.register("palo_verde", ConfiguredFeatureRegistry.PALO_VERDE, PlacedFeatures.createCountExtraModifier(3, .1f, 2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(Blocks.ACACIA_SAPLING));
+        MAHOGANY = PlacedFeatures.register("mahogany", ConfiguredFeatureRegistry.MAHOGANY, PlacedFeatures.createCountExtraModifier(6, .1f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(BlockRegistry.MAHOGANY_SAPLING));
+        TREES_PALO_VERDE = PlacedFeatures.register("trees_palo_verde", ConfiguredFeatureRegistry.TREES_PALO_VERDE, PlacedFeatures.createCountExtraModifier(3, .1f, 2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING));
+
+        TWISTED_FUNGI = PlacedFeatures.register("twisted_fungi", ConfiguredFeatureRegistry.TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of());
     }
 
     private static List<PlacementModifier> modifiers(int count, PlacementModifier heightModifier, int chance) {

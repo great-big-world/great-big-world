@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class RectangledTrunkPlacer extends TrunkPlacer {
+public class TwistingTrunkPlacer extends TrunkPlacer {
     private static final ArrayList<Direction> HORIZONTAL = Lists.newArrayList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
 
-    public static final Codec<RectangledTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
+    public static final Codec<TwistingTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
         return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.createValidatingCodec(1, 64).fieldOf("twists").forGetter((placer) -> {
             return placer.twists;
         }), IntProvider.createValidatingCodec(1, 64).fieldOf("horizontal_length").forGetter((placer) -> {
@@ -33,7 +33,7 @@ public class RectangledTrunkPlacer extends TrunkPlacer {
             return placer.verticalLength;
         }), Codec.BOOL.fieldOf("leaves_at_end").orElse(false).forGetter((placer) -> {
             return placer.leavesAtEnd;
-        }))).apply(instance, RectangledTrunkPlacer::new);
+        }))).apply(instance, TwistingTrunkPlacer::new);
     });
     private final IntProvider twists;
     private final IntProvider horizontalLength;
@@ -41,7 +41,7 @@ public class RectangledTrunkPlacer extends TrunkPlacer {
     private final IntProvider branches;
     private final boolean leavesAtEnd;
 
-    public RectangledTrunkPlacer(int i, int j, int k, IntProvider twists, IntProvider horizontalLength, IntProvider verticalLength, IntProvider branches, boolean leavesAtEnd) {
+    public TwistingTrunkPlacer(int i, int j, int k, IntProvider twists, IntProvider horizontalLength, IntProvider verticalLength, IntProvider branches, boolean leavesAtEnd) {
         super(i, j, k);
         this.twists = twists;
         this.horizontalLength = horizontalLength;

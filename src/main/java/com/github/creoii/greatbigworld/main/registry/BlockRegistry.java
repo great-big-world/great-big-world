@@ -658,7 +658,12 @@ public class BlockRegistry {
     //endregion
 
     //region Twisted Nether
-    //public static final Block TWISTED_WART_BLOCK = new Block(FabricBlockSettings.copy(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.PURPLE));
+    public static final Block TWISTED_WART_BLOCK = new Block(FabricBlockSettings.copy(Blocks.NETHER_WART_BLOCK).mapColor(MapColor.PURPLE)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_WART_BLOCK);
+        }
+    };
     public static final Block TWISTED_NYLIUM = new NyliumBlock(FabricBlockSettings.copy(Blocks.WARPED_NYLIUM).mapColor(MapColor.PALE_PURPLE)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -1124,6 +1129,7 @@ public class BlockRegistry {
         }
 
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
+            registerBlock(new Identifier(NAMESPACE, "twisted_wart_block"), TWISTED_WART_BLOCK, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_nylium"), TWISTED_NYLIUM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_planks"), TWISTED_PLANKS, ItemGroup.BUILDING_BLOCKS);

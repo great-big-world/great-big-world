@@ -30,8 +30,6 @@ import org.jetbrains.annotations.Nullable;
 public class ButterflyEntity extends PathAwareEntity {
     private static final TrackedData<Byte> BUTTERFLY_FLAGS = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final Identifier[] SHAPE_IDS = new Identifier[]{
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/body.png")};
     private static final Identifier[] VARIETY_IDS = new Identifier[]{
             new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_1.png"),
             new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_2.png"),
@@ -41,21 +39,21 @@ public class ButterflyEntity extends PathAwareEntity {
             new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_6.png")};
 
     public static final int[] COMMON_VARIANTS = new int[]{
-            toVariant(ButterflyEntity.Variety.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
-            toVariant(ButterflyEntity.Variety.KOB, DyeColor.ORANGE, DyeColor.WHITE),
-            toVariant(ButterflyEntity.Variety.SPOTTY, DyeColor.PINK, DyeColor.LIGHT_BLUE),
-            toVariant(ButterflyEntity.Variety.SPOTTY, DyeColor.WHITE, DyeColor.YELLOW),
-            toVariant(ButterflyEntity.Variety.DASHER, DyeColor.CYAN, DyeColor.PINK),
-            toVariant(ButterflyEntity.Variety.BRINELY, DyeColor.LIME, DyeColor.LIGHT_BLUE),
-            toVariant(ButterflyEntity.Variety.SNOOPER, DyeColor.GRAY, DyeColor.RED),
-            toVariant(ButterflyEntity.Variety.KOB, DyeColor.RED, DyeColor.WHITE),
-            toVariant(ButterflyEntity.Variety.SUNSTREAK, DyeColor.GRAY, DyeColor.WHITE),
-            toVariant(ButterflyEntity.Variety.DASHER, DyeColor.CYAN, DyeColor.YELLOW)};
+            toVariant(Variety.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
+            toVariant(Variety.KOB, DyeColor.ORANGE, DyeColor.WHITE),
+            toVariant(Variety.SPOTTY, DyeColor.PINK, DyeColor.LIGHT_BLUE),
+            toVariant(Variety.SPOTTY, DyeColor.WHITE, DyeColor.YELLOW),
+            toVariant(Variety.DASHER, DyeColor.CYAN, DyeColor.PINK),
+            toVariant(Variety.BRINELY, DyeColor.LIME, DyeColor.LIGHT_BLUE),
+            toVariant(Variety.SNOOPER, DyeColor.GRAY, DyeColor.RED),
+            toVariant(Variety.KOB, DyeColor.RED, DyeColor.WHITE),
+            toVariant(Variety.SUNSTREAK, DyeColor.GRAY, DyeColor.WHITE),
+            toVariant(Variety.DASHER, DyeColor.CYAN, DyeColor.YELLOW)};
     @Nullable private BlockPos sittingPosition;
 
     public ButterflyEntity(EntityType<? extends ButterflyEntity> entityType, World world) {
         super(entityType, world);
-        moveControl = new FlightMoveControl(this, 20, true);
+        moveControl = new FlightMoveControl(this, 15, true);
     }
 
     private static int toVariant(ButterflyEntity.Variety variety, DyeColor baseColor, DyeColor patternColor) {
@@ -103,20 +101,12 @@ public class ButterflyEntity extends PathAwareEntity {
         return dataTracker.get(VARIANT);
     }
 
-    public static int getShape(int variant) {
-        return Math.min(variant & 255, 1);
-    }
-
     private static int getPattern(int variant) {
         return Math.min((variant & '\uff00') >> 8, 5);
     }
 
     public Identifier getPatternId() {
-        return VARIETY_IDS[getPattern(this.getVariant())];
-    }
-
-    public Identifier getShapeId() {
-        return SHAPE_IDS[getShape(this.getVariant())];
+        return VARIETY_IDS[getPattern(getVariant())];
     }
 
     private static int getBaseDyeColorIndex(int variant) {
@@ -124,7 +114,7 @@ public class ButterflyEntity extends PathAwareEntity {
     }
 
     public float[] getBaseColorComponents() {
-        return DyeColor.byId(getBaseDyeColorIndex(this.getVariant())).getColorComponents();
+        return DyeColor.byId(getBaseDyeColorIndex(getVariant())).getColorComponents();
     }
 
     private static int getPatternDyeColorIndex(int variant) {
@@ -132,7 +122,7 @@ public class ButterflyEntity extends PathAwareEntity {
     }
 
     public float[] getPatternColorComponents() {
-        return DyeColor.byId(getPatternDyeColorIndex(this.getVariant())).getColorComponents();
+        return DyeColor.byId(getPatternDyeColorIndex(getVariant())).getColorComponents();
     }
 
     public void tick() {
@@ -295,7 +285,6 @@ public class ButterflyEntity extends PathAwareEntity {
 
         private final int shape;
         private final int pattern;
-        private static final ButterflyEntity.Variety[] VALUES = values();
 
         Variety(int shape, int pattern) {
             this.shape = shape;

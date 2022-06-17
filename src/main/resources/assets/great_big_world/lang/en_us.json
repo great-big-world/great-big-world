@@ -237,6 +237,7 @@
   "block.great_big_world.receptor": "Receptor",
   "block.great_big_world.slime": "Slime",
   "block.great_big_world.twisted_nylium": "Twisted Nylium",
+  "block.great_big_world.twisted_wart_block": "Twisted Wart Block",
   "block.great_big_world.twisted_stem": "Twisted Stem",
   "block.great_big_world.twisted_planks": "Twisted Planks",
   "block.great_big_world.twisted_slab": "Twisted Slab",
@@ -288,8 +289,13 @@
 
   "item.great_big_world.copper_nugget": "Copper Nugget",
   "item.great_big_world.peat": "Peat",
+  "item.great_big_world.bear_spawn_egg": "Bear Spawn Egg",
+  "item.great_big_world.butterfly_spawn_egg": "Butterfly Spawn Egg",
 
   "entity.great_big_world.falling_concrete": "Falling Concrete",
+  "entity.great_big_world.bear": "Bear",
+  "entity.great_big_world.butterfly": "Butterfly",
 
-  "biome.great_big_world.dirt_caves": "Dirt Caves"
+  "biome.great_big_world.dirt_caves": "Dirt Caves",
+  "biome.great_big_world.twisted_forest": "Twisted Forest"
 }

@@ -23,7 +23,7 @@ public class ButterflyColorFeatureRenderer extends FeatureRenderer<ButterflyEnti
     }
 
     public Identifier getTexture(ButterflyEntity butterflyEntity) {
-        return butterflyEntity.getShapeId();
+        return butterflyEntity.getPatternId();
     }
 
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, ButterflyEntity butterflyEntity, float f, float g, float h, float j, float k, float l) {
