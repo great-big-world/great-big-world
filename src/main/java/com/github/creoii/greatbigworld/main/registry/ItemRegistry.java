@@ -19,6 +19,18 @@ import net.minecraft.util.registry.Registry;
 public class ItemRegistry {
     //region Cavier Caves
     public static final Item QUICKSAND_BUCKET = new BucketItem(Fluids.EMPTY, new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item MALACHITE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, getDefaultStack(), Items.AMETHYST_SHARD);
+        }
+    };
+    public static final Item TOPAZ = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, getDefaultStack(), Items.AMETHYST_SHARD);
+        }
+    };
     //endregion
 
     //region Change The World
@@ -45,6 +57,15 @@ public class ItemRegistry {
     public static final Item BUTTERFLY_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BUTTERFLY, 0, 0, new FabricItemSettings().group(ItemGroup.MISC));
     //endregion
 
+    //region Cornucopia
+    public static final Item COPPER_NUGGET = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, getDefaultStack(), Items.IRON_NUGGET);
+        }
+    };
+    //endregion
+
     //region Honeycomb
     public static final Item BEAR_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BEAR, 0, 0, new FabricItemSettings().group(ItemGroup.MISC));
     //endregion
@@ -57,6 +78,8 @@ public class ItemRegistry {
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "quicksand_bucket"), QUICKSAND_BUCKET);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "malachite"), MALACHITE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "topaz"), TOPAZ);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
@@ -69,6 +92,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "butterfly_spawn_egg"), BUTTERFLY_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "copper_nugget"), COPPER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);

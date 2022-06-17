@@ -285,8 +285,12 @@
   "block.great_big_world.stripped_hollow_dark_oak_log": "Stripped Hollow Dark Oak Log",
   "block.great_big_world.stripped_hollow_acacia_log": "Stripped Hollow Acacia Log",
   "block.great_big_world.stripped_hollow_mangrove_log": "Stripped Hollow Mangrove Log",
+  "block.great_big_world.stripped_hollow_palo_verde_log": "Stripped Hollow Palo Verde Log",
   "block.great_big_world.stripped_hollow_mahogany_log": "Stripped Hollow Mahogany Log",
 
+  "item.great_big_world.quicksand_bucket": "Quicksand Bucket",
+  "item.great_big_world.malachite": "Malachite",
+  "item.great_big_world.topaz": "Topaz",
   "item.great_big_world.copper_nugget": "Copper Nugget",
   "item.great_big_world.peat": "Peat",
   "item.great_big_world.bear_spawn_egg": "Bear Spawn Egg",

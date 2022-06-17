@@ -786,7 +786,7 @@ public class BlockRegistry {
     //public static final Block HOLLOW_SAKURA_LOG = new HollowLogBlock(FabricBlockSettings.copy(SAKURA_LOG));
     //public static final Block HOLLOW_SEQUOIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(SEQUOIA_LOG));
     public static final Block HOLLOW_MAHOGANY_LOG = new HollowLogBlock(FabricBlockSettings.copy(MAHOGANY_LOG));
-    //public static final Block HOLLOW_PALO_VERDE_LOG = new HollowLogBlock(FabricBlockSettings.copy(PALO_VERDE_LOG));
+    public static final Block HOLLOW_PALO_VERDE_LOG = new HollowLogBlock(FabricBlockSettings.copy(PALO_VERDE_LOG));
     public static final Block STRIPPED_HOLLOW_OAK_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_OAK_LOG));
     public static final Block STRIPPED_HOLLOW_SPRUCE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_SPRUCE_LOG));
     public static final Block STRIPPED_HOLLOW_BIRCH_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_BIRCH_LOG));
@@ -795,6 +795,7 @@ public class BlockRegistry {
     public static final Block STRIPPED_HOLLOW_ACACIA_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_ACACIA_LOG));
     public static final Block STRIPPED_HOLLOW_MANGROVE_LOG = new HollowLogBlock(FabricBlockSettings.copy(Blocks.STRIPPED_MANGROVE_LOG));
     public static final Block STRIPPED_HOLLOW_MAHOGANY_LOG = new HollowLogBlock(FabricBlockSettings.copy(STRIPPED_MAHOGANY_LOG));
+    public static final Block STRIPPED_HOLLOW_PALO_VERDE_LOG = new HollowLogBlock(FabricBlockSettings.copy(STRIPPED_PALO_VERDE_LOG));
 
     public static final Block COLD_WILDFLOWER = null;
     public static final Block TEMPERATE_WILDFLOWER = null;
@@ -1174,6 +1175,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "hollow_acacia_log"), HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "hollow_mangrove_log"), HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "hollow_mahogany_log"), HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "hollow_palo_verde_log"), HOLLOW_PALO_VERDE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_oak_log"), STRIPPED_HOLLOW_OAK_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_spruce_log"), STRIPPED_HOLLOW_SPRUCE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_birch_log"), STRIPPED_HOLLOW_BIRCH_LOG, ItemGroup.DECORATIONS);
@@ -1182,6 +1184,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_acacia_log"), STRIPPED_HOLLOW_ACACIA_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mangrove_log"), STRIPPED_HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mahogany_log"), STRIPPED_HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_hollow_palo_verde_log"), STRIPPED_HOLLOW_PALO_VERDE_LOG, ItemGroup.DECORATIONS);
         }
 
         flammables();

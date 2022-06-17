@@ -33,6 +33,8 @@ public class GreatBigWorld implements ModInitializer {
         DecoratorRegistry.register();
         ConfiguredFeatureRegistry.register();
         PlacedFeatureRegistry.register();
+        StructurePieceRegistry.register();
+        StructureRegistry.register();
         BiomeRegistry.register();
 
         Events.loadEvents();

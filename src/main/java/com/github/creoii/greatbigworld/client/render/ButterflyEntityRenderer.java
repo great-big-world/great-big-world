@@ -29,15 +29,11 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     }
 
     public void render(ButterflyEntity butterflyEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        //model = butterflyModel;
-        //float[] fs = butterflyEntity.getBaseColorComponents();
-        //butterflyModel.setColorMultiplier(fs[0], fs[1], fs[2]);
         super.render(butterflyEntity, f, g, matrixStack, vertexConsumerProvider, i);
-        //butterflyModel.setColorMultiplier(1f, 1f, 1f);
     }
 
     protected void scale(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f) {
-        matrixStack.scale(.5f, .5f, .5f);
+        matrixStack.scale(.75f, .75f, .75f);
     }
 
     protected void setupTransforms(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f, float g, float h) {

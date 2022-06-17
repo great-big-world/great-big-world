@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "great_big_world:underground_shack",
+      "weight": 1
+    },
+    {
+      "structure": "great_big_world:mountain_shack",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 9182592758,
+    "spacing": 18,
+    "separation": 12
+  }
+}
