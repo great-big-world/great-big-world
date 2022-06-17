@@ -20,7 +20,8 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
 
     public ButterflyEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new ButterflyEntityModel(context.getPart(ModelLayers.BUTTERFLY_LAYER)), .25f);
-        addFeature(new ButterflyColorFeatureRenderer(this, context.getModelLoader()));
+        addFeature(new ButterflyPatternInnerFeatureRenderer(this, context.getModelLoader()));
+        addFeature(new ButterflyPatternOutlineFeatureRenderer(this, context.getModelLoader()));
     }
 
     public Identifier getTexture(ButterflyEntity butterflyEntity) {
@@ -28,11 +29,11 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     }
 
     public void render(ButterflyEntity butterflyEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        model = butterflyModel;
-        float[] fs = butterflyEntity.getBaseColorComponents();
-        butterflyModel.setColorMultiplier(fs[0], fs[1], fs[2]);
+        //model = butterflyModel;
+        //float[] fs = butterflyEntity.getBaseColorComponents();
+        //butterflyModel.setColorMultiplier(fs[0], fs[1], fs[2]);
         super.render(butterflyEntity, f, g, matrixStack, vertexConsumerProvider, i);
-        butterflyModel.setColorMultiplier(1f, 1f, 1f);
+        //butterflyModel.setColorMultiplier(1f, 1f, 1f);
     }
 
     protected void scale(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f) {

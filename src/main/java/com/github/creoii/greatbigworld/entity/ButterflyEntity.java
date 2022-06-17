@@ -30,13 +30,20 @@ import org.jetbrains.annotations.Nullable;
 public class ButterflyEntity extends PathAwareEntity {
     private static final TrackedData<Byte> BUTTERFLY_FLAGS = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final Identifier[] VARIETY_IDS = new Identifier[]{
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_1.png"),
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_2.png"),
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_3.png"),
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_4.png"),
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_5.png"),
-            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/pattern_6.png")};
+    private static final Identifier[] PATTERN_INNER_IDS = new Identifier[]{
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_1.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_2.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_3.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_4.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_5.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/inner/pattern_6.png")};
+    private static final Identifier[] PATTERN_OUTLINE_IDS = new Identifier[]{
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_1.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_2.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_3.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_4.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_5.png"),
+            new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/butterfly/outline/pattern_6.png")};
 
     public static final int[] COMMON_VARIANTS = new int[]{
             toVariant(Variety.SUNSTREAK, DyeColor.BLUE, DyeColor.GRAY),
@@ -105,8 +112,12 @@ public class ButterflyEntity extends PathAwareEntity {
         return Math.min((variant & '\uff00') >> 8, 5);
     }
 
-    public Identifier getPatternId() {
-        return VARIETY_IDS[getPattern(getVariant())];
+    public Identifier getPatternOutlineId() {
+        return PATTERN_OUTLINE_IDS[getPattern(getVariant())];
+    }
+
+    public Identifier getPatternInnerId() {
+        return PATTERN_INNER_IDS[getPattern(getVariant())];
     }
 
     private static int getBaseDyeColorIndex(int variant) {
@@ -128,25 +139,25 @@ public class ButterflyEntity extends PathAwareEntity {
     public void tick() {
         super.tick();
         if (isSitting()) {
-            this.setVelocity(Vec3d.ZERO);
-            this.setPos(this.getX(), (double) MathHelper.floor(this.getY()) + 1.0D - (double)this.getHeight(), this.getZ());
+            setVelocity(Vec3d.ZERO);
+            setPos(getX(), (double) MathHelper.floor(getY()) + 1.0D - (double)getHeight(), getZ());
         }
     }
 
     public void travel(Vec3d movementInput) {
         if (this.canMoveVoluntarily() || this.isLogicalSideForUpdatingMovement()) {
-            if (this.isTouchingWater()) {
-                this.updateVelocity(.02f, movementInput);
-                this.move(MovementType.SELF, this.getVelocity());
-                this.setVelocity(this.getVelocity().multiply(.800000011920929d));
+            if (isTouchingWater()) {
+                updateVelocity(.02f, movementInput);
+                move(MovementType.SELF, this.getVelocity());
+                setVelocity(this.getVelocity().multiply(.800000011920929d));
             } else if (this.isInLava()) {
-                this.updateVelocity(.02f, movementInput);
-                this.move(MovementType.SELF, this.getVelocity());
-                this.setVelocity(this.getVelocity().multiply(.5d));
+                updateVelocity(.02f, movementInput);
+                move(MovementType.SELF, this.getVelocity());
+                setVelocity(this.getVelocity().multiply(.5d));
             } else {
-                this.updateVelocity(this.getMovementSpeed(), movementInput);
-                this.move(MovementType.SELF, this.getVelocity());
-                this.setVelocity(this.getVelocity().multiply(.9100000262260437d));
+                updateVelocity(this.getMovementSpeed(), movementInput);
+                move(MovementType.SELF, this.getVelocity());
+                setVelocity(this.getVelocity().multiply(.9100000262260437d));
             }
         }
 
@@ -178,13 +189,13 @@ public class ButterflyEntity extends PathAwareEntity {
                 this.sittingPosition = new BlockPos(this.getX() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7), this.getY() + (double)this.random.nextInt(6) - 2.0D, this.getZ() + (double)this.random.nextInt(7) - (double)this.random.nextInt(7));
             }
 
-            double d = (double)this.sittingPosition.getX() + 0.5D - this.getX();
-            double e = (double)this.sittingPosition.getY() + 0.1D - this.getY();
-            double f = (double)this.sittingPosition.getZ() + 0.5D - this.getZ();
+            double d = (double)this.sittingPosition.getX() + .5d - this.getX();
+            double e = (double)this.sittingPosition.getY() + .1d - this.getY();
+            double f = (double)this.sittingPosition.getZ() + .5d - this.getZ();
             Vec3d vec3d = this.getVelocity();
             Vec3d vec3d2 = vec3d.add((Math.signum(d) * 0.5D - vec3d.x) * 0.10000000149011612D, (Math.signum(e) * 0.699999988079071D - vec3d.y) * 0.10000000149011612D, (Math.signum(f) * 0.5D - vec3d.z) * 0.10000000149011612D);
             this.setVelocity(vec3d2);
-            float g = (float)(MathHelper.atan2(vec3d2.z, vec3d2.x) * 57.2957763671875D) - 90.0F;
+            float g = (float)(MathHelper.atan2(vec3d2.z, vec3d2.x) * 57.2957763671875D) - 90f;
             float h = MathHelper.wrapDegrees(g - this.getYaw());
             forwardSpeed = .5f;
             this.setYaw(this.getYaw() + h);
