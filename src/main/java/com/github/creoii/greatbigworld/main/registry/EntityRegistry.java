@@ -15,8 +15,10 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap;
 
 public class EntityRegistry {
     //region Colormatic
@@ -38,6 +40,9 @@ public class EntityRegistry {
     private static void registerAttributes() {
         FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
         FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createButterflyAttributes());
+
+        SpawnRestriction.register(BUTTERFLY, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ButterflyEntity::canSpawn);
+
     }
 
     @Environment(EnvType.CLIENT)

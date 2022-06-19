@@ -39,7 +39,7 @@ import net.minecraft.world.WorldAccess;
 public class LayerConcretePowderBlock extends Block implements Waterloggable, LandingBlock {
     public static final IntProperty LAYERS = Properties.LAYERS;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static BiMap<Block, Block> POWDER_TO_LAYER = HashBiMap.create();
+    public static BiMap<Block, Block> POWDER_TO_LAYERED = HashBiMap.create();
     private static final VoxelShape[] LAYERS_TO_SHAPE = new VoxelShape[]{VoxelShapes.empty(), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D), Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
     public final BlockState solidState;
     public final DyeColor color;
@@ -101,7 +101,7 @@ public class LayerConcretePowderBlock extends Block implements Waterloggable, La
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return POWDER_TO_LAYER.inverse().get(state.getBlock()).asItem().getDefaultStack();
+        return POWDER_TO_LAYERED.inverse().get(state.getBlock()).asItem().getDefaultStack();
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

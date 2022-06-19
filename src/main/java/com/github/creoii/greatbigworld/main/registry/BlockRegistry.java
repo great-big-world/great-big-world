@@ -679,7 +679,12 @@ public class BlockRegistry {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_STEM);
         }
     };
-    //public static final Block STRIPPED_TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(TWISTED_STEM).mapColor(MapColor.PURPLE));
+    public static final Block STRIPPED_TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(TWISTED_STEM).mapColor(MapColor.PURPLE)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_WARPED_STEM);
+        }
+    };
     public static final Block TWISTED_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_PURPLE)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -1129,6 +1134,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "twisted_wart_block"), TWISTED_WART_BLOCK, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_nylium"), TWISTED_NYLIUM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "stripped_twisted_stem"), STRIPPED_TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_planks"), TWISTED_PLANKS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_slab"), TWISTED_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_stairs"), TWISTED_STAIRS, ItemGroup.BUILDING_BLOCKS);
@@ -1268,6 +1274,7 @@ public class BlockRegistry {
                 .put(PALO_VERDE_LOG, STRIPPED_PALO_VERDE_LOG)
                 .put(SEQUOIA_LOG, STRIPPED_SEQUOIA_LOG)
                 .put(MAHOGANY_LOG, STRIPPED_MAHOGANY_LOG)
+                .put(TWISTED_STEM, STRIPPED_TWISTED_STEM)
                 .put(HOLLOW_OAK_LOG, STRIPPED_HOLLOW_OAK_LOG)
                 .put(HOLLOW_SPRUCE_LOG, STRIPPED_HOLLOW_SPRUCE_LOG)
                 .put(HOLLOW_BIRCH_LOG, STRIPPED_HOLLOW_BIRCH_LOG)

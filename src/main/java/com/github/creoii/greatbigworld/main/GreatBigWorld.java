@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main;
 
 import com.github.creoii.greatbigworld.main.registry.*;
-import com.github.creoii.greatbigworld.main.util.Events;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.math.random.Random;

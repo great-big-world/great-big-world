@@ -13,8 +13,10 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -25,6 +27,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class ButterflyEntity extends PathAwareEntity {
@@ -75,6 +78,10 @@ public class ButterflyEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createButterflyAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6d).add(EntityAttributes.GENERIC_FLYING_SPEED, .10000000149011612d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .10000000149011612d).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 16d);
+    }
+
+    public static boolean canSpawn(EntityType<? extends ButterflyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.isSkyVisible(pos);
     }
 
     public boolean isPushable() {
