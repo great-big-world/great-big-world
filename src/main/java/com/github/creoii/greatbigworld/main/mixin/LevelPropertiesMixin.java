@@ -26,7 +26,7 @@ public class LevelPropertiesMixin {
     @Shadow private boolean thundering;
 
     @Inject(method = "<init>(Lnet/minecraft/world/level/LevelInfo;Lnet/minecraft/world/gen/GeneratorOptions;Lcom/mojang/serialization/Lifecycle;)V", at = @At("TAIL"))
-    private void great_big_world$startWorldRandomly(LevelInfo levelInfo, GeneratorOptions generatorOptions, Lifecycle lifecycle, CallbackInfo ci) {
+    private void great_big_world_startWorldRandomly(LevelInfo levelInfo, GeneratorOptions generatorOptions, Lifecycle lifecycle, CallbackInfo ci) {
         if (!generatorOptions.isDebugWorld()) {
             spawnX = RANDOM.nextInt(24000);
             spawnZ = RANDOM.nextInt(24000);

@@ -5,27 +5,23 @@ import com.github.creoii.greatbigworld.main.registry.StructurePieceRegistry;
 import com.github.creoii.greatbigworld.main.registry.StructureRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.ChestBlockEntity;
-import net.minecraft.loot.LootTables;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.structure.*;
+import net.minecraft.structure.SimpleStructurePiece;
+import net.minecraft.structure.StructureContext;
+import net.minecraft.structure.StructurePlacementData;
+import net.minecraft.structure.StructureTemplateManager;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
-import net.minecraft.structure.pool.StructurePools;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.HeightContext;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.heightprovider.HeightProvider;
 import net.minecraft.world.gen.structure.Structure;
 import net.minecraft.world.gen.structure.StructureType;
@@ -87,21 +83,7 @@ public class ShackStructure extends Structure {
         }
 
         @Override
-        protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, net.minecraft.util.math.random.Random random, BlockBox boundingBox) {
-            System.out.println(metadata);
-            if (metadata.equals("mountain_chest")) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-                BlockEntity blockEntity = world.getBlockEntity(pos.down());
-                if (blockEntity instanceof ChestBlockEntity) {
-                    ((ChestBlockEntity)blockEntity).setLootTable(LootTables.PILLAGER_OUTPOST_CHEST, random.nextLong());
-                }
-            } else if (metadata.equals("underground_chest")) {
-                world.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
-                BlockEntity blockEntity = world.getBlockEntity(pos.down());
-                if (blockEntity instanceof ChestBlockEntity) {
-                    ((ChestBlockEntity)blockEntity).setLootTable(LootTables.ABANDONED_MINESHAFT_CHEST, random.nextLong());
-                }
-            }
+        protected void handleMetadata(String metadata, BlockPos pos, ServerWorldAccess world, Random random, BlockBox boundingBox) {
         }
     }
 }

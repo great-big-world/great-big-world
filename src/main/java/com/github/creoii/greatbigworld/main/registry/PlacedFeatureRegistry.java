@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.util.predicate.SkyVisiblePredicate;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
@@ -11,7 +10,6 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 import org.jetbrains.annotations.Nullable;
 

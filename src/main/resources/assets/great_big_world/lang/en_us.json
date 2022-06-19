@@ -291,6 +291,9 @@
   "item.great_big_world.peat": "Peat",
   "item.great_big_world.bear_spawn_egg": "Bear Spawn Egg",
   "item.great_big_world.butterfly_spawn_egg": "Butterfly Spawn Egg",
+  "item.great_big_world.crimson_shroomlight_fruit": "Crimson Shroomlight Fruit",
+  "item.great_big_world.warped_shroomlight_fruit": "Warped Shroomlight Fruit",
+  "item.great_big_world.twisted_shroomlight_fruit": "Twisted Shroomlight Fruit",
 
   "entity.great_big_world.falling_concrete": "Falling Concrete",
   "entity.great_big_world.bear": "Bear",

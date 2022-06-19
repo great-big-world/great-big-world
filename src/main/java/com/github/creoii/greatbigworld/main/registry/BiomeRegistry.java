@@ -22,15 +22,18 @@ import net.minecraft.world.biome.*;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.MiscPlacedFeatures;
+import net.minecraft.world.gen.feature.NetherPlacedFeatures;
+import net.minecraft.world.gen.feature.OrePlacedFeatures;
 
 public class BiomeRegistry {
     public static final RegistryKey<Biome> DIRT_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "dirt_caves"));
     public static final RegistryKey<Biome> TWISTED_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "twisted_forest"));
 
     public static void register() {
-        BuiltinRegistries.add(BuiltinRegistries.BIOME, DIRT_CAVES, createDirtCaves());
-        BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST, createTwistedForest());
+        Registry.register(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
+        Registry.register(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
 
         netherGeneration();
         modifyBiomes();

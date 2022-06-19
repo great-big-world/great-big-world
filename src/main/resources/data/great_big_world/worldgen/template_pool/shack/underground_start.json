@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "location": "great_big_world:shack/small_underground",
         "processors": "minecraft:empty",

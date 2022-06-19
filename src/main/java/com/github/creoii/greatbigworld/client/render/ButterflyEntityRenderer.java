@@ -19,7 +19,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     private final TintableCompositeModel<ButterflyEntity> butterflyModel = getModel();
 
     public ButterflyEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new ButterflyEntityModel(context.getPart(ModelLayers.BUTTERFLY_LAYER)), .25f);
+        super(context, new ButterflyEntityModel(context.getPart(ModelLayers.BUTTERFLY_LAYER)), .3f);
         addFeature(new ButterflyPatternInnerFeatureRenderer(this, context.getModelLoader()));
         addFeature(new ButterflyPatternOutlineFeatureRenderer(this, context.getModelLoader()));
     }
@@ -33,7 +33,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     }
 
     protected void scale(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f) {
-        matrixStack.scale(.75f, .75f, .75f);
+        matrixStack.scale(.8f, .8f, .8f);
     }
 
     protected void setupTransforms(ButterflyEntity butterflyEntity, MatrixStack matrixStack, float f, float g, float h) {

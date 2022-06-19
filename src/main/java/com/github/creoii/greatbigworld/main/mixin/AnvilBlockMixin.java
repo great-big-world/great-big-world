@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AnvilBlock.class)
 public class AnvilBlockMixin {
     @Inject(method = "onLanding", at = @At("TAIL"))
-    private void great_big_world$destroyCrushables(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
+    private void great_big_world_destroyCrushables(World world, BlockPos pos, BlockState fallingBlockState, BlockState currentStateInPos, FallingBlockEntity fallingBlockEntity, CallbackInfo ci) {
         if (world.getBlockState(pos.down()).getBlock() instanceof Crushable crushable) {
             if (fallingBlockEntity.fallDistance > crushable.getMinimumFallDistance() || crushable.getMinimumFallDistance() == -1) {
                 world.breakBlock(pos.down(), crushable.shouldDropOnBreak(), fallingBlockEntity);

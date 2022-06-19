@@ -3,18 +3,8 @@ package com.github.creoii.greatbigworld.main;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Events;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
-import net.minecraft.world.gen.GenerationStep;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";

@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.item.ShroomlightFruitItem;
 import com.github.creoii.greatbigworld.item.SpawnEggItem;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
@@ -77,6 +78,12 @@ public class ItemRegistry {
     public static final Item PUNGENT_BERRIES = new AliasedBlockItem(BlockRegistry.PUNGENT_BERRY_BUSH, new FabricItemSettings().food(Foods.BERRIES).group(ItemGroup.FOOD));
     //endregion
 
+    //region Twisted Nether
+    public static final Item CRIMSON_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.CRIMSON);
+    public static final Item WARPED_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.WARPED);
+    public static final Item TWISTED_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.TWISTED);
+    //endregion
+
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "quicksand_bucket"), QUICKSAND_BUCKET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "malachite"), MALACHITE);
@@ -99,6 +106,9 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pungent_berries"), PUNGENT_BERRIES);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_shroomlight_fruit"), CRIMSON_SHROOMLIGHT_FRUIT);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_shroomlight_fruit"), WARPED_SHROOMLIGHT_FRUIT);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "twisted_shroomlight_fruit"), TWISTED_SHROOMLIGHT_FRUIT);
     }
 
     @Environment(EnvType.CLIENT)
