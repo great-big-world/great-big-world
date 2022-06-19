@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class TwistingTrunkPlacer extends TrunkPlacer {
-    private static final ArrayList<Direction> HORIZONTAL = Lists.newArrayList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
+    protected static final ArrayList<Direction> HORIZONTAL = Lists.newArrayList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
 
     public static final Codec<TwistingTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> {
         return fillTrunkPlacerFields(instance).and(instance.group(IntProvider.createValidatingCodec(1, 64).fieldOf("twists").forGetter((placer) -> {
@@ -35,11 +35,11 @@ public class TwistingTrunkPlacer extends TrunkPlacer {
             return placer.leavesAtEnd;
         }))).apply(instance, TwistingTrunkPlacer::new);
     });
-    private final IntProvider twists;
-    private final IntProvider horizontalLength;
-    private final IntProvider verticalLength;
-    private final IntProvider branches;
-    private final boolean leavesAtEnd;
+    protected final IntProvider twists;
+    protected final IntProvider horizontalLength;
+    protected final IntProvider verticalLength;
+    protected final IntProvider branches;
+    protected final boolean leavesAtEnd;
 
     public TwistingTrunkPlacer(int i, int j, int k, IntProvider twists, IntProvider horizontalLength, IntProvider verticalLength, IntProvider branches, boolean leavesAtEnd) {
         super(i, j, k);
@@ -51,7 +51,7 @@ public class TwistingTrunkPlacer extends TrunkPlacer {
     }
 
     protected TrunkPlacerType<?> getType() {
-        return PlacerRegistry.RECTANGLED_TRUNK_PLACER;
+    return PlacerRegistry.TWISTING_TRUNK_PLACER;
     }
 
     @Override

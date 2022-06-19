@@ -3,6 +3,9 @@ package com.github.creoii.greatbigworld.main.registry;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
+import com.github.creoii.greatbigworld.world.placer.FungusHatFoliagePlacer;
+import com.github.creoii.greatbigworld.world.placer.InvertedFungusHatFoliagePlacer;
+import com.github.creoii.greatbigworld.world.placer.InvertedTwistingTrunkPlacer;
 import com.github.creoii.greatbigworld.world.placer.TwistingTrunkPlacer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -43,8 +46,8 @@ public class ConfiguredFeatureRegistry {
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PALO_VERDE_BIG;
     public static RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_PALO_VERDE;
 
-    public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> TWISTED_FUNGUS;
-    public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> TWISTED_FUNGUS_PLANTED;
+    public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TWISTED_FUNGUS;
+    public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> INVERTED_TWISTED_FUNGUS;
 
     public static void register() {
         DIRT_VEGETATION = ConfiguredFeatures.register("dirt_vegetation", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DANDELION.getDefaultState(), 4).add(BlockRegistry.MARIGOLD.getDefaultState(), 4).add(Blocks.SUNFLOWER.getDefaultState(), 7).add(Blocks.MOSS_CARPET.getDefaultState(), 25).add(Blocks.GRASS.getDefaultState(), 50).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
@@ -66,7 +69,7 @@ public class ConfiguredFeatureRegistry {
         PALO_VERDE_BIG = ConfiguredFeatures.register("palo_verde_big", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.PALO_VERDE_LOG), new TwistingTrunkPlacer(1, 1, 0, UniformIntProvider.create(2, 3), UniformIntProvider.create(1, 2), UniformIntProvider.create(1, 2), UniformIntProvider.create(1, 3), true), BlockStateProvider.of(BlockRegistry.PALO_VERDE_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1)), new TwoLayersFeatureSize(3, 1, 2)).decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_PALO_VERDE_LEAVES.getDefaultState(), 1, 2, .15f, false))).ignoreVines().build());
         TREES_PALO_VERDE = ConfiguredFeatures.register("trees_palo_verde", Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(PlacedFeatures.createEntry(PALO_VERDE_BIG, PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING)), .1f)), PlacedFeatures.createEntry(PALO_VERDE, PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING))));
 
-        TWISTED_FUNGUS = ConfiguredFeatures.register("twisted_fungus", Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), false));
-        TWISTED_FUNGUS_PLANTED = ConfiguredFeatures.register("twisted_fungus_planted", Feature.HUGE_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), true));
+        TWISTED_FUNGUS = ConfiguredFeatures.register("twisted_fungus", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.TWISTED_STEM.getDefaultState()), new TwistingTrunkPlacer(3, 2, 0, UniformIntProvider.create(2, 4), UniformIntProvider.create(1, 3), UniformIntProvider.create(1 ,3), UniformIntProvider.create(1, 2), true), BlockStateProvider.of(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState()), new FungusHatFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), BlockStateProvider.of(BlockRegistry.TWISTED_SHROOMLIGHT)), new TwoLayersFeatureSize(0, 0, 0)).build());
+        INVERTED_TWISTED_FUNGUS = ConfiguredFeatures.register("inverted_twisted_fungus", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.TWISTED_STEM.getDefaultState()), new InvertedTwistingTrunkPlacer(3, 2, 0, UniformIntProvider.create(2, 4), UniformIntProvider.create(1, 3), UniformIntProvider.create(1 ,3), UniformIntProvider.create(1, 2), true), BlockStateProvider.of(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState()), new InvertedFungusHatFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), BlockStateProvider.of(BlockRegistry.TWISTED_SHROOMLIGHT)), new TwoLayersFeatureSize(0, 0, 0)).build());
     }
 }

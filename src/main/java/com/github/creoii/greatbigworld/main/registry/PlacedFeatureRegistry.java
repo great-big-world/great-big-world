@@ -32,6 +32,7 @@ public class PlacedFeatureRegistry {
     public static RegistryEntry<PlacedFeature> TREES_PALO_VERDE;
 
     public static RegistryEntry<PlacedFeature> TWISTED_FUNGI;
+    public static RegistryEntry<PlacedFeature> INVERTED_TWISTED_FUNGI;
 
     @SuppressWarnings("deprecation")
     public static void register() {
@@ -51,6 +52,7 @@ public class PlacedFeatureRegistry {
         TREES_PALO_VERDE = PlacedFeatures.register("trees_palo_verde", ConfiguredFeatureRegistry.TREES_PALO_VERDE, PlacedFeatures.createCountExtraModifier(3, .1f, 2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING));
 
         TWISTED_FUNGI = PlacedFeatures.register("twisted_fungi", ConfiguredFeatureRegistry.TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of());
+        INVERTED_TWISTED_FUNGI = PlacedFeatures.register("inverted_twisted_fungi", ConfiguredFeatureRegistry.INVERTED_TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(6), BiomePlacementModifier.of());
     }
 
     private static List<PlacementModifier> modifiers(int count, PlacementModifier heightModifier, int chance) {
