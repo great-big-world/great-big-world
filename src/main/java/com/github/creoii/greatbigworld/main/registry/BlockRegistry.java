@@ -1199,7 +1199,67 @@ public class BlockRegistry {
         fire.registerFlammableBlock(STRIPPED_SEQUOIA_LOG, 5, 5);
         fire.registerFlammableBlock(SEQUOIA_PLANKS, 5, 20);
         fire.registerFlammableBlock(SEQUOIA_LEAVES, 30, 60);
+        fire.registerFlammableBlock(MAHOGANY_LOG, 5, 5);
+        fire.registerFlammableBlock(STRIPPED_MAHOGANY_LOG, 5, 5);
+        fire.registerFlammableBlock(MAHOGANY_PLANKS, 5, 20);
+        fire.registerFlammableBlock(HOLLOW_OAK_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_SPRUCE_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_BIRCH_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_JUNGLE_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_DARK_OAK_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_ACACIA_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_MANGROVE_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_PALO_VERDE_LOG, 30, 60);
+        fire.registerFlammableBlock(HOLLOW_MAHOGANY_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_OAK_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_SPRUCE_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_BIRCH_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_JUNGLE_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_DARK_OAK_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_ACACIA_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_MANGROVE_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_PALO_VERDE_LOG, 30, 60);
+        fire.registerFlammableBlock(STRIPPED_HOLLOW_MAHOGANY_LOG, 30, 60);
+        fire.registerFlammableBlock(PALO_VERDE_SLAB, 5, 20);
+        fire.registerFlammableBlock(MAHOGANY_SLAB, 5, 20);
+        fire.registerFlammableBlock(SEQUOIA_SLAB, 5, 20);
+        fire.registerFlammableBlock(PALO_VERDE_FENCE_GATE, 5, 20);
+        fire.registerFlammableBlock(MAHOGANY_FENCE_GATE, 5, 20);
+        fire.registerFlammableBlock(SEQUOIA_FENCE_GATE, 5, 20);
+        fire.registerFlammableBlock(PALO_VERDE_FENCE, 5, 20);
+        fire.registerFlammableBlock(MAHOGANY_FENCE, 5, 20);
+        fire.registerFlammableBlock(SEQUOIA_FENCE, 5, 20);
+        fire.registerFlammableBlock(PALO_VERDE_STAIRS, 5, 20);
+        fire.registerFlammableBlock(MAHOGANY_STAIRS, 5, 20);
+        fire.registerFlammableBlock(SEQUOIA_STAIRS, 5, 20);
+        fire.registerFlammableBlock(DRIED_BAMBOO_PLANKS, 5, 20);
         fire.registerFlammableBlock(MARIGOLD, 60, 100);
+        fire.registerFlammableBlock(HEATHER, 60, 100);
+        fire.registerFlammableBlock(ROSE, 60, 100);
+        fire.registerFlammableBlock(SOUR_BERRY_BUSH, 60, 100);
+        fire.registerFlammableBlock(BITTER_BERRY_BUSH, 60, 100);
+        fire.registerFlammableBlock(PUNGENT_BERRY_BUSH, 60, 100);
+        fire.registerFlammableBlock(WHITE_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(ORANGE_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(MAGENTA_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(LIGHT_BLUE_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(YELLOW_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(LIME_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(PINK_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(GRAY_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(LIGHT_GRAY_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(CYAN_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(PURPLE_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(BLUE_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(BROWN_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(GREEN_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(RED_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(BLACK_QUILTED_CARPET, 60, 20);
+        fire.registerFlammableBlock(BAMBOO_TORCH, 60, 60);
+        fire.registerFlammableBlock(SOUL_BAMBOO_TORCH, 60, 60);
+        fire.registerFlammableBlock(BAMBOO_WALL_TORCH, 60, 60);
+        fire.registerFlammableBlock(SOUL_BAMBOO_WALL_TORCH, 60, 60);
+        fire.registerFlammableBlock(ALGAE, 10, 80);
     }
 
     private static void strippables() {
@@ -1222,6 +1282,27 @@ public class BlockRegistry {
 
     private static void compostables() {
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(MARIGOLD, .65f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HEATHER, .65f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ROSE, .65f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(APPLE_PIE, 1f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(PALO_VERDE_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(MAHOGANY_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(PALO_VERDE_SAPLING, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(MAHOGANY_SAPLING, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ItemRegistry.PUNGENT_BERRIES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ItemRegistry.SOUR_BERRIES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ItemRegistry.BITTER_BERRIES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_OAK_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_SPRUCE_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_BIRCH_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_JUNGLE_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_DARK_OAK_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_ACACIA_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_MANGROVE_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_PALO_VERDE_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(HANGING_MAHOGANY_LEAVES, .3f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TWISTED_FUNGUS, .65f);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TWISTED_WART_BLOCK, .85f);
     }
 
     private static void oxidizables() {
