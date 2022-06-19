@@ -26,14 +26,16 @@ public class LevelPropertiesMixin {
     @Shadow private boolean thundering;
 
     @Inject(method = "<init>(Lnet/minecraft/world/level/LevelInfo;Lnet/minecraft/world/gen/GeneratorOptions;Lcom/mojang/serialization/Lifecycle;)V", at = @At("TAIL"))
-    private void change_the_world$startWorldRandomly(LevelInfo levelInfo, GeneratorOptions generatorOptions, Lifecycle lifecycle, CallbackInfo ci) {
-        spawnX = RANDOM.nextInt(24000);
-        spawnZ = RANDOM.nextInt(24000);
-        spawnAngle = RANDOM.nextInt(360);
-        timeOfDay = RANDOM.nextInt(24000);
-        rainTime = RANDOM.nextInt(180000);
-        raining = RANDOM.nextInt(5) == 0;
-        thunderTime = RANDOM.nextInt(180000);
-        thundering = RANDOM.nextInt(5) == 0;
+    private void great_big_world$startWorldRandomly(LevelInfo levelInfo, GeneratorOptions generatorOptions, Lifecycle lifecycle, CallbackInfo ci) {
+        if (!generatorOptions.isDebugWorld()) {
+            spawnX = RANDOM.nextInt(24000);
+            spawnZ = RANDOM.nextInt(24000);
+            spawnAngle = RANDOM.nextInt(360);
+            timeOfDay = RANDOM.nextInt(24000);
+            rainTime = RANDOM.nextInt(180000);
+            raining = RANDOM.nextInt(5) == 0;
+            thunderTime = RANDOM.nextInt(180000);
+            thundering = RANDOM.nextInt(5) == 0;
+        }
     }
 }

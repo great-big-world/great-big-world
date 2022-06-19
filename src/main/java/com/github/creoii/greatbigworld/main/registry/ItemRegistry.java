@@ -64,6 +64,7 @@ public class ItemRegistry {
             ItemUtil.appendStackInGroup(stacks, getDefaultStack(), Items.IRON_NUGGET);
         }
     };
+    public static final Item PEAT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
     //endregion
 
     //region Honeycomb
@@ -93,6 +94,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "butterfly_spawn_egg"), BUTTERFLY_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "copper_nugget"), COPPER_NUGGET);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "peat"), PEAT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);

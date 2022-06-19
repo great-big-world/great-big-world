@@ -89,10 +89,10 @@ public class BlockRegistry {
     public static final Block GLACITE_SLAB = new SlabBlock(FabricBlockSettings.copy(GLACITE));
     public static final Block GLACITE_STAIRS = new StairsBlock(GLACITE.getDefaultState(), FabricBlockSettings.copy(GLACITE));
     public static final Block GLACITE_WALL = new WallBlock(FabricBlockSettings.copy(GLACITE));
-    public static final Block GLACITE_BRICKS = new Block(FabricBlockSettings.copy(GLACITE));
-    public static final Block GLACITE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(GLACITE_BRICKS));
-    public static final Block GLACITE_BRICK_STAIRS = new StairsBlock(GLACITE_BRICKS.getDefaultState(), FabricBlockSettings.copy(GLACITE_BRICKS));
-    public static final Block GLACITE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(GLACITE_BRICKS));
+    //public static final Block POLISHED_GLACITE = new Block(FabricBlockSettings.copy(GLACITE));
+    //public static final Block POLISHED_GLACITE_SLAB = new SlabBlock(FabricBlockSettings.copy(POLISHED_GLACITE));
+    //public static final Block POLISHED_GLACITE_STAIRS = new StairsBlock(POLISHED_GLACITE.getDefaultState(), FabricBlockSettings.copy(POLISHED_GLACITE));
+    //public static final Block POLISHED_GLACITE_WALL = new WallBlock(FabricBlockSettings.copy(POLISHED_GLACITE));
     //public static final Block CHISELED_GLACITE_BRICKS = new Block(FabricBlockSettings.copy(GLACITE_BRICKS));
     //public static final Block GLACITE_BRICK_PILLAR = new PillarBlock(FabricBlockSettings.copy(GLACITE_BRICKS));
 
@@ -877,10 +877,6 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "glacite_slab"), GLACITE_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "glacite_stairs"), GLACITE_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "glacite_wall"), GLACITE_WALL, ItemGroup.DECORATIONS);
-            registerBlock(new Identifier(NAMESPACE, "glacite_bricks"), GLACITE_BRICKS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(NAMESPACE, "glacite_brick_slab"), GLACITE_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(NAMESPACE, "glacite_brick_stairs"), GLACITE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(NAMESPACE, "glacite_brick_wall"), GLACITE_BRICK_WALL, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "chiseled_cut_copper_block"), CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "exposed_chiseled_cut_copper_block"), EXPOSED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "weathered_chiseled_cut_copper_block"), WEATHERED_CHISELED_CUT_COPPER_BLOCK, ItemGroup.BUILDING_BLOCKS);
@@ -1220,6 +1216,7 @@ public class BlockRegistry {
                 .put(HOLLOW_ACACIA_LOG, STRIPPED_HOLLOW_ACACIA_LOG)
                 .put(HOLLOW_MANGROVE_LOG, STRIPPED_HOLLOW_MANGROVE_LOG)
                 .put(HOLLOW_MAHOGANY_LOG, STRIPPED_HOLLOW_MAHOGANY_LOG)
+                .put(HOLLOW_PALO_VERDE_LOG, STRIPPED_HOLLOW_PALO_VERDE_LOG)
                 .build();
     }
 
