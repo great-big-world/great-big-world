@@ -157,6 +157,7 @@
   "block.great_big_world.bamboo_thatch": "Bamboo Thatch",
   "block.great_big_world.bamboo_thatch_slab": "Bamboo Thatch Slab",
   "block.great_big_world.bamboo_thatch_stairs": "Bamboo Thatch Stairs",
+  "block.great_big_world.red_rock": "Red Rock",
   "block.great_big_world.ice_bricks": "Ice Bricks",
   "block.great_big_world.ice_brick_slab": "Ice Brick Slab",
   "block.great_big_world.ice_brick_stairs": "Ice Brick Stairs",
@@ -301,5 +302,6 @@
   "entity.great_big_world.butterfly": "Butterfly",
 
   "biome.great_big_world.dirt_caves": "Dirt Caves",
-  "biome.great_big_world.twisted_forest": "Twisted Forest"
+  "biome.great_big_world.twisted_forest": "Twisted Forest",
+  "biome.great_big_world.red_rock_peaks": "Red Rock Peaks"
 }

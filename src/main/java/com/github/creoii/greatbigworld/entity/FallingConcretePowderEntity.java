@@ -59,7 +59,7 @@ public class FallingConcretePowderEntity extends Entity {
         this.layers = layers;
         this.setData(getBlockPos(), layers);
         if (state.getBlock() instanceof ConcretePowderBlock) {
-            fallState = LayerConcretePowderBlock.POWDER_TO_LAYER.get(state.getBlock()).getDefaultState();
+            fallState = LayerConcretePowderBlock.POWDER_TO_LAYERED.get(state.getBlock()).getDefaultState();
         }
         else fallState = state;
         //size = new EntitySize(0.98f, 0.1225f * layers, true);
@@ -67,7 +67,7 @@ public class FallingConcretePowderEntity extends Entity {
 
     public static void spawnFromBlock(World world, BlockPos pos, BlockState state) {
         if (state.getBlock() instanceof ConcretePowderBlock) {
-            state = LayerConcretePowderBlock.POWDER_TO_LAYER.get(state.getBlock()).getDefaultState();
+            state = LayerConcretePowderBlock.POWDER_TO_LAYERED.get(state.getBlock()).getDefaultState();
         }
 
         FallingConcretePowderEntity fallingBlockEntity = new FallingConcretePowderEntity(world, (double)pos.getX() + .5d, pos.getY(), (double)pos.getZ() + .5d, state.get(LayerConcretePowderBlock.LAYERS), state.contains(Properties.WATERLOGGED) ? state.with(Properties.WATERLOGGED, false) : state);
@@ -80,7 +80,7 @@ public class FallingConcretePowderEntity extends Entity {
             discard();
         } else {
             Block block;
-            if (fallState.getBlock() instanceof ConcretePowderBlock) block = LayerConcretePowderBlock.POWDER_TO_LAYER.get(fallState.getBlock());
+            if (fallState.getBlock() instanceof ConcretePowderBlock) block = LayerConcretePowderBlock.POWDER_TO_LAYERED.get(fallState.getBlock());
             else block = fallState.getBlock();
             if (timeFalling++ == 0) {
                 BlockPos blockpos = getBlockPos();
@@ -220,7 +220,7 @@ public class FallingConcretePowderEntity extends Entity {
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         BlockState state = NbtHelper.toBlockState(nbt.getCompound("BlockState"));
         if (state.getBlock() instanceof LayerConcretePowderBlock) fallState = state;
-        else if (state.getBlock() instanceof ConcretePowderBlock) fallState = LayerConcretePowderBlock.POWDER_TO_LAYER.get(state.getBlock()).getDefaultState();
+        else if (state.getBlock() instanceof ConcretePowderBlock) fallState = LayerConcretePowderBlock.POWDER_TO_LAYERED.get(state.getBlock()).getDefaultState();
         else fallState = BlockRegistry.WHITE_CONCRETE_POWDER.getDefaultState();
         timeFalling = nbt.getInt("Time");
         if (nbt.contains("Layers", NbtElement.INT_TYPE)) {

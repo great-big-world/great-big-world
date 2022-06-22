@@ -30,10 +30,12 @@ import net.minecraft.world.gen.feature.OrePlacedFeatures;
 public class BiomeRegistry {
     public static final RegistryKey<Biome> DIRT_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "dirt_caves"));
     public static final RegistryKey<Biome> TWISTED_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "twisted_forest"));
+    public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
 
     public static void register() {
         Registry.register(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
         Registry.register(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
+        Registry.register(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
 
         netherGeneration();
         modifyBiomes();
@@ -99,5 +101,24 @@ public class BiomeRegistry {
                 .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.INVERTED_TWISTED_FUNGI);
         DefaultBiomeFeatures.addNetherMineables(builder);
         return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(3413825).skyColor(getSkyColor(2.0F)).particleConfig(new BiomeParticleConfig(ParticleTypes.CRIMSON_SPORE, 0.025F)).loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP).moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D)).additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D)).music(MusicType.createIngameMusic(SoundEvents.MUSIC_NETHER_WARPED_FOREST)).build()).spawnSettings(spawnSettings).generationSettings(builder.build()).build();
+    }
+
+    public static Biome createRedRockPeaks() {
+        SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+        GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+        DefaultBiomeFeatures.addBatsAndMonsters(spawnSettings);
+        DefaultBiomeFeatures.addLandCarvers(generationSettings);
+        DefaultBiomeFeatures.addAmethystGeodes(generationSettings);
+        DefaultBiomeFeatures.addDungeons(generationSettings);
+        DefaultBiomeFeatures.addMineables(generationSettings);
+        DefaultBiomeFeatures.addSprings(generationSettings);
+        DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+        DefaultBiomeFeatures.addDefaultOres(generationSettings);
+        DefaultBiomeFeatures.addExtraGoldOre(generationSettings);
+        DefaultBiomeFeatures.addDefaultDisks(generationSettings);
+        DefaultBiomeFeatures.addBadlandsGrass(generationSettings);
+        DefaultBiomeFeatures.addDefaultMushrooms(generationSettings);
+        DefaultBiomeFeatures.addBadlandsVegetation(generationSettings);
+        return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2f).downfall(0f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(2f)).foliageColor(10387789).grassColor(9470285).moodSound(BiomeMoodSound.CAVE).build()).generationSettings(generationSettings.build()).spawnSettings(spawnSettings.build()).build();
     }
 }

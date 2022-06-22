@@ -470,6 +470,8 @@ public class BlockRegistry {
     public static final Block BAMBOO_THATCH = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.DIRT_BROWN).strength(1.5F, 2.0F).sounds(BlockSoundGroup.GRASS));
     public static final Block BAMBOO_THATCH_SLAB = new DirectionalSlabBlock(FabricBlockSettings.copy(BAMBOO_THATCH));
     public static final Block BAMBOO_THATCH_STAIRS = new StairsBlock(BAMBOO_THATCH.getDefaultState(), FabricBlockSettings.copy(BAMBOO_THATCH));
+
+    public static final Block RED_ROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
 
     //region Fire And Ice
@@ -964,22 +966,22 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES, null);
             registerBlock(new Identifier(NAMESPACE, "hanging_palo_verde_leaves"), HANGING_PALO_VERDE_LEAVES, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES, null);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.YELLOW_CONCRETE_POWDER, BlockRegistry.YELLOW_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.LIME_CONCRETE_POWDER, BlockRegistry.LIME_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.GREEN_CONCRETE_POWDER, BlockRegistry.GREEN_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.CYAN_CONCRETE_POWDER, BlockRegistry.CYAN_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BLUE_CONCRETE_POWDER, BlockRegistry.BLUE_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.LIGHT_BLUE_CONCRETE_POWDER, BlockRegistry.LIGHT_BLUE_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.PINK_CONCRETE_POWDER, BlockRegistry.PINK_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.MAGENTA_CONCRETE_POWDER, BlockRegistry.MAGENTA_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.PURPLE_CONCRETE_POWDER, BlockRegistry.PURPLE_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.BLACK_CONCRETE_POWDER, BlockRegistry.BLACK_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.GRAY_CONCRETE_POWDER, BlockRegistry.GRAY_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.LIGHT_GRAY_CONCRETE_POWDER, BlockRegistry.LIGHT_GRAY_CONCRETE_POWDER);
-            LayerConcretePowderBlock.POWDER_TO_LAYER.put(Blocks.WHITE_CONCRETE_POWDER, BlockRegistry.WHITE_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.BROWN_CONCRETE_POWDER, BlockRegistry.BROWN_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.RED_CONCRETE_POWDER, BlockRegistry.RED_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.ORANGE_CONCRETE_POWDER, BlockRegistry.ORANGE_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.YELLOW_CONCRETE_POWDER, BlockRegistry.YELLOW_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.LIME_CONCRETE_POWDER, BlockRegistry.LIME_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.GREEN_CONCRETE_POWDER, BlockRegistry.GREEN_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.CYAN_CONCRETE_POWDER, BlockRegistry.CYAN_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.BLUE_CONCRETE_POWDER, BlockRegistry.BLUE_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.LIGHT_BLUE_CONCRETE_POWDER, BlockRegistry.LIGHT_BLUE_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.PINK_CONCRETE_POWDER, BlockRegistry.PINK_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.MAGENTA_CONCRETE_POWDER, BlockRegistry.MAGENTA_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.PURPLE_CONCRETE_POWDER, BlockRegistry.PURPLE_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.BLACK_CONCRETE_POWDER, BlockRegistry.BLACK_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.GRAY_CONCRETE_POWDER, BlockRegistry.GRAY_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.LIGHT_GRAY_CONCRETE_POWDER, BlockRegistry.LIGHT_GRAY_CONCRETE_POWDER);
+            LayerConcretePowderBlock.POWDER_TO_LAYERED.put(Blocks.WHITE_CONCRETE_POWDER, BlockRegistry.WHITE_CONCRETE_POWDER);
         }
 
         if (GreatBigWorld.isLoaded("cornucopia") || GreatBigWorld.inDev()) {
@@ -1036,6 +1038,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, ItemGroup.BUILDING_BLOCKS);
         }
 
         if (GreatBigWorld.isLoaded("fire_and_ice") || GreatBigWorld.inDev()) {

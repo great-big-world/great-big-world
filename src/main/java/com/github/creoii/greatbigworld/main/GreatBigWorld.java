@@ -25,8 +25,6 @@ public class GreatBigWorld implements ModInitializer {
         StructurePieceRegistry.register();
         StructureRegistry.register();
         BiomeRegistry.register();
-
-        Events.loadEvents();
     }
 
     public static boolean isLoaded(String modid) {
