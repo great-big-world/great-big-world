@@ -666,15 +666,10 @@ public class BlockRegistry {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_WART_BLOCK);
         }
     };
-    public static final Block TWISTED_NYLIUM = new NyliumBlock(FabricBlockSettings.copy(Blocks.WARPED_NYLIUM).mapColor(MapColor.PALE_PURPLE)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_NYLIUM);
-        }
-    };
-    //public static final Block TWISTED_ROOTS = new RootsBlock(FabricBlockSettings.copy(Blocks.WARPED_ROOTS));
-    public static final Block TWISTED_FUNGUS = null;
+    public static final Block TWISTED_NYLIUM = new DirectionalNyliumBlock(FabricBlockSettings.copy(Blocks.WARPED_NYLIUM).mapColor(MapColor.PALE_PURPLE));
 
+    //public static final Block TWISTED_ROOTS = new RootsBlock(FabricBlockSettings.copy(Blocks.WARPED_ROOTS));
+    public static final Block TWISTED_FUNGUS = new DirectionalFungusBlock(FabricBlockSettings.copy(Blocks.WARPED_FUNGUS), () -> ConfiguredFeatureRegistry.TWISTED_FUNGUS);
     public static final Block TWISTED_STEM = new PillarBlock(FabricBlockSettings.copy(Blocks.CRIMSON_STEM).mapColor(MapColor.DARK_DULL_PINK)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -1136,6 +1131,7 @@ public class BlockRegistry {
         if (GreatBigWorld.isLoaded("twisted_nether") || GreatBigWorld.inDev()) {
             registerBlock(new Identifier(NAMESPACE, "twisted_wart_block"), TWISTED_WART_BLOCK, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_nylium"), TWISTED_NYLIUM, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "twisted_fungus"), TWISTED_FUNGUS, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "twisted_stem"), TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "stripped_twisted_stem"), STRIPPED_TWISTED_STEM, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "twisted_planks"), TWISTED_PLANKS, ItemGroup.BUILDING_BLOCKS);

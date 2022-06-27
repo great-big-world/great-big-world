@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.item.DaggerItem;
 import com.github.creoii.greatbigworld.item.ShroomlightFruitItem;
 import com.github.creoii.greatbigworld.item.SpawnEggItem;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
@@ -68,6 +69,10 @@ public class ItemRegistry {
     public static final Item PEAT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
     //endregion
 
+    //region Cloak And Dagger
+    public static final Item DIAMOND_DAGGER = new DaggerItem(ToolMaterials.DIAMOND, 3, -1f);
+    //endregion
+
     //region Honeycomb
     public static final Item BEAR_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BEAR, 0, 0, new FabricItemSettings().group(ItemGroup.MISC));
     //endregion
@@ -90,7 +95,9 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "topaz"), TOPAZ);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_oak_leaves"), HANGING_OAK_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_spruce_leaves"), HANGING_SPRUCE_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_birch_leaves"), HANGING_BIRCH_LEAVES);
@@ -100,12 +107,17 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mangrove_leaves"), HANGING_MANGROVE_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_mahogany_leaves"), HANGING_MAHOGANY_LEAVES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "butterfly_spawn_egg"), BUTTERFLY_SPAWN_EGG);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "copper_nugget"), COPPER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "peat"), PEAT);
+
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "diamond_dagger"), DIAMOND_DAGGER);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pungent_berries"), PUNGENT_BERRIES);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_shroomlight_fruit"), CRIMSON_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_shroomlight_fruit"), WARPED_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "twisted_shroomlight_fruit"), TWISTED_SHROOMLIGHT_FRUIT);

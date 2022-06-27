@@ -7,11 +7,13 @@
     "AnvilBlockMixin",
     "ConcretePowderBlockMixin",
     "FireBlockMixin",
+    "GenerationShapeConfigMixin",
     "LevelPropertiesMixin",
     "MultiNoiseSamplerMixin",
     "SurfaceBuilderMixin",
     "TreeConfiguredFeaturesMixin",
-    "VanillaBiomeParametersMixin"
+    "VanillaBiomeParametersMixin",
+    "VanillaSurfaceRulesMixin"
   ],
   "client": [
   ],

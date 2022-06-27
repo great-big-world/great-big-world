@@ -7,9 +7,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.blockpredicate.BlockPredicateType;
 
 public class PredicateRegistry {
-    public static final BlockPredicateType<SkyVisiblePredicate> SKY_VISIBLE = () -> {
-        return SkyVisiblePredicate.CODEC;
-    };
+    public static final BlockPredicateType<SkyVisiblePredicate> SKY_VISIBLE = () -> SkyVisiblePredicate.CODEC;
 
     public static void register() {
         Registry.register(Registry.BLOCK_PREDICATE_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "sky_visible"), SKY_VISIBLE);

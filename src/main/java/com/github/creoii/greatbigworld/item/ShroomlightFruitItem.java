@@ -33,12 +33,12 @@ public class ShroomlightFruitItem extends Item {
             } else if (type == ShroomlightType.WARPED) {
                 HitResult hitResult = player.raycast(player.isCreative() ? 5d : 4.5d, 0f, true);
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
-                    System.out.println(((BlockHitResult) hitResult).getBlockPos().toShortString());
+                    //System.out.println(((BlockHitResult) hitResult).getBlockPos().toShortString());
                     createLight(world, ((BlockHitResult) hitResult).getBlockPos(), type);
                 }
             } else if (type == ShroomlightType.TWISTED) {
                 BlockPos place = GenerationUtil.randomInRange(world.getRandom(), player.getBlockPos(), 5, 3, 5);
-                System.out.println(place.toShortString());
+                //System.out.println(place.toShortString());
                 createLight(world, place, type);
             }
         }

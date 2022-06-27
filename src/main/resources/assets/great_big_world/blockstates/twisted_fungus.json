@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "great_big_world:block/twisted_fungus"
+    },
+    "facing=down": {
+      "model": "great_big_world:block/twisted_fungus",
+      "x": 180
+    }
+  }
+}

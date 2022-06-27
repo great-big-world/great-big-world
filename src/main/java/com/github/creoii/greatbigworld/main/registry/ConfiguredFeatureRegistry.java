@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.block.DirectionalNyliumBlock;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
@@ -13,6 +14,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -46,8 +48,12 @@ public class ConfiguredFeatureRegistry {
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> PALO_VERDE_BIG;
     public static RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> TREES_PALO_VERDE;
 
-    public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TWISTED_FUNGUS;
-    public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> INVERTED_TWISTED_FUNGUS;
+    public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> TWISTED_FUNGUS;
+    public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> INVERTED_TWISTED_FUNGUS;
+    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> TWISTED_NYLIUM_PATCH_CEILING;
+
+    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_STONE_PATCH;
+    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_DEEPSLATE_PATCH;
 
     public static void register() {
         DIRT_VEGETATION = ConfiguredFeatures.register("dirt_vegetation", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DANDELION.getDefaultState(), 4).add(BlockRegistry.MARIGOLD.getDefaultState(), 4).add(Blocks.SUNFLOWER.getDefaultState(), 7).add(Blocks.MOSS_CARPET.getDefaultState(), 25).add(Blocks.GRASS.getDefaultState(), 50).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
@@ -69,7 +75,11 @@ public class ConfiguredFeatureRegistry {
         PALO_VERDE_BIG = ConfiguredFeatures.register("palo_verde_big", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.PALO_VERDE_LOG), new TwistingTrunkPlacer(1, 1, 0, UniformIntProvider.create(2, 3), UniformIntProvider.create(1, 2), UniformIntProvider.create(1, 2), UniformIntProvider.create(1, 3), true), BlockStateProvider.of(BlockRegistry.PALO_VERDE_LEAVES), new AcaciaFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1)), new TwoLayersFeatureSize(3, 1, 2)).decorators(List.of(new HangingLeavesTreeDecorator(BlockRegistry.HANGING_PALO_VERDE_LEAVES.getDefaultState(), 1, 2, .15f, false))).ignoreVines().build());
         TREES_PALO_VERDE = ConfiguredFeatures.register("trees_palo_verde", Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(PlacedFeatures.createEntry(PALO_VERDE_BIG, PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING)), .1f)), PlacedFeatures.createEntry(PALO_VERDE, PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING))));
 
-        TWISTED_FUNGUS = ConfiguredFeatures.register("twisted_fungus", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.TWISTED_STEM.getDefaultState()), new TwistingTrunkPlacer(3, 2, 0, UniformIntProvider.create(2, 4), UniformIntProvider.create(1, 3), UniformIntProvider.create(1 ,3), UniformIntProvider.create(1, 2), true), BlockStateProvider.of(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState()), new FungusHatFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), BlockStateProvider.of(BlockRegistry.TWISTED_SHROOMLIGHT)), new TwoLayersFeatureSize(0, 0, 0)).build());
-        INVERTED_TWISTED_FUNGUS = ConfiguredFeatures.register("inverted_twisted_fungus", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.TWISTED_STEM.getDefaultState()), new InvertedTwistingTrunkPlacer(3, 2, 0, UniformIntProvider.create(2, 4), UniformIntProvider.create(1, 3), UniformIntProvider.create(1 ,3), UniformIntProvider.create(1, 2), true), BlockStateProvider.of(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState()), new InvertedFungusHatFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), BlockStateProvider.of(BlockRegistry.TWISTED_SHROOMLIGHT)), new TwoLayersFeatureSize(0, 0, 0)).build());
+        TWISTED_FUNGUS = ConfiguredFeatures.register("twisted_fungus", FeatureRegistry.HUGE_TWISTED_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), false));
+        INVERTED_TWISTED_FUNGUS = ConfiguredFeatures.register("inverted_twisted_fungus", FeatureRegistry.HUGE_TWISTED_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), false));
+        TWISTED_NYLIUM_PATCH_CEILING = ConfiguredFeatures.register("twisted_nylium_patch_ceiling", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_NETHER, SimpleBlockStateProvider.of(BlockRegistry.TWISTED_NYLIUM.getDefaultState().with(DirectionalNyliumBlock.FACING, Direction.DOWN)), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 1.0F, 5, 0f, UniformIntProvider.create(4, 7), 0.3F));
+
+        GRASSY_STONE_PATCH = ConfiguredFeatures.register("grassy_stone_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_STONE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));
+        GRASSY_DEEPSLATE_PATCH = ConfiguredFeatures.register("grassy_deepslate_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_DEEPSLATE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));
     }
 }

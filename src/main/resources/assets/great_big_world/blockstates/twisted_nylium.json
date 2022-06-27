@@ -1,5 +1,6 @@
 {
     "variants": {
-        "": { "model": "great_big_world:block/twisted_nylium" }
+        "facing=up": { "model": "great_big_world:block/twisted_nylium" },
+        "facing=down": { "model": "great_big_world:block/twisted_nylium", "x": 180 }
     }
 }

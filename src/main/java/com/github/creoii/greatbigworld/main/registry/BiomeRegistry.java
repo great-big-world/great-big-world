@@ -49,6 +49,8 @@ public class BiomeRegistry {
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_RIVER), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.ALGAE_PATCH.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_JUNGLE).and(BiomeSelectors.excludeByKey(BiomeKeys.SPARSE_JUNGLE)), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.MAHOGANY.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WOODED_BADLANDS), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_PALO_VERDE.getKey().get());
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_STONE_PATCH.getKey().get());
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_DEEPSLATE_PATCH.getKey().get());
 
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_FOREST).or(BiomeSelectors.tag(BiomeTags.IS_JUNGLE).and(BiomeSelectors.excludeByKey(BiomeKeys.FLOWER_FOREST))), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 8, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST).or(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS)), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 12, 2, 5);
@@ -98,7 +100,7 @@ public class BiomeRegistry {
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, OrePlacedFeatures.ORE_MAGMA)
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.SPRING_CLOSED)
                 .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_FUNGI)
-                .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.INVERTED_TWISTED_FUNGI);
+                .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_NYLIUM_CEILING);
         DefaultBiomeFeatures.addNetherMineables(builder);
         return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(3413825).skyColor(getSkyColor(2.0F)).particleConfig(new BiomeParticleConfig(ParticleTypes.CRIMSON_SPORE, 0.025F)).loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP).moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D)).additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D)).music(MusicType.createIngameMusic(SoundEvents.MUSIC_NETHER_WARPED_FOREST)).build()).spawnSettings(spawnSettings).generationSettings(builder.build()).build();
     }
