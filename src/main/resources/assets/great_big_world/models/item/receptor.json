@@ -1,3 +1,6 @@
 {
-    "parent": "great_big_world:block/receptor"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "great_big_world:item/receptor"
+  }
 }

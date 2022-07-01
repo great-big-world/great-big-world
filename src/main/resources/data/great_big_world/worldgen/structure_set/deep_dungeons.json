@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "great_big_world:deep_dungeon",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1957293044,
+    "spacing": 24,
+    "separation": 18,
+    "exclusion_zone": {
+      "chunk_count": 5,
+      "other_set": "minecraft:ancient_cities"
+    }
+  }
+}

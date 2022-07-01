@@ -1,0 +1,15 @@
+{
+  "name": "great_big_world:deep_dungeon/blocks/big_block_0",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "great_big_world:deep_dungeon/blocks/big_block_0",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

@@ -20,6 +20,9 @@
     ],
     "client": [
       "com.github.creoii.greatbigworld.client.GreatBigWorldClient"
+    ],
+    "terrablender": [
+      "com.github.creoii.greatbigworld.main.GreatBigWorld"
     ]
   },
   "accessWidener": "great-big-world.accesswidener",

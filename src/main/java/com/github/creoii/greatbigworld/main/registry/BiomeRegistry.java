@@ -3,7 +3,7 @@ package com.github.creoii.greatbigworld.main.registry;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -21,28 +21,36 @@ import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.*;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.carver.ConfiguredCarvers;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.MiscPlacedFeatures;
 import net.minecraft.world.gen.feature.NetherPlacedFeatures;
 import net.minecraft.world.gen.feature.OrePlacedFeatures;
+import net.minecraft.world.gen.noise.NoiseParametersKeys;
+import net.minecraft.world.gen.surfacebuilder.MaterialRules;
+import terrablender.api.SurfaceRuleManager;
 
 public class BiomeRegistry {
     public static final RegistryKey<Biome> DIRT_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "dirt_caves"));
     public static final RegistryKey<Biome> TWISTED_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "twisted_forest"));
     public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
 
-    public static void register() {
-        Registry.register(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
-        Registry.register(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
-        Registry.register(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
+    public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.1f, .2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f), MultiNoiseUtil.ParameterRange.of(0f), MultiNoiseUtil.ParameterRange.of(0f), MultiNoiseUtil.ParameterRange.of(1f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube RED_ROCK_PEAKS_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.55f, 1f), MultiNoiseUtil.ParameterRange.of(-.1f, .1f), MultiNoiseUtil.ParameterRange.of(.25f, 1f), MultiNoiseUtil.ParameterRange.of(-.9f, -.33f), MultiNoiseUtil.ParameterRange.of(-.9f, .9f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
 
-        netherGeneration();
+    public static void register() {
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
+
         modifyBiomes();
     }
 
-    private static void netherGeneration() {
-        NetherBiomes.addNetherBiome(TWISTED_FOREST, MultiNoiseUtil.createNoiseHypercube(0f, 0f, 1f, 0f, 0f, 0f, .25f));
+    public static void registerSurfaces() {
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(RED_ROCK_PEAKS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(256), 0), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.1818d, .1818d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, .5454d, .909d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.water(-1, 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.RED_SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.RED_SAND.getDefaultState()))), MaterialRules.condition(MaterialRules.not(MaterialRules.hole()), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState())), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.STONE.getDefaultState())), MaterialRules.block(Blocks.GRAVEL.getDefaultState())))), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(63), 0), MaterialRules.condition(MaterialRules.not(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1)), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState()))), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState()))))));
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(TWISTED_FOREST), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState())));
     }
 
     private static void modifyBiomes() {

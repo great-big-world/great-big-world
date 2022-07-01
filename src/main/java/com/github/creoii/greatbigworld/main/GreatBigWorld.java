@@ -1,11 +1,17 @@
 package com.github.creoii.greatbigworld.main;
 
 import com.github.creoii.greatbigworld.main.registry.*;
+import com.github.creoii.greatbigworld.world.GreatBigNetherRegion;
+import com.github.creoii.greatbigworld.world.GreatBigOverworldRegion;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.gen.surfacebuilder.MaterialRules;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
+import terrablender.api.TerraBlenderApi;
 
-public class GreatBigWorld implements ModInitializer {
+public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
     private static final boolean DEV_ENV = true;
@@ -25,6 +31,14 @@ public class GreatBigWorld implements ModInitializer {
         StructurePieceRegistry.register();
         StructureRegistry.register();
         BiomeRegistry.register();
+    }
+
+    @Override
+    public void onTerraBlenderInitialized() {
+        Regions.register(new GreatBigOverworldRegion(1));
+        Regions.register(new GreatBigNetherRegion(4));
+
+        BiomeRegistry.registerSurfaces();
     }
 
     public static boolean isLoaded(String modid) {

@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.block;
 
 import com.github.creoii.greatbigworld.block.LayerConcretePowderBlock;
 import com.github.creoii.greatbigworld.entity.FallingConcretePowderEntity;

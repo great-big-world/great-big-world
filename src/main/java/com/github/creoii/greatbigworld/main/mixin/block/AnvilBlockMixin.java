@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.block;
 
 import com.github.creoii.greatbigworld.block.Crushable;
 import net.minecraft.block.AnvilBlock;

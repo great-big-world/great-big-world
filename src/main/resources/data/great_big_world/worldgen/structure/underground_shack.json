@@ -1,6 +1,6 @@
 {
   "type": "great_big_world:shack",
-  "biomes": "#c:is_underground",
+  "biomes": "#great_big_world:has_structure/underground_shack",
   "step": "underground_decoration",
   "terrain_adaptation": "beard_thin",
   "surface": false,
