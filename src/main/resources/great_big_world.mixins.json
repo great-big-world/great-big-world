@@ -4,13 +4,14 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "block.AnvilBlockMixin",
-    "block.ConcretePowderBlockMixin",
-    "block.FireBlockMixin",
     "GenerationShapeConfigMixin",
     "LevelPropertiesMixin",
     "MultiNoiseSamplerMixin",
-    "TreeConfiguredFeaturesMixin"
+    "TreeConfiguredFeaturesMixin",
+    "block.AnvilBlockMixin",
+    "block.ConcretePowderBlockMixin",
+    "block.FireBlockMixin",
+    "block.RedstoneWireBlockMixin"
   ],
   "client": [
   ],

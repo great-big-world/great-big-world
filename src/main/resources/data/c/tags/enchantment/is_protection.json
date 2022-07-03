@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:protection",
+    "minecraft:projectile_protection",
+    "minecraft:blast_protection",
+    "minecraft:fire_protection",
+    "minecraft:feather_falling",
+    "great_big_world:kinetic_protection"
+  ]
+}

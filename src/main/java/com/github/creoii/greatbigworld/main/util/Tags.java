@@ -16,6 +16,7 @@ public class Tags {
 
     public static class Items {
         public static final TagKey<Item> DAGGERS = TagKey.of(Registry.ITEM_KEY, new Identifier(COMMON_MOD_ID, "daggers"));
+        public static final TagKey<Item> BOOTS = TagKey.of(Registry.ITEM_KEY, new Identifier(COMMON_MOD_ID, "boots"));
     }
 
     public static class Entities {
