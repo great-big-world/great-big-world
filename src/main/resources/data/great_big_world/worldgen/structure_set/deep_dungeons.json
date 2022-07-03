@@ -10,6 +10,7 @@
     "salt": 1957293044,
     "spacing": 24,
     "separation": 18,
+    "spread_type": "triangular",
     "exclusion_zone": {
       "chunk_count": 5,
       "other_set": "minecraft:ancient_cities"

@@ -3,6 +3,15 @@
   "fallback": "minecraft:empty",
   "elements": [
     {
+      "weight": 3,
+      "element": {
+        "location": "great_big_world:deep_dungeon/hallways/staircase_0",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
       "weight": 4,
       "element": {
         "location": "great_big_world:deep_dungeon/hallways/hallway_0",
@@ -75,7 +84,7 @@
       }
     },
     {
-      "weight": 7,
+      "weight": 9,
       "element": {
         "location": "great_big_world:deep_dungeon/hallways/no_hallway",
         "processors": "minecraft:empty",
@@ -93,7 +102,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 4,
       "element": {
         "location": "great_big_world:deep_dungeon/rooms/circle_room_pit",
         "processors": "minecraft:empty",
@@ -102,7 +111,7 @@
       }
     },
     {
-      "weight": 5,
+      "weight": 6,
       "element": {
         "location": "great_big_world:deep_dungeon/rooms/room_crossroads",
         "processors": "minecraft:empty",
@@ -111,7 +120,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 4,
       "element": {
         "location": "great_big_world:deep_dungeon/rooms/room_middle_pit",
         "processors": "minecraft:empty",
@@ -129,7 +138,16 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 3,
+      "element": {
+        "location": "great_big_world:deep_dungeon/rooms/room_ladder",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 3,
       "element": {
         "location": "great_big_world:deep_dungeon/rooms/treasure/treasure_0",
         "processors": "minecraft:empty",
