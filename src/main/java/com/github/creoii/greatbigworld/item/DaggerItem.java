@@ -23,7 +23,7 @@ public class DaggerItem extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_TRIDENT_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-        user.getItemCooldownManager().set(this, 15);
+        user.getItemCooldownManager().set(this, 10);
         if (!world.isClient) {
             DaggerEntity daggerEntity = new DaggerEntity(world, user);
             daggerEntity.setItem(itemStack);

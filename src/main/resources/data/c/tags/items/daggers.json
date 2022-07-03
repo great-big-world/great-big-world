@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "great_big_world:wooden_dagger",
+    "great_big_world:stone_dagger",
+    "great_big_world:iron_dagger",
+    "great_big_world:gold_dagger",
+    "great_big_world:diamond_dagger",
+    "great_big_world:netherite_dagger"
+  ]
+}

@@ -51,8 +51,9 @@ public class PhantomGlassBlock extends Block {
         }
     }
 
+    @Override
     @SuppressWarnings("deprecation")
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, net.minecraft.util.math.random.Random random) {
         if (state.get(PHANTOM) && !world.isReceivingRedstonePower(pos)) {
             world.setBlockState(pos, state.cycle(PHANTOM), 2);
         }

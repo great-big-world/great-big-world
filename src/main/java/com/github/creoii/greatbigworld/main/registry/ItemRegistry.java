@@ -70,7 +70,12 @@ public class ItemRegistry {
     //endregion
 
     //region Cloak And Dagger
+    public static final Item WOODEN_DAGGER = new DaggerItem(ToolMaterials.WOOD, 3, -1f);
+    public static final Item STONE_DAGGER = new DaggerItem(ToolMaterials.STONE, 3, -1f);
+    public static final Item IRON_DAGGER = new DaggerItem(ToolMaterials.IRON, 3, -1f);
+    public static final Item GOLD_DAGGER = new DaggerItem(ToolMaterials.GOLD, 3, -1f);
     public static final Item DIAMOND_DAGGER = new DaggerItem(ToolMaterials.DIAMOND, 3, -1f);
+    public static final Item NETHERITE_DAGGER = new DaggerItem(ToolMaterials.NETHERITE, 3, -1f);
     //endregion
 
     //region Honeycomb
@@ -111,7 +116,12 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "copper_nugget"), COPPER_NUGGET);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "peat"), PEAT);
 
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "wooden_dagger"), WOODEN_DAGGER);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "stone_dagger"), STONE_DAGGER);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "iron_dagger"), IRON_DAGGER);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "gold_dagger"), GOLD_DAGGER);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "diamond_dagger"), DIAMOND_DAGGER);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "netherite_dagger"), NETHERITE_DAGGER);
 
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
