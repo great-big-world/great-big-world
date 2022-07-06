@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.block;
+package com.github.creoii.greatbigworld.block.base;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;

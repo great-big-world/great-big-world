@@ -1,5 +1,6 @@
-package com.github.creoii.greatbigworld.block;
+package com.github.creoii.greatbigworld.block.base;
 
+import com.github.creoii.greatbigworld.block.Crushable;
 import net.minecraft.block.Block;
 
 public class CrushableBlock extends Block implements Crushable {

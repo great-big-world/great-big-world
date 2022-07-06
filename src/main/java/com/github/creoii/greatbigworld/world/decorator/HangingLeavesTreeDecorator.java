@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.decorator;
 
-import com.github.creoii.greatbigworld.block.HangingLeavesBlock;
+import com.github.creoii.greatbigworld.block.base.HangingLeavesBlock;
 import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

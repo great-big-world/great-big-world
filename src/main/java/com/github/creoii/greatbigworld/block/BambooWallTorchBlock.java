@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.greatbigworld.block.base.LeavesBlock;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;

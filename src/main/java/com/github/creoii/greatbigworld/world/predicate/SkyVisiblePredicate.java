@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.util.predicate;
+package com.github.creoii.greatbigworld.world.predicate;
 
 import com.github.creoii.greatbigworld.main.registry.PredicateRegistry;
 import com.mojang.serialization.Codec;

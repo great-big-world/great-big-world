@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.block;
+package com.github.creoii.greatbigworld.block.base;
 
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import net.minecraft.block.sapling.SaplingGenerator;

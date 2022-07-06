@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.greatbigworld.block.base.LeavesBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BambooLeaves;
