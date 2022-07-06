@@ -50,7 +50,6 @@ public class ConfiguredFeatureRegistry {
 
     public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> TWISTED_FUNGUS;
     public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> INVERTED_TWISTED_FUNGUS;
-    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> TWISTED_NYLIUM_PATCH_CEILING;
 
     public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_STONE_PATCH;
     public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_DEEPSLATE_PATCH;
@@ -77,7 +76,6 @@ public class ConfiguredFeatureRegistry {
 
         TWISTED_FUNGUS = ConfiguredFeatures.register("twisted_fungus", FeatureRegistry.HUGE_TWISTED_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), false));
         INVERTED_TWISTED_FUNGUS = ConfiguredFeatures.register("inverted_twisted_fungus", FeatureRegistry.HUGE_TWISTED_FUNGUS, new HugeFungusFeatureConfig(BlockRegistry.TWISTED_NYLIUM.getDefaultState(), BlockRegistry.TWISTED_STEM.getDefaultState(), BlockRegistry.TWISTED_WART_BLOCK.getDefaultState(), BlockRegistry.TWISTED_SHROOMLIGHT.getDefaultState(), false));
-        TWISTED_NYLIUM_PATCH_CEILING = ConfiguredFeatures.register("twisted_nylium_patch_ceiling", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_NETHER, SimpleBlockStateProvider.of(BlockRegistry.TWISTED_NYLIUM.getDefaultState().with(DirectionalNyliumBlock.FACING, Direction.DOWN)), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.CEILING, UniformIntProvider.create(1, 2), 1.0F, 5, 0f, UniformIntProvider.create(4, 7), 0.3F));
 
         GRASSY_STONE_PATCH = ConfiguredFeatures.register("grassy_stone_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_STONE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));
         GRASSY_DEEPSLATE_PATCH = ConfiguredFeatures.register("grassy_deepslate_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_DEEPSLATE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));

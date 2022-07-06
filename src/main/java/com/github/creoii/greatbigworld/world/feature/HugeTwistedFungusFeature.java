@@ -52,7 +52,6 @@ public class HugeTwistedFungusFeature extends Feature<HugeFungusFeatureConfig> {
                 }
             }
 
-            boolean bl = !hugeFungusFeatureConfig.planted && random.nextFloat() < 0.06F;
             structureWorldAccess.setBlockState(blockPos, Blocks.AIR.getDefaultState(), 4);
             generateStem(structureWorldAccess, random, hugeFungusFeatureConfig, blockPos2);
             return true;
@@ -64,7 +63,10 @@ public class HugeTwistedFungusFeature extends Feature<HugeFungusFeatureConfig> {
     }
 
     private void generateStem(WorldAccess world, Random random, HugeFungusFeatureConfig config, BlockPos pos) {
-        int height = random.nextBetween(3, 4);
+        int height = random.nextBetween(3, 5);
+        if (random.nextInt(12) == 0) {
+            height *= 2;
+        }
 
         for (int i = 0; i <= height; ++i) {
             world.setBlockState(pos.up(i), config.stemState, 3);

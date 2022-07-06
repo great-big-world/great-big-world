@@ -1,8 +1,10 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.block.DirectionalNyliumBlock;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
@@ -14,6 +16,7 @@ import net.minecraft.sound.MusicSound;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.BiomeTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -37,7 +40,7 @@ public class BiomeRegistry {
     public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
 
     public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.1f, .2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
-    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f), MultiNoiseUtil.ParameterRange.of(0f), MultiNoiseUtil.ParameterRange.of(0f), MultiNoiseUtil.ParameterRange.of(1f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT = MultiNoiseUtil.createNoiseHypercube(0f, .75f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube RED_ROCK_PEAKS_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.55f, 1f), MultiNoiseUtil.ParameterRange.of(-.1f, .1f), MultiNoiseUtil.ParameterRange.of(.25f, 1f), MultiNoiseUtil.ParameterRange.of(-.9f, -.33f), MultiNoiseUtil.ParameterRange.of(-.9f, .9f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
 
     public static void register() {
@@ -45,12 +48,14 @@ public class BiomeRegistry {
         BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
 
+        NetherBiomes.addNetherBiome(TWISTED_FOREST, TWISTED_FOREST_POINT);
+
         modifyBiomes();
     }
 
     public static void registerSurfaces() {
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(RED_ROCK_PEAKS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(256), 0), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.1818d, .1818d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, .5454d, .909d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.water(-1, 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.RED_SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.RED_SAND.getDefaultState()))), MaterialRules.condition(MaterialRules.not(MaterialRules.hole()), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState())), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.STONE.getDefaultState())), MaterialRules.block(Blocks.GRAVEL.getDefaultState())))), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(63), 0), MaterialRules.condition(MaterialRules.not(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1)), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState()))), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState()))))));
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(TWISTED_FOREST), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState())));
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, GreatBigWorld.NAMESPACE, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHERRACK, .54, 1.7976931348623157)), MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(31), 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_WART, 1.17, 1.7976931348623157), MaterialRules.block(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState())), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState())))))), MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHERRACK, .54, 1.7976931348623157)), MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(31), 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_WART, 1.17, 1.7976931348623157), MaterialRules.block(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState())), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState().with(DirectionalNyliumBlock.FACING, Direction.DOWN)))))))));
     }
 
     private static void modifyBiomes() {
@@ -107,8 +112,7 @@ public class BiomeRegistry {
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.GLOWSTONE)
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, OrePlacedFeatures.ORE_MAGMA)
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.SPRING_CLOSED)
-                .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_FUNGI)
-                .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_NYLIUM_CEILING);
+                .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_FUNGI);
         DefaultBiomeFeatures.addNetherMineables(builder);
         return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(3413825).skyColor(getSkyColor(2.0F)).particleConfig(new BiomeParticleConfig(ParticleTypes.CRIMSON_SPORE, 0.025F)).loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP).moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D)).additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D)).music(MusicType.createIngameMusic(SoundEvents.MUSIC_NETHER_WARPED_FOREST)).build()).spawnSettings(spawnSettings).generationSettings(builder.build()).build();
     }

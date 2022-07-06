@@ -33,7 +33,6 @@ public class PlacedFeatureRegistry {
 
     public static RegistryEntry<PlacedFeature> TWISTED_FUNGI;
     public static RegistryEntry<PlacedFeature> INVERTED_TWISTED_FUNGI;
-    public static RegistryEntry<PlacedFeature> TWISTED_NYLIUM_CEILING;
 
     public static RegistryEntry<PlacedFeature> GRASSY_STONE_PATCH;
     public static RegistryEntry<PlacedFeature> GRASSY_DEEPSLATE_PATCH;
@@ -57,7 +56,6 @@ public class PlacedFeatureRegistry {
 
         TWISTED_FUNGI = PlacedFeatures.register("twisted_fungi", ConfiguredFeatureRegistry.TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of());
         INVERTED_TWISTED_FUNGI = PlacedFeatures.register("inverted_twisted_fungi", ConfiguredFeatureRegistry.INVERTED_TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(6), BiomePlacementModifier.of());
-        TWISTED_NYLIUM_CEILING = PlacedFeatures.register("twisted_nylium_ceiling", ConfiguredFeatureRegistry.TWISTED_NYLIUM_PATCH_CEILING, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-2)), BiomePlacementModifier.of());
 
         GRASSY_STONE_PATCH = PlacedFeatures.register("grassy_stone_patch", ConfiguredFeatureRegistry.GRASSY_STONE_PATCH, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.getTop()), BiomePlacementModifier.of());
         GRASSY_DEEPSLATE_PATCH = PlacedFeatures.register("grassy_deepslate_patch", ConfiguredFeatureRegistry.GRASSY_DEEPSLATE_PATCH, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(5)), BiomePlacementModifier.of());
