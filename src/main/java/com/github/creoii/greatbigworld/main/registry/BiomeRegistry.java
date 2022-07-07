@@ -40,7 +40,8 @@ public class BiomeRegistry {
     public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
 
     public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.1f, .2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
-    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT = MultiNoiseUtil.createNoiseHypercube(0f, .75f, 0f, 0f, 0f, 0f, .575f);
+    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_0 = MultiNoiseUtil.createNoiseHypercube(0f, .75f, 0f, 0f, 0f, 0f, .575f);
+    public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_1 = MultiNoiseUtil.createNoiseHypercube(.1f, -.5f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube RED_ROCK_PEAKS_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.55f, 1f), MultiNoiseUtil.ParameterRange.of(-.1f, .1f), MultiNoiseUtil.ParameterRange.of(.25f, 1f), MultiNoiseUtil.ParameterRange.of(-.9f, -.33f), MultiNoiseUtil.ParameterRange.of(-.9f, .9f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
 
     public static void register() {
@@ -48,7 +49,7 @@ public class BiomeRegistry {
         BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
 
-        NetherBiomes.addNetherBiome(TWISTED_FOREST, TWISTED_FOREST_POINT);
+        NetherBiomes.addNetherBiome(TWISTED_FOREST, TWISTED_FOREST_POINT_0);
 
         modifyBiomes();
     }
@@ -64,6 +65,8 @@ public class BiomeRegistry {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WOODED_BADLANDS), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_PALO_VERDE.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_STONE_PATCH.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_DEEPSLATE_PATCH.getKey().get());
+
+        //BiomeModificationsUtil.removeFeature(BiomeSelectors.includeByKey(BiomeKeys.FOREST), VegetationPlacedFeatures.TREES_BIRCH_AND_OAK);
 
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_FOREST).or(BiomeSelectors.tag(BiomeTags.IS_JUNGLE).and(BiomeSelectors.excludeByKey(BiomeKeys.FLOWER_FOREST))), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 8, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST).or(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS)), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 12, 2, 5);
@@ -114,7 +117,7 @@ public class BiomeRegistry {
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.SPRING_CLOSED)
                 .feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TWISTED_FUNGI);
         DefaultBiomeFeatures.addNetherMineables(builder);
-        return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2.0F).downfall(0.0F).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(3413825).skyColor(getSkyColor(2.0F)).particleConfig(new BiomeParticleConfig(ParticleTypes.CRIMSON_SPORE, 0.025F)).loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP).moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D)).additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D)).music(MusicType.createIngameMusic(SoundEvents.MUSIC_NETHER_WARPED_FOREST)).build()).spawnSettings(spawnSettings).generationSettings(builder.build()).build();
+        return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2f).downfall(0f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(2951965).skyColor(getSkyColor(2f)).particleConfig(new BiomeParticleConfig(ParticleTypes.CRIMSON_SPORE, .025f)).loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP).moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2d)).additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, .0111d)).music(MusicType.createIngameMusic(SoundEvents.MUSIC_NETHER_WARPED_FOREST)).build()).spawnSettings(spawnSettings).generationSettings(builder.build()).build();
     }
 
     public static Biome createRedRockPeaks() {

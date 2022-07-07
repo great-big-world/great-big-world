@@ -52,7 +52,7 @@
         "north": "tall"
       },
       "apply": {
-        "model": "great_big_world:block/purple_wall_nether_brick_side_tall",
+        "model": "great_big_world:block/purple_nether_brick_wall_side_tall",
         "uvlock": true
       }
     },
@@ -61,7 +61,7 @@
         "east": "tall"
       },
       "apply": {
-        "model": "great_big_world:block/purple_wall_nether_brick_side_tall",
+        "model": "great_big_world:block/purple_nether_brick_wall_side_tall",
         "y": 90,
         "uvlock": true
       }
@@ -71,7 +71,7 @@
         "south": "tall"
       },
       "apply": {
-        "model": "great_big_world:block/purple_wall_nether_brick_side_tall",
+        "model": "great_big_world:block/purple_nether_brick_wall_side_tall",
         "y": 180,
         "uvlock": true
       }
@@ -81,7 +81,7 @@
         "west": "tall"
       },
       "apply": {
-        "model": "great_big_world:block/purple_wall_nether_brick_side_tall",
+        "model": "great_big_world:block/purple_nether_brick_wall_side_tall",
         "y": 270,
         "uvlock": true
       }

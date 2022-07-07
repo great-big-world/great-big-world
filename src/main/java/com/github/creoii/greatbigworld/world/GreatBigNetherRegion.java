@@ -20,6 +20,6 @@ public class GreatBigNetherRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
-        addBiome(mapper, BiomeRegistry.TWISTED_FOREST_POINT, BiomeRegistry.TWISTED_FOREST);
+        addBiome(mapper, BiomeRegistry.TWISTED_FOREST_POINT_0, BiomeRegistry.TWISTED_FOREST);
     }
 }

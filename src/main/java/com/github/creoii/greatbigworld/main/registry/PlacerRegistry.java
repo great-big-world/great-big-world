@@ -7,7 +7,6 @@ import com.github.creoii.greatbigworld.world.placer.InvertedTwistingTrunkPlacer;
 import com.github.creoii.greatbigworld.world.placer.TwistingTrunkPlacer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
 

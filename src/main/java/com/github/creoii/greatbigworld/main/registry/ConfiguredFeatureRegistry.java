@@ -1,12 +1,8 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.block.DirectionalNyliumBlock;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
-import com.github.creoii.greatbigworld.world.placer.FungusHatFoliagePlacer;
-import com.github.creoii.greatbigworld.world.placer.InvertedFungusHatFoliagePlacer;
-import com.github.creoii.greatbigworld.world.placer.InvertedTwistingTrunkPlacer;
 import com.github.creoii.greatbigworld.world.placer.TwistingTrunkPlacer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,7 +10,6 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;

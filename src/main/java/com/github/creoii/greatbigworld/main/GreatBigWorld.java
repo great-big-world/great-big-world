@@ -12,7 +12,7 @@ import terrablender.api.TerraBlenderApi;
 public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
-    private static final boolean DEV_ENV = true;
+    private static final boolean IN_DEV = true;
 
     @Override
     public void onInitialize() {
@@ -20,6 +20,7 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
         BlockEntityRegistry.register();
         ItemRegistry.register();
         EntityRegistry.register();
+        EnchantmentRegistry.register();
 
         PredicateRegistry.register();
         FeatureRegistry.register();
@@ -31,8 +32,6 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
         StructurePieceRegistry.register();
         StructureRegistry.register();
         BiomeRegistry.register();
-
-        EnchantmentRegistry.register();
     }
 
     @Override
@@ -48,6 +47,6 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
     }
 
     public static boolean inDev() {
-        return DEV_ENV;
+        return IN_DEV;
     }
 }

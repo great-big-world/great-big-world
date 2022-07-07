@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.block.base.*;
 import com.github.creoii.greatbigworld.block.*;
 import com.github.creoii.greatbigworld.block.base.FenceBlock;
 import com.github.creoii.greatbigworld.block.base.FenceGateBlock;
@@ -14,6 +13,7 @@ import com.github.creoii.greatbigworld.block.base.StairsBlock;
 import com.github.creoii.greatbigworld.block.base.StoneButtonBlock;
 import com.github.creoii.greatbigworld.block.base.WallBlock;
 import com.github.creoii.greatbigworld.block.base.WoodenButtonBlock;
+import com.github.creoii.greatbigworld.block.base.*;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.world.placement.NearBlockPlacementModifier;
 import com.github.creoii.greatbigworld.world.placement.NoisePlacementModifier;
 import com.github.creoii.greatbigworld.world.predicate.SkyVisiblePredicate;
 import net.minecraft.util.Identifier;
@@ -13,8 +13,6 @@ import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
-import net.minecraft.world.gen.feature.VegetationConfiguredFeatures;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.placementmodifier.*;
 import org.jetbrains.annotations.Nullable;
@@ -60,7 +58,7 @@ public class PlacedFeatureRegistry {
         MAHOGANY = PlacedFeatures.register("mahogany", ConfiguredFeatureRegistry.MAHOGANY, PlacedFeatures.createCountExtraModifier(6, .1f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(BlockRegistry.MAHOGANY_SAPLING));
         TREES_PALO_VERDE = PlacedFeatures.register("trees_palo_verde", ConfiguredFeatureRegistry.TREES_PALO_VERDE, PlacedFeatures.createCountExtraModifier(3, .1f, 2), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), BiomePlacementModifier.of(), PlacedFeatures.wouldSurvive(BlockRegistry.PALO_VERDE_SAPLING));
 
-        TWISTED_FUNGI = PlacedFeatures.register("twisted_fungi", ConfiguredFeatureRegistry.TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of(), NoisePlacementModifier.of(NoiseParametersKeys.VEGETATION.getValue(), List.of(new NoisePlacementModifier.Range(-1, 0)), false));
+        TWISTED_FUNGI = PlacedFeatures.register("twisted_fungi", ConfiguredFeatureRegistry.TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(8), BiomePlacementModifier.of(), NoisePlacementModifier.of(NoiseParametersKeys.VEGETATION.getValue(), List.of(new NoisePlacementModifier.Range(-1d, 0d)), false));
         INVERTED_TWISTED_FUNGI = PlacedFeatures.register("inverted_twisted_fungi", ConfiguredFeatureRegistry.INVERTED_TWISTED_FUNGUS, CountMultilayerPlacementModifier.of(6), BiomePlacementModifier.of());
 
         GRASSY_STONE_PATCH = PlacedFeatures.register("grassy_stone_patch", ConfiguredFeatureRegistry.GRASSY_STONE_PATCH, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.getTop()), BiomePlacementModifier.of());

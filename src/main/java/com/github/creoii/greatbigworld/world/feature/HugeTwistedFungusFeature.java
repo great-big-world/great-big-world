@@ -2,7 +2,10 @@ package com.github.creoii.greatbigworld.world.feature;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;

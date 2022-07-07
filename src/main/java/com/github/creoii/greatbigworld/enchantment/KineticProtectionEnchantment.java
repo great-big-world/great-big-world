@@ -1,6 +1,8 @@
 package com.github.creoii.greatbigworld.enchantment;
 
-import net.minecraft.enchantment.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
 

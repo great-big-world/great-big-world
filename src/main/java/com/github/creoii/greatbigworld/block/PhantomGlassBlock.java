@@ -16,8 +16,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
-
 public class PhantomGlassBlock extends Block {
     public static final BooleanProperty PHANTOM = BooleanProperty.of("phantom");
 

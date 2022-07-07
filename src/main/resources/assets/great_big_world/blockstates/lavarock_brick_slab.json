@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/lavarock_brick_slab"
+    },
+    "type=double": {
+      "model": "great_big_world:block/lavarock_bricks"
+    },
+    "type=top": {
+      "model": "great_big_world:block/lavarock_brick_slab_top"
+    }
+  }
+}
