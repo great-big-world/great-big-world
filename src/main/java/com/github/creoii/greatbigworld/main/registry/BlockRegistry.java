@@ -57,7 +57,12 @@ public class BlockRegistry {
     public static final Block SMALL_TOPAZ_BUD = null;
 
     public static final Block QUICKSAND = new QuicksandBlock();
-    public static final Block ARIDSTONE = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.OAK_TAN));
+    public static final Block ARIDSTONE = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.OAK_TAN)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.DRIPSTONE_BLOCK);
+        }
+    };
     public static final Block ARIDSTONE_SLAB = new SlabBlock(FabricBlockSettings.copy(ARIDSTONE));
     public static final Block ARIDSTONE_STAIRS = new StairsBlock(ARIDSTONE.getDefaultState(), FabricBlockSettings.copy(ARIDSTONE));
     public static final Block ARIDSTONE_WALL = new WallBlock(FabricBlockSettings.copy(ARIDSTONE));
@@ -70,7 +75,12 @@ public class BlockRegistry {
 
     public static final Block MOLTEN_MAGMA = new MoltenMagmaBlock();
     public static final Block COOLED_MAGMA = new Block(FabricBlockSettings.copy(Blocks.STONE));
-    public static final Block LAVAROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_BLACK));
+    public static final Block LAVAROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_BLACK)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.DRIPSTONE_BLOCK);
+        }
+    };
     public static final Block LAVAROCK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), FabricBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK));
@@ -721,8 +731,8 @@ public class BlockRegistry {
     public static final Block BLUE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_STAIRS = new StairsBlock(BLUE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block BLUE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
-    //public static final Block BLUE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS), true);
-    //public static final Block BLUE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
+    public static final Block BLUE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS), true);
+    public static final Block BLUE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     //public static final Block CHISELED_BLUE_NETHER_BRICK = new Block(FabricBlockSettings.copy(BLUE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICKS = new Block(FabricBlockSettings.copy(Blocks.NETHER_BRICKS).mapColor(MapColor.TERRACOTTA_PURPLE)) {
         @Override
@@ -733,8 +743,8 @@ public class BlockRegistry {
     public static final Block PURPLE_NETHER_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_STAIRS = new StairsBlock(PURPLE_NETHER_BRICKS.getDefaultState(), FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     public static final Block PURPLE_NETHER_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
-    //public static final Block PURPLE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS), true);
-    //public static final Block PURPLE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
+    public static final Block PURPLE_NETHER_BRICK_FENCE = new FenceBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS), true);
+    public static final Block PURPLE_NETHER_BRICK_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
     //public static final Block CHISELED_PURPLE_NETHER_BRICK = new Block(FabricBlockSettings.copy(PURPLE_NETHER_BRICKS));
 
     public static final Block QUARTZ_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.QUARTZ_BRICKS));
@@ -1146,10 +1156,14 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_slab"), BLUE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_stairs"), BLUE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_wall"), BLUE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_fence"), BLUE_NETHER_BRICK_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "blue_nether_brick_fence_gate"), BLUE_NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(NAMESPACE, "purple_nether_bricks"), PURPLE_NETHER_BRICKS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_slab"), PURPLE_NETHER_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_stairs"), PURPLE_NETHER_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_wall"), PURPLE_NETHER_BRICK_WALL, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_fence"), PURPLE_NETHER_BRICK_FENCE, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "purple_nether_brick_fence_gate"), PURPLE_NETHER_BRICK_FENCE_GATE, ItemGroup.REDSTONE);
             registerBlock(new Identifier(NAMESPACE, "quartz_brick_slab"), QUARTZ_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "quartz_brick_stairs"), QUARTZ_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "quartz_brick_wall"), QUARTZ_BRICK_WALL, ItemGroup.DECORATIONS);
