@@ -35,8 +35,8 @@ import java.util.OptionalInt;
 
 @Mixin(TreeConfiguredFeatures.class)
 public abstract class TreeConfiguredFeaturesMixin {
-    @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MANGROVE;
     @Shadow @Final private static BeehiveTreeDecorator BEES_001;
+    @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MANGROVE;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> TALL_MANGROVE;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MEGA_JUNGLE_TREE;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> SPRUCE;

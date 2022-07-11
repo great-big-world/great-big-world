@@ -38,16 +38,19 @@ public class BiomeRegistry {
     public static final RegistryKey<Biome> DIRT_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "dirt_caves"));
     public static final RegistryKey<Biome> TWISTED_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "twisted_forest"));
     public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
+    public static final RegistryKey<Biome> MOLTEN_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "molten_caves"));
 
     public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.1f, .2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
     public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_0 = MultiNoiseUtil.createNoiseHypercube(0f, .75f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_1 = MultiNoiseUtil.createNoiseHypercube(.1f, -.5f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube RED_ROCK_PEAKS_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.55f, 1f), MultiNoiseUtil.ParameterRange.of(-.1f, .1f), MultiNoiseUtil.ParameterRange.of(.25f, 1f), MultiNoiseUtil.ParameterRange.of(-.9f, -.33f), MultiNoiseUtil.ParameterRange.of(-.9f, .9f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube MOLTEN_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.7f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, .7f), MultiNoiseUtil.ParameterRange.of(-.5f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.4f, .9f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
 
     public static void register() {
         BuiltinRegistries.add(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, MOLTEN_CAVES.getValue(), createMoltenCaves());
 
         NetherBiomes.addNetherBiome(TWISTED_FOREST, TWISTED_FOREST_POINT_0);
 
@@ -57,6 +60,7 @@ public class BiomeRegistry {
     public static void registerSurfaces() {
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(RED_ROCK_PEAKS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(256), 0), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.1818d, .1818d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, .5454d, .909d), MaterialRules.block(Blocks.TERRACOTTA.getDefaultState())), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.water(-1, 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.RED_SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.RED_SAND.getDefaultState()))), MaterialRules.condition(MaterialRules.not(MaterialRules.hole()), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState())), MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState())), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.STONE.getDefaultState())), MaterialRules.block(Blocks.GRAVEL.getDefaultState())))), MaterialRules.condition(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(63), -1), MaterialRules.sequence(MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(63), 0), MaterialRules.condition(MaterialRules.not(MaterialRules.aboveYWithStoneDepth(YOffset.fixed(74), 1)), MaterialRules.block(Blocks.ORANGE_TERRACOTTA.getDefaultState()))), MaterialRules.terracottaBands())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.condition(MaterialRules.waterWithStoneDepth(-6, -1), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState()))))));
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, GreatBigWorld.NAMESPACE, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHERRACK, .54, 1.7976931348623157)), MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(31), 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_WART, 1.17, 1.7976931348623157), MaterialRules.block(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState())), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState())))))), MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.sequence(MaterialRules.condition(MaterialRules.not(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHERRACK, .54, 1.7976931348623157)), MaterialRules.condition(MaterialRules.aboveY(YOffset.fixed(31), 0), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_WART, 1.17, 1.7976931348623157), MaterialRules.block(BlockRegistry.TWISTED_WART_BLOCK.getDefaultState())), MaterialRules.block(BlockRegistry.TWISTED_NYLIUM.getDefaultState().with(DirectionalNyliumBlock.FACING, Direction.DOWN)))))))));
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.biome(BiomeKeys.BASALT_DELTAS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING_WITH_SURFACE_DEPTH, MaterialRules.block(Blocks.SMOOTH_BASALT.getDefaultState())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -.012d), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_STATE_SELECTOR, 0d), MaterialRules.block(Blocks.SMOOTH_BASALT.getDefaultState()))), MaterialRules.block(BlockRegistry.LAVAROCK.getDefaultState()))))));
     }
 
     private static void modifyBiomes() {
@@ -65,8 +69,6 @@ public class BiomeRegistry {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.WOODED_BADLANDS), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_PALO_VERDE.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_STONE_PATCH.getKey().get());
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES), GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.GRASSY_DEEPSLATE_PATCH.getKey().get());
-
-        //BiomeModificationsUtil.removeFeature(BiomeSelectors.includeByKey(BiomeKeys.FOREST), VegetationPlacedFeatures.TREES_BIRCH_AND_OAK);
 
         BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.IS_FOREST).or(BiomeSelectors.tag(BiomeTags.IS_JUNGLE).and(BiomeSelectors.excludeByKey(BiomeKeys.FLOWER_FOREST))), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 8, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST).or(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS)), SpawnGroup.AMBIENT, EntityRegistry.BUTTERFLY, 12, 2, 5);
@@ -107,7 +109,7 @@ public class BiomeRegistry {
 
     public static Biome createTwistedForest() {
         SpawnSettings spawnSettings = new SpawnSettings.Builder().spawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIFIED_PIGLIN, 1, 2, 4)).spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.STRIDER, 60, 1, 2)).build();
-        net.minecraft.world.biome.GenerationSettings.Builder builder = new GenerationSettings.Builder().carver(GenerationStep.Carver.AIR, ConfiguredCarvers.NETHER_CAVE).feature(GenerationStep.Feature.VEGETAL_DECORATION, MiscPlacedFeatures.SPRING_LAVA);
+        GenerationSettings.Builder builder = new GenerationSettings.Builder().carver(GenerationStep.Carver.AIR, ConfiguredCarvers.NETHER_CAVE).feature(GenerationStep.Feature.VEGETAL_DECORATION, MiscPlacedFeatures.SPRING_LAVA);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
         builder.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.SPRING_OPEN)
                 .feature(GenerationStep.Feature.UNDERGROUND_DECORATION, NetherPlacedFeatures.PATCH_FIRE)
@@ -137,5 +139,28 @@ public class BiomeRegistry {
         DefaultBiomeFeatures.addDefaultMushrooms(generationSettings);
         DefaultBiomeFeatures.addBadlandsVegetation(generationSettings);
         return new Biome.Builder().precipitation(Biome.Precipitation.NONE).temperature(2f).downfall(0f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(2f)).foliageColor(10387789).grassColor(9470285).moodSound(BiomeMoodSound.CAVE).build()).generationSettings(generationSettings.build()).spawnSettings(spawnSettings.build()).build();
+    }
+
+    public static Biome createMoltenCaves() {
+        SpawnSettings.Builder builder = new SpawnSettings.Builder();
+        DefaultBiomeFeatures.addBatsAndMonsters(builder);
+        GenerationSettings.Builder builder2 = new GenerationSettings.Builder();
+        DefaultBiomeFeatures.addLandCarvers(builder2);
+        DefaultBiomeFeatures.addAmethystGeodes(builder2);
+        DefaultBiomeFeatures.addDungeons(builder2);
+        DefaultBiomeFeatures.addMineables(builder2);
+        DefaultBiomeFeatures.addDefaultOres(builder2);
+        DefaultBiomeFeatures.addDefaultDisks(builder2);
+        DefaultBiomeFeatures.addDefaultMushrooms(builder2);
+        builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedFeatureRegistry.ORE_DIAMOND_EXTRA);
+        builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedFeatureRegistry.ORE_DIAMOND_BURIED_EXTRA);
+        builder2.feature(GenerationStep.Feature.UNDERGROUND_ORES, PlacedFeatureRegistry.ORE_DIAMOND_LARGE_EXTRA);
+        //builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedFeatureRegistry.MOLTEN_CAVES_BASALT_COLUMNS);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.MOLTEN_CAVES_CEILING_VEGETATION);
+        builder2.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.MOLTEN_CAVES_VEGETATION);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedFeatureRegistry.LAVAROCK_SPIKE);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedFeatureRegistry.SPARSE_MAGMA_DELTA);
+        builder2.feature(GenerationStep.Feature.LOCAL_MODIFICATIONS, PlacedFeatureRegistry.SPARSE_LAVA_DELTA);
+        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).temperature(2f).downfall(0f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(getSkyColor(2f)).particleConfig(new BiomeParticleConfig(ParticleTypes.FLAME, .001f)).moodSound(BiomeMoodSound.CAVE).build()).generationSettings(builder2.build()).spawnSettings(builder.build()).build();
     }
 }

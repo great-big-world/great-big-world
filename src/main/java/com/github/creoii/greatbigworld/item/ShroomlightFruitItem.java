@@ -37,9 +37,8 @@ public class ShroomlightFruitItem extends Item {
                     createLight(world, ((BlockHitResult) hitResult).getBlockPos(), type);
                 }
             } else if (type == ShroomlightType.TWISTED) {
-                BlockPos place = GenerationUtil.randomInRange(world.getRandom(), player.getBlockPos(), 5, 3, 5);
-                System.out.println(place.toShortString());
-                createLight(world, place, type);
+                Iterable<BlockPos> place = BlockPos.iterateRandomly(world.getRandom(), 1, player.getBlockPos(), 5);
+                createLight(world, place.iterator().next(), type);
             }
         }
         return super.finishUsing(stack, world, user);

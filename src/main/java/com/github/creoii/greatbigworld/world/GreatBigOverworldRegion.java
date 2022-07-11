@@ -22,5 +22,6 @@ public class GreatBigOverworldRegion extends Region {
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
         addBiome(mapper, BiomeRegistry.DIRT_CAVES_POINT, BiomeRegistry.DIRT_CAVES);
         addBiome(mapper, BiomeRegistry.RED_ROCK_PEAKS_POINT, BiomeRegistry.RED_ROCK_PEAKS);
+        addBiome(mapper, BiomeRegistry.MOLTEN_CAVES_POINT, BiomeRegistry.MOLTEN_CAVES);
     }
 }

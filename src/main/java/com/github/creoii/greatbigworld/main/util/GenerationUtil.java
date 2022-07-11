@@ -27,12 +27,4 @@ public class GenerationUtil {
 
         return path;
     }
-
-    public static BlockPos randomInRange(Random random, BlockPos center, int xRadius, int yRadius, int zRadius) {
-        return new BlockPos(
-                random.nextBetween(center.getX() - xRadius, center.getX() + xRadius),
-                random.nextBetween(center.getY() - yRadius, center.getY() + yRadius),
-                random.nextBetween(center.getZ() - zRadius, center.getZ() + zRadius)
-        );
-    }
 }

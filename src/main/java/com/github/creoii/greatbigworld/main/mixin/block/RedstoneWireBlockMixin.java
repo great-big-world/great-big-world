@@ -7,6 +7,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWireBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
@@ -28,20 +30,14 @@ public class RedstoneWireBlockMixin extends Block {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         super.onEntityCollision(state, world, pos, entity);
 
-        if (state.get(POWER) >= 15) return;
-
-        ItemStack feet = null;
-        for (ItemStack stack : entity.getArmorItems()) {
-            if (stack.isIn(Tags.Items.BOOTS)) {
-                feet = stack;
-                break;
-            }
-        }
-        if (feet != null) {
-            int level = EnchantmentHelper.getLevel(EnchantmentRegistry.POWERED, feet) * 3;
-            if (level > 0) {
-                world.setBlockState(pos, state.with(POWER, Math.max(level, state.get(POWER) + level)), 3);
-                state.updateNeighbors(world, pos, 3);
+        if (entity instanceof LivingEntity living) {
+            ItemStack feet = living.getEquippedStack(EquipmentSlot.FEET);
+            if (feet != null) {
+                int level = EnchantmentHelper.getLevel(EnchantmentRegistry.POWERED, feet) * 3;
+                if (level > 0) {
+                    world.setBlockState(pos, state.with(POWER, Math.max(level, state.get(POWER) + level)), 3);
+                    state.updateNeighbors(world, pos, 3);
+                }
             }
         }
     }

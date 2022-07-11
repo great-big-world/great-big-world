@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
+import com.github.creoii.greatbigworld.world.feature.config.BlockSpikeFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.MultiRandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.feature.config.RandomSpreadFeatureConfig;
 import com.github.creoii.greatbigworld.world.placer.TwistingTrunkPlacer;
@@ -11,6 +12,7 @@ import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.VerticalSurfaceType;
+import net.minecraft.util.math.floatprovider.UniformFloatProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
@@ -49,6 +51,18 @@ public class ConfiguredFeatureRegistry {
     public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_STONE_PATCH;
     public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> GRASSY_DEEPSLATE_PATCH;
 
+    //public static RegistryEntry<ConfiguredFeature<BasaltColumnsFeatureConfig, ?>> SPARSE_SMALL_BASALT_COLUMNS;
+    //public static RegistryEntry<ConfiguredFeature<BasaltColumnsFeatureConfig, ?>> SPARSE_LARGE_BASALT_COLUMNS;
+    //public static RegistryEntry<ConfiguredFeature<RandomFeatureConfig, ?>> MOLTEN_CAVES_BASALT_COLUMNS;
+    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> MOLTEN_CAVES_VEGETATION;
+    public static RegistryEntry<ConfiguredFeature<VegetationPatchFeatureConfig, ?>> MOLTEN_CAVES_CEILING_VEGETATION;
+    public static RegistryEntry<ConfiguredFeature<BlockSpikeFeatureConfig, ?>> LAVAROCK_SPIKE;
+    public static RegistryEntry<ConfiguredFeature<DeltaFeatureConfig, ?>> SPARSE_MAGMA_DELTA;
+    public static RegistryEntry<ConfiguredFeature<DeltaFeatureConfig, ?>> SPARSE_LAVA_DELTA;
+    public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> ORE_DIAMOND_EXTRA;
+    public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> ORE_DIAMOND_BURIED_EXTRA;
+    public static RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> ORE_DIAMOND_LARGE_EXTRA;
+
     public static void register() {
         DIRT_VEGETATION = ConfiguredFeatures.register("dirt_vegetation", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DANDELION.getDefaultState(), 4).add(BlockRegistry.MARIGOLD.getDefaultState(), 4).add(Blocks.SUNFLOWER.getDefaultState(), 7).add(Blocks.MOSS_CARPET.getDefaultState(), 25).add(Blocks.GRASS.getDefaultState(), 50).add(Blocks.TALL_GRASS.getDefaultState(), 10))));
         DIRT_ROOTS = ConfiguredFeatures.register("dirt_roots", Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(SimpleBlockStateProvider.of(Blocks.HANGING_ROOTS)));
@@ -74,5 +88,17 @@ public class ConfiguredFeatureRegistry {
 
         GRASSY_STONE_PATCH = ConfiguredFeatures.register("grassy_stone_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_STONE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));
         GRASSY_DEEPSLATE_PATCH = ConfiguredFeatures.register("grassy_deepslate_patch", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.BASE_STONE_OVERWORLD, SimpleBlockStateProvider.of(BlockRegistry.GRASSY_DEEPSLATE), PlacedFeatures.createEntry(DIRT_ROOTS), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(1), 0f, 1, 0f, UniformIntProvider.create(4, 7), 0.75F));
+
+        //SPARSE_SMALL_BASALT_COLUMNS = ConfiguredFeatures.register("sparse_small_basalt_columns", Feature.BASALT_COLUMNS, new BasaltColumnsFeatureConfig(ConstantIntProvider.create(1), UniformIntProvider.create(2, 3)));
+        //SPARSE_LARGE_BASALT_COLUMNS = ConfiguredFeatures.register("sparse_large_basalt_columns", Feature.BASALT_COLUMNS, new BasaltColumnsFeatureConfig(UniformIntProvider.create(1, 2), UniformIntProvider.create(3, 5)));
+        //MOLTEN_CAVES_BASALT_COLUMNS = ConfiguredFeatures.register("molten_caves_basalt_columns", Feature.RANDOM_SELECTOR, new RandomFeatureConfig(List.of(new RandomFeatureEntry(PlacedFeatures.createEntry(ConfiguredFeatureRegistry.SPARSE_LARGE_BASALT_COLUMNS), .2f)), PlacedFeatures.createEntry(ConfiguredFeatureRegistry.SPARSE_SMALL_BASALT_COLUMNS)));
+        MOLTEN_CAVES_VEGETATION = ConfiguredFeatures.register("molten_caves_vegetation", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, SimpleBlockStateProvider.of(BlockRegistry.LAVAROCK), UndergroundPlacedFeatures.LUSH_CAVES_VEGETATION, VerticalSurfaceType.FLOOR, UniformIntProvider.create(2, 3), 0.0F, 5, 0.0F, UniformIntProvider.create(2, 5), 0.3F));
+        MOLTEN_CAVES_CEILING_VEGETATION = ConfiguredFeatures.register("molten_caves_ceiling_vegetation", Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(BlockTags.MOSS_REPLACEABLE, SimpleBlockStateProvider.of(BlockRegistry.LAVAROCK), UndergroundPlacedFeatures.LUSH_CAVES_VEGETATION, VerticalSurfaceType.FLOOR, UniformIntProvider.create(2, 3), 0.0F, 5, 0.0F, UniformIntProvider.create(2, 5), 0.3F));
+        LAVAROCK_SPIKE = ConfiguredFeatures.register("lavarock_spike", FeatureRegistry.BLOCK_SPIKE, new BlockSpikeFeatureConfig(SimpleBlockStateProvider.of(Blocks.SMOOTH_BASALT), 30, UniformIntProvider.create(5, 9), UniformFloatProvider.create(0.4F, 1.2F), 0.25F, UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.33F, 1.0F), UniformFloatProvider.create(0.0F, 0.25F), 7, 0.5F));
+        SPARSE_MAGMA_DELTA = ConfiguredFeatures.register("sparse_magma_delta", Feature.DELTA_FEATURE, new DeltaFeatureConfig(BlockRegistry.MOLTEN_MAGMA.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(3, 6), UniformIntProvider.create(0, 2)));
+        SPARSE_LAVA_DELTA = ConfiguredFeatures.register("sparse_lava_delta", Feature.DELTA_FEATURE, new DeltaFeatureConfig(Blocks.LAVA.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(4, 8), UniformIntProvider.create(1, 2)));
+        ORE_DIAMOND_EXTRA = ConfiguredFeatures.register("ore_diamond_extra", Feature.ORE, new OreFeatureConfig(OreConfiguredFeatures.DIAMOND_ORES, 6, 0.5F));
+        ORE_DIAMOND_BURIED_EXTRA = ConfiguredFeatures.register("ore_diamond_buried_extra", Feature.ORE, new OreFeatureConfig(OreConfiguredFeatures.DIAMOND_ORES, 10, 1.0F));
+        ORE_DIAMOND_LARGE_EXTRA = ConfiguredFeatures.register("ore_diamond_large_extra", Feature.ORE, new OreFeatureConfig(OreConfiguredFeatures.DIAMOND_ORES, 16, 0.7F));
     }
 }

@@ -1,18 +1,21 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.world.feature.config.BlockSpikeFeatureConfig;
 import com.github.creoii.greatbigworld.world.placement.NearBlockPlacementModifier;
 import com.github.creoii.greatbigworld.world.placement.NoisePlacementModifier;
 import com.github.creoii.greatbigworld.world.predicate.SkyVisiblePredicate;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.gen.CountConfig;
 import net.minecraft.world.gen.YOffset;
 import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.placementmodifier.*;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +44,16 @@ public class PlacedFeatureRegistry {
     public static RegistryEntry<PlacedFeature> GRASSY_STONE_PATCH;
     public static RegistryEntry<PlacedFeature> GRASSY_DEEPSLATE_PATCH;
 
+    //public static RegistryEntry<PlacedFeature> MOLTEN_CAVES_BASALT_COLUMNS;
+    public static RegistryEntry<PlacedFeature> MOLTEN_CAVES_VEGETATION;
+    public static RegistryEntry<PlacedFeature> MOLTEN_CAVES_CEILING_VEGETATION;
+    public static RegistryEntry<PlacedFeature> LAVAROCK_SPIKE;
+    public static RegistryEntry<PlacedFeature> SPARSE_MAGMA_DELTA;
+    public static RegistryEntry<PlacedFeature> SPARSE_LAVA_DELTA;
+    public static RegistryEntry<PlacedFeature> ORE_DIAMOND_EXTRA;
+    public static RegistryEntry<PlacedFeature> ORE_DIAMOND_BURIED_EXTRA;
+    public static RegistryEntry<PlacedFeature> ORE_DIAMOND_LARGE_EXTRA;
+
     @SuppressWarnings("deprecation")
     public static void register() {
         DIRT_CAVES_VEGETATION = PlacedFeatures.register("dirt_caves_vegetation", ConfiguredFeatureRegistry.DIRT_PATCH, CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of(), BlockFilterPlacementModifier.of(new SkyVisiblePredicate(BlockPos.ORIGIN, .4f)));
@@ -63,14 +76,20 @@ public class PlacedFeatureRegistry {
 
         GRASSY_STONE_PATCH = PlacedFeatures.register("grassy_stone_patch", ConfiguredFeatureRegistry.GRASSY_STONE_PATCH, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.getTop()), BiomePlacementModifier.of());
         GRASSY_DEEPSLATE_PATCH = PlacedFeatures.register("grassy_deepslate_patch", ConfiguredFeatureRegistry.GRASSY_DEEPSLATE_PATCH, CountPlacementModifier.of(100), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(5)), BiomePlacementModifier.of());
+
+        //MOLTEN_CAVES_BASALT_COLUMNS = PlacedFeatures.register("molten_caves_basalt_columns", ConfiguredFeatureRegistry.MOLTEN_CAVES_BASALT_COLUMNS, RarityFilterPlacementModifier.of(50));
+        MOLTEN_CAVES_VEGETATION = PlacedFeatures.register("molten_caves_vegetation", ConfiguredFeatureRegistry.MOLTEN_CAVES_VEGETATION, CountPlacementModifier.of(60), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), BiomePlacementModifier.of());
+        MOLTEN_CAVES_CEILING_VEGETATION = PlacedFeatures.register("molten_caves_ceiling_vegetation", ConfiguredFeatureRegistry.MOLTEN_CAVES_CEILING_VEGETATION, CountPlacementModifier.of(60), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), BiomePlacementModifier.of());
+        LAVAROCK_SPIKE = PlacedFeatures.register("lavarock_spike", ConfiguredFeatureRegistry.LAVAROCK_SPIKE, CountPlacementModifier.of(UniformIntProvider.create(16, 32)), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE);
+        SPARSE_MAGMA_DELTA = PlacedFeatures.register("sparse_magma_delta", ConfiguredFeatureRegistry.SPARSE_MAGMA_DELTA, CountMultilayerPlacementModifier.of(24), BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(8));
+        SPARSE_LAVA_DELTA = PlacedFeatures.register("sparse_lava_delta", ConfiguredFeatureRegistry.SPARSE_LAVA_DELTA, CountMultilayerPlacementModifier.of(20), BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(5));
+        ORE_DIAMOND_EXTRA = PlacedFeatures.register("ore_diamond_extra", ConfiguredFeatureRegistry.ORE_DIAMOND_EXTRA, modifiers(7, HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(-80), YOffset.aboveBottom(80)), 1));
+        ORE_DIAMOND_BURIED_EXTRA = PlacedFeatures.register("ore_diamond_buried_extra", ConfiguredFeatureRegistry.ORE_DIAMOND_BURIED_EXTRA, modifiers(4, HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(-80), YOffset.aboveBottom(80)), 8));
+        ORE_DIAMOND_LARGE_EXTRA = PlacedFeatures.register("ore_diamond_large_extra", ConfiguredFeatureRegistry.ORE_DIAMOND_LARGE_EXTRA, modifiers(9, HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(-80), YOffset.aboveBottom(80)), 1));
     }
 
     private static List<PlacementModifier> modifiers(int count, PlacementModifier heightModifier, int chance) {
         return List.of(CountPlacementModifier.of(count), SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(chance));
-    }
-
-    private static List<PlacementModifier> countExtraModifiers(int count, float extraChance, int extraCount, PlacementModifier heightModifier, int chance) {
-        return List.of(PlacedFeatures.createCountExtraModifier(count, extraChance, extraCount), SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of(), RarityFilterPlacementModifier.of(chance));
     }
 
     private static List<PlacementModifier> heightmapModifiers(int count, HeightmapPlacementModifier heightmapPlacement, @Nullable PlacementModifier heightModifier, int chance) {

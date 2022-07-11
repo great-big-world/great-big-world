@@ -41,12 +41,14 @@ public class ConcretePowderBlockMixin extends FallingBlock {
             ItemStack held = player.getStackInHand(hand);
             if (held.getItem() instanceof ShovelItem && hit.getSide() == Direction.UP) {
                 if (LayerConcretePowderBlock.POWDER_TO_LAYERED.containsKey(state.getBlock())) {
-                    if (!player.isCreative() && !world.isClient) held.damage(1, player, e -> e.sendToolBreakStatus(hand));
+                    if (!player.isCreative() && !world.isClient)
+                        held.damage(1, player, e -> e.sendToolBreakStatus(hand));
+
                     world.setBlockState(pos, LayerConcretePowderBlock.POWDER_TO_LAYERED.get(state.getBlock()).getDefaultState().with(LAYERS, 7).with(LayerConcretePowderBlock.WATERLOGGED, world.getFluidState(pos).isIn(FluidTags.WATER)), 3);
                     return ActionResult.success(world.isClient);
                 }
             }
         }
-
-        return ActionResult.PASS;    }
+        return ActionResult.PASS;
+    }
 }
