@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.item;
 
 import com.github.creoii.greatbigworld.main.util.Foods;
-import com.github.creoii.greatbigworld.main.util.GenerationUtil;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LightBlock;

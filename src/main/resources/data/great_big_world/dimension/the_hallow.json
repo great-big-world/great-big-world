@@ -1,0 +1,61 @@
+{
+  "type": "great_big_world:the_hallow",
+  "generator": {
+    "biome_source": {
+      "biomes": [
+        {
+          "biome": "great_big_world:accursed_plains",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": [0, 1],
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "great_big_world:ebony_woods",
+          "parameters": {
+            "temperature": 0,
+            "humidity": [0, 1],
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "great_big_world:petrified_dunes",
+          "parameters": {
+            "temperature": [0, 1],
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": 0,
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "great_big_world:hallowed_peaks",
+          "parameters": {
+            "temperature": 0,
+            "humidity": 0,
+            "continentalness": 0,
+            "erosion": [0, 1],
+            "weirdness": 0,
+            "depth": 0,
+            "offset": 0
+          }
+        }
+      ],
+      "type": "minecraft:multi_noise"
+    },
+    "seed": 0,
+    "settings": "great_big_world:the_hallow",
+    "type": "minecraft:noise"
+  }
+}

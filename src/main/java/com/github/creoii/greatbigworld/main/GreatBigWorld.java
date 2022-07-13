@@ -32,6 +32,7 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
         StructurePieceRegistry.register();
         StructureRegistry.register();
         BiomeRegistry.register();
+        DimensionRegistry.register();
     }
 
     @Override

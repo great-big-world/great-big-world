@@ -35,18 +35,26 @@ import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import terrablender.api.SurfaceRuleManager;
 
 public class BiomeRegistry {
+    public static final RegistryKey<Biome> ACCURSED_PLAINS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "accursed_plains"));
+    public static final RegistryKey<Biome> EBONY_WOODS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "ebony_woods"));
+    public static final RegistryKey<Biome> PETRIFIED_DUNES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "petrified_dunes"));
+    public static final RegistryKey<Biome> HALLOWED_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "hallowed_peaks"));
     public static final RegistryKey<Biome> DIRT_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "dirt_caves"));
     public static final RegistryKey<Biome> TWISTED_FOREST = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "twisted_forest"));
     public static final RegistryKey<Biome> RED_ROCK_PEAKS = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
     public static final RegistryKey<Biome> MOLTEN_CAVES = RegistryKey.of(Registry.BIOME_KEY, new Identifier(GreatBigWorld.NAMESPACE, "molten_caves"));
 
-    public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.1f, .2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube DIRT_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.5f, 1f), MultiNoiseUtil.ParameterRange.of(.2f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
     public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_0 = MultiNoiseUtil.createNoiseHypercube(0f, .75f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube TWISTED_FOREST_POINT_1 = MultiNoiseUtil.createNoiseHypercube(.1f, -.5f, 0f, 0f, 0f, 0f, .575f);
     public static final MultiNoiseUtil.NoiseHypercube RED_ROCK_PEAKS_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.55f, 1f), MultiNoiseUtil.ParameterRange.of(-.1f, .1f), MultiNoiseUtil.ParameterRange.of(.25f, 1f), MultiNoiseUtil.ParameterRange.of(-.9f, -.33f), MultiNoiseUtil.ParameterRange.of(-.9f, .9f), MultiNoiseUtil.ParameterRange.of(0f), 0f);
-    public static final MultiNoiseUtil.NoiseHypercube MOLTEN_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.7f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, .7f), MultiNoiseUtil.ParameterRange.of(-.5f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.4f, .9f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
+    public static final MultiNoiseUtil.NoiseHypercube MOLTEN_CAVES_POINT = MultiNoiseUtil.createNoiseHypercube(MultiNoiseUtil.ParameterRange.of(.7f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, .7f), MultiNoiseUtil.ParameterRange.of(-.5f, 1f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), MultiNoiseUtil.ParameterRange.of(.9f), MultiNoiseUtil.ParameterRange.of(-1f, 1f), 0f);
 
     public static void register() {
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, ACCURSED_PLAINS.getValue(), OverworldBiomeCreator.createPlains(false, false, false));
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, EBONY_WOODS.getValue(), OverworldBiomeCreator.createPlains(false, false, false));
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, PETRIFIED_DUNES.getValue(), OverworldBiomeCreator.createPlains(false, false, false));
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, HALLOWED_PEAKS.getValue(), OverworldBiomeCreator.createPlains(false, false, false));
         BuiltinRegistries.add(BuiltinRegistries.BIOME, DIRT_CAVES.getValue(), createDirtCaves());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, TWISTED_FOREST.getValue(), createTwistedForest());
         BuiltinRegistries.add(BuiltinRegistries.BIOME, RED_ROCK_PEAKS.getValue(), createRedRockPeaks());

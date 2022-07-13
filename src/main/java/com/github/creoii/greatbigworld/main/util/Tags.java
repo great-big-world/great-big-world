@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.util;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
@@ -12,6 +13,7 @@ public class Tags {
 
     public static class Blocks {
         public static final TagKey<Block> BUTTERFLY_SITTABLE = TagKey.of(Registry.BLOCK_KEY, new Identifier(COMMON_MOD_ID, "butterfly_sittable"));
+        public static final TagKey<Block> INFINIBURN_HALLOW = TagKey.of(Registry.BLOCK_KEY, new Identifier(GreatBigWorld.NAMESPACE, "infiniburn_hallow"));
     }
 
     public static class Items {

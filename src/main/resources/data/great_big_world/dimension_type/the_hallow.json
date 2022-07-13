@@ -1,0 +1,25 @@
+{
+  "logical_height": 256,
+  "infiniburn": "#great_big_world:infiniburn_hallow",
+  "effects": "great_big_world:the_hallow",
+  "ambient_light": 0.0,
+  "respawn_anchor_works": true,
+  "has_raids": false,
+  "min_y": -96,
+  "height": 352,
+  "monster_spawn_block_light_limit": 0,
+  "monster_spawn_light_level": {
+    "type": "minecraft:uniform",
+    "value": {
+      "max_inclusive": 7,
+      "min_inclusive": 0
+    }
+  },
+  "natural": true,
+  "coordinate_scale": 3.0,
+  "piglin_safe": false,
+  "bed_works": false,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "ultrawarm": false
+}

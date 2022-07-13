@@ -40,12 +40,12 @@ public class EntityRegistry {
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "falling_concrete"), FALLING_CONCRETE);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), BUTTERFLY);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "dagger"), DAGGER);
-        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "bear"), BEAR);
+        //Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "bear"), BEAR);
         registerAttributes();
     }
 
     private static void registerAttributes() {
-        FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
+        //FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
         FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createButterflyAttributes());
 
         SpawnRestriction.register(BUTTERFLY, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ButterflyEntity::canSpawn);
@@ -57,6 +57,6 @@ public class EntityRegistry {
         EntityRendererRegistry.register(FALLING_CONCRETE, FallingConcretePowderEntityRenderer::new);
         EntityRendererRegistry.register(BUTTERFLY, ButterflyEntityRenderer::new);
         EntityRendererRegistry.register(DAGGER, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.register(BEAR, BearEntityRenderer::new);
+        //EntityRendererRegistry.register(BEAR, BearEntityRenderer::new);
     }
 }

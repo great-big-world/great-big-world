@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.block;
 
 import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
-import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.RedstoneWireBlock;
