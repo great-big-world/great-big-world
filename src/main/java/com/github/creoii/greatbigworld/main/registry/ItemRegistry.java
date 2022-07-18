@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.item.DaggerItem;
+import com.github.creoii.greatbigworld.item.RelicItem;
 import com.github.creoii.greatbigworld.item.ShroomlightFruitItem;
 import com.github.creoii.greatbigworld.item.SpawnEggItem;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
@@ -79,7 +80,12 @@ public class ItemRegistry {
     //endregion
 
     //region Honeycomb
-    public static final Item BEAR_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BEAR, 0, 0, new FabricItemSettings().group(ItemGroup.MISC));
+    //public static final Item BEAR_SPAWN_EGG = new SpawnEggItem(EntityRegistry.BEAR, 0, 0, new FabricItemSettings().group(ItemGroup.MISC));
+    //endregion
+
+    //region High Seas
+    public static final Item CHEESE = new Item(new FabricItemSettings().food(Foods.CHEESE).group(ItemGroup.FOOD));
+    public static final Item MOLDY_CHEESE = new Item(new FabricItemSettings().food(Foods.MOLDY_CHEESE).group(ItemGroup.FOOD));
     //endregion
 
     //region Magic V Melee
@@ -88,10 +94,26 @@ public class ItemRegistry {
     public static final Item PUNGENT_BERRIES = new AliasedBlockItem(BlockRegistry.PUNGENT_BERRY_BUSH, new FabricItemSettings().food(Foods.BERRIES).group(ItemGroup.FOOD));
     //endregion
 
+    //region Pet And Cattle
+    public static final Item HEARTBEET = new Item(new FabricItemSettings().food(Foods.HEARTBEET).group(ItemGroup.FOOD));
+    //endregion
+
     //region Twisted Nether
     public static final Item CRIMSON_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.CRIMSON);
     public static final Item WARPED_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.WARPED);
     public static final Item TWISTED_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.TWISTED);
+    //endregion
+
+    //region Seecret
+    public static final Item PICKAXE_RELIC = new RelicItem(RelicItem.GearType.PICKAXE);
+    public static final Item AXE_RELIC = new RelicItem(RelicItem.GearType.AXE);
+    public static final Item SHOVEL_RELIC = new RelicItem(RelicItem.GearType.SHOVEL);
+    public static final Item HOE_RELIC = new RelicItem(RelicItem.GearType.HOE);
+    public static final Item SWORD_RELIC = new RelicItem(RelicItem.GearType.SWORD);
+    public static final Item HELMET_RELIC = new RelicItem(RelicItem.GearType.HELMET);
+    public static final Item CHESTPLATE_RELIC = new RelicItem(RelicItem.GearType.CHESTPLATE);
+    public static final Item LEGGINGS_RELIC = new RelicItem(RelicItem.GearType.LEGGINGS);
+    public static final Item BOOTS_RELIC = new RelicItem(RelicItem.GearType.BOOTS);
     //endregion
 
     public static void register() {
@@ -123,14 +145,29 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "diamond_dagger"), DIAMOND_DAGGER);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "netherite_dagger"), NETHERITE_DAGGER);
 
-        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "cheese"), CHEESE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "moldy_cheese"), MOLDY_CHEESE);
+
+        //Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bear_spawn_egg"), BEAR_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sour_berries"), SOUR_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "bitter_berries"), BITTER_BERRIES);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pungent_berries"), PUNGENT_BERRIES);
 
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "heartbeet"), HEARTBEET);
+
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_shroomlight_fruit"), CRIMSON_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_shroomlight_fruit"), WARPED_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "twisted_shroomlight_fruit"), TWISTED_SHROOMLIGHT_FRUIT);
+
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pickaxe_relic"), PICKAXE_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "axe_relic"), AXE_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "shovel_relic"), SHOVEL_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hoe_relic"), HOE_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "sword_relic"), SWORD_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "helmet_relic"), HELMET_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "chestplate_relic"), CHESTPLATE_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "leggings_relic"), LEGGINGS_RELIC);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "boots_relic"), BOOTS_RELIC);
     }
 
     @Environment(EnvType.CLIENT)

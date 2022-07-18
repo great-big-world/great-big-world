@@ -45,6 +45,7 @@ public class DirectionalNyliumBlock extends Block implements Fertilizable {
         return ChunkLightProvider.getRealisticOpacity(world, state, pos, blockState, blockPos, state.get(FACING), blockState.getOpacity(world, blockPos)) < world.getMaxLightLevel();
     }
 
+    @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!stayAlive(state, world, pos)) {
             world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());

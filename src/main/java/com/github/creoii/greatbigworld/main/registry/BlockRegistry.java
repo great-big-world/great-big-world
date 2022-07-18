@@ -590,7 +590,11 @@ public class BlockRegistry {
         }
     };
 
+    public static final Block MILK_CAULDRON = new MilkCauldronBlock();
+    public static final Block CHEESE_CAULDRON = new CheeseCauldronBlock(false);
+    public static final Block MOLDY_CHEESE_CAULDRON = new CheeseCauldronBlock(true);
     public static final Block CHEESE_WHEEL = new CakelikeBlock(Foods.CHEESE, FabricBlockSettings.copy(Blocks.CAKE));
+    public static final Block MOLDY_CHEESE_WHEEL = new CakelikeBlock(Foods.MOLDY_CHEESE, FabricBlockSettings.copy(Blocks.CAKE));
     public static final Block RED_KELP = null;
     public static final Block JELLYFISH_BLOCK = null;
     public static final Block PHANTOM_GLASS = new PhantomGlassBlock();
@@ -859,6 +863,19 @@ public class BlockRegistry {
     //public static final Block ASPEN_BRANCH = new BranchBlock(STRIPPED_ASPEN_BRANCH, FabricBlockSettings.copy(ASPEN_LOG));
     //endregion
 
+    //region Seecret
+    public static final Block GIANT_POTATO = new Block(FabricBlockSettings.copy(Blocks.MELON));
+    public static final Block GIANT_POISONOUS_POTATO = new Block(FabricBlockSettings.copy(GIANT_POTATO));
+    public static final Block GIANT_CARROT = new PillarBlock(FabricBlockSettings.copy(Blocks.MELON));
+    public static final Block GIANT_BEETROOT = new Block(FabricBlockSettings.copy(Blocks.MELON));
+    public static final Block GIANT_HEARTBEET = new Block(FabricBlockSettings.copy(GIANT_BEETROOT));
+
+    //public static final Block WILD_WHEAT = new CropBlock(FabricBlockSettings.copy(Blocks.WHEAT));
+    //public static final Block WILD_POTATOES = new CropBlock(FabricBlockSettings.copy(Blocks.POTATOES));
+    //public static final Block WILD_CARROTS = new CropBlock(FabricBlockSettings.copy(Blocks.CARROTS));
+    //public static final Block WILD_BEETROOTS = new CropBlock(FabricBlockSettings.copy(Blocks.BEETROOTS));
+    //endregion
+
     public static void register() {
         if (GreatBigWorld.isLoaded("cavier_caves") || GreatBigWorld.inDev()) {
             registerBlock(new Identifier(NAMESPACE, "malachite_block"), MALACHITE_BLOCK, ItemGroup.BUILDING_BLOCKS);
@@ -1071,7 +1088,11 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_stairs"), ELDER_PRISMARINE_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(NAMESPACE, "cheese_wheel"), CHEESE_WHEEL, null);
+            registerBlock(new Identifier(NAMESPACE, "milk_cauldron"), MILK_CAULDRON, null);
+            registerBlock(new Identifier(NAMESPACE, "cheese_cauldron"), CHEESE_CAULDRON, null);
+            registerBlock(new Identifier(NAMESPACE, "moldy_cheese_cauldron"), MOLDY_CHEESE_CAULDRON, null);
+            registerBlock(new Identifier(NAMESPACE, "cheese_wheel"), CHEESE_WHEEL, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "moldy_cheese_wheel"), MOLDY_CHEESE_WHEEL, ItemGroup.FOOD);
             registerBlock(new Identifier(NAMESPACE, "phantom_glass"), PHANTOM_GLASS, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "algae"), ALGAE, ItemGroup.DECORATIONS);
@@ -1201,6 +1222,11 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mangrove_log"), STRIPPED_HOLLOW_MANGROVE_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_mahogany_log"), STRIPPED_HOLLOW_MAHOGANY_LOG, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "stripped_hollow_palo_verde_log"), STRIPPED_HOLLOW_PALO_VERDE_LOG, ItemGroup.DECORATIONS);
+            registerBlock(new Identifier(NAMESPACE, "giant_potato"), GIANT_POTATO, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "giant_poisonous_potato"), GIANT_POISONOUS_POTATO, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "giant_carrot"), GIANT_CARROT, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "giant_beetroot"), GIANT_BEETROOT, ItemGroup.FOOD);
+            registerBlock(new Identifier(NAMESPACE, "giant_heartbeet"), GIANT_HEARTBEET, ItemGroup.FOOD);
         }
 
         flammables();

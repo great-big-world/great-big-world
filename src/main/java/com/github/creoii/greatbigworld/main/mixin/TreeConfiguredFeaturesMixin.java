@@ -34,6 +34,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 @Mixin(TreeConfiguredFeatures.class)
+@SuppressWarnings("deprecation")
 public abstract class TreeConfiguredFeaturesMixin {
     @Shadow @Final private static BeehiveTreeDecorator BEES_001;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MANGROVE;
@@ -52,9 +53,7 @@ public abstract class TreeConfiguredFeaturesMixin {
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> WARPED_FUNGUS;
     @Mutable @Shadow @Final public static RegistryEntry<ConfiguredFeature<HugeFungusFeatureConfig, ?>> WARPED_FUNGUS_PLANTED;
 
-    @Shadow private static TreeFeatureConfig.Builder builder(Block log, Block leaves, int baseHeight, int firstRandomHeight, int secondRandomHeight, int radius) {
-        return null;
-    }
+    @Shadow private static TreeFeatureConfig.Builder builder(Block log, Block leaves, int baseHeight, int firstRandomHeight, int secondRandomHeight, int radius) { return null; }
     @Shadow private static TreeFeatureConfig.Builder oak() {
         return null;
     }

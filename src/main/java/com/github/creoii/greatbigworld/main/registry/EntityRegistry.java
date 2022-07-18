@@ -1,9 +1,7 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.client.render.BearEntityRenderer;
 import com.github.creoii.greatbigworld.client.render.ButterflyEntityRenderer;
 import com.github.creoii.greatbigworld.client.render.FallingConcretePowderEntityRenderer;
-import com.github.creoii.greatbigworld.entity.BearEntity;
 import com.github.creoii.greatbigworld.entity.ButterflyEntity;
 import com.github.creoii.greatbigworld.entity.DaggerEntity;
 import com.github.creoii.greatbigworld.entity.FallingConcretePowderEntity;
@@ -33,7 +31,7 @@ public class EntityRegistry {
     //endregion
 
     //region Wonders of the Wild
-    public static final EntityType<BearEntity> BEAR = FabricEntityTypeBuilder.<BearEntity>create(SpawnGroup.CREATURE, BearEntity::new).dimensions(new EntityDimensions(1.4f, 1.4f, true)).trackRangeChunks(10).build();
+    //public static final EntityType<BearEntity> BEAR = FabricEntityTypeBuilder.<BearEntity>create(SpawnGroup.CREATURE, BearEntity::new).dimensions(new EntityDimensions(1.4f, 1.4f, true)).trackRangeChunks(10).build();
     //endregion
 
     public static void register() {

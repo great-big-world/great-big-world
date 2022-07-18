@@ -178,7 +178,11 @@
   "block.great_big_world.elder_prismarine_brick_stairs": "Elder Prismarine Brick Stairs",
   "block.great_big_world.elder_prismarine_brick_wall": "Elder Prismarine Brick Wall",
   "block.great_big_world.elder_sea_lantern": "Elder Sea Lantern",
+  "block.great_big_world.milk_cauldron": "Milk Cauldron",
+  "block.great_big_world.cheese_cauldron": "Cheese Cauldron",
+  "block.great_big_world.moldy_cheese_cauldron": "Moldy Cheese Cauldron",
   "block.great_big_world.cheese_wheel": "Cheese Wheel",
+  "block.great_big_world.moldy_cheese_wheel": "Moldy Cheese Wheel",
   "block.great_big_world.phantom_glass": "Phantom Glass",
   "block.great_big_world.nautilus_fossil": "Nautilus Fossil",
   "block.great_big_world.algae": "Algae",
@@ -290,6 +294,11 @@
   "block.great_big_world.stripped_hollow_mangrove_log": "Stripped Hollow Mangrove Log",
   "block.great_big_world.stripped_hollow_palo_verde_log": "Stripped Hollow Palo Verde Log",
   "block.great_big_world.stripped_hollow_mahogany_log": "Stripped Hollow Mahogany Log",
+  "block.great_big_world.giant_potato": "Giant Potato",
+  "block.great_big_world.giant_poisonous_potato": "Giant Poisonous Potato",
+  "block.great_big_world.giant_carrot": "Giant Carrot",
+  "block.great_big_world.giant_beetroot": "Giant Beetroot",
+  "block.great_big_world.giant_heartbeet": "Giant Heartbeet",
 
   "item.great_big_world.quicksand_bucket": "Quicksand Bucket",
   "item.great_big_world.malachite": "Malachite",
@@ -304,9 +313,24 @@
   "item.great_big_world.netherite_dagger": "Netherite Dagger",
   "item.great_big_world.bear_spawn_egg": "Bear Spawn Egg",
   "item.great_big_world.butterfly_spawn_egg": "Butterfly Spawn Egg",
+  "item.great_big_world.cheese": "Cheese",
+  "item.great_big_world.moldy_cheese": "Moldy Cheese",
+  "item.great_big_world.sour_berries": "Sour Berries",
+  "item.great_big_world.bitter_berries": "Bitter Berries",
+  "item.great_big_world.pungent_berries": "Pungent Berries",
+  "item.great_big_world.heartbeet": "Heartbeet",
   "item.great_big_world.crimson_shroomlight_fruit": "Crimson Shroomlight Fruit",
   "item.great_big_world.warped_shroomlight_fruit": "Warped Shroomlight Fruit",
   "item.great_big_world.twisted_shroomlight_fruit": "Twisted Shroomlight Fruit",
+  "item.great_big_world.pickaxe_relic": "Pickaxe Relic",
+  "item.great_big_world.axe_relic": "Axe Relic",
+  "item.great_big_world.shovel_relic": "Shovel Relic",
+  "item.great_big_world.hoe_relic": "Hoe Relic",
+  "item.great_big_world.sword_relic": "Sword Relic",
+  "item.great_big_world.helmet_relic": "Helmet Relic",
+  "item.great_big_world.chestplate_relic": "Chestplate Relic",
+  "item.great_big_world.leggings_relic": "Leggings Relic",
+  "item.great_big_world.boots_relic": "Boots Relic",
 
   "entity.great_big_world.falling_concrete": "Falling Concrete",
   "entity.great_big_world.bear": "Bear",
@@ -318,5 +342,8 @@
   "biome.great_big_world.molten_caves": "Molten Peaks",
 
   "enchantment.great_big_world.powered": "Powered",
-  "enchantment.great_big_world.kinetic_protection": "Kinetic Protection"
+  "enchantment.great_big_world.kinetic_protection": "Kinetic Protection",
+  "enchantment.great_big_world.absolution_curse": "Curse of Absolution",
+
+  "status_effect.great_big_world.sickened": "Sickened"
 }
