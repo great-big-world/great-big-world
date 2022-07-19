@@ -65,7 +65,7 @@ public class HyenaEntity extends AnimalEntity implements Angerable {
     }
 
     public static DefaultAttributeContainer.Builder createHyenaAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 18d).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 24d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .4d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6d);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 14d).add(EntityAttributes.GENERIC_FOLLOW_RANGE, 24d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .4d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6d);
     }
 
     @Override

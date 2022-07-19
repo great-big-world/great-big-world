@@ -157,7 +157,7 @@
   "block.great_big_world.bamboo_thatch": "Bamboo Thatch",
   "block.great_big_world.bamboo_thatch_slab": "Bamboo Thatch Slab",
   "block.great_big_world.bamboo_thatch_stairs": "Bamboo Thatch Stairs",
-  "block.great_big_world.red_rock": "Red Rock",
+  "block.great_big_world.terracotta_bricks": "Terracotta Bricks",
   "block.great_big_world.ice_bricks": "Ice Bricks",
   "block.great_big_world.ice_brick_slab": "Ice Brick Slab",
   "block.great_big_world.ice_brick_stairs": "Ice Brick Stairs",
@@ -299,6 +299,7 @@
   "block.great_big_world.giant_carrot": "Giant Carrot",
   "block.great_big_world.giant_beetroot": "Giant Beetroot",
   "block.great_big_world.giant_heartbeet": "Giant Heartbeet",
+  "block.great_big_world.red_rock": "Red Rock",
 
   "item.great_big_world.quicksand_bucket": "Quicksand Bucket",
   "item.great_big_world.malachite": "Malachite",

@@ -482,7 +482,7 @@ public class BlockRegistry {
     public static final Block BAMBOO_THATCH_SLAB = new DirectionalSlabBlock(FabricBlockSettings.copy(BAMBOO_THATCH));
     public static final Block BAMBOO_THATCH_STAIRS = new StairsBlock(BAMBOO_THATCH.getDefaultState(), FabricBlockSettings.copy(BAMBOO_THATCH));
 
-    public static final Block RED_ROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copy(Blocks.TERRACOTTA));
     //endregion
 
     //region Fire And Ice
@@ -874,6 +874,8 @@ public class BlockRegistry {
     //public static final Block WILD_POTATOES = new CropBlock(FabricBlockSettings.copy(Blocks.POTATOES));
     //public static final Block WILD_CARROTS = new CropBlock(FabricBlockSettings.copy(Blocks.CARROTS));
     //public static final Block WILD_BEETROOTS = new CropBlock(FabricBlockSettings.copy(Blocks.BEETROOTS));
+
+    public static final Block RED_ROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
 
     public static void register() {
@@ -1061,7 +1063,7 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
-            registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "terracotta_bricks"), TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
         }
 
         if (GreatBigWorld.isLoaded("fire_and_ice") || GreatBigWorld.inDev()) {
@@ -1228,6 +1230,8 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "giant_beetroot"), GIANT_BEETROOT, ItemGroup.FOOD);
             registerBlock(new Identifier(NAMESPACE, "giant_heartbeet"), GIANT_HEARTBEET, ItemGroup.FOOD);
         }
+
+        registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, ItemGroup.BUILDING_BLOCKS);
 
         flammables();
         strippables();
