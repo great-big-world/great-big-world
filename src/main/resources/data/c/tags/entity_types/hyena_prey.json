@@ -3,6 +3,7 @@
   "values": [
     "minecraft:cow",
     "minecraft:pig",
-    "minecraft:sheep"
+    "minecraft:sheep",
+    "great_big_world:zebra"
   ]
 }

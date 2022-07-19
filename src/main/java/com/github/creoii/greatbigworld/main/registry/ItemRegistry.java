@@ -38,6 +38,7 @@ public class ItemRegistry {
 
     //region Change The World
     public static final Item HYENA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.HYENA, 1, 1, new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item ZEBRA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.ZEBRA, 1, 1, new FabricItemSettings().group(ItemGroup.MISC));
 
     public static final Item GRASSY_STONE = new BlockItem(BlockRegistry.GRASSY_STONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item GRASSY_DEEPSLATE = new BlockItem(BlockRegistry.GRASSY_DEEPSLATE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
@@ -124,6 +125,7 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "topaz"), TOPAZ);
 
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hyena_spawn_egg"), HYENA_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "zebra_spawn_egg"), ZEBRA_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);

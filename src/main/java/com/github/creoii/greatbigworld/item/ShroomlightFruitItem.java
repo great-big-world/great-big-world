@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 
 public class ShroomlightFruitItem extends Item {
     private final ShroomlightType type;
+    private BlockPos prevLightPos = null;
 
     public ShroomlightFruitItem(ShroomlightType type) {
         super(new FabricItemSettings().group(ItemGroup.FOOD).food(Foods.SHROOMLIGHT_FRUIT));
@@ -27,27 +28,33 @@ public class ShroomlightFruitItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof PlayerEntity player) {
+            BlockPos place = null;
             if (type == ShroomlightType.CRIMSON) {
-                createLight(world, player.getBlockPos(), type);
+                place = player.getBlockPos();
             } else if (type == ShroomlightType.WARPED) {
                 HitResult hitResult = player.raycast(player.isCreative() ? 5d : 4.5d, 0f, true);
                 if (hitResult.getType() == HitResult.Type.BLOCK) {
-                    System.out.println(((BlockHitResult) hitResult).getBlockPos().toShortString());
-                    createLight(world, ((BlockHitResult) hitResult).getBlockPos(), type);
+                    place = new BlockPos(hitResult.getPos());
                 }
             } else if (type == ShroomlightType.TWISTED) {
-                Iterable<BlockPos> place = BlockPos.iterateRandomly(world.getRandom(), 1, player.getBlockPos(), 5);
-                createLight(world, place.iterator().next(), type);
+                place = BlockPos.iterateRandomly(world.getRandom(), 1, player.getBlockPos(), 5).iterator().next();
             }
+
+            if (createLight(world, place, type) && prevLightPos != null && world.getBlockState(prevLightPos).isOf(Blocks.LIGHT)) {
+                world.setBlockState(prevLightPos, Blocks.AIR.getDefaultState(), 3);
+            }
+
+            prevLightPos = place;
         }
         return super.finishUsing(stack, world, user);
     }
 
-    private static void createLight(World world, BlockPos pos, ShroomlightType type) {
+    private static boolean createLight(World world, BlockPos pos, ShroomlightType type) {
         FluidState fluidState = world.getFluidState(pos);
         if (world.getBlockState(pos).isAir() || fluidState.isOf(Fluids.WATER)) {
-            world.setBlockState(pos, Blocks.LIGHT.getDefaultState().with(LightBlock.LEVEL_15, type.getLight()).with(LightBlock.WATERLOGGED, fluidState.isOf(Fluids.WATER)), 3);
+            return world.setBlockState(pos, Blocks.LIGHT.getDefaultState().with(LightBlock.LEVEL_15, type.getLight()).with(LightBlock.WATERLOGGED, fluidState.isOf(Fluids.WATER)), 3);
         }
+        return false;
     }
 
     public enum ShroomlightType {
