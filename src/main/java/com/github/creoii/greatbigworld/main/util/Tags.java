@@ -24,5 +24,6 @@ public class Tags {
     public static class Entities {
         public static final TagKey<EntityType<?>> MOLTEN_MAGMA_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(COMMON_MOD_ID, "molten_magma_walkable"));
         public static final TagKey<EntityType<?>> QUICKSAND_WALKABLE = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(COMMON_MOD_ID, "quicksand_walkable"));
+        public static final TagKey<EntityType<?>> HYENA_PREY = TagKey.of(Registry.ENTITY_TYPE_KEY, new Identifier(COMMON_MOD_ID, "hyena_prey"));
     }
 }

@@ -304,6 +304,7 @@
   "item.great_big_world.malachite": "Malachite",
   "item.great_big_world.topaz": "Topaz",
   "item.great_big_world.copper_nugget": "Copper Nugget",
+  "item.great_big_world.hyena_spawn_egg": "Hyena Spawn Egg",
   "item.great_big_world.peat": "Peat",
   "item.great_big_world.wooden_dagger": "Wooden Dagger",
   "item.great_big_world.stone_dagger": "Stone Dagger",
@@ -332,6 +333,7 @@
   "item.great_big_world.leggings_relic": "Leggings Relic",
   "item.great_big_world.boots_relic": "Boots Relic",
 
+  "entity.great_big_world.hyena": "Hyena",
   "entity.great_big_world.falling_concrete": "Falling Concrete",
   "entity.great_big_world.bear": "Bear",
   "entity.great_big_world.butterfly": "Butterfly",
