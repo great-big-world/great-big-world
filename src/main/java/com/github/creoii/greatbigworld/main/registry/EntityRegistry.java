@@ -1,9 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.client.render.ButterflyEntityRenderer;
-import com.github.creoii.greatbigworld.client.render.FallingConcretePowderEntityRenderer;
-import com.github.creoii.greatbigworld.client.render.HyenaEntityRenderer;
-import com.github.creoii.greatbigworld.client.render.ZebraEntityRenderer;
+import com.github.creoii.greatbigworld.client.render.*;
 import com.github.creoii.greatbigworld.entity.*;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
@@ -16,6 +13,7 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
@@ -36,6 +34,10 @@ public class EntityRegistry {
     public static final EntityType<DaggerEntity> DAGGER = FabricEntityTypeBuilder.<DaggerEntity>create(SpawnGroup.MISC, DaggerEntity::new).dimensions(new EntityDimensions(.25f, .25f, true)).trackRangeChunks(4).trackedUpdateRate(10).build();
     //endregion
 
+    //region Venture n' Voyage
+    public static final EntityType<WrappedEntity> WRAPPED = FabricEntityTypeBuilder.<WrappedEntity>create(SpawnGroup.MONSTER, WrappedEntity::new).dimensions(new EntityDimensions(.65f, 1f, true)).trackRangeChunks(10).build();
+    //endregion
+
     //region Wonders of the Wild
     //public static final EntityType<BearEntity> BEAR = FabricEntityTypeBuilder.<BearEntity>create(SpawnGroup.CREATURE, BearEntity::new).dimensions(new EntityDimensions(1.4f, 1.4f, true)).trackRangeChunks(10).build();
     //endregion
@@ -47,6 +49,7 @@ public class EntityRegistry {
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "falling_concrete"), FALLING_CONCRETE);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), BUTTERFLY);
         Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "dagger"), DAGGER);
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "wrapped"), WRAPPED);
         //Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "bear"), BEAR);
         registerAttributes();
     }
@@ -55,12 +58,14 @@ public class EntityRegistry {
         FabricDefaultAttributeRegistry.register(HYENA, HyenaEntity.createHyenaAttributes());
         FabricDefaultAttributeRegistry.register(ZEBRA, ZebraEntity.createZebraAttributes());
         FabricDefaultAttributeRegistry.register(DEER, DeerEntity.createDeerAttributes());
-        //FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
         FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createButterflyAttributes());
+        FabricDefaultAttributeRegistry.register(WRAPPED, WrappedEntity.createWrappedAttributes());
+        //FabricDefaultAttributeRegistry.register(BEAR, BearEntity.createBearAttributes());
 
-        SpawnRestriction.register(HYENA, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ((type, world, spawnReason, pos, random) -> true));
-        SpawnRestriction.register(ZEBRA, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ((type, world, spawnReason, pos, random) -> true));
-        SpawnRestriction.register(DEER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ((type, world, spawnReason, pos, random) -> true));
+        SpawnRestriction.register(HYENA, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> true);
+        SpawnRestriction.register(ZEBRA, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> true);
+        SpawnRestriction.register(DEER, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, (type, world, spawnReason, pos, random) -> true);
+        SpawnRestriction.register(WRAPPED, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnIgnoreLightLevel);
         SpawnRestriction.register(BUTTERFLY, SpawnRestriction.Location.NO_RESTRICTIONS, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ButterflyEntity::canSpawn);
     }
 
@@ -68,6 +73,7 @@ public class EntityRegistry {
     public static void registerClient() {
         EntityRendererRegistry.register(HYENA, HyenaEntityRenderer::new);
         EntityRendererRegistry.register(ZEBRA, ZebraEntityRenderer::new);
+        EntityRendererRegistry.register(WRAPPED, WrappedEntityRenderer::new);
         EntityRendererRegistry.register(FALLING_CONCRETE, FallingConcretePowderEntityRenderer::new);
         EntityRendererRegistry.register(BUTTERFLY, ButterflyEntityRenderer::new);
         EntityRendererRegistry.register(DAGGER, FlyingItemEntityRenderer::new);

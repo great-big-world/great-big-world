@@ -21,7 +21,7 @@ import net.minecraft.util.registry.Registry;
 
 public class ItemRegistry {
     //region Cavier Caves
-    public static final Item QUICKSAND_BUCKET = new BucketItem(Fluids.EMPTY, new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item QUICKSAND_BUCKET = new BucketItem(Fluids.EMPTY, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1));
     public static final Item MALACHITE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -39,6 +39,7 @@ public class ItemRegistry {
     //region Change The World
     public static final Item HYENA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.HYENA, 1, 1, new FabricItemSettings().group(ItemGroup.MISC));
     public static final Item ZEBRA_SPAWN_EGG = new SpawnEggItem(EntityRegistry.ZEBRA, 1, 1, new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item WRAPPED_SPAWN_EGG = new SpawnEggItem(EntityRegistry.WRAPPED, 1, 1, new FabricItemSettings().group(ItemGroup.MISC));
 
     public static final Item GRASSY_STONE = new BlockItem(BlockRegistry.GRASSY_STONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item GRASSY_DEEPSLATE = new BlockItem(BlockRegistry.GRASSY_DEEPSLATE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
@@ -126,6 +127,7 @@ public class ItemRegistry {
 
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hyena_spawn_egg"), HYENA_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "zebra_spawn_egg"), ZEBRA_SPAWN_EGG);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "wrapped_spawn_egg"), WRAPPED_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
