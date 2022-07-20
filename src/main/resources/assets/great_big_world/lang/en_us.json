@@ -189,6 +189,7 @@
   "block.great_big_world.heather": "Heather",
   "block.great_big_world.rose": "Rose",
   "block.great_big_world.pollen_block": "Pollen Block",
+  "block.great_big_world.sawmill": "Sawmill",
   "block.great_big_world.sour_berry_bush": "Sour Berry Bush",
   "block.great_big_world.bitter_berry_bush": "Bitter Berry Bush",
   "block.great_big_world.pungent_berry_bush": "Pungent Berry Bush",
@@ -353,5 +354,9 @@
   "enchantment.great_big_world.kinetic_protection": "Kinetic Protection",
   "enchantment.great_big_world.absolution_curse": "Curse of Absolution",
 
-  "status_effect.great_big_world.sickened": "Sickened"
+  "status_effect.great_big_world.sickened": "Sickened",
+
+  "stat.great_big_world.interact_with_sawmill": "Interactions with Sawmill",
+
+  "container.sawmill": "Sawmill"
 }

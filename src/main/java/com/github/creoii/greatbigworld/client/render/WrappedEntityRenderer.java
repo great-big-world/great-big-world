@@ -1,8 +1,6 @@
 package com.github.creoii.greatbigworld.client.render;
 
 import com.github.creoii.greatbigworld.client.ModelLayers;
-import com.github.creoii.greatbigworld.client.model.BearEntityModel;
-import com.github.creoii.greatbigworld.entity.BearEntity;
 import com.github.creoii.greatbigworld.entity.WrappedEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
@@ -11,9 +9,7 @@ import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.BipedEntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)

@@ -1,15 +1,12 @@
 package com.github.creoii.greatbigworld.client.render;
 
 import com.github.creoii.greatbigworld.client.ModelLayers;
-import com.github.creoii.greatbigworld.client.model.HyenaEntityModel;
 import com.github.creoii.greatbigworld.client.model.ZebraEntityModel;
-import com.github.creoii.greatbigworld.entity.HyenaEntity;
 import com.github.creoii.greatbigworld.entity.ZebraEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.HorseEntityRenderer;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 

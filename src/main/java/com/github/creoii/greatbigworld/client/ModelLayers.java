@@ -9,10 +9,6 @@ import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.minecraft.client.model.Dilation;
-import net.minecraft.client.model.TexturedModelData;
-import net.minecraft.client.render.entity.BipedEntityRenderer;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
@@ -26,7 +22,7 @@ public class ModelLayers {
     public static final EntityModelLayer BUTTERFLY_PATTERN_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "butterfly"), "pattern");
 
     @Environment(EnvType.CLIENT)
-    public static void registerClient() {
+    public static void registerModelLayers() {
         EntityModelLayerRegistry.registerModelLayer(HYENA_LAYER, HyenaEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(ZEBRA_LAYER, ZebraEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(WRAPPED_LAYER, WrappedEntityRenderer::getTexturedModelData);

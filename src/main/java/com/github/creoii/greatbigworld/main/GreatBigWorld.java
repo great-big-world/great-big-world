@@ -22,6 +22,8 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
         EntityRegistry.register();
         EnchantmentRegistry.register();
         StatusEffectRegistry.register();
+        RecipeRegistry.register();
+        ScreenRegistry.register();
 
         PredicateRegistry.register();
         FeatureRegistry.register();

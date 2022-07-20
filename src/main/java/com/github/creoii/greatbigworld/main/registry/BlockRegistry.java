@@ -610,7 +610,7 @@ public class BlockRegistry {
     //endregion
 
     //region Magic V Melee
-    public static final Block SAWMILL = null;
+    public static final Block SAWMILL = new SawmillBlock();
 
     public static final Block SOUR_BERRY_BUSH = new BerryBushBlock(Items.SWEET_BERRIES);
     public static final Block BITTER_BERRY_BUSH = new BerryBushBlock(Items.SWEET_BERRIES);
@@ -1107,6 +1107,7 @@ public class BlockRegistry {
         }
 
         if (GreatBigWorld.isLoaded("magic_v_melee") || GreatBigWorld.inDev()) {
+            registerBlock(new Identifier(NAMESPACE, "sawmill"), SAWMILL, ItemGroup.DECORATIONS);
             registerBlock(new Identifier(NAMESPACE, "sour_berry_bush"), SOUR_BERRY_BUSH, null);
             registerBlock(new Identifier(NAMESPACE, "bitter_berry_bush"), BITTER_BERRY_BUSH, null);
             registerBlock(new Identifier(NAMESPACE, "pungent_berry_bush"), PUNGENT_BERRY_BUSH, null);
