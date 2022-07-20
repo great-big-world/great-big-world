@@ -482,7 +482,28 @@ public class BlockRegistry {
     public static final Block BAMBOO_THATCH_SLAB = new DirectionalSlabBlock(FabricBlockSettings.copy(BAMBOO_THATCH));
     public static final Block BAMBOO_THATCH_STAIRS = new StairsBlock(BAMBOO_THATCH.getDefaultState(), FabricBlockSettings.copy(BAMBOO_THATCH));
 
-    public static final Block TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copy(Blocks.TERRACOTTA));
+    public static final Block TERRACOTTA_BRICKS = new Block(FabricBlockSettings.copy(Blocks.TERRACOTTA)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.TERRACOTTA);
+        }
+    };
+    public static final Block BROWN_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_BROWN);
+    public static final Block RED_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_RED);
+    public static final Block ORANGE_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_ORANGE);
+    public static final Block YELLOW_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_YELLOW);
+    public static final Block LIME_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_LIME);
+    public static final Block GREEN_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_GREEN);
+    public static final Block CYAN_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_CYAN);
+    public static final Block BLUE_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_BLUE);
+    public static final Block LIGHT_BLUE_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_LIGHT_BLUE);
+    public static final Block PINK_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_PINK);
+    public static final Block MAGENTA_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_MAGENTA);
+    public static final Block PURPLE_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_PURPLE);
+    public static final Block BLACK_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_BLACK);
+    public static final Block GRAY_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_GRAY);
+    public static final Block LIGHT_GRAY_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_LIGHT_GRAY);
+    public static final Block WHITE_TERRACOTTA_BRICKS = new TerracottaBricksBlock(MapColor.TERRACOTTA_WHITE);
     //endregion
 
     //region Fire And Ice
@@ -1064,6 +1085,22 @@ public class BlockRegistry {
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroup.BUILDING_BLOCKS);
             registerBlock(new Identifier(NAMESPACE, "terracotta_bricks"), TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "brown_terracotta_bricks"), BROWN_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "red_terracotta_bricks"), RED_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "orange_terracotta_bricks"), ORANGE_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "yellow_terracotta_bricks"), YELLOW_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "lime_terracotta_bricks"), LIME_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "green_terracotta_bricks"), GREEN_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "cyan_terracotta_bricks"), CYAN_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "blue_terracotta_bricks"), BLUE_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "light_blue_terracotta_bricks"), LIGHT_BLUE_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "pink_terracotta_bricks"), PINK_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "magenta_terracotta_bricks"), MAGENTA_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "purple_terracotta_bricks"), PURPLE_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "black_terracotta_bricks"), BLACK_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "gray_terracotta_bricks"), GRAY_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "light_gray_terracotta_bricks"), LIGHT_GRAY_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
+            registerBlock(new Identifier(NAMESPACE, "white_terracotta_bricks"), WHITE_TERRACOTTA_BRICKS, ItemGroup.BUILDING_BLOCKS);
         }
 
         if (GreatBigWorld.isLoaded("fire_and_ice") || GreatBigWorld.inDev()) {
