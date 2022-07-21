@@ -44,8 +44,8 @@ public class QuicksandBlock extends Block implements FluidDrainable {
 
     @SuppressWarnings("deprecation")
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this)) {
-            entity.slowMovement(state, new Vec3d(0.8999999761581421D, 1.5D, 0.8999999761581421D));
+        if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this) || !entity.getType().isIn(Tags.Entities.QUICKSAND_WALKABLES)) {
+            entity.slowMovement(state, new Vec3d(0.8999999761581421D, 1.5d, 0.8999999761581421D));
             if (world.isClient) {
                 Random random = world.getRandom();
                 boolean bl = entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ();
@@ -78,7 +78,7 @@ public class QuicksandBlock extends Block implements FluidDrainable {
     }
 
     public static boolean canWalkOnQuicksand(Entity entity) {
-        return entity.getType().isIn(Tags.Entities.QUICKSAND_WALKABLE);
+        return entity.getType().isIn(Tags.Entities.QUICKSAND_WALKABLES);
     }
 
     @Override

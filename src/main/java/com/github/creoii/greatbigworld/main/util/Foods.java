@@ -11,4 +11,5 @@ public class Foods {
     public static final FoodComponent MOLDY_CHEESE = new FoodComponent.Builder().hunger(1).saturationModifier(.0f).statusEffect(new StatusEffectInstance(StatusEffectRegistry.SICKENED, 8), .95f).build();
     public static final FoodComponent SHROOMLIGHT_FRUIT = new FoodComponent.Builder().hunger(3).saturationModifier(.3f).snack().build();
     public static final FoodComponent HEARTBEET = new FoodComponent.Builder().hunger(1).saturationModifier(.65f).statusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 2, 9), 1f).build();
+    public static final FoodComponent VENISON = new FoodComponent.Builder().hunger(7).saturationModifier(.75f).build();
 }

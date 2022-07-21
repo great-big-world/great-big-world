@@ -39,7 +39,7 @@ public class MoltenMagmaBlock extends Block {
 
     @SuppressWarnings("deprecation")
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this) || !entity.getType().isIn(Tags.Entities.MOLTEN_MAGMA_WALKABLE)) {
+        if (!(entity instanceof LivingEntity) || entity.getBlockStateAtPos().isOf(this) || !entity.getType().isIn(Tags.Entities.MOLTEN_MAGMA_WALKABLES)) {
             entity.slowMovement(state, new Vec3d(0.8999999761581421D, 1.2D, 0.8999999761581421D));
             if (world.isClient) {
                 Random abstractRandom = world.getRandom();
@@ -73,7 +73,7 @@ public class MoltenMagmaBlock extends Block {
     }
 
     public static boolean canWalkOnMoltenMagma(Entity entity) {
-        return entity.getType().isIn(Tags.Entities.MOLTEN_MAGMA_WALKABLE);
+        return entity.getType().isIn(Tags.Entities.MOLTEN_MAGMA_WALKABLES);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {

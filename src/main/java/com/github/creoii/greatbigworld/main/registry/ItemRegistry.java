@@ -44,6 +44,9 @@ public class ItemRegistry {
     public static final Item GRASSY_STONE = new BlockItem(BlockRegistry.GRASSY_STONE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
     public static final Item GRASSY_DEEPSLATE = new BlockItem(BlockRegistry.GRASSY_DEEPSLATE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS));
 
+    public static final Item VENISON = new Item(new FabricItemSettings().group(ItemGroup.FOOD).food(Foods.VENISON));
+    public static final Item DEER_HIDE = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+
     public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new FabricItemSettings().group(ItemGroup.DECORATIONS)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -108,6 +111,10 @@ public class ItemRegistry {
     public static final Item TWISTED_SHROOMLIGHT_FRUIT = new ShroomlightFruitItem(ShroomlightFruitItem.ShroomlightType.TWISTED);
     //endregion
 
+    //region Venture N Voyage
+    public static final Item RAGS = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
+    //endregion
+
     //region Seecret
     public static final Item PICKAXE_RELIC = new RelicItem(RelicItem.GearType.PICKAXE);
     public static final Item AXE_RELIC = new RelicItem(RelicItem.GearType.AXE);
@@ -130,6 +137,8 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "wrapped_spawn_egg"), WRAPPED_SPAWN_EGG);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_stone"), GRASSY_STONE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "grassy_deepslate"), GRASSY_DEEPSLATE);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "venison"), VENISON);
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "deer_hide"), DEER_HIDE);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
 
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "hanging_oak_leaves"), HANGING_OAK_LEAVES);
@@ -165,6 +174,8 @@ public class ItemRegistry {
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "crimson_shroomlight_fruit"), CRIMSON_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "warped_shroomlight_fruit"), WARPED_SHROOMLIGHT_FRUIT);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "twisted_shroomlight_fruit"), TWISTED_SHROOMLIGHT_FRUIT);
+
+        Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "rags"), RAGS);
 
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "pickaxe_relic"), PICKAXE_RELIC);
         Registry.register(Registry.ITEM, new Identifier(GreatBigWorld.NAMESPACE, "axe_relic"), AXE_RELIC);
