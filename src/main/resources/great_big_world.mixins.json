@@ -10,6 +10,7 @@
     "LivingEntityMixin",
     "MultiNoiseSamplerMixin",
     "TreeConfiguredFeaturesMixin",
+    "ZombieEntityMixin",
     "block.AnvilBlockMixin",
     "block.CauldronBlockMixin",
     "block.ConcretePowderBlockMixin",

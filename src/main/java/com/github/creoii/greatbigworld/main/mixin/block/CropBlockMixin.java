@@ -20,7 +20,7 @@ public class CropBlockMixin {
 
     @Inject(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;setBlockState(Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;I)Z"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void great_big_world_growGiantCrops(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci, int i, float f) {
-        if (i == getMaxAge() - 1 && world.getRandom().nextInt((int) (20 / f)) == 0) {
+        if (i == getMaxAge() - 1 && world.getRandom().nextInt((int) (50 / f)) == 0) {
             if (state.isOf(Blocks.POTATOES)) {
                 world.setBlockState(pos, world.getRandom().nextFloat() < .02f ? BlockRegistry.GIANT_POISONOUS_POTATO.getDefaultState() : BlockRegistry.GIANT_POTATO.getDefaultState(), 2);
             } else if (state.isOf(Blocks.CARROTS)) {
