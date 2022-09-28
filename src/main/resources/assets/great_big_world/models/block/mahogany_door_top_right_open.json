@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_right_open",
+    "textures": {
+        "bottom": "great_big_world:block/mahogany_door_bottom",
+        "top": "great_big_world:block/mahogany_door_top"
+    }
+}

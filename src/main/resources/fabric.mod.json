@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "greatbigworld",
+  "version": "${version}",
+  "name": "GreatBigWorld",
+  "description": "",
+  "authors": [
+    "creoii"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/great_big_world/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.github.creoii.greatbigworld.client.GreatBigWorldClient"
+    ],
+    "main": [
+      "com.github.creoii.greatbigworld.main.GreatBigWorld"
+    ]
+  },
+  "mixins": [
+    "great_big_world.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "minecraft": "1.19.2"
+  }
+}
