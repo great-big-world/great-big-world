@@ -15,6 +15,7 @@ import net.minecraft.util.registry.Registry;
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class ItemRegistry implements Register {
+    //region Mahogany Wood
     public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new Item.Settings().group(ItemGroup.DECORATIONS)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.FLOWERING_AZALEA_LEAVES); }
@@ -27,6 +28,31 @@ public class ItemRegistry implements Register {
     };
     public static final Item MAHOGANY_BOAT = new GBWBoatItem(false, GBWBoatEntity.GBWType.MAHOGANY, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
     public static final Item MAHOGANY_CHEST_BOAT = new GBWBoatItem(true, GBWBoatEntity.GBWType.MAHOGANY, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    //endregion
+    //region Dried Bamboo
+    public static final Item DRIED_BAMBOO_SIGN = new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), BlockRegistry.DRIED_BAMBOO_SIGN, BlockRegistry.DRIED_BAMBOO_WALL_SIGN) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_SIGN);
+        }
+    };
+    public static final Item DRIED_BAMBOO_BOAT = new GBWBoatItem(false, GBWBoatEntity.GBWType.DRIED_BAMBOO, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item DRIED_BAMBOO_CHEST_BOAT = new GBWBoatItem(true, GBWBoatEntity.GBWType.DRIED_BAMBOO, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    //endregion
+    //region Aspen Wood
+    public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new Item.Settings().group(ItemGroup.DECORATIONS)) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.FLOWERING_AZALEA_LEAVES); }
+    };
+    public static final Item ASPEN_SIGN = new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), BlockRegistry.ASPEN_SIGN, BlockRegistry.ASPEN_WALL_SIGN) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_SIGN);
+        }
+    };
+    public static final Item ASPEN_BOAT = new GBWBoatItem(false, GBWBoatEntity.GBWType.ASPEN, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item ASPEN_CHEST_BOAT = new GBWBoatItem(true, GBWBoatEntity.GBWType.ASPEN, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    //endregion
 
     @Override
     public void register() {
@@ -34,10 +60,17 @@ public class ItemRegistry implements Register {
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN);
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT);
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "dried_bamboo_sign"), DRIED_BAMBOO_SIGN);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "dried_bamboo_boat"), DRIED_BAMBOO_BOAT);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "dried_bamboo_chest_boat"), DRIED_BAMBOO_CHEST_BOAT);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT);
     }
 
     @Override
     public void registerClient() {
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES);
     }
 }

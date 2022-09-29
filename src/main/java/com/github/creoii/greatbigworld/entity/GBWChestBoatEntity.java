@@ -29,6 +29,8 @@ public class GBWChestBoatEntity extends ChestBoatEntity {
     public Item asItem() {
         return switch (getGBWBoatType()) {
             default -> ItemRegistry.MAHOGANY_CHEST_BOAT;
+            case DRIED_BAMBOO -> ItemRegistry.DRIED_BAMBOO_CHEST_BOAT;
+            case ASPEN -> ItemRegistry.ASPEN_CHEST_BOAT;
         };
     }
 

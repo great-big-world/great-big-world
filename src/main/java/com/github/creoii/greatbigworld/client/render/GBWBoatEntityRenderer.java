@@ -37,7 +37,7 @@ public class GBWBoatEntityRenderer extends EntityRenderer<GBWBoatEntity> {
     }
 
     private BoatEntityModel createModel(EntityRendererFactory.Context ctx, GBWBoatEntity.GBWType type, boolean chest) {
-        EntityModelLayer entityModelLayer = chest ? GBWModelLayers.createChestBoat(type) : GBWModelLayers.createBoat(type);
+        EntityModelLayer entityModelLayer = GBWModelLayers.createBoat(type, chest);
         return new BoatEntityModel(ctx.getPart(entityModelLayer), chest);
     }
 
@@ -47,20 +47,20 @@ public class GBWBoatEntityRenderer extends EntityRenderer<GBWBoatEntity> {
 
     public void render(GBWBoatEntity boatEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrixStack.push();
-        matrixStack.translate(0.0D, 0.375D, 0.0D);
-        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F - f));
+        matrixStack.translate(0d, .375d, .0d);
+        matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180f - f));
         float h = (float)boatEntity.getDamageWobbleTicks() - g;
         float j = boatEntity.getDamageWobbleStrength() - g;
-        if (j < 0.0F) {
-            j = 0.0F;
+        if (j < 0f) {
+            j = 0f;
         }
 
-        if (h > 0.0F) {
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(h) * h * j / 10.0F * (float)boatEntity.getDamageWobbleSide()));
+        if (h > 0f) {
+            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(MathHelper.sin(h) * h * j / 10f * (float)boatEntity.getDamageWobbleSide()));
         }
 
         float k = boatEntity.interpolateBubbleWobble(g);
-        if (!MathHelper.approximatelyEquals(k, 0.0F)) {
+        if (!MathHelper.approximatelyEquals(k, 0f)) {
             matrixStack.multiply(new Quaternion(new Vec3f(1f, 1f, 1f), boatEntity.interpolateBubbleWobble(g), true));
         }
 

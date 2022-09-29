@@ -30,6 +30,8 @@ public class GBWBoatEntity extends BoatEntity {
     public Item asItem() {
         return switch (getGBWBoatType()) {
             default -> ItemRegistry.MAHOGANY_BOAT;
+            case DRIED_BAMBOO -> ItemRegistry.DRIED_BAMBOO_BOAT;
+            case ASPEN -> ItemRegistry.ASPEN_BOAT;
         };
     }
 
@@ -42,7 +44,9 @@ public class GBWBoatEntity extends BoatEntity {
     }
 
     public enum GBWType {
-        MAHOGANY(BlockRegistry.MAHOGANY.planks(), "mahogany");
+        MAHOGANY(BlockRegistry.MAHOGANY.planks(), "mahogany"),
+        DRIED_BAMBOO(BlockRegistry.DRIED_BAMBOO.planks(), "dried_bamboo"),
+        ASPEN(BlockRegistry.ASPEN.planks(), "aspen");
 
         private final String name;
         private final Block baseBlock;

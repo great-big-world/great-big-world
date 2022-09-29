@@ -6,11 +6,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
 public class GBWModelLayers {
-    public static EntityModelLayer createBoat(GBWBoatEntity.GBWType type) {
-        return new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "boat/" + type.getName()), "main");
-    }
-
-    public static EntityModelLayer createChestBoat(GBWBoatEntity.GBWType type) {
-        return new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "chest_boat/" + type.getName()), "main");
+    public static EntityModelLayer createBoat(GBWBoatEntity.GBWType type, boolean chest) {
+        return new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, chest ? "chest_" : "" + "boat/" + type.getName()), "main");
     }
 }
