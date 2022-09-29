@@ -7,8 +7,8 @@ import net.minecraft.util.math.random.Random;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
-    public static final Random RANDOM = Random.createLocal();
-    public static final Register[] REGISTERS = new Register[]{new BlockRegistry(), new ItemRegistry(), new PlacerRegistry(), new ConfiguredFeatureRegistry(), new PlacedFeatureRegistry()};
+    public static final Random RANDOM = Random.create();
+    public static final Register[] REGISTERS = new Register[]{new BlockRegistry(), new ItemRegistry(), new EntityRegistry(), new PlacerRegistry(), new ConfiguredFeatureRegistry(), new PlacedFeatureRegistry()};
 
     @Override
     public void onInitialize() {

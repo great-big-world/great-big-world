@@ -14,6 +14,7 @@ public class ItemUtil {
      * @param stacks - The list of ItemStacks to insert into
      * @param add - The ItemStack to insert
      * @param after - The item to insert after
+     * @author - creoii
      */
     public static void appendStackInGroup(DefaultedList<ItemStack> stacks, ItemStack add, Item after) {
         for (int i = 0; i < stacks.size(); ++i) {

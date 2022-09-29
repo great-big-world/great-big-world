@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 
 public interface Register {
     void register();
+
     @Environment(EnvType.CLIENT)
     default void registerClient() { }
 }

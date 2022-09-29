@@ -54,11 +54,15 @@ public class GenerationUtil {
     }
 
     /**
+     * Picks a number of steps based on the radii. At each step, calculate the distance based on
+     * the radii and irregularity.
+     *
      * @param center - Center position of the ellipse.
      * @param xRadius - Radius on the x axis.
      * @param zRadius - Radius on the z axis.
      * @param irregularityProvider - Variation of the radius (Keep low for low radii)
      * @return - Array of block positions in the formation of an irregular ellipse.
+     * @author - creoii
      */
     public static List<BlockPos> irregularEllipse(BlockPos center, int xRadius, int zRadius, IntProvider irregularityProvider) {
         List<BlockPos> ret = new ArrayList<>();

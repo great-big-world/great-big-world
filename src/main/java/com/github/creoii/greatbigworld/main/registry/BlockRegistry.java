@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.google.common.collect.ImmutableMap;
@@ -18,7 +19,6 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.SignType;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
@@ -34,58 +34,8 @@ public class BlockRegistry implements Register {
     private static final Map<Block, Block> STRIPPED_BLOCKS = new HashMap<>();
     private static final FireBlock FIRE = (FireBlock) Blocks.FIRE;
 
-    public static final Block MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.of(Material.WOOD, state -> state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_ORANGE : MapColor.TERRACOTTA_BROWN).strength(2f).sounds(BlockSoundGroup.WOOD)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MUDDY_MANGROVE_ROOTS); }
-    };
-    public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).mapColor(MapColor.TERRACOTTA_ORANGE)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_MANGROVE_LOG); }
-    };
-    public static final Block MAHOGANY_WOOD = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD).mapColor(MapColor.TERRACOTTA_BROWN)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_WOOD); }
-    };
-    public static final Block STRIPPED_MAHOGANY_WOOD = new PillarBlock(FabricBlockSettings.copy(STRIPPED_MAHOGANY_LOG)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.STRIPPED_MANGROVE_WOOD); }
-    };
-    public static final Block MAHOGANY_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).mapColor(MapColor.TERRACOTTA_ORANGE)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_PLANKS); }
-    };
-    public static final Block MAHOGANY_SLAB = new SlabBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_SLAB); }
-    };
-    public static final Block MAHOGANY_STAIRS = new StairsBlock(MAHOGANY_PLANKS.getDefaultState(), FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_STAIRS); }
-    };
-    public static final Block MAHOGANY_FENCE = new FenceBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_FENCE); }
-    };
-    public static final Block MAHOGANY_FENCE_GATE = new FenceGateBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_FENCE_GATE); }
-    };
-    public static final Block MAHOGANY_BUTTON = new WoodenButtonBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_BUTTON); }
-    };
-    public static final Block MAHOGANY_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(MAHOGANY_PLANKS)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_PRESSURE_PLATE); }
-    };
-    public static final Block MAHOGANY_DOOR = new DoorBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS).strength(3f).sounds(BlockSoundGroup.WOOD).nonOpaque()) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_DOOR); }
-    };
-    public static final Block MAHOGANY_TRAPDOOR = new TrapdoorBlock(FabricBlockSettings.copy(MAHOGANY_PLANKS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> false)) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) { ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_TRAPDOOR); }
-    };
+    //region Mahogany Wood
+    public static DefaultBlockSets.WoodSet MAHOGANY;
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new SaplingGenerator() {
         @Nullable @Override
@@ -105,21 +55,10 @@ public class BlockRegistry implements Register {
         }
     };
     public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(MAHOGANY_SIGN), MAHOGANY_TYPE);
+    //endregion
 
     public void register() {
-        registerBlock(new Identifier(NAMESPACE, "mahogany_log"), MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 5, 5, STRIPPED_MAHOGANY_LOG));
-        registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(.3f, 5, 5, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_wood"), MAHOGANY_WOOD, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 5, 5, STRIPPED_MAHOGANY_WOOD));
-        registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_wood"), STRIPPED_MAHOGANY_WOOD, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 5, 5, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_planks"), MAHOGANY_PLANKS, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 5, 20, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_slab"), MAHOGANY_SLAB, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_stairs"), MAHOGANY_STAIRS, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_fence"), MAHOGANY_FENCE, ItemGroup.DECORATIONS, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, ItemGroup.REDSTONE, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_button"), MAHOGANY_BUTTON, ItemGroup.REDSTONE, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_pressure_plate"), MAHOGANY_PRESSURE_PLATE, ItemGroup.REDSTONE, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_door"), MAHOGANY_DOOR, ItemGroup.REDSTONE, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_trapdoor"), MAHOGANY_TRAPDOOR, ItemGroup.REDSTONE, new ExtendedBlockSettings(0f, 0, 0, null));
+        MAHOGANY = DefaultBlockSets.createWoodSet(new Identifier(NAMESPACE, "mahogany"), MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE);
         registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, null, new ExtendedBlockSettings(.3f, 30, 60, null));
         registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.3f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING, null, null);
@@ -132,15 +71,15 @@ public class BlockRegistry implements Register {
 
     @Override
     public void registerClient() {
-        RenderLayers.BLOCKS.put(MAHOGANY_DOOR, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY_TRAPDOOR, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES);
+        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.door(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.trapdoor(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_MAHOGANY_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), BlockRegistry.MAHOGANY_LEAVES);
     }
 
-    public static void registerBlock(Identifier id, Block block, @Nullable ItemGroup group, @Nullable ExtendedBlockSettings extension) {
+    public static Block registerBlock(Identifier id, Block block, @Nullable ItemGroup group, @Nullable ExtendedBlockSettings extension) {
         Registry.register(Registry.BLOCK, id, block);
         if (group != null) Registry.register(Registry.ITEM, id, new BlockItem(block, new Item.Settings().group(group)));
         if (extension != null) {
@@ -151,6 +90,7 @@ public class BlockRegistry implements Register {
             if (extension.strippedBlock() != null)
                 BlockRegistry.STRIPPED_BLOCKS.put(block, extension.strippedBlock());
         }
+        return block;
     }
 
     public static record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }

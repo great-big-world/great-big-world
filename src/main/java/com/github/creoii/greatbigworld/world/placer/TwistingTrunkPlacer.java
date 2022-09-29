@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.world.placer;
 
-import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
@@ -57,12 +56,20 @@ public class TwistingTrunkPlacer extends TrunkPlacer {
     return PlacerRegistry.TWISTING_TRUNK_PLACER;
     }
 
+    /**
+     * Generates a trunk in a twisting pattern. The basic process is:
+     *      Move up a random amount, pick a horizontal direction, more in that direction a random amount
+     *      Continue until we reach the end.
+     *      Repeat the process for the number of branches.
+     *
+     * @author - creoii
+     */
     @Override
     public List<FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {
         setToDirt(world, replacer, random, startPos.down(), config);
         List<FoliagePlacer.TreeNode> list = Lists.newArrayList();
 
-        for(int i = 0; i <= height; ++i) {
+        for (int i = 0; i <= height; ++i) {
             getAndSetState(world, replacer, random, startPos.up(i), config);
         }
 
