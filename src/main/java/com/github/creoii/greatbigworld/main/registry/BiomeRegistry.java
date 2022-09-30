@@ -15,6 +15,6 @@ public class BiomeRegistry implements Register {
 
     @Override
     public void register() {
-        Registry.register(BuiltinRegistries.BIOME, new Identifier(GreatBigWorld.NAMESPACE, "aspen_forest"), ASPEN_FOREST);
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, ASPEN_FOREST_KEY, ASPEN_FOREST);
     }
 }

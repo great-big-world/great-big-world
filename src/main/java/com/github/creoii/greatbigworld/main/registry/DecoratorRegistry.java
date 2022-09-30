@@ -12,6 +12,6 @@ public class DecoratorRegistry implements Register {
 
     @Override
     public void register() {
-        Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "branch_tree_decorator"), BRANCH_TREE_DECORATOR);
+        Registry.register(Registry.TREE_DECORATOR_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "branch"), BRANCH_TREE_DECORATOR);
     }
 }

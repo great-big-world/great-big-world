@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_fence_gate",
+    "textures": {
+        "texture": "great_big_world:block/aspen_planks"
+    }
+}

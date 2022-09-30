@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top_left",
+    "textures": {
+        "bottom": "great_big_world:block/dried_bamboo_door_bottom",
+        "top": "great_big_world:block/dried_bamboo_door_top"
+    }
+}

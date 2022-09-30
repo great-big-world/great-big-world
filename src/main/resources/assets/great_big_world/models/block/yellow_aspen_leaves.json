@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "great_big_world:block/yellow_aspen_leaves"
+    }
+}

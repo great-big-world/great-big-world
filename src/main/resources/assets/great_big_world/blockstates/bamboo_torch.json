@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "large=false,leaves=false": { "model": "great_big_world:block/bamboo_torch_size0" },
+    "large=false,leaves=true": { "model": "great_big_world:block/bamboo_torch_size0_leaves" },
+    "large=true,leaves=false": { "model": "great_big_world:block/bamboo_torch_size1" },
+    "large=true,leaves=true": { "model": "great_big_world:block/bamboo_torch_size1_leaves" }
+  }
+}

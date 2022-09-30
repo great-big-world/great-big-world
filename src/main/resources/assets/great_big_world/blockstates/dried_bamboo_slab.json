@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/dried_bamboo_slab"
+    },
+    "type=double": {
+      "model": "great_big_world:block/dried_bamboo_planks"
+    },
+    "type=top": {
+      "model": "great_big_world:block/dried_bamboo_slab_top"
+    }
+  }
+}

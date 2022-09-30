@@ -4,6 +4,9 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "BoatEntityMixin",
+    "BoatTypeMixin",
+    "ChestBoatEntityMixin"
   ],
   "client": [
   ],

@@ -17,6 +17,9 @@
     ],
     "main": [
       "com.github.creoii.greatbigworld.main.GreatBigWorld"
+    ],
+    "terrablender": [
+      "com.github.creoii.greatbigworld.main.GreatBigWorld"
     ]
   },
   "mixins": [

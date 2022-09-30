@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_orientable_trapdoor_open",
+    "textures": {
+        "texture": "great_big_world:block/aspen_trapdoor"
+    }
+}
