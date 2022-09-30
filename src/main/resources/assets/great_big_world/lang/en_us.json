@@ -54,5 +54,12 @@
   "block.great_big_world.soul_bamboo_torch": "Soul Bamboo Torch",
   "block.great_big_world.soul_bamboo_wall_torch": "Soul Bamboo Wall Torch",
   "block.great_big_world.potted_bamboo_torch": "Potted Bamboo Torch",
-  "block.great_big_world.potted_soul_bamboo_torch": "Potted Soul Bamboo Torch"
+  "block.great_big_world.potted_soul_bamboo_torch": "Potted Soul Bamboo Torch",
+
+  "item.great_big_world.mahogany_boat": "Mahogany Boat",
+  "item.great_big_world.mahogany_chest_boat": "Mahogany Chest Boat",
+  "item.great_big_world.dried_bamboo_boat": "Dried Bamboo Boat",
+  "item.great_big_world.dried_bamboo_chest_boat": "Dried Bamboo Chest Boat",
+  "item.great_big_world.aspen_boat": "Aspen Boat",
+  "item.great_big_world.aspen_chest_boat": "Aspen Chest Boat"
 }

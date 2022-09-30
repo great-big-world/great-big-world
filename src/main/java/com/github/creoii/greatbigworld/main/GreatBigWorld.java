@@ -5,7 +5,6 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.GreatBigOverworldRegion;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.Registry;
 import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 

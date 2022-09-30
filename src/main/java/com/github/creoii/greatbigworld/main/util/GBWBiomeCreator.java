@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.util;
 
+import com.github.creoii.greatbigworld.main.registry.PlacedFeatureRegistry;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -34,6 +35,8 @@ public class GBWBiomeCreator {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.RED_MUSHROOM_TAIGA);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
         DefaultBiomeFeatures.addDefaultVegetation(builder);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_ASPEN_YELLOW_DENSE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_ASPEN_GREEN_DENSE);
 
         SpawnSettings.Builder builder2 = new SpawnSettings.Builder();
         DefaultBiomeFeatures.addFarmAnimals(builder2);

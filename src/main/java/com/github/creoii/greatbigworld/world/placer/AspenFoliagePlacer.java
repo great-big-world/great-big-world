@@ -44,9 +44,9 @@ public class AspenFoliagePlacer extends FoliagePlacer {
 
             int width = baseWidth + treeNode.getFoliageRadius();
 
-            BlockPos.Mutable mutable;
+            BlockPos.Mutable mutable = treeNode.getCenter().mutableCopy();
             for (int i = 0; i < 4 + random.nextInt(5); ++i) {
-                mutable = new BlockPos.Mutable().set(treeNode.getCenter(), 0, y, 0);
+                mutable = mutable.set(treeNode.getCenter(), 0, y, 0);
                 int x = mutable.getX();
                 int z = mutable.getZ();
                 int length = 2 + width + random.nextInt(6);
