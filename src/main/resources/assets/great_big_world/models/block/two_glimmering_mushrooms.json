@@ -1,0 +1,60 @@
+{
+	"parent": "block",
+	"textures": {
+		"particle": "#mushroom"
+	},
+	"elements": [
+		{
+			"from": [8.5, 3, 1.5],
+			"to": [13.5, 7, 6.5],
+			"color": 6,
+			"faces": {
+				"north": {"uv": [4.5, 0.5, 9.5, 4.5], "texture": "#mushroom"},
+				"east": {"uv": [4.5, 0.5, 9.5, 4.5], "texture": "#mushroom"},
+				"south": {"uv": [4.5, 0.5, 9.5, 4.5], "texture": "#mushroom"},
+				"west": {"uv": [4.5, 0.5, 9.5, 4.5], "texture": "#mushroom"},
+				"up": {"uv": [10.5, 0.5, 15.5, 5.5], "texture": "#mushroom"},
+				"down": {"uv": [10.5, 0.5, 15.5, 5.5], "texture": "#mushroom"}
+			}
+		},
+		{
+			"from": [10, 0, 3],
+			"to": [12, 3, 5],
+			"color": 6,
+			"faces": {
+				"north": {"uv": [2, 1.5, 4, 4.5], "texture": "#mushroom"},
+				"east": {"uv": [2, 1.5, 4, 4.5], "texture": "#mushroom"},
+				"south": {"uv": [2, 1.5, 4, 4.5], "texture": "#mushroom"},
+				"west": {"uv": [2, 1.5, 4, 4.5], "texture": "#mushroom"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#mushroom"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#mushroom"}
+			}
+		},
+		{
+			"from": [1, 5, 8],
+			"to": [7, 10, 14],
+			"color": 6,
+			"faces": {
+				"north": {"uv": [4, 0, 10, 5], "texture": "#mushroom"},
+				"east": {"uv": [4, 0, 10, 5], "texture": "#mushroom"},
+				"south": {"uv": [4, 0, 10, 5], "texture": "#mushroom"},
+				"west": {"uv": [4, 0, 10, 5], "texture": "#mushroom"},
+				"up": {"uv": [10, 0, 16, 6], "texture": "#mushroom"},
+				"down": {"uv": [10, 0, 16, 6], "texture": "#mushroom"}
+			}
+		},
+		{
+			"from": [3, 0, 10],
+			"to": [5, 5, 12],
+			"color": 6,
+			"faces": {
+				"north": {"uv": [2, 0.5, 4, 5.5], "texture": "#mushroom"},
+				"east": {"uv": [2, 0.5, 4, 5.5], "texture": "#mushroom"},
+				"south": {"uv": [2, 0.5, 4, 5.5], "texture": "#mushroom"},
+				"west": {"uv": [2, 0.5, 4, 5.5], "texture": "#mushroom"},
+				"up": {"uv": [0, 0, 2, 2], "texture": "#mushroom"},
+				"down": {"uv": [0, 0, 2, 2], "texture": "#mushroom"}
+			}
+		}
+	]
+}

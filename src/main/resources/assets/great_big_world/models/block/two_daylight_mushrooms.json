@@ -1,0 +1,6 @@
+{
+	"parent": "great_big_world:block/two_glimmering_mushrooms",
+	"textures": {
+		"mushroom": "great_big_world:block/daylight_mushroom"
+	}
+}

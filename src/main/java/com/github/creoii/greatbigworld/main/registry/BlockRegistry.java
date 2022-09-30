@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.block.BambooTorchBlock;
 import com.github.creoii.greatbigworld.block.BambooWallTorchBlock;
-import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.block.GlimmeringMushroomBlock;
 import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
@@ -24,12 +24,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.SignType;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -118,6 +115,11 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_BAMBOO_TORCH = new FlowerPotBlock(BAMBOO_TORCH, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block POTTED_SOUL_BAMBOO_TORCH = new FlowerPotBlock(SOUL_BAMBOO_TORCH, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
+    //region Glimmering Mushrooms
+    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock();
+    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock();
+    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock();
+    //endregion
 
     public void register() {
         MAHOGANY.register();
@@ -147,6 +149,10 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, null, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, null, new ExtendedBlockSettings(0f, 0, 0, null));
+
+        registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.15f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.15f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.1f, 0, 0, null));
 
         AxeItem.STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPPED_BLOCKS).putAll(STRIPPED_BLOCKS).build();
         BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(DRIED_BAMBOO_SIGN).add(DRIED_BAMBOO_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();

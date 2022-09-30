@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "mushrooms=1": {
+      "model": "great_big_world:block/one_darkblight_mushroom"
+    },
+    "mushrooms=2": {
+      "model": "great_big_world:block/two_darkblight_mushrooms"
+    },
+    "mushrooms=3": {
+      "model": "great_big_world:block/three_darkblight_mushrooms"
+    }
+  }
+}
