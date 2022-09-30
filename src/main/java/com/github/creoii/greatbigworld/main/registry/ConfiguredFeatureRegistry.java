@@ -14,6 +14,7 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
+import java.util.Random;
 
 public class ConfiguredFeatureRegistry implements Register {
     public static RegistryEntry<ConfiguredFeature<TreeFeatureConfig, ?>> MAHOGANY;
