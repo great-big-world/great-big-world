@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -25,8 +26,8 @@ public class ItemRegistry implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_SIGN);
         }
     };
-    public static final Item MAHOGANY_BOAT = new BoatItem(false, BoatEntity.Type.getType("GBW_MAHOGANY"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
-    public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, BoatEntity.Type.getType("GBW_MAHOGANY"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
     //endregion
     //region Dried Bamboo
     public static final Item DRIED_BAMBOO_SIGN = new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), BlockRegistry.DRIED_BAMBOO_SIGN, BlockRegistry.DRIED_BAMBOO_WALL_SIGN) {
@@ -35,8 +36,8 @@ public class ItemRegistry implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_SIGN);
         }
     };
-    public static final Item DRIED_BAMBOO_BOAT = new BoatItem(false, BoatEntity.Type.getType("GBW_DRIED_BAMBOO"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
-    public static final Item DRIED_BAMBOO_CHEST_BOAT = new BoatItem(true, BoatEntity.Type.getType("GBW_DRIED_BAMBOO"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item DRIED_BAMBOO_BOAT = new BoatItem(false, GBWBoatTypes.DRIED_BAMBOO, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item DRIED_BAMBOO_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.DRIED_BAMBOO, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
     //endregion
     //region Aspen Wood
     public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new Item.Settings().group(ItemGroup.DECORATIONS)) {
@@ -49,8 +50,8 @@ public class ItemRegistry implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.WARPED_SIGN);
         }
     };
-    public static final Item ASPEN_BOAT = new BoatItem(false, BoatEntity.Type.getType("GBW_ASPEN"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
-    public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, BoatEntity.Type.getType("GBW_ASPEN"), new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
+    public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1));
     //endregion
     //region Bamboo Torches
     public static final Item BAMBOO_TORCH_ITEM = new WallStandingBlockItem(BlockRegistry.BAMBOO_TORCH, BlockRegistry.BAMBOO_WALL_TORCH, new FabricItemSettings().group(ItemGroup.DECORATIONS));
