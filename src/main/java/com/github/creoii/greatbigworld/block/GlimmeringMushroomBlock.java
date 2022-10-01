@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -14,6 +15,9 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
@@ -87,16 +91,10 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     }
 
     @Override
-    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
-        if (entity instanceof LivingEntity && fallDistance >= 1f) {
-            if (entity.isSneaking()) {
-                world.setBlockState(pos, state.with(LIGHT, MathHelper.clamp(state.get(LIGHT) - 2, 2, 14)), 3);
-            } else {
-                world.setBlockState(pos, state.with(LIGHT, MathHelper.clamp(state.get(LIGHT) + 2, 2, 14)), 3);
-            }
-        }
-
-        super.onLandedUpon(world, state, pos, entity, fallDistance);
+    @SuppressWarnings("deprecation")
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        world.setBlockState(pos, state.with(LIGHT, player.isSneaking() ? MathHelper.clamp(state.get(LIGHT) - 2, 2, 14) : MathHelper.clamp(state.get(LIGHT) + 2, 2, 14)), 3);
+        return ActionResult.SUCCESS;
     }
 
     @SuppressWarnings("deprecation")

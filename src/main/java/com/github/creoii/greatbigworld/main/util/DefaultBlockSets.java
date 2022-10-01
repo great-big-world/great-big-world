@@ -11,11 +11,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.Registry;
 import org.jetbrains.annotations.Nullable;
 
 import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.ExtendedBlockSettings;
-import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.registerBlock;
 
 public class DefaultBlockSets {
     /**
