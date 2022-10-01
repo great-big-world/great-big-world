@@ -17,6 +17,8 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.RenderLayers;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
@@ -116,9 +118,9 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_SOUL_BAMBOO_TORCH = new FlowerPotBlock(SOUL_BAMBOO_TORCH, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Glimmering Mushrooms
-    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock();
-    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock();
-    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock();
+    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.GLOWING, 100), 16765440);
+    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 9558015);
+    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.DARKNESS, 150), 0);
     //endregion
 
     public void register() {
@@ -184,7 +186,7 @@ public class BlockRegistry implements Register {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES);
     }
 
-    public static Block registerBlock(Identifier id, Block block, @Nullable ItemGroup group, @Nullable ExtendedBlockSettings extension) {
+    public static void registerBlock(Identifier id, Block block, @Nullable ItemGroup group, @Nullable ExtendedBlockSettings extension) {
         Registry.register(Registry.BLOCK, id, block);
         if (group != null) Registry.register(Registry.ITEM, id, new BlockItem(block, new Item.Settings().group(group)));
         if (extension != null) {
@@ -195,7 +197,6 @@ public class BlockRegistry implements Register {
             if (extension.strippedBlock() != null)
                 BlockRegistry.STRIPPED_BLOCKS.put(block, extension.strippedBlock());
         }
-        return block;
     }
 
     public static record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }

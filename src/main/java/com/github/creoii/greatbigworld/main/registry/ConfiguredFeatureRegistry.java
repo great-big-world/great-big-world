@@ -56,6 +56,6 @@ public class ConfiguredFeatureRegistry implements Register {
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 12), 6)
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 12), 4)
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 12), 2)
-                .build())), List.of(Blocks.STONE, Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.ANDESITE, Blocks.DIORITE, Blocks.OAK_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.DIRT, Blocks.GRAVEL, Blocks.TUFF, Blocks.CALCITE, Blocks.DEEPSLATE_BRICKS, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE_TILES, Blocks.CHISELED_DEEPSLATE, Blocks.SCULK)));
+                .build())), List.of(Blocks.STONE, Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.ANDESITE, Blocks.DIORITE, Blocks.OAK_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.DIRT, Blocks.GRAVEL, Blocks.TUFF, Blocks.CALCITE, Blocks.DEEPSLATE_BRICKS, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE_TILES, Blocks.POLISHED_DEEPSLATE, Blocks.CHISELED_DEEPSLATE, Blocks.SCULK, Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE)));
     }
 }

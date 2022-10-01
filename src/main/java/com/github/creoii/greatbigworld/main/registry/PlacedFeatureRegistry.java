@@ -2,8 +2,10 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.Tags;
+import com.github.creoii.greatbigworld.world.predicate.SkyVisiblePredicate;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
@@ -43,6 +45,6 @@ public class PlacedFeatureRegistry implements Register {
         TREES_ASPEN_GREEN_DENSE = PlacedFeatures.register("trees_aspen_green_dense", ConfiguredFeatureRegistry.GREEN_ASPEN, PlacedFeatures.createCountExtraModifier(1, .1f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), SurfaceWaterDepthFilterPlacementModifier.of(0), BiomePlacementModifier.of());
         TREES_ASPEN_GREEN_SPARSE = PlacedFeatures.register("trees_aspen_green_sparse", ConfiguredFeatureRegistry.GREEN_ASPEN, PlacedFeatures.createCountExtraModifier(0, .25f, 1), SquarePlacementModifier.of(), HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG), SurfaceWaterDepthFilterPlacementModifier.of(0), BiomePlacementModifier.of());
         PATCH_DAYLIGHT_MUSHROOMS = PlacedFeatures.register("patch_daylight_mushrooms", ConfiguredFeatureRegistry.PATCH_DAYLIGHT_MUSHROOMS, RarityFilterPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-        PATCH_DARKBLIGHT_MUSHROOMS = PlacedFeatures.register("patch_darkblight_mushrooms", ConfiguredFeatureRegistry.PATCH_DARKBLIGHT_MUSHROOMS, CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, BiomePlacementModifier.of());
+        PATCH_DARKBLIGHT_MUSHROOMS = PlacedFeatures.register("patch_darkblight_mushrooms", ConfiguredFeatureRegistry.PATCH_DARKBLIGHT_MUSHROOMS, CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, BiomePlacementModifier.of(), BlockFilterPlacementModifier.of(SkyVisiblePredicate.of(1f)));
     }
 }

@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.util;
+package com.github.creoii.greatbigworld.world;
 
 import com.github.creoii.greatbigworld.main.registry.PlacedFeatureRegistry;
 import net.minecraft.client.sound.MusicType;

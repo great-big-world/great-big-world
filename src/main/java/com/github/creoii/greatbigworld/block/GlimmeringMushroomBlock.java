@@ -3,12 +3,13 @@ package com.github.creoii.greatbigworld.block;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.AreaEffectCloudEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.potion.Potion;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
@@ -24,10 +25,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 public class GlimmeringMushroomBlock extends Block implements Waterloggable {
@@ -37,10 +35,14 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     public static final IntProperty MUSHROOMS = IntProperty.of("mushrooms", 1, 3);
     public static final IntProperty LIGHT = IntProperty.of("light", 2, 14);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    private final StatusEffectInstance statusEffect;
+    private final int cloudColor;
 
-    public GlimmeringMushroomBlock() {
+    public GlimmeringMushroomBlock(StatusEffectInstance statusEffect, int cloudColor) {
         super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> state.get(LIGHT)).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
         setDefaultState(getDefaultState().with(MUSHROOMS, 1).with(LIGHT, 8).with(WATERLOGGED, false));
+        this.statusEffect = statusEffect;
+        this.cloudColor = cloudColor;
     }
 
     @Override
@@ -82,12 +84,26 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.getLightLevel(LightType.SKY, pos) == 0) {
             world.setBlockState(pos, BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
-        }
-        else if (world.getLightLevel(LightType.SKY, pos) - world.getAmbientDarkness() < 7 || world.isRaining()) {
+        } else if (world.getLightLevel(LightType.SKY, pos) - world.getAmbientDarkness() < 7 || world.isRaining()) {
             world.setBlockState(pos, BlockRegistry.MIDNIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
         } else {
             world.setBlockState(pos, BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
         }
+    }
+
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, pos.getX() - .5f, pos.getY(), pos.getZ() - .5f);
+        areaEffectCloud.setRadius(.75f);
+        areaEffectCloud.setRadiusOnUse(-.5f);
+        areaEffectCloud.setWaitTime(0);
+        areaEffectCloud.setDuration(100);
+        areaEffectCloud.setRadiusGrowth(-areaEffectCloud.getRadius() / (float)areaEffectCloud.getDuration());
+        areaEffectCloud.addEffect(statusEffect);
+        areaEffectCloud.setColor(cloudColor);
+
+        world.spawnEntity(areaEffectCloud);
+        super.onBreak(world, pos, state, player);
     }
 
     @Override
