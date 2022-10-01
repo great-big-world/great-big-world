@@ -18,7 +18,8 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
             new DecoratorRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
-            new BiomeRegistry()
+            new BiomeRegistry(),
+            new PotionRegistry()
     };
 
     @Override
