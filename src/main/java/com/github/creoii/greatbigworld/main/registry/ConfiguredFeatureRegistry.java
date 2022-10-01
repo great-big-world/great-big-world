@@ -36,26 +36,26 @@ public class ConfiguredFeatureRegistry implements Register {
         YELLOW_ASPEN = ConfiguredFeatures.register("yellow_aspen", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.ASPEN.log()), new StraightTrunkPlacer(6, 3, 1), BlockStateProvider.of(BlockRegistry.YELLOW_ASPEN_LEAVES), new AspenFoliagePlacer(ConstantIntProvider.create(2), UniformIntProvider.create(2, 3), UniformIntProvider.create(2, 3)), new TwoLayersFeatureSize(2, 0, 1)).decorators(List.of(new BranchTreeDecorator(BlockRegistry.ASPEN.log().getDefaultState(), .1f, false, UniformIntProvider.create(3, 6)))).build());
         GREEN_ASPEN = ConfiguredFeatures.register("green_aspen", Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(BlockRegistry.ASPEN.log()), new StraightTrunkPlacer(6, 3, 1), BlockStateProvider.of(BlockRegistry.GREEN_ASPEN_LEAVES), new AspenFoliagePlacer(ConstantIntProvider.create(2), UniformIntProvider.create(2, 3), UniformIntProvider.create(2, 3)), new TwoLayersFeatureSize(2, 0, 1)).decorators(List.of(new BranchTreeDecorator(BlockRegistry.ASPEN.log().getDefaultState(), .1f, false, UniformIntProvider.create(3, 6)))).build());
         PATCH_DAYLIGHT_MUSHROOMS = ConfiguredFeatures.register("patch_daylight_mushrooms", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 2), 6)
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 2), 4)
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 2), 2)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 4), 6)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 4), 4)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 4), 2)
                 .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 8), 6)
                 .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 8), 4)
                 .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 8), 2)
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 14), 6)
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 14), 4)
-                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 14), 2)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 12), 6)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 12), 4)
+                .add(BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 12), 2)
                 .build())), List.of(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL)));
         PATCH_DARKBLIGHT_MUSHROOMS = ConfiguredFeatures.register("patch_darkblight_mushrooms", Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 2), 6)
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 2), 4)
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 2), 2)
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 4), 6)
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 4), 4)
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 4), 2)
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 8), 6)
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 8), 4)
                 .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 8), 2)
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 14), 6)
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 14), 4)
-                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 14), 2)
-                .build())), List.of(Blocks.STONE, Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.ANDESITE, Blocks.DIORITE, Blocks.OAK_PLANKS, Blocks.DIRT, Blocks.TUFF, Blocks.CALCITE)));
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 1).with(GlimmeringMushroomBlock.LIGHT, 12), 6)
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 2).with(GlimmeringMushroomBlock.LIGHT, 12), 4)
+                .add(BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(GlimmeringMushroomBlock.MUSHROOMS, 3).with(GlimmeringMushroomBlock.LIGHT, 12), 2)
+                .build())), List.of(Blocks.STONE, Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.ANDESITE, Blocks.DIORITE, Blocks.OAK_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.DIRT, Blocks.GRAVEL, Blocks.TUFF, Blocks.CALCITE, Blocks.DEEPSLATE_BRICKS, Blocks.CRACKED_DEEPSLATE_BRICKS, Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE_TILES, Blocks.CHISELED_DEEPSLATE, Blocks.SCULK)));
     }
 }
