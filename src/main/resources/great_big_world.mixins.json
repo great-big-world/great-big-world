@@ -6,7 +6,8 @@
   "mixins": [
     "BoatEntityMixin",
     "BoatTypeMixin",
-    "ChestBoatEntityMixin"
+    "ChestBoatEntityMixin",
+    "WolfEntityMixin"
   ],
   "client": [
   ],

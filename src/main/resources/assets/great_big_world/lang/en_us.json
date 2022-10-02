@@ -100,5 +100,8 @@
   "item.minecraft.tipped_arrow.effect.strong_blindness": "Potion of Blindness",
   "item.minecraft.tipped_arrow.effect.darkness": "Potion of Darkness",
   "item.minecraft.tipped_arrow.effect.long_darkness": "Potion of Darkness",
-  "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness"
+  "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness",
+  "item.great_big_world.moose_spawn_egg": "Moose Spawn Egg",
+  
+  "entity.great_big_world.moose": "Moose"
 }

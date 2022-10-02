@@ -93,7 +93,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, pos.getX() - .5f, pos.getY(), pos.getZ() - .5f);
+        AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, pos.getX() + .5f, pos.getY(), pos.getZ() + .5f);
         areaEffectCloud.setRadius(.75f);
         areaEffectCloud.setRadiusOnUse(-.5f);
         areaEffectCloud.setWaitTime(0);
