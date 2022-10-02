@@ -16,7 +16,7 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
 
 public class GBWBiomeCreator {
-    public static Biome createAspenForest() {
+    public static Biome createAspenForest(boolean snowy) {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
         DefaultBiomeFeatures.addLandCarvers(builder);
         DefaultBiomeFeatures.addAmethystGeodes(builder);
@@ -33,6 +33,11 @@ public class GBWBiomeCreator {
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.RED_MUSHROOM_TAIGA);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
         DefaultBiomeFeatures.addDefaultVegetation(builder);
+        if (snowy) {
+            DefaultBiomeFeatures.addSweetBerryBushesSnowy(builder);
+        } else {
+            DefaultBiomeFeatures.addSweetBerryBushes(builder);
+        }
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_ASPEN_YELLOW_DENSE);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureRegistry.TREES_ASPEN_GREEN_DENSE);
 
@@ -41,6 +46,6 @@ public class GBWBiomeCreator {
         DefaultBiomeFeatures.addBatsAndMonsters(builder2);
         builder2.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4, 4));
 
-        return new Biome.Builder().precipitation(Biome.Precipitation.RAIN).temperature(.6f).downfall(.6f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(MathHelper.hsvToRgb(.61222224f, .52f, 1f)).moodSound(BiomeMoodSound.CAVE).music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST)).build()).spawnSettings(builder2.build()).generationSettings(builder.build()).build();
+        return new Biome.Builder().precipitation(snowy ? Biome.Precipitation.SNOW : Biome.Precipitation.RAIN).temperature(snowy ? 0f : .8f).downfall(snowy ? .5f : .4f).effects(new BiomeEffects.Builder().waterColor(4159204).waterFogColor(329011).fogColor(12638463).skyColor(MathHelper.hsvToRgb(.61222224f, .52f, 1f)).moodSound(BiomeMoodSound.CAVE).music(MusicType.createIngameMusic(SoundEvents.MUSIC_OVERWORLD_JUNGLE_AND_FOREST)).build()).spawnSettings(builder2.build()).generationSettings(builder.build()).build();
     }
 }
