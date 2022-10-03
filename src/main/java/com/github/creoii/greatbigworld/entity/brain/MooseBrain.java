@@ -23,6 +23,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 
 import java.util.Optional;
 import java.util.Set;
@@ -104,7 +105,6 @@ public class MooseBrain {
                     return playerTarget;
                 }
             }
-
             return brain.getOptionalMemory(MemoryModuleType.NEAREST_VISIBLE_NEMESIS);
         }
     }
@@ -113,11 +113,8 @@ public class MooseBrain {
         Brain<MooseEntity> brain = moose.getBrain();
         brain.forget(MemoryModuleType.PACIFIED);
         brain.forget(MemoryModuleType.BREED_TARGET);
-        if (moose.isBaby()) {
-            avoidEnemy(moose, attacker);
-        } else {
-            targetEnemy(moose, attacker);
-        }
+        if (moose.isBaby()) avoidEnemy(moose, attacker);
+        else targetEnemy(moose, attacker);
     }
 
     private static void avoidEnemy(MooseEntity moose, LivingEntity target) {

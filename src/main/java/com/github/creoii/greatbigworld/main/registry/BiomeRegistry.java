@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.world.GBWBiomeCreator;
 import com.github.creoii.greatbigworld.main.util.Register;
+import com.github.creoii.greatbigworld.world.GBWBiomeCreator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;

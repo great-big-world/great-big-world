@@ -1,15 +1,13 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.color.world.FoliageColors;
-import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.*;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
@@ -59,6 +57,10 @@ public class ItemRegistry implements Register {
     public static final Item BAMBOO_TORCH_ITEM = new WallStandingBlockItem(BlockRegistry.BAMBOO_TORCH, BlockRegistry.BAMBOO_WALL_TORCH, new FabricItemSettings().group(ItemGroup.DECORATIONS));
     public static final Item SOUL_BAMBOO_TORCH_ITEM = new WallStandingBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, BlockRegistry.SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings().group(ItemGroup.DECORATIONS));
     //endregion
+    //region Foods
+    public static final Item RAW_VENISON = new Item(new FabricItemSettings().food(Foods.RAW_VENISON).group(ItemGroup.FOOD));
+    public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(Foods.COOKED_VENISON).group(ItemGroup.FOOD));
+    //endregion
 
     @Override
     public void register() {
@@ -75,6 +77,8 @@ public class ItemRegistry implements Register {
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT);
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH_ITEM);
         Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "raw_venison"), RAW_VENISON);
+        Registry.register(Registry.ITEM, new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON);
     }
 
     @Override

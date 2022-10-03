@@ -5,7 +5,6 @@ import com.github.creoii.greatbigworld.main.util.Tags;
 import com.github.creoii.greatbigworld.world.predicate.SkyVisiblePredicate;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;

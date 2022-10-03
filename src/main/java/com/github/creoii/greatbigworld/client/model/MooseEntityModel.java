@@ -24,9 +24,9 @@ public class MooseEntityModel<T extends MooseEntity> extends QuadrupedEntityMode
 		modelPartData.addChild("right_front_leg", ModelPartBuilder.create().uv(104, 0).cuboid(-2.01F, -2.0F, -6.0F, 4.0F, 18.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-5.0F, 8.0F, -6.0F));
 		modelPartData.addChild("left_front_leg", ModelPartBuilder.create().uv(104, 0).cuboid(-2.01F, -2.0F, -2.0F, 4.0F, 18.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(5.0F, 8.0F, -10.0F));
 
-		ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(96, 30).cuboid(-4.0F, -2.0F, -20.0F, 8.0F, 8.0F, 10.0F, new Dilation(0.0F))
+		ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(96, 30).cuboid(-3.0F, -2.0F, -20.0F, 6.0F, 8.0F, 10.0F, new Dilation(0.0F))
 				.uv(60, 0).cuboid(-5.0F, -4.0F, -10.0F, 10.0F, 10.0F, 12.0F, new Dilation(0.0F))
-				.uv(60, 40).cuboid(-6.0F, 6.0F, -8.0F, 10.0F, 8.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -8.0F, -17.0F));
+				.uv(60, 40).cuboid(-4.0F, 6.0F, -7.99F, 8.0F, 8.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, -8.0F, -17.0F));
 		head.addChild("left_antler", ModelPartBuilder.create().uv(50, 22).mirrored().cuboid(-1.5F, -10.01F, -10.0F, 16.0F, 8.0F, 10.0F, new Dilation(0.0F)).mirrored(false), ModelTransform.pivot(2.5F, -2.0F, 2.0F));
 		head.addChild("right_antler", ModelPartBuilder.create().uv(50, 22).cuboid(-14.5F, -10.01F, -10.0F, 16.0F, 8.0F, 10.0F, new Dilation(0.0F)), ModelTransform.pivot(-2.5F, -2.0F, 2.0F));
 
