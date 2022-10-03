@@ -144,6 +144,6 @@ public class MooseBrain {
     }
 
     public static boolean isThreateningEntity(LivingEntity target) {
-        return (target.getType() == EntityType.PLAYER || target.getType() == EntityType.WOLF);
+        return target.getType() == EntityType.PLAYER || target.getType() == EntityType.WOLF;
     }
 }
