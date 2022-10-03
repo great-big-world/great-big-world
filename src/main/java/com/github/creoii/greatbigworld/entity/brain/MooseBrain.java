@@ -22,16 +22,17 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 
 import java.util.Optional;
 import java.util.Set;
 
 public class MooseBrain {
     private static final UniformIntProvider WALKING_SPEED = UniformIntProvider.create(5, 16);
-    private static final UniformIntProvider RAM_COOLDOWN_RANGE = UniformIntProvider.create(200, 1000);
+    private static final UniformIntProvider RAM_COOLDOWN_RANGE = UniformIntProvider.create(150, 300);
     private static final UniformIntProvider AVOID_MEMORY_DURATION = TimeHelper.betweenSeconds(5, 20);
     private static final TargetPredicate RAM_TARGET_PREDICATE = TargetPredicate.createAttackable().setPredicate(entity -> {
-        return entity.world.getWorldBorder().contains(entity.getBoundingBox());
+        return !entity.getType().equals(EntityRegistry.MOOSE) && entity.world.getWorldBorder().contains(entity.getBoundingBox());
     });
 
     public static void rememberRamCooldown(MooseEntity moose, Random random) {

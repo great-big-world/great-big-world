@@ -1,9 +1,9 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.entity.brain.MooseBrain;
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.registry.SensorRegistry;
+import com.github.creoii.greatbigworld.main.util.Tags;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
 import net.minecraft.entity.Entity;
@@ -19,19 +19,25 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MooseEntity extends AnimalEntity {
+public class MooseEntity extends TameableEntity {
     protected static final ImmutableList<SensorType<? extends Sensor<? super MooseEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.NEAREST_ADULT, SensorType.HURT_BY, SensorRegistry.MOOSE_TEMPTATIONS);
     protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.BREED_TARGET, MemoryModuleType.TEMPTING_PLAYER, MemoryModuleType.NEAREST_VISIBLE_ADULT, MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryModuleType.IS_TEMPTED, MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryModuleType.RAM_TARGET, MemoryModuleType.ANGRY_AT, MemoryModuleType.UNIVERSAL_ANGER, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.NEAREST_VISIBLE_NEMESIS, MemoryModuleType.PACIFIED, MemoryModuleType.ATTACK_TARGET);
+    private int tameProbability;
     private boolean preparingCharge;
     private int headPitch;
 
@@ -40,6 +46,7 @@ public class MooseEntity extends AnimalEntity {
         getNavigation().setCanSwim(true);
         setPathfindingPenalty(PathNodeType.POWDER_SNOW, -1f);
         setPathfindingPenalty(PathNodeType.DANGER_POWDER_SNOW, -1f);
+        tameProbability = 0;
     }
 
     public Brain.Profile<MooseEntity> createBrainProfile() {
@@ -66,7 +73,11 @@ public class MooseEntity extends AnimalEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isOf(Items.SPRUCE_SAPLING) || stack.isOf(BlockRegistry.YELLOW_ASPEN_SAPLING.asItem()) || stack.isOf(BlockRegistry.GREEN_ASPEN_SAPLING.asItem());
+        return stack.isIn(Tags.ItemTags.MOOSE_BREED_ITEMS);
+    }
+
+    public boolean isFoodItem(ItemStack stack) {
+        return stack.isIn(Tags.ItemTags.MOOSE_FOOD);
     }
 
     public boolean tryAttack(Entity target) {
@@ -144,5 +155,50 @@ public class MooseEntity extends AnimalEntity {
 
     public boolean isAdult() {
         return !isBaby();
+    }
+
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        Item item = itemStack.getItem();
+        if (world.isClient) {
+            boolean bl = isOwner(player) || isBaby() || isTamed() || itemStack.isOf(Items.BONE) && !isTamed();
+            return bl ? ActionResult.CONSUME : ActionResult.PASS;
+        } else {
+            if (isFoodItem(itemStack)) {
+                if (!player.getAbilities().creativeMode) itemStack.decrement(1);
+                if (isTamed() && getHealth() < getMaxHealth()) {
+                    heal(item.getFoodComponent().getHunger());
+                } else {
+                    if (tameProbability <= 100) showFeedParticle();
+                    tameProbability = MathHelper.clamp(tameProbability += random.nextBetween(2, 5), 0, 100);
+                }
+                return ActionResult.SUCCESS;
+            } else if (isBreedingItem(itemStack)) {
+                if (!player.getAbilities().creativeMode) itemStack.decrement(1);
+
+                if (random.nextInt((16 / tameProbability) * 100) == 0) {
+                    setOwner(player);
+                    navigation.stop();
+                    setTarget(null);
+                    world.sendEntityStatus(this, (byte)7);
+                } else {
+                    if (random.nextInt((8 / tameProbability) * 100) == 0)
+                        MooseBrain.onAttacked(this, player);
+                    world.sendEntityStatus(this, (byte)6);
+                }
+                return ActionResult.SUCCESS;
+            }
+            return super.interactMob(player, hand);
+        }
+    }
+
+    public void showFeedParticle() {
+        for (int i = 0; i < 5; ++i) {
+            double d = random.nextGaussian() * .02d;
+            double e = random.nextGaussian() * .02d;
+            double f = random.nextGaussian() * .02d;
+            this.world.addParticle(ParticleTypes.HAPPY_VILLAGER, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), d, e, f);
+        }
+
     }
 }
