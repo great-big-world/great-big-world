@@ -1,6 +1,9 @@
 package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.ParticleRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.AreaEffectCloudEntity;
@@ -9,6 +12,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -35,12 +40,14 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     public static final IntProperty MUSHROOMS = IntProperty.of("mushrooms", 1, 3);
     public static final IntProperty LIGHT = IntProperty.of("light", 2, 14);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    private final ParticleEffect particleEffect;
     private final StatusEffectInstance statusEffect;
     private final int cloudColor;
 
-    public GlimmeringMushroomBlock(StatusEffectInstance statusEffect, int cloudColor) {
+    public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int cloudColor) {
         super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> state.get(LIGHT)).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
         setDefaultState(getDefaultState().with(MUSHROOMS, 1).with(LIGHT, 8).with(WATERLOGGED, false));
+        this.particleEffect = particleEffect;
         this.statusEffect = statusEffect;
         this.cloudColor = cloudColor;
     }
@@ -48,6 +55,12 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return state.get(MUSHROOMS) == 1 ? SMALL_SHAPE : state.get(MUSHROOMS) == 2 ? MEDIUM_SHAPE : LARGE_SHAPE;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
         return state.get(MUSHROOMS) == 1 ? SMALL_SHAPE : state.get(MUSHROOMS) == 2 ? MEDIUM_SHAPE : LARGE_SHAPE;
     }
 
@@ -116,6 +129,17 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
         return !context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3 || super.canReplace(state, context);
+    }
+
+    @Override
+    @Environment(EnvType.CLIENT)
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        if (!state.get(WATERLOGGED) && random.nextInt(3) <= (state.get(MUSHROOMS))) {
+            double x = pos.getX() + .5d + .25d * (random.nextInt(2) * 2 - 1);
+            double y = pos.getY() + random.nextFloat();
+            double z = pos.getZ() + .5d + .25d * (random.nextInt(2) * 2 - 1);
+            world.addParticle(particleEffect, x, y, z, 0d, 0d, 0d);
+        }
     }
 
     @Override

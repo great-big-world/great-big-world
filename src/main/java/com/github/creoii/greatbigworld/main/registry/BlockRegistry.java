@@ -118,9 +118,9 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_SOUL_BAMBOO_TORCH = new FlowerPotBlock(SOUL_BAMBOO_TORCH, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Glimmering Mushrooms
-    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.GLOWING, 100), 16765440);
-    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 9558015);
-    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(new StatusEffectInstance(StatusEffects.DARKNESS, 150), 0);
+    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DAY_GLIMMER, new StatusEffectInstance(StatusEffects.GLOWING, 100), 16765440);
+    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.NIGHT_GLIMMER, new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 9558015);
+    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DARK_GLIMMER, new StatusEffectInstance(StatusEffects.DARKNESS, 150), 0);
     //endregion
 
     public void register() {
