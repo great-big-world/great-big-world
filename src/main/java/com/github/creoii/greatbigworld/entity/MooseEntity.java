@@ -27,7 +27,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
@@ -73,7 +72,7 @@ public class MooseEntity extends TameableEntity {
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isIn(Tags.ItemTags.MOOSE_BREED_ITEMS);
+        return stack.isIn(Tags.ItemTags.MOOSE_BREEDING_ITEMS);
     }
 
     public boolean isFoodItem(ItemStack stack) {
@@ -81,12 +80,10 @@ public class MooseEntity extends TameableEntity {
     }
 
     public boolean tryAttack(Entity target) {
-        if (!target.isLiving()) {
-            return false;
-        } else {
-            playSound(SoundEvents.ENTITY_HOGLIN_ATTACK, 1f, getSoundPitch());
+        if (target.isLiving()) {
             return Hoglin.tryAttack(this, (LivingEntity)target);
         }
+        return false;
     }
 
     protected void knockback(LivingEntity target) {
