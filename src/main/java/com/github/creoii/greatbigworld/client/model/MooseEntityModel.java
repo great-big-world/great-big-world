@@ -32,6 +32,8 @@ public class MooseEntityModel<T extends MooseEntity> extends QuadrupedEntityMode
 
 	@Override
 	public void setAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		head.getChild("left_antler").visible = entity.hasLeftAntler();
+		head.getChild("right_antler").visible = entity.hasRightAntler();
 		super.setAngles(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 		float k = entity.getHeadPitch();
 		if (k != 0f) head.pitch = k;

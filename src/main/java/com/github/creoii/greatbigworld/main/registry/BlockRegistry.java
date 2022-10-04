@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.block.AntlerBlock;
 import com.github.creoii.greatbigworld.block.BambooTorchBlock;
 import com.github.creoii.greatbigworld.block.BambooWallTorchBlock;
 import com.github.creoii.greatbigworld.block.GlimmeringMushroomBlock;
@@ -122,6 +123,9 @@ public class BlockRegistry implements Register {
     public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.NIGHT_GLIMMER, new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 9558015);
     public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DARK_GLIMMER, new StatusEffectInstance(StatusEffects.DARKNESS, 150), 0);
     //endregion
+    //region Miscellaneous
+    public static final Block ANTLER = new AntlerBlock(FabricBlockSettings.copy(Blocks.BONE_BLOCK).nonOpaque().noCollision());
+    //endregion
 
     public void register() {
         MAHOGANY.register();
@@ -155,6 +159,8 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.15f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.15f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.1f, 0, 0, null));
+
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, ItemGroup.DECORATIONS, new ExtendedBlockSettings(0f, 0, 0, null));
 
         AxeItem.STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPPED_BLOCKS).putAll(STRIPPED_BLOCKS).build();
         BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(DRIED_BAMBOO_SIGN).add(DRIED_BAMBOO_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();

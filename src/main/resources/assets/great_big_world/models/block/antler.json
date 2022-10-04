@@ -1,0 +1,37 @@
+{
+	"parent": "block",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "#antler"
+	},
+	"elements": [
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"angle": -22.5, "axis": "y", "origin": [8, 0, 0]},
+			"color": 3,
+			"faces": {
+				"north": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#antler"},
+				"south": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#antler"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#antler"}
+			}
+		},
+		{
+			"from": [8, 0, 0],
+			"to": [8, 16, 16],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, 0, 0]},
+			"color": 3,
+			"faces": {
+				"north": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#antler"},
+				"south": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#antler"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#antler"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#antler"}
+			}
+		}
+	]
+}

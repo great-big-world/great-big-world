@@ -58,12 +58,12 @@ public class BambooTorchBlock extends TorchBlock {
 		World world = context.getWorld();
 		BlockPos pos = context.getBlockPos();
 		BlockState downState = world.getBlockState(pos.down());
-		if (downState.getBlock() instanceof BambooBlock) return this.getDefaultState().with(LEAVES, downState.get(BambooBlock.LEAVES) != BambooLeaves.NONE || downState.get(BambooBlock.AGE) == 0).with(LARGE, downState.get(BambooBlock.AGE) == 1);
+		if (downState.getBlock() instanceof BambooBlock) return getDefaultState().with(LEAVES, downState.get(BambooBlock.LEAVES) != BambooLeaves.NONE || downState.get(BambooBlock.AGE) == 0).with(LARGE, downState.get(BambooBlock.AGE) == 1);
 		else if (downState.getBlock() instanceof BambooSaplingBlock && context.getSide() == Direction.UP) {
 			world.setBlockState(pos.down(), Blocks.BAMBOO.getDefaultState(), 3);
-			return this.getDefaultState();
+			return getDefaultState();
 		}
-		return this.getDefaultState();
+		return getDefaultState();
 	}
 
 	@Override

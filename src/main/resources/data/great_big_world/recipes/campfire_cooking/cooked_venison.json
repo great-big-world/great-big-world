@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "great_big_world:raw_venison"
+  },
+  "result": "great_big_world:cooked_venison"
+}

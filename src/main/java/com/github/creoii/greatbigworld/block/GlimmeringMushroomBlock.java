@@ -46,7 +46,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int cloudColor) {
         super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> state.get(LIGHT)).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
-        setDefaultState(getDefaultState().with(MUSHROOMS, 1).with(LIGHT, 8).with(WATERLOGGED, false));
+        setDefaultState(getStateManager().getDefaultState().with(MUSHROOMS, 1).with(LIGHT, 8).with(WATERLOGGED, false));
         this.particleEffect = particleEffect;
         this.statusEffect = statusEffect;
         this.cloudColor = cloudColor;
