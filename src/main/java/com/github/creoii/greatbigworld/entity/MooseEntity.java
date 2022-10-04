@@ -6,9 +6,7 @@ import com.github.creoii.greatbigworld.main.registry.SensorRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.ai.brain.sensor.Sensor;
@@ -194,8 +192,16 @@ public class MooseEntity extends TameableEntity {
             double d = random.nextGaussian() * .02d;
             double e = random.nextGaussian() * .02d;
             double f = random.nextGaussian() * .02d;
-            this.world.addParticle(ParticleTypes.HAPPY_VILLAGER, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), d, e, f);
+            world.addParticle(ParticleTypes.HAPPY_VILLAGER, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), d, e, f);
         }
+    }
 
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return isBaby() ? dimensions.height * .65f : dimensions.height;
+    }
+
+    @Override
+    public EntityDimensions getDimensions(EntityPose pose) {
+        return isBaby() ? super.getDimensions(pose).scaled(.5f) : super.getDimensions(pose);
     }
 }

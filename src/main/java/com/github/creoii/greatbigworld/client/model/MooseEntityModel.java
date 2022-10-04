@@ -5,13 +5,8 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 
 public class MooseEntityModel<T extends MooseEntity> extends QuadrupedEntityModel<T> {
-	private final ModelPart leftAntler;
-	private final ModelPart rightAntler;
-
 	public MooseEntityModel(ModelPart root) {
-		super(root, true, 10f, 4f, 2f, 2f, 24);
-		leftAntler = head.getChild("left_antler");
-		rightAntler = head.getChild("right_antler");
+		super(root, true, 20f, 4f, 2f, 2f, 24);
 	}
 
 	public static TexturedModelData getTexturedModelData() {
