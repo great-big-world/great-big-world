@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smoking",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.35,
   "ingredient": {
     "item": "great_big_world:raw_venison"

@@ -84,7 +84,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockState down = world.getBlockState(pos.down());
-        return !down.getCollisionShape(world, pos).getFace(Direction.UP).isEmpty() || down.isSideSolidFullSquare(world, pos, Direction.UP);
+        return !down.getCollisionShape(world, pos).getFace(Direction.UP).isEmpty() || down.isSideSolidFullSquare(world, pos, Direction.UP) || state.isOf(this);
     }
 
     @Override
@@ -128,13 +128,13 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @SuppressWarnings("deprecation")
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return !context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3 || super.canReplace(state, context);
+        return (!context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3) || super.canReplace(state, context);
     }
 
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (!state.get(WATERLOGGED) && random.nextInt(3) <= (state.get(MUSHROOMS))) {
+        if (!state.get(WATERLOGGED) && random.nextInt(5) <= (state.get(MUSHROOMS))) {
             double x = pos.getX() + .5d + .25d * (random.nextInt(2) * 2 - 1);
             double y = pos.getY() + random.nextFloat();
             double z = pos.getZ() + .5d + .25d * (random.nextInt(2) * 2 - 1);
