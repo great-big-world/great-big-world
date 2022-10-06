@@ -14,16 +14,17 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
     public static final Register[] REGISTERS = new Register[]{
             new BlockRegistry(),
             new ItemRegistry(),
-            new SensorRegistry(),
             new EntityRegistry(),
             new PredicateRegistry(),
             new PlacerRegistry(),
             new DecoratorRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
+            new StructureRegistry(),
             new BiomeRegistry(),
             new PotionRegistry(),
-            new ParticleRegistry()
+            new ParticleRegistry(),
+            new SensorRegistry()
     };
 
     @Override

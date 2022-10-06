@@ -1,0 +1,25 @@
+{
+  "_comment": "Typically four towers are placed, sometimes more",
+  "elements": [
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "great_big_world:pillager_castle/tower_base_plate_0",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "location": "great_big_world:pillager_castle/tower_base_plate_1",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      },
+      "weight": 1
+    }
+  ],
+  "fallback": "minecraft:empty",
+  "name": "great_big_world:pillager_castle/tower_base_plates"
+}
