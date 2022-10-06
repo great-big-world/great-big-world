@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 40281038,
+    "separation": 8,
+    "spacing": 16
+  },
+  "structures": [
+    {
+      "structure": "great_big_world:pillager_castle",
+      "weight": 1
+    }
+  ]
+}
