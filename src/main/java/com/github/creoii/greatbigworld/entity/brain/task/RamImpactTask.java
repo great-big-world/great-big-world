@@ -34,7 +34,7 @@ public class RamImpactTask<E extends MobEntity> extends Task<E> {
     private final Function<E, SoundEvent> impactSoundFactory;
 
     public RamImpactTask(Function<E, UniformIntProvider> cooldownRangeFactory, TargetPredicate targetPredicate, float speed, ToDoubleFunction<E> strengthMultiplierFactory, Function<E, SoundEvent> impactSoundFactory) {
-        super(ImmutableMap.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryModuleState.VALUE_ABSENT, MemoryModuleType.RAM_TARGET, MemoryModuleState.VALUE_PRESENT), 200);
+        super(ImmutableMap.of(MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryModuleState.VALUE_ABSENT, MemoryModuleType.ATTACK_TARGET, MemoryModuleState.VALUE_PRESENT), 200);
         this.cooldownRangeFactory = cooldownRangeFactory;
         this.targetPredicate = targetPredicate;
         this.speed = speed;
@@ -44,17 +44,17 @@ public class RamImpactTask<E extends MobEntity> extends Task<E> {
     }
 
     protected boolean shouldRun(ServerWorld serverWorld, E mobEntity) {
-        return mobEntity.getBrain().hasMemoryModule(MemoryModuleType.RAM_TARGET);
+        return mobEntity.getBrain().hasMemoryModule(MemoryModuleType.ATTACK_TARGET);
     }
 
     protected boolean shouldKeepRunning(ServerWorld serverWorld, E mobEntity, long l) {
-        return mobEntity.getBrain().hasMemoryModule(MemoryModuleType.RAM_TARGET);
+        return mobEntity.getBrain().hasMemoryModule(MemoryModuleType.ATTACK_TARGET);
     }
 
     protected void run(ServerWorld serverWorld, E mobEntity, long l) {
         BlockPos blockPos = mobEntity.getBlockPos();
         Brain<?> brain = mobEntity.getBrain();
-        Vec3d vec3d = brain.getOptionalMemory(MemoryModuleType.RAM_TARGET).get();
+        Vec3d vec3d = brain.getOptionalMemory(MemoryModuleType.ATTACK_TARGET).get().getPos();
         direction = (new Vec3d((double)blockPos.getX() - vec3d.getX(), 0d, (double)blockPos.getZ() - vec3d.getZ())).normalize();
         brain.remember(MemoryModuleType.WALK_TARGET, new WalkTarget(vec3d, speed, 0));
     }
@@ -75,8 +75,8 @@ public class RamImpactTask<E extends MobEntity> extends Task<E> {
             serverWorld.playSoundFromEntity(null, mobEntity, impactSoundFactory.apply(mobEntity), SoundCategory.HOSTILE, 1f, 1f);
         } else {
             Optional<WalkTarget> walkTarget = brain.getOptionalMemory(MemoryModuleType.WALK_TARGET);
-            Optional<Vec3d> ramTarget = brain.getOptionalMemory(MemoryModuleType.RAM_TARGET);
-            boolean bl2 = walkTarget.isEmpty() || ramTarget.isEmpty() || (walkTarget.get()).getLookTarget().getPos().isInRange(ramTarget.get(), .25d);
+            Optional<LivingEntity> ramTarget = brain.getOptionalMemory(MemoryModuleType.ATTACK_TARGET);
+            boolean bl2 = walkTarget.isEmpty() || ramTarget.isEmpty() || (walkTarget.get()).getLookTarget().getPos().isInRange(ramTarget.get().getPos(), .25d);
             if (bl2) {
                 finishRam(serverWorld, mobEntity);
             }
@@ -86,6 +86,6 @@ public class RamImpactTask<E extends MobEntity> extends Task<E> {
     protected void finishRam(ServerWorld world, E mobEntity) {
         world.sendEntityStatus(mobEntity, (byte)59);
         mobEntity.getBrain().remember(MemoryModuleType.RAM_COOLDOWN_TICKS, cooldownRangeFactory.apply(mobEntity).get(world.random));
-        mobEntity.getBrain().forget(MemoryModuleType.RAM_TARGET);
+        mobEntity.getBrain().forget(MemoryModuleType.ATTACK_TARGET);
     }
 }
