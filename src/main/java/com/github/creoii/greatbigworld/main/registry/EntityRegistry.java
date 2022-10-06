@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.client.model.MooseEntityModel;
 import com.github.creoii.greatbigworld.client.render.MooseEntityRenderer;
+import com.github.creoii.greatbigworld.entity.BallistaEntity;
 import com.github.creoii.greatbigworld.entity.MooseEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.ItemUtil;
@@ -33,13 +34,16 @@ import java.util.function.Predicate;
 
 public class EntityRegistry implements Register {
     public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(new EntityDimensions(1.3f, 2.1f, true)).trackRangeChunks(10).build();
+    public static final EntityType<BallistaEntity> BALLISTA = FabricEntityTypeBuilder.create(SpawnGroup.MISC, BallistaEntity::new).dimensions(new EntityDimensions(1f, 1f, true)).trackRangeChunks(10).build();
 
     @Override
     public void register() {
         registerMobEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, MooseEntity.createMooseAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 2, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
+        Registry.register(Registry.ENTITY_TYPE, new Identifier(GreatBigWorld.NAMESPACE, "ballista"), BALLISTA);
     }
 
     public static final EntityModelLayer MOOSE_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "moose"), "main");
+    public static final EntityModelLayer BALLISTA_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "ballista"), "main");
 
     @Override
     public void registerClient() {
