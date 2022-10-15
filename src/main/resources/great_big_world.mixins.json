@@ -7,6 +7,7 @@
     "BoatEntityMixin",
     "BoatTypeMixin",
     "ChestBoatEntityMixin",
+    "ClientPlayerEntityMixin",
     "WolfEntityMixin"
   ],
   "client": [

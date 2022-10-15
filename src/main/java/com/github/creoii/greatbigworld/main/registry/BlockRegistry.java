@@ -63,17 +63,6 @@ public class BlockRegistry implements Register {
     };
     public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(MAHOGANY_SIGN), MAHOGANY_TYPE);
     //endregion
-    //region Dried Bamboo
-    public static DefaultBlockSets.WoodSet DRIED_BAMBOO = DefaultBlockSets.createWoodSet("dried_bamboo", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, false);
-    public static final SignType DRIED_BAMBOO_TYPE = SignType.register(new SignType("dried_bamboo"));
-    public static final Block DRIED_BAMBOO_SIGN = new SignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), DRIED_BAMBOO_TYPE) {
-        @Override
-        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
-            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.MANGROVE_SIGN);
-        }
-    };
-    public static final Block DRIED_BAMBOO_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(DRIED_BAMBOO_SIGN), DRIED_BAMBOO_TYPE);
-    //endregion
     //region Aspen Wood
     public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, true);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)) {
@@ -123,6 +112,12 @@ public class BlockRegistry implements Register {
     public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.NIGHT_GLIMMER, new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 9558015);
     public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DARK_GLIMMER, new StatusEffectInstance(StatusEffects.DARKNESS, 150), 0);
     //endregion
+    //region Corvus
+    public static final Block CORVUS_BRICKS = new Block(FabricBlockSettings.copy(Blocks.POLISHED_BLACKSTONE).mapColor(MapColor.DEEPSLATE_GRAY));
+    public static final Block CORVUS_BRICK_STAIRS = new StairsBlock(CORVUS_BRICKS.getDefaultState(), FabricBlockSettings.copy(CORVUS_BRICKS));
+    public static final Block CORVUS_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(CORVUS_BRICKS));
+    public static final Block CORVUS_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(CORVUS_BRICKS));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock(FabricBlockSettings.copy(Blocks.BONE_BLOCK).nonOpaque().noCollision());
     //endregion
@@ -134,10 +129,6 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING, null, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, null, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_wall_sign"), MAHOGANY_WALL_SIGN, null, null);
-
-        DRIED_BAMBOO.register();
-        registerBlock(new Identifier(NAMESPACE, "dried_bamboo_sign"), DRIED_BAMBOO_SIGN, null, null);
-        registerBlock(new Identifier(NAMESPACE, "dried_bamboo_wall_sign"), DRIED_BAMBOO_WALL_SIGN, null, null);
 
         ASPEN.register();
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.3f, 30, 60, null));
@@ -160,18 +151,21 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.15f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, ItemGroup.DECORATIONS, new ExtendedBlockSettings(.1f, 0, 0, null));
 
+        registerBlock(new Identifier(NAMESPACE, "corvus_bricks"), CORVUS_BRICKS, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "corvus_brick_stairs"), CORVUS_BRICK_STAIRS, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "corvus_brick_slab"), CORVUS_BRICK_SLAB, ItemGroup.BUILDING_BLOCKS, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "corvus_brick_wall"), CORVUS_BRICK_WALL, ItemGroup.DECORATIONS, new ExtendedBlockSettings(0f, 0, 0, null));
+
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, ItemGroup.DECORATIONS, new ExtendedBlockSettings(0f, 0, 0, null));
 
         AxeItem.STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPPED_BLOCKS).putAll(STRIPPED_BLOCKS).build();
-        BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(DRIED_BAMBOO_SIGN).add(DRIED_BAMBOO_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();
+        BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();
     }
 
     @Override
     public void registerClient() {
         RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.door(), RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.trapdoor(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.DRIED_BAMBOO.door(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.DRIED_BAMBOO.trapdoor(), RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.ASPEN.door(), RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.ASPEN.trapdoor(), RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY_SAPLING, RenderLayer.getCutout());

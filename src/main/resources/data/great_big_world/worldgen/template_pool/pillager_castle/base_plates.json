@@ -4,7 +4,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "great_big_world:pillager_castle/base_plate_0",
+        "location": "great_big_world:pillager_castle/base_plates/base_plate_0",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
@@ -13,7 +13,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "great_big_world:pillager_castle/base_plate_1",
+        "location": "great_big_world:pillager_castle/base_plates/base_plate_0",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },
@@ -22,7 +22,7 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "great_big_world:pillager_castle/base_plate_2",
+        "location": "great_big_world:pillager_castle/base_plates/base_plate_0",
         "processors": "minecraft:empty",
         "projection": "rigid"
       },

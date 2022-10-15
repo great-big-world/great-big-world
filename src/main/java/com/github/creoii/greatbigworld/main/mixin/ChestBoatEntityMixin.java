@@ -15,8 +15,6 @@ public class ChestBoatEntityMixin {
     public void asItem(CallbackInfoReturnable<Item> ci) {
         if (((BoatEntity)(Object)this).getBoatType() == GBWBoatTypes.MAHOGANY)
             ci.setReturnValue(ItemRegistry.MAHOGANY_BOAT);
-        if (((BoatEntity)(Object)this).getBoatType() == GBWBoatTypes.DRIED_BAMBOO)
-            ci.setReturnValue(ItemRegistry.DRIED_BAMBOO_BOAT);
         if (((BoatEntity)(Object)this).getBoatType() == GBWBoatTypes.ASPEN)
             ci.setReturnValue(ItemRegistry.ASPEN_BOAT);
     }

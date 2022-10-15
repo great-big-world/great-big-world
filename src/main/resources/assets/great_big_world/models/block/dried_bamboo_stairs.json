@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "great_big_world:block/dried_bamboo_planks",
-        "top": "great_big_world:block/dried_bamboo_planks",
-        "side": "great_big_world:block/dried_bamboo_planks"
-    }
-}

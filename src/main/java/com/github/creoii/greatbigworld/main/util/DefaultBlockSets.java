@@ -23,6 +23,7 @@ public class DefaultBlockSets {
      * @param name - The name of the blocks. eg new Identifier("great_big_world", "mahogany");
      * @param barkColor - The MapColor of the wood set bark.
      * @param woodColor - The MapColor of the wood set wood.
+     * @param includeLogs - Whether or not to include logs in the wood set. (For unique wood sets)
      * @return - The Log block, to be used in tree generation.
      */
     public static WoodSet createWoodSet(String name, MapColor barkColor, MapColor woodColor, boolean includeLogs) {
