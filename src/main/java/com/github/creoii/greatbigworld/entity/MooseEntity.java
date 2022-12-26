@@ -4,11 +4,9 @@ import com.github.creoii.greatbigworld.entity.brain.MooseBrain;
 import com.github.creoii.greatbigworld.entity.navigation.SwimNavigation;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
-import com.github.creoii.greatbigworld.main.registry.SensorRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.ai.brain.LivingTargetCache;
@@ -27,12 +25,14 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -41,20 +41,23 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class MooseEntity extends TameableEntity implements Saddleable {
+public class MooseEntity extends AbstractHorseEntity implements Saddleable {
     private static final TrackedData<Boolean> RIGHT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> LEFT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> TAME_CHANCE = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Boolean> SADDLED = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    protected static final ImmutableList<SensorType<? extends Sensor<? super MooseEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.NEAREST_ADULT, SensorType.HURT_BY, SensorRegistry.MOOSE_TEMPTATIONS);
-    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.ATE_RECENTLY, MemoryModuleType.BREED_TARGET, MemoryModuleType.TEMPTING_PLAYER, MemoryModuleType.NEAREST_VISIBLE_ADULT, MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryModuleType.IS_TEMPTED, MemoryModuleType.RAM_COOLDOWN_TICKS, MemoryModuleType.RAM_TARGET, MemoryModuleType.IS_PANICKING, MemoryModuleType.IS_IN_WATER, MemoryModuleType.IS_PANICKING, MemoryModuleType.AVOID_TARGET, MemoryModuleType.ATTACK_TARGET, MemoryModuleType.NEAREST_VISIBLE_TARGETABLE_PLAYER, MemoryModuleType.ATTACK_COOLING_DOWN);
+    protected static final ImmutableList<SensorType<? extends Sensor<? super MooseEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.NEAREST_ITEMS, SensorType.NEAREST_ADULT, SensorType.HURT_BY);
+    protected static final ImmutableList<MemoryModuleType<?>> MEMORY_MODULES = ImmutableList.of(MemoryModuleType.LOOK_TARGET, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.WALK_TARGET, MemoryModuleType.CANT_REACH_WALK_TARGET_SINCE, MemoryModuleType.PATH, MemoryModuleType.ATE_RECENTLY, MemoryModuleType.BREED_TARGET, MemoryModuleType.TEMPTING_PLAYER, MemoryModuleType.NEAREST_VISIBLE_ADULT, MemoryModuleType.TEMPTATION_COOLDOWN_TICKS, MemoryModuleType.IS_TEMPTED, MemoryModuleType.IS_PANICKING, MemoryModuleType.IS_IN_WATER);
     private static final int SHED_REGROW_TIME_BASE = 168000;
     private boolean preparingCharge;
     private int headPitch;
@@ -111,12 +114,12 @@ public class MooseEntity extends TameableEntity implements Saddleable {
         return dataTracker.get(RIGHT_ANTLER);
     }
 
-    public void setLeftAntler(boolean has) {
-        dataTracker.set(LEFT_ANTLER, has);
+    public void setLeftAntler(boolean hasLeftAntler) {
+        dataTracker.set(LEFT_ANTLER, hasLeftAntler);
     }
 
-    public void setRightAntler(boolean has) {
-        dataTracker.set(RIGHT_ANTLER, has);
+    public void setRightAntler(boolean hasRightAntler) {
+        dataTracker.set(RIGHT_ANTLER, hasRightAntler);
     }
 
     public int getShedTime() {
@@ -176,7 +179,6 @@ public class MooseEntity extends TameableEntity implements Saddleable {
         MooseEntity mooseEntity = EntityRegistry.MOOSE.create(world);
         if (mooseEntity != null) {
             mooseEntity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
-            MooseBrain.rememberRamCooldown(mooseEntity, world.getRandom());
         }
 
         return mooseEntity;
@@ -185,6 +187,8 @@ public class MooseEntity extends TameableEntity implements Saddleable {
     @Override
     protected void onGrowUp() {
         getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(45f);
+        setLeftAntler(true);
+        setRightAntler(true);
         super.onGrowUp();
     }
 
@@ -214,9 +218,6 @@ public class MooseEntity extends TameableEntity implements Saddleable {
         boolean bl = super.damage(source, amount);
         if (world.isClient) return false;
         else {
-            if (bl && source.getAttacker() instanceof LivingEntity living) {
-                MooseBrain.onAttacked(this, living);
-            }
             return bl;
         }
     }
@@ -270,7 +271,6 @@ public class MooseEntity extends TameableEntity implements Saddleable {
 
     @Override
     public void tick() {
-        // Handle Animations
         if (world.isClient()) {
             if (shouldWalk()) walkingAnimationState.startIfNotRunning(age);
             else walkingAnimationState.stop();
@@ -289,7 +289,6 @@ public class MooseEntity extends TameableEntity implements Saddleable {
 
         super.tick();
 
-        // Handle Antler Shedding & Regrowth
         if (isAlive() && isAdult()) {
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) decrementRegrowTime();
@@ -312,92 +311,41 @@ public class MooseEntity extends TameableEntity implements Saddleable {
         }
     }
 
-    protected void putPlayerOnBack(PlayerEntity player) {
-        if (!world.isClient) {
-            player.setYaw(getYaw());
-            player.setPitch(getPitch());
-            player.startRiding(this);
-        }
-    }
-
-    @Override
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack held = player.getStackInHand(hand);
-        if (held.isEmpty()) {
-            if (isBaby()) {
-                return super.interactMob(player, hand);
-            } else {
-                putPlayerOnBack(player);
-                return ActionResult.success(world.isClient);
-            }
-        } else {
-            if (world.isClient) {
-                boolean bl = isOwner(player) || isTamed() || isFoodItem(held) && !isTamed();
-                return bl ? ActionResult.CONSUME : ActionResult.PASS;
-            } else {
-                if (!player.getAbilities().creativeMode)
-                    held.decrement(1);
-
-                if (isFoodItem(held)) {
-                    incrementTameChance(random.nextInt(2) + 1);
-                } else if (isBreedingItem(held)) {
-                    if (random.nextInt(100) < getTameChance()) {
-                        Criteria.TAME_ANIMAL.trigger((ServerPlayerEntity) player, this);
-                        setOwner(player);
-                        navigation.stop();
-                        setTarget(null);
-                        setSitting(true);
-                        world.sendEntityStatus(this, (byte) 7);
-                    } else {
-                        world.sendEntityStatus(this, (byte) 6);
-                    }
-                }
-                return ActionResult.SUCCESS;
-            }
-        }
-    }
-
     public void travel(Vec3d movementInput) {
         if (isAlive()) {
-            if (!isTamed() && canMoveVoluntarily() && isTouchingWater()) {
-                updateVelocity(getMovementSpeed(), movementInput);
-                move(MovementType.SELF, getVelocity());
-                setVelocity(getVelocity().multiply(1.1d));
-            } else {
-                Entity entity = getPrimaryPassenger();
-                if (entity instanceof LivingEntity livingEntity) {
-                    if (hasPassengers()) {
-                        setYaw(livingEntity.getYaw());
-                        prevYaw = getYaw();
-                        setPitch(livingEntity.getPitch() * .5f);
-                        setRotation(getYaw(), getPitch());
-                        bodyYaw = getYaw();
-                        headYaw = bodyYaw;
-                        float f = livingEntity.sidewaysSpeed * .5f;
-                        float g = livingEntity.forwardSpeed;
-                        if (g <= 0f) {
-                            g *= .25f;
-                        }
-
-                        if (onGround) {
-                            f = 0f;
-                            g = 0f;
-                        }
-
-                        airStrafingSpeed = getMovementSpeed() * .1f;
-                        if (isLogicalSideForUpdatingMovement()) {
-                            setMovementSpeed((float) getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));
-                            super.travel(new Vec3d(f, movementInput.y, g));
-                        } else if (livingEntity instanceof PlayerEntity) {
-                            setVelocity(Vec3d.ZERO);
-                        }
-
-                        updateLimbs(this, false);
-                        tryCheckBlockCollision();
-                    } else {
-                        airStrafingSpeed = .02f;
-                        super.travel(movementInput);
+            Entity entity = getPrimaryPassenger();
+            if (entity instanceof LivingEntity livingEntity) {
+                if (hasPassengers()) {
+                    setYaw(livingEntity.getYaw());
+                    prevYaw = getYaw();
+                    setPitch(livingEntity.getPitch() * .5f);
+                    setRotation(getYaw(), getPitch());
+                    bodyYaw = getYaw();
+                    headYaw = bodyYaw;
+                    float f = livingEntity.sidewaysSpeed * .5f;
+                    float g = livingEntity.forwardSpeed;
+                    if (g <= 0f) {
+                        g *= .25f;
                     }
+
+                    if (onGround) {
+                        f = 0f;
+                        g = 0f;
+                    }
+
+                    airStrafingSpeed = getMovementSpeed() * .1f;
+                    if (isLogicalSideForUpdatingMovement()) {
+                        setMovementSpeed((float) getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));
+                        super.travel(new Vec3d(f, movementInput.y, g));
+                    } else if (livingEntity instanceof PlayerEntity) {
+                        setVelocity(Vec3d.ZERO);
+                    }
+
+                    updateLimbs(this, false);
+                    tryCheckBlockCollision();
+                } else {
+                    airStrafingSpeed = .02f;
+                    super.travel(movementInput);
                 }
             }
         }
@@ -461,8 +409,20 @@ public class MooseEntity extends TameableEntity implements Saddleable {
     }
 
     @Override
-    public boolean canBeSaddled() {
-        return isAlive() && !isBaby() && isTamed();
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (entityData == null) {
+            entityData = new PassiveEntity.PassiveData(true);
+        }
+
+        PassiveEntity.PassiveData passiveData = (PassiveEntity.PassiveData)entityData;
+        if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 0 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
+            setLeftAntler(false);
+            setRightAntler(false);
+            setBreedingAge(-24000);
+        }
+
+        passiveData.countSpawned();
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     @Override

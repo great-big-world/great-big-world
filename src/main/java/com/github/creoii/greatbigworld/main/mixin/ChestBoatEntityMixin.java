@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ChestBoatEntityMixin {
     @Inject(method = "asItem", at = @At("HEAD"), cancellable = true)
     public void asItem(CallbackInfoReturnable<Item> ci) {
-        if (((BoatEntity)(Object)this).getBoatType() == GBWBoatTypes.MAHOGANY)
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.MAHOGANY)
             ci.setReturnValue(ItemRegistry.MAHOGANY_BOAT);
-        if (((BoatEntity)(Object)this).getBoatType() == GBWBoatTypes.ASPEN)
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ASPEN)
             ci.setReturnValue(ItemRegistry.ASPEN_BOAT);
     }
 }

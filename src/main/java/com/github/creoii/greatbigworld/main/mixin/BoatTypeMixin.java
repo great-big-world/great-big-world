@@ -34,7 +34,7 @@ public class BoatTypeMixin {
         BoatEntity.Type last = types.get(types.size() - 1);
 
         BoatEntity.Type mahogany = create("GBW_MAHOGANY", last.ordinal() + 1, BlockRegistry.MAHOGANY.planks(), "gbw_mahogany");
-        BoatEntity.Type aspen = create("GBW_ASPEN", last.ordinal() + 3, BlockRegistry.ASPEN.planks(), "gbw_aspen");
+        BoatEntity.Type aspen = create("GBW_ASPEN", last.ordinal() + 2, BlockRegistry.ASPEN.planks(), "gbw_aspen");
         GBWBoatTypes.MAHOGANY = mahogany;
         GBWBoatTypes.ASPEN = aspen;
         types.add(mahogany);

@@ -1,18 +1,14 @@
 package com.github.creoii.greatbigworld.entity.navigation;
 
-import net.minecraft.entity.ai.pathing.AmphibiousPathNodeMaker;
-import net.minecraft.entity.ai.pathing.PathNode;
-import net.minecraft.entity.ai.pathing.PathNodeNavigator;
-import net.minecraft.entity.ai.pathing.PathNodeType;
+import net.minecraft.entity.ai.pathing.*;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.AxolotlSwimNavigation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SwimNavigation<E extends MobEntity> extends AxolotlSwimNavigation {
+public class SwimNavigation<E extends MobEntity> extends AmphibiousSwimNavigation {
     private final boolean canEnterDoors;
 
     public SwimNavigation(E mob, World world, boolean canEnterDoors) {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "greatbigworld",
+  "id": "great_big_world",
   "version": "1.0.0",
   "name": "GreatBigWorld",
   "description": "",
@@ -27,6 +27,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.4.0",
-    "minecraft": "1.19.2"
+    "minecraft": ">=1.19.3"
   }
 }

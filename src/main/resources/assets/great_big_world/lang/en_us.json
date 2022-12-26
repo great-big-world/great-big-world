@@ -48,10 +48,6 @@
   "block.great_big_world.midnight_mushroom": "Midnight Mushroom",
   "block.great_big_world.darkblight_mushroom": "Darkblight Mushroom",
   "block.great_big_world.antler": "Antler",
-  "block.great_big_world.corvus_bricks": "Corvus Bricks",
-  "block.great_big_world.corvus_brick_stairs": "Corvus Brick Stairs",
-  "block.great_big_world.corvus_brick_slab": "Corvus Brick Slab",
-  "block.great_big_world.corvus_brick_wall": "Corvus Brick Wall",
 
   "item.great_big_world.mahogany_boat": "Mahogany Boat",
   "item.great_big_world.mahogany_chest_boat": "Mahogany Chest Boat",
@@ -99,5 +95,8 @@
   "item.great_big_world.raw_venison": "Raw Venison",
   "item.great_big_world.cooked_venison": "Cooked Venison",
 
-  "entity.great_big_world.moose": "Moose"
+  "entity.great_big_world.moose": "Moose",
+
+  "biome.great_big_world.aspen_forest": "Aspen Forest",
+  "biome.great_big_world.snowy_aspen_forest": "Snowy Aspen Forest"
 }

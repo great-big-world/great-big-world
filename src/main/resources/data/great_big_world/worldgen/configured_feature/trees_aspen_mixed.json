@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "great_big_world:yellow_aspen",
+    "features": [
+      {
+        "chance": 0.15,
+        "feature": "great_big_world:green_aspen"
+      }
+    ]
+  }
+}

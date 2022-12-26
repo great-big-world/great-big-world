@@ -18,12 +18,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -38,15 +34,14 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     private static final VoxelShape MEDIUM_SHAPE = Block.createCuboidShape(2d, 0d, 2d, 14d, 10d, 14d);
     private static final VoxelShape LARGE_SHAPE = Block.createCuboidShape(1d, 0d, 1d, 15d, 12d, 15d);
     public static final IntProperty MUSHROOMS = IntProperty.of("mushrooms", 1, 3);
-    public static final IntProperty LIGHT = IntProperty.of("light", 2, 14);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     private final ParticleEffect particleEffect;
     private final StatusEffectInstance statusEffect;
     private final int cloudColor;
 
-    public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int cloudColor) {
-        super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> state.get(LIGHT)).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
-        setDefaultState(getStateManager().getDefaultState().with(MUSHROOMS, 1).with(LIGHT, 8).with(WATERLOGGED, false));
+    public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int light, int cloudColor) {
+        super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> light).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
+        setDefaultState(getStateManager().getDefaultState().with(MUSHROOMS, 1).with(WATERLOGGED, false));
         this.particleEffect = particleEffect;
         this.statusEffect = statusEffect;
         this.cloudColor = cloudColor;
@@ -114,16 +109,8 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         areaEffectCloud.setRadiusGrowth(-areaEffectCloud.getRadius() / (float)areaEffectCloud.getDuration());
         areaEffectCloud.addEffect(statusEffect);
         areaEffectCloud.setColor(cloudColor);
-
         world.spawnEntity(areaEffectCloud);
         super.onBreak(world, pos, state, player);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        world.setBlockState(pos, state.with(LIGHT, player.isSneaking() ? MathHelper.clamp(state.get(LIGHT) - 2, 2, 14) : MathHelper.clamp(state.get(LIGHT) + 2, 2, 14)), 3);
-        return ActionResult.SUCCESS;
     }
 
     @SuppressWarnings("deprecation")
@@ -144,6 +131,6 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(MUSHROOMS, LIGHT, WATERLOGGED);
+        builder.add(MUSHROOMS, WATERLOGGED);
     }
 }

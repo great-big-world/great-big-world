@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab_top",
-    "textures": {
-        "bottom": "great_big_world:block/corvus_bricks",
-        "top": "great_big_world:block/corvus_bricks",
-        "side": "great_big_world:block/corvus_bricks"
-    }
-}

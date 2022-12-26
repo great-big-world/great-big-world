@@ -2,10 +2,8 @@ package com.github.creoii.greatbigworld.main;
 
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
-import com.github.creoii.greatbigworld.world.GreatBigOverworldRegion;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.math.random.Random;
-import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 
 public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
@@ -20,11 +18,8 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
             new DecoratorRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
-            new StructureRegistry(),
-            new BiomeRegistry(),
             new PotionRegistry(),
-            new ParticleRegistry(),
-            new SensorRegistry()
+            new ParticleRegistry()
     };
 
     @Override
@@ -35,7 +30,5 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
     }
 
     @Override
-    public void onTerraBlenderInitialized() {
-        Regions.register(new GreatBigOverworldRegion(2));
-    }
+    public void onTerraBlenderInitialized() { }
 }

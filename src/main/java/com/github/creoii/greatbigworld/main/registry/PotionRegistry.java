@@ -4,12 +4,10 @@ import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.BrewingRecipeRegistry;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class PotionRegistry implements Register {
     public static final Potion GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 3600));
@@ -24,28 +22,28 @@ public class PotionRegistry implements Register {
 
     @Override
     public void register() {
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "glowing"), GLOWING);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_glowing"), LONG_GLOWING);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_glowing"), STRONG_GLOWING);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "blindness"), BLINDNESS);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_blindness"), LONG_BLINDNESS);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_blindness"), STRONG_BLINDNESS);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "darkness"), DARKNESS);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_darkness"), LONG_DARKNESS);
-        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_darkness"), STRONG_DARKNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "glowing"), GLOWING);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_glowing"), LONG_GLOWING);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_glowing"), STRONG_GLOWING);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "blindness"), BLINDNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_blindness"), LONG_BLINDNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_blindness"), STRONG_BLINDNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "darkness"), DARKNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_darkness"), LONG_DARKNESS);
+        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_darkness"), STRONG_DARKNESS);
 
         registerPotionRecipes();
     }
 
     public void registerPotionRecipes() {
-        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.DAYLIGHT_MUSHROOM.asItem(), GLOWING);
-        BrewingRecipeRegistry.registerPotionRecipe(GLOWING, Items.REDSTONE, LONG_GLOWING);
-        BrewingRecipeRegistry.registerPotionRecipe(GLOWING, Items.GLOWSTONE_DUST, STRONG_GLOWING);
-        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.MIDNIGHT_MUSHROOM.asItem(), BLINDNESS);
-        BrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Items.REDSTONE, LONG_BLINDNESS);
-        BrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Items.GLOWSTONE_DUST, STRONG_BLINDNESS);
-        BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.DARKBLIGHT_MUSHROOM.asItem(), DARKNESS);
-        BrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Items.REDSTONE, LONG_DARKNESS);
-        BrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Items.GLOWSTONE_DUST, STRONG_DARKNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.DAYLIGHT_MUSHROOM.asItem(), GLOWING);
+        //BrewingRecipeRegistry.registerPotionRecipe(GLOWING, Items.REDSTONE, LONG_GLOWING);
+        //BrewingRecipeRegistry.registerPotionRecipe(GLOWING, Items.GLOWSTONE_DUST, STRONG_GLOWING);
+        //BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.MIDNIGHT_MUSHROOM.asItem(), BLINDNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Items.REDSTONE, LONG_BLINDNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Items.GLOWSTONE_DUST, STRONG_BLINDNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, BlockRegistry.DARKBLIGHT_MUSHROOM.asItem(), DARKNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Items.REDSTONE, LONG_DARKNESS);
+        //BrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Items.GLOWSTONE_DUST, STRONG_DARKNESS);
     }
 }
