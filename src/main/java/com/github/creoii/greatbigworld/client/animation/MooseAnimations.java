@@ -69,7 +69,7 @@ public class MooseAnimations {
                     new Keyframe(1.5332F, AnimationHelper.createRotationalVector(-7.5F, 0.33F, -7.5F), Transformation.Interpolations.LINEAR),
                     new Keyframe(2f, AnimationHelper.createRotationalVector(0.0F, 5.0F, 0.0F), Transformation.Interpolations.LINEAR)))
             .build();
-    public static final Animation SWIMMING = Animation.Builder.create(1.0417f).looping()
+    public static final Animation SWIMMING = Animation.Builder.create(1.04167f).looping()
             .addBoneAnimation("body", new Transformation(Transformation.Targets.ROTATE,
                     new Keyframe(0.0F, AnimationHelper.createRotationalVector(0.0F, 0.0F, 0.0F), Transformation.Interpolations.CUBIC),
                     new Keyframe(0.3333F, AnimationHelper.createRotationalVector(10.0F, 0.0F, 0.0F), Transformation.Interpolations.CUBIC),

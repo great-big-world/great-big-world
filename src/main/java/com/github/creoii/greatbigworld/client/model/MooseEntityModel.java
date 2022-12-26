@@ -50,9 +50,6 @@ public class MooseEntityModel<T extends MooseEntity> extends SinglePartEntityMod
 		updateAnimation(entity.idlingInWaterAnimationState, MooseAnimations.IDLING_IN_WATER, ageInTicks);
 		head.getChild("left_antler").visible = entity.hasLeftAntler();
 		head.getChild("right_antler").visible = entity.hasRightAntler();
-		float k = entity.getHeadPitch();
-		if (k != 0f)
-			head.pitch = k;
 	}
 
 	@Override
