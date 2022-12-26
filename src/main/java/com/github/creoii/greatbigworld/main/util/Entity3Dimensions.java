@@ -3,10 +3,10 @@ package com.github.creoii.greatbigworld.main.util;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.util.math.Box;
 
-public class TriEntityDimensions extends EntityDimensions {
+public class Entity3Dimensions extends EntityDimensions {
     public final float length;
 
-    public TriEntityDimensions(float length, float width, float height, boolean fixed) {
+    public Entity3Dimensions(float length, float width, float height, boolean fixed) {
         super(width, height, fixed);
         this.length = length;
     }
@@ -17,20 +17,20 @@ public class TriEntityDimensions extends EntityDimensions {
         return new Box(x - (double)l, y, z - (double)w, x + (double)l, y + (double)height, z + (double)w);
     }
 
-    public TriEntityDimensions scaled(float ratio) {
+    public Entity3Dimensions scaled(float ratio) {
         return scaled(ratio, ratio, ratio);
     }
 
-    public TriEntityDimensions scaled(float lengthRatio, float widthRatio, float heightRatio) {
+    public Entity3Dimensions scaled(float lengthRatio, float widthRatio, float heightRatio) {
         return !fixed && (widthRatio != 1f || heightRatio != 1f) ? changing(length * lengthRatio, width * widthRatio, height * heightRatio) : this;
     }
 
-    public static TriEntityDimensions changing(float length, float width, float height) {
-        return new TriEntityDimensions(length, width, height, false);
+    public static Entity3Dimensions changing(float length, float width, float height) {
+        return new Entity3Dimensions(length, width, height, false);
     }
 
-    public static TriEntityDimensions fixed(float length, float width, float height) {
-        return new TriEntityDimensions(length, width, height, true);
+    public static Entity3Dimensions fixed(float length, float width, float height) {
+        return new Entity3Dimensions(length, width, height, true);
     }
 
     public String toString() {

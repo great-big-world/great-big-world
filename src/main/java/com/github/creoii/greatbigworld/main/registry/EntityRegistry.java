@@ -6,7 +6,7 @@ import com.github.creoii.greatbigworld.entity.MooseEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.Tags;
-import com.github.creoii.greatbigworld.main.util.TriEntityDimensions;
+import com.github.creoii.greatbigworld.main.util.Entity3Dimensions;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -16,7 +16,6 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
@@ -34,7 +33,7 @@ import net.minecraft.world.Heightmap;
 import java.util.function.Predicate;
 
 public class EntityRegistry implements Register {
-    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(new TriEntityDimensions(2.1f, 1f, 2.1f, true)).trackRangeChunks(10).build();
+    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(new Entity3Dimensions(2.1f, 1f, 2.1f, true)).trackRangeChunks(10).build();
 
     @Override
     public void register() {
@@ -42,7 +41,6 @@ public class EntityRegistry implements Register {
     }
 
     public static final EntityModelLayer MOOSE_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "moose"), "main");
-    public static final EntityModelLayer BALLISTA_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "ballista"), "main");
 
     @Override
     public void registerClient() {

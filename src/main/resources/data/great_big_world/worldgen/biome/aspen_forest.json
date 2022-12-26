@@ -79,10 +79,11 @@
     ],
     [
       "minecraft:glow_lichen",
+      "minecraft:patch_large_fern",
       "minecraft:forest_flowers",
       "great_big_world:trees_aspen_mixed",
       "minecraft:flower_default",
-      "minecraft:patch_grass_forest",
+      "minecraft:patch_grass_taiga_2",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
