@@ -16,7 +16,8 @@ public class Tags {
 
     public static class ItemTags {
         public static final TagKey<Item> MOOSE_FOOD = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food"));
-        public static final TagKey<Item> MOOSE_BREEDING_ITEMS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_breeding_items"));
+        public static final TagKey<Item> MOOSE_FOOD_LIKES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_likes"));
+        public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
     }
 
     public static class BiomeTags {

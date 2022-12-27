@@ -43,13 +43,17 @@ public class MooseEntityModel<T extends MooseEntity> extends SinglePartEntityMod
 	}
 
 	@Override
-	public void setAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setAngles(MooseEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		getPart().traverse().forEach(ModelPart::resetTransform);
 		updateAnimation(entity.walkingAnimationState, MooseAnimations.WALKING, ageInTicks, Math.min((float)entity.getVelocity().lengthSquared() * 200f, 8f));
 		updateAnimation(entity.swimmingAnimationState, MooseAnimations.SWIMMING, ageInTicks);
 		updateAnimation(entity.idlingInWaterAnimationState, MooseAnimations.IDLING_IN_WATER, ageInTicks);
 		head.getChild("left_antler").visible = entity.hasLeftAntler();
 		head.getChild("right_antler").visible = entity.hasRightAntler();
+		float k = entity.getHeadPitch();
+		if (k != 0.0F) {
+			head.pitch = k;
+		}
 	}
 
 	@Override

@@ -1,10 +1,6 @@
 {
   "values": [
-    "#great_big_world:moose_breeding_items",
-    "minecraft:fern",
-    "minecraft:large_fern",
-    "minecraft:grass",
-    "minecraft:tall_grass",
-    "minecraft:seagrass"
+    "#great_big_world:moose_food_likes",
+    "#great_big_world:moose_food_loves"
   ]
 }

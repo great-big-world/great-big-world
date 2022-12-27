@@ -1,15 +1,15 @@
 package com.github.creoii.greatbigworld.entity;
 
-import com.github.creoii.greatbigworld.entity.brain.MooseBrain;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.util.GBWDamageSources;
 import com.github.creoii.greatbigworld.main.util.Tags;
-import com.mojang.serialization.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.brain.Brain;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -17,24 +17,31 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SaddleItem;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -42,15 +49,34 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class MooseEntity extends AbstractHorseEntity implements Saddleable {
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * TODO:
+ * Anger & attacking
+ * Breeding
+ * Taming
+ * Ram Attack doesnt deal damage
+ * Shedding
+ * Attack people who fail to tame
+ * Literally any sign of life - are brains broken????
+ */
+public class MooseEntity extends AbstractHorseEntity implements Angerable, JumpingMount, Saddleable {
     private static final TrackedData<Boolean> RIGHT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> LEFT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    public static final TrackedData<Boolean> RAMMING = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final int SHED_REGROW_TIME_BASE = 168000;
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState swimmingAnimationState = new AnimationState();
     public final AnimationState idlingInWaterAnimationState = new AnimationState();
+    private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+    private int ramCooldown = 0;
+    private int headPitch;
+    @Nullable private UUID angryAt;
 
     public MooseEntity(EntityType<? extends MooseEntity> entityType, World world) {
         super(entityType, world);
@@ -63,33 +89,60 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         stepHeight = 1.5f;
     }
 
-    @Override
+    /*@Override
     protected Brain.Profile<MooseEntity> createBrainProfile() {
         return MooseBrain.createProfile();
     }
 
     public Brain<?> deserializeBrain(Dynamic<?> dynamic) {
         return MooseBrain.create(createBrainProfile().deserialize(dynamic));
-    }
+    }*/
 
     public static DefaultAttributeContainer.Builder createMooseAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 60d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d).add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 6d).add(EntityAttributes.HORSE_JUMP_STRENGTH, 0d);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 50d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d).add(EntityAttributes.GENERIC_ARMOR, 5d).add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8d).add(EntityAttributes.HORSE_JUMP_STRENGTH, 12d);
     }
 
     public boolean isPushedByFluids() {
         return false;
     }
 
-    public boolean canJumpToNextPathNode(PathNodeType type) {
-        return super.canJumpToNextPathNode(type) && type != PathNodeType.WATER_BORDER;
-    }
-
     protected void initDataTracker() {
         super.initDataTracker();
         dataTracker.startTracking(RIGHT_ANTLER, true);
         dataTracker.startTracking(LEFT_ANTLER, true);
+        dataTracker.startTracking(RAMMING, false);
         dataTracker.startTracking(SHED_TIME, SHED_REGROW_TIME_BASE + random.nextInt(48000));
         dataTracker.startTracking(REGROW_TIME, SHED_REGROW_TIME_BASE + random.nextInt(48000));
+        dataTracker.startTracking(ANGER_TIME, 0);
+    }
+
+    protected void initGoals() {
+        goalSelector.add(1, new EscapeDangerGoal(this, 1.2d));
+        goalSelector.add(1, new HorseBondWithPlayerGoal(this, 1.2d));
+        goalSelector.add(2, new AnimalMateGoal(this, 1d, MooseEntity.class));
+        goalSelector.add(4, new FollowParentGoal(this, 1d));
+        goalSelector.add(6, new WanderAroundFarGoal(this, .7d));
+        goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6f));
+        goalSelector.add(8, new LookAroundGoal(this));
+        goalSelector.add(0, new SwimGoal(this));
+        goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
+        targetSelector.add(3, new ProtectBabiesGoal());
+        targetSelector.add(4, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(4, new ActiveTargetGoal<>(this, AnimalEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(6, new UniversalAngerGoal<>(this, true));
+    }
+
+    public void tickMovement() {
+        if (ramCooldown > 0) {
+            headPitch += random.nextInt(5) + 4;
+        } else {
+            headPitch -= 3;
+        }
+        headPitch = MathHelper.clamp(headPitch, 0, 40);
+        super.tickMovement();
+        if (!world.isClient) {
+            tickAngerLogic((ServerWorld)world, true);
+        }
     }
 
     public boolean hasLeftAntler() {
@@ -132,12 +185,15 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         dataTracker.set(REGROW_TIME, time);
     }
 
+    public float getHeadPitch() {
+        return (float)headPitch / 20f * 30f * .017453292f;
+    }
+
     public void dropAntler() {
         TrackedData<Boolean> trackedData;
         if (!hasLeftAntler()) trackedData = RIGHT_ANTLER;
         else if (!hasRightAntler()) trackedData = LEFT_ANTLER;
         else trackedData = random.nextBoolean() ? LEFT_ANTLER : RIGHT_ANTLER;
-
         dataTracker.set(trackedData, false);
         Vec3d vec3d = getPos();
         ItemStack itemStack = BlockRegistry.ANTLER.asItem().getDefaultStack();
@@ -161,59 +217,46 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
 
     @Override
     protected void onGrowUp() {
-        getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(45f);
-        setLeftAntler(true);
-        setRightAntler(true);
+        if (isBaby()) {
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
+            setLeftAntler(false);
+            setRightAntler(false);
+        } else {
+            getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(50f);
+            setLeftAntler(true);
+            setRightAntler(true);
+        }
         super.onGrowUp();
     }
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.isIn(Tags.ItemTags.MOOSE_BREEDING_ITEMS);
+        return stack.isIn(Tags.ItemTags.MOOSE_FOOD_LIKES) || stack.isIn(Tags.ItemTags.MOOSE_FOOD_LOVES);
     }
 
-    @Override
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!hasPassengers() && !isBaby()) {
-            if (!isTame() || !player.shouldCancelInteraction()) {
-                ItemStack itemStack = player.getStackInHand(hand);
-                if (!itemStack.isEmpty()) {
-                    if (isBreedingItem(itemStack)) {
-                        eat(player, hand, itemStack);
-                        if (!world.isClient && getBreedingAge() == 0 && !isInLove()) {
-                            lovePlayer(player);
-                        }
-                        if (getHealth() < getMaxHealth()) {
-                            heal(5f);
-                        }
-                        if (isBaby()) {
-                            world.addParticle(ParticleTypes.HAPPY_VILLAGER, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), 0d, 0d, 0d);
-                            if (!world.isClient) {
-                                growUp(100);
-                            }
-                        }
-                        emitGameEvent(GameEvent.EAT);
-                        return ActionResult.success(world.isClient);
-                    }
-                    ActionResult actionResult = itemStack.useOnEntity(player, this, hand);
-                    if (actionResult.isAccepted()) {
-                        if (itemStack.getItem() instanceof SaddleItem) {
-                            updateSaddle();
-                        }
-                        return actionResult;
-                    }
-                }
-                putPlayerOnBack(player);
-            }
-            return ActionResult.success(this.world.isClient);
-        } else {
-            return super.interactMob(player, hand);
-        }
+    public static Ingredient getTemptationsItems() {
+        return Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD_LOVES);
     }
 
     public boolean tryAttack(Entity target) {
         if (target instanceof LivingEntity living) {
-            return Hoglin.tryAttack(this, living);
+            float damage = (float) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+            if (living.getActiveItem().isOf(Items.SHIELD)) {
+                if (living instanceof PlayerEntity playerEntity) {
+                    playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
+                    world.sendEntityStatus(playerEntity, (byte) 30);
+                }
+                damage /= 2;
+            }
+            boolean bl = target.damage(DamageSource.mob(this), damage);
+            if (bl) {
+                applyDamageEffects(this, target);
+                if (!isBaby()) {
+                    Hoglin.knockback(this, living);
+                }
+            }
+
+            return bl;
         }
         return false;
     }
@@ -224,11 +267,28 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         }
     }
 
-    public boolean damage(DamageSource source, float amount) {
-        boolean bl = super.damage(source, amount);
-        if (world.isClient) return false;
-        else {
-            return bl;
+    @Override
+    public void handleStatus(byte status) {
+        if (status == 7) {
+            showEmoteParticle(true);
+        } else if (status == 6) {
+            showEmoteParticle(false);
+        } else {
+            super.handleStatus(status);
+        }
+    }
+
+    protected void showEmoteParticle(boolean positive) {
+        ParticleEffect particleEffect = ParticleTypes.HEART;
+        if (!positive) {
+            particleEffect = ParticleTypes.SMOKE;
+        }
+
+        for (int i = 0; i < 7; ++i) {
+            double d = random.nextGaussian() * .02d;
+            double e = random.nextGaussian() * .02d;
+            double f = random.nextGaussian() * .02d;
+            world.addParticle(particleEffect, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), d, e, f);
         }
     }
 
@@ -247,17 +307,33 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         super.writeCustomDataToNbt(nbt);
         nbt.putBoolean("HasLeftAntler", hasLeftAntler());
         nbt.putBoolean("HasRightAntler", hasRightAntler());
+        writeAngerToNbt(nbt);
     }
 
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         setLeftAntler(nbt.getBoolean("HasLeftAntler"));
         setRightAntler(nbt.getBoolean("HasRightAntler"));
+        readAngerFromNbt(world, nbt);
     }
 
     @Override
     public double getMountedHeightOffset() {
-        return 1.9d;
+        return 1.85d;
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (source.getAttacker() != null && getOwnerUuid() != null) {
+            if (getOwnerUuid().equals(source.getAttacker().getUuid())) {
+                setOwnerUuid(null);
+                setTame(false);
+                if (getPrimaryPassenger() != null) {
+                    getPrimaryPassenger().dismountVehicle();
+                }
+            }
+        }
+        return super.damage(source, amount);
     }
 
     @Override
@@ -279,6 +355,16 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         }
 
         super.tick();
+        if (isRamming() && ramCooldown < 30 && (onGround || isTouchingWater())) {
+            setRamming(false);
+        }
+
+        if (ramCooldown > 0) {
+            --ramCooldown;
+            if (ramCooldown == 0) {
+                world.playSound(null, getBlockPos(), SoundEvents.ENTITY_CAMEL_DASH_READY, SoundCategory.PLAYERS, 1f, 1f);
+            }
+        }
         if (isAlive() && isAdult()) {
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) decrementRegrowTime();
@@ -313,7 +399,78 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         return getVelocity().horizontalLengthSquared() > 1e-6d && isInsideWaterOrBubbleColumn();
     }
 
-    protected void mobTick() {
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        if (hasAngerTime()) return ActionResult.PASS;
+        ItemStack held = player.getStackInHand(hand);
+        if (isBreedingItem(held)) {
+            return interactHorse(player, held);
+        }
+        return super.interactMob(player, hand);
+    }
+
+    @Override
+    public ActionResult interactHorse(PlayerEntity player, ItemStack stack) {
+        boolean bl = false;
+        float f = 0.0F;
+        int i = 0;
+        int j = 0;
+        if (stack.isIn(Tags.ItemTags.MOOSE_FOOD_LIKES)) {
+            f = 2f;
+            i = 30;
+            j = 2;
+        } else if (stack.isIn(Tags.ItemTags.MOOSE_FOOD_LOVES)) {
+            f = 4f;
+            i = 60;
+            j = 5;
+            if (!world.isClient && isTame() && getBreedingAge() == 0 && !isInLove()) {
+                bl = true;
+                lovePlayer(player);
+            }
+        }
+
+        if (getHealth() < getMaxHealth() && f > 0f) {
+            heal(f);
+            bl = true;
+        }
+
+        if (isBaby() && i > 0) {
+            world.addParticle(ParticleTypes.HAPPY_VILLAGER, getParticleX(1d), getRandomBodyY() + .5d, getParticleZ(1d), 0d, 0d, 0d);
+            if (!world.isClient) {
+                growUp(i);
+            }
+
+            bl = true;
+        }
+
+        if (j > 0 && (bl || !isTame()) && getTemper() < getMaxTemper()) {
+            bl = true;
+            if (!world.isClient) {
+                addTemper(j * 2);
+            }
+        }
+
+        if (bl) {
+            setEating();
+            if (!isSilent()) {
+                SoundEvent soundEvent = getEatSound();
+                if (soundEvent != null) {
+                    world.playSound(null, getX(), getY(), getZ(), soundEvent, getSoundCategory(), 1f, 1f + (random.nextFloat() - random.nextFloat()) * .2f);
+                }
+            }
+            emitGameEvent(GameEvent.EAT);
+        }
+
+        if (!player.getAbilities().creativeMode) {
+            stack.decrement(1);
+        }
+
+        if (world.isClient) {
+            return ActionResult.CONSUME;
+        } else return bl ? ActionResult.SUCCESS : ActionResult.PASS;
+    }
+
+    /*protected void mobTick() {
         world.getProfiler().push("mooseBrain");
         getBrain().tick((ServerWorld) world, this);
         world.getProfiler().pop();
@@ -326,7 +483,7 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
     @SuppressWarnings("unchecked")
     public Brain<MooseEntity> getBrain() {
         return (Brain<MooseEntity>) brain;
-    }
+    }*/
 
     public boolean isAdult() {
         return !isBaby();
@@ -354,9 +511,6 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         PassiveEntity.PassiveData passiveData = (PassiveEntity.PassiveData)entityData;
         if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 0 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
             setBreedingAge(-24000);
-        }
-
-        if (isBaby()) {
             setRightAntler(false);
             setLeftAntler(false);
         }
@@ -370,6 +524,102 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
         if (sound != null) {
             world.playSoundFromEntity(null, this, SoundEvents.ENTITY_HORSE_SADDLE, sound, .5f, 1f);
         }
+    }
+
+    public int getLimitPerChunk() {
+        return 6;
+    }
+
+    public int getAngerTime() {
+        return dataTracker.get(ANGER_TIME);
+    }
+
+    public void setAngerTime(int angerTime) {
+        dataTracker.set(ANGER_TIME, angerTime);
+    }
+
+    public void chooseRandomAngerTime() {
+        setAngerTime(ANGER_TIME_RANGE.get(random));
+    }
+
+    @Nullable
+    public UUID getAngryAt() {
+        return angryAt;
+    }
+
+    public void setAngryAt(@Nullable UUID angryAt) {
+        this.angryAt = angryAt;
+    }
+
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return !hasAngerTime() && super.canBeLeashedBy(player);
+    }
+
+    public boolean canJump(PlayerEntity player) {
+        return getPrimaryPassenger() == player && super.canJump(player);
+    }
+
+    public void setJumpStrength(int strength) {
+        if (isSaddled() && ramCooldown <= 0 && isOnGround()) {
+            super.setJumpStrength(strength);
+        }
+    }
+
+    protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
+        if (!getVelocity().equals(Vec3d.ZERO)) {
+            world.getTargets(LivingEntity.class, TargetPredicate.createAttackable().setPredicate(livingEntity -> {
+                return livingEntity != this && livingEntity.getVehicle() != this;
+            }), this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d))).forEach(livingEntity -> {
+                if (livingEntity.canTakeDamage()) {
+                    System.out.println(livingEntity.getName());
+                    float damage = (strength - 2f) * 10f;
+                    if (livingEntity.getActiveItem().isOf(Items.SHIELD)) {
+                        if (livingEntity instanceof PlayerEntity playerEntity) {
+                            playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
+                            world.sendEntityStatus(playerEntity, (byte) 30);
+                        }
+                        damage /= 2;
+                    }
+                    if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
+                        System.out.println("damage");
+                        if (!isBaby()) {
+                            System.out.println("knockback");
+                            Hoglin.knockback(this, livingEntity);
+                        }
+                        applyDamageEffects(this, livingEntity);
+                        onAttacking(livingEntity);
+                    }
+                }
+            });
+            ramCooldown = 30;
+            setRamming(true);
+            velocityDirty = true;
+        }
+    }
+
+    public boolean isRamming() {
+        return dataTracker.get(RAMMING);
+    }
+
+    public void setRamming(boolean ramming) {
+        dataTracker.set(RAMMING, ramming);
+    }
+
+    public void startJumping(int height) {
+        setRamming(true);
+    }
+
+    public void stopJumping() {
+        headPitch -= 2;
+    }
+
+    public int getJumpCooldown() {
+        return ramCooldown;
+    }
+
+    @Override
+    public boolean disablesShield() {
+        return true;
     }
 
     static class MooseSwimNavigation extends AmphibiousSwimNavigation {
@@ -398,6 +648,30 @@ public class MooseEntity extends AbstractHorseEntity implements Saddleable {
             pos.set(x, y - 1, z);
             BlockState blockState = world.getBlockState(pos);
             return blockState.isIn(BlockTags.FROG_PREFER_JUMP_TO) ? PathNodeType.OPEN : super.getDefaultNodeType(world, x, y, z);
+        }
+    }
+
+    private class ProtectBabiesGoal extends ActiveTargetGoal<PlayerEntity> {
+        public ProtectBabiesGoal() {
+            super(MooseEntity.this, PlayerEntity.class, 20, true, true, null);
+        }
+
+        public boolean canStart() {
+            if (!MooseEntity.this.isBaby()) {
+                if (super.canStart()) {
+                    List<MooseEntity> list = MooseEntity.this.world.getNonSpectatingEntities(MooseEntity.class, MooseEntity.this.getBoundingBox().expand(8d, 4d, 8d));
+                    for (MooseEntity mooseEntity : list) {
+                        if (mooseEntity.isBaby()) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        protected double getFollowRange() {
+            return super.getFollowRange() * .5d;
         }
     }
 }

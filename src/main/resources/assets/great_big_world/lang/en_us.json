@@ -98,5 +98,7 @@
   "entity.great_big_world.moose": "Moose",
 
   "biome.great_big_world.aspen_forest": "Aspen Forest",
-  "biome.great_big_world.snowy_aspen_forest": "Snowy Aspen Forest"
+  "biome.great_big_world.snowy_aspen_forest": "Snowy Aspen Forest",
+
+  "death.attack.moose_ram": "%1$s was mauled to death by a Moose"
 }
