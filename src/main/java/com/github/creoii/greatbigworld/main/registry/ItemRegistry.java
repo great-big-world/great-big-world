@@ -24,6 +24,7 @@ public class ItemRegistry implements Register {
     //endregion
     //region Aspen Wood
     public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new Item.Settings());
+    public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAF_PILE, new Item.Settings());
     public static final Item ASPEN_SIGN = new SignItem(new Item.Settings().maxCount(16), BlockRegistry.ASPEN_SIGN, BlockRegistry.ASPEN_WALL_SIGN);
     public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
@@ -44,6 +45,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT);
         registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT);
         registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT);

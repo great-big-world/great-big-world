@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "great_big_world:block/yellow_aspen_leaf_pile"
+    },
+    "snowy=true": {
+      "model": "great_big_world:block/snowy_yellow_aspen_leaf_pile"
+    }
+  }
+}

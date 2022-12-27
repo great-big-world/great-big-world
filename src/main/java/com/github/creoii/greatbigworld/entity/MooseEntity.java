@@ -6,6 +6,7 @@ import com.github.creoii.greatbigworld.main.util.GBWDamageSources;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
@@ -21,7 +22,6 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -49,14 +49,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
 /**
  * TODO:
- * Anger & attacking
+ * attacking
  * Breeding
- * Taming
  * Ram Attack doesnt deal damage
  * Shedding
  * Attack people who fail to tame
@@ -85,18 +85,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         setPathfindingPenalty(PathNodeType.DANGER_POWDER_SNOW, -1f);
         setPathfindingPenalty(PathNodeType.WATER, 2f);
         lookControl = new LookControl(this);
-        moveControl = new AquaticMoveControl(this, 85, 10, .06f, .15f, true);
+        moveControl = new AquaticMoveControl(this, 85, 10, .06f, 1f, true);
         stepHeight = 1.5f;
     }
-
-    /*@Override
-    protected Brain.Profile<MooseEntity> createBrainProfile() {
-        return MooseBrain.createProfile();
-    }
-
-    public Brain<?> deserializeBrain(Dynamic<?> dynamic) {
-        return MooseBrain.create(createBrainProfile().deserialize(dynamic));
-    }*/
 
     public static DefaultAttributeContainer.Builder createMooseAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 50d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d).add(EntityAttributes.GENERIC_ARMOR, 5d).add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8d).add(EntityAttributes.HORSE_JUMP_STRENGTH, 12d);
@@ -118,17 +109,19 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     protected void initGoals() {
         goalSelector.add(1, new EscapeDangerGoal(this, 1.2d));
-        goalSelector.add(1, new HorseBondWithPlayerGoal(this, 1.2d));
+        goalSelector.add(1, new MooseBondOrAngerAtPlayerGoal(this));
         goalSelector.add(2, new AnimalMateGoal(this, 1d, MooseEntity.class));
+        goalSelector.add(2, new FleeEntityGoal<>(this, LivingEntity.class, 8f, 1.6d, 1.4d, livingEntity -> {
+            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && !livingEntity.isSpectator() && (!isAngryAt(livingEntity) || isOwner(livingEntity));
+        }));
         goalSelector.add(4, new FollowParentGoal(this, 1d));
         goalSelector.add(6, new WanderAroundFarGoal(this, .7d));
-        goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6f));
+        goalSelector.add(7, new LookAtEntityGoal(this, LivingEntity.class, 6f));
         goalSelector.add(8, new LookAroundGoal(this));
         goalSelector.add(0, new SwimGoal(this));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
         targetSelector.add(3, new ProtectBabiesGoal());
-        targetSelector.add(4, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        targetSelector.add(4, new ActiveTargetGoal<>(this, AnimalEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(4, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
         targetSelector.add(6, new UniversalAngerGoal<>(this, true));
     }
 
@@ -141,7 +134,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         headPitch = MathHelper.clamp(headPitch, 0, 40);
         super.tickMovement();
         if (!world.isClient) {
-            tickAngerLogic((ServerWorld)world, true);
+            tickAngerLogic((ServerWorld) world, true);
         }
     }
 
@@ -186,7 +179,11 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public float getHeadPitch() {
-        return (float)headPitch / 20f * 30f * .017453292f;
+        return (float) headPitch / 20f * 30f * .017453292f;
+    }
+
+    public boolean isOwner(LivingEntity livingEntity) {
+        return livingEntity.getUuid().equals(getOwnerUuid());
     }
 
     public void dropAntler() {
@@ -195,13 +192,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         else if (!hasRightAntler()) trackedData = LEFT_ANTLER;
         else trackedData = random.nextBoolean() ? LEFT_ANTLER : RIGHT_ANTLER;
         dataTracker.set(trackedData, false);
-        Vec3d vec3d = getPos();
-        ItemStack itemStack = BlockRegistry.ANTLER.asItem().getDefaultStack();
-        double d = MathHelper.nextBetween(random, -.2f, .2f);
-        double e = MathHelper.nextBetween(random, .3f, .7f);
-        double f = MathHelper.nextBetween(random, -.2f, .2f);
-        ItemEntity itemEntity = new ItemEntity(world, vec3d.getX(), vec3d.getY(), vec3d.getZ(), itemStack, d, e, f);
-        world.spawnEntity(itemEntity);
+        dropItem(BlockRegistry.ANTLER);
     }
 
     @Nullable @Override
@@ -232,10 +223,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Override
     public boolean isBreedingItem(ItemStack stack) {
         return stack.isIn(Tags.ItemTags.MOOSE_FOOD_LIKES) || stack.isIn(Tags.ItemTags.MOOSE_FOOD_LOVES);
-    }
-
-    public static Ingredient getTemptationsItems() {
-        return Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD_LOVES);
     }
 
     public boolean tryAttack(Entity target) {
@@ -324,10 +311,16 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        if (source.getAttacker() != null && getOwnerUuid() != null) {
-            if (getOwnerUuid().equals(source.getAttacker().getUuid())) {
+        Entity entity = source.getAttacker();
+        if (entity != null && getOwnerUuid() != null) {
+            setAngryAt(entity.getUuid());
+            chooseRandomAngerTime();
+            if (!hasAngerTime() && getOwnerUuid().equals(entity.getUuid())) {
                 setOwnerUuid(null);
                 setTame(false);
+                if (isSaddled()) {
+                    dropInventory();
+                }
                 if (getPrimaryPassenger() != null) {
                     getPrimaryPassenger().dismountVehicle();
                 }
@@ -470,21 +463,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         } else return bl ? ActionResult.SUCCESS : ActionResult.PASS;
     }
 
-    /*protected void mobTick() {
-        world.getProfiler().push("mooseBrain");
-        getBrain().tick((ServerWorld) world, this);
-        world.getProfiler().pop();
-        world.getProfiler().push("mooseActivityUpdate");
-        MooseBrain.updateActivities(this);
-        world.getProfiler().pop();
-        super.mobTick();
-    }
-
-    @SuppressWarnings("unchecked")
-    public Brain<MooseEntity> getBrain() {
-        return (Brain<MooseEntity>) brain;
-    }*/
-
     public boolean isAdult() {
         return !isBaby();
     }
@@ -511,8 +489,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         PassiveEntity.PassiveData passiveData = (PassiveEntity.PassiveData)entityData;
         if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 0 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
             setBreedingAge(-24000);
-            setRightAntler(false);
-            setLeftAntler(false);
         }
 
         passiveData.countSpawned();
@@ -549,6 +525,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public void setAngryAt(@Nullable UUID angryAt) {
         this.angryAt = angryAt;
+    }
+
+    public boolean isAngryAt(Entity entity) {
+        return entity.getUuid().equals(getAngryAt());
+    }
+
+    @Override
+    public boolean shouldAngerAt(LivingEntity entity) {
+        return isAngryAt(entity) && squaredDistanceTo(entity) <= 4d;
     }
 
     public boolean canBeLeashedBy(PlayerEntity player) {
@@ -610,7 +595,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void stopJumping() {
-        headPitch -= 2;
+        headPitch -= 3;
     }
 
     public int getJumpCooldown() {
@@ -651,9 +636,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
     }
 
-    private class ProtectBabiesGoal extends ActiveTargetGoal<PlayerEntity> {
+    private class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
-            super(MooseEntity.this, PlayerEntity.class, 20, true, true, null);
+            super(MooseEntity.this, LivingEntity.class, 20, true, true, null);
         }
 
         public boolean canStart() {
@@ -672,6 +657,66 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
         protected double getFollowRange() {
             return super.getFollowRange() * .5d;
+        }
+    }
+
+    public static class MooseBondOrAngerAtPlayerGoal extends Goal {
+        private final AbstractHorseEntity moose;
+        private double targetX;
+        private double targetY;
+        private double targetZ;
+
+        public MooseBondOrAngerAtPlayerGoal(MooseEntity moose) {
+            this.moose = moose;
+            setControls(EnumSet.of(Control.MOVE));
+        }
+
+        public boolean canStart() {
+            if (!moose.isTame() && moose.hasPassengers()) {
+                Vec3d vec3d = NoPenaltyTargeting.find(moose, 5, 4);
+                if (vec3d == null) {
+                    return false;
+                } else {
+                    this.targetX = vec3d.x;
+                    this.targetY = vec3d.y;
+                    this.targetZ = vec3d.z;
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+
+        public void start() {
+            moose.getNavigation().startMovingTo(targetX, targetY, targetZ, 1.2d);
+        }
+
+        public boolean shouldContinue() {
+            return !moose.isTame() && !moose.getNavigation().isIdle() && moose.hasPassengers();
+        }
+
+        public void tick() {
+            if (!moose.isTame() && moose.getRandom().nextInt(getTickCount(50)) == 0) {
+                Entity entity = moose.getPassengerList().get(0);
+                if (entity == null) {
+                    return;
+                }
+
+                if (entity instanceof PlayerEntity playerEntity) {
+                    int i = moose.getTemper();
+                    int j = moose.getMaxTemper();
+                    if (j > 0 && moose.getRandom().nextInt(j) < i) {
+                        moose.bondWithPlayer(playerEntity);
+                        return;
+                    } else if (moose.getRandom().nextInt(j) < i + 1) {
+                        ((Angerable) moose).setAngryAt(playerEntity.getUuid());
+                    }
+                    moose.addTemper(5);
+                }
+                moose.removeAllPassengers();
+                moose.playAngrySound();
+                moose.world.sendEntityStatus(moose, (byte)6);
+            }
         }
     }
 }

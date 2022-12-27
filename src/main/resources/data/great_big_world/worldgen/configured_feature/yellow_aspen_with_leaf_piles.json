@@ -1,0 +1,15 @@
+{
+  "type": "great_big_world:composite",
+  "config": {
+    "features": [
+      {
+        "feature": "great_big_world:yellow_aspen",
+        "placement": []
+      },
+      {
+        "feature": "great_big_world:patch_yellow_aspen_leaves",
+        "placement": []
+      }
+    ]
+  }
+}

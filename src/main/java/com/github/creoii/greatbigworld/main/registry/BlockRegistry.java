@@ -47,7 +47,9 @@ public class BlockRegistry implements Register {
     //region Aspen Wood
     public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, true);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.copy(YELLOW_ASPEN_LEAVES));
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+    public static final Block GREEN_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
     public static final Block YELLOW_ASPEN_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.BIRCH_SAPLING), ConfiguredFeatureRegistry.YELLOW_ASPEN);
     public static final Block POTTED_YELLOW_ASPEN_SAPLING = new FlowerPotBlock(YELLOW_ASPEN_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block GREEN_ASPEN_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.BIRCH_SAPLING), ConfiguredFeatureRegistry.GREEN_ASPEN);
@@ -82,9 +84,11 @@ public class BlockRegistry implements Register {
 
         ASPEN.register();
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new ExtendedBlockSettings(.3f, 30, 60, null), ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new ExtendedBlockSettings(.1f, 30, 60, null), ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, new ExtendedBlockSettings(.3f, 30, 60, null));
+        registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, new ExtendedBlockSettings(.1f, 30, 60, null));
         registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, null);
@@ -119,16 +123,18 @@ public class BlockRegistry implements Register {
         RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.POTTED_YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.POTTED_GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
         RenderLayers.BLOCKS.put(BlockRegistry.BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.BAMBOO_WALL_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.SOUL_BAMBOO_WALL_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.POTTED_BAMBOO_TORCH, RenderLayer.getCutout());
         RenderLayers.BLOCKS.put(BlockRegistry.POTTED_SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {

@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -18,6 +19,10 @@ public class Tags {
         public static final TagKey<Item> MOOSE_FOOD = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food"));
         public static final TagKey<Item> MOOSE_FOOD_LIKES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_likes"));
         public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
+    }
+
+    public static class EntityTypeTags {
+        public static final TagKey<EntityType<?>> MOOSE_FLEE_FROM = TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NAMESPACE, "moose_flee_from"));
     }
 
     public static class BiomeTags {

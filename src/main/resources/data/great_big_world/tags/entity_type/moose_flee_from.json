@@ -1,0 +1,13 @@
+{
+  "values": [
+    "#minecraft:raiders",
+    "minecraft:player",
+    "minecraft:wolf",
+    "minecraft:polar_bear",
+    "minecraft:hoglin",
+    "minecraft:zoglin",
+    "minecraft:piglin",
+    "minecraft:zombified_piglin",
+    "minecraft:warden"
+  ]
+}

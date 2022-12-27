@@ -1,0 +1,6 @@
+{
+    "parent": "great_big_world:block/leaf_pile",
+    "textures": {
+        "all": "great_big_world:block/snowy_yellow_aspen_leaf_pile"
+    }
+}

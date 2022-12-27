@@ -1,11 +1,11 @@
 {
   "type": "minecraft:random_selector",
   "config": {
-    "default": "great_big_world:yellow_aspen",
+    "default": "great_big_world:yellow_aspen_with_leaf_piles",
     "features": [
       {
         "chance": 0.15,
-        "feature": "great_big_world:green_aspen"
+        "feature": "great_big_world:green_aspen_with_leaf_piles"
       }
     ]
   }
