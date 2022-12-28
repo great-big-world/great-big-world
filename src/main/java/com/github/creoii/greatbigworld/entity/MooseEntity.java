@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
+import com.github.creoii.greatbigworld.entity.goal.FleeOrAngerAtEntityGoal;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.util.GBWDamageSources;
@@ -108,20 +109,21 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     protected void initGoals() {
-        goalSelector.add(1, new EscapeDangerGoal(this, 1.2d));
-        goalSelector.add(1, new MooseBondOrAngerAtPlayerGoal(this));
+        goalSelector.add(0, new SwimGoal(this));
+        goalSelector.add(1, new MeleeAttackGoal(this, 1d, true));
         goalSelector.add(2, new AnimalMateGoal(this, 1d, MooseEntity.class));
-        goalSelector.add(2, new FleeEntityGoal<>(this, LivingEntity.class, 8f, 1.6d, 1.4d, livingEntity -> {
-            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && !livingEntity.isSpectator() && (!isAngryAt(livingEntity) || isOwner(livingEntity));
-        }));
         goalSelector.add(4, new FollowParentGoal(this, 1d));
         goalSelector.add(6, new WanderAroundFarGoal(this, .7d));
         goalSelector.add(7, new LookAtEntityGoal(this, LivingEntity.class, 6f));
         goalSelector.add(8, new LookAroundGoal(this));
-        goalSelector.add(0, new SwimGoal(this));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
-        targetSelector.add(3, new ProtectBabiesGoal());
-        targetSelector.add(4, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(1, new ProtectBabiesGoal());
+        targetSelector.add(2, new FleeOrAngerAtEntityGoal<>(this, LivingEntity.class, Entity::isSneaky, 3f, 9f, 1.6d, 1.4d, livingEntity -> {
+            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && !livingEntity.isSpectator() && (!isAngryAt(livingEntity) || isOwner(livingEntity));
+        }));
+        targetSelector.add(3, new MooseBondOrAngerAtPlayerGoal(this));
+        targetSelector.add(4, new RevengeGoal(this, new Class[0]));
+        targetSelector.add(5, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
         targetSelector.add(6, new UniversalAngerGoal<>(this, true));
     }
 
@@ -312,10 +314,10 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Override
     public boolean damage(DamageSource source, float amount) {
         Entity entity = source.getAttacker();
-        if (entity != null && getOwnerUuid() != null) {
+        if (entity != null) {
             setAngryAt(entity.getUuid());
             chooseRandomAngerTime();
-            if (!hasAngerTime() && getOwnerUuid().equals(entity.getUuid())) {
+            if (!hasAngerTime() && getOwnerUuid() != null && getOwnerUuid().equals(entity.getUuid())) {
                 setOwnerUuid(null);
                 setTame(false);
                 if (isSaddled()) {
@@ -416,9 +418,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             f = 4f;
             i = 60;
             j = 5;
-            if (!world.isClient && isTame() && getBreedingAge() == 0 && !isInLove()) {
+            if (!world.isClient) {
+                setAngerTime(0);
+                setTarget(null);
+                if (isTame() && getBreedingAge() == 0 && !isInLove()) {
+                    lovePlayer(player);
+                }
                 bl = true;
-                lovePlayer(player);
             }
         }
 
@@ -487,7 +493,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
 
         PassiveEntity.PassiveData passiveData = (PassiveEntity.PassiveData)entityData;
-        if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 0 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
+        if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 1 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
             setBreedingAge(-24000);
         }
 
@@ -533,7 +539,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public boolean shouldAngerAt(LivingEntity entity) {
-        return isAngryAt(entity) && squaredDistanceTo(entity) <= 4d;
+        return isAngryAt(entity) && squaredDistanceTo(entity) <= 3d;
     }
 
     public boolean canBeLeashedBy(PlayerEntity player) {
@@ -710,6 +716,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                         return;
                     } else if (moose.getRandom().nextInt(j) < i + 1) {
                         ((Angerable) moose).setAngryAt(playerEntity.getUuid());
+                        moose.setTarget(playerEntity);
                     }
                     moose.addTemper(5);
                 }

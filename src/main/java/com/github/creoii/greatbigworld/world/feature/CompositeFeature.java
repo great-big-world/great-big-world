@@ -15,7 +15,8 @@ public class CompositeFeature extends Feature<CompositeFeatureConfig> {
     @Override
     public boolean generate(FeatureContext context) {
         boolean generated = true;
-        for (RegistryEntry<PlacedFeature> entry : ((CompositeFeatureConfig)context.getConfig()).features()) {
+        CompositeFeatureConfig config = ((CompositeFeatureConfig)context.getConfig());
+        for (RegistryEntry<PlacedFeature> entry : config.features()) {
             if (entry.value().generateUnregistered(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin())) {
                 generated = false;
             }

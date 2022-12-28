@@ -1,6 +1,7 @@
 {
-    "parent": "great_big_world:block/tinted_leaf_pile",
+    "parent": "great_big_world:block/snowy_tinted_leaf_pile",
     "textures": {
-        "all": "great_big_world:block/snowy_green_aspen_leaf_pile"
+        "all": "block/snow",
+        "tint": "great_big_world:block/green_aspen_leaves"
     }
 }

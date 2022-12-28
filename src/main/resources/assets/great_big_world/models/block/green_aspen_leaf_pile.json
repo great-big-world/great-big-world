@@ -1,6 +1,22 @@
 {
-    "parent": "great_big_world:block/tinted_leaf_pile",
+    "parent": "block/thin_block",
     "textures": {
-        "all": "great_big_world:block/green_aspen_leaves"
-    }
+        "all": "great_big_world:block/green_aspen_leaves",
+        "particle": "#all"
+    },
+    "elements": [
+        {
+            "from": [0, 0, 0],
+            "to": [16, 2, 16],
+            "color": 1,
+            "faces": {
+                "north": {"uv": [0, 0, 16, 2], "texture": "#all", "tintindex": 0, "cullface": "north"},
+                "east": {"uv": [0, 0, 16, 2], "texture": "#all", "tintindex": 0, "cullface": "east"},
+                "south": {"uv": [0, 0, 16, 2], "texture": "#all", "tintindex": 0, "cullface": "south"},
+                "west": {"uv": [0, 0, 16, 2], "texture": "#all", "tintindex": 0, "cullface": "west"},
+                "up": {"uv": [0, 0, 16, 16], "texture": "#all", "tintindex": 0},
+                "down": {"uv": [0, 0, 16, 16], "texture": "#all", "tintindex": 0, "cullface": "down"}
+            }
+        }
+    ]
 }

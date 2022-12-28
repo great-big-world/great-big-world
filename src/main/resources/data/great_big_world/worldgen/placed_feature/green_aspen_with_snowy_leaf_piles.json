@@ -1,0 +1,17 @@
+{
+  "feature": "great_big_world:green_aspen_with_snowy_leaf_piles",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "great_big_world:green_aspen_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}
