@@ -19,7 +19,7 @@ public class CompositeFeature extends Feature<CompositeFeatureConfig> {
         for (RegistryEntry<PlacedFeature> entry : config.features()) {
             if (entry.value().generateUnregistered(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin())) {
                 generated = true;
-            }
+            } else if (config.failIfFirstFails()) break;
         }
         return generated;
     }

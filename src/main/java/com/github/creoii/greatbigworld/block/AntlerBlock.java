@@ -29,6 +29,7 @@ public class AntlerBlock extends HorizontalFacingBlock {
 
     public AntlerBlock(Settings settings) {
         super(settings);
+        setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -45,6 +46,6 @@ public class AntlerBlock extends HorizontalFacingBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(Properties.HORIZONTAL_FACING);
+        builder.add(FACING);
     }
 }

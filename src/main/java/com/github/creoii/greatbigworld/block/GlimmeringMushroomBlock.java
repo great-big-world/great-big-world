@@ -110,6 +110,9 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         areaEffectCloud.addEffect(statusEffect);
         areaEffectCloud.setColor(cloudColor);
         world.spawnEntity(areaEffectCloud);
+        for (int i = 0; i < world.random.nextInt(10); ++i) {
+            spawnParticle(world, pos, world.getRandom(), world.random.nextFloat(), world.random.nextFloat(), world.random.nextFloat());
+        }
         super.onBreak(world, pos, state, player);
     }
 
@@ -118,14 +121,18 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         return (!context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3) || super.canReplace(state, context);
     }
 
+    private void spawnParticle(World world, BlockPos pos, Random random, double velocityX, double velocityY, double velocityZ) {
+        double x = pos.getX() + .5d + .25d * (random.nextInt(2) * 2 - 1);
+        double y = pos.getY() + random.nextFloat();
+        double z = pos.getZ() + .5d + .25d * (random.nextInt(2) * 2 - 1);
+        world.addParticle(particleEffect, x, y, z, velocityX, velocityY, velocityZ);
+    }
+
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         if (!state.get(WATERLOGGED) && random.nextInt(5) <= (state.get(MUSHROOMS))) {
-            double x = pos.getX() + .5d + .25d * (random.nextInt(2) * 2 - 1);
-            double y = pos.getY() + random.nextFloat();
-            double z = pos.getZ() + .5d + .25d * (random.nextInt(2) * 2 - 1);
-            world.addParticle(particleEffect, x, y, z, 0d, 0d, 0d);
+            spawnParticle(world, pos, random, 0d, 0d, 0d);
         }
     }
 

@@ -44,6 +44,6 @@ public class BambooWallTorchBlock extends WallTorchBlock {
 		double f = pos.getZ() + .5d;
 		Direction direction = state.get(FACING).getOpposite();
 		world.addParticle(ParticleTypes.SMOKE, d + .17d * direction.getOffsetX(), e + .22d, f + .17d * direction.getOffsetZ(), 0d, 0d, 0d);
-		world.addParticle(this.particle, d + .17d * direction.getOffsetX(), e + .22d, f + .17d * direction.getOffsetZ(), 0d, 0d, 0d);
+		world.addParticle(particle, d + .17d * direction.getOffsetX(), e + .22d, f + .17d * direction.getOffsetZ(), 0d, 0d, 0d);
 	}
 }

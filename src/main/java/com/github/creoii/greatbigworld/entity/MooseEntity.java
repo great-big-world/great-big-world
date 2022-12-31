@@ -481,11 +481,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return isBaby() ? dimensions.height * .65f : dimensions.height;
     }
 
-    @Override
-    public EntityDimensions getDimensions(EntityPose pose) {
-        return isBaby() ? super.getDimensions(pose).scaled(.5f) : super.getDimensions(pose);
-    }
-
     protected EntityNavigation createNavigation(World world) {
         return new AmphibiousSwimNavigation(this, world);
     }
@@ -542,7 +537,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public boolean shouldAngerAt(LivingEntity entity) {
-        return isAngryAt(entity) && squaredDistanceTo(entity) <= 3d;
+        return isAngryAt(entity) && squaredDistanceTo(entity) <= 3d && entity.getType() != getType();
     }
 
     @Override
@@ -684,12 +679,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
         public void tick() {
             if (!moose.hasAngerTime() && moose.getRandom().nextInt(getTickCount(50)) == 0) {
-                Entity entity = moose.getPassengerList().get(0);
-                if (entity == null) {
-                    return;
-                }
-
-                if (entity instanceof PlayerEntity playerEntity) {
+                if (moose.getPassengerList().get(0) instanceof PlayerEntity playerEntity) {
                     int i = moose.getTemper();
                     int j = moose.getMaxTemper();
                     if (j > 0 && moose.getRandom().nextInt(j) < i) {
