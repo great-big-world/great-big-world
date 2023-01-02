@@ -5,10 +5,12 @@ import com.github.creoii.greatbigworld.block.base.GBWSaplingBlock;
 import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import com.github.creoii.greatbigworld.main.util.GBWSignTypes;
 import com.github.creoii.greatbigworld.main.util.Register;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.color.world.BiomeColors;
@@ -25,17 +27,11 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class BlockRegistry implements Register {
-    private static final Map<Block, Block> STRIPPED_BLOCKS = new HashMap<>();
-    private static final FireBlock FIRE = (FireBlock) Blocks.FIRE;
-
     //region Mahogany Wood
-    public static DefaultBlockSets.WoodSet MAHOGANY = DefaultBlockSets.createWoodSet("mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, true);
+    public static DefaultBlockSets.WoodSet MAHOGANY = DefaultBlockSets.createWoodSet("mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, true);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block MAHOGANY_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING), ConfiguredFeatureRegistry.MAHOGANY);
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
@@ -43,7 +39,7 @@ public class BlockRegistry implements Register {
     public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(MAHOGANY_SIGN), GBWSignTypes.MAHOGANY);
     //endregion
     //region Aspen Wood
-    public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, true);
+    public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON,true);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.copy(YELLOW_ASPEN_LEAVES));
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
@@ -70,6 +66,8 @@ public class BlockRegistry implements Register {
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock(FabricBlockSettings.copy(Blocks.BONE_BLOCK).nonOpaque().noCollision());
+    public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
     //endregion
 
     public void register() {
@@ -81,13 +79,13 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "mahogany_wall_sign"), MAHOGANY_WALL_SIGN, null);
 
         ASPEN.register();
-        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new ExtendedBlockSettings(.3f, 30, 60, null), ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new ExtendedBlockSettings(.3f, 30, 60, null), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new ExtendedBlockSettings(.1f, 30, 60, null), ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, new ExtendedBlockSettings(.3f, 30, 60, null));
         registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, new ExtendedBlockSettings(.1f, 30, 60, null));
-        registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new ExtendedBlockSettings(.3f, 0, 0, null), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_wall_sign"), ASPEN_WALL_SIGN, null);
@@ -103,35 +101,38 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(.15f, 0, 0, null), ItemGroups.NATURAL, ItemGroups.INGREDIENTS);
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(.1f, 0, 0, null), ItemGroups.NATURAL, ItemGroups.INGREDIENTS);
 
-        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(.7f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(.65f, 60, 100, null), ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(.65f, 60, 100, null), ItemGroups.NATURAL);
 
-        AxeItem.STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().putAll(AxeItem.STRIPPED_BLOCKS).putAll(STRIPPED_BLOCKS).build();
         BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();
     }
 
     @Override
     public void registerClient() {
-        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.door(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY.trapdoor(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.ASPEN.door(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.ASPEN.trapdoor(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BlockRegistry.YELLOW_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BlockRegistry.GREEN_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BlockRegistry.BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.BAMBOO_WALL_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.SOUL_BAMBOO_WALL_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BlockRegistry.POTTED_SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(MAHOGANY.door(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(MAHOGANY.trapdoor(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(ASPEN.door(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(ASPEN.trapdoor(), RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(MAHOGANY_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(POTTED_MAHOGANY_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(POTTED_YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(YELLOW_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(YELLOW_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(POTTED_GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(GREEN_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(GREEN_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
+        RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(BAMBOO_WALL_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(SOUL_BAMBOO_WALL_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(POTTED_BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(POTTED_SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(HEATHER, RenderLayer.getCutout());
+        RenderLayers.BLOCKS.put(TALL_HEATHER, RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
@@ -139,11 +140,11 @@ public class BlockRegistry implements Register {
         Registry.register(Registries.BLOCK, id, block);
         if (extension != null) {
             if (extension.compostChance() > 0f)
-                ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(block, extension.compostChance());
+                CompostingChanceRegistry.INSTANCE.add(block, extension.compostChance());
             if (extension.burnChance() > 0 && extension.spreadChance() > 0)
-                FIRE.registerFlammableBlock(block, extension.burnChance(), extension.spreadChance());
+                FlammableBlockRegistry.getDefaultInstance().add(block, extension.burnChance(), extension.spreadChance());
             if (extension.strippedBlock() != null)
-                BlockRegistry.STRIPPED_BLOCKS.put(block, extension.strippedBlock());
+                StrippableBlockRegistry.register(block, extension.strippedBlock());
         }
     }
 
@@ -151,6 +152,13 @@ public class BlockRegistry implements Register {
         registerBlock(id, block, extension);
         if (groups != null) {
             ItemRegistry.registerItem(id, new BlockItem(block, new Item.Settings()), groups);
+        }
+    }
+
+    public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension, ItemConvertible after, ItemGroup... groups) {
+        registerBlock(id, block, extension);
+        if (groups != null) {
+            ItemRegistry.registerItem(id, new BlockItem(block, new Item.Settings()), after, groups);
         }
     }
 

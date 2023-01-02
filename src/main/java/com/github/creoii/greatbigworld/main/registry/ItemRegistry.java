@@ -40,24 +40,24 @@ public class ItemRegistry implements Register {
 
     @Override
     public void register() {
-        registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT);
-        registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT);
-        registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
+        registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT);
-        registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT);
+        registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, Items.BIRCH_SIGN, ItemGroups.FUNCTIONAL);
+        registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "raw_venison"), RAW_VENISON, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "raw_venison"), RAW_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
     }
 
     @Override
     public void registerClient() {
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
     public static void registerItem(Identifier id, Item item, ItemGroup... groups) {
@@ -65,6 +65,15 @@ public class ItemRegistry implements Register {
         if (groups != null) {
             for (ItemGroup group : groups) {
                 ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
+            }
+        }
+    }
+
+    public static void registerItem(Identifier id, Item item, ItemConvertible after, ItemGroup... groups) {
+        Registry.register(Registries.ITEM, id, item);
+        if (groups != null) {
+            for (ItemGroup group : groups) {
+                ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(after, item));
             }
         }
     }

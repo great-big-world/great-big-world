@@ -29,5 +29,6 @@ public class Tags {
         public static final TagKey<Biome> MAHOGANY_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "mahogany_biomes"));
         public static final TagKey<Biome> GREEN_ASPEN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "green_aspen_biomes"));
         public static final TagKey<Biome> MOOSE_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "moose_spawnable"));
+        public static final TagKey<Biome> HEATHER_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "heather_biomes"));
     }
 }
