@@ -88,7 +88,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public static DefaultAttributeContainer.Builder createMooseAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 50d).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d).add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d).add(EntityAttributes.GENERIC_ARMOR, 5d).add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8d).add(EntityAttributes.HORSE_JUMP_STRENGTH, 12d);
+        return MobEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 50d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d)
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d)
+                .add(EntityAttributes.GENERIC_ARMOR, 5d)
+                .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8d)
+                .add(EntityAttributes.HORSE_JUMP_STRENGTH, 12d)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 25d);
     }
 
     public boolean isPushedByFluids() {
@@ -622,7 +630,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
-            super(MooseEntity.this, LivingEntity.class, 20, true, true, null);
+            super(MooseEntity.this, LivingEntity.class, 20, true, true, livingEntity -> {
+                return !livingEntity.isBaby() && livingEntity.getType() != EntityRegistry.MOOSE;
+            });
         }
 
         public boolean canStart() {
