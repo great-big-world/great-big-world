@@ -78,8 +78,9 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @SuppressWarnings("deprecation")
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockState down = world.getBlockState(pos.down());
-        return !down.getCollisionShape(world, pos).getFace(Direction.UP).isEmpty() || down.isSideSolidFullSquare(world, pos, Direction.UP) || state.isOf(this);
+        BlockPos blockPos = pos.down();
+        BlockState floor = world.getBlockState(blockPos);
+        return !floor.getCollisionShape(world, blockPos).getFace(Direction.UP).isEmpty() || floor.isSideSolidFullSquare(world, blockPos, Direction.UP);
     }
 
     @Override
@@ -101,24 +102,26 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, pos.getX() + .5f, pos.getY(), pos.getZ() + .5f);
-        areaEffectCloud.setRadius(.75f);
-        areaEffectCloud.setRadiusOnUse(-.5f);
-        areaEffectCloud.setWaitTime(0);
-        areaEffectCloud.setDuration(100);
-        areaEffectCloud.setRadiusGrowth(-areaEffectCloud.getRadius() / (float)areaEffectCloud.getDuration());
-        areaEffectCloud.addEffect(statusEffect);
-        areaEffectCloud.setColor(cloudColor);
-        world.spawnEntity(areaEffectCloud);
-        for (int i = 0; i < world.random.nextInt(10); ++i) {
-            spawnParticle(world, pos, world.getRandom(), world.random.nextFloat(), world.random.nextFloat(), world.random.nextFloat());
+        if (!player.isCreative()) {
+            AreaEffectCloudEntity areaEffectCloud = new AreaEffectCloudEntity(world, pos.getX() + .5f, pos.getY(), pos.getZ() + .5f);
+            areaEffectCloud.setRadius(.75f);
+            areaEffectCloud.setRadiusOnUse(-.5f);
+            areaEffectCloud.setWaitTime(0);
+            areaEffectCloud.setDuration(100);
+            areaEffectCloud.setRadiusGrowth(-areaEffectCloud.getRadius() / (float) areaEffectCloud.getDuration());
+            areaEffectCloud.addEffect(statusEffect);
+            areaEffectCloud.setColor(cloudColor);
+            world.spawnEntity(areaEffectCloud);
+            for (int i = 0; i < world.random.nextInt(10); ++i) {
+                spawnParticle(world, pos, world.getRandom(), world.random.nextFloat(), world.random.nextFloat(), world.random.nextFloat());
+            }
         }
         super.onBreak(world, pos, state, player);
     }
 
     @SuppressWarnings("deprecation")
     public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return (!context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3) || super.canReplace(state, context);
+        return !context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3 || super.canReplace(state, context);
     }
 
     private void spawnParticle(World world, BlockPos pos, Random random, double velocityX, double velocityY, double velocityZ) {
