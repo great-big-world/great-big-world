@@ -1,14 +1,14 @@
-TODO:
+TODO
 
 Moose:
- - Breeding
  - Ram Attack doesn't deal damage
- - Shedding
  - /summon removes antlers
  - babies have too big a hitbox
 
 Glimmering Mushrooms
  - don't stack when placed
+ - block water
 
 Aspen
  - trees generate next to each other
+ - leaf piles block water

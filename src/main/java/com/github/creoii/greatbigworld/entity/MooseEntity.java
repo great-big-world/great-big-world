@@ -23,6 +23,7 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -42,8 +43,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -193,19 +192,17 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return livingEntity.getUuid().equals(getOwnerUuid());
     }
 
-    public void dropAntler() {
-        TrackedData<Boolean> trackedData;
-        if (!hasLeftAntler()) trackedData = RIGHT_ANTLER;
-        else if (!hasRightAntler()) trackedData = LEFT_ANTLER;
-        else trackedData = random.nextBoolean() ? LEFT_ANTLER : RIGHT_ANTLER;
-        dataTracker.set(trackedData, false);
+    public void dropAntlers() {
+        setLeftAntler(false);
+        setRightAntler(false);
+        dropItem(BlockRegistry.ANTLER);
         dropItem(BlockRegistry.ANTLER);
     }
 
     @Nullable @Override
     public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         MooseEntity mooseEntity = EntityRegistry.MOOSE.create(world);
-        if (mooseEntity != null) {
+        if (mooseEntity != null && mooseEntity.isBaby()) {
             mooseEntity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
             mooseEntity.setLeftAntler(false);
             mooseEntity.setRightAntler(false);
@@ -378,19 +375,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) decrementRegrowTime();
                 else {
-                    if (!hasRightAntler() && !hasLeftAntler()) {
-                        if (random.nextBoolean()) setRightAntler(true);
-                        else setLeftAntler(true);
-                    } else if (!hasRightAntler()) setRightAntler(true);
-                    else if (!hasLeftAntler()) setLeftAntler(true);
-
-                    setRegrowTime(SHED_REGROW_TIME_BASE /*+ random.nextInt(48000)*/);
+                    setRightAntler(true);
+                    setLeftAntler(true);
+                    setRegrowTime(SHED_REGROW_TIME_BASE + random.nextInt(48000));
                 }
             }
 
             if (getShedTime() > 0) decrementShedTime();
             else {
-                dropAntler();
+                dropAntlers();
                 setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
             }
         }
@@ -398,6 +391,17 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public boolean canBreatheInWater() {
         return true;
+    }
+
+    @Override
+    public boolean canBreedWith(AnimalEntity other) {
+        if (other == this) {
+            return false;
+        } else if (other.getClass() != this.getClass()) {
+            return false;
+        } else {
+            return this.isInLove() && other.isInLove();
+        }
     }
 
     private boolean shouldWalk() {
@@ -498,20 +502,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     @Override
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (entityData == null) {
-            entityData = new PassiveEntity.PassiveData(true);
-        }
-
-        PassiveEntity.PassiveData passiveData = (PassiveEntity.PassiveData)entityData;
-        if (passiveData.canSpawnBaby() && passiveData.getSpawnedCount() > 1 && world.getRandom().nextFloat() <= passiveData.getBabyChance()) {
-            setBreedingAge(-24000);
-        }
-        passiveData.countSpawned();
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-    }
-
-    @Override
     public void saddle(@Nullable SoundCategory sound) {
         if (sound != null) {
             world.playSoundFromEntity(null, this, SoundEvents.ENTITY_HORSE_SADDLE, sound, .5f, 1f);
@@ -597,9 +587,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                     }
                     if (tryAttack(livingEntity)) {
                         System.out.println("Try Attacked " + livingEntity.getName());
-                        if (!isBaby()) {
-                            Hoglin.knockback(this, livingEntity);
-                        }
                         onAttacking(livingEntity);
                     }
 
