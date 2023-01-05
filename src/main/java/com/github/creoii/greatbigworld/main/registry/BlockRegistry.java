@@ -1,10 +1,12 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.block.*;
-import com.github.creoii.greatbigworld.block.base.GBWSaplingBlock;
 import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import com.github.creoii.greatbigworld.main.util.GBWSignTypes;
 import com.github.creoii.greatbigworld.main.util.Register;
+import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
+import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
+import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -33,7 +35,7 @@ public class BlockRegistry implements Register {
     //region Mahogany Wood
     public static DefaultBlockSets.WoodSet MAHOGANY = DefaultBlockSets.createWoodSet("mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, true);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-    public static final Block MAHOGANY_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING), ConfiguredFeatureRegistry.MAHOGANY);
+    public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING));
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block MAHOGANY_SIGN = new SignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.MAHOGANY);
     public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(MAHOGANY_SIGN), GBWSignTypes.MAHOGANY);
@@ -44,9 +46,9 @@ public class BlockRegistry implements Register {
     public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.copy(YELLOW_ASPEN_LEAVES));
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block GREEN_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
-    public static final Block YELLOW_ASPEN_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.BIRCH_SAPLING), ConfiguredFeatureRegistry.YELLOW_ASPEN);
+    public static final Block YELLOW_ASPEN_SAPLING = new SaplingBlock(new YellowAspenSaplingGenerator(), FabricBlockSettings.copy(Blocks.BIRCH_SAPLING));
     public static final Block POTTED_YELLOW_ASPEN_SAPLING = new FlowerPotBlock(YELLOW_ASPEN_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block GREEN_ASPEN_SAPLING = new GBWSaplingBlock(FabricBlockSettings.copy(Blocks.BIRCH_SAPLING), ConfiguredFeatureRegistry.GREEN_ASPEN);
+    public static final Block GREEN_ASPEN_SAPLING = new SaplingBlock(new GreenAspenSaplingGenerator(), FabricBlockSettings.copy(Blocks.BIRCH_SAPLING));
     public static final Block POTTED_GREEN_ASPEN_SAPLING = new FlowerPotBlock(GREEN_ASPEN_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block ASPEN_SIGN = new SignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.ASPEN);
     public static final Block ASPEN_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(ASPEN_SIGN), GBWSignTypes.ASPEN);
