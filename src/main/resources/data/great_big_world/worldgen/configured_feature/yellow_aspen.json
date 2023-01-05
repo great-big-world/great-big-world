@@ -12,10 +12,11 @@
         },
         "chance": 0.1,
         "random_facing": false,
+        "replaceable": "minecraft:leaves",
         "start_offset": {
           "type": "minecraft:uniform",
           "value": {
-            "min_inclusive": 3,
+            "min_inclusive": 2,
             "max_inclusive": 6
           }
         }
@@ -61,8 +62,8 @@
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
       "limit": 2,
-      "lower_size": 1,
-      "upper_size": 2
+      "lower_size": 0,
+      "upper_size": 1
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",

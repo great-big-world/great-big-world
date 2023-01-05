@@ -3,10 +3,15 @@ package com.github.creoii.greatbigworld.world.decorator;
 import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.predicate.block.BlockStatePredicate;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -23,6 +28,8 @@ public class BranchTreeDecorator extends TreeDecorator {
             return decorator.chance;
         }), Codec.BOOL.fieldOf("random_facing").forGetter(decorator -> {
             return decorator.randomFacing;
+        }), Codec.STRING.fieldOf("replaceable").forGetter(decorator -> {
+            return decorator.replaceableTag.toString();
         }), IntProvider.createValidatingCodec(0, 16).fieldOf("start_offset").forGetter(decorator -> {
             return decorator.startOffset;
         })).apply(instance, BranchTreeDecorator::new);
@@ -30,12 +37,14 @@ public class BranchTreeDecorator extends TreeDecorator {
     private final BlockState state;
     private final float chance;
     private final boolean randomFacing;
+    private final TagKey<Block> replaceableTag;
     private final IntProvider startOffset;
 
-    public BranchTreeDecorator(BlockState state, float chance, boolean randomFacing, IntProvider startOffset) {
+    public BranchTreeDecorator(BlockState state, float chance, boolean randomFacing, String replaceableTag, IntProvider startOffset) {
         this.state = state;
         this.chance = chance;
         this.randomFacing = randomFacing;
+        this.replaceableTag = TagKey.of(RegistryKeys.BLOCK, Identifier.tryParse(replaceableTag));
         this.startOffset = startOffset;
     }
 
@@ -54,7 +63,7 @@ public class BranchTreeDecorator extends TreeDecorator {
                 BlockPos pos = generator.getLogPositions().get(i);
                 direction = Direction.Type.HORIZONTAL.random(random);
                 BlockPos blockpos1 = pos.offset(direction);
-                if (random.nextFloat() <= chance && world.testBlockState(blockpos1, BlockStatePredicate.forBlock(Blocks.AIR))) {
+                if (random.nextFloat() <= chance && world.testBlockState(blockpos1, BlockStatePredicate.forBlock(Blocks.AIR).or(state1 -> state1.isIn(replaceableTag)))) {
                     if (state.getProperties().contains(Properties.FACING)) {
                         generator.replace(blockpos1, state.with(Properties.FACING, randomFacing ? Direction.random(random) : direction.getOpposite()));
                     } else if (state.getProperties().contains(Properties.HORIZONTAL_FACING)) {

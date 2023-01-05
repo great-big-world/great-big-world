@@ -41,6 +41,7 @@ import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -51,15 +52,6 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * TODO:
- * Breeding
- * Ram Attack doesnt deal damage
- * Shedding
- * /summon removes antlers
- * swim way to buoyant
- * babies have too big a hitbox
- */
 public class MooseEntity extends AbstractHorseEntity implements Angerable, JumpingMount, Saddleable {
     private static final TrackedData<Boolean> RIGHT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> LEFT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -95,8 +87,17 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 .add(EntityAttributes.GENERIC_ARMOR, 5d)
                 .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 8d)
-                .add(EntityAttributes.HORSE_JUMP_STRENGTH, 12d)
+                .add(EntityAttributes.HORSE_JUMP_STRENGTH)
                 .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 25d);
+    }
+
+    @Override
+    protected void initAttributes(Random random) {
+        getAttributeInstance(EntityAttributes.HORSE_JUMP_STRENGTH).setBaseValue(getChildRamStrengthBonus(random));
+    }
+
+    protected float getChildRamStrengthBonus(Random random) {
+        return 10f + (float)random.nextInt(3) + (float)random.nextInt(3);
     }
 
     public boolean isPushedByFluids() {
@@ -234,6 +235,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public boolean tryAttack(Entity target) {
         if (hasLeftAntler() || hasRightAntler()) {
             ramCooldown = 30;
+            setRamming(true);
             if (target instanceof LivingEntity living) {
                 float damage = (float) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
                 if (living.getActiveItem().isOf(Items.SHIELD)) {
@@ -243,7 +245,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                     }
                     damage /= 2;
                 }
-                boolean bl = target.damage(DamageSource.mob(this), damage);
+                boolean bl = target.damage(GBWDamageSources.MOOSE_RAM, damage);
                 if (bl) {
                     playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1f, getSoundPitch());
                     applyDamageEffects(this, target);
@@ -539,6 +541,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public void setAngryAt(@Nullable UUID angryAt) {
         this.angryAt = angryAt;
+        updateAnger();
     }
 
     public boolean isAngryAt(Entity entity) {
@@ -576,11 +579,14 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
         if (!getVelocity().equals(Vec3d.ZERO)) {
-            world.getTargets(LivingEntity.class, TargetPredicate.createAttackable().setPredicate(livingEntity -> {
+            List<LivingEntity> targets = world.getTargets(LivingEntity.class, TargetPredicate.createAttackable().setPredicate(livingEntity -> {
                 return livingEntity != this && livingEntity.getVehicle() != this;
-            }), this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d))).forEach(livingEntity -> {
+            }), this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d)));
+            for (LivingEntity livingEntity : targets) {
                 if (livingEntity.canTakeDamage()) {
-                    float damage = (strength - 2f) * 10f;
+                    System.out.println("Strength " + strength);
+                    float damage = strength * 10f;
+                    System.out.println("Found " + livingEntity.getName() + " | " + damage);
                     if (livingEntity.getActiveItem().isOf(Items.SHIELD)) {
                         if (livingEntity instanceof PlayerEntity playerEntity) {
                             playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
@@ -588,18 +594,25 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                         }
                         damage /= 2;
                     }
-                    if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
+                    if (tryAttack(livingEntity)) {
+                        System.out.println("Try Attacked " + livingEntity.getName());
                         if (!isBaby()) {
                             Hoglin.knockback(this, livingEntity);
                         }
-                        applyDamageEffects(this, livingEntity);
+                        onAttacking(livingEntity);
+                    }
+
+                    if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
+                        System.out.println("LE Damage " + livingEntity.getName());
+                        if (!isBaby()) {
+                            Hoglin.knockback(this, livingEntity);
+                        }
                         onAttacking(livingEntity);
                     }
                 }
-            });
+            }
             ramCooldown = 30;
             setRamming(true);
-            velocityDirty = true;
         }
     }
 

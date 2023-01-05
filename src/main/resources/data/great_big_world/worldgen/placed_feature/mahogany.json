@@ -21,9 +21,6 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:surface_water_depth_filter",
       "max_water_depth": 4
     },
@@ -42,6 +39,9 @@
           }
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

@@ -3,17 +3,17 @@ package com.github.creoii.greatbigworld.block;
 import net.minecraft.block.*;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
+import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
 
 public class LeafPileBlock extends Block implements Waterloggable {
@@ -35,6 +35,23 @@ public class LeafPileBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.empty();
+    }
+
+    @Override
+    public boolean hasRandomTicks(BlockState state) {
+        return true;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (state.get(SNOWY)) {
+            if (world.getLightLevel(LightType.BLOCK, pos) > 11) {
+                world.setBlockState(pos, state.with(SNOWY, false), 3);
+            }
+        } else if (world.isSkyVisibleAllowingSea(pos) && world.isRaining() && world.getBiome(pos).value().getPrecipitation() == Biome.Precipitation.SNOW) {
+            world.setBlockState(pos, state.with(SNOWY, true), 3);
+        }
     }
 
     @Nullable

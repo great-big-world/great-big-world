@@ -15,7 +15,6 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
             new BlockRegistry(),
             new ItemRegistry(),
             new EntityRegistry(),
-            new PredicateRegistry(),
             new PlacerRegistry(),
             new DecoratorRegistry(),
             new FeatureRegistry(),

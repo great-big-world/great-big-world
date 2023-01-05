@@ -9,9 +9,6 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
     },
@@ -26,6 +23,9 @@
           "above_bottom": 0
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

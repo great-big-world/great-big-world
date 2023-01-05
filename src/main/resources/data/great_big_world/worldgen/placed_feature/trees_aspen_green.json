@@ -30,18 +30,6 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "OCEAN_FLOOR_WG"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "great_big_world:green_aspen_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
     }
   ]
 }

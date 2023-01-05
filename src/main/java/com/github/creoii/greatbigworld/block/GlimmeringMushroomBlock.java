@@ -11,6 +11,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -18,6 +19,9 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -67,12 +71,14 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
-        if (blockState.isOf(this)) {
-            return blockState.with(MUSHROOMS, Math.min(3, blockState.get(MUSHROOMS) + 1));
+        BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos());
+        ItemStack stack = ctx.getStack();
+        if (stack.isOf(asItem())) {
+            System.out.println("this");
+            return state.with(MUSHROOMS, Math.min(3, state.get(MUSHROOMS) + 1));
         } else {
             FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-            return super.getPlacementState(ctx).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+            return getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
         }
     }
 
@@ -117,11 +123,6 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
             }
         }
         super.onBreak(world, pos, state, player);
-    }
-
-    @SuppressWarnings("deprecation")
-    public boolean canReplace(BlockState state, ItemPlacementContext context) {
-        return !context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3 || super.canReplace(state, context);
     }
 
     private void spawnParticle(World world, BlockPos pos, Random random, double velocityX, double velocityY, double velocityZ) {
