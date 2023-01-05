@@ -5,11 +5,10 @@ Moose:
  - Ram Attack doesn't deal damage
  - Shedding
  - /summon removes antlers
- - swim way to buoyant
  - babies have too big a hitbox
 
 Glimmering Mushrooms
  - don't stack when placed
 
-Aspen Trees
- - generate next to each other
+Aspen
+ - trees generate next to each other

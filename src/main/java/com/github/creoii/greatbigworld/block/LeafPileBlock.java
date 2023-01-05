@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
 import net.minecraft.block.*;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
@@ -11,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.Nullable;
@@ -29,12 +29,6 @@ public class LeafPileBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
     }
 
     @Override
@@ -60,13 +54,16 @@ public class LeafPileBlock extends Block implements Waterloggable {
         World world = ctx.getWorld();
         BlockPos pos = ctx.getBlockPos();
         if (world.getBlockState(pos).isOf(Blocks.SNOW)) {
-            return getDefaultState().with(SNOWY, true).with(WATERLOGGED, world.getFluidState(pos).isOf(Fluids.WATER));
+            return getDefaultState().with(SNOWY, true);
         }
         return getDefaultState().with(WATERLOGGED, world.getFluidState(pos).isOf(Fluids.WATER));
     }
 
     @SuppressWarnings("deprecation")
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
         return !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
@@ -79,6 +76,11 @@ public class LeafPileBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public int getOpacity(BlockState state, BlockView world, BlockPos pos) {
         return 1;
+    }
+
+    @SuppressWarnings("deprecation")
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     @Override

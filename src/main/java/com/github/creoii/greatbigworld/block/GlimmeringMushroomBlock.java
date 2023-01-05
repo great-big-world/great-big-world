@@ -44,7 +44,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     private final int cloudColor;
 
     public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int light, int cloudColor) {
-        super(FabricBlockSettings.of(Material.WOOD).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> light).ticksRandomly().nonOpaque().emissiveLighting((state, world, pos) -> true));
+        super(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> light).ticksRandomly().nonOpaque().noCollision().emissiveLighting((state, world, pos) -> true));
         setDefaultState(getStateManager().getDefaultState().with(MUSHROOMS, 1).with(WATERLOGGED, false));
         this.particleEffect = particleEffect;
         this.statusEffect = statusEffect;
@@ -57,27 +57,16 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         return state.get(MUSHROOMS) == 1 ? SMALL_SHAPE : state.get(MUSHROOMS) == 2 ? MEDIUM_SHAPE : LARGE_SHAPE;
     }
 
-    @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getRaycastShape(BlockState state, BlockView world, BlockPos pos) {
-        return state.get(MUSHROOMS) == 1 ? SMALL_SHAPE : state.get(MUSHROOMS) == 2 ? MEDIUM_SHAPE : LARGE_SHAPE;
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.empty();
-    }
-
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos());
-        ItemStack stack = ctx.getStack();
-        if (stack.isOf(asItem())) {
+        World world = ctx.getWorld();
+        BlockPos pos = ctx.getBlockPos();
+        BlockState state = world.getBlockState(pos);
+        FluidState fluidState = world.getFluidState(pos);
+        if (state.isOf(this)) {
             System.out.println("this");
-            return state.with(MUSHROOMS, Math.min(3, state.get(MUSHROOMS) + 1));
+            return state.with(MUSHROOMS, Math.min(3, state.get(MUSHROOMS) + 1)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
         } else {
-            FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
             return getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
         }
     }
@@ -138,6 +127,20 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         if (!state.get(WATERLOGGED) && random.nextInt(5) <= (state.get(MUSHROOMS))) {
             spawnParticle(world, pos, random, 0d, 0d, 0d);
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+        super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
     }
 
     @Override

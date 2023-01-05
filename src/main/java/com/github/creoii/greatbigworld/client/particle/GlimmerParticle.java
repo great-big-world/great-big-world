@@ -12,7 +12,12 @@ import net.minecraft.particle.DefaultParticleType;
 @Environment(EnvType.CLIENT)
 public class GlimmerParticle extends AscendingParticle {
     public GlimmerParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, float scaleMultiplier, SpriteProvider spriteProvider) {
-        super(world, x, y, z, .05f, .05f, .05f, velocityX, velocityY, velocityZ, scaleMultiplier, spriteProvider, .9f, 60, .005f, true);
+        super(world, x, y, z, .05f, .05f, .05f, velocityX, velocityY, velocityZ, scaleMultiplier, spriteProvider, 1f, 60, .005f, true);
+        float f = (world.random.nextInt(60) + 50f) / 100f;
+        red = f;
+        green = f;
+        blue = f;
+        scale *= .5f + f;
     }
 
     @Override
