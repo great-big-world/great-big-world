@@ -103,7 +103,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(.15f, 0, 0, null), ItemGroups.NATURAL, ItemGroups.INGREDIENTS);
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(.1f, 0, 0, null), ItemGroups.NATURAL, ItemGroups.INGREDIENTS);
 
-        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(.7f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(.7f, 0, 0, null), ItemGroups.INGREDIENTS);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(.65f, 60, 100, null), ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(.65f, 60, 100, null), ItemGroups.NATURAL);
 

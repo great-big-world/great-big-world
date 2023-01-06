@@ -58,7 +58,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final int SHED_REGROW_TIME_BASE = 24000;
+    private static final int SHED_REGROW_TIME_BASE = 16000;
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState swimmingAnimationState = new AnimationState();
     public final AnimationState idlingInWaterAnimationState = new AnimationState();
@@ -108,13 +108,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         dataTracker.startTracking(RIGHT_ANTLER, true);
         dataTracker.startTracking(LEFT_ANTLER, true);
         dataTracker.startTracking(RAMMING, false);
-        dataTracker.startTracking(SHED_TIME, SHED_REGROW_TIME_BASE + random.nextInt(48000));
-        dataTracker.startTracking(REGROW_TIME, SHED_REGROW_TIME_BASE + random.nextInt(48000));
+        dataTracker.startTracking(SHED_TIME, 12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+        dataTracker.startTracking(REGROW_TIME, 12000 + random.nextInt(SHED_REGROW_TIME_BASE));
         dataTracker.startTracking(ANGER_TIME, 0);
     }
 
     protected void initGoals() {
-        goalSelector.add(0, new EscapeDangerGoal(this, 2d));
+        goalSelector.add(0, new EscapeDangerGoal(this, 1.5d));
         goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, true));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
@@ -200,9 +200,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     @Nullable @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
+    public MooseEntity createChild(ServerWorld world, PassiveEntity entity) {
         MooseEntity mooseEntity = EntityRegistry.MOOSE.create(world);
-        if (mooseEntity != null && mooseEntity.isBaby()) {
+        if (mooseEntity != null) {
             mooseEntity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
             mooseEntity.setLeftAntler(false);
             mooseEntity.setRightAntler(false);
@@ -234,6 +234,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             ramCooldown = 30;
             setRamming(true);
             if (target instanceof LivingEntity living) {
+                System.out.println("living");
                 float damage = (float) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
                 if (living.getActiveItem().isOf(Items.SHIELD)) {
                     if (living instanceof PlayerEntity playerEntity) {
@@ -242,16 +243,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                     }
                     damage /= 2;
                 }
-                boolean bl = target.damage(GBWDamageSources.MOOSE_RAM, damage);
-                if (bl) {
+                if (living.damage(GBWDamageSources.MOOSE_RAM, damage)) {
+                    System.out.println("damage");
                     playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1f, getSoundPitch());
-                    applyDamageEffects(this, target);
                     if (!isBaby()) {
                         Hoglin.knockback(this, living);
                     }
+                    applyDamageEffects(this, target);
+                    return true;
                 }
-
-                return bl;
             }
         }
         return false;
@@ -377,7 +377,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 else {
                     setRightAntler(true);
                     setLeftAntler(true);
-                    setRegrowTime(SHED_REGROW_TIME_BASE + random.nextInt(48000));
+                    setRegrowTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
                 }
             }
 
@@ -570,35 +570,36 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
         if (!getVelocity().equals(Vec3d.ZERO)) {
-            List<LivingEntity> targets = world.getTargets(LivingEntity.class, TargetPredicate.createAttackable().setPredicate(livingEntity -> {
-                return livingEntity != this && livingEntity.getVehicle() != this;
-            }), this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d)));
-            for (LivingEntity livingEntity : targets) {
-                if (livingEntity.canTakeDamage()) {
-                    System.out.println("Strength " + strength);
-                    float damage = strength * 10f;
-                    System.out.println("Found " + livingEntity.getName() + " | " + damage);
-                    if (livingEntity.getActiveItem().isOf(Items.SHIELD)) {
-                        if (livingEntity instanceof PlayerEntity playerEntity) {
-                            playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
-                            world.sendEntityStatus(playerEntity, (byte) 30);
+            world.getOtherEntities(this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d)), livingEntity -> {
+                return livingEntity.getVehicle() != this && livingEntity.isAlive();
+            }).forEach(entity -> {
+                if (entity instanceof LivingEntity livingEntity) {
+                    if (livingEntity.canTakeDamage()) {
+                        System.out.println("Strength " + strength);
+                        float damage = strength * 10f;
+                        System.out.println("Found " + livingEntity.getName() + " | " + damage);
+                        if (livingEntity.getActiveItem().isOf(Items.SHIELD)) {
+                            if (livingEntity instanceof PlayerEntity playerEntity) {
+                                playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
+                                world.sendEntityStatus(playerEntity, (byte) 30);
+                            }
+                            damage /= 2;
                         }
-                        damage /= 2;
-                    }
-                    if (tryAttack(livingEntity)) {
-                        System.out.println("Try Attacked " + livingEntity.getName());
-                        onAttacking(livingEntity);
-                    }
+                        if (tryAttack(livingEntity)) {
+                            System.out.println("Try Attacked " + livingEntity.getName());
+                            onAttacking(livingEntity);
+                        }
 
-                    if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
-                        System.out.println("LE Damage " + livingEntity.getName());
-                        if (!isBaby()) {
-                            Hoglin.knockback(this, livingEntity);
+                        if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
+                            System.out.println("LE Damage " + livingEntity.getName());
+                            if (!isBaby()) {
+                                Hoglin.knockback(this, livingEntity);
+                            }
+                            onAttacking(livingEntity);
                         }
-                        onAttacking(livingEntity);
                     }
                 }
-            }
+            });
             ramCooldown = 30;
             setRamming(true);
         }

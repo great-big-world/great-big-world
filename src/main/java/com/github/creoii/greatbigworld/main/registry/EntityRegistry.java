@@ -32,7 +32,7 @@ import net.minecraft.world.Heightmap;
 import java.util.function.Predicate;
 
 public class EntityRegistry implements Register {
-    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(new EntityDimensions(1.6f, 2.1f, true)).trackRangeChunks(10).build();
+    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(EntityDimensions.fixed(1.6f, 2.1f)).trackRangeChunks(10).build();
 
     @Override
     public void register() {
