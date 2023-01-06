@@ -2,7 +2,6 @@ TODO
 
 Moose:
  - Ram Attack doesn't deal damage
- - /summon removes antlers
  - babies have too big a hitbox
 
 Glimmering Mushrooms
@@ -11,4 +10,7 @@ Glimmering Mushrooms
 
 Aspen
  - trees generate next to each other
- - leaf piles block water
+
+Broken Pick-Blocking
+ - glimmering mushrooms
+ - aspen leaves & leaf piles

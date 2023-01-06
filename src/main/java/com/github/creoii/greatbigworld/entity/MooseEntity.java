@@ -6,7 +6,6 @@ import com.github.creoii.greatbigworld.main.util.GBWDamageSources;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
-import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
 import net.minecraft.entity.ai.goal.*;
@@ -43,6 +42,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -344,22 +345,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public void tick() {
-        if (world.isClient()) {
-            if (shouldWalk()) walkingAnimationState.startIfNotRunning(age);
-            else walkingAnimationState.stop();
-
-            if (shouldSwim()) {
-                idlingInWaterAnimationState.stop();
-                swimmingAnimationState.startIfNotRunning(age);
-            } else if (isInsideWaterOrBubbleColumn()) {
-                swimmingAnimationState.stop();
-                idlingInWaterAnimationState.startIfNotRunning(age);
-            } else {
-                swimmingAnimationState.stop();
-                idlingInWaterAnimationState.stop();
-            }
-        }
-
+        updateAnimations();
         super.tick();
         if (isRamming() && ramCooldown < 30 && (onGround || isTouchingWater())) {
             setRamming(false);
@@ -377,14 +363,32 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 else {
                     setRightAntler(true);
                     setLeftAntler(true);
+                    setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+                }
+            } else {
+                if (getShedTime() > 0) decrementShedTime();
+                else {
+                    dropAntlers();
                     setRegrowTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
                 }
             }
+        }
+    }
 
-            if (getShedTime() > 0) decrementShedTime();
-            else {
-                dropAntlers();
-                setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+    private void updateAnimations() {
+        if (world.isClient()) {
+            if (shouldWalk()) walkingAnimationState.startIfNotRunning(age);
+            else walkingAnimationState.stop();
+
+            if (shouldSwim()) {
+                idlingInWaterAnimationState.stop();
+                swimmingAnimationState.startIfNotRunning(age);
+            } else if (isInsideWaterOrBubbleColumn()) {
+                swimmingAnimationState.stop();
+                idlingInWaterAnimationState.startIfNotRunning(age);
+            } else {
+                swimmingAnimationState.stop();
+                idlingInWaterAnimationState.stop();
             }
         }
     }
@@ -628,6 +632,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Override
     public boolean disablesShield() {
         return true;
+    }
+
+    @Nullable
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        if (!isBaby()) {
+            setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+        }
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
 
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {

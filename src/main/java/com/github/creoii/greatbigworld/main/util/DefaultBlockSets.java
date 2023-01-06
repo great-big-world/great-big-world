@@ -23,8 +23,11 @@ public class DefaultBlockSets {
      * @param barkColor - The MapColor of the wood set bark.
      * @param woodColor - The MapColor of the wood set wood.
      * @param after - Item to place after in item groups
-     * @param includeLogs - Whether or not to include logs in the wood set.
      */
+    public static WoodSet createWoodSet(String name, MapColor barkColor, MapColor woodColor, @Nullable ItemConvertible after) {
+        return createWoodSet(name, barkColor, woodColor, after, true);
+    }
+
     public static WoodSet createWoodSet(String name, MapColor barkColor, MapColor woodColor, @Nullable ItemConvertible after, boolean includeLogs) {
         Block strippedLog = null;
         Block log = null;
