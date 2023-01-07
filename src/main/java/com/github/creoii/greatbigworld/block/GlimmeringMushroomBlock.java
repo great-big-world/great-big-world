@@ -10,7 +10,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -22,10 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 public class GlimmeringMushroomBlock extends Block implements Waterloggable {
@@ -54,17 +53,12 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
 
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        World world = ctx.getWorld();
-        BlockPos pos = ctx.getBlockPos();
-        BlockState state = world.getBlockState(pos);
-        FluidState fluidState = world.getFluidState(pos);
-        System.out.println("placement");
-        System.out.println(ctx.getStack().getName());
-        if (state.isOf(this)) {
-            System.out.println("this");
-            return state.with(MUSHROOMS, Math.min(3, state.get(MUSHROOMS) + 1)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        BlockState blockState = ctx.getWorld().getBlockState(ctx.getBlockPos());
+        if (blockState.isOf(this)) {
+            return blockState.with(MUSHROOMS, Math.min(3, blockState.get(MUSHROOMS) + 1));
         } else {
-            return getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+            FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+            return super.getPlacementState(ctx).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
         }
     }
 
@@ -73,6 +67,11 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         BlockPos blockPos = pos.down();
         BlockState floor = world.getBlockState(blockPos);
         return !floor.getCollisionShape(world, blockPos).getFace(Direction.UP).isEmpty() || floor.isSideSolidFullSquare(world, blockPos, Direction.UP);
+    }
+
+    @SuppressWarnings("deprecation")
+    public boolean canReplace(BlockState state, ItemPlacementContext context) {
+        return !context.shouldCancelInteraction() && context.getStack().isOf(asItem()) && state.get(MUSHROOMS) < 3 || super.canReplace(state, context);
     }
 
     @Override
@@ -131,6 +130,18 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
+    @SuppressWarnings("deprecation")
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (!state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+        } else {
+            if (state.get(WATERLOGGED)) {
+                world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+            }
+            return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        }
+    }
+
     @Override
     @SuppressWarnings("deprecation")
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
@@ -138,6 +149,16 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public Item asItem() {
+        if (cachedItem == null || cachedItem == Items.AIR) {
+            cachedItem = Item.fromBlock(this);
+        }
+
+        return cachedItem;
     }
 
     @Override

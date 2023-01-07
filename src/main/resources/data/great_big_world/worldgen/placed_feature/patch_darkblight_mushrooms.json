@@ -2,10 +2,6 @@
   "feature": "great_big_world:patch_darkblight_mushrooms",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 8
-    },
-    {
       "type": "minecraft:in_square"
     },
     {
