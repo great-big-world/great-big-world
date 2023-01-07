@@ -12,6 +12,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import org.jetbrains.annotations.Nullable;
 
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
@@ -42,15 +43,15 @@ public class ItemRegistry implements Register {
     public void register() {
         registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, Items.BIRCH_SIGN, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, ItemGroups.FUNCTIONAL);
+        registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
+        registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "raw_venison"), RAW_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
     }
@@ -60,21 +61,33 @@ public class ItemRegistry implements Register {
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
-    public static void registerItem(Identifier id, Item item, ItemGroup... groups) {
+    public static void registerItem(Identifier id, Item item, @Nullable ItemGroup group) {
+        registerItem(id, item, null, group);
+    }
+
+    public static void registerItem(Identifier id, Item item, @Nullable ItemConvertible after, @Nullable ItemGroup group) {
         Registry.register(Registries.ITEM, id, item);
-        if (groups != null) {
-            for (ItemGroup group : groups) {
+        if (group != null) {
+            if (after != null) {
+                ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(after, item));
+            } else {
                 ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
             }
         }
     }
 
-    public static void registerItem(Identifier id, Item item, ItemConvertible after, ItemGroup... groups) {
+    public static void registerItem(Identifier id, Item item, @Nullable ItemGroupSettings... groups) {
         Registry.register(Registries.ITEM, id, item);
         if (groups != null) {
-            for (ItemGroup group : groups) {
-                ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(after, item));
+            for (ItemGroupSettings settings : groups) {
+                if (settings.after() != null) {
+                    ItemGroupEvents.modifyEntriesEvent(settings.group()).register(entries -> entries.addAfter(settings.after(), item));
+                } else {
+                    ItemGroupEvents.modifyEntriesEvent(settings.group()).register(entries -> entries.add(item));
+                }
             }
         }
     }
+
+    public static record ItemGroupSettings(ItemGroup group, @Nullable ItemConvertible after) { }
 }

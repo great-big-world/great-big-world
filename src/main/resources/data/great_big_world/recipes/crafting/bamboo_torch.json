@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "C",
+    "B"
+  ],
+  "key": {
+    "C": [
+      {
+        "item": "minecraft:coal"
+      },
+      {
+        "item": "minecraft:charcoal"
+      }
+    ],
+    "B": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "result": {
+    "item": "great_big_world:bamboo_torch"
+  }
+}

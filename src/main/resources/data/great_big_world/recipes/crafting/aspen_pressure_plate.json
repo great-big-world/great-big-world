@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_pressure_plate",
+  "pattern": [
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:aspen_planks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:aspen_pressure_plate",
+    "count": 1
+  }
+}

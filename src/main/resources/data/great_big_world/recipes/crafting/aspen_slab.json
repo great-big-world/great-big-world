@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_slab",
+  "pattern": [
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:aspen_planks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:aspen_slab",
+    "count": 6
+  }
+}

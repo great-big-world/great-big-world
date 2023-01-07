@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:mahogany_planks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:mahogany_trapdoor",
+    "count": 2
+  }
+}

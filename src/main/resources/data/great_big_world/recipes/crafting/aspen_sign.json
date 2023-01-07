@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_sign",
+  "pattern": [
+    "PPP",
+    "PPP",
+    " S "
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:aspen_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "great_big_world:aspen_sign",
+    "count": 3
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_stairs",
+  "pattern": [
+    "P  ",
+    "PP ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:mahogany_planks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:mahogany_stairs",
+    "count": 4
+  }
+}

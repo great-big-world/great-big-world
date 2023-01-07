@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "SPS",
+    "SPS"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:aspen_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "great_big_world:aspen_fence_gate"
+  }
+}

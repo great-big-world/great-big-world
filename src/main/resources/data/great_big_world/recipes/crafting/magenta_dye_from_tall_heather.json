@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "magenta_dye",
+  "ingredients": [
+    {
+      "item": "great_big_world:tall_heather"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "minecraft:magenta_dye"
+  }
+}

@@ -58,6 +58,8 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
         BlockPos pos = ctx.getBlockPos();
         BlockState state = world.getBlockState(pos);
         FluidState fluidState = world.getFluidState(pos);
+        System.out.println("placement");
+        System.out.println(ctx.getStack().getName());
         if (state.isOf(this)) {
             System.out.println("this");
             return state.with(MUSHROOMS, Math.min(3, state.get(MUSHROOMS) + 1)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
