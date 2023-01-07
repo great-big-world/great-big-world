@@ -12,6 +12,7 @@
     "WolfEntityMixin"
   ],
   "client": [
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1
