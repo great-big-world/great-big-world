@@ -4,8 +4,8 @@ plugins {
 }
 
 repositories {
-    maven { url "https://maven.shedaniel.me/" }
-    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url 'https://maven.shedaniel.me/' }
+    maven { url 'https://maven.minecraftforge.net/' }
 }
 
 version = project.mod_version

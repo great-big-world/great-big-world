@@ -2,7 +2,6 @@ package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
-import com.github.creoii.greatbigworld.main.util.GBWDamageSources;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
@@ -31,6 +30,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -133,6 +133,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void tickMovement() {
+        if (isAlive() && isRamming()) {
+            ram();
+        }
         if (ramCooldown > 0) {
             headPitch += random.nextInt(5) + 4;
         } else {
@@ -234,33 +237,14 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (hasLeftAntler() || hasRightAntler()) {
             ramCooldown = 30;
             setRamming(true);
-            if (target instanceof LivingEntity living) {
-                System.out.println("living");
-                float damage = (float) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-                if (living.getActiveItem().isOf(Items.SHIELD)) {
-                    if (living instanceof PlayerEntity playerEntity) {
-                        playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
-                        world.sendEntityStatus(playerEntity, (byte) 30);
-                    }
-                    damage /= 2;
-                }
-                if (living.damage(GBWDamageSources.MOOSE_RAM, damage)) {
-                    System.out.println("damage");
-                    playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1f, getSoundPitch());
-                    if (!isBaby()) {
-                        Hoglin.knockback(this, living);
-                    }
-                    applyDamageEffects(this, target);
-                    return true;
-                }
-            }
+            return super.tryAttack(target);
         }
         return false;
     }
 
     protected void knockback(LivingEntity target) {
         if (!isBaby() && (hasLeftAntler() || hasRightAntler())) {
-            Hoglin.knockback(this, target);
+            ramKnockback(target, getJumpStrength());
         }
     }
 
@@ -329,11 +313,12 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (entity != null) {
             setAngryAt(entity.getUuid());
             chooseRandomAngerTime();
-            if (!hasAngerTime() && getOwnerUuid() != null && getOwnerUuid().equals(entity.getUuid())) {
+            if (getOwnerUuid() != null && getOwnerUuid().equals(entity.getUuid())) {
                 setOwnerUuid(null);
                 setTame(false);
                 if (isSaddled()) {
                     dropInventory();
+                    updateSaddle();
                 }
                 if (getPrimaryPassenger() != null) {
                     getPrimaryPassenger().dismountVehicle();
@@ -414,6 +399,15 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     private boolean shouldSwim() {
         return getVelocity().horizontalLengthSquared() > 1e-6d && isInsideWaterOrBubbleColumn();
+    }
+
+    @Override
+    public void updateSwimming() {
+        if (isSwimming()) {
+            setSwimming(isSprinting() && isTouchingWater());
+        } else {
+            setSwimming(isSprinting() && isSubmergedInWater() && world.getFluidState(getBlockPos()).isIn(FluidTags.WATER));
+        }
     }
 
     @Override
@@ -572,41 +566,45 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
     }
 
-    protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
-        if (!getVelocity().equals(Vec3d.ZERO)) {
-            world.getOtherEntities(this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d)), livingEntity -> {
-                return livingEntity.getVehicle() != this && livingEntity.isAlive();
-            }).forEach(entity -> {
+    private void ram() {
+        List<Entity> entities = world.getOtherEntities(this, getBoundingBox().offset(getRotationVec(1f).multiply(1.5d)), livingEntity -> {
+            return livingEntity.getVehicle() != this && livingEntity.isAlive();
+        });
+        if (!entities.isEmpty()) {
+            setAttacking(true);
+            for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity) {
-                    if (livingEntity.canTakeDamage()) {
-                        System.out.println("Strength " + strength);
-                        float damage = strength * 10f;
-                        System.out.println("Found " + livingEntity.getName() + " | " + damage);
-                        if (livingEntity.getActiveItem().isOf(Items.SHIELD)) {
-                            if (livingEntity instanceof PlayerEntity playerEntity) {
-                                playerEntity.getItemCooldownManager().set(Items.SHIELD, 100);
-                                world.sendEntityStatus(playerEntity, (byte) 30);
-                            }
-                            damage /= 2;
-                        }
-                        if (tryAttack(livingEntity)) {
-                            System.out.println("Try Attacked " + livingEntity.getName());
-                            onAttacking(livingEntity);
-                        }
-
-                        if (livingEntity.damage(GBWDamageSources.MOOSE_RAM, damage)) {
-                            System.out.println("LE Damage " + livingEntity.getName());
-                            if (!isBaby()) {
-                                Hoglin.knockback(this, livingEntity);
-                            }
-                            onAttacking(livingEntity);
-                        }
-                    }
+                    tryAttack(livingEntity);
                 }
-            });
-            ramCooldown = 30;
-            setRamming(true);
+            }
+            setRamming(false);
+            setAttacking(false);
         }
+    }
+
+    public void ramKnockback(LivingEntity target, double ramStrength) {
+        double e = target.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE);
+        double strength = ramStrength - e;
+        if (strength > 0d) {
+            double g = target.getX() - getX();
+            double h = target.getZ() - getZ();
+            float i = (float)(world.random.nextInt(11) - 20);
+            double j = strength * (double)(world.random.nextFloat() * .5f + .2f);
+            Vec3d vec3d = (new Vec3d(g, 0d, h)).normalize().multiply(j).rotateY(i);
+            double k = strength * (double)world.random.nextFloat() * .5d;
+            target.addVelocity(vec3d.x, k, vec3d.z);
+            target.velocityModified = true;
+        }
+    }
+
+    protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
+        ramCooldown = 30;
+        setRamming(true);
+    }
+
+    @Override
+    public boolean canBeRiddenInWater() {
+        return true;
     }
 
     public boolean isRamming() {
@@ -713,7 +711,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                         moose.bondWithPlayer(playerEntity);
                         moose.setTame(true);
                         return;
-                    } else if (moose.getRandom().nextInt(j) < i + 1) {
+                    } else if (j > 0 && moose.getRandom().nextInt(j - 1) < i + 2) {
                         moose.setTame(false);
                         moose.setAngryAt(playerEntity.getUuid());
                         moose.setTarget(playerEntity);
