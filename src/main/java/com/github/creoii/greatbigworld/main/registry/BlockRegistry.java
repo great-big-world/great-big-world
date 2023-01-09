@@ -11,6 +11,7 @@ import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
 import com.google.common.collect.ImmutableSet;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -115,29 +116,33 @@ public class BlockRegistry implements Register {
 
     @Override
     public void registerClient() {
-        RenderLayers.BLOCKS.put(MAHOGANY.door(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY.trapdoor(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(ASPEN.door(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(ASPEN.trapdoor(), RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_MAHOGANY_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(MAHOGANY_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_YELLOW_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(YELLOW_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(YELLOW_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_GREEN_ASPEN_SAPLING, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(GREEN_ASPEN_LEAVES, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(GREEN_ASPEN_LEAF_PILE, RenderLayer.getCutoutMipped());
-        RenderLayers.BLOCKS.put(BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(BAMBOO_WALL_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(SOUL_BAMBOO_WALL_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(POTTED_SOUL_BAMBOO_TORCH, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(HEATHER, RenderLayer.getCutout());
-        RenderLayers.BLOCKS.put(TALL_HEATHER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                MAHOGANY.door(),
+                MAHOGANY.trapdoor(),
+                ASPEN.door(),
+                ASPEN.trapdoor(),
+                MAHOGANY_SAPLING,
+                POTTED_MAHOGANY_SAPLING,
+                YELLOW_ASPEN_SAPLING,
+                POTTED_YELLOW_ASPEN_SAPLING,
+                GREEN_ASPEN_SAPLING,
+                POTTED_GREEN_ASPEN_SAPLING,
+                BAMBOO_TORCH,
+                BAMBOO_WALL_TORCH,
+                POTTED_BAMBOO_TORCH,
+                SOUL_BAMBOO_TORCH,
+                SOUL_BAMBOO_WALL_TORCH,
+                POTTED_SOUL_BAMBOO_TORCH,
+                HEATHER,
+                TALL_HEATHER
+        );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
+                MAHOGANY_LEAVES,
+                YELLOW_ASPEN_LEAVES,
+                YELLOW_ASPEN_LEAF_PILE,
+                GREEN_ASPEN_LEAVES,
+                GREEN_ASPEN_LEAF_PILE
+        );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
