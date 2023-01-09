@@ -3,9 +3,7 @@ package com.github.creoii.greatbigworld.block;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -83,16 +81,6 @@ public class LeafPileBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public Item asItem() {
-        if (cachedItem == null || cachedItem == Items.AIR) {
-            cachedItem = Item.fromBlock(this);
-        }
-
-        return cachedItem;
     }
 
     @Override

@@ -1,14 +1,10 @@
 package com.github.creoii.greatbigworld.main;
 
-import com.github.creoii.greatbigworld.main.integration.GreatBigWorldConfig;
 import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
-import com.github.creoii.greatbigworld.world.region.GreatBigOverworldRegion;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.math.random.Random;
-import terrablender.api.Regions;
-import terrablender.api.TerraBlenderApi;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
