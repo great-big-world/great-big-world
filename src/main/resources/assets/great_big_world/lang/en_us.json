@@ -109,7 +109,7 @@
   "text.autoconfig.great_big_world.title": "Great Big World Config",
   "text.autoconfig.great_big_world.category.general_settings": "General Settings",
   "text.autoconfig.great_big_world.option.aspenInOtherBiomes": "Aspen In Other Biomes",
-  "text.autoconfig.great_big_world.option.aspenInOtherBiomes.@Tooltip[0]": "Aspen trees can generate in other vanilla or modded biomes.",
+  "text.autoconfig.great_big_world.option.aspenInOtherBiomes.@Tooltip": "Aspen trees can generate in other vanilla or modded biomes.",
   "text.autoconfig.great_big_world.option.mahoganyInOtherBiomes": "Mahogany In Other Biomes",
-  "text.autoconfig.great_big_world.option.mahoganyInOtherBiomes.@Tooltip[0]": "Mahogany trees can generate in other modded biomes."
+  "text.autoconfig.great_big_world.option.mahoganyInOtherBiomes.@Tooltip": "Mahogany trees can generate in other modded biomes."
 }

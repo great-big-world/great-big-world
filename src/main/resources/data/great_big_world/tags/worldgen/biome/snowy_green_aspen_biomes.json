@@ -18,6 +18,10 @@
       "required": false
     },
     {
+      "id": "traverse:snowy_coniferous_forest",
+      "required": false
+    },
+    {
       "id": "byg:frosted_coniferous_forest",
       "required": false
     },

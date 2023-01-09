@@ -217,10 +217,12 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     protected void onGrowUp() {
         if (isBaby()) {
             getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
+            getAttributeInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(.3000000119209290d);
             setLeftAntler(false);
             setRightAntler(false);
         } else {
             getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(50f);
+            getAttributeInstance(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(.6000000238418579d);
             setLeftAntler(true);
             setRightAntler(true);
         }
