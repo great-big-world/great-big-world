@@ -10,9 +10,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
@@ -149,16 +147,6 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public Item asItem() {
-        if (cachedItem == null || cachedItem == Items.AIR) {
-            cachedItem = Item.fromBlock(this);
-        }
-
-        return cachedItem;
     }
 
     @Override

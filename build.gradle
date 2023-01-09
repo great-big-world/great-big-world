@@ -11,6 +11,7 @@ repositories {
 
 version = project.mod_version
 group = project.maven_group
+archivesBaseName = "${name}-${project.minecraft_version}"
 
 loom {
     accessWidenerPath = file("src/main/resources/great_big_world.accesswidener")
