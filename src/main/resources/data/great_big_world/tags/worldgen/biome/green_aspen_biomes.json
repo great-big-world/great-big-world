@@ -7,7 +7,6 @@
     "minecraft:old_growth_spruce_taiga",
     "minecraft:windswept_forest",
     "minecraft:windswept_hills",
-    "c:taiga",
     {
       "id": "terralith:alpine_highlands",
       "required": false

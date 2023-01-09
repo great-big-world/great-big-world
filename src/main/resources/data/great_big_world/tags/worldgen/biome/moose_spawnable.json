@@ -1,12 +1,7 @@
 {
   "values": [
-    "minecraft:old_growth_pine_taiga",
-    "minecraft:old_growth_spruce_taiga",
-    "minecraft:taiga",
-    "minecraft:snowy_taiga",
+    "#minecraft:is_taiga",
     "great_big_world:snowy_aspen_forest",
-    "c:taiga",
-    "c:trees_coniferous",
     {
       "id": "terralith:alpine_grove",
       "required": false
