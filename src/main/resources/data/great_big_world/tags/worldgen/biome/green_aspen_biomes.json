@@ -25,6 +25,10 @@
       "required": false
     },
     {
+      "id": "terralith:siberian_taiga",
+      "required": false
+    },
+    {
       "id": "traverse:coniferous_forest",
       "required": false
     },
