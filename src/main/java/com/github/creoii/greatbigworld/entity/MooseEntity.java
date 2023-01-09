@@ -645,7 +645,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
             super(MooseEntity.this, LivingEntity.class, 20, true, true, livingEntity -> {
-                return !livingEntity.isBaby() && livingEntity.getType() != EntityRegistry.MOOSE;
+                return !livingEntity.isBaby() && livingEntity.getType() != EntityRegistry.MOOSE && !MooseEntity.this.isOwner(livingEntity);
             });
         }
 
