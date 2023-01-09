@@ -1,0 +1,20 @@
+{
+  "entity.moose.hurt": {
+    "sounds": [
+      "great_big_world:mob/moose/hurt"
+    ],
+    "subtitle": "great_big_world.subtitles.entity.moose.hurt"
+  },
+  "entity.moose.death": {
+    "sounds": [
+      "great_big_world:mob/moose/death"
+    ],
+    "subtitle": "great_big_world.subtitles.entity.moose.death"
+  },
+  "entity.moose.warning": {
+    "sounds": [
+      "great_big_world:mob/moose/warning"
+    ],
+    "subtitle": "great_big_world.subtitles.entity.moose.warning"
+  }
+}

@@ -21,6 +21,7 @@ public class GreatBigWorld implements ModInitializer {
             new PlacedFeatureRegistry(),
             new BiomeRegistry(),
             new PotionRegistry(),
+            new SoundRegistry(),
             new ParticleRegistry(),
             new ModMenuIntegration()
     };

@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
+import com.github.creoii.greatbigworld.main.registry.SoundRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
@@ -145,6 +146,18 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!world.isClient) {
             tickAngerLogic((ServerWorld) world, true);
         }
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundRegistry.ENTITY_MOOSE_HURT;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundRegistry.ENTITY_MOOSE_DEATH;
     }
 
     public boolean hasLeftAntler() {
@@ -530,6 +543,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public void setAngryAt(@Nullable UUID angryAt) {
         this.angryAt = angryAt;
+        if (!world.isClient) {
+            playSound(SoundRegistry.ENTITY_MOOSE_WARNING, 1f, getSoundPitch());
+        }
         updateAnger();
         resetLoveTicks();
     }
@@ -720,7 +736,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                     moose.addTemper(5);
                 }
                 moose.removeAllPassengers();
-                moose.playAngrySound();
                 moose.world.sendEntityStatus(moose, (byte)6);
             }
         }

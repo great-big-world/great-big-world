@@ -31,7 +31,7 @@ public class MooseEntityModel<T extends MooseEntity> extends SinglePartEntityMod
 
 		ModelPartData body = root.addChild("body", ModelPartBuilder.create().uv(0, 0).cuboid(-8.0F, -14.0F, -12.0F, 14.0F, 16.0F, 16.0F, new Dilation(0.0F))
 				.uv(0, 32).cuboid(-8.0F, -12.0F, 4.0F, 14.0F, 14.0F, 16.0F, new Dilation(0.0F)), ModelTransform.pivot(1.0F, -18.0F, -3.0F));
-		body.addChild("right_front_leg", ModelPartBuilder.create().uv(104, 0).cuboid(-2.01F, -2.0F, -6.0F, 4.0F, 18.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-6.0F, 2.0F, -3.0F));
+		body.addChild("right_front_leg", ModelPartBuilder.create().uv(104, 0).cuboid(-2.01F, -2.0F, -2.0F, 4.0F, 18.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(-6.0F, 2.0F, -7.0F));
 		body.addChild("left_front_leg", ModelPartBuilder.create().uv(104, 0).cuboid(-1.99F, -2.0F, -2.0F, 4.0F, 18.0F, 4.0F, new Dilation(0.0F)), ModelTransform.pivot(4.0F, 2.0F, -7.0F));
 		ModelPartData head = body.addChild("head", ModelPartBuilder.create().uv(96, 30).cuboid(-3.0F, -2.0F, -20.0F, 6.0F, 8.0F, 10.0F, new Dilation(0.0F))
 				.uv(60, 0).cuboid(-5.0F, -4.0F, -10.0F, 10.0F, 10.0F, 12.0F, new Dilation(0.0F))

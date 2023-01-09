@@ -106,6 +106,10 @@
 
   "death.attack.moose": "%1$s was mauled to death by a Moose",
 
+  "great_big_world.subtitles.entity.moose.hurt": "Moose hurts",
+  "great_big_world.subtitles.entity.moose.death": "Moose dies",
+  "great_big_world.subtitles.entity.moose.warning": "Moose warns",
+
   "text.autoconfig.great_big_world.title": "Great Big World Config",
   "text.autoconfig.great_big_world.category.general_settings": "General Settings",
   "text.autoconfig.great_big_world.option.aspenInOtherBiomes": "Aspen In Other Biomes",
