@@ -35,8 +35,11 @@ public class ItemRegistry implements Register {
     public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, BlockRegistry.SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     //endregion
     //region Foods
-    public static final Item RAW_VENISON = new Item(new FabricItemSettings().food(Foods.RAW_VENISON));
+    public static final Item VENISON = new Item(new FabricItemSettings().food(Foods.VENISON));
     public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(Foods.COOKED_VENISON));
+    //endregion
+    //region Miscellaneous
+    public static final Item ANTLER = new Item(new FabricItemSettings());
     //endregion
 
     @Override
@@ -52,8 +55,9 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "raw_venison"), RAW_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "antler"), ANTLER, Items.TURTLE_EGG, ItemGroups.NATURAL);
     }
 
     @Override

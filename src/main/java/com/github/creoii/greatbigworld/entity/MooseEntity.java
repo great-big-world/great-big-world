@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
@@ -20,6 +21,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.Hoglin;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -115,7 +117,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     protected void initGoals() {
-        goalSelector.add(0, new EscapeDangerGoal(this, 1.5d));
+        goalSelector.add(0, new MooseEscapeDangerGoal(this, 1.5d));
         goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, true));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
@@ -199,8 +201,8 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public void dropAntlers() {
         setLeftAntler(false);
         setRightAntler(false);
-        dropItem(BlockRegistry.ANTLER);
-        dropItem(BlockRegistry.ANTLER);
+        dropItem(ItemRegistry.ANTLER);
+        dropItem(ItemRegistry.ANTLER);
     }
 
     @Nullable @Override
@@ -722,6 +724,20 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 moose.playAngrySound();
                 moose.world.sendEntityStatus(moose, (byte)6);
             }
+        }
+    }
+
+    public static class MooseEscapeDangerGoal extends EscapeDangerGoal {
+        public MooseEscapeDangerGoal(PathAwareEntity mob, double speed) {
+            super(mob, speed);
+        }
+
+        @Override
+        public boolean canStart() {
+            if (mob instanceof MooseEntity mooseEntity) {
+                if (mooseEntity.hasAngerTime() || mooseEntity.getAngryAt() != null) return false;
+            }
+            return super.canStart();
         }
     }
 }

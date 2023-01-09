@@ -5,6 +5,34 @@
     "minecraft:old_growth_spruce_taiga",
     "minecraft:stony_peaks",
     "minecraft:windswept_gravelly_hills",
-    "minecraft:windswept_hills"
+    "minecraft:windswept_hills",
+    {
+      "id": "terralith:steppe",
+      "required": false
+    },
+    {
+      "id": "terralith:cold_shrubland",
+      "required": false
+    },
+    {
+      "id": "terralith:rocky_shrubland",
+      "required": false
+    },
+    {
+      "id": "terralith:siberian_taiga",
+      "required": false
+    },
+    {
+      "id": "terralith:siberian_grove",
+      "required": false
+    },
+    {
+      "id": "terrestria:redwood_forest",
+      "required": false
+    },
+    {
+      "id": "byg:cardinal_tundra",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,7 @@
 package com.github.creoii.greatbigworld.main;
 
+import com.github.creoii.greatbigworld.main.integration.GreatBigWorldConfig;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.region.GreatBigOverworldRegion;
@@ -8,7 +10,7 @@ import net.minecraft.util.math.random.Random;
 import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 
-public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
+public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
     public static final String VERSION = "1.0.0";
@@ -23,7 +25,8 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
             new PlacedFeatureRegistry(),
             new BiomeRegistry(),
             new PotionRegistry(),
-            new ParticleRegistry()
+            new ParticleRegistry(),
+            new ModMenuIntegration()
     };
 
     @Override
@@ -31,10 +34,5 @@ public class GreatBigWorld implements ModInitializer, TerraBlenderApi {
         for (Register register : REGISTERS) {
             register.register();
         }
-    }
-
-    @Override
-    public void onTerraBlenderInitialized() {
-        Regions.register(new GreatBigOverworldRegion(3));
     }
 }

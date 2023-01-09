@@ -68,7 +68,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "great_big_world:raw_venison"
+          "name": "great_big_world:venison"
         }
       ],
       "rolls": 1

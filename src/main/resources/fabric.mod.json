@@ -19,7 +19,10 @@
       "com.github.creoii.greatbigworld.main.GreatBigWorld"
     ],
     "terrablender": [
-      "com.github.creoii.greatbigworld.main.GreatBigWorld"
+      "com.github.creoii.greatbigworld.main.integration.TerraBlenderIntegration"
+    ],
+    "modmenu": [
+      "com.github.creoii.greatbigworld.main.integration.ModMenuIntegration"
     ]
   },
   "mixins": [

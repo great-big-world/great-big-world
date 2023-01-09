@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "terralith:snowy_shield",
+      "required": false
+    },
+    {
+      "id": "byg:frosted_coniferous_forest",
+      "required": false
+    },
+    {
+      "id": "byg:howling_peaks",
+      "required": false
+    }
+  ]
+}

@@ -49,7 +49,6 @@
   "block.great_big_world.daylight_mushroom": "Daylight Mushroom",
   "block.great_big_world.midnight_mushroom": "Midnight Mushroom",
   "block.great_big_world.darkblight_mushroom": "Darkblight Mushroom",
-  "block.great_big_world.antler": "Antler",
   "block.great_big_world.heather": "Heather",
   "block.great_big_world.tall_heather": "Tall Heather",
 
@@ -96,6 +95,7 @@
   "item.minecraft.tipped_arrow.effect.long_darkness": "Potion of Darkness",
   "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness",
   "item.great_big_world.moose_spawn_egg": "Moose Spawn Egg",
+  "item.great_big_world.antler": "Antler",
   "item.great_big_world.raw_venison": "Raw Venison",
   "item.great_big_world.cooked_venison": "Cooked Venison",
 
@@ -104,5 +104,12 @@
   "biome.great_big_world.aspen_forest": "Aspen Forest",
   "biome.great_big_world.snowy_aspen_forest": "Snowy Aspen Forest",
 
-  "death.attack.moose": "%1$s was mauled to death by a Moose"
+  "death.attack.moose": "%1$s was mauled to death by a Moose",
+
+  "text.autoconfig.great_big_world.title": "Great Big World Config",
+  "text.autoconfig.great_big_world.category.general_settings": "General Settings",
+  "text.autoconfig.great_big_world.option.aspenInOtherBiomes": "Aspen In Other Biomes",
+  "text.autoconfig.great_big_world.option.aspenInOtherBiomes.@Tooltip[0]": "Aspen trees can generate in other vanilla or modded biomes.",
+  "text.autoconfig.great_big_world.option.mahoganyInOtherBiomes": "Mahogany In Other Biomes",
+  "text.autoconfig.great_big_world.option.mahoganyInOtherBiomes.@Tooltip[0]": "Mahogany trees can generate in other modded biomes."
 }

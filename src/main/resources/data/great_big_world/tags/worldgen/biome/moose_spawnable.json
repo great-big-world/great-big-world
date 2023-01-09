@@ -4,6 +4,52 @@
     "minecraft:old_growth_spruce_taiga",
     "minecraft:taiga",
     "minecraft:snowy_taiga",
-    "great_big_world:snowy_aspen_forest"
+    "great_big_world:snowy_aspen_forest",
+    "c:taiga",
+    "c:trees_coniferous",
+    {
+      "id": "terralith:alpine_grove",
+      "required": false
+    },
+    {
+      "id": "terralith:wintry_lowlands",
+      "required": false
+    },
+    {
+      "id": "terralith:wintry_forest",
+      "required": false
+    },
+    {
+      "id": "terralith:snowy_shield",
+      "required": false
+    },
+    {
+      "id": "terralith:alpine_highlands",
+      "required": false
+    },
+    {
+      "id": "terralith:shield",
+      "required": false
+    },
+    {
+      "id": "traverse:coniferous_forest",
+      "required": false
+    },
+    {
+      "id": "byg:frosted_coniferous_forest",
+      "required": false
+    },
+    {
+      "id": "byg:canadian_shield",
+      "required": false
+    },
+    {
+      "id": "byg:borealis_grove",
+      "required": false
+    },
+    {
+      "id": "byg:coniferous_forest",
+      "required": false
+    }
   ]
 }
