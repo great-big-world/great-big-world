@@ -11,6 +11,8 @@ import net.minecraft.world.biome.Biome;
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class Tags {
+    public static final String COMMON_NAMESPACE = "c";
+
     public static class BlockTags {
         public static final TagKey<Block> MOOSE_EDIBLES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "moose_edibles"));
     }
@@ -19,6 +21,7 @@ public class Tags {
         public static final TagKey<Item> MOOSE_FOOD = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food"));
         public static final TagKey<Item> MOOSE_FOOD_LIKES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_likes"));
         public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
+        public static final TagKey<Item> COMMON_BOWS = TagKey.of(RegistryKeys.ITEM, new Identifier(COMMON_NAMESPACE, "bows"));
     }
 
     public static class EntityTypeTags {
