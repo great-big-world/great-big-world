@@ -21,7 +21,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -43,8 +42,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -60,7 +57,8 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final int SHED_REGROW_TIME_BASE = 16000;
+    private static final int SHED_REGROW_TIME_BASE = 4800;
+    private static final int SHED_REGROW_TIME_MOD = 9600;
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState swimmingAnimationState = new AnimationState();
     public final AnimationState idlingInWaterAnimationState = new AnimationState();
@@ -110,13 +108,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         dataTracker.startTracking(RIGHT_ANTLER, true);
         dataTracker.startTracking(LEFT_ANTLER, true);
         dataTracker.startTracking(RAMMING, false);
-        dataTracker.startTracking(SHED_TIME, 12000 + random.nextInt(SHED_REGROW_TIME_BASE));
-        dataTracker.startTracking(REGROW_TIME, 12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+        dataTracker.startTracking(SHED_TIME, SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        dataTracker.startTracking(REGROW_TIME, 0);
         dataTracker.startTracking(ANGER_TIME, 0);
     }
 
     protected void initGoals() {
-        goalSelector.add(0, new MooseEscapeDangerGoal(this, 1.5d));
+        goalSelector.add(0, new EscapeDangerGoal(this, 1.5d));
         goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, true));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
@@ -127,7 +125,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         goalSelector.add(8, new LookAroundGoal(this));
         targetSelector.add(1, new ProtectBabiesGoal());
         targetSelector.add(2, new FleeEntityGoal<>(this, LivingEntity.class, 9f, 1.6d, 1.4d, livingEntity -> {
-            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && !livingEntity.isSpectator() && (!isAngryAt(livingEntity) || isOwner(livingEntity));
+            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && livingEntity.isPartOfGame() && (!isAngryAt(livingEntity) || !isOwner(livingEntity));
         }));
         targetSelector.add(3, new MooseBondOrAngerAtPlayerGoal(this));
         targetSelector.add(4, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
@@ -191,7 +189,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void decrementRegrowTime() {
-        dataTracker.set(REGROW_TIME, getShedTime() - 1);
+        dataTracker.set(REGROW_TIME, getRegrowTime() - 1);
     }
 
     public void setShedTime(int time) {
@@ -210,16 +208,25 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return livingEntity.getUuid().equals(getOwnerUuid());
     }
 
-    public void dropAntlers() {
-        if (isAlive()) {
-            setLeftAntler(false);
-            setRightAntler(false);
-            if (!world.isClient) {
-                dropItem(ItemRegistry.ANTLER);
-                dropItem(ItemRegistry.ANTLER);
-                playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
-                emitGameEvent(GameEventRegistry.SHED_ANTLERS);
-            }
+    public void shedAntlers() {
+        setRegrowTime(SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        setLeftAntler(false);
+        setRightAntler(false);
+        if (!world.isClient) {
+            dropItem(ItemRegistry.ANTLER);
+            dropItem(ItemRegistry.ANTLER);
+            playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
+            emitGameEvent(GameEventRegistry.SHED_ANTLERS);
+        }
+    }
+
+    public void regrowAntlers() {
+        setShedTime(SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        setLeftAntler(true);
+        setRightAntler(true);
+        if (!world.isClient) {
+            playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
+            emitGameEvent(GameEventRegistry.SHED_ANTLERS);
         }
     }
 
@@ -339,6 +346,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         Entity entity = source.getAttacker();
         if (entity != null) {
             setAngryAt(entity.getUuid());
+            //if (entity instanceof LivingEntity livingEntity) setTarget(livingEntity);
             chooseRandomAngerTime();
             if (getOwnerUuid() != null && getOwnerUuid().equals(entity.getUuid())) {
                 setOwnerUuid(null);
@@ -359,39 +367,37 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public void tick() {
         updateAnimations();
         super.tick();
-        if (isRamming() && ramCooldown < 30 && (onGround || isTouchingWater())) {
+        if (isRamming() && ramCooldown < 30) {
             setRamming(false);
         }
         if (ramCooldown > 0) {
             --ramCooldown;
             if (ramCooldown == 0) {
-                world.playSound(null, getBlockPos(), SoundEvents.ENTITY_CAMEL_DASH_READY, SoundCategory.PLAYERS, 1f, 1f);
+                world.playSound(null, getBlockPos(), SoundRegistry.ENTITY_MOOSE_WARNING, SoundCategory.PLAYERS, 1f, 1f);
             }
         }
 
         if (isAlive() && !isBaby()) {
             if (!hasRightAntler() || !hasLeftAntler()) {
-                if (getRegrowTime() > 0) decrementRegrowTime();
-                else {
-                    setRightAntler(true);
-                    setLeftAntler(true);
-                    setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+                if (getRegrowTime() > 0) {
+                    decrementRegrowTime();
+                } else {
+                    regrowAntlers();
                 }
             } else {
-                if (getShedTime() > 0) decrementShedTime();
-                else {
-                    dropAntlers();
-                    setRegrowTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
+                if (getShedTime() > 0) {
+                    decrementShedTime();
+                } else {
+                    shedAntlers();
                 }
             }
         }
     }
 
     private void updateAnimations() {
-        if (world.isClient()) {
+        if (world.isClient) {
             if (shouldWalk()) walkingAnimationState.startIfNotRunning(age);
             else walkingAnimationState.stop();
-
             if (shouldSwim()) {
                 idlingInWaterAnimationState.stop();
                 swimmingAnimationState.startIfNotRunning(age);
@@ -444,7 +450,14 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             if (!hasAngerTime() && !isInLove())
                 return interactHorse(player, held);
         }
-        return hasAngerTime() ? ActionResult.PASS : super.interactMob(player, hand);
+        if (hasAngerTime()) {
+            showEmoteParticle(false);
+            if (!world.isClient) {
+                playSound(SoundRegistry.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
+            }
+            return ActionResult.success(world.isClient);
+        }
+        return super.interactMob(player, hand);
     }
 
     @Override
@@ -541,10 +554,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (sound != null) {
             world.playSoundFromEntity(null, this, SoundEvents.ENTITY_HORSE_SADDLE, sound, .5f, 1f);
         }
-    }
-
-    public int getLimitPerChunk() {
-        return 6;
     }
 
     public int getAngerTime() {
@@ -672,15 +681,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return true;
     }
 
-    @Nullable
-    @Override
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        if (!isBaby()) {
-            setShedTime(12000 + random.nextInt(SHED_REGROW_TIME_BASE));
-        }
-        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
-    }
-
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
             super(MooseEntity.this, LivingEntity.class, 20, true, true, livingEntity -> {
@@ -761,20 +761,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 moose.removeAllPassengers();
                 moose.world.sendEntityStatus(moose, (byte)6);
             }
-        }
-    }
-
-    public static class MooseEscapeDangerGoal extends EscapeDangerGoal {
-        public MooseEscapeDangerGoal(PathAwareEntity mob, double speed) {
-            super(mob, speed);
-        }
-
-        @Override
-        public boolean canStart() {
-            if (mob instanceof MooseEntity mooseEntity) {
-                if (mooseEntity.hasAngerTime() || mooseEntity.getAngryAt() != null) return false;
-            }
-            return super.canStart();
         }
     }
 }
