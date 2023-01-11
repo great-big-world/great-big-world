@@ -6,9 +6,21 @@ Moose:
 
 Glimmering Mushrooms
  - block water
+ - aren't pick-blockable
 
 Aspen
  - trees generate next to each other
+ - leaves & piles aren't pick-blockable
+
+Mahogany
+ - leaves & piles aren't pick-blockable
 
 Antlers
  - working block
+
+Ancients
+ - combine textures?
+ - don't ever spawn with a bow
+
+Stone Bow & Arrow
+ - fix both textures
