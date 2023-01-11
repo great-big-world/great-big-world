@@ -10,9 +10,9 @@ import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
-import net.minecraft.entity.ai.pathing.SwimNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -21,6 +21,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -74,14 +75,14 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         setPathfindingPenalty(PathNodeType.DANGER_POWDER_SNOW, -1f);
         setPathfindingPenalty(PathNodeType.WATER, 2f);
         lookControl = new LookControl(this);
-        moveControl = new AquaticMoveControl(this, 85, 10, .02f, 1f, true);
+        moveControl = new AquaticMoveControl(this, 85, 10, 2f, 1f, true);
         stepHeight = 1.5f;
     }
 
     public static DefaultAttributeContainer.Builder createMooseAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 50d)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .33499999403953552d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .22499999403953552d)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, .6000000238418579d)
                 .add(EntityAttributes.GENERIC_ARMOR, 5d)
                 .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 1d)
@@ -114,22 +115,19 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     protected void initGoals() {
-        goalSelector.add(0, new EscapeDangerGoal(this, 1.5d));
-        goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, true));
+        goalSelector.add(0, new MooseEscapeDangerGoal(this));
+        goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, false));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
         goalSelector.add(4, new FollowParentGoal(this, 1d));
-        goalSelector.add(6, new WanderAroundFarGoal(this, 1d));
-        goalSelector.add(6, new SwimAroundGoal(this, 1.25d, 120));
-        goalSelector.add(7, new LookAtEntityGoal(this, LivingEntity.class, 6f));
-        goalSelector.add(8, new LookAroundGoal(this));
+        goalSelector.add(5, new WanderAroundFarGoal(this, 1d));
+        goalSelector.add(5, new SwimAroundGoal(this, 1.25d, 120));
+        goalSelector.add(6, new LookAtEntityGoal(this, LivingEntity.class, 6f));
+        goalSelector.add(7, new LookAroundGoal(this));
         targetSelector.add(1, new ProtectBabiesGoal());
-        targetSelector.add(2, new FleeEntityGoal<>(this, LivingEntity.class, 9f, 1.6d, 1.4d, livingEntity -> {
-            return livingEntity.getType().isIn(Tags.EntityTypeTags.MOOSE_FLEE_FROM) && livingEntity.isPartOfGame() && (!isAngryAt(livingEntity) || !isOwner(livingEntity));
-        }));
-        targetSelector.add(3, new MooseBondOrAngerAtPlayerGoal(this));
-        targetSelector.add(4, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
-        targetSelector.add(5, new UniversalAngerGoal<>(this, true));
+        targetSelector.add(2, new MooseBondOrAngerAtPlayerGoal(this));
+        targetSelector.add(3, new ActiveTargetGoal<>(this, LivingEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(4, new UniversalAngerGoal<>(this, true));
     }
 
     public void tickMovement() {
@@ -346,8 +344,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         Entity entity = source.getAttacker();
         if (entity != null) {
             setAngryAt(entity.getUuid());
-            //if (entity instanceof LivingEntity livingEntity) setTarget(livingEntity);
-            chooseRandomAngerTime();
+            if (entity instanceof LivingEntity livingEntity) setTarget(livingEntity);
             if (getOwnerUuid() != null && getOwnerUuid().equals(entity.getUuid())) {
                 setOwnerUuid(null);
                 setTame(false);
@@ -536,7 +533,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     protected EntityNavigation createNavigation(World world) {
-        return new SwimNavigation(this, world);
+        return new AmphibiousSwimNavigation(this, world);
     }
 
     public void travel(Vec3d movementInput) {
@@ -580,6 +577,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
         updateAnger();
         resetLoveTicks();
+        chooseRandomAngerTime();
     }
 
     public boolean isAngryAt(Entity entity) {
@@ -761,6 +759,17 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 moose.removeAllPassengers();
                 moose.world.sendEntityStatus(moose, (byte)6);
             }
+        }
+    }
+
+    public static class MooseEscapeDangerGoal extends EscapeDangerGoal {
+        public MooseEscapeDangerGoal(PathAwareEntity mob) {
+            super(mob, 1.5d);
+        }
+
+        @Override
+        protected boolean isInDanger() {
+            return mob.shouldEscapePowderSnow() || mob.isOnFire();
         }
     }
 }
