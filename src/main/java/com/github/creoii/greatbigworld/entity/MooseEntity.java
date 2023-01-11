@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.GameEventRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.registry.SoundRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
@@ -210,10 +211,16 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void dropAntlers() {
-        setLeftAntler(false);
-        setRightAntler(false);
-        dropItem(ItemRegistry.ANTLER);
-        dropItem(ItemRegistry.ANTLER);
+        if (isAlive()) {
+            setLeftAntler(false);
+            setRightAntler(false);
+            if (!world.isClient) {
+                dropItem(ItemRegistry.ANTLER);
+                dropItem(ItemRegistry.ANTLER);
+                playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
+                emitGameEvent(GameEventRegistry.SHED_ANTLERS);
+            }
+        }
     }
 
     @Nullable @Override
