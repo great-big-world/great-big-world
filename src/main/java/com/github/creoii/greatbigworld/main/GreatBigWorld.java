@@ -9,7 +9,7 @@ import net.minecraft.util.math.random.Random;
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "1.0.1";
     public static final Register[] REGISTERS = new Register[]{
             new BlockRegistry(),
             new ItemRegistry(),
@@ -22,6 +22,7 @@ public class GreatBigWorld implements ModInitializer {
             new BiomeRegistry(),
             new PotionRegistry(),
             new SoundRegistry(),
+            new GameEventRegistry(),
             new ParticleRegistry(),
             new ModMenuIntegration()
     };
