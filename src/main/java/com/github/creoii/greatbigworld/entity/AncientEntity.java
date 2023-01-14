@@ -32,6 +32,8 @@ public class AncientEntity extends HostileEntity {
     }
 
     protected void initGoals() {
+        goalSelector.add(2, new AvoidSunlightGoal(this));
+        goalSelector.add(3, new EscapeSunlightGoal(this, 1d));
         goalSelector.add(4, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
         goalSelector.add(4, new LookAroundGoal(this));
         goalSelector.add(2, new MeleeAttackGoal(this, 1d, false));
@@ -67,11 +69,32 @@ public class AncientEntity extends HostileEntity {
     }
 
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(this.getStepSound(), 0.15F, 1.0F);
+        playSound(getStepSound(), .15f, 1f);
     }
 
     public EntityGroup getGroup() {
         return EntityGroup.UNDEAD;
+    }
+
+    public void tickMovement() {
+        boolean bl = isAffectedByDaylight();
+        if (bl) {
+            ItemStack itemStack = getEquippedStack(EquipmentSlot.HEAD);
+            if (!itemStack.isEmpty()) {
+                if (itemStack.isDamageable()) {
+                    itemStack.setDamage(itemStack.getDamage() + random.nextInt(2));
+                    if (itemStack.getDamage() >= itemStack.getMaxDamage()) {
+                        sendEquipmentBreakStatus(EquipmentSlot.HEAD);
+                        equipStack(EquipmentSlot.HEAD, ItemStack.EMPTY);
+                    }
+                }
+                bl = false;
+            }
+            if (bl) {
+                setOnFireFor(8);
+            }
+        }
+        super.tickMovement();
     }
 
     protected void initEquipment(Random random, LocalDifficulty localDifficulty) {

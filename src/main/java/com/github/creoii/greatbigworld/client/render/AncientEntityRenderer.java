@@ -8,6 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -15,7 +16,12 @@ public class AncientEntityRenderer<T extends AncientEntity> extends MobEntityRen
     private static final Identifier TEXTURE = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/ancient/ancient.png");
 
     public AncientEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new AncientEntityModel<>(context.getPart(RenderRegistry.ANCIENT_MODEL_LAYER)), .7f);
+        super(context, new AncientEntityModel<>(context.getPart(RenderRegistry.ANCIENT_MODEL_LAYER)), .75f);
+    }
+
+    @Override
+    protected void scale(T entity, MatrixStack matrices, float amount) {
+        matrices.scale(1.1f, 1.1f, 1.1f);
     }
 
     public Identifier getTexture(AncientEntity ancientEntity) {
