@@ -2,26 +2,20 @@ package com.github.creoii.greatbigworld.main.util.material;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class WoodenMaskArmorMaterial implements ArmorMaterial {
-    private final Item repairItem;
-
-    public WoodenMaskArmorMaterial(Item repairItem) {
-        this.repairItem = repairItem;
-    }
-
+public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements ArmorMaterial {
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return 0;
+        return 110;
     }
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return 0;
+        return 2;
     }
 
     @Override

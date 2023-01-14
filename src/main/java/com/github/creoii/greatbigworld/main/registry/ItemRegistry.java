@@ -50,7 +50,9 @@ public class ItemRegistry implements Register {
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
+    public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.ASPEN.planks()));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
+    public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.MAHOGANY.planks()));
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
     public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
@@ -81,7 +83,9 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, ItemGroups.COMBAT);
