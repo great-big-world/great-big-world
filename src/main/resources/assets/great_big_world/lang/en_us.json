@@ -95,6 +95,8 @@
   "item.minecraft.tipped_arrow.effect.long_darkness": "Potion of Darkness",
   "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness",
   "item.great_big_world.moose_spawn_egg": "Moose Spawn Egg",
+  "item.great_big_world.thicket_spawn_egg": "Thicket Spawn Egg",
+  "item.great_big_world.ancient_spawn_egg": "Ancient Spawn Egg",
   "item.great_big_world.venison": "Raw Venison",
   "item.great_big_world.cooked_venison": "Cooked Venison",
   "item.great_big_world.stone_arrow": "Stone Arrow",
@@ -103,6 +105,7 @@
 
   "entity.great_big_world.moose": "Moose",
   "entity.great_big_world.stone_arrow": "Stone Arrow",
+  "entity.great_big_world.thicket": "Thicket",
   "entity.great_big_world.ancient": "Ancient",
 
   "biome.great_big_world.aspen_forest": "Aspen Forest",

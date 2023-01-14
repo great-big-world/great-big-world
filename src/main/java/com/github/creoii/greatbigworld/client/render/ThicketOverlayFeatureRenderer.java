@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.client.render;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -16,13 +16,13 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
-public class AncientOverlayFeatureRenderer<T extends MobEntity & RangedAttackMob, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
-    private static final Identifier SKIN = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/ancient/ancient_overlay.png");
+public class ThicketOverlayFeatureRenderer<T extends MobEntity & RangedAttackMob, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
+    private static final Identifier SKIN = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/thicket/thicket_overlay.png");
     private final SkeletonEntityModel<T> model;
 
-    public AncientOverlayFeatureRenderer(FeatureRendererContext<T, M> context, EntityModelLoader loader) {
+    public ThicketOverlayFeatureRenderer(FeatureRendererContext<T, M> context, EntityModelLoader loader) {
         super(context);
-        model = new SkeletonEntityModel<>(loader.getModelPart(EntityRegistry.ANCIENT_OUTER_MODEL_LAYER));
+        model = new SkeletonEntityModel<>(loader.getModelPart(RenderRegistry.THICKET_OUTER_MODEL_LAYER));
     }
 
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T mobEntity, float f, float g, float h, float j, float k, float l) {

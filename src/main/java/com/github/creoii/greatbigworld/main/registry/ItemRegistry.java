@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.item.StoneArrowItem;
 import com.github.creoii.greatbigworld.item.StoneBowItem;
+import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import com.github.creoii.greatbigworld.main.util.Register;
@@ -44,6 +45,9 @@ public class ItemRegistry implements Register {
     public static final Item STONE_ARROW = new StoneArrowItem();
     public static final Item STONE_BOW = new StoneBowItem();
     //endregion
+    //region Wooden Masks
+    public static final Item OAK_MASK = new WoodenMaskItem(WoodenMaskItem.WoodType.OAK);
+    //endregion
     //region Miscellaneous
     public static final Item ANTLER = new Item(new FabricItemSettings());
     //endregion
@@ -65,6 +69,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "stone_arrow"), STONE_ARROW, Items.ARROW, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "stone_bow"), STONE_BOW, Items.BOW, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "antler"), ANTLER, Items.TURTLE_EGG, ItemGroups.NATURAL);
     }
 
