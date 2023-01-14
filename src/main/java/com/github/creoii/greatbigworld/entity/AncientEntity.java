@@ -1,10 +1,10 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -14,13 +14,19 @@ import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 
 public class AncientEntity extends HostileEntity {
     public AncientEntity(EntityType<? extends AncientEntity> entityType, World world) {
@@ -106,5 +112,27 @@ public class AncientEntity extends HostileEntity {
                 equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.STONE_PICKAXE));
             }
         }
+    }
+
+    @Nullable
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+        Random random = world.getRandom();
+        if (random.nextInt(8) == 0) {
+            equipStack(EquipmentSlot.HEAD, new ItemStack(ItemRegistry.OAK_MASK));
+        }
+        initEquipment(random, difficulty);
+        updateEnchantments(random, difficulty);
+        setCanPickUpLoot(random.nextFloat() < .55f * difficulty.getClampedLocalDifficulty());
+        if (getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
+            LocalDate localDate = LocalDate.now();
+            int i = localDate.get(ChronoField.DAY_OF_MONTH);
+            int j = localDate.get(ChronoField.MONTH_OF_YEAR);
+            if (j == 10 && i == 31 && random.nextFloat() < .25f) {
+                equipStack(EquipmentSlot.HEAD, new ItemStack(random.nextFloat() < .1f ? Blocks.JACK_O_LANTERN : Blocks.CARVED_PUMPKIN));
+                armorDropChances[EquipmentSlot.HEAD.getEntitySlotId()] = 0f;
+            }
+        }
+        return entityData;
     }
 }

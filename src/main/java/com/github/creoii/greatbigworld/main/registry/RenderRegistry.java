@@ -40,6 +40,6 @@ public class RenderRegistry implements Register {
             return TexturedModelData.of(AncientEntityModel.getModelData(Dilation.NONE, 0f), 64, 64);
         });
         EntityModelLayerRegistry.registerModelLayer(WOODEN_MASK_MODEL_LAYER, WoodenMaskModel::getTexturedModelData);
-        ArmorRenderer.register(new WoodenMaskRenderer(), ItemRegistry.OAK_MASK);
+        ArmorRenderer.register(new WoodenMaskRenderer(), ItemRegistry.OAK_MASK, ItemRegistry.SPRUCE_MASK, ItemRegistry.BIRCH_MASK, ItemRegistry.JUNGLE_MASK, ItemRegistry.ACACIA_MASK, ItemRegistry.DARK_OAK_MASK, ItemRegistry.MANGROVE_MASK, ItemRegistry.CRIMSON_MASK, ItemRegistry.WARPED_MASK);
     }
 }

@@ -21,11 +21,8 @@ public class Tags {
         public static final TagKey<Item> MOOSE_FOOD = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food"));
         public static final TagKey<Item> MOOSE_FOOD_LIKES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_likes"));
         public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
+        public static final TagKey<Item> WOODEN_MASKS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "wooden_masks"));
         public static final TagKey<Item> COMMON_BOWS = TagKey.of(RegistryKeys.ITEM, new Identifier(COMMON_NAMESPACE, "bows"));
-    }
-
-    public static class EntityTypeTags {
-        public static final TagKey<EntityType<?>> MOOSE_FLEE_FROM = TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NAMESPACE, "moose_flee_from"));
     }
 
     public static class BiomeTags {
