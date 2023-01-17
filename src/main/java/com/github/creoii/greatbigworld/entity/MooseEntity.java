@@ -447,7 +447,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             if (!hasAngerTime() && !isInLove())
                 return interactHorse(player, held);
         }
-        if (hasAngerTime()) {
+        if (hasAngerTime() && !isBaby()) {
             showEmoteParticle(false);
             if (!world.isClient) {
                 playSound(SoundRegistry.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
