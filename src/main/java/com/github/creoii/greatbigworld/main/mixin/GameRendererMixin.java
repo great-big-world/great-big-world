@@ -18,7 +18,7 @@ public class GameRendererMixin {
     private static void great_big_world_applyIlluminating(LivingEntity entity, float tickDelta, CallbackInfoReturnable<Float> cir) {
         int i = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.ILLUMINATING, entity);
         if (i > 0) {
-            cir.setReturnValue(1f / (5.5f - i));
+            cir.setReturnValue(.2f * i);
         }
     }
 }
