@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class EndermanEntityMixin {
     @Inject(method = "isPlayerStaring", at = @At("HEAD"), cancellable = true)
     private void great_big_world_masksBlockStaring(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
-        ItemStack itemStack = player.getInventory().armor.get(3);
-        if (itemStack.isIn(Tags.ItemTags.WOODEN_MASKS)) cir.setReturnValue(false);
+        if (player.getInventory().armor.get(3).isIn(Tags.ItemTags.WOODEN_MASKS)) cir.setReturnValue(false);
     }
 }
