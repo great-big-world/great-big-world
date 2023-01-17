@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
+import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
@@ -120,7 +121,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
             equipStack(EquipmentSlot.MAINHAND, new ItemStack(ItemRegistry.STONE_BOW));
         }
         if (random.nextInt(8) == 0) {
-            equipStack(EquipmentSlot.HEAD, new ItemStack(ItemRegistry.OAK_MASK));
+            equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
         }
         updateEnchantments(random, difficulty);
         updateAttackType();

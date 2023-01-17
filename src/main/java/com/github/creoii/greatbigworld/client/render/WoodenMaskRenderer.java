@@ -37,14 +37,13 @@ public class WoodenMaskRenderer implements ArmorRenderer {
 
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, ItemStack stack, LivingEntity entity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> model) {
-        if (stack.isIn(Tags.ItemTags.WOODEN_MASKS)) {
-            if (maskModel == null) {
-                maskModel = new WoodenMaskModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RenderRegistry.WOODEN_MASK_MODEL_LAYER));
-            }
-            model.copyStateTo(maskModel);
-            maskModel.mask.setTransform(model.head.getTransform());
-            maskModel.mask.visible = slot == EquipmentSlot.HEAD;
-            ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, maskModel, TEXTURES.get(stack.getItem()));
+        if (maskModel == null) {
+            maskModel = new WoodenMaskModel(MinecraftClient.getInstance().getEntityModelLoader().getModelPart(RenderRegistry.WOODEN_MASK_MODEL_LAYER));
         }
+        model.copyStateTo(maskModel);
+        maskModel.mask.setTransform(model.head.getTransform());
+        maskModel.mask.visible = slot == EquipmentSlot.HEAD;
+        ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, maskModel, TEXTURES.get(stack.getItem()));
+
     }
 }

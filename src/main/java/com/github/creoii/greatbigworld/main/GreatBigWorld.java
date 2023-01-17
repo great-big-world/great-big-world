@@ -20,6 +20,7 @@ public class GreatBigWorld implements ModInitializer {
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
             new BiomeRegistry(),
+            new EnchantmentRegistry(),
             new PotionRegistry(),
             new SoundRegistry(),
             new GameEventRegistry(),

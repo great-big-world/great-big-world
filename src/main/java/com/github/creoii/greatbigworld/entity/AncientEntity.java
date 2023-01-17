@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
+import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import net.minecraft.block.BlockState;
@@ -119,7 +120,7 @@ public class AncientEntity extends HostileEntity {
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         Random random = world.getRandom();
         if (random.nextInt(8) == 0) {
-            equipStack(EquipmentSlot.HEAD, new ItemStack(ItemRegistry.OAK_MASK));
+            equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
         }
         initEquipment(random, difficulty);
         updateEnchantments(random, difficulty);
