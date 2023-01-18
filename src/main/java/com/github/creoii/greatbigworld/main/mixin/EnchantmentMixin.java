@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin;
 
 import com.github.creoii.greatbigworld.item.GBWArmorItem;
-import com.github.creoii.greatbigworld.main.util.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

@@ -17,12 +17,12 @@
       "feature": "great_big_world:mud_vegetation",
       "placement": []
     },
-    "vertical_range": 3,
+    "vertical_range": 2,
     "xz_radius": {
       "type": "minecraft:uniform",
       "value": {
-        "max_inclusive": 6,
-        "min_inclusive": 4
+        "max_inclusive": 5,
+        "min_inclusive": 3
       }
     }
   }

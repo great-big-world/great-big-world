@@ -5,7 +5,6 @@ import com.github.creoii.greatbigworld.main.registry.StructureRegistry;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.StructureTemplate;
 import net.minecraft.structure.processor.StructureProcessor;

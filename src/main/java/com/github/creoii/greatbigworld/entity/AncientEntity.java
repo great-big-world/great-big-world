@@ -2,7 +2,6 @@ package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;

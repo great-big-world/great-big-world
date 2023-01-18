@@ -4,7 +4,6 @@ import com.github.creoii.greatbigworld.client.model.WoodenMaskModel;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
-import com.github.creoii.greatbigworld.main.util.Tags;
 import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.MinecraftClient;
