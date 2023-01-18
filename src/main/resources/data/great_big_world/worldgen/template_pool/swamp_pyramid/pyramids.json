@@ -3,10 +3,8 @@
     {
       "element": {
         "element_type": "minecraft:legacy_single_pool_element",
-        "location": "minecraft:pillager_outpost/base_plate",
-        "processors": {
-          "processors": []
-        },
+        "location": "great_big_world:swamp_pyramid/pyramid",
+        "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"
       },
       "weight": 1
