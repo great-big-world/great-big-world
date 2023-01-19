@@ -19,8 +19,19 @@ Antlers
  - working block
 
 Ancients
- - combine textures?
- - don't ever spawn with a bow
+ - overlay texture
 
 Stone Bow & Arrow
- - fix both textures
+ - fix/improve both textures
+
+Wooden Masks
+ - item textures
+
+Swamp Pyramids
+ - add loot tables (great & decent loot)
+ - add hall rooms (traps)
+ - add hidden rooms
+ - add more center rooms (flooded & overgrown)
+ - fix center rooms not generating
+ - add final room
+ - add spawners to center rooms

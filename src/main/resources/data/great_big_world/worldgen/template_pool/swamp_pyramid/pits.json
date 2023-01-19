@@ -2,7 +2,7 @@
   "elements": [
     {
       "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
+        "element_type": "minecraft:single_pool_element",
         "location": "great_big_world:swamp_pyramid/pits/normal",
         "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"
@@ -11,7 +11,7 @@
     },
     {
       "element": {
-        "element_type": "minecraft:legacy_single_pool_element",
+        "element_type": "minecraft:single_pool_element",
         "location": "great_big_world:swamp_pyramid/pits/staircase",
         "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"

@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:swamp_pyramid/pyramid",
+        "location": "great_big_world:swamp_pyramid/center_rooms/circle",
         "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"
       },
