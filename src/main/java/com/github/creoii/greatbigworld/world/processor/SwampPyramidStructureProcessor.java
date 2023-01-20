@@ -5,6 +5,7 @@ import com.github.creoii.greatbigworld.main.registry.StructureRegistry;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
+import net.minecraft.state.property.Properties;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.StructureTemplate;
 import net.minecraft.structure.processor.StructureProcessor;
@@ -50,6 +51,10 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
 
             if (blockState.contains(SlabBlock.TYPE)) {
                 state = state.with(SlabBlock.TYPE, blockState.get(SlabBlock.TYPE));
+            }
+
+            if (blockState.contains(Properties.WATERLOGGED)) {
+                state = state.with(Properties.WATERLOGGED, blockState.get(Properties.WATERLOGGED));
             }
 
             return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, state, currentBlockInfo.nbt);

@@ -1,19 +1,19 @@
 TODO
 
 Moose:
- - babies have too big a hitbox
- - moose sink in water when ridden
+ - babies have too big a hitbox**
+ - moose sink in water when ridden**
 
 Glimmering Mushrooms
- - block water
- - aren't pick-blockable
+ - shouldn't block water**
+ - aren't pick-blockable**
 
 Aspen
  - trees generate next to each other
- - leaves & piles aren't pick-blockable
+ - leaves & piles aren't pick-blockable**
 
 Mahogany
- - leaves & piles aren't pick-blockable
+ - leaves & piles aren't pick-blockable**
 
 Antlers
  - working block
@@ -22,16 +22,14 @@ Ancients
  - overlay texture
 
 Stone Bow & Arrow
- - fix/improve both textures
+ - fix/improve both textures**
 
 Wooden Masks
- - item textures
+ - item textures**
 
 Swamp Pyramids
  - add loot tables (great & decent loot)
  - add hall rooms (traps)
  - add hidden rooms
- - add more center rooms (flooded & overgrown)
- - fix center rooms not generating
  - add final room
  - add spawners to center rooms

@@ -3,7 +3,16 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:swamp_pyramid/pyramid",
+        "location": "great_big_world:swamp_pyramid/pyramid_pit",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/pyramid_staircase",
         "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"
       },
