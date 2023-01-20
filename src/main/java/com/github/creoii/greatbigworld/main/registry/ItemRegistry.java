@@ -6,6 +6,7 @@ import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
@@ -127,6 +128,23 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON);
         registerItem(new Identifier(NAMESPACE, "antler"), ANTLER);
+        compostables();
+    }
+
+    private void compostables() {
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.HEATHER, .65f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.TALL_HEATHER, .65f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.DAYLIGHT_MUSHROOM, .15f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.MIDNIGHT_MUSHROOM, .15f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.DARKBLIGHT_MUSHROOM, .15f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.YELLOW_ASPEN_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.YELLOW_ASPEN_LEAF_PILE, .1f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.YELLOW_ASPEN_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(GREEN_ASPEN_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(GREEN_ASPEN_LEAF_PILE, .1f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.GREEN_ASPEN_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(MAHOGANY_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.MAHOGANY_SAPLING, .3f);
     }
 
     @Override
