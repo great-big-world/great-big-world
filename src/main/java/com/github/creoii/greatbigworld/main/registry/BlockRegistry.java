@@ -13,6 +13,7 @@ import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -168,7 +169,7 @@ public class BlockRegistry implements Register {
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension, @Nullable ItemRegistry.ItemGroupSettings... groups) {
         registerBlock(id, block, extension);
         if (groups != null) {
-            ItemRegistry.registerItem(id, new BlockItem(block, new Item.Settings()), groups);
+            ItemRegistry.registerItem(id, new BlockItem(block, new FabricItemSettings()), groups);
         }
     }
 
