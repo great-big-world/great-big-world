@@ -4,9 +4,8 @@ import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.feature.CompositeFeature;
 import com.github.creoii.greatbigworld.world.feature.config.CompositeFeatureConfig;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;
 
 public class FeatureRegistry implements Register {
@@ -14,6 +13,6 @@ public class FeatureRegistry implements Register {
 
     @Override
     public void register() {
-        Registry.register(Registries.FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "composite"), COMPOSITE);
+        Registry.register(Registry.FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "composite"), COMPOSITE);
     }
 }

@@ -134,7 +134,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
             return Blocks.AIR.getDefaultState();
         } else {
             if (state.get(WATERLOGGED)) {
-                world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+                world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
             }
             return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
         }
@@ -144,7 +144,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (state.get(WATERLOGGED)) {
-            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+            world.createAndScheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
         super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
     }

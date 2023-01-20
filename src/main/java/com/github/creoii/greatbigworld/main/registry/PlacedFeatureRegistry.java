@@ -6,9 +6,9 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
@@ -27,16 +27,16 @@ public class PlacedFeatureRegistry implements Register {
 
     @Override
     public void register() {
-        MAHOGANY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "mahogany"));
-        SPARSE_MAHOGANY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "sparse_mahogany"));
-        TREES_ASPEN_GREEN = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_green"));
-        TREES_ASPEN_YELLOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_yellow"));
-        TREES_ASPEN_GREEN_SNOWY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_green_snowy"));
-        TREES_ASPEN_YELLOW_SNOWY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_yellow_snowy"));
-        GREEN_ASPEN_ON_SNOW = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "green_aspen_on_snow"));
-        PATCH_DAYLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_daylight_mushrooms"));
-        PATCH_DARKBLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_darkblight_mushrooms"));
-        PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
+        MAHOGANY = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "mahogany"));
+        SPARSE_MAHOGANY = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "sparse_mahogany"));
+        TREES_ASPEN_GREEN = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_green"));
+        TREES_ASPEN_YELLOW = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_yellow"));
+        TREES_ASPEN_GREEN_SNOWY = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_green_snowy"));
+        TREES_ASPEN_YELLOW_SNOWY = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "trees_aspen_yellow_snowy"));
+        GREEN_ASPEN_ON_SNOW = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "green_aspen_on_snow"));
+        PATCH_DAYLIGHT_MUSHROOMS = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "patch_daylight_mushrooms"));
+        PATCH_DARKBLIGHT_MUSHROOMS = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "patch_darkblight_mushrooms"));
+        PATCH_HEATHER = RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
         modifyGeneration();
     }
 

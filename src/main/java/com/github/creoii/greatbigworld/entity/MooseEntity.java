@@ -10,7 +10,6 @@ import net.minecraft.entity.ai.NoPenaltyTargeting;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.ai.pathing.AmphibiousSwimNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -24,6 +23,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.AxolotlSwimNavigation;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -31,11 +31,11 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TimeHelper;
@@ -533,7 +533,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     protected EntityNavigation createNavigation(World world) {
-        return new AmphibiousSwimNavigation(this, world);
+        return new AxolotlSwimNavigation(this, world);
     }
 
     public void travel(Vec3d movementInput) {
@@ -575,7 +575,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!world.isClient) {
             playSound(SoundRegistry.ENTITY_MOOSE_WARNING, 1f, getSoundPitch());
         }
-        updateAnger();
+        if (isLogicalSideForUpdatingMovement() || canMoveVoluntarily()) {
+            setAngry(true);
+        }
         resetLoveTicks();
         chooseRandomAngerTime();
     }
@@ -599,12 +601,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     @Override
-    protected Vec3d getLeashOffset() {
+    public Vec3d getLeashOffset() {
         return new Vec3d(0d, getStandingEyeHeight() - .25d, getWidth() * .4d);
     }
 
-    public boolean canJump(PlayerEntity player) {
-        return getPrimaryPassenger() == player && super.canJump(player) && (hasRightAntler() || hasLeftAntler());
+    @Override
+    public boolean canJump() {
+        return getPrimaryPassenger() != null && getPrimaryPassenger().isPlayer() && super.canJump() && (hasRightAntler() || hasLeftAntler());
     }
 
     public void setJumpStrength(int strength) {
@@ -644,7 +647,8 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
     }
 
-    protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
+    @Override
+    protected void jump() {
         ramCooldown = 30;
         setRamming(true);
     }
@@ -668,10 +672,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public void stopJumping() {
         headPitch -= 3;
-    }
-
-    public int getJumpCooldown() {
-        return ramCooldown;
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.world.feature;
 
 import com.github.creoii.greatbigworld.world.feature.config.CompositeFeatureConfig;
 import com.mojang.serialization.Codec;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
@@ -15,7 +15,7 @@ public class CompositeFeature extends Feature<CompositeFeatureConfig> {
     @Override
     public boolean generate(FeatureContext context) {
         boolean generated = false;
-        CompositeFeatureConfig config = ((CompositeFeatureConfig)context.getConfig());
+        CompositeFeatureConfig config = (CompositeFeatureConfig) context.getConfig();
         for (RegistryEntry<PlacedFeature> entry : config.features()) {
             if (entry.value().generateUnregistered(context.getWorld(), context.getGenerator(), context.getRandom(), context.getOrigin())) {
                 generated = true;

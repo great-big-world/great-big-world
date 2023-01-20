@@ -7,14 +7,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.predicate.block.BlockStatePredicate;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.state.property.Properties;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
@@ -48,7 +48,7 @@ public class BranchTreeDecorator extends TreeDecorator {
         this.state = state;
         this.chance = chance;
         this.randomFacing = randomFacing;
-        this.replaceableTag = TagKey.of(RegistryKeys.BLOCK, Identifier.tryParse(replaceableTag));
+        this.replaceableTag = TagKey.of(Registry.BLOCK_KEY, Identifier.tryParse(replaceableTag));
         this.startOffset = startOffset;
         this.noMultiVerticalPlacement = noMultiVerticalPlacement;
     }

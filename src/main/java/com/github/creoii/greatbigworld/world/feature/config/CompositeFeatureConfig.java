@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.world.feature.config;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 

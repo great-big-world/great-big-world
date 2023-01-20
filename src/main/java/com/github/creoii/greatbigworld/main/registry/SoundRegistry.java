@@ -2,10 +2,9 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class SoundRegistry implements Register {
     public static SoundEvent ENTITY_MOOSE_HURT;
@@ -20,6 +19,6 @@ public class SoundRegistry implements Register {
     }
 
     private static SoundEvent registerSoundEvent(Identifier id) {
-        return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
+        return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
     }
 }

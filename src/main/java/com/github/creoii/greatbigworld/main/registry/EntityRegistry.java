@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.client.model.MooseEntityModel;
 import com.github.creoii.greatbigworld.client.render.MooseEntityRenderer;
 import com.github.creoii.greatbigworld.entity.MooseEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.util.ItemUtil;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -22,11 +23,13 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 
 import java.util.function.Predicate;
@@ -50,7 +53,7 @@ public class EntityRegistry implements Register {
     }
 
     public static <L extends MobEntity, T extends EntityType<L>> void registerMobEntity(T entityType, Identifier id, EntitySettings<L, T> settings) {
-        Registry.register(Registries.ENTITY_TYPE, id, entityType);
+        Registry.register(Registry.ENTITY_TYPE, id, entityType);
         settings.register();
     }
 
@@ -59,7 +62,12 @@ public class EntityRegistry implements Register {
             FabricDefaultAttributeRegistry.register(entityType, builder);
             SpawnRestriction.register(entityType, location, heightmap, predicate);
             BiomeModifications.addSpawn(biomeSelector, group, entityType, weight, minGroupSize, maxGroupSize);
-            ItemRegistry.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registries.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings()), ItemGroups.SPAWN_EGGS);
+            ItemRegistry.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registry.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings().group(ItemGroup.MISC)) {
+                @Override
+                public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+                    ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.ZOMBIFIED_PIGLIN_SPAWN_EGG);
+                }
+            });
         }
     }
 }

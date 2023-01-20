@@ -2,9 +2,8 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.event.GameEvent;
 
 public class GameEventRegistry implements Register {
@@ -16,6 +15,6 @@ public class GameEventRegistry implements Register {
     }
 
     private static GameEvent registerGameEvent(Identifier id, int range) {
-        return Registry.register(Registries.GAME_EVENT, id, new GameEvent(id.getPath(), range));
+        return Registry.register(Registry.GAME_EVENT, id, new GameEvent(id.getPath(), range));
     }
 }

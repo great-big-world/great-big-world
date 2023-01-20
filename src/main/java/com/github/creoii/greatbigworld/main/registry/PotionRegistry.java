@@ -9,9 +9,8 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class PotionRegistry implements Register {
     public static final Potion GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 3600));
@@ -26,16 +25,15 @@ public class PotionRegistry implements Register {
 
     @Override
     public void register() {
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "glowing"), GLOWING);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_glowing"), LONG_GLOWING);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_glowing"), STRONG_GLOWING);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "blindness"), BLINDNESS);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_blindness"), LONG_BLINDNESS);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_blindness"), STRONG_BLINDNESS);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "darkness"), DARKNESS);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_darkness"), LONG_DARKNESS);
-        Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_darkness"), STRONG_DARKNESS);
-
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "glowing"), GLOWING);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_glowing"), LONG_GLOWING);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_glowing"), STRONG_GLOWING);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "blindness"), BLINDNESS);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_blindness"), LONG_BLINDNESS);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_blindness"), STRONG_BLINDNESS);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "darkness"), DARKNESS);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_darkness"), LONG_DARKNESS);
+        Registry.register(Registry.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_darkness"), STRONG_DARKNESS);
         registerPotionRecipes();
     }
 
