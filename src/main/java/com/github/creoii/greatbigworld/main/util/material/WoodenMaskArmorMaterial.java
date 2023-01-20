@@ -25,7 +25,7 @@ public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements Arm
 
     @Override
     public SoundEvent getEquipSound() {
-        return SoundEvents.BLOCK_WOOD_BREAK;
+        return SoundEvents.BLOCK_WOOD_PLACE;
     }
 
     @Override

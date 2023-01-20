@@ -23,7 +23,7 @@ import java.util.Map;
 public class SwampPyramidStructureProcessor extends StructureProcessor {
     public static final SwampPyramidStructureProcessor INSTANCE = new SwampPyramidStructureProcessor();
     public static final Codec<SwampPyramidStructureProcessor> CODEC = Codec.unit(() -> INSTANCE);
-    private final Map<Block, BlockStateProvider> replacementMap = Util.make(Maps.newHashMap(), (replacements) -> {
+    private final Map<Block, BlockStateProvider> replacementMap = Util.make(Maps.newHashMap(), replacements -> {
         replacements.put(BlockRegistry.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 5).build()));
         replacements.put(BlockRegistry.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
         replacements.put(BlockRegistry.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
