@@ -2,12 +2,11 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.github.creoii.greatbigworld.main.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "BoatEntityMixin",
     "BoatTypeMixin",
     "ChestBoatEntityMixin",
-    "EntityMixin",
     "PillagerEntityMixin",
     "WolfEntityMixin"
   ],
