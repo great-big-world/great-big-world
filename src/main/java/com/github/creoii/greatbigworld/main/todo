@@ -6,14 +6,9 @@ Moose:
 
 Glimmering Mushrooms
  - shouldn't block water**
- - aren't pick-blockable**
 
 Aspen
  - trees generate next to each other
- - leaves & piles aren't pick-blockable**
-
-Mahogany
- - leaves & piles aren't pick-blockable**
 
 Antlers
  - working block
