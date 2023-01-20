@@ -16,5 +16,13 @@
       "great_big_world:mob/moose/warning"
     ],
     "subtitle": "great_big_world.subtitles.entity.moose.warning"
+  },
+  "music_disc.sunrise": {
+    "sounds": [
+      {
+        "name": "great_big_world:records/sunrise",
+        "stream": true
+      }
+    ]
   }
 }

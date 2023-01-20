@@ -18,6 +18,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
@@ -139,10 +140,10 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         if (world != null && !world.isClient) {
             goalSelector.remove(meleeAttackGoal);
             goalSelector.remove(bowAttackGoal);
-            Hand hand = ProjectileUtil.getHandPossiblyHolding(this, ItemRegistry.STONE_BOW);
+            Hand hand = ProjectileUtil.getHandPossiblyHolding(this, Items.BOW);
             if (hand != null) {
                 ItemStack itemStack = getStackInHand(hand);
-                if (itemStack.isOf(ItemRegistry.STONE_BOW)) {
+                if (itemStack.isOf(Items.BOW)) {
                     int i = 18;
                     if (world.getDifficulty() != Difficulty.HARD) {
                         i = 36;
@@ -157,7 +158,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     }
 
     public void attack(LivingEntity target, float pullProgress) {
-        PersistentProjectileEntity persistentProjectileEntity = createArrowProjectile(ItemRegistry.STONE_ARROW.getDefaultStack(), pullProgress);
+        PersistentProjectileEntity persistentProjectileEntity = createArrowProjectile(Items.ARROW.getDefaultStack(), pullProgress);
         double d = target.getX() - getX();
         double e = target.getBodyY(.3333333333333333d) - persistentProjectileEntity.getY();
         double f = target.getZ() - getZ();

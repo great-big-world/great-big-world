@@ -13,6 +13,7 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,10 +41,6 @@ public class ItemRegistry implements Register {
     public static final Item VENISON = new Item(new FabricItemSettings().food(Foods.VENISON));
     public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(Foods.COOKED_VENISON));
     //endregion
-    //region Ancient
-    public static final Item STONE_ARROW = new StoneArrowItem();
-    public static final Item STONE_BOW = new StoneBowItem();
-    //endregion
     //region Wooden Masks
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
@@ -59,6 +56,7 @@ public class ItemRegistry implements Register {
     //endregion
     //region Miscellaneous
     public static final Item ANTLER = new Item(new FabricItemSettings());
+    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.ENTITY_MOOSE_WARNING, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
     //endregion
 
     @Override
@@ -76,8 +74,6 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "stone_arrow"), STONE_ARROW, Items.ARROW, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "stone_bow"), STONE_BOW, Items.BOW, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, ItemGroups.COMBAT);
@@ -90,6 +86,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "antler"), ANTLER, Items.TURTLE_EGG, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_PIGSTEP, ItemGroups.TOOLS);
     }
 
     @Override
