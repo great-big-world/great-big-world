@@ -3,11 +3,65 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:swamp_pyramid/halls/wall",
+        "location": "great_big_world:swamp_pyramid/halls/empty",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/fire",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/infested",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 3
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/maze1",
         "processors": "great_big_world:swamp_pyramid_degradation",
         "projection": "rigid"
       },
       "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/maze2",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/maze3",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "great_big_world:swamp_pyramid/halls/wall",
+        "processors": "great_big_world:swamp_pyramid_degradation",
+        "projection": "rigid"
+      },
+      "weight": 5
     }
   ],
   "fallback": "minecraft:empty"
