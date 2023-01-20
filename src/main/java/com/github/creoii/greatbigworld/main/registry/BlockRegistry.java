@@ -116,14 +116,14 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(.15f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(.15f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
 
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.COBBLESTONE_WALL));
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICKS));
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICK_STAIRS));
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICK_SLAB));
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.MOSSY_COBBLESTONE_WALL));
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICKS));
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_STAIRS));
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_SLAB));
 
         //registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(.7f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(.65f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);

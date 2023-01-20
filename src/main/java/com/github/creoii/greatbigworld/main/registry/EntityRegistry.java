@@ -17,8 +17,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -35,10 +34,10 @@ public class EntityRegistry implements Register {
 
     @Override
     public void register() {
-        registerMobEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, MooseEntity.createMooseAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545));
+        registerMobEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, MooseEntity.createMooseAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
         registerEntity(STONE_ARROW, new Identifier(GreatBigWorld.NAMESPACE, "stone_arrow"));
-        registerMobEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, ThicketEntity.createThicketAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 7631731, 7377453));
-        registerMobEntity(ANCIENT, new Identifier(GreatBigWorld.NAMESPACE, "ancient"), new EntitySettings<>(ANCIENT, AncientEntity.createAncientAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 7631731, 7377453));
+        registerMobEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, ThicketEntity.createThicketAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 7631731, 7377453, Items.TADPOLE_SPAWN_EGG));
+        registerMobEntity(ANCIENT, new Identifier(GreatBigWorld.NAMESPACE, "ancient"), new EntitySettings<>(ANCIENT, AncientEntity.createAncientAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 7631731, 7377453, Items.ALLAY_SPAWN_EGG));
     }
 
     public static <L extends Entity, T extends EntityType<L>> void registerEntity(T entityType, Identifier id) {
@@ -50,13 +49,14 @@ public class EntityRegistry implements Register {
         settings.register();
     }
 
-    public static record EntitySettings<L extends MobEntity, T extends EntityType<L>>(T entityType, DefaultAttributeContainer.Builder builder, SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<L> predicate, @Nullable Predicate<BiomeSelectionContext> biomeSelector, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize, int primaryEggColor, int secondaryEggColor) {
+    public static record EntitySettings<L extends MobEntity, T extends EntityType<L>>(T entityType, DefaultAttributeContainer.Builder builder, SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<L> predicate, @Nullable Predicate<BiomeSelectionContext> biomeSelector, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize, int primaryEggColor, int secondaryEggColor, ItemConvertible after) {
         public void register() {
             FabricDefaultAttributeRegistry.register(entityType, builder);
             SpawnRestriction.register(entityType, location, heightmap, predicate);
             if (biomeSelector != null)
                 BiomeModifications.addSpawn(biomeSelector, group, entityType, weight, minGroupSize, maxGroupSize);
-            ItemRegistry.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registries.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings()), ItemGroups.SPAWN_EGGS);
+            Item spawnEgg = new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings());
+            ItemRegistry.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registries.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), spawnEgg, after, ItemGroups.SPAWN_EGGS);
         }
     }
 }
