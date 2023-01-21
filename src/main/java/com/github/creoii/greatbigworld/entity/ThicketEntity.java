@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -34,10 +33,6 @@ import org.jetbrains.annotations.Nullable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 
-/**
- * Don't spawn with bows
- * *Shouldn't always spawn with a Bow
- */
 public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     private final BowAttackGoal<ThicketEntity> bowAttackGoal = new BowAttackGoal<>(this, .8d, 18, 18f);
     private final MeleeAttackGoal meleeAttackGoal = new MeleeAttackGoal(this, 1d, false) {
@@ -71,8 +66,8 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public static DefaultAttributeContainer.Builder createThicketAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .15d)
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 16d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .2d)
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 20d)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4d)
                 .add(EntityAttributes.GENERIC_ARMOR, 4d)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 1d);
