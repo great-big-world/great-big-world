@@ -31,7 +31,7 @@ public class EntityRegistry implements Register {
     @Override
     public void register() {
         registerMobEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, MooseEntity.createMooseAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
-        registerMobEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, ThicketEntity.createThicketAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 7631731, 7377453, Items.TADPOLE_SPAWN_EGG));
+        registerMobEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, ThicketEntity.createThicketAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 9209735, 7971115, Items.TADPOLE_SPAWN_EGG));
     }
 
     public static <L extends Entity, T extends EntityType<L>> void registerEntity(T entityType, Identifier id) {

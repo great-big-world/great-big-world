@@ -56,7 +56,7 @@ public class ItemRegistry implements Register {
     //endregion
     //region Miscellaneous
     public static final Item ANTLER = new Item(new FabricItemSettings());
-    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.ENTITY_MOOSE_WARNING, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
+    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
     //endregion
 
     @Override
@@ -86,7 +86,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, ItemGroups.COMBAT);
         registerItem(new Identifier(NAMESPACE, "antler"), ANTLER, Items.TURTLE_EGG, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_PIGSTEP, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
     }
 
     @Override
