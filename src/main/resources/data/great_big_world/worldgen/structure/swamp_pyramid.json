@@ -10,9 +10,9 @@
       "spawns": [
         {
           "type": "great_big_world:thicket",
-          "weight": 1,
-          "minCount": 2,
-          "maxCount": 8
+          "minCount": 4,
+          "maxCount": 8,
+          "weight": 1
         }
       ]
     }
