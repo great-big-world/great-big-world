@@ -620,7 +620,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!entities.isEmpty()) {
             setAttacking(true);
             for (Entity entity : entities) {
-                if (entity instanceof LivingEntity livingEntity) {
+                if (entity.getType() != EntityRegistry.MOOSE && entity instanceof LivingEntity livingEntity) {
                     tryAttack(livingEntity);
                 }
             }

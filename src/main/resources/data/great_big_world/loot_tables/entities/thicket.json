@@ -14,7 +14,7 @@
               "count": {
                 "type": "minecraft:uniform",
                 "min": 0,
-                "max": 2
+                "max": 1
               },
               "add": false
             },
@@ -64,15 +64,29 @@
       "bonus_rolls": 0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:stone",
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:stone",
+              "conditions": [
+                {
+                  "condition": "minecraft:killed_by_player"
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:cobblestone"
+            }
+          ],
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
                 "type": "minecraft:uniform",
                 "min": 0,
-                "max": 2
+                "max": 1
               },
               "add": false
             },
@@ -82,19 +96,9 @@
                 "type": "minecraft:uniform",
                 "min": 0,
                 "max": 1
-              },
-              "limit": 1
-            },
-            {
-              "function": "minecraft:set_potion",
-              "id": "minecraft:slowness"
+              }
             }
           ]
-        }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:killed_by_player"
         }
       ]
     }

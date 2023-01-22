@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
-import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -64,7 +63,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public static DefaultAttributeContainer.Builder createThicketAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .25d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .225d)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20d)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4d)
                 .add(EntityAttributes.GENERIC_ARMOR, 4d)
@@ -187,5 +186,10 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public double getHeightOffset() {
         return -.6d;
+    }
+
+    @Override
+    public boolean isFireImmune() {
+        return true;
     }
 }
