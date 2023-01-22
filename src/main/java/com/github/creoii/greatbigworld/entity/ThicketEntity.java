@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
+import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -11,9 +12,6 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.passive.WolfEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
@@ -34,7 +32,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 
 public class ThicketEntity extends HostileEntity implements RangedAttackMob {
-    private final BowAttackGoal<ThicketEntity> bowAttackGoal = new BowAttackGoal<>(this, .8d, 18, 18f);
+    private final BowAttackGoal<ThicketEntity> bowAttackGoal = new BowAttackGoal<>(this, .8d, 20, 18f);
     private final MeleeAttackGoal meleeAttackGoal = new MeleeAttackGoal(this, 1d, false) {
         public void stop() {
             super.stop();
@@ -55,18 +53,18 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     protected void initGoals() {
         goalSelector.add(2, new AvoidSunlightGoal(this));
         goalSelector.add(3, new EscapeSunlightGoal(this, 1d));
-        goalSelector.add(3, new FleeEntityGoal<>(this, WolfEntity.class, 6f, .75d, 1d));
         goalSelector.add(5, new WanderAroundFarGoal(this, .8d));
-        goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8f));
+        goalSelector.add(6, new LookAtEntityGoal(this, LivingEntity.class, 8f));
         goalSelector.add(6, new LookAroundGoal(this));
         targetSelector.add(1, new RevengeGoal(this));
-        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-        targetSelector.add(3, new ActiveTargetGoal<>(this, IronGolemEntity.class, true));
+        targetSelector.add(2, new ActiveTargetGoal<>(this, LivingEntity.class, true, livingEntity -> {
+            return livingEntity.isPartOfGame() && !livingEntity.getType().isIn(Tags.EntityTypeTags.THICKET_IGNORES);
+        }));
     }
 
     public static DefaultAttributeContainer.Builder createThicketAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .2d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .25d)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20d)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4d)
                 .add(EntityAttributes.GENERIC_ARMOR, 4d)
@@ -113,7 +111,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         Random random = world.getRandom();
-        if (random.nextInt(8) == 0) {
+        if (random.nextInt(4) == 0) {
             equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
         }
         updateEnchantments(random, difficulty);

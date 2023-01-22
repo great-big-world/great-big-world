@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.main.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -34,6 +35,10 @@ public class Tags {
         public static final TagKey<Biome> SNOWY_YELLOW_ASPEN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "snowy_yellow_aspen_biomes"));
         public static final TagKey<Biome> MOOSE_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "moose_spawnable"));
         public static final TagKey<Biome> HEATHER_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "heather_biomes"));
+    }
+
+    public static final class EntityTypeTags {
+        public static final TagKey<EntityType<?>> THICKET_IGNORES = TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(NAMESPACE, "thicket_ignores"));
     }
 
     public static class EnchantmentTags {
