@@ -9,6 +9,10 @@ import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -21,16 +25,14 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Difficulty;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 
 public class ThicketEntity extends HostileEntity implements RangedAttackMob {
+    private static final TrackedData<Boolean> FROZEN = DataTracker.registerData(ThicketEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private final BowAttackGoal<ThicketEntity> bowAttackGoal = new BowAttackGoal<>(this, .8d, 20, 18f);
     private final MeleeAttackGoal meleeAttackGoal = new MeleeAttackGoal(this, 1d, false) {
         public void stop() {
@@ -49,21 +51,25 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         updateAttackType();
     }
 
+    @Override
+    protected void initDataTracker() {
+        dataTracker.startTracking(FROZEN, true);
+        super.initDataTracker();
+    }
+
     protected void initGoals() {
-        goalSelector.add(2, new AvoidSunlightGoal(this));
-        goalSelector.add(3, new EscapeSunlightGoal(this, 1d));
-        goalSelector.add(5, new WanderAroundFarGoal(this, .8d));
-        goalSelector.add(6, new LookAtEntityGoal(this, LivingEntity.class, 8f));
-        goalSelector.add(6, new LookAroundGoal(this));
+        goalSelector.add(2, new WanderAroundFarGoal(this, .8d, isThicketFrozen() ? 0f : .001f));
+        goalSelector.add(3, new LookAtEntityGoal(this, LivingEntity.class, 8f, isThicketFrozen() ? 0f : .02f));
+        goalSelector.add(3, new LookAroundGoal(this));
         targetSelector.add(1, new RevengeGoal(this));
-        targetSelector.add(2, new ActiveTargetGoal<>(this, LivingEntity.class, true, livingEntity -> {
+        targetSelector.add(2, new ActiveTargetGoal<>(this, LivingEntity.class, isThicketFrozen() ? 0 : 10, true, false, livingEntity -> {
             return livingEntity.isPartOfGame() && !livingEntity.getType().isIn(Tags.EntityTypeTags.THICKET_IGNORES);
         }));
     }
 
     public static DefaultAttributeContainer.Builder createThicketAttributes() {
         return HostileEntity.createHostileAttributes()
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .225d)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, .2d)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20d)
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4d)
                 .add(EntityAttributes.GENERIC_ARMOR, 4d)
@@ -78,25 +84,79 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         return EntityGroup.UNDEAD;
     }
 
-    public void tickMovement() {
-        boolean bl = isAffectedByDaylight();
-        if (bl) {
-            ItemStack itemStack = getEquippedStack(EquipmentSlot.HEAD);
-            if (!itemStack.isEmpty()) {
-                if (itemStack.isDamageable()) {
-                    itemStack.setDamage(itemStack.getDamage() + random.nextInt(2));
-                    if (itemStack.getDamage() >= itemStack.getMaxDamage()) {
-                        sendEquipmentBreakStatus(EquipmentSlot.HEAD);
-                        equipStack(EquipmentSlot.HEAD, ItemStack.EMPTY);
-                    }
-                }
-                bl = false;
-            }
-            if (bl) {
-                setOnFireFor(8);
-            }
+    public boolean isThicketFrozen() {
+        return dataTracker.get(FROZEN);
+    }
+
+    public void setThicketFrozen(boolean frozen) {
+        dataTracker.set(FROZEN, frozen);
+    }
+
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putBoolean("ThicketFrozen", isThicketFrozen());
+    }
+
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        setThicketFrozen(nbt.getBoolean("ThicketFrozen"));
+        updateAttackType();
+    }
+
+    @Override
+    public boolean canTarget(LivingEntity target) {
+        return !isThicketFrozen() && super.canTarget(target);
+    }
+
+    @Override
+    public boolean canTarget(EntityType<?> type) {
+        return !isThicketFrozen() && super.canTarget(type);
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return isThicketFrozen() || super.isImmobile();
+    }
+
+    @Override
+    public boolean isSilent() {
+        return isThicketFrozen() || super.isSilent();
+    }
+
+    @Override
+    public boolean isAttacking() {
+        return isThicketFrozen() || super.isAttacking();
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (isThicketFrozen() && (world.getLightLevel(LightType.BLOCK, getBlockPos()) > 1 || getTarget() != null)) {
+            setThicketFrozen(false);
         }
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (isThicketFrozen()) {
+            setThicketFrozen(false);
+        }
+        return super.damage(source, amount);
+    }
+
+    @Override
+    public boolean isPushable() {
+        return !isThicketFrozen();
+    }
+
+    public void tickMovement() {
+        if (isThicketFrozen()) return;
         super.tickMovement();
+    }
+
+    @Override
+    public float getMovementSpeed() {
+        return isThicketFrozen() ? 0f : super.getMovementSpeed();
     }
 
     public void tickRiding() {
@@ -110,17 +170,18 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         Random random = world.getRandom();
-        if (random.nextInt(4) == 0) {
-            equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
-        }
+        if (spawnReason != SpawnReason.SPAWNER) {
+            if (random.nextInt(4) == 0)
+                equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
+        } else setThicketFrozen(false);
         updateEnchantments(random, difficulty);
         updateAttackType();
         setCanPickUpLoot(random.nextFloat() < .55f * difficulty.getClampedLocalDifficulty());
         if (getEquippedStack(EquipmentSlot.HEAD).isEmpty()) {
             LocalDate localDate = LocalDate.now();
-            int i = localDate.get(ChronoField.DAY_OF_MONTH);
-            int j = localDate.get(ChronoField.MONTH_OF_YEAR);
-            if (j == 10 && i == 31 && random.nextFloat() < .25f) {
+            int day = localDate.get(ChronoField.DAY_OF_MONTH);
+            int month = localDate.get(ChronoField.MONTH_OF_YEAR);
+            if (month == 10 && day == 31 && random.nextFloat() < .25f) {
                 equipStack(EquipmentSlot.HEAD, new ItemStack(random.nextFloat() < .1f ? Blocks.JACK_O_LANTERN : Blocks.CARVED_PUMPKIN));
                 armorDropChances[EquipmentSlot.HEAD.getEntitySlotId()] = 0f;
             }
@@ -141,9 +202,9 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
                         i = 36;
                     }
                     bowAttackGoal.setAttackInterval(i);
-                    goalSelector.add(4, bowAttackGoal);
+                    goalSelector.add(1, bowAttackGoal);
                 } else {
-                    goalSelector.add(4, meleeAttackGoal);
+                    goalSelector.add(1, meleeAttackGoal);
                 }
             }
         }
@@ -166,11 +227,6 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public boolean canUseRangedWeapon(RangedWeaponItem weapon) {
         return weapon.getDefaultStack().isIn(Tags.ItemTags.COMMON_BOWS);
-    }
-
-    public void readCustomDataFromNbt(NbtCompound nbt) {
-        super.readCustomDataFromNbt(nbt);
-        updateAttackType();
     }
 
     public void equipStack(EquipmentSlot slot, ItemStack stack) {
