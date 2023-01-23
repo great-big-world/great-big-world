@@ -1,6 +1,9 @@
 package com.github.creoii.greatbigworld.entity;
 
-import com.github.creoii.greatbigworld.main.registry.*;
+import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.GameEventRegistry;
+import com.github.creoii.greatbigworld.main.registry.SoundRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;

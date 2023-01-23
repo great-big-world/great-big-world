@@ -1,11 +1,9 @@
 package com.github.creoii.greatbigworld.item;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.util.AllowEnchantments;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
-import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;

@@ -86,10 +86,6 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         playSound(SoundEvents.ENTITY_STRAY_STEP, .15f, 1f);
     }
 
-    public EntityGroup getGroup() {
-        return EntityGroup.UNDEAD;
-    }
-
     public boolean isThicketFrozen() {
         return dataTracker.get(FROZEN);
     }
