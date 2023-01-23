@@ -3,7 +3,7 @@
   "config": {
     "decorators": [
       {
-        "type": "great_big_world:branch",
+        "type": "minecraft:branch",
         "state": {
           "Name": "great_big_world:aspen_log",
           "Properties": {
