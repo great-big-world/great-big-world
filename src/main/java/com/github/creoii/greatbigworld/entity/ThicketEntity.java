@@ -171,6 +171,9 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         entityData = super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
         Random random = world.getRandom();
         if (spawnReason != SpawnReason.SPAWNER) {
+            float yaw = (float)random.nextInt(361) + 1f;
+            setYaw(yaw);
+            setHeadYaw(yaw);
             if (random.nextInt(4) == 0)
                 equipStack(EquipmentSlot.HEAD, new ItemStack(WoodenMaskItem.getRandomMask()));
         } else setThicketFrozen(false);
