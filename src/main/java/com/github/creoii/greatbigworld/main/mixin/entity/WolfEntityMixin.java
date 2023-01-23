@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.entity;
 
 import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
 import net.minecraft.entity.EntityType;

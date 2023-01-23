@@ -5,6 +5,8 @@ import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
 import com.google.common.collect.ImmutableMap;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -18,6 +20,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.Map;
 
+@Environment(EnvType.CLIENT)
 public class WoodenMaskRenderer implements ArmorRenderer {
     public static final Map<Item, Identifier> TEXTURES = ImmutableMap.<Item, Identifier>builder()
             .put(ItemRegistry.OAK_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_oak.png"))

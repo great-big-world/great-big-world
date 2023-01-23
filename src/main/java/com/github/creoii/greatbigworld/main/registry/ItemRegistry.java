@@ -34,7 +34,7 @@ public class ItemRegistry implements Register {
     public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     //endregion
-    //region Bamboo Torches
+    //region Bamboo
     public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.BAMBOO_TORCH, BlockRegistry.BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, BlockRegistry.SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     //endregion
@@ -110,10 +110,6 @@ public class ItemRegistry implements Register {
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
     }
 
-    public static void registerItem(Identifier id, Item item, @Nullable ItemGroup group) {
-        registerItem(id, item, null, group);
-    }
-
     public static void registerItem(Identifier id, Item item, @Nullable ItemConvertible after, @Nullable ItemGroup group) {
         Registry.register(Registries.ITEM, id, item);
         if (group != null) {
@@ -125,7 +121,7 @@ public class ItemRegistry implements Register {
         }
     }
 
-    public static void registerItem(Identifier id, Item item, @Nullable ItemGroupSettings... groups) {
+    public static void registerItem(Identifier id, Item item, ItemGroupSettings... groups) {
         Registry.register(Registries.ITEM, id, item);
         if (groups != null) {
             for (ItemGroupSettings settings : groups) {

@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.entity;
 
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.mob.EndermanEntity;

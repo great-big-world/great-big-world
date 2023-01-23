@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.entity;
 
 import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;

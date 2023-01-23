@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.*;
@@ -27,7 +26,7 @@ import java.util.function.Predicate;
 
 public class EntityRegistry implements Register {
     public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(EntityDimensions.fixed(1.6f, 2.1f)).trackRangeChunks(10).build();
-    public static final EntityType<ThicketEntity> THICKET = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ThicketEntity::new).dimensions(EntityDimensions.fixed(.6f, 1.99f)).trackRangeChunks(8).build();
+    public static final EntityType<ThicketEntity> THICKET = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ThicketEntity::new).dimensions(EntityDimensions.fixed(.6f, 2.2f)).trackRangeChunks(8).build();
 
     @Override
     public void register() {

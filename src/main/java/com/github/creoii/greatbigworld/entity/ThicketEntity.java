@@ -1,9 +1,11 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
+import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.*;
@@ -13,8 +15,11 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
@@ -222,11 +227,15 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public void attack(LivingEntity target, float pullProgress) {
         PersistentProjectileEntity persistentProjectileEntity = createArrowProjectile(Items.ARROW.getDefaultStack(), pullProgress);
+        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GLAZE, this);
+        if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
+            arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));
+        }
         double d = target.getX() - getX();
         double e = target.getBodyY(.3333333333333333d) - persistentProjectileEntity.getY();
         double f = target.getZ() - getZ();
         double g = Math.sqrt(d * d + f * f);
-        persistentProjectileEntity.setVelocity(d, e + g * .20000000298023224d, f, 1.6f, (float)(14 - world.getDifficulty().getId() * 4));
+        persistentProjectileEntity.setVelocity(d, e + g * .20000000298023224d, f, 1.6f, (float) (14 - world.getDifficulty().getId() * 4));
         playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1f, 1f / (getRandom().nextFloat() * .4f + .8f));
         world.spawnEntity(persistentProjectileEntity);
     }
@@ -247,7 +256,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     }
 
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return 1.74f;
+        return 1.9f;
     }
 
     public double getHeightOffset() {

@@ -2,11 +2,14 @@ package com.github.creoii.greatbigworld.client.model;
 
 import com.github.creoii.greatbigworld.client.animation.MooseAnimations;
 import com.github.creoii.greatbigworld.entity.MooseEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 
+@Environment(EnvType.CLIENT)
 public class MooseEntityModel<T extends MooseEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart root;
 	private final ModelPart body;
