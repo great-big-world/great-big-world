@@ -19,6 +19,7 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvents;
@@ -140,6 +141,12 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     public boolean damage(DamageSource source, float amount) {
         if (isThicketFrozen()) {
             setThicketFrozen(false);
+        }
+        if (source.getSource() instanceof LivingEntity livingEntity) {
+            ItemStack stack = livingEntity.getStackInHand(Hand.MAIN_HAND);
+            if (!(stack.getItem() instanceof PickaxeItem)) {
+                amount *= .9f;
+            } else amount *= 1.1f;
         }
         return super.damage(source, amount);
     }
