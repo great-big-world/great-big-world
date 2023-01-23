@@ -74,17 +74,17 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, ItemGroups.COMBAT);
-        registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, Items.TURTLE_HELMET));
+        registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, OAK_MASK));
+        registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, new ItemGroupSettings(ItemGroups.COMBAT, SPRUCE_MASK));
+        registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BIRCH_MASK));
+        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ASPEN_MASK));
+        registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, JUNGLE_MASK));
+        registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MAHOGANY_MASK));
+        registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACACIA_MASK));
+        registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, DARK_OAK_MASK));
+        registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
+        registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
         registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
         compostables();
     }
