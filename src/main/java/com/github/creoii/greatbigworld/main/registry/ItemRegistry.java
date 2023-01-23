@@ -90,6 +90,7 @@ public class ItemRegistry implements Register {
     }
 
     private void compostables() {
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.ANTLER, .7f);
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.HEATHER, .65f);
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.TALL_HEATHER, .65f);
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.DAYLIGHT_MUSHROOM, .15f);
