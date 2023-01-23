@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.client;
 
 import com.github.creoii.greatbigworld.client.GreatBigWorldClient;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
