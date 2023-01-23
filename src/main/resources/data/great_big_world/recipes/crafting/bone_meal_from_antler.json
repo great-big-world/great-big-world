@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "great_big_world:antler"
+    }
+  ],
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 6
+  }
+}

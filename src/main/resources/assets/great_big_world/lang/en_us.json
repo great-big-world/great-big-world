@@ -51,6 +51,7 @@
   "block.great_big_world.darkblight_mushroom": "Darkblight Mushroom",
   "block.great_big_world.heather": "Heather",
   "block.great_big_world.tall_heather": "Tall Heather",
+  "block.great_big_world.antler": "Antler",
 
   "item.great_big_world.mahogany_boat": "Mahogany Boat",
   "item.great_big_world.mahogany_chest_boat": "Mahogany Chest Boat",
@@ -95,7 +96,6 @@
   "item.minecraft.tipped_arrow.effect.long_darkness": "Potion of Darkness",
   "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness",
   "item.great_big_world.moose_spawn_egg": "Moose Spawn Egg",
-  "item.great_big_world.antler": "Antler",
   "item.great_big_world.venison": "Raw Venison",
   "item.great_big_world.cooked_venison": "Cooked Venison",
 
