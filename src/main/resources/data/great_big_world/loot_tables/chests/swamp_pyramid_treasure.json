@@ -1,0 +1,189 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:sequence",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "weight": 3,
+              "name": "great_big_world:oak_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:spruce_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:birch_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:aspen_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 3,
+              "name": "great_big_world:jungle_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 3,
+              "name": "great_big_world:mahogany_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:acacia_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:dark_oak_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 3,
+              "name": "great_big_world:mangrove_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "great_big_world:crimson_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "great_big_world:warped_mask"
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_damage",
+              "damage": {
+                "type": "minecraft:uniform",
+                "min": 0.8,
+                "max": 1
+              },
+              "add": false
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "type": "minecraft:uniform",
+                "min": 10,
+                "max": 30
+              },
+              "treasure": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "minecraft:saddle"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 2
+      },
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pearlescent_froglight",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:verdant_froglight",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:ochre_froglight",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 3
+      },
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gold_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:music_disc_sunrise"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "values": [
+    "#minecraft:moss_replaceable",
+    "minecraft:cobblestone",
+    "minecraft:mossy_cobblestone",
+    "great_big_world:cobblestone_bricks",
+    "great_big_world:mossy_cobblestone_bricks"
+  ]
+}

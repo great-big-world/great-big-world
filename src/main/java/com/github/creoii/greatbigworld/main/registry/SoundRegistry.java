@@ -10,12 +10,14 @@ public class SoundRegistry implements Register {
     public static SoundEvent ENTITY_MOOSE_HURT;
     public static SoundEvent ENTITY_MOOSE_DEATH;
     public static SoundEvent ENTITY_MOOSE_WARNING;
+    public static SoundEvent MUSIC_DISC_SUNRISE;
 
     @Override
     public void register() {
         ENTITY_MOOSE_HURT = registerSoundEvent(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.hurt"));
         ENTITY_MOOSE_DEATH = registerSoundEvent(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.death"));
         ENTITY_MOOSE_WARNING = registerSoundEvent(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.warning"));
+        MUSIC_DISC_SUNRISE = registerSoundEvent(new Identifier(GreatBigWorld.NAMESPACE, "music_disc.sunrise"));
     }
 
     private static SoundEvent registerSoundEvent(Identifier id) {

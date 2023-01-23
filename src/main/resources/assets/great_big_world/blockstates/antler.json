@@ -1,8 +1,8 @@
 {
   "variants": {
-    "facing=north": { "model": "great_big_world:block/antler" },
-    "facing=south": { "model": "great_big_world:block/antler", "x": 90 },
-    "facing=east": { "model": "great_big_world:block/antler", "x": 90, "y": 90 },
-    "facing=west": { "model": "great_big_world:block/antler", "x": 90, "y": 90 }
+    "facing=north": { "model": "great_big_world:block/antler", "y": 180 },
+    "facing=south": { "model": "great_big_world:block/antler" },
+    "facing=east": { "model": "great_big_world:block/antler", "y": 270 },
+    "facing=west": { "model": "great_big_world:block/antler", "y": 90 }
   }
 }

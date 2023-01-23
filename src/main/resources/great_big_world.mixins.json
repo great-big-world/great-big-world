@@ -4,11 +4,16 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "BoatEntityMixin",
     "BoatTypeMixin",
-    "ChestBoatEntityMixin",
-    "PillagerEntityMixin",
-    "WolfEntityMixin"
+    "BowItemMixin",
+    "EnchantmentMixin",
+    "entity.AbstractSkeletonEntityMixin",
+    "entity.BoatEntityMixin",
+    "entity.ChestBoatEntityMixin",
+    "entity.EndermanEntityMixin",
+    "entity.LivingEntityMixin",
+    "entity.PillagerEntityMixin",
+    "entity.WolfEntityMixin"
   ],
   "client": [
     "MinecraftClientMixin"
