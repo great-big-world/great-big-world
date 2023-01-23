@@ -7,6 +7,9 @@
     "BoatEntityMixin",
     "BoatTypeMixin",
     "ChestBoatEntityMixin",
+    "EnchantmentMixin",
+    "EndermanEntityMixin",
+    "LivingEntityMixin",
     "PillagerEntityMixin",
     "WolfEntityMixin"
   ],

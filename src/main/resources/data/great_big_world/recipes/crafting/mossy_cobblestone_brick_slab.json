@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "great_big_world:mossy_cobblestone_bricks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:mossy_cobblestone_brick_slab",
+    "count": 3
+  }
+}

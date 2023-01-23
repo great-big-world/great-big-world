@@ -1,8 +1,10 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import com.github.creoii.greatbigworld.main.util.Register;
+import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -12,6 +14,7 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
@@ -39,6 +42,22 @@ public class ItemRegistry implements Register {
     public static final Item VENISON = new Item(new FabricItemSettings().food(Foods.VENISON));
     public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(Foods.COOKED_VENISON));
     //endregion
+    //region Wooden Masks
+    public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
+    public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
+    public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
+    public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.ASPEN.planks()));
+    public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
+    public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.MAHOGANY.planks()));
+    public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
+    public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
+    public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
+    public static final Item CRIMSON_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CRIMSON_PLANKS));
+    public static final Item WARPED_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.WARPED_PLANKS));
+    //endregion
+    //region Miscellaneous
+    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
+    //endregion
 
     @Override
     public void register() {
@@ -55,6 +74,18 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, ItemGroups.COMBAT);
+        registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
         compostables();
     }
 

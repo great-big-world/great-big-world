@@ -51,7 +51,7 @@ import java.util.UUID;
 public class MooseEntity extends AbstractHorseEntity implements Angerable, JumpingMount, Saddleable {
     private static final TrackedData<Boolean> RIGHT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Boolean> LEFT_ANTLER = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    public static final TrackedData<Boolean> RAMMING = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> RAMMING = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
@@ -115,7 +115,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         goalSelector.add(0, new MooseEscapeDangerGoal(this));
         goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, false));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
-        goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), false));
+        goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), true));
         goalSelector.add(4, new FollowParentGoal(this, 1d));
         goalSelector.add(5, new WanderAroundFarGoal(this, 1d));
         goalSelector.add(5, new SwimAroundGoal(this, 1.25d, 120));
@@ -375,15 +375,11 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) {
                     decrementRegrowTime();
-                } else {
-                    regrowAntlers();
-                }
+                } else regrowAntlers();
             } else {
                 if (getShedTime() > 0) {
                     decrementShedTime();
-                } else {
-                    shedAntlers();
-                }
+                } else shedAntlers();
             }
         }
     }
@@ -413,10 +409,10 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public boolean canBreedWith(AnimalEntity other) {
         if (other == this) {
             return false;
-        } else if (other.getClass() != this.getClass()) {
+        } else if (other.getClass() != getClass()) {
             return false;
         } else {
-            return this.isInLove() && other.isInLove();
+            return isInLove() && other.isInLove();
         }
     }
 
@@ -617,7 +613,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!entities.isEmpty()) {
             setAttacking(true);
             for (Entity entity : entities) {
-                if (entity instanceof LivingEntity livingEntity) {
+                if (entity.getType() != EntityRegistry.MOOSE && entity instanceof LivingEntity livingEntity) {
                     tryAttack(livingEntity);
                 }
             }
