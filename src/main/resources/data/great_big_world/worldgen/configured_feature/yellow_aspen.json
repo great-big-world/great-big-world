@@ -30,7 +30,7 @@
       }
     },
     "foliage_placer": {
-      "type": "great_big_world:aspen_foliage_placer",
+      "type": "minecraft:aspen_foliage_placer",
       "offset": 2,
       "radius":  {
         "type": "minecraft:uniform",
