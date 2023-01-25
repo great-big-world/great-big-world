@@ -126,8 +126,6 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICKS));
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_STAIRS));
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_SLAB));
-
-        BlockEntityType.SIGN.blocks = new ImmutableSet.Builder<Block>().addAll(BlockEntityType.SIGN.blocks).add(MAHOGANY_SIGN).add(MAHOGANY_WALL_SIGN).add(ASPEN_SIGN).add(ASPEN_WALL_SIGN).build();
     }
 
     @Override
