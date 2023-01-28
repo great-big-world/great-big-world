@@ -16,10 +16,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 public class AntlerBlock extends HorizontalFacingBlock {
-    public static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(3d, 0d, 0d, 13d, 16d, 12d);
-    public static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(3d, 0d, 4d, 13d, 16d, 16d);
-    public static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0d, 0d, 3d, 12d, 16d, 13d);
-    public static final VoxelShape WEST_SHAPE = Block.createCuboidShape(4d, 0d, 3d, 16d, 16d, 13d);
+    public static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(3d, 2d, 0d, 13d, 16d, 12d);
+    public static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(3d, 2d, 4d, 13d, 16d, 16d);
+    public static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0d, 2d, 3d, 12d, 16d, 13d);
+    public static final VoxelShape WEST_SHAPE = Block.createCuboidShape(4d, 2d, 3d, 16d, 16d, 13d);
     private static final Map<Direction, VoxelShape> DIRECTION_TO_SHAPE = new ImmutableMap.Builder<Direction, VoxelShape>()
             .put(Direction.NORTH, NORTH_SHAPE)
             .put(Direction.SOUTH, SOUTH_SHAPE)
