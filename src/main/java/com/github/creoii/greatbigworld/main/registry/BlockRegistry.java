@@ -77,6 +77,24 @@ public class BlockRegistry implements Register {
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_SLAB));
     public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_WALL));
     //endregion
+    //region Stained Calcite
+    public static final Block BROWN_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block RED_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block ORANGE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_ORANGE));
+    public static final Block YELLOW_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_YELLOW));
+    public static final Block LIME_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_LIME));
+    public static final Block GREEN_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_GREEN));
+    public static final Block CYAN_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_CYAN));
+    public static final Block BLUE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_BLACK));
+    public static final Block LIGHT_BLUE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_LIGHT_BLUE));
+    public static final Block PINK_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_PINK));
+    public static final Block MAGENTA_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_MAGENTA));
+    public static final Block PURPLE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_PURPLE));
+    public static final Block BLACK_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_BLACK));
+    public static final Block GRAY_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_GRAY));
+    public static final Block LIGHT_GRAY_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY));
+    public static final Block WHITE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
@@ -114,10 +132,6 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
         registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
 
-        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
-
         registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.COBBLESTONE_WALL));
         registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICKS));
         registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICK_STAIRS));
@@ -126,6 +140,27 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICKS));
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_STAIRS));
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_SLAB));
+
+        registerBlock(new Identifier(NAMESPACE, "brown_stained_calcite"), BROWN_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "red_stained_calcite"), RED_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "orange_stained_calcite"), ORANGE_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "yellow_stained_calcite"), YELLOW_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "lime_stained_calcite"), LIME_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "green_stained_calcite"), GREEN_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "cyan_stained_calcite"), CYAN_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "blue_stained_calcite"), BLUE_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "light_blue_stained_calcite"), LIGHT_BLUE_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "pink_stained_calcite"), PINK_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "magenta_stained_calcite"), MAGENTA_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "purple_stained_calcite"), PURPLE_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "black_stained_calcite"), BLACK_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "gray_stained_calcite"), GRAY_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "light_gray_stained_calcite"), LIGHT_GRAY_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+        registerBlock(new Identifier(NAMESPACE, "white_stained_calcite"), WHITE_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
+
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
     }
 
     @Override
