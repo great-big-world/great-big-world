@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 75943661,
+    "separation": 7,
+    "spacing": 14
+  },
+  "structures": [
+    {
+      "structure": "great_big_world:lighthouse",
+      "weight": 1
+    }
+  ]
+}
