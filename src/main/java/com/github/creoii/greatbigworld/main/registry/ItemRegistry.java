@@ -135,5 +135,5 @@ public class ItemRegistry implements Register {
         }
     }
 
-    public static record ItemGroupSettings(ItemGroup group, @Nullable ItemConvertible after) { }
+    public record ItemGroupSettings(ItemGroup group, @Nullable ItemConvertible after) { }
 }
