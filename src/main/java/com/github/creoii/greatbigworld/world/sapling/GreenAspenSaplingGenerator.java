@@ -10,6 +10,6 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 public class GreenAspenSaplingGenerator extends SaplingGenerator {
     @Override
     protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return BuiltinRegistries.CONFIGURED_FEATURE.entryOf(ConfiguredFeatureRegistry.GREEN_ASPEN);
+        return ConfiguredFeatureRegistry.GREEN_ASPEN;
     }
 }

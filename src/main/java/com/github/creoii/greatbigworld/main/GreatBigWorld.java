@@ -5,6 +5,7 @@ import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.BuiltinRegistries;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
@@ -35,5 +36,8 @@ public class GreatBigWorld implements ModInitializer {
         for (Register register : REGISTERS) {
             register.register();
         }
+        BuiltinRegistries.CONFIGURED_FEATURE.forEach(configuredFeature -> {
+            System.out.println(BuiltinRegistries.CONFIGURED_FEATURE.getId(configuredFeature));
+        });
     }
 }

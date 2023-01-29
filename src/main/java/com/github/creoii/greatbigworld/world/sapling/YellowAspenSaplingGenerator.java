@@ -12,6 +12,6 @@ public class YellowAspenSaplingGenerator extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryEntry<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return BuiltinRegistries.CONFIGURED_FEATURE.getEntry(ConfiguredFeatureRegistry.YELLOW_ASPEN).get();
+        return ConfiguredFeatureRegistry.YELLOW_ASPEN;
     }
 }
