@@ -134,7 +134,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (isAlive() && isRamming()) {
             ram();
         }
-        if (ramCooldown > 0) {
+        if (ramCooldown > 0 || isInLove()) {
             headPitch += random.nextInt(5) + 4;
         } else {
             headPitch -= 3;

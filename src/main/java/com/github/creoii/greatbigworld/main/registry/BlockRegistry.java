@@ -7,7 +7,6 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
-import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -16,7 +15,6 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
@@ -118,7 +116,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null));
 
         registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.COBBLESTONE_WALL));
         registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICKS));
