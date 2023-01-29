@@ -33,7 +33,7 @@
       "upper_size": 6
     },
     "trunk_placer": {
-      "type": "minecraft:twisting_trunk_placer",
+      "type": "great_big_world:twisting_trunk_placer",
       "base_height": 3,
       "height_rand_a": 2,
       "height_rand_b": 0,

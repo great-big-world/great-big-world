@@ -2,8 +2,8 @@ accessWidener v1 named
 
 accessible field net/minecraft/item/BoatItem chest Z
 
-accessible method net/minecraft/world/gen/trunk/TrunkPlacerType register (Ljava/lang/String;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/gen/trunk/TrunkPlacerType;
-accessible method net/minecraft/world/gen/foliage/FoliagePlacerType register (Ljava/lang/String;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/gen/foliage/FoliagePlacerType;
+accessible method net/minecraft/world/gen/trunk/TrunkPlacerType <init> (Lcom/mojang/serialization/Codec;)V
+accessible method net/minecraft/world/gen/foliage/FoliagePlacerType <init> (Lcom/mojang/serialization/Codec;)V
 accessible method net/minecraft/world/gen/treedecorator/TreeDecoratorType register (Ljava/lang/String;Lcom/mojang/serialization/Codec;)Lnet/minecraft/world/gen/treedecorator/TreeDecoratorType;
 accessible method net/minecraft/entity/passive/AbstractHorseEntity setEating ()V
 accessible method net/minecraft/client/MinecraftClient getWindowTitle ()Ljava/lang/String;

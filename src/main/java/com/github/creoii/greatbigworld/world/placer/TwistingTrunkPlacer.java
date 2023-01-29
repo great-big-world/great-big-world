@@ -53,7 +53,7 @@ public class TwistingTrunkPlacer extends TrunkPlacer {
     }
 
     protected TrunkPlacerType<?> getType() {
-    return PlacerRegistry.TWISTING_TRUNK_PLACER;
+        return PlacerRegistry.TWISTING_TRUNK_PLACER;
     }
 
     /**
