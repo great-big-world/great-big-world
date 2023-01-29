@@ -4,6 +4,7 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "BlockEntityTypeMixin",
     "BoatTypeMixin",
     "BowItemMixin",
     "EnchantmentMixin",
