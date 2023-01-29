@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "great_big_world:mossy_cobblestone_bricks_from_vine"
+        "recipe": "great_big_world:crafting/mossy_cobblestone_bricks_from_vine"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "great_big_world:mossy_cobblestone_bricks_from_vine"
+      "great_big_world:crafting/mossy_cobblestone_bricks_from_vine"
     ]
   }
 }

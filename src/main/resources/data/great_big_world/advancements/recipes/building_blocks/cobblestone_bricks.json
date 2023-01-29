@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "great_big_world:cobblestone_bricks"
+        "recipe": "great_big_world:crafting/cobblestone_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "great_big_world:cobblestone_bricks"
+      "great_big_world:crafting/cobblestone_bricks"
     ]
   }
 }

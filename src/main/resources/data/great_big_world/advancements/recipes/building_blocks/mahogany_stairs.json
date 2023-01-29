@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "great_big_world:mahogany_stairs"
+        "recipe": "great_big_world:crafting/mahogany_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "great_big_world:mahogany_stairs"
+      "great_big_world:crafting/mahogany_stairs"
     ]
   }
 }

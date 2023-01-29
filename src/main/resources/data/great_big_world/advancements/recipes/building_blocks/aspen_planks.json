@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "great_big_world:aspen_planks"
+        "recipe": "great_big_world:crafting/aspen_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "great_big_world:aspen_planks"
+      "great_big_world:crafting/aspen_planks"
     ]
   }
 }
