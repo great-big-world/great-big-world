@@ -8,7 +8,7 @@
   "start_height": {
     "absolute": 0
   },
-  "start_pool": "great_big_world:lighthouse/lighthouse_wooden",
+  "start_pool": "great_big_world:lighthouse/lighthouses",
   "step": "surface_structures",
   "terrain_adaptation": "beard_thin",
   "use_expansion_hack": false

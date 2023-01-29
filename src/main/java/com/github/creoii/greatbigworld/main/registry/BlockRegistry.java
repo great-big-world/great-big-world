@@ -7,7 +7,6 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
-import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -16,7 +15,6 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
@@ -95,10 +93,20 @@ public class BlockRegistry implements Register {
     public static final Block LIGHT_GRAY_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY));
     public static final Block WHITE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
+    //region Beachgrass
+    public static final Block BEACHGRASS = new BeachgrassBlock();
+    public static final Block TRIMMED_BEACHGRASS_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final Block BEACHGRASS_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH);
+    public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
+    public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
+    public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
+    public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
+    public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
     //endregion
 
     public void register() {
@@ -158,6 +166,15 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "magenta_stained_calcite"), MAGENTA_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
         registerBlock(new Identifier(NAMESPACE, "pink_stained_calcite"), PINK_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null));
 
+        registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.LARGE_FERN, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.FERN, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
+
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
@@ -182,9 +199,14 @@ public class BlockRegistry implements Register {
                 SOUL_BAMBOO_TORCH,
                 SOUL_BAMBOO_WALL_TORCH,
                 POTTED_SOUL_BAMBOO_TORCH,
+                BEACHGRASS,
+                TALL_BEACHGRASS,
+                BEACHGRASS_THATCH,
+                BEACHGRASS_THATCH_SLAB,
+                BEACHGRASS_THATCH_STAIRS,
+                ANTLER,
                 HEATHER,
-                TALL_HEATHER,
-                ANTLER
+                TALL_HEATHER
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
@@ -223,5 +245,5 @@ public class BlockRegistry implements Register {
         }
     }
 
-    public static record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }
+    public record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }
 }
