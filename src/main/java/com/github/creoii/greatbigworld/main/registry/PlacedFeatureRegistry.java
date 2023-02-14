@@ -26,7 +26,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> PATCH_HEATHER;
     public static RegistryKey<PlacedFeature> PATCH_BEACHGRASS;
     public static RegistryKey<PlacedFeature> CLUSTER_TIDE_POOL;
-    public static RegistryKey<PlacedFeature> PINK_SALT_POOL;
+    public static RegistryKey<PlacedFeature> TRAVERTINE_POOLS;
 
     @Override
     public void register() {
@@ -42,7 +42,7 @@ public class PlacedFeatureRegistry implements Register {
         PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
         PATCH_BEACHGRASS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_beachgrass"));
         CLUSTER_TIDE_POOL = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "cluster_tide_pool"));
-        PINK_SALT_POOL = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "pink_salt_pool"));
+        TRAVERTINE_POOLS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "travertine_pools"));
         modifyGeneration();
     }
 
@@ -59,6 +59,6 @@ public class PlacedFeatureRegistry implements Register {
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.HEATHER_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HEATHER);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, CLUSTER_TIDE_POOL);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.STONY_SHORE), GenerationStep.Feature.VEGETAL_DECORATION, PINK_SALT_POOL);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.STONY_SHORE), GenerationStep.Feature.VEGETAL_DECORATION, TRAVERTINE_POOLS);
     }
 }

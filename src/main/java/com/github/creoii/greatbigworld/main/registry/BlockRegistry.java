@@ -94,6 +94,7 @@ public class BlockRegistry implements Register {
     public static final Block WHITE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
     //region Beachgrass
+    public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
     public static final Block BEACHGRASS = new BeachgrassBlock();
     public static final Block TRIMMED_BEACHGRASS_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final Block BEACHGRASS_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH);
@@ -102,11 +103,25 @@ public class BlockRegistry implements Register {
     public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
     //endregion
+    //region Travertine
+    public static final Block LUNAR_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.RED));
+    public static final Block PEACH_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
+    public static final Block GOLDEN_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
+    public static final Block IVORY_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE));
+    public static final Block POLISHED_LUNAR_TRAVERTINE = new Block(FabricBlockSettings.copy(LUNAR_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_PEACH_TRAVERTINE = new Block(FabricBlockSettings.copy(PEACH_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_GOLDEN_TRAVERTINE = new Block(FabricBlockSettings.copy(GOLDEN_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_IVORY_TRAVERTINE = new Block(FabricBlockSettings.copy(IVORY_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_LUNAR_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_LUNAR_TRAVERTINE));
+    public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
+    public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
+    public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
-    public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
+    public static final Block SULFUR_BLOCK = new SulfurBlock();
     //endregion
 
     public void register() {
@@ -175,9 +190,23 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
 
+        registerBlock(new Identifier(NAMESPACE, "lunar_travertine"), LUNAR_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
+        registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
+        registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
+        registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
+        registerBlock(new Identifier(NAMESPACE, "polished_lunar_travertine"), POLISHED_LUNAR_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine"), POLISHED_PEACH_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine"), POLISHED_GOLDEN_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine"), POLISHED_IVORY_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_lunar_travertine_tiles"), POLISHED_LUNAR_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine_tiles"), POLISHED_PEACH_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
+
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, null, ItemGroups.NATURAL);
     }
 
     @Override
@@ -216,6 +245,11 @@ public class BlockRegistry implements Register {
                 GREEN_ASPEN_LEAF_PILE
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (state != null) {
+                return SulfurBlock.getEffectFromProperty(state.get(SulfurBlock.EFFECT)).getColor();
+            } return 1;
+        }, SULFUR_BLOCK);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {

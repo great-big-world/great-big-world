@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "great_big_world:ivory_travertine_pool",
+    "features": [
+      {
+        "chance": 0.25,
+        "feature": "great_big_world:lunar_travertine_pool"
+      },
+      {
+        "chance": 0.25,
+        "feature": "great_big_world:golden_travertine_pool"
+      },
+      {
+        "chance": 0.25,
+        "feature": "great_big_world:peach_travertine_pool"
+      }
+    ]
+  }
+}
