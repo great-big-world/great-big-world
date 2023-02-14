@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
@@ -18,43 +19,36 @@ import java.util.Optional;
 
 public class NoisePlacementModifier extends AbstractConditionalPlacementModifier {
     public static final Codec<NoisePlacementModifier> CODEC = RecordCodecBuilder.create(instance -> {
-        return instance.group(Identifier.CODEC.fieldOf("noise_parameters").forGetter(predicate -> {
+        return instance.group(RegistryKey.createCodec(RegistryKeys.NOISE_PARAMETERS).fieldOf("noise_parameters").forGetter(predicate -> {
             return predicate.noise;
         }), Range.CODEC.listOf().optionalFieldOf("ranges", List.of(new Range(-1d, 1d))).forGetter(predicate -> {
             return predicate.ranges;
-        }), Codec.BOOL.fieldOf("legacy").orElse(false).forGetter(predicate -> {
-            return predicate.legacy;
+        }), Codec.BOOL.optionalFieldOf("3d", false).forGetter(predicate -> {
+            return predicate.threeDimensional;
         })).apply(instance, NoisePlacementModifier::new);
     });
-
-    private static final Optional<RegistryEntryLookup<DoublePerlinNoiseSampler.NoiseParameters>> LOOKUP = BuiltinRegistries.createWrapperLookup().createRegistryLookup().getOptional(RegistryKeys.NOISE_PARAMETERS);
-    private final Identifier noise;
+    private final RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise;
     private final List<Range> ranges;
-    private final boolean legacy;
+    private final boolean threeDimensional;
 
-    private NoisePlacementModifier(Identifier noise, List<Range> ranges, boolean legacy) {
+    public NoisePlacementModifier(RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise, List<Range> ranges, boolean threeDimensional) {
         this.noise = noise;
         this.ranges = ranges;
-        this.legacy = legacy;
+        this.threeDimensional = threeDimensional;
     }
 
-    public static NoisePlacementModifier of(Identifier noise, List<Range> ranges, boolean legacy) {
-        return new NoisePlacementModifier(noise, ranges, legacy);
+    public NoisePlacementModifier(RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> noise, List<Range> ranges) {
+        this(noise, ranges, false);
     }
 
     @Override
-    protected boolean shouldPlace(FeaturePlacementContext context, Random random, BlockPos pos) {
-        if (LOOKUP.isPresent()) {
-            RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> parametersKey = RegistryKey.of(RegistryKeys.NOISE_PARAMETERS, noise);
-            Optional<RegistryEntry.Reference<DoublePerlinNoiseSampler.NoiseParameters>> optionalNoise = LOOKUP.get().getOptional(parametersKey);
-            if (optionalNoise.isPresent()) {
-                DoublePerlinNoiseSampler.NoiseParameters parameters = optionalNoise.get().value();
-                DoublePerlinNoiseSampler sampler = legacy ? DoublePerlinNoiseSampler.createLegacy(random, parameters) : DoublePerlinNoiseSampler.create(random, parameters);
-                double noiseValue = sampler.sample(pos.getX(), pos.getY(), pos.getZ());
-                for (Range range : ranges) {
-                    if (noiseValue >= range.min() && noiseValue < range.max()) {
-                        return true;
-                    }
+    public boolean shouldPlace(FeaturePlacementContext context, Random random, BlockPos pos) {
+        if (context.getWorld().getChunkManager() instanceof ServerChunkManager chunkManager) {
+            DoublePerlinNoiseSampler sampler = chunkManager.getNoiseConfig().getOrCreateSampler(noise);
+            double noiseValue = threeDimensional ? sampler.sample(pos.getX(), pos.getY(), pos.getZ()) : sampler.sample(pos.getX(), 0d, pos.getZ());
+            for (Range range : ranges) {
+                if (noiseValue >= range.min() && noiseValue < range.max()) {
+                    return true;
                 }
             }
         }

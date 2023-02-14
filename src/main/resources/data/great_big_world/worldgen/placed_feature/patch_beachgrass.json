@@ -5,6 +5,16 @@
       "type": "minecraft:in_square"
     },
     {
+      "type": "great_big_world:noise",
+      "noise_parameters": "minecraft:continentalness",
+      "ranges": [
+        {
+          "min_inclusive": -0.15,
+          "max_exclusive": 0
+        }
+      ]
+    },
+    {
       "type": "minecraft:heightmap",
       "heightmap": "MOTION_BLOCKING"
     },
@@ -17,16 +27,6 @@
           "min_inclusive": 0
         }
       }
-    },
-    {
-      "type": "great_big_world:noise",
-      "noise_parameters": "minecraft:continentalness",
-      "ranges": [
-        {
-          "min_inclusive": -0.15,
-          "max_exclusive": -0.05
-        }
-      ]
     },
     {
       "type": "minecraft:biome"
