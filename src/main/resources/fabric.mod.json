@@ -32,5 +32,9 @@
     "fabricloader": ">=0.4.0",
     "minecraft": ">=1.19.3",
     "terrablender": ">=2.1.0.134"
+  },
+  "suggests": {
+    "modmenu": "*",
+    "cloth-config": "*"
   }
 }
