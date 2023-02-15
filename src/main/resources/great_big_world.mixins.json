@@ -16,7 +16,10 @@
     "entity.WolfEntityMixin",
     "item.BowItemMixin",
     "item.CrossbowItemMixin",
-    "item.SwordItemMixin"
+    "item.SwordItemMixin",
+    "world.FoliagePlacerTypeInvoker",
+    "world.TreeDecoratorTypeInvoker",
+    "world.TrunkPlacerTypeInvoker"
   ],
   "client": [
     "client.BackgroundRendererMixin",
