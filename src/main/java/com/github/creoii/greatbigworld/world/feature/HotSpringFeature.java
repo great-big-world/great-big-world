@@ -13,15 +13,13 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 import java.util.Arrays;
 
 public class HotSpringFeature extends Feature<HotSpringFeatureConfig> {
-    private final PerlinNoiseSampler noiseSampler;
-
     public HotSpringFeature(Codec<HotSpringFeatureConfig> codec) {
         super(codec);
-        noiseSampler = new PerlinNoiseSampler(Random.create());
     }
 
     @Override
     public boolean generate(FeatureContext<HotSpringFeatureConfig> context) {
+        PerlinNoiseSampler noiseSampler = new PerlinNoiseSampler(Random.create());
         StructureWorldAccess world = context.getWorld();
         HotSpringFeatureConfig config = context.getConfig();
         BlockPos origin = context.getOrigin().offset(Direction.Axis.Y, config.yOffset());

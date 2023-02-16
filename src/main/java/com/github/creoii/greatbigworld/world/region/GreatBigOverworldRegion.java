@@ -43,6 +43,16 @@ public class GreatBigOverworldRegion extends Region {
                     .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
                     .build();
             snowyAspenForestPoints.forEach(point -> builder.replaceBiome(point, BiomeRegistry.SNOWY_ASPEN_FOREST));
+
+            List<MultiNoiseUtil.NoiseHypercube> hotSpringsPoints = new ParameterUtils.ParameterPointListBuilder()
+                    .temperature(Temperature.NEUTRAL)
+                    .humidity(Humidity.ARID, Humidity.NEUTRAL)
+                    .continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
+                    .erosion(Erosion.EROSION_2, Erosion.EROSION_3)
+                    .depth(Depth.SURFACE, Depth.FLOOR)
+                    .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
+                    .build();
+            hotSpringsPoints.forEach(point -> builder.replaceBiome(point, BiomeRegistry.HOT_SPRINGS));
         });
     }
 }
