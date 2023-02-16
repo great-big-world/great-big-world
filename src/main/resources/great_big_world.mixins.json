@@ -6,6 +6,7 @@
   "mixins": [
     "BlockEntityTypeMixin",
     "BoatTypeMixin",
+    "ChunkGeneratorSettingsMixin",
     "EnchantmentMixin",
     "entity.AbstractSkeletonEntityMixin",
     "entity.BoatEntityMixin",

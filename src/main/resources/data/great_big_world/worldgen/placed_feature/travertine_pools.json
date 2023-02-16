@@ -16,7 +16,7 @@
     },
     {
       "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 1
+      "max_water_depth": 0
     },
     {
       "type": "minecraft:heightmap",

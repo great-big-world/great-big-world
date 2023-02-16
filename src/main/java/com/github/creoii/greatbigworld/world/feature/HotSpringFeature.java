@@ -1,9 +1,7 @@
 package com.github.creoii.greatbigworld.world.feature;
 
-import com.github.creoii.greatbigworld.world.feature.config.DeformedCircleFeatureConfig;
+import com.github.creoii.greatbigworld.world.feature.config.HotSpringFeatureConfig;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.BlockState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
@@ -14,18 +12,18 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Arrays;
 
-public class DeformedCircleFeature extends Feature<DeformedCircleFeatureConfig> {
+public class HotSpringFeature extends Feature<HotSpringFeatureConfig> {
     private final PerlinNoiseSampler noiseSampler;
 
-    public DeformedCircleFeature(Codec<DeformedCircleFeatureConfig> codec) {
+    public HotSpringFeature(Codec<HotSpringFeatureConfig> codec) {
         super(codec);
         noiseSampler = new PerlinNoiseSampler(Random.create());
     }
 
     @Override
-    public boolean generate(FeatureContext<DeformedCircleFeatureConfig> context) {
+    public boolean generate(FeatureContext<HotSpringFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
-        DeformedCircleFeatureConfig config = context.getConfig();
+        HotSpringFeatureConfig config = context.getConfig();
         BlockPos origin = context.getOrigin().offset(Direction.Axis.Y, config.yOffset());
         Random random = context.getRandom();
         int height = config.height().get(random);
@@ -39,7 +37,7 @@ public class DeformedCircleFeature extends Feature<DeformedCircleFeatureConfig> 
                     BlockPos pos = origin.add(x, y, z);
                     double distance = Math.sqrt(x * x + z * z);
                     double radiusMod = radius + noiseSampler.sample(x * scale, y, z * scale);
-                    if (distance < radiusMod - rimSize && y <= innerDepth) {
+                    if (distance < radiusMod - rimSize && y > 0 && y <= innerDepth) {
                         world.setBlockState(pos, config.innerState().get(random, pos), 3);
                         if (config.solidRim()) {
                             BlockPos.Mutable offset = new BlockPos.Mutable();
