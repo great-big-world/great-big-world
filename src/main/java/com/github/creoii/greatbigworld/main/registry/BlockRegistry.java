@@ -104,10 +104,10 @@ public class BlockRegistry implements Register {
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
     //endregion
     //region Travertine
-    public static final Block LUNAR_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.RED));
-    public static final Block PEACH_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
-    public static final Block GOLDEN_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
-    public static final Block IVORY_TRAVERTINE = new Block(FabricBlockSettings.copy(Blocks.CALCITE));
+    public static final Block LUNAR_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.RED));
+    public static final Block PEACH_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
+    public static final Block GOLDEN_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
+    public static final Block IVORY_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE));
     public static final Block POLISHED_LUNAR_TRAVERTINE = new Block(FabricBlockSettings.copy(LUNAR_TRAVERTINE).strength(1f));
     public static final Block POLISHED_PEACH_TRAVERTINE = new Block(FabricBlockSettings.copy(PEACH_TRAVERTINE).strength(1f));
     public static final Block POLISHED_GOLDEN_TRAVERTINE = new Block(FabricBlockSettings.copy(GOLDEN_TRAVERTINE).strength(1f));

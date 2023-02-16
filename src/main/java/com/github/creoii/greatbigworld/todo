@@ -4,7 +4,6 @@ OLD
 
 Moose:
  - babies have too big a hitbox**
- - moose sink in water when ridden**
 
 Glimmering Mushrooms
  - shouldn't block water**
@@ -28,3 +27,9 @@ Lighthouse
  - white lighthouse
  - lighthouse shacks?
  - loot table
+
+Hot Springs
+ - surface rule
+ - generate in worlds
+ - smoother travertine texture
+ - steaming travertine

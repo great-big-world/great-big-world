@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube_column",
   "textures": {
-    "all": "great_big_world:block/lunar_travertine"
+    "side": "great_big_world:block/lunar_travertine_side",
+    "end": "great_big_world:block/lunar_travertine"
   }
 }

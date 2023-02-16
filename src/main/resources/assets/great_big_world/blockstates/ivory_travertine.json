@@ -1,7 +1,7 @@
 {
   "variants": {
-    "": {
-      "model": "great_big_world:block/ivory_travertine"
-    }
+    "axis=y": { "model": "great_big_world:block/ivory_travertine" },
+    "axis=z": { "model": "great_big_world:block/ivory_travertine", "x": 90 },
+    "axis=x": { "model": "great_big_world:block/ivory_travertine", "x": 90, "y": 90 }
   }
 }
