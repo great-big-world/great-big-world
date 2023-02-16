@@ -16,7 +16,6 @@ public class GreatBigWorld implements ModInitializer {
             new ItemRegistry(),
             new EntityRegistry(),
             new PlacerRegistry(),
-            new DecoratorRegistry(),
             new FeatureRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
@@ -36,8 +35,5 @@ public class GreatBigWorld implements ModInitializer {
         for (Register register : REGISTERS) {
             register.register();
         }
-        BuiltinRegistries.CONFIGURED_FEATURE.forEach(configuredFeature -> {
-            System.out.println(BuiltinRegistries.CONFIGURED_FEATURE.getId(configuredFeature));
-        });
     }
 }

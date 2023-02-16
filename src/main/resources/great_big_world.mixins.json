@@ -14,7 +14,10 @@
     "entity.EndermanEntityMixin",
     "entity.LivingEntityMixin",
     "entity.PillagerEntityMixin",
-    "entity.WolfEntityMixin"
+    "entity.WolfEntityMixin",
+    "world.FoliagePlacerTypeInvoker",
+    "world.TreeDecoratorTypeInvoker",
+    "world.TrunkPlacerTypeInvoker"
   ],
   "client": [
     "MinecraftClientMixin"

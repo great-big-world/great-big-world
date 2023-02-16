@@ -144,6 +144,11 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!world.isClient) {
             tickAngerLogic((ServerWorld) world, true);
         }
+        if (hasPlayerRider() && isTouchingWater()) {
+            if (world.isWater(getBlockPos().down())) {
+                move(MovementType.PLAYER, new Vec3d(0d, .1d, 0d));
+            }
+        }
     }
 
     @Nullable

@@ -240,5 +240,5 @@ public class BlockRegistry implements Register {
         }
     }
 
-    public static record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }
+    public record ExtendedBlockSettings(float compostChance, int burnChance, int spreadChance, @Nullable Block strippedBlock) { }
 }
