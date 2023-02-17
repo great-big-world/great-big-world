@@ -27,6 +27,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.RangedWeaponItem;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -249,6 +250,18 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         if (!world.isClient) {
             updateAttackType();
         }
+    }
+
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_SKELETON_AMBIENT;
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.ENTITY_SKELETON_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_SKELETON_DEATH;
     }
 
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
