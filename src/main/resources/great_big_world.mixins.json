@@ -23,7 +23,8 @@
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
     "client.LightmapTextureManagerMixin",
-    "client.MinecraftClientMixin"
+    "client.MinecraftClientMixin",
+    "client.WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

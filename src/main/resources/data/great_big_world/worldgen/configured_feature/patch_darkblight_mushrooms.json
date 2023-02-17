@@ -12,7 +12,7 @@
                 "data": {
                   "Name": "great_big_world:darkblight_mushroom",
                   "Properties": {
-                    "mushrooms": 1
+                    "mushrooms": "1"
                   }
                 },
                 "weight": 3
@@ -21,7 +21,7 @@
                 "data": {
                   "Name": "great_big_world:darkblight_mushroom",
                   "Properties": {
-                    "mushrooms": 2
+                    "mushrooms": "2"
                   }
                 },
                 "weight": 2
@@ -30,7 +30,7 @@
                 "data": {
                   "Name": "great_big_world:darkblight_mushroom",
                   "Properties": {
-                    "mushrooms": 3
+                    "mushrooms": "3"
                   }
                 },
                 "weight": 1

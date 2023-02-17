@@ -116,6 +116,7 @@ public class BlockRegistry implements Register {
     public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
     public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
     public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
+    public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(FabricBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -202,6 +203,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine_tiles"), POLISHED_PEACH_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
 
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
