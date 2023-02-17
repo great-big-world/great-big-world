@@ -17,7 +17,8 @@ public class GreatBigWorldClient implements ClientModInitializer {
             new BlockRegistry(),
             new ItemRegistry(),
             new EntityRegistry(),
-            new ParticleRegistry()
+            new ParticleRegistry(),
+            new RenderRegistry()
     };
 
     @Override
