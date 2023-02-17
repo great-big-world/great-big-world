@@ -267,7 +267,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public float getScaleFactor() {
-        return isBaby() ? .4f : 1f;
+        return isBaby() ? .5f : 1f;
     }
 
     public boolean tryAttack(Entity target) {
@@ -531,10 +531,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (world.isClient) {
             return ActionResult.CONSUME;
         } else return bl ? ActionResult.SUCCESS : ActionResult.PASS;
-    }
-
-    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return isBaby() ? dimensions.height * .5f : dimensions.height;
     }
 
     protected EntityNavigation createNavigation(World world) {
