@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.main;
 
-import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.api.ModInitializer;
@@ -24,9 +23,7 @@ public class GreatBigWorld implements ModInitializer {
             new PotionRegistry(),
             new SoundRegistry(),
             new GameEventRegistry(),
-            new ParticleRegistry(),
-            new RenderRegistry(),
-            new ModMenuIntegration()
+            new ParticleRegistry()
     };
 
     @Override
