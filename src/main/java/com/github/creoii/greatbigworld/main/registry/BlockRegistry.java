@@ -94,13 +94,14 @@ public class BlockRegistry implements Register {
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
+    public static final Block POTTED_HEATHER = new FlowerPotBlock(HEATHER, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block SULFUR_BLOCK = new SulfurBlock();
     //endregion
 
     public void register() {
         MAHOGANY.register();
         registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
-        registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, null, Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_wall_sign"), MAHOGANY_WALL_SIGN, null);
@@ -108,25 +109,25 @@ public class BlockRegistry implements Register {
         ASPEN.register();
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new ExtendedBlockSettings(0f, 30, 60, null), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, null, Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
         registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, new ExtendedBlockSettings(0f, 30, 60, null));
-        registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, null, Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_wall_sign"), ASPEN_WALL_SIGN, null);
 
-        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, null);
 
-        registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
-        registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
-        registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistry.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
 
         registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.COBBLESTONE_WALL));
         registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, COBBLESTONE_BRICKS));
@@ -151,9 +152,10 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
 
-        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, null, Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, null, Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, null, ItemGroups.NATURAL);
     }
 
@@ -178,6 +180,7 @@ public class BlockRegistry implements Register {
                 POTTED_SOUL_BAMBOO_TORCH,
                 ANTLER,
                 HEATHER,
+                POTTED_HEATHER,
                 TALL_HEATHER
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
@@ -188,11 +191,7 @@ public class BlockRegistry implements Register {
                 GREEN_ASPEN_LEAF_PILE
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
-            if (state != null) {
-                return SulfurBlock.getEffectFromProperty(state.get(SulfurBlock.EFFECT)).getColor();
-            } return 1;
-        }, SULFUR_BLOCK);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> state != null ? SulfurBlock.getEffectFromProperty(state.get(SulfurBlock.EFFECT)).getColor() : 1, SULFUR_BLOCK);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {

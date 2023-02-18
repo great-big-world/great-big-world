@@ -19,11 +19,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class SulfurBlock extends Block {
-    public static final IntProperty EFFECT = IntProperty.of("effect", 0, 64);
+    public static final IntProperty EFFECT = IntProperty.of("effect", 1, Integer.MAX_VALUE);
 
     public SulfurBlock() {
         super(FabricBlockSettings.copy(Blocks.YELLOW_CONCRETE_POWDER));
-        setDefaultState(getDefaultState().with(EFFECT, 0));
+        setDefaultState(getDefaultState().with(EFFECT, 1));
     }
 
     public static StatusEffect getEffectFromProperty(int i) {
