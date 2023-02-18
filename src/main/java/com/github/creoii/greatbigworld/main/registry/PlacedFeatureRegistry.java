@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -24,7 +23,6 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> PATCH_DAYLIGHT_MUSHROOMS;
     public static RegistryKey<PlacedFeature> PATCH_DARKBLIGHT_MUSHROOMS;
     public static RegistryKey<PlacedFeature> PATCH_HEATHER;
-    public static RegistryKey<PlacedFeature> PATCH_BEACHGRASS;
 
     @Override
     public void register() {
@@ -38,21 +36,19 @@ public class PlacedFeatureRegistry implements Register {
         PATCH_DAYLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_daylight_mushrooms"));
         PATCH_DARKBLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_darkblight_mushrooms"));
         PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
-        PATCH_BEACHGRASS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_beachgrass"));
         modifyGeneration();
     }
 
     private void modifyGeneration() {
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.MAHOGANY_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, MAHOGANY);
-        if (ModMenuIntegration.CONFIG.mahoganyInOtherBiomes) BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_MAHOGANY_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, SPARSE_MAHOGANY);
-        if (ModMenuIntegration.CONFIG.aspenInOtherBiomes) BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.GREEN_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_GREEN);
-        if (ModMenuIntegration.CONFIG.aspenInOtherBiomes) BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.YELLOW_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_YELLOW);
-        if (ModMenuIntegration.CONFIG.aspenInOtherBiomes) BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SNOWY_GREEN_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_GREEN_SNOWY);
-        if (ModMenuIntegration.CONFIG.aspenInOtherBiomes) BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SNOWY_YELLOW_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_YELLOW_SNOWY);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_MAHOGANY_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, SPARSE_MAHOGANY);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.GREEN_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_GREEN);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.YELLOW_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_YELLOW);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SNOWY_GREEN_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_GREEN_SNOWY);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SNOWY_YELLOW_ASPEN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, TREES_ASPEN_YELLOW_SNOWY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.GROVE), GenerationStep.Feature.VEGETAL_DECORATION, GREEN_ASPEN_ON_SNOW);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, BiomeKeys.OLD_GROWTH_PINE_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DAYLIGHT_MUSHROOMS);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DARKBLIGHT_MUSHROOMS);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.HEATHER_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HEATHER);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
     }
 }

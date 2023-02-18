@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "great_big_world:block/beachgrass_thatch",
-        "top": "great_big_world:block/beachgrass_thatch",
-        "side": "great_big_world:block/beachgrass_thatch"
-    }
-}

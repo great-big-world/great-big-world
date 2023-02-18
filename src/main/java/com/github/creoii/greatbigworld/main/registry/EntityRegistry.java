@@ -9,10 +9,8 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.*;
@@ -25,28 +23,22 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
 public class EntityRegistry implements Register {
-    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MooseEntity::new).dimensions(EntityDimensions.fixed(1.6f, 2.1f)).trackRangeChunks(10).build();
-    public static final EntityType<ThicketEntity> THICKET = FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, ThicketEntity::new).dimensions(EntityDimensions.fixed(.6f, 2.2f)).trackRangeChunks(8).build();
+    public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.<MooseEntity>createMob().entityFactory(MooseEntity::new).spawnGroup(SpawnGroup.CREATURE).defaultAttributes(MooseEntity::createMooseAttributes).dimensions(EntityDimensions.changing(1.6f, 2.1f)).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn).trackRangeChunks(10).build();
+    public static final EntityType<ThicketEntity> THICKET = FabricEntityTypeBuilder.<ThicketEntity>createMob().entityFactory(ThicketEntity::new).spawnGroup(SpawnGroup.CREATURE).defaultAttributes(ThicketEntity::createThicketAttributes).dimensions(EntityDimensions.fixed(.6f, 2.2f)).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn).trackRangeChunks(8).build();
 
     @Override
     public void register() {
-        registerMobEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, MooseEntity.createMooseAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
-        registerMobEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, ThicketEntity.createThicketAttributes(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn, null, SpawnGroup.CREATURE, 0, 1, 3, 9209735, 7971115, Items.TADPOLE_SPAWN_EGG));
+        registerEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
+        registerEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, null, SpawnGroup.CREATURE, 0, 1, 3, 9209735, 7971115, Items.TADPOLE_SPAWN_EGG));
     }
 
-    public static <L extends Entity, T extends EntityType<L>> void registerEntity(T entityType, Identifier id) {
+    public static <L extends MobEntity, T extends EntityType<L>> void registerEntity(T entityType, Identifier id, EntitySettings<L, T> settings) {
         Registry.register(Registries.ENTITY_TYPE, id, entityType);
-    }
-
-    public static <L extends MobEntity, T extends EntityType<L>> void registerMobEntity(T entityType, Identifier id, EntitySettings<L, T> settings) {
-        registerEntity(entityType, id);
         settings.register();
     }
 
-    public static record EntitySettings<L extends MobEntity, T extends EntityType<L>>(T entityType, DefaultAttributeContainer.Builder builder, SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<L> predicate, @Nullable Predicate<BiomeSelectionContext> biomeSelector, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize, int primaryEggColor, int secondaryEggColor, ItemConvertible after) {
+    public record EntitySettings<L extends MobEntity, T extends EntityType<L>>(T entityType, @Nullable Predicate<BiomeSelectionContext> biomeSelector, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize, int primaryEggColor, int secondaryEggColor, ItemConvertible after) {
         public void register() {
-            FabricDefaultAttributeRegistry.register(entityType, builder);
-            SpawnRestriction.register(entityType, location, heightmap, predicate);
             if (biomeSelector != null)
                 BiomeModifications.addSpawn(biomeSelector, group, entityType, weight, minGroupSize, maxGroupSize);
             Item spawnEgg = new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings());
