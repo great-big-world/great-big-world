@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:acai_trapdoor"
+    }
+  ],
+  "result": [
+    {
+      "item": "great_big_world:acai_planks"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_dig"
+  }
+}

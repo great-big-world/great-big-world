@@ -124,7 +124,9 @@ public class BlockRegistry implements Register {
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
     public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
-    public static final Block LARGE_JUNGLE_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
+    public static final Block TROPICAL_FERN = new FernBlock(FabricBlockSettings.copy(Blocks.FERN));
+    public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
+    public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
 
     public void register() {
@@ -209,7 +211,9 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "large_jungle_fern"), LARGE_JUNGLE_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
+        registerBlock(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
+        registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
+        registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN, null);
     }
 
     @Override
@@ -239,7 +243,9 @@ public class BlockRegistry implements Register {
                 ANTLER,
                 HEATHER,
                 TALL_HEATHER,
-                LARGE_JUNGLE_FERN
+                TROPICAL_FERN,
+                LARGE_TROPICAL_FERN,
+                POTTED_TROPICAL_FERN
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
@@ -250,7 +256,7 @@ public class BlockRegistry implements Register {
                 GRASSY_LAVAROCK
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_JUNGLE_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
 

@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:acai_log"
+    }
+  ],
+  "result": [
+    {
+      "item": "great_big_world:stripped_V_log"
+    },
+    {
+      "item": "farmersdelight:tree_bark"
+    }
+  ],
+  "sound": "minecraft:item.axe.strip",
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_strip"
+  }
+}

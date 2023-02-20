@@ -9,8 +9,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.item.*;
@@ -61,7 +59,8 @@ public class ItemRegistry implements Register {
     //region Miscellaneous
     public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
     public static final Item GRASSY_LAVAROCK = new BlockItem(BlockRegistry.GRASSY_LAVAROCK, new FabricItemSettings());
-    public static final Item LARGE_JUNGLE_FERN = new BlockItem(BlockRegistry.LARGE_JUNGLE_FERN, new FabricItemSettings());
+    public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new FabricItemSettings());
+    public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new FabricItemSettings());
     //endregion
 
     @Override
@@ -92,7 +91,8 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
         registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, new ItemGroupSettings(ItemGroups.NATURAL, BlockRegistry.VOLCANIC_SAND), new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, BlockRegistry.VOLCANIC_SAND));
-        registerItem(new Identifier(NAMESPACE, "large_jungle_fern"), LARGE_JUNGLE_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, Items.FERN, ItemGroups.NATURAL);
+        registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
         compostables();
     }
 
@@ -111,13 +111,14 @@ public class ItemRegistry implements Register {
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.GREEN_ASPEN_SAPLING, .3f);
         CompostingChanceRegistry.INSTANCE.add(MAHOGANY_LEAVES, .3f);
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.MAHOGANY_SAPLING, .3f);
-        CompostingChanceRegistry.INSTANCE.add(LARGE_JUNGLE_FERN, .65f);
+        CompostingChanceRegistry.INSTANCE.add(TROPICAL_FERN, .65f);
+        CompostingChanceRegistry.INSTANCE.add(LARGE_TROPICAL_FERN, .65f);
     }
 
     @Override
     public void registerClient() {
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(.5d, 1d), LARGE_JUNGLE_FERN);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(.5d, 1d), TROPICAL_FERN, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
 
