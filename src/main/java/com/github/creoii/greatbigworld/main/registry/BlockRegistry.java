@@ -76,15 +76,12 @@ public class BlockRegistry implements Register {
     public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_WALL));
     //endregion
     //region Travertine
-    public static final Block LUNAR_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.RED));
     public static final Block PEACH_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
     public static final Block GOLDEN_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
     public static final Block IVORY_TRAVERTINE = new PillarBlock(FabricBlockSettings.copy(Blocks.CALCITE));
-    public static final Block POLISHED_LUNAR_TRAVERTINE = new Block(FabricBlockSettings.copy(LUNAR_TRAVERTINE).strength(1f));
     public static final Block POLISHED_PEACH_TRAVERTINE = new Block(FabricBlockSettings.copy(PEACH_TRAVERTINE).strength(1f));
     public static final Block POLISHED_GOLDEN_TRAVERTINE = new Block(FabricBlockSettings.copy(GOLDEN_TRAVERTINE).strength(1f));
     public static final Block POLISHED_IVORY_TRAVERTINE = new Block(FabricBlockSettings.copy(IVORY_TRAVERTINE).strength(1f));
-    public static final Block POLISHED_LUNAR_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_LUNAR_TRAVERTINE));
     public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
     public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
     public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(FabricBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
@@ -138,15 +135,12 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_STAIRS));
         registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MOSSY_COBBLESTONE_BRICK_SLAB));
 
-        registerBlock(new Identifier(NAMESPACE, "lunar_travertine"), LUNAR_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
         registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
         registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
         registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, null));
-        registerBlock(new Identifier(NAMESPACE, "polished_lunar_travertine"), POLISHED_LUNAR_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine"), POLISHED_PEACH_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine"), POLISHED_GOLDEN_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine"), POLISHED_IVORY_TRAVERTINE, null, ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "polished_lunar_travertine_tiles"), POLISHED_LUNAR_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine_tiles"), POLISHED_PEACH_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, null, ItemGroups.BUILDING_BLOCKS);
