@@ -6,7 +6,7 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.6,
+  "downfall": 0.4,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -14,6 +14,12 @@
       "offset": 2,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
+    },
+    "music": {
+      "max_delay": 24000,
+      "min_delay": 12000,
+      "replace_current_music": false,
+      "sound": "minecraft:music.overworld.stony_peaks"
     },
     "sky_color": 8103167,
     "water_color": 4566514,
@@ -62,21 +68,27 @@
       "minecraft:underwater_magma",
       "minecraft:disk_sand",
       "minecraft:disk_clay",
-      "minecraft:disk_gravel"
+      "minecraft:disk_gravel",
+      "minecraft:ore_emerald"
     ],
-    [],
+    [
+      "minecraft:ore_infested"
+    ],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:flower_default",
-      "minecraft:patch_grass_badlands",
+      "minecraft:trees_sparse_jungle",
+      "minecraft:flower_warm",
+      "minecraft:patch_grass_jungle",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",
-      "minecraft:patch_pumpkin"
+      "minecraft:patch_pumpkin",
+      "minecraft:vines",
+      "minecraft:patch_melon_sparse"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -94,14 +106,7 @@
       }
     ],
     "axolotls": [],
-    "creature": [
-      {
-        "type": "minecraft:turtle",
-        "maxCount": 5,
-        "minCount": 2,
-        "weight": 5
-      }
-    ],
+    "creature": [],
     "misc": [],
     "monster": [
       {
@@ -164,5 +169,5 @@
     "water_ambient": [],
     "water_creature": []
   },
-  "temperature": 1
+  "temperature": 1.2
 }

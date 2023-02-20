@@ -105,7 +105,7 @@ public class BlockRegistry implements Register {
     //endregion
     //region Lavarock
     // ! sand particle color 2827557 !
-    public static final Block VOLCANIC_SAND = new Block(FabricBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
+    public static final Block VOLCANIC_SAND = new SandBlock(2827557, FabricBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
     public static final Block LAVAROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block GRASSY_LAVAROCK = new GrassBlock(FabricBlockSettings.copy(LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
     //endregion
@@ -114,6 +114,7 @@ public class BlockRegistry implements Register {
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
     public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
+    public static final Block LARGE_JUNGLE_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
     //endregion
 
     public void register() {
@@ -189,6 +190,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "large_jungle_fern"), LARGE_JUNGLE_FERN, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
     }
 
     @Override
@@ -217,16 +219,18 @@ public class BlockRegistry implements Register {
                 BEACHGRASS_THATCH_STAIRS,
                 ANTLER,
                 HEATHER,
-                TALL_HEATHER
+                TALL_HEATHER,
+                LARGE_JUNGLE_FERN
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
                 YELLOW_ASPEN_LEAVES,
                 YELLOW_ASPEN_LEAF_PILE,
                 GREEN_ASPEN_LEAVES,
-                GREEN_ASPEN_LEAF_PILE
+                GREEN_ASPEN_LEAF_PILE,
+                GRASSY_LAVAROCK
         );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, LARGE_JUNGLE_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
 

@@ -38,7 +38,9 @@
       "minecraft:monster_room",
       "minecraft:monster_room_deep"
     ],
-    [],
+    [
+      "great_big_world:sparse_delta"
+    ],
     [],
     [
       "minecraft:ore_dirt",

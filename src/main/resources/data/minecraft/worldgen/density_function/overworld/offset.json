@@ -35,7 +35,17 @@
 							"coordinate": "minecraft:overworld/continents",
 							"points": [
 								{
-									"location": -1.2,
+									"location": -2.0,
+									"derivative": 0,
+									"value": 1.5
+								},
+								{
+									"location": -1.95,
+									"derivative": 0,
+									"value": 1.7
+								},
+								{
+									"location": -1.9,
 									"derivative": 0,
 									"value": {
 										"coordinate": "minecraft:overworld/erosion",

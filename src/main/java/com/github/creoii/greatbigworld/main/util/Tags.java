@@ -36,6 +36,7 @@ public class Tags {
         public static final TagKey<Biome> MOOSE_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "moose_spawnable"));
         public static final TagKey<Biome> HEATHER_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "heather_biomes"));
         public static final TagKey<Biome> IS_TROPICAL_ISLAND = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "is_tropical_island"));
+        public static final TagKey<Biome> JUNGLE_FERN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "jungle_fern_biomes"));
     }
 
     public static final class EntityTypeTags {

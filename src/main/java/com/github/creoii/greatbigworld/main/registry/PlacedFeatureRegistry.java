@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
@@ -25,6 +26,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> PATCH_DARKBLIGHT_MUSHROOMS;
     public static RegistryKey<PlacedFeature> PATCH_HEATHER;
     public static RegistryKey<PlacedFeature> PATCH_BEACHGRASS;
+    public static RegistryKey<PlacedFeature> PATCH_JUNGLE_FERN;
 
     @Override
     public void register() {
@@ -39,6 +41,7 @@ public class PlacedFeatureRegistry implements Register {
         PATCH_DARKBLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_darkblight_mushrooms"));
         PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
         PATCH_BEACHGRASS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_beachgrass"));
+        PATCH_JUNGLE_FERN = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_jungle_fern"));
         modifyGeneration();
     }
 
@@ -54,5 +57,6 @@ public class PlacedFeatureRegistry implements Register {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DARKBLIGHT_MUSHROOMS);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.HEATHER_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HEATHER);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.JUNGLE_FERN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_JUNGLE_FERN);
     }
 }

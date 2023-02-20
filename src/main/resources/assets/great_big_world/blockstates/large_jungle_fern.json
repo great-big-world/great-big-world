@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=upper": { "model": "great_big_world:block/jungle_fern_upper" },
+    "half=lower": { "model": "great_big_world:block/jungle_fern_lower" }
+  }
+}

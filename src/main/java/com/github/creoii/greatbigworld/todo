@@ -30,8 +30,7 @@ Lighthouse
  - loot table
 
 Tropical Islands
- - fix grassy lavarock tint & not being considered grass
- - add blocks to carvables to remove lag?
+ - remove lag when generating sand
  - loot tables & variant blocks
  - mangrove swamp doesnt generate correctly?
  - probably more
