@@ -27,6 +27,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> PATCH_HEATHER;
     public static RegistryKey<PlacedFeature> PATCH_BEACHGRASS;
     public static RegistryKey<PlacedFeature> PATCH_JUNGLE_FERN;
+    public static RegistryKey<PlacedFeature> ACAI;
 
     @Override
     public void register() {
@@ -42,6 +43,7 @@ public class PlacedFeatureRegistry implements Register {
         PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
         PATCH_BEACHGRASS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_beachgrass"));
         PATCH_JUNGLE_FERN = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_jungle_fern"));
+        ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "acai"));
         modifyGeneration();
     }
 
@@ -58,5 +60,6 @@ public class PlacedFeatureRegistry implements Register {
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.HEATHER_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HEATHER);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.JUNGLE_FERN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_JUNGLE_FERN);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, ACAI);
     }
 }

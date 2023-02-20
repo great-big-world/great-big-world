@@ -15,6 +15,7 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
@@ -104,10 +105,19 @@ public class BlockRegistry implements Register {
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
     //endregion
     //region Lavarock
-    // ! sand particle color 2827557 !
     public static final Block VOLCANIC_SAND = new SandBlock(2827557, FabricBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
     public static final Block LAVAROCK = new Block(FabricBlockSettings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block GRASSY_LAVAROCK = new GrassBlock(FabricBlockSettings.copy(LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
+    public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), FabricBlockSettings.copy(LAVAROCK));
+    public static final Block LAVAROCK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK));
+    public static final Block LAVAROCK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK));
+    public static final Block LAVAROCK_BRICKS = new Block(FabricBlockSettings.copy(Blocks.STONE_BRICKS).mapColor(MapColor.BLACK));
+    public static final Block LAVAROCK_BRICK_STAIRS = new StairsBlock(LAVAROCK_BRICKS.getDefaultState(), FabricBlockSettings.copy(LAVAROCK_BRICKS));
+    public static final Block LAVAROCK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
+    public static final Block LAVAROCK_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
+    //endregion
+    //region Acai
+    public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log());
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -184,13 +194,22 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
 
         registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null);
         registerBlock(new Identifier(NAMESPACE, "lavarock"), LAVAROCK, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_stairs"), LAVAROCK_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_slab"), LAVAROCK_SLAB, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_wall"), LAVAROCK_WALL, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_bricks"), LAVAROCK_BRICKS, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, null, ItemGroups.BUILDING_BLOCKS);
+
+        ACAI.register();
 
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "large_jungle_fern"), LARGE_JUNGLE_FERN, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "large_jungle_fern"), LARGE_JUNGLE_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
     }
 
     @Override
@@ -230,7 +249,8 @@ public class BlockRegistry implements Register {
                 GREEN_ASPEN_LEAF_PILE,
                 GRASSY_LAVAROCK
         );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, LARGE_JUNGLE_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_JUNGLE_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
 

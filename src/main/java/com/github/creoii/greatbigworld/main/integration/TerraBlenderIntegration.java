@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.integration;
 
-import com.github.creoii.greatbigworld.world.region.GreatBigOverworldRegion;
+import com.github.creoii.greatbigworld.world.GreatBigOverworldRegion;
 import terrablender.api.Regions;
 import terrablender.api.TerraBlenderApi;
 

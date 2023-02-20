@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.world.region;
+package com.github.creoii.greatbigworld.world;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.BiomeRegistry;
