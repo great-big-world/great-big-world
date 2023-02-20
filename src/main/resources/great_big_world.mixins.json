@@ -16,7 +16,8 @@
     "entity.WolfEntityMixin",
     "item.BowItemMixin",
     "item.CrossbowItemMixin",
-    "item.SwordItemMixin"
+    "item.SwordItemMixin",
+    "world.VanillaBiomeParametersMixin"
   ],
   "client": [
     "client.BackgroundRendererMixin",
