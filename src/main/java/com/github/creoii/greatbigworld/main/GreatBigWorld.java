@@ -40,9 +40,11 @@ public class GreatBigWorld implements ModInitializer {
         for (Register register : REGISTERS) {
             register.register();
         }
-
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.sequence(
-                MaterialRules.condition(MaterialRules.biome(BiomeRegistry.ISLAND_BEACH), MaterialRules.sequence(MaterialRules.condition(MaterialRules.stoneDepth(0, false, VerticalSurfaceType.CEILING), MaterialRules.block(Blocks.WHITE_TERRACOTTA.getDefaultState())), MaterialRules.block(Blocks.SANDSTONE.getDefaultState())))
+                MaterialRules.condition(MaterialRules.biome(BiomeRegistry.ISLAND_BEACH), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.SAND.getDefaultState()))),
+                MaterialRules.condition(MaterialRules.biome(BiomeRegistry.ISLAND_MANGROVE_SWAMP), MaterialRules.block(Blocks.MUD.getDefaultState())),
+                MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_PEAKS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.block(BlockRegistry.GRASSY_LAVAROCK.getDefaultState())), MaterialRules.block(BlockRegistry.LAVAROCK.getDefaultState()))),
+                MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_BEACH), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(BlockRegistry.LAVAROCK.getDefaultState())), MaterialRules.block(BlockRegistry.VOLCANIC_SAND.getDefaultState())))
         ));
     }
 }
