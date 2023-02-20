@@ -1,10 +1,8 @@
 package com.github.creoii.greatbigworld.main;
 
-import com.github.creoii.greatbigworld.block.SulfurBlock;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.math.random.Random;
 
 public class GreatBigWorld implements ModInitializer {
@@ -34,9 +32,5 @@ public class GreatBigWorld implements ModInitializer {
         for (Register register : REGISTERS) {
             register.register();
         }
-
-        Registries.STATUS_EFFECT.forEach(statusEffect -> {
-            System.out.println(Registries.STATUS_EFFECT.getId(statusEffect) + ": " + (SulfurBlock.getPropertyFromEffect(statusEffect) == Registries.STATUS_EFFECT.getRawId(statusEffect)));
-        });
     }
 }

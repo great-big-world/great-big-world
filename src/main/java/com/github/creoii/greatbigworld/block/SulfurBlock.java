@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class SulfurBlock extends Block {
-    public static final IntProperty EFFECT = IntProperty.of("effect", 1, Integer.MAX_VALUE);
+    public static final IntProperty EFFECT = IntProperty.of("effect", 1, 256);
 
     public SulfurBlock() {
         super(FabricBlockSettings.copy(Blocks.YELLOW_CONCRETE_POWDER));
