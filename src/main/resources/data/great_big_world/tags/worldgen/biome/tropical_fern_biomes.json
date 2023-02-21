@@ -1,6 +1,6 @@
 {
   "values": [
     "#minecraft:is_jungle",
-    "great_big_world:volcanic_slopes"
+    "#great_big_world:is_tropical_island"
   ]
 }

@@ -195,9 +195,9 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
 
-        registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_SANDSTONE));
         registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null);
-        registerBlock(new Identifier(NAMESPACE, "lavarock"), LAVAROCK, null, ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "lavarock"), LAVAROCK, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, VOLCANIC_SAND));
         registerBlock(new Identifier(NAMESPACE, "lavarock_stairs"), LAVAROCK_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "lavarock_slab"), LAVAROCK_SLAB, null, ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "lavarock_wall"), LAVAROCK_WALL, null, ItemGroups.BUILDING_BLOCKS);
@@ -256,7 +256,8 @@ public class BlockRegistry implements Register {
                 GRASSY_LAVAROCK
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
 

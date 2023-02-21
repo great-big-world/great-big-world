@@ -1,10 +1,6 @@
 {
-  "feature": "great_big_world:patch_jungle_fern",
+  "feature": "great_big_world:patch_tropical_fern",
   "placement": [
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 5
-    },
     {
       "type": "minecraft:in_square"
     },
