@@ -16,6 +16,7 @@ public class Tags {
 
     public static class BlockTags {
         public static final TagKey<Block> MOOSE_EDIBLES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "moose_edibles"));
+        public static final TagKey<Block> ACAI_BERRY_PLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "acai_berry_placeable"));
     }
 
     public static class ItemTags {

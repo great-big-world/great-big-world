@@ -77,9 +77,9 @@ public class BranchTreeDecorator extends TreeDecorator {
                     } else if (state.getProperties().contains(Properties.HORIZONTAL_FACING)) {
                         generator.replace(blockpos1, state.with(Properties.HORIZONTAL_FACING, randomFacing ? Direction.Type.HORIZONTAL.random(random) : direction.getOpposite()));
                     } else if (state.getProperties().contains(Properties.AXIS)) {
-                        generator.replace(blockpos1, state.with(Properties.AXIS, randomFacing ? Direction.random(random).getAxis() : direction.getOpposite().getAxis()));
+                        generator.replace(blockpos1, state.with(Properties.AXIS, randomFacing ? Direction.random(random).getAxis() : direction.getAxis()));
                     } else if (state.getProperties().contains(Properties.HORIZONTAL_AXIS)) {
-                        generator.replace(blockpos1, state.with(Properties.HORIZONTAL_AXIS, randomFacing ? Direction.Type.HORIZONTAL.random(random).getAxis() : direction.getOpposite().getAxis()));
+                        generator.replace(blockpos1, state.with(Properties.HORIZONTAL_AXIS, randomFacing ? Direction.Type.HORIZONTAL.random(random).getAxis() : direction.getAxis()));
                     } else generator.replace(blockpos1, state);
                 }
             }

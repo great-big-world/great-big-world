@@ -1,0 +1,44 @@
+{
+	"parent": "block/block",
+	"textures": {
+		"berry": "great_big_world:block/acai_berry"
+	},
+	"elements": [
+		{
+			"from": [7.5, 11, 5.5],
+			"to": [12.5, 16, 10.5],
+			"faces": {
+				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"south": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"west": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"up": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"down": {"uv": [0, 0, 5, 5], "texture": "#berry"}
+			}
+		},
+		{
+			"from": [3.5, 9, 7.5],
+			"to": [8.5, 14, 12.5],
+			"faces": {
+				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"south": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"west": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"up": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"down": {"uv": [0, 0, 5, 5], "texture": "#berry"}
+			}
+		},
+		{
+			"from": [5.5, 7, 4.5],
+			"to": [10.5, 12, 9.5],
+			"faces": {
+				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"south": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"west": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"up": {"uv": [5, 0, 10, 5], "texture": "#berry"},
+				"down": {"uv": [0, 0, 5, 5], "texture": "#berry"}
+			}
+		}
+	]
+}

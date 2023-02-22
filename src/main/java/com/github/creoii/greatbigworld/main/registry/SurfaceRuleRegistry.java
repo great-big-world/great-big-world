@@ -11,6 +11,7 @@ public class SurfaceRuleRegistry implements Register {
     private static final MaterialRules.MaterialRule LAVAROCK = MaterialRules.block(BlockRegistry.LAVAROCK.getDefaultState());
     private static final MaterialRules.MaterialRule GRASSY_LAVAROCK = MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.block(BlockRegistry.GRASSY_LAVAROCK.getDefaultState()));
     private static final MaterialRules.MaterialRule BEACH_SAND = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.SMOOTH_SANDSTONE.getDefaultState()));
+    private static final MaterialRules.MaterialRule SMOOTH_BASALT = MaterialRules.block(Blocks.SMOOTH_BASALT.getDefaultState());
 
     @Override
     public void register() {
@@ -40,6 +41,6 @@ public class SurfaceRuleRegistry implements Register {
     }
 
     public MaterialRules.MaterialRule createVolcanicCraterRule() {
-        return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_CRATER), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, LAVAROCK), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), GRASSY_LAVAROCK), MaterialRules.condition(MaterialRules.steepSlope(), GRASSY_LAVAROCK)), LAVAROCK));
+        return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_CRATER), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, LAVAROCK), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), GRASSY_LAVAROCK), MaterialRules.condition(MaterialRules.steepSlope(), GRASSY_LAVAROCK)), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.CALCITE, -.0125d, .0125d), SMOOTH_BASALT), LAVAROCK));
     }
 }

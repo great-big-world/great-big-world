@@ -20,22 +20,22 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
             return config.maxLength;
         }), Codec.floatRange(0f, 1f).fieldOf("probability").forGetter(config -> {
             return config.probability;
-        }), Codec.BOOL.fieldOf("include_log_positions").orElse(false).forGetter(config -> {
-            return config.includeLogPositions;
+        }), PositionInclusion.CODEC.fieldOf("position_inclusion").orElse(PositionInclusion.LEAVES).forGetter(config -> {
+            return config.positionInclusion;
         })).apply(instance, HangingLeavesTreeDecorator::new);
     });
     private final BlockState state;
     private final int minLength;
     private final int maxLength;
     private final float probability;
-    private final boolean includeLogPositions;
+    private final PositionInclusion positionInclusion;
 
-    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability, boolean includeLogPositions) {
+    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability, PositionInclusion positionInclusion) {
         this.state = state;
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.probability = probability;
-        this.includeLogPositions = includeLogPositions;
+        this.positionInclusion = positionInclusion;
     }
 
     @Override
@@ -48,8 +48,15 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
         BlockState blockstate;
         int length;
         BlockPos place;
-        ObjectArrayList<BlockPos> positions = generator.getLeavesPositions();
-        if (includeLogPositions) positions.addAll(generator.getLogPositions());
+        ObjectArrayList<BlockPos> positions = new ObjectArrayList<>();
+        switch (positionInclusion) {
+            case ALL -> {
+                positions.addAll(generator.getLogPositions());
+                positions.addAll(generator.getLeavesPositions());
+            }
+            case LOGS -> positions.addAll(generator.getLogPositions());
+            case LEAVES -> positions.addAll(generator.getLeavesPositions());
+        }
         for (BlockPos pos : positions) {
             if (!(generator.getRandom().nextFloat() >= probability)) {
                 if (generator.isAir(pos.down()) && state.getBlock() instanceof HangingLeavesBlock) {
