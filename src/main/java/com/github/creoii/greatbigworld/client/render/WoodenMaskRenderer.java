@@ -47,6 +47,5 @@ public class WoodenMaskRenderer implements ArmorRenderer {
         maskModel.mask.setTransform(model.head.getTransform());
         maskModel.mask.visible = slot == EquipmentSlot.HEAD;
         ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, maskModel, TEXTURES.get(stack.getItem()));
-
     }
 }

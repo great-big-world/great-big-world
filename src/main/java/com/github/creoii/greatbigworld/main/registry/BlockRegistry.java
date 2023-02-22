@@ -246,6 +246,8 @@ public class BlockRegistry implements Register {
                 POTTED_YELLOW_ASPEN_SAPLING,
                 GREEN_ASPEN_SAPLING,
                 POTTED_GREEN_ASPEN_SAPLING,
+                ACAI_SAPLING,
+                POTTED_ACAI_SAPLING,
                 BAMBOO_TORCH,
                 BAMBOO_WALL_TORCH,
                 POTTED_BAMBOO_TORCH,

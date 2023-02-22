@@ -67,6 +67,7 @@ public class ItemRegistry implements Register {
     //endregion
     //region Miscellaneous
     public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
+    public static final Item MUSIC_DISC_PINA_COLADA = new MusicDiscItem(2, SoundRegistry.MUSIC_DISC_PINA_COLADA, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 86);
     public static final Item GRASSY_LAVAROCK = new BlockItem(BlockRegistry.GRASSY_LAVAROCK, new FabricItemSettings());
     public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new FabricItemSettings());
     public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new FabricItemSettings());
@@ -106,6 +107,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
         registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "music_disc_pina_colada"), MUSIC_DISC_PINA_COLADA, MUSIC_DISC_SUNRISE, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, new ItemGroupSettings(ItemGroups.NATURAL, BlockRegistry.VOLCANIC_SAND), new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, BlockRegistry.VOLCANIC_SAND));
         registerItem(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, Items.FERN, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
@@ -134,7 +136,7 @@ public class ItemRegistry implements Register {
 
     @Override
     public void registerClient() {
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(.5d, 1d), TROPICAL_FERN, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
     }
