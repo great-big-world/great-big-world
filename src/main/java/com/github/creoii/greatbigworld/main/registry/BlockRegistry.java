@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.block.*;
 import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import com.github.creoii.greatbigworld.main.util.GBWSignTypes;
 import com.github.creoii.greatbigworld.main.util.Register;
+import com.github.creoii.greatbigworld.world.sapling.AcaiSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
@@ -119,6 +120,9 @@ public class BlockRegistry implements Register {
     //region Acai
     public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log());
     public static final Block ACAI_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
+    public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(ACAI_LEAVES));
+    public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(MAHOGANY_SAPLING));
+    public static final Block POTTED_ACAI_SAPLING = new FlowerPotBlock(ACAI_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block ACAI_SIGN = new SignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.ACAI);
     public static final Block ACAI_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(ACAI_SIGN), GBWSignTypes.ACAI);
     //endregion
@@ -191,12 +195,12 @@ public class BlockRegistry implements Register {
 
         registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.LARGE_FERN, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.FERN, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 75, 120, null), ItemGroups.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 60, 100, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
 
         registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_SANDSTONE));
         registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null);
@@ -211,6 +215,9 @@ public class BlockRegistry implements Register {
 
         ACAI.register();
         registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
+        registerBlock(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
+        registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), MAHOGANY_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "potted_acai_sapling"), POTTED_ACAI_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "acai_wall_sign"), ACAI_WALL_SIGN, null);
 
@@ -229,6 +236,8 @@ public class BlockRegistry implements Register {
                 MAHOGANY.trapdoor(),
                 ASPEN.door(),
                 ASPEN.trapdoor(),
+                ACAI.door(),
+                ACAI.trapdoor(),
                 MAHOGANY_SAPLING,
                 POTTED_MAHOGANY_SAPLING,
                 YELLOW_ASPEN_SAPLING,
@@ -260,9 +269,10 @@ public class BlockRegistry implements Register {
                 GREEN_ASPEN_LEAVES,
                 GREEN_ASPEN_LEAF_PILE,
                 GRASSY_LAVAROCK,
-                ACAI_LEAVES
+                ACAI_LEAVES,
+                HANGING_ACAI_LEAVES
         );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);

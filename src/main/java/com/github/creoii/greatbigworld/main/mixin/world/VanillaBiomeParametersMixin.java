@@ -27,14 +27,14 @@ public abstract class VanillaBiomeParametersMixin {
 
     @Inject(method = "writeOceanBiomes", at = @At("HEAD"))
     private void great_big_world_writeIslandBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
-        writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.175f, -1.115f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, BiomeRegistry.ISLAND_JUNGLE);
-        writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.175f, -1.115f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-1, -.3f), 0f, BiomeRegistry.ISLAND_SPARSE_JUNGLE);
+        writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.12f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, BiomeRegistry.ISLAND_JUNGLE);
+        writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.12f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-1, -.3f), 0f, BiomeRegistry.ISLAND_SPARSE_JUNGLE);
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.LOW_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.VALLEY.parameter()}) {
-            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1.03f), MultiNoiseUtil.ParameterRange.of(-1f, .2f), weirdness, 0f, BiomeRegistry.ISLAND_BEACH);
-            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.2f, -1.185f), defaultParameter, weirdness, 0f, BiomeRegistry.VOLCANIC_BEACH);
+            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1f), MultiNoiseUtil.ParameterRange.of(-1f, .2f), weirdness, 0f, BiomeRegistry.ISLAND_BEACH);
+            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.2f, -1.175f), defaultParameter, weirdness, 0f, BiomeRegistry.VOLCANIC_BEACH);
         }
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.VALLEY.parameter(), ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_DESCENDING.parameter()}) {
-            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1.03f), MultiNoiseUtil.ParameterRange.of(.15f, 1f), weirdness, 0f, BiomeRegistry.ISLAND_MANGROVE_SWAMP);
+            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1f), MultiNoiseUtil.ParameterRange.of(.2f, 1f), weirdness, 0f, BiomeRegistry.ISLAND_MANGROVE_SWAMP);
         }
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.PEAK_NORMAL.parameter(), ParameterUtils.Weirdness.PEAK_VARIANT.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_NORMAL_ASCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_VARIANT_DESCENDING.parameter()}) {
             writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.1975f, -1.175f), defaultParameter, weirdness, 0f, BiomeRegistry.VOLCANIC_SLOPES);

@@ -12,11 +12,13 @@ public class ConfiguredFeatureRegistry implements Register {
     public static RegistryKey<ConfiguredFeature<?, ?>> MAHOGANY;
     public static RegistryKey<ConfiguredFeature<?, ?>> GREEN_ASPEN;
     public static RegistryKey<ConfiguredFeature<?, ?>> YELLOW_ASPEN;
+    public static RegistryKey<ConfiguredFeature<?, ?>> ACAI;
 
     @Override
     public void register() {
         MAHOGANY = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "mahogany"));
         GREEN_ASPEN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "green_aspen"));
         YELLOW_ASPEN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "yellow_aspen"));
+        ACAI = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "acai"));
     }
 }

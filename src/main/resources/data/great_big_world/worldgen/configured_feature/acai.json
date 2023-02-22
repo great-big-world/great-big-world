@@ -1,7 +1,21 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "great_big_world:hanging_leaves",
+        "state": {
+          "Name": "great_big_world:hanging_acai_leaves",
+          "Properties": {
+            "half": "small",
+            "waterlogged": "false"
+          }
+        },
+        "min_length": 1,
+        "max_length": 1,
+        "probability": 0.6
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
