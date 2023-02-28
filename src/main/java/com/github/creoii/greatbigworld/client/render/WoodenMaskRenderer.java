@@ -29,6 +29,7 @@ public class WoodenMaskRenderer implements ArmorRenderer {
             .put(ItemRegistry.ASPEN_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_aspen.png"))
             .put(ItemRegistry.JUNGLE_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_jungle.png"))
             .put(ItemRegistry.MAHOGANY_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_mahogany.png"))
+            .put(ItemRegistry.ACAI_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_acai.png"))
             .put(ItemRegistry.ACACIA_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_acacia.png"))
             .put(ItemRegistry.DARK_OAK_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_dark_oak.png"))
             .put(ItemRegistry.MANGROVE_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_mangrove.png"))
@@ -46,6 +47,5 @@ public class WoodenMaskRenderer implements ArmorRenderer {
         maskModel.mask.setTransform(model.head.getTransform());
         maskModel.mask.visible = slot == EquipmentSlot.HEAD;
         ArmorRenderer.renderPart(matrices, vertexConsumers, light, stack, maskModel, TEXTURES.get(stack.getItem()));
-
     }
 }

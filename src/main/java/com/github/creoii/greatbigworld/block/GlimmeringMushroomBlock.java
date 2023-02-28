@@ -73,11 +73,6 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     }
 
     @Override
-    public boolean hasRandomTicks(BlockState state) {
-        return true;
-    }
-
-    @Override
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.getLightLevel(LightType.SKY, pos) == 0) {

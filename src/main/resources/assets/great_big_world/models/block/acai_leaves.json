@@ -1,0 +1,6 @@
+{
+    "parent": "block/leaves",
+    "textures": {
+        "all": "great_big_world:block/acai_leaves"
+    }
+}

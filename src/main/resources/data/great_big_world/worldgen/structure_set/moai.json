@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 65659371,
+    "separation": 8,
+    "spacing": 12
+  },
+  "structures": [
+    {
+      "structure": "great_big_world:moai_jungle",
+      "weight": 3
+    },
+    {
+      "structure": "great_big_world:moai_beach",
+      "weight": 2
+    }
+  ]
+}

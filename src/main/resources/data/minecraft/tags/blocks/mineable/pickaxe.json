@@ -5,6 +5,15 @@
     "great_big_world:cobblestone_brick_slab",
     "great_big_world:mossy_cobblestone_bricks",
     "great_big_world:mossy_cobblestone_brick_stairs",
-    "great_big_world:mossy_cobblestone_brick_slab"
+    "great_big_world:mossy_cobblestone_brick_slab",
+    "great_big_world:grassy_lavarock",
+    "great_big_world:lavarock",
+    "great_big_world:lavarock_stairs",
+    "great_big_world:lavarock_slab",
+    "great_big_world:lavarock_wall",
+    "great_big_world:lavarock_bricks",
+    "great_big_world:lavarock_brick_stairs",
+    "great_big_world:lavarock_brick_slab",
+    "great_big_world:lavarock_brick_wall"
   ]
 }

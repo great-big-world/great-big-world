@@ -40,5 +40,14 @@
   "great_big_world:cobblestone_brick_slab": "brickstone",
   "great_big_world:mossy_cobblestone_brick_slab": "brickstone",
   "great_big_world:cobblestone_brick_wall.bigger": "brickstone",
-  "great_big_world:mossy_cobblestone_brick_wall.bigger": "brickstone"
+  "great_big_world:mossy_cobblestone_brick_wall.bigger": "brickstone",
+
+  "great_big_world:acai_log": "wood",
+  "great_big_world:stripped_acai_log": "wood,stone",
+  "great_big_world:acai_wood": "wood",
+  "great_big_world:stripped_acai_wood": "wood,stone",
+  "great_big_world:acai_slab": "wood",
+  "great_big_world:acai_fence_gate.bigger": "bluntwood",
+  "great_big_world:acai_button[face=floor].foliage": "wood",
+  "great_big_world:acai_button": "NOT_EMITTER"
 }

@@ -17,5 +17,7 @@ public class BoatEntityMixin {
             ci.setReturnValue(ItemRegistry.MAHOGANY_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ASPEN)
             ci.setReturnValue(ItemRegistry.ASPEN_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ACAI)
+            ci.setReturnValue(ItemRegistry.ACAI_BOAT);
     }
 }

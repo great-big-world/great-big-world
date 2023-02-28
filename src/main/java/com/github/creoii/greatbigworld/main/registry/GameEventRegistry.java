@@ -9,10 +9,12 @@ import net.minecraft.world.event.GameEvent;
 
 public class GameEventRegistry implements Register {
     public static GameEvent SHED_ANTLERS;
+    public static GameEvent NAUTILUS_OXIDIZE;
 
     @Override
     public void register() {
         SHED_ANTLERS = registerGameEvent(new Identifier(GreatBigWorld.NAMESPACE, "shed_antlers"), 16);
+        NAUTILUS_OXIDIZE = registerGameEvent(new Identifier(GreatBigWorld.NAMESPACE, "nautilus_oxidize"), 16);
     }
 
     private static GameEvent registerGameEvent(Identifier id, int range) {

@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "berries=1": { "model": "great_big_world:block/one_acai_berry" },
+    "berries=2": { "model": "great_big_world:block/two_acai_berries" },
+    "berries=3": { "model": "great_big_world:block/three_acai_berries" },
+    "berries=4": { "model": "great_big_world:block/four_acai_berries" },
+    "berries=5": { "model": "great_big_world:block/five_acai_berries" }
+  }
+}

@@ -8,10 +8,11 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class SoundRegistry implements Register {
-    public static SoundEvent ENTITY_MOOSE_HURT = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.hurt"));
-    public static SoundEvent ENTITY_MOOSE_DEATH = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.death"));
-    public static SoundEvent ENTITY_MOOSE_WARNING = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.warning"));
-    public static SoundEvent MUSIC_DISC_SUNRISE = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "music_disc.sunrise"));
+    public static final SoundEvent ENTITY_MOOSE_HURT = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.hurt"));
+    public static final SoundEvent ENTITY_MOOSE_DEATH = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.death"));
+    public static final SoundEvent ENTITY_MOOSE_WARNING = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.warning"));
+    public static final SoundEvent MUSIC_DISC_SUNRISE = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "music_disc.sunrise"));
+    public static final SoundEvent MUSIC_DISC_PINA_COLADA = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "music_disc.pina_colada"));
 
     @Override
     public void register() {
@@ -19,6 +20,7 @@ public class SoundRegistry implements Register {
         registerSoundEvent(ENTITY_MOOSE_DEATH);
         registerSoundEvent(ENTITY_MOOSE_WARNING);
         registerSoundEvent(MUSIC_DISC_SUNRISE);
+        registerSoundEvent(MUSIC_DISC_PINA_COLADA);
     }
 
     private static void registerSoundEvent(SoundEvent soundEvent) {

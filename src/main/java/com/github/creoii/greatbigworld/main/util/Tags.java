@@ -16,6 +16,7 @@ public class Tags {
 
     public static class BlockTags {
         public static final TagKey<Block> MOOSE_EDIBLES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "moose_edibles"));
+        public static final TagKey<Block> ACAI_BERRY_PLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "acai_berry_placeable"));
     }
 
     public static class ItemTags {
@@ -35,6 +36,10 @@ public class Tags {
         public static final TagKey<Biome> SNOWY_YELLOW_ASPEN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "snowy_yellow_aspen_biomes"));
         public static final TagKey<Biome> MOOSE_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "moose_spawnable"));
         public static final TagKey<Biome> HEATHER_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "heather_biomes"));
+        public static final TagKey<Biome> IS_TROPICAL_ISLAND = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "is_tropical_island"));
+        public static final TagKey<Biome> TROPICAL_FERN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "tropical_fern_biomes"));
+        public static final TagKey<Biome> ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "acai_biomes"));
+        public static final TagKey<Biome> NAUTILUS_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "nautilus_spawnable"));
     }
 
     public static final class EntityTypeTags {

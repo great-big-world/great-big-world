@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "snowy=false": { "model": "great_big_world:block/grassy_lavarock" },
+    "snowy=true": { "model": "great_big_world:block/grassy_lavarock_snow" }
+  }
+}

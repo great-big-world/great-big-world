@@ -2,3 +2,4 @@ accessWidener v2 named
 
 accessible method net/minecraft/entity/passive/AbstractHorseEntity setEating ()V
 accessible method net/minecraft/client/MinecraftClient getWindowTitle ()Ljava/lang/String;
+accessible method net/minecraft/block/PointedDripstoneBlock$DrippingFluid <init> (Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/fluid/Fluid;Lnet/minecraft/block/BlockState;)V

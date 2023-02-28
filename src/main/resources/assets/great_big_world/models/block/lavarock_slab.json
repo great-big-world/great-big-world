@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "great_big_world:block/lavarock",
+        "top": "great_big_world:block/lavarock",
+        "side": "great_big_world:block/lavarock"
+    }
+}
