@@ -116,9 +116,10 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     protected void initGoals() {
         goalSelector.add(0, new MooseEscapeDangerGoal(this));
-        goalSelector.add(1, new MeleeAttackGoal(this, 1.25d, false));
+        goalSelector.add(1, new MeleeAttackGoal(this, 1.4d, false));
         goalSelector.add(2, new AnimalMateGoal(this, 1d));
         goalSelector.add(3, new TemptGoal(this, 1.25d, Ingredient.fromTag(Tags.ItemTags.MOOSE_FOOD), true));
+        goalSelector.add(3, new EatGrassGoal(this));
         goalSelector.add(4, new FollowParentGoal(this, 1d));
         goalSelector.add(5, new WanderAroundFarGoal(this, 1d));
         goalSelector.add(5, new SwimAroundGoal(this, 1.25d, 120));
@@ -258,6 +259,12 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             setRightAntler(true);
         }
         super.onGrowUp();
+    }
+
+    @Override
+    public void onEatingGrass() {
+        ramCooldown = 30;
+        super.onEatingGrass();
     }
 
     @Override
@@ -444,16 +451,17 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack held = player.getStackInHand(hand);
-        if (isBreedingItem(held)) {
-            if (!hasAngerTime() && !isInLove())
+        if (!isBaby()) {
+            if (isBreedingItem(held) && !hasAngerTime() && !isInLove()) {
                 return interactHorse(player, held);
-        }
-        if (hasAngerTime() && !isBaby()) {
-            showEmoteParticle(false);
-            if (!world.isClient) {
-                playSound(SoundRegistry.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
             }
-            return ActionResult.success(world.isClient);
+            if (hasAngerTime()) {
+                showEmoteParticle(false);
+                if (!world.isClient) {
+                    playSound(SoundRegistry.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
+                }
+                return ActionResult.success(world.isClient);
+            }
         }
         return super.interactMob(player, hand);
     }
@@ -617,7 +625,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!entities.isEmpty()) {
             setAttacking(true);
             for (Entity entity : entities) {
-                if (entity.getType() != EntityRegistry.MOOSE && entity instanceof LivingEntity livingEntity) {
+                if ((entity.getType() == EntityRegistry.MOOSE && getOwnerUuid() != null) && entity instanceof LivingEntity livingEntity) {
                     tryAttack(livingEntity);
                 }
             }

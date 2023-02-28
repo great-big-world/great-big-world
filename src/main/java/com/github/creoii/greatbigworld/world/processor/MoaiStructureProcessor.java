@@ -28,8 +28,8 @@ public class MoaiStructureProcessor extends StructureProcessor {
         })).apply(instance, MoaiStructureProcessor::new);
     });
     private final Map<Block, BlockStateProvider> calciteReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(Blocks.CALCITE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DIORITE.getDefaultState(), 1).add(Blocks.POLISHED_DIORITE.getDefaultState(), 4).add(Blocks.STONE.getDefaultState(), 1).build()));
-        replacements.put(Blocks.DIORITE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.POLISHED_DIORITE_STAIRS.getDefaultState(), 4).add(Blocks.STONE_STAIRS.getDefaultState(), 1).build()));
+        replacements.put(Blocks.CALCITE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.DIORITE.getDefaultState(), 1).add(Blocks.POLISHED_DIORITE.getDefaultState(), 5).add(Blocks.STONE.getDefaultState(), 1).build()));
+        replacements.put(Blocks.DIORITE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.POLISHED_DIORITE_STAIRS.getDefaultState(), 5).add(Blocks.STONE_STAIRS.getDefaultState(), 1).build()));
     });
     private final Map<Block, BlockStateProvider> stoneReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
         replacements.put(Blocks.STONE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 1).add(Blocks.POLISHED_ANDESITE.getDefaultState(), 1).build()));

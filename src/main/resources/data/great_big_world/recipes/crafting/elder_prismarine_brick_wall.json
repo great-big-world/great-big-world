@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "great_big_world:elder_prismarine_bricks"
+    }
+  },
+  "result": {
+    "item": "great_big_world:elder_prismarine_brick_wall",
+    "count": 6
+  }
+}

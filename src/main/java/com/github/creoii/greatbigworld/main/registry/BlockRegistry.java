@@ -41,6 +41,8 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block MAHOGANY_SIGN = new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.MAHOGANY);
     public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(MAHOGANY_SIGN), GBWSignTypes.MAHOGANY);
+    public static final Block MAHOGANY_HANGING_SIGN = new HangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MAHOGANY.log().getDefaultMapColor()), GBWSignTypes.MAHOGANY);
+    public static final Block MAHOGANY_WALL_HANGING_SIGN = new WallHangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(MAHOGANY.log().getDefaultMapColor()), GBWSignTypes.MAHOGANY);
     //endregion
     //region Aspen Wood
     public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON, Items.BIRCH_LOG);
@@ -54,6 +56,8 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_GREEN_ASPEN_SAPLING = new FlowerPotBlock(GREEN_ASPEN_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block ASPEN_SIGN = new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.ASPEN);
     public static final Block ASPEN_WALL_SIGN = new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(ASPEN_SIGN), GBWSignTypes.ASPEN);
+    public static final Block ASPEN_HANGING_SIGN = new HangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(ASPEN.log().getDefaultMapColor()), GBWSignTypes.ASPEN);
+    public static final Block ASPEN_WALL_HANGING_SIGN = new WallHangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(ASPEN.log().getDefaultMapColor()), GBWSignTypes.ASPEN);
     //endregion
     //region Bamboo Torches
     public static final Block BAMBOO_TORCH = new BambooTorchBlock(ParticleTypes.FLAME);
@@ -125,6 +129,8 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_ACAI_SAPLING = new FlowerPotBlock(ACAI_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block ACAI_SIGN = new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.ACAI);
     public static final Block ACAI_WALL_SIGN = new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(ACAI_SIGN), GBWSignTypes.ACAI);
+    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(ACAI.log().getDefaultMapColor()), GBWSignTypes.ACAI);
+    public static final Block ACAI_WALL_HANGING_SIGN = new WallHangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(ACAI.log().getDefaultMapColor()), GBWSignTypes.ACAI);
     public static final Block ACAI_BERRY_CLUMP = new AcaiBerryClumpBlock(FabricBlockSettings.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_PURPLE).ticksRandomly());
     //endregion
     //region Elder Prismarine
@@ -156,6 +162,8 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "mahogany_wall_sign"), MAHOGANY_WALL_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "mahogany_hanging_sign"), MAHOGANY_HANGING_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "mahogany_wall_hanging_sign"), MAHOGANY_WALL_HANGING_SIGN, null);
 
         ASPEN.register();
         registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
@@ -168,11 +176,13 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_wall_sign"), ASPEN_WALL_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "aspen_hanging_sign"), ASPEN_HANGING_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "aspen_wall_hanging_sign"), ASPEN_WALL_HANGING_SIGN, null);
 
-        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
         registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
 
@@ -233,6 +243,8 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "potted_acai_sapling"), POTTED_ACAI_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "acai_wall_sign"), ACAI_WALL_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "acai_hanging_sign"), ACAI_HANGING_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "acai_wall_hanging_sign"), ACAI_WALL_HANGING_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "acai_berry_clump"), ACAI_BERRY_CLUMP, null);
 
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine"), ELDER_PRISMARINE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.DARK_PRISMARINE_SLAB));

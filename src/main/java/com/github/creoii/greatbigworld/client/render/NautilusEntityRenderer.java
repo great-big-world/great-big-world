@@ -8,6 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -16,6 +17,11 @@ public class NautilusEntityRenderer<T extends NautilusEntity> extends MobEntityR
 
     public NautilusEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new NautilusEntityModel<>(context.getPart(RenderRegistry.NAUTILUS_MODEL_LAYER)), .3f);
+    }
+
+    @Override
+    protected void scale(T entity, MatrixStack matrices, float amount) {
+        matrices.scale(.95f, .95f, .95f);
     }
 
     public Identifier getTexture(NautilusEntity nautilusEntity) {

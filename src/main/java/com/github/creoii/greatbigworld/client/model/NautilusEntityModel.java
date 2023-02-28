@@ -1,11 +1,14 @@
 package com.github.creoii.greatbigworld.client.model;
 
 import com.github.creoii.greatbigworld.entity.NautilusEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 
+@Environment(EnvType.CLIENT)
 public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart shell;
 	private final ModelPart head;
@@ -22,6 +25,7 @@ public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEnt
 		tentacle3 = head.getChild("tentacle3");
 		tentacle4 = head.getChild("tentacle4");
 	}
+
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
@@ -40,10 +44,7 @@ public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEnt
 
 	@Override
 	public void setAngles(NautilusEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		tentacle1.pitch = animationProgress;
-		tentacle2.pitch = animationProgress;
-		tentacle3.pitch = animationProgress;
-		tentacle4.pitch = animationProgress;
+		//animations
 	}
 
 	@Override

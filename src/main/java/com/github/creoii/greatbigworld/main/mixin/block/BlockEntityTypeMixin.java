@@ -14,6 +14,8 @@ public class BlockEntityTypeMixin {
     private void great_big_world_supportAllSigns(BlockState state, CallbackInfoReturnable<Boolean> cir) {
         if ((Object) this == BlockEntityType.SIGN) {
             cir.setReturnValue(state.isIn(BlockTags.SIGNS));
+        } else if ((Object) this == BlockEntityType.HANGING_SIGN) {
+            cir.setReturnValue(state.isIn(BlockTags.ALL_HANGING_SIGNS));
         }
     }
 }

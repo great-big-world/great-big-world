@@ -4,6 +4,8 @@
     "minecraft:grass",
     "minecraft:seagrass",
     "minecraft:large_fern",
-    "minecraft:tall_grass"
+    "minecraft:tall_grass",
+    "great_big_world:tropical_fern",
+    "great_big_world:large_tropical_fern"
   ]
 }

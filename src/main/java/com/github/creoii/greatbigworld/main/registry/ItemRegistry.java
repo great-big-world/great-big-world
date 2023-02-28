@@ -15,6 +15,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -63,7 +64,9 @@ public class ItemRegistry implements Register {
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.ACAI.planks()));
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
-    public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
+    public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
+    public static final Item BAMBOO_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BAMBOO_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
+    public static final Item CHERRY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
     public static final Item CRIMSON_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CRIMSON_PLANKS));
     public static final Item WARPED_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.WARPED_PLANKS));
     //endregion
@@ -107,6 +110,8 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACAI_MASK));
         registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACACIA_MASK));
         registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, DARK_OAK_MASK));
+        registerItem(new Identifier(NAMESPACE, "bamboo_mask"), BAMBOO_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
+        registerItem(new Identifier(NAMESPACE, "cherry_mask"), CHERRY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BAMBOO_MASK));
         registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
         registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);

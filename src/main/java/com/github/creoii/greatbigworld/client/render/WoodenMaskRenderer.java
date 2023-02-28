@@ -33,6 +33,8 @@ public class WoodenMaskRenderer implements ArmorRenderer {
             .put(ItemRegistry.ACACIA_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_acacia.png"))
             .put(ItemRegistry.DARK_OAK_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_dark_oak.png"))
             .put(ItemRegistry.MANGROVE_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_mangrove.png"))
+            .put(ItemRegistry.BAMBOO_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_bamboo.png"))
+            .put(ItemRegistry.CHERRY_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_cherry.png"))
             .put(ItemRegistry.CRIMSON_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_crimson.png"))
             .put(ItemRegistry.WARPED_MASK, new Identifier(GreatBigWorld.NAMESPACE, "textures/models/armor/wooden_mask_warped.png"))
             .build();
