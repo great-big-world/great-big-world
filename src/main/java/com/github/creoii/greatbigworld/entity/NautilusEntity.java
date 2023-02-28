@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
+import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.GameEventRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.google.common.collect.ImmutableMap;
@@ -33,8 +34,9 @@ public class NautilusEntity extends FishEntity {
             .put(Blocks.CUT_COPPER, Blocks.WEATHERED_CUT_COPPER)
             .put(Blocks.WEATHERED_CUT_COPPER, Blocks.EXPOSED_CUT_COPPER)
             .put(Blocks.EXPOSED_CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER)
-            .put(Blocks.PRISMARINE, Blocks.LIGHT_GRAY_TERRACOTTA)
-            .put(Blocks.PRISMARINE_BRICKS, Blocks.CYAN_TERRACOTTA)
+            .put(Blocks.PRISMARINE, BlockRegistry.ELDER_PRISMARINE)
+            .put(Blocks.PRISMARINE_BRICKS, BlockRegistry.ELDER_PRISMARINE_BRICKS)
+            .put(Blocks.SEA_LANTERN, BlockRegistry.ELDER_SEA_LANTERN)
             .build();
     private int oxidizeTimer;
     private NautilusOxidizeGoal oxidizeGoal;
