@@ -7,7 +7,10 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.EscapeDangerGoal;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.SwimAroundGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
@@ -16,24 +19,26 @@ import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.predicate.entity.EntityPredicates;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.GameRules;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
-import java.util.*;
+import java.util.EnumSet;
+import java.util.Map;
 
 public class NautilusEntity extends FishEntity {
     private static final Map<Block, Block> NAUTILUS_OXIDIZABLES = ImmutableMap.<Block, Block>builder()
-            .put(Blocks.COPPER_BLOCK, Blocks.WEATHERED_COPPER)
-            .put(Blocks.WEATHERED_COPPER, Blocks.EXPOSED_COPPER)
-            .put(Blocks.EXPOSED_COPPER, Blocks.OXIDIZED_COPPER)
-            .put(Blocks.CUT_COPPER, Blocks.WEATHERED_CUT_COPPER)
-            .put(Blocks.WEATHERED_CUT_COPPER, Blocks.EXPOSED_CUT_COPPER)
-            .put(Blocks.EXPOSED_CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER)
+            .put(Blocks.COPPER_BLOCK, Blocks.EXPOSED_COPPER)
+            .put(Blocks.EXPOSED_COPPER, Blocks.WEATHERED_COPPER)
+            .put(Blocks.WEATHERED_COPPER, Blocks.OXIDIZED_COPPER)
+            .put(Blocks.CUT_COPPER, Blocks.EXPOSED_CUT_COPPER)
+            .put(Blocks.EXPOSED_CUT_COPPER, Blocks.WEATHERED_CUT_COPPER)
+            .put(Blocks.WEATHERED_CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER)
             .put(Blocks.PRISMARINE, BlockRegistry.ELDER_PRISMARINE)
             .put(Blocks.PRISMARINE_BRICKS, BlockRegistry.ELDER_PRISMARINE_BRICKS)
             .put(Blocks.SEA_LANTERN, BlockRegistry.ELDER_SEA_LANTERN)
@@ -87,8 +92,8 @@ public class NautilusEntity extends FishEntity {
     }
 
     @SuppressWarnings("deprecation")
-    public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-        return pos.getY() <= world.getSeaLevel() - 17 && world.getBlockState(pos).isOf(Blocks.WATER);
+    public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return pos.getY() >= world.getBottomY() && pos.getY() <= world.getSeaLevel() - 15 && world.getFluidState(pos).isIn(FluidTags.WATER);
     }
 
     public void onOxidizing() {
@@ -108,7 +113,7 @@ public class NautilusEntity extends FishEntity {
 
         @Override
         public boolean canStart() {
-            if (nautilus.getRandom().nextInt(100) != 0) {
+            if (nautilus.getRandom().nextInt(1200) != 0) {
                 return false;
             }
             return NAUTILUS_OXIDIZABLES.containsKey(world.getBlockState(nautilus.getBlockPos().down()).getBlock());

@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.math.floatprovider.FloatProvider;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;

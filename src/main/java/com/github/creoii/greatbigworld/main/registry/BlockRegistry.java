@@ -29,7 +29,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import org.jetbrains.annotations.Nullable;
 
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
@@ -243,7 +242,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_stairs"), ELDER_PRISMARINE_BRICK_STAIRS, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICKS));
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_slab"), ELDER_PRISMARINE_BRICK_SLAB, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICK_STAIRS));
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICK_SLAB));
-        registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICK_WALL));
+        registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);

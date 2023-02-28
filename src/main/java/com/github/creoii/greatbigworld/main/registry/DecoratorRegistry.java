@@ -2,9 +2,9 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
+import com.github.creoii.greatbigworld.world.decorator.AcaiBerriesTreeDecorator;
 import com.github.creoii.greatbigworld.world.decorator.BranchTreeDecorator;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
-import com.github.creoii.greatbigworld.world.decorator.AcaiBerriesTreeDecorator;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;

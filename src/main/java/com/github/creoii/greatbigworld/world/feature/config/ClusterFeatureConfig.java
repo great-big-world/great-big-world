@@ -7,8 +7,6 @@ import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-import java.util.List;
-
 public record ClusterFeatureConfig(RegistryEntry<PlacedFeature> feature, IntProvider count, IntProvider range) implements FeatureConfig {
     public static final Codec<ClusterFeatureConfig> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(PlacedFeature.REGISTRY_CODEC.fieldOf("feature").forGetter(config -> {

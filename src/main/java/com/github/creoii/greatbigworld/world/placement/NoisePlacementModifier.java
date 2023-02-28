@@ -3,10 +3,9 @@ package com.github.creoii.greatbigworld.world.placement;
 import com.github.creoii.greatbigworld.main.registry.PlacementRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.world.ServerChunkManager;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
 import net.minecraft.util.math.random.Random;
@@ -15,7 +14,6 @@ import net.minecraft.world.gen.placementmodifier.AbstractConditionalPlacementMod
 import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 
 import java.util.List;
-import java.util.Optional;
 
 public class NoisePlacementModifier extends AbstractConditionalPlacementModifier {
     public static final Codec<NoisePlacementModifier> CODEC = RecordCodecBuilder.create(instance -> {

@@ -2,8 +2,6 @@ package com.github.creoii.greatbigworld.world.feature;
 
 import com.github.creoii.greatbigworld.world.feature.config.DeformedCircleFeatureConfig;
 import com.mojang.serialization.Codec;
-import net.minecraft.block.BlockState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
