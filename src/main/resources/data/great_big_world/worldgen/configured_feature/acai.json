@@ -3,7 +3,7 @@
   "config": {
     "decorators": [
       {
-        "type": "great_big_world:hanging_leaves",
+        "type": "minecraft:hanging_leaves",
         "state": {
           "Name": "great_big_world:hanging_acai_leaves",
           "Properties": {
@@ -16,7 +16,7 @@
         "probability": 0.6
       },
       {
-        "type": "great_big_world:acai_berries"
+        "type": "minecraft:acai_berries"
       }
     ],
     "dirt_provider": {
@@ -26,7 +26,7 @@
       }
     },
     "foliage_placer": {
-      "type": "great_big_world:palm_foliage_placer",
+      "type": "minecraft:palm_foliage_placer",
       "offset": 0,
       "radius":  {
         "type": "minecraft:uniform",

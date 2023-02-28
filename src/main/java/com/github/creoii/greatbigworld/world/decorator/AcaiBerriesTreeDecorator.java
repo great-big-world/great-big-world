@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.world.decorator;
 
 import com.github.creoii.greatbigworld.block.AcaiBerryClumpBlock;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
+import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.PillarBlock;
@@ -28,7 +28,7 @@ public class AcaiBerriesTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return DecoratorRegistry.ACAI_BERRIES_DECORATOR;
+        return PlacerRegistry.ACAI_BERRIES_TREE_DECORATOR;
     }
 
     @Override
