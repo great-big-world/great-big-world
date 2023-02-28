@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.main.registry.BiomeRegistry;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import net.minecraft.world.biome.source.util.VanillaBiomeParameters;
 import org.spongepowered.asm.mixin.Final;
@@ -34,7 +35,8 @@ public abstract class VanillaBiomeParametersMixin {
             writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.19f, -1.175f), defaultParameter, weirdness, 0f, BiomeRegistry.VOLCANIC_BEACH);
         }
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.VALLEY.parameter(), ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_DESCENDING.parameter()}) {
-            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1f), MultiNoiseUtil.ParameterRange.of(.2f, 1f), weirdness, 0f, BiomeRegistry.ISLAND_MANGROVE_SWAMP);
+            //writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1f), MultiNoiseUtil.ParameterRange.of(.2f, 1f), weirdness, 0f, BiomeRegistry.ISLAND_MANGROVE_SWAMP);
+            writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.125f, -1f), MultiNoiseUtil.ParameterRange.of(.2f, 1f), weirdness, 0f, BiomeKeys.MANGROVE_SWAMP);
         }
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.PEAK_NORMAL.parameter(), ParameterUtils.Weirdness.PEAK_VARIANT.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_NORMAL_ASCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.HIGH_SLICE_VARIANT_DESCENDING.parameter()}) {
             writeBiomeParameters(parameters, defaultParameter, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.1975f, -1.175f), defaultParameter, weirdness, 0f, BiomeRegistry.VOLCANIC_SLOPES);

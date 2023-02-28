@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
-import com.github.creoii.greatbigworld.main.util.Foods;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
+import com.github.creoii.greatbigworld.main.util.GBWFoods;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -44,15 +44,16 @@ public class ItemRegistry implements Register {
     public static final Item ACAI_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.ACAI_SIGN, BlockRegistry.ACAI_WALL_SIGN);
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
     public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
-    public static final Item ACAI_BERRIES = new AliasedBlockItem(BlockRegistry.ACAI_BERRY_CLUMP, new FabricItemSettings().food(new FoodComponent.Builder().hunger(2).saturationModifier(.4f).snack().build()));
+    public static final Item ACAI_BERRIES = new AliasedBlockItem(BlockRegistry.ACAI_BERRY_CLUMP, new FabricItemSettings().food(GBWFoods.ACAI_BERRIES));
     //endregion
     //region Bamboo
     public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.BAMBOO_TORCH, BlockRegistry.BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, BlockRegistry.SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     //endregion
     //region Foods
-    public static final Item VENISON = new Item(new FabricItemSettings().food(Foods.VENISON));
-    public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(Foods.COOKED_VENISON));
+    public static final Item VENISON = new Item(new FabricItemSettings().food(GBWFoods.VENISON));
+    public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(GBWFoods.COOKED_VENISON));
+    public static final Item ACAI_BOWL = new Item(new FabricItemSettings().food(GBWFoods.ACAI_BOWL));
     //endregion
     //region Wooden Masks
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
