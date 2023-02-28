@@ -162,6 +162,7 @@
   "item.minecraft.tipped_arrow.effect.strong_darkness": "Potion of Darkness",
   "item.great_big_world.moose_spawn_egg": "Moose Spawn Egg",
   "item.great_big_world.thicket_spawn_egg": "Thicket Spawn Egg",
+  "item.great_big_world.nautilus_spawn_egg": "Nautilus Spawn Egg",
   "item.great_big_world.venison": "Raw Venison",
   "item.great_big_world.cooked_venison": "Cooked Venison",
   "item.great_big_world.oak_mask": "Oak Mask",
@@ -179,6 +180,7 @@
   "item.great_big_world.music_disc_sunrise": "Music Disc",
   "item.great_big_world.music_disc_sunrise.desc": "5 - Sunrise",
   "item.great_big_world.acai_berries": "Acai Berries",
+  "item.great_big_world.nautilus_bucket": "Nautilus Bucket",
   "item.great_big_world.music_disc_pina_colada": "Music Disc",
   "item.great_big_world.music_disc_pina_colada.desc": "SENSHO - Pina Colada",
 
