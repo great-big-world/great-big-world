@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/trimmed_bamboo_thatch_slab"
+    },
+    "type=double": {
+      "model": "great_big_world:block/trimmed_bamboo_thatch"
+    },
+    "type=top": {
+      "model": "great_big_world:block/trimmed_bamboo_thatch_slab_top"
+    }
+  }
+}

@@ -99,6 +99,12 @@ public class BlockRegistry implements Register {
     public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
     public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
+    public static final Block TRIMMED_BAMBOO_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final Block BAMBOO_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH), TRIMMED_BAMBOO_THATCH);
+    public static final Block TRIMMED_BAMBOO_THATCH_STAIRS = new StairsBlock(TRIMMED_BAMBOO_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH));
+    public static final Block BAMBOO_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(BAMBOO_THATCH), BAMBOO_THATCH.getDefaultState(), TRIMMED_BAMBOO_THATCH_STAIRS);
+    public static final Block TRIMMED_BAMBOO_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH));
+    public static final Block BAMBOO_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BAMBOO_THATCH), TRIMMED_BAMBOO_THATCH_SLAB);
     //endregion
     //region Lavarock
     public static final Block VOLCANIC_SAND = new SandBlock(2827557, FabricBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
@@ -203,6 +209,12 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch"), TRIMMED_BAMBOO_THATCH, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
 
         registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_SANDSTONE));
         registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null);
@@ -270,6 +282,9 @@ public class BlockRegistry implements Register {
                 BEACHGRASS_THATCH,
                 BEACHGRASS_THATCH_SLAB,
                 BEACHGRASS_THATCH_STAIRS,
+                BAMBOO_THATCH,
+                BAMBOO_THATCH_SLAB,
+                BAMBOO_THATCH_STAIRS,
                 ANTLER,
                 HEATHER,
                 TALL_HEATHER,

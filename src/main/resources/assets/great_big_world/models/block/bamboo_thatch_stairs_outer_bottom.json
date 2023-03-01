@@ -1,0 +1,9 @@
+{
+    "parent": "great_big_world:block/thatch_stairs_outer_bottom",
+    "textures": {
+        "bottom": "great_big_world:block/bamboo_thatch",
+        "top": "great_big_world:block/bamboo_thatch",
+        "side": "great_big_world:block/bamboo_thatch",
+        "thatch": "great_big_world:block/bamboo_thatches"
+    }
+}
