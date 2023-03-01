@@ -39,6 +39,7 @@ public class Tags {
         public static final TagKey<Biome> IS_TROPICAL_ISLAND = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "is_tropical_island"));
         public static final TagKey<Biome> TROPICAL_FERN_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "tropical_fern_biomes"));
         public static final TagKey<Biome> ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "acai_biomes"));
+        public static final TagKey<Biome> SPARSE_ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "sparse_acai_biomes"));
         public static final TagKey<Biome> NAUTILUS_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "nautilus_spawnable"));
     }
 

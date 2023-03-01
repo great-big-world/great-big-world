@@ -27,21 +27,18 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 public class ItemRegistry implements Register {
     //region Mahogany Wood
     public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new FabricItemSettings());
-    public static final Item MAHOGANY_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.MAHOGANY_SIGN, BlockRegistry.MAHOGANY_WALL_SIGN);
     public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
     public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
     //endregion
     //region Aspen Wood
     public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new FabricItemSettings());
     public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAF_PILE, new FabricItemSettings());
-    public static final Item ASPEN_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.ASPEN_SIGN, BlockRegistry.ASPEN_WALL_SIGN);
     public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     //endregion
     //region Acai Wood
     public static final Item ACAI_LEAVES = new BlockItem(BlockRegistry.ACAI_LEAVES, new FabricItemSettings());
     public static final Item HANGING_ACAI_LEAVES = new BlockItem(BlockRegistry.HANGING_ACAI_LEAVES, new FabricItemSettings());
-    public static final Item ACAI_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.ACAI_SIGN, BlockRegistry.ACAI_WALL_SIGN);
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
     public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
     public static final Item ACAI_BERRIES = new AliasedBlockItem(BlockRegistry.ACAI_BERRY_CLUMP, new FabricItemSettings().food(GBWFoods.ACAI_BERRIES));
@@ -83,17 +80,14 @@ public class ItemRegistry implements Register {
     @Override
     public void register() {
         registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, Items.BIRCH_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, MAHOGANY_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, ACAI_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN, MAHOGANY_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES, new ItemGroupSettings(ItemGroups.NATURAL, Items.GLOW_BERRIES), new ItemGroupSettings(ItemGroups.FOOD_AND_DRINK, Items.GLOW_BERRIES));
@@ -101,6 +95,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        registerItem(new Identifier(NAMESPACE, "acai_bowl"), ACAI_BOWL, Items.BEETROOT_SOUP, ItemGroups.FOOD_AND_DRINK);
         registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, Items.TURTLE_HELMET));
         registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, OAK_MASK));
         registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, new ItemGroupSettings(ItemGroups.COMBAT, SPRUCE_MASK));
@@ -140,6 +135,8 @@ public class ItemRegistry implements Register {
         CompostingChanceRegistry.INSTANCE.add(MAHOGANY_LEAVES, .3f);
         CompostingChanceRegistry.INSTANCE.add(BlockRegistry.MAHOGANY_SAPLING, .3f);
         CompostingChanceRegistry.INSTANCE.add(ACAI_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_ACAI_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(BlockRegistry.ACAI_SAPLING, .3f);
         CompostingChanceRegistry.INSTANCE.add(TROPICAL_FERN, .65f);
         CompostingChanceRegistry.INSTANCE.add(LARGE_TROPICAL_FERN, .65f);
     }

@@ -1,12 +1,13 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"berry": "great_big_world:block/acai_berry"
+		"berry": "great_big_world:block/acai_berry",
+		"particle": "great_big_world:block/acai_berry"
 	},
 	"elements": [
 		{
-			"from": [5.5, 11, 5.5],
-			"to": [10.5, 16, 10.5],
+			"from": [5.5, 11, 0],
+			"to": [10.5, 16, 5],
 			"faces": {
 				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
 				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},

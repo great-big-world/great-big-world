@@ -3,7 +3,6 @@
     "#great_big_world:is_volcanic",
     "great_big_world:island_jungle",
     "great_big_world:island_sparse_jungle",
-    "great_big_world:island_beach",
-    "great_big_world:island_mangrove_swamp"
+    "great_big_world:island_beach"
   ]
 }

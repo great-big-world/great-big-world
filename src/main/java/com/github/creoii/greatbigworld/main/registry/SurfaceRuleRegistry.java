@@ -17,7 +17,6 @@ public class SurfaceRuleRegistry implements Register {
     public void register() {
         SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, GreatBigWorld.NAMESPACE, MaterialRules.condition(MaterialRules.surface(), MaterialRules.sequence(
                 createIslandBeachRule(),
-                createIslandMangroveSwampRule(),
                 createVolcanicBeachRule(),
                 createVolcanicSlopesRule(),
                 createVolcanicCraterRule()
@@ -26,10 +25,6 @@ public class SurfaceRuleRegistry implements Register {
 
     public MaterialRules.MaterialRule createIslandBeachRule() {
         return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.ISLAND_BEACH), BEACH_SAND);
-    }
-
-    public MaterialRules.MaterialRule createIslandMangroveSwampRule() {
-        return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.ISLAND_MANGROVE_SWAMP), MaterialRules.block(Blocks.MUD.getDefaultState()));
     }
 
     public MaterialRules.MaterialRule createVolcanicBeachRule() {

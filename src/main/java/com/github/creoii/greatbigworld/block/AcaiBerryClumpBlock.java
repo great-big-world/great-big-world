@@ -8,7 +8,9 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -26,10 +28,11 @@ public class AcaiBerryClumpBlock extends Block implements Fertilizable {
     private static final VoxelShape FOUR_SHAPE = Block.createCuboidShape(4d, 4d, 4d, 12d, 16d, 12d);
     private static final VoxelShape FIVE_SHAPE = Block.createCuboidShape(4d, 2d, 4d, 12d, 16d, 12d);
     public static final IntProperty BERRIES = IntProperty.of("berries", 1, 5);
+    public static final DirectionProperty HORIZONTAL_FACING = Properties.HORIZONTAL_FACING;
 
     public AcaiBerryClumpBlock(Settings settings) {
         super(settings.ticksRandomly().noCollision());
-        setDefaultState(getStateManager().getDefaultState().with(BERRIES, 1));
+        setDefaultState(getStateManager().getDefaultState().with(BERRIES, 1).with(HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
@@ -49,7 +52,14 @@ public class AcaiBerryClumpBlock extends Block implements Fertilizable {
         BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (state.isOf(this)) {
             return state.with(BERRIES, Math.min(5, state.get(BERRIES) + 1));
-        } else return super.getPlacementState(ctx);
+        } else {
+            Direction[] directions = ctx.getPlacementDirections();
+            for (Direction direction : directions) {
+                if (!direction.getAxis().isHorizontal() || !(state = getDefaultState().with(HORIZONTAL_FACING, direction.getOpposite())).canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) continue;
+                return state;
+            }
+        }
+        return null;
     }
 
     @SuppressWarnings("deprecation")
@@ -92,6 +102,6 @@ public class AcaiBerryClumpBlock extends Block implements Fertilizable {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(BERRIES);
+        builder.add(BERRIES, HORIZONTAL_FACING);
     }
 }

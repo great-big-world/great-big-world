@@ -19,10 +19,10 @@ public class AcaiBerriesTreeDecorator extends TreeDecorator {
     private static final AcaiBerriesTreeDecorator INSTANCE = new AcaiBerriesTreeDecorator();
     public static final Codec<AcaiBerriesTreeDecorator> CODEC = Codec.unit(() -> INSTANCE);
     private static final DataPool<BlockState> BERRY_STATES = DataPool.<BlockState>builder()
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 1), 5)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 2), 4)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 3), 3)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 4), 2)
+            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 2), 5)
+            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 3), 4)
+            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 4), 3)
+            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 2)
             .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 1)
             .build();
 
@@ -42,9 +42,8 @@ public class AcaiBerriesTreeDecorator extends TreeDecorator {
                 if (state.isPresent()) {
                     Direction direction = Direction.Type.HORIZONTAL.random(random);
                     BlockPos place = pos.offset(direction);
-                    if (generator.isAir(place) && generator.isAir(place.down())) {
-                        generator.replace(place, BlockRegistry.ACAI.log().getDefaultState().with(PillarBlock.AXIS, direction.getAxis()));
-                        generator.replace(place.down(), state.get());
+                    if (generator.isAir(place)) {
+                        generator.replace(place, state.get().with(AcaiBerryClumpBlock.HORIZONTAL_FACING, direction));
                     }
                 }
             }

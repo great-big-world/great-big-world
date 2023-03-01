@@ -3,10 +3,13 @@ package com.github.creoii.greatbigworld.main.util;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.SignItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -56,10 +59,11 @@ public class DefaultBlockSets {
         Block wallSign = new WallSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(woodColor).dropsLike(sign), signType);
         Block hangingSign = new HangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(woodColor), signType);
         Block wallHangingSign = new WallHangingSignBlock(FabricBlockSettings.copy(Blocks.OAK_WALL_HANGING_SIGN).mapColor(woodColor), signType);
-        return new WoodSet(name, after, logAfter, signAfter, log, strippedLog, wood, strippedWood, planks, stairs, slab, fence, fenceGate, button, pressurePlate, door, trapdoor, sign, wallSign, hangingSign, wallHangingSign);
+        Item signItem = new SignItem(new FabricItemSettings().maxCount(16), sign, wallSign);
+        return new WoodSet(name, after, logAfter, signAfter, log, strippedLog, wood, strippedWood, planks, stairs, slab, fence, fenceGate, button, pressurePlate, door, trapdoor, sign, wallSign, hangingSign, wallHangingSign, signItem);
     }
 
-    public record WoodSet(String name, @Nullable ItemConvertible after, @Nullable ItemConvertible logAfter, @Nullable ItemConvertible signAfter, @Nullable Block log, @Nullable Block strippedLog, @Nullable Block wood, @Nullable Block strippedWood, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate, Block door, Block trapdoor, Block sign, Block wallSign, Block hangingSign, Block wallHangingSign) {
+    public record WoodSet(String name, @Nullable ItemConvertible after, @Nullable ItemConvertible logAfter, @Nullable ItemConvertible signAfter, @Nullable Block log, @Nullable Block strippedLog, @Nullable Block wood, @Nullable Block strippedWood, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate, Block door, Block trapdoor, Block sign, Block wallSign, Block hangingSign, Block wallHangingSign, Item signItem) {
         public void register() {
             if (after != null) {
                 if (log != null)
@@ -102,18 +106,14 @@ public class DefaultBlockSets {
                 BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_pressure_plate"), pressurePlate, null, ItemGroups.BUILDING_BLOCKS);
                 BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_button"), button, null, ItemGroups.BUILDING_BLOCKS);
             }
+            BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_sign"), sign, null);
+            BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_sign"), wallSign, null);
+            BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_hanging_sign"), hangingSign, null);
+            BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_hanging_sign"), wallHangingSign, null);
 
             if (signAfter != null) {
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_sign"), sign, null, signAfter, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_sign"), wallSign, null, signAfter, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_hanging_sign"), hangingSign, null, signAfter, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_hanging_sign"), wallHangingSign, null, signAfter, ItemGroups.FUNCTIONAL);
-            } else {
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_sign"), sign, null, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_sign"), wallSign, null, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_hanging_sign"), hangingSign, null, ItemGroups.FUNCTIONAL);
-                BlockRegistry.registerBlock(new Identifier(NAMESPACE, name + "_wall_hanging_sign"), wallHangingSign, null, ItemGroups.FUNCTIONAL);
-            }
+                ItemRegistry.registerItem(new Identifier(NAMESPACE, name + "_sign"), signItem, signAfter, ItemGroups.FUNCTIONAL);
+            } else ItemRegistry.registerItem(new Identifier(NAMESPACE, name + "_sign"), signItem);
         }
     }
 }

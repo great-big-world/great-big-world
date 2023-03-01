@@ -87,7 +87,7 @@ public class NautilusEntity extends FishEntity {
     public void tick() {
         super.tick();
         if (random.nextFloat() < .03f && isSubmergedInWater()) {
-            Vec3d rotation = getRotationVec(0f);
+            Vec3d rotation = getOppositeRotationVector(0f);
             if (world.getTime() % 2 == 0) {
                 world.addParticle(ParticleTypes.BUBBLE, getX() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.x * .75d, getY() + random.nextDouble() * (double) getHeight() - rotation.y, getZ() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.z * .75d, 0d, 0d, 0d);
             }

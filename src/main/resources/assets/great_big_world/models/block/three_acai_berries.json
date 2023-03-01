@@ -1,12 +1,13 @@
 {
 	"parent": "block/block",
 	"textures": {
-		"berry": "great_big_world:block/acai_berry"
+		"berry": "great_big_world:block/acai_berry",
+		"particle": "#berry"
 	},
 	"elements": [
 		{
-			"from": [7.5, 11, 5.5],
-			"to": [12.5, 16, 10.5],
+			"from": [7.5, 11, 0.5],
+			"to": [12.5, 16, 5.5],
 			"faces": {
 				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
 				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
@@ -17,8 +18,8 @@
 			}
 		},
 		{
-			"from": [3.5, 9, 7.5],
-			"to": [8.5, 14, 12.5],
+			"from": [2.5, 9, -0.501],
+			"to": [7.5, 14, 4.499],
 			"faces": {
 				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
 				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
@@ -29,8 +30,8 @@
 			}
 		},
 		{
-			"from": [5.5, 7, 4.5],
-			"to": [10.5, 12, 9.5],
+			"from": [6.5, 7, -0.5],
+			"to": [11.5, 12, 4.5],
 			"faces": {
 				"north": {"uv": [5, 0, 10, 5], "texture": "#berry"},
 				"east": {"uv": [5, 0, 10, 5], "texture": "#berry"},
