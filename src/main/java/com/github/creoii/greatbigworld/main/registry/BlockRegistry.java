@@ -92,8 +92,7 @@ public class BlockRegistry implements Register {
     public static final Block LIGHT_GRAY_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_LIGHT_GRAY));
     public static final Block WHITE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
-    //region Beachgrass
-    public static final Block BEACHGRASS = new BeachgrassBlock();
+    //region Thatch
     public static final Block TRIMMED_BEACHGRASS_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final Block BEACHGRASS_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH);
     public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
@@ -137,7 +136,9 @@ public class BlockRegistry implements Register {
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block HEATHER = new FernBlock(FabricBlockSettings.copy(Blocks.POPPY));
     public static final Block POTTED_HEATHER = new FlowerPotBlock(HEATHER, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block BEACHGRASS = new BeachgrassBlock();
     public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
+    public static final Block POTTED_BEACHGRASS = new FlowerPotBlock(BEACHGRASS, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block TROPICAL_FERN = new FernBlock(FabricBlockSettings.copy(Blocks.FERN));
     public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
     public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, FabricBlockSettings.copy(Blocks.FLOWER_POT));
@@ -196,8 +197,6 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "magenta_stained_calcite"), MAGENTA_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
         registerBlock(new Identifier(NAMESPACE, "pink_stained_calcite"), PINK_STAINED_CALCITE, null, new ItemRegistry.ItemGroupSettings(ItemGroups.COLORED_BLOCKS, null), new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
 
-        registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.LARGE_FERN, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.FERN, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
@@ -233,10 +232,13 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICK_SLAB));
         registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
-        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new ExtendedBlockSettings(0f, 0, 0, null), Items.TURTLE_EGG, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, null, Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null));
+        registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, null);
+        registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.FERN, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.LARGE_FERN, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "potted_beachgrass"), POTTED_BEACHGRASS, null);
         registerBlock(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN, null);
@@ -265,8 +267,6 @@ public class BlockRegistry implements Register {
                 SOUL_BAMBOO_TORCH,
                 SOUL_BAMBOO_WALL_TORCH,
                 POTTED_SOUL_BAMBOO_TORCH,
-                BEACHGRASS,
-                TALL_BEACHGRASS,
                 BEACHGRASS_THATCH,
                 BEACHGRASS_THATCH_SLAB,
                 BEACHGRASS_THATCH_STAIRS,
@@ -274,6 +274,9 @@ public class BlockRegistry implements Register {
                 HEATHER,
                 TALL_HEATHER,
                 POTTED_HEATHER,
+                BEACHGRASS,
+                TALL_BEACHGRASS,
+                POTTED_BEACHGRASS,
                 TROPICAL_FERN,
                 LARGE_TROPICAL_FERN,
                 POTTED_TROPICAL_FERN

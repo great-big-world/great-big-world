@@ -1,6 +1,6 @@
 {
   "variants": {
-    "half=upper": { "model": "great_big_world:block/beachgrass_upper" },
-    "half=lower": { "model": "great_big_world:block/beachgrass_lower" }
+    "half=upper": { "model": "great_big_world:block/tall_beachgrass_upper" },
+    "half=lower": { "model": "great_big_world:block/tall_beachgrass_lower" }
   }
 }

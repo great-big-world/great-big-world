@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "key": {
+    "P": {
+      "item": "great_big_world:lavarock"
+    }
+  },
+  "result": {
+    "item": "great_big_world:lavarock_bricks",
+    "count": 4
+  }
+}
