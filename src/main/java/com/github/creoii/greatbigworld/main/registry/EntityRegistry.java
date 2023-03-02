@@ -32,7 +32,7 @@ public class EntityRegistry implements Register {
     public void register() {
         registerEntity(MOOSE, new Identifier(GreatBigWorld.NAMESPACE, "moose"), new EntitySettings<>(MOOSE, BiomeSelectors.tag(Tags.BiomeTags.MOOSE_SPAWNABLE), SpawnGroup.CREATURE, 8, 1, 3, 8211498, 4276545, Items.MAGMA_CUBE_SPAWN_EGG));
         registerEntity(THICKET, new Identifier(GreatBigWorld.NAMESPACE, "thicket"), new EntitySettings<>(THICKET, null, SpawnGroup.CREATURE, 0, 1, 3, 9209735, 7971115, Items.TADPOLE_SPAWN_EGG));
-        registerEntity(NAUTILUS, new Identifier(GreatBigWorld.NAMESPACE, "nautilus"), new EntitySettings<>(NAUTILUS, BiomeSelectors.tag(Tags.BiomeTags.NAUTILUS_SPAWNABLE), SpawnGroup.WATER_CREATURE, 6, 1, 2, 13418935, 16748893, Items.MULE_SPAWN_EGG));
+        registerEntity(NAUTILUS, new Identifier(GreatBigWorld.NAMESPACE, "nautilus"), new EntitySettings<>(NAUTILUS, BiomeSelectors.tag(Tags.BiomeTags.NAUTILUS_SPAWNABLE), SpawnGroup.WATER_CREATURE, 8, 1, 2, 13418935, 16748893, Items.MULE_SPAWN_EGG));
     }
 
     public static <L extends MobEntity, T extends EntityType<L>> void registerEntity(T entityType, Identifier id, EntitySettings<L, T> settings) {

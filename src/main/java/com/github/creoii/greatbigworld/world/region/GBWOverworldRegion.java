@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.world;
+package com.github.creoii.greatbigworld.world.region;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.BiomeRegistry;
@@ -16,8 +16,8 @@ import terrablender.api.RegionType;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class GreatBigOverworldRegion extends Region {
-    public GreatBigOverworldRegion(int weight) {
+public class GBWOverworldRegion extends Region {
+    public GBWOverworldRegion(int weight) {
         super(new Identifier(GreatBigWorld.NAMESPACE, "overworld"), RegionType.OVERWORLD, weight);
     }
 
