@@ -7,23 +7,24 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEntityModel<T> {
 	private final ModelPart shell;
-	private final ModelPart head;
-	private final ModelPart tentacle1;
-	private final ModelPart tentacle2;
-	private final ModelPart tentacle3;
-	private final ModelPart tentacle4;
+	private final ModelPart rightTentacle;
+	private final ModelPart leftTentacle;
+	private final ModelPart bottomTentacle;
+	private final ModelPart topTentacle;
 
 	public NautilusEntityModel(ModelPart root) {
 		shell = root.getChild("shell");
-		head = shell.getChild("head");
-		tentacle1 = head.getChild("tentacle1");
-		tentacle2 = head.getChild("tentacle2");
-		tentacle3 = head.getChild("tentacle3");
-		tentacle4 = head.getChild("tentacle4");
+		ModelPart head = shell.getChild("head");
+		rightTentacle = head.getChild("tentacle1");
+		leftTentacle = head.getChild("tentacle2");
+		bottomTentacle = head.getChild("tentacle3");
+		topTentacle = head.getChild("tentacle4");
 	}
 
 	public static TexturedModelData getTexturedModelData() {
@@ -43,8 +44,14 @@ public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEnt
 	}
 
 	@Override
-	public void setAngles(NautilusEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		//animations
+	public void setAngles(NautilusEntity nautilus, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+		leftTentacle.yaw = -nautilus.getSwayAmount() * .1f * MathHelper.cos(.15f * animationProgress);
+		rightTentacle.yaw = -nautilus.getSwayAmount() * .1f * -MathHelper.cos(.15f * animationProgress);
+		topTentacle.pitch = -nautilus.getSwayAmount() * .1f * MathHelper.sin(.15f * animationProgress);
+		bottomTentacle.pitch = -nautilus.getSwayAmount() * .1f * -MathHelper.sin(.15f * animationProgress);
+		if (nautilus.isMoving() && nautilus.isSubmergedInWater()) {
+			shell.roll = -.08f * MathHelper.sin(.08f * animationProgress);
+		}
 	}
 
 	@Override

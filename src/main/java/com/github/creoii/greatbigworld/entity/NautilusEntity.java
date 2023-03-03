@@ -94,6 +94,14 @@ public class NautilusEntity extends FishEntity {
         }
     }
 
+    public boolean isMoving() {
+        return getVelocity() != Vec3d.ZERO;
+    }
+
+    public float getSwayAmount() {
+        return !isSubmergedInWater() || isMoving() ? 1.4f : 1f;
+    }
+
     @Override
     protected SoundEvent getFlopSound() {
         return SoundEvents.ENTITY_PUFFER_FISH_FLOP;
@@ -111,11 +119,12 @@ public class NautilusEntity extends FishEntity {
 
     @SuppressWarnings("deprecation")
     public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-        return pos.getY() >= world.getBottomY() && pos.getY() <= world.getSeaLevel() - 15 && world.getFluidState(pos).isIn(FluidTags.WATER);
+        return pos.getY() <= world.getSeaLevel() - 23;
     }
 
     public void onOxidizing() {
         emitGameEvent(GameEvent.BLOCK_CHANGE);
+        playSound(SoundEvents.ITEM_HONEYCOMB_WAX_ON, getSoundVolume(), getSoundPitch());
     }
 
     public static class NautilusOxidizeGoal extends Goal {
