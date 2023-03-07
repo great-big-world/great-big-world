@@ -137,6 +137,10 @@ public class BlockRegistry implements Register {
     public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
+    //region Sacks
+    //public static final Block SACK = new SackBlock(new Identifier("air"));
+    //public static final Block BLUE_DYE_SACK = new SackBlock(new Identifier("blue_dye"));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
@@ -148,6 +152,7 @@ public class BlockRegistry implements Register {
     public static final Block TROPICAL_FERN = new FernBlock(FabricBlockSettings.copy(Blocks.FERN));
     public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
     public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block NAUTILUS_FOSSIL = new Block(FabricBlockSettings.copy(Blocks.STONE));
     //endregion
 
     public void register() {
@@ -254,6 +259,10 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN, null);
+        registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, null, Items.END_STONE, ItemGroups.NATURAL);
+
+        //registerBlock(new Identifier(NAMESPACE, "sack"), SACK, null, ItemGroups.FUNCTIONAL);
+        //registerBlock(new Identifier(NAMESPACE, "blue_dye_sack"), BLUE_DYE_SACK, null, ItemGroups.FUNCTIONAL);
     }
 
     @Override

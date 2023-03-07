@@ -113,7 +113,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @Override
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (!state.get(WATERLOGGED) && random.nextInt(5) <= (state.get(MUSHROOMS))) {
+        if (!state.get(WATERLOGGED) && random.nextInt(6) <= (state.get(MUSHROOMS))) {
             spawnParticle(world, pos, random, 0d, 0d, 0d);
         }
     }

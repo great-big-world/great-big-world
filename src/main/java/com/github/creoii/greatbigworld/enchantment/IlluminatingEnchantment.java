@@ -6,7 +6,7 @@ import net.minecraft.entity.EquipmentSlot;
 
 public class IlluminatingEnchantment extends GBWEnchantment {
     public IlluminatingEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, new EquipmentSlot[]{EquipmentSlot.HEAD}, stack -> stack.isIn(Tags.ItemTags.WOODEN_MASKS));
+        super(Rarity.UNCOMMON, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[]{EquipmentSlot.HEAD}, stack -> stack.isIn(Tags.ItemTags.WOODEN_MASKS));
     }
 
     @Override

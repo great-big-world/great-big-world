@@ -15,7 +15,6 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.resource.featuretoggle.FeatureFlags;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -26,17 +25,20 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class ItemRegistry implements Register {
     //region Mahogany Wood
+    public static final Item MAHOGANY_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.MAHOGANY.sign(), BlockRegistry.MAHOGANY.wallSign());
     public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new FabricItemSettings());
     public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
     public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
     //endregion
     //region Aspen Wood
+    public static final Item ASPEN_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.ASPEN.sign(), BlockRegistry.ASPEN.wallSign());
     public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new FabricItemSettings());
     public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAF_PILE, new FabricItemSettings());
     public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
     //endregion
     //region Acai Wood
+    public static final Item ACAI_SIGN = new SignItem(new FabricItemSettings().maxCount(16), BlockRegistry.ACAI.sign(), BlockRegistry.ACAI.wallSign());
     public static final Item ACAI_LEAVES = new BlockItem(BlockRegistry.ACAI_LEAVES, new FabricItemSettings());
     public static final Item HANGING_ACAI_LEAVES = new BlockItem(BlockRegistry.HANGING_ACAI_LEAVES, new FabricItemSettings());
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
@@ -62,9 +64,9 @@ public class ItemRegistry implements Register {
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(BlockRegistry.ACAI.planks()));
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
-    public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
-    public static final Item BAMBOO_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BAMBOO_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
-    public static final Item CHERRY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
+    public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
+    //public static final Item BAMBOO_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BAMBOO_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
+    //public static final Item CHERRY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS), new FabricItemSettings().requires(FeatureFlags.UPDATE_1_20));
     public static final Item CRIMSON_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CRIMSON_PLANKS));
     public static final Item WARPED_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.WARPED_PLANKS));
     //endregion
@@ -79,13 +81,16 @@ public class ItemRegistry implements Register {
 
     @Override
     public void register() {
+        registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, Items.BIRCH_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN, MAHOGANY_SIGN, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, MAHOGANY_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, ACAI_LEAVES, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
@@ -106,8 +111,8 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACAI_MASK));
         registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACACIA_MASK));
         registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, DARK_OAK_MASK));
-        registerItem(new Identifier(NAMESPACE, "bamboo_mask"), BAMBOO_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
-        registerItem(new Identifier(NAMESPACE, "cherry_mask"), CHERRY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BAMBOO_MASK));
+        //registerItem(new Identifier(NAMESPACE, "bamboo_mask"), BAMBOO_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
+        //registerItem(new Identifier(NAMESPACE, "cherry_mask"), CHERRY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BAMBOO_MASK));
         registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
         registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
         registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);

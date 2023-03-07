@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
@@ -27,6 +28,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> PATCH_TROPICAL_FERN;
     public static RegistryKey<PlacedFeature> ACAI;
     public static RegistryKey<PlacedFeature> SPARSE_ACAI;
+    public static RegistryKey<PlacedFeature> ORE_NAUTILUS_FOSSIL;
 
     @Override
     public void register() {
@@ -44,6 +46,7 @@ public class PlacedFeatureRegistry implements Register {
         PATCH_TROPICAL_FERN = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_tropical_fern"));
         ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "acai"));
         SPARSE_ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "sparse_acai"));
+        ORE_NAUTILUS_FOSSIL = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "ore_nautilus_fossil"));
         modifyGeneration();
     }
 
@@ -58,9 +61,10 @@ public class PlacedFeatureRegistry implements Register {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.OLD_GROWTH_SPRUCE_TAIGA, BiomeKeys.OLD_GROWTH_PINE_TAIGA), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DAYLIGHT_MUSHROOMS);
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_DARKBLIGHT_MUSHROOMS);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.HEATHER_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_HEATHER);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_BEACH), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_BEACHGRASS);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.TROPICAL_FERN_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, PATCH_TROPICAL_FERN);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, ACAI);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, SPARSE_ACAI);
+        BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, ORE_NAUTILUS_FOSSIL);
     }
 }

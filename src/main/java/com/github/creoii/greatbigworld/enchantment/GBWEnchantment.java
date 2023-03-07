@@ -8,15 +8,15 @@ import net.minecraft.item.ItemStack;
 import java.util.function.Predicate;
 
 public class GBWEnchantment extends Enchantment {
-    private final Predicate<ItemStack> acceptableItem;
+    private final Predicate<ItemStack> acceptableItemPredicate;
 
-    protected GBWEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes, Predicate<ItemStack> acceptableItem) {
+    protected GBWEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes, Predicate<ItemStack> acceptableItemPredicate) {
         super(weight, type, slotTypes);
-        this.acceptableItem = acceptableItem;
+        this.acceptableItemPredicate = acceptableItemPredicate;
     }
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return acceptableItem.test(stack);
+        return acceptableItemPredicate.test(stack);
     }
 }

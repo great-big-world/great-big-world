@@ -9,8 +9,6 @@ import com.github.creoii.greatbigworld.client.render.ThicketEntityRenderer;
 import com.github.creoii.greatbigworld.client.render.WoodenMaskRenderer;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -37,6 +35,6 @@ public class RenderRegistry implements Register {
         EntityModelLayerRegistry.registerModelLayer(THICKET_OUTER_MODEL_LAYER, SkeletonEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(NAUTILUS_MODEL_LAYER, NautilusEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(WOODEN_MASK_MODEL_LAYER, WoodenMaskModel::getTexturedModelData);
-        ArmorRenderer.register(new WoodenMaskRenderer(), ItemRegistry.OAK_MASK, ItemRegistry.SPRUCE_MASK, ItemRegistry.BIRCH_MASK, ItemRegistry.ASPEN_MASK, ItemRegistry.JUNGLE_MASK, ItemRegistry.MAHOGANY_MASK, ItemRegistry.ACAI_MASK, ItemRegistry.ACACIA_MASK, ItemRegistry.DARK_OAK_MASK, ItemRegistry.MANGROVE_MASK, ItemRegistry.BAMBOO_MASK, ItemRegistry.CHERRY_MASK, ItemRegistry.CRIMSON_MASK, ItemRegistry.WARPED_MASK);
+        ArmorRenderer.register(new WoodenMaskRenderer(), ItemRegistry.OAK_MASK, ItemRegistry.SPRUCE_MASK, ItemRegistry.BIRCH_MASK, ItemRegistry.ASPEN_MASK, ItemRegistry.JUNGLE_MASK, ItemRegistry.MAHOGANY_MASK, ItemRegistry.ACAI_MASK, ItemRegistry.ACACIA_MASK, ItemRegistry.DARK_OAK_MASK, ItemRegistry.MANGROVE_MASK, ItemRegistry.CRIMSON_MASK, ItemRegistry.WARPED_MASK);
     }
 }

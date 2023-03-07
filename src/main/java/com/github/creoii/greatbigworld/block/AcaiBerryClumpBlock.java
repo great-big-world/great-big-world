@@ -52,21 +52,25 @@ public class AcaiBerryClumpBlock extends Block implements Fertilizable {
         BlockState state = ctx.getWorld().getBlockState(ctx.getBlockPos());
         if (state.isOf(this)) {
             return state.with(BERRIES, Math.min(5, state.get(BERRIES) + 1));
-        } else {
-            Direction[] directions = ctx.getPlacementDirections();
-            for (Direction direction : directions) {
-                if (!direction.getAxis().isHorizontal() || !(state = getDefaultState().with(HORIZONTAL_FACING, direction.getOpposite())).canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) continue;
-                return state;
-            }
+        }
+        state = getDefaultState();
+        Direction[] directions = ctx.getPlacementDirections();
+        World worldView = ctx.getWorld();
+        BlockPos blockPos = ctx.getBlockPos();
+        for (Direction direction : directions) {
+            if (!direction.getAxis().isHorizontal() || !(state = state.with(HORIZONTAL_FACING, direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
+            return state;
         }
         return null;
     }
 
+    @Override
     @SuppressWarnings("deprecation")
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.up();
-        BlockState ceiling = world.getBlockState(blockPos);
-        return !ceiling.getCollisionShape(world, blockPos).getFace(Direction.DOWN).isEmpty() && ceiling.isIn(Tags.BlockTags.ACAI_BERRY_PLACEABLE);
+        Direction direction = state.get(HORIZONTAL_FACING);
+        BlockPos blockPos = pos.offset(direction.getOpposite());
+        BlockState blockState = world.getBlockState(blockPos);
+        return blockState.isSideSolidFullSquare(world, blockPos, direction) && blockState.isIn(Tags.BlockTags.ACAI_BERRY_PLACEABLE);
     }
 
     @SuppressWarnings("deprecation")

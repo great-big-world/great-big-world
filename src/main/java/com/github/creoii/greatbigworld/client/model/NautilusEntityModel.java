@@ -8,7 +8,6 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 
 @Environment(EnvType.CLIENT)
 public class NautilusEntityModel<T extends NautilusEntity> extends SinglePartEntityModel<T> {

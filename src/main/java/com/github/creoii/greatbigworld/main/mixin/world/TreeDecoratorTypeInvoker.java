@@ -1,8 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.world;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.world.gen.foliage.FoliagePlacer;
-import net.minecraft.world.gen.foliage.FoliagePlacerType;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import org.spongepowered.asm.mixin.Mixin;
