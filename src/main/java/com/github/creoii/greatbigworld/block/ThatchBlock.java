@@ -32,8 +32,9 @@ public class ThatchBlock extends PillarBlock {
     }
 
     @Override
-    public boolean isTranslucent(BlockState state, BlockView world, BlockPos pos) {
-        return true;
+    @SuppressWarnings("deprecation")
+    public int getOpacity(BlockState state, BlockView world, BlockPos pos) {
+        return 0;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class ThatchBlock extends PillarBlock {
                 if (player instanceof ServerPlayerEntity serverPlayerEntity) {
                     Criteria.ITEM_USED_ON_BLOCK.trigger(serverPlayerEntity, pos, held);
                 }
-                world.setBlockState(pos, trimmedBlock.getDefaultState(), 3);
+                world.setBlockState(pos, trimmedBlock.getDefaultState().with(AXIS, state.get(AXIS)), 3);
             }
             return ActionResult.success(world.isClient);
         }
