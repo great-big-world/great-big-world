@@ -42,6 +42,16 @@
   "great_big_world:cobblestone_brick_wall.bigger": "brickstone",
   "great_big_world:mossy_cobblestone_brick_wall.bigger": "brickstone",
 
+  "great_big_world:lavarock": "stone",
+  "great_big_world:lavarock_stairs": "stone",
+  "great_big_world:lavarock_slab": "stone",
+  "great_big_world:lavarock_wall.bigger": "stone",
+  "great_big_world:lavarock_bricks": "brickstone",
+  "great_big_world:lavarock_brick_stairs": "brickstone",
+  "great_big_world:lavarock_brick_slab": "brickstone",
+  "great_big_world:lavarock_brick_wall.bigger": "brickstone",
+  "great_big_world:grassy_lavarock": "grass",
+
   "great_big_world:acai_log": "wood",
   "great_big_world:stripped_acai_log": "wood,stone",
   "great_big_world:acai_wood": "wood",
@@ -49,5 +59,24 @@
   "great_big_world:acai_slab": "wood",
   "great_big_world:acai_fence_gate.bigger": "bluntwood",
   "great_big_world:acai_button[face=floor].foliage": "wood",
-  "great_big_world:acai_button": "NOT_EMITTER"
+  "great_big_world:acai_button": "NOT_EMITTER",
+
+  "great_big_world:elder_prismarine_slab": "stone",
+  "great_big_world:elder_prismarine_brick_slab": "brickstone",
+  "great_big_world:elder_prismarine_wall.bigger": "stone",
+  "great_big_world:elder_prismarine": "stone",
+  "great_big_world:elder_prismarine_bricks": "brickstone",
+  "great_big_world:elder_prismarine_stairs": "stone",
+  "great_big_world:elder_prismarine_brick_stairs": "brickstone",
+  "great_big_world:elder_sea_lantern": "stoneutility",
+
+  "great_big_world:tall_beachgrass": "NOT_EMITTER",
+  "great_big_world:tall_beachgrass.messy": "MESSY_GROUND",
+  "great_big_world:tall_beachgrass.foliage": "brush_straw_transition",
+
+  "great_big_world:large_tropical_fern": "NOT_EMITTER",
+  "great_big_world:large_tropical_fern.messy": "MESSY_GROUND",
+  "great_big_world:large_tropical_fern.foliage": "brush_straw_transition",
+
+  "great_big_world:nautilus_fossil": "ore"
 }
