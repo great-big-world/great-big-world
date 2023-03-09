@@ -103,7 +103,7 @@
     "description": {
       "translate": "advancements.adventure.on_a_tropical_island.description"
     },
-    "frame": "challenge",
+    "frame": "task",
     "hidden": false,
     "icon": {
       "item": "great_big_world:acai_sapling"
