@@ -1,0 +1,136 @@
+{
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "great_big_world:island_beach": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:island_beach"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "great_big_world:island_jungle": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:island_jungle"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "great_big_world:island_sparse_jungle": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:island_sparse_jungle"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "great_big_world:volcanic_beach": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:volcanic_beach"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "great_big_world:volcanic_slopes": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:volcanic_slopes"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    },
+    "great_big_world:volcanic_crater": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "biome": "great_big_world:volcanic_crater"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.on_a_tropical_island.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "great_big_world:acai_sapling"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.on_a_tropical_island.title"
+    }
+  },
+  "requirements": [
+    [
+      "great_big_world:island_beach"
+    ],
+    [
+      "great_big_world:island_jungle"
+    ],
+    [
+      "great_big_world:island_sparse_jungle"
+    ],
+    [
+      "great_big_world:volcanic_beach"
+    ],
+    [
+      "great_big_world:volcanic_slopes"
+    ],
+    [
+      "great_big_world:volcanic_crater"
+    ]
+  ]
+}
