@@ -11,7 +11,6 @@ public class GreatBigWorld implements ModInitializer {
     public static final String VERSION = "1.2.0";
     public static final Register[] REGISTERS = new Register[]{
             new BlockRegistry(),
-            new BlockEntityRegistry(),
             new ItemRegistry(),
             new EntityRegistry(),
             new PlacerRegistry(),

@@ -20,11 +20,14 @@ import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 public class AcaiBerryClumpBlock extends Block implements Fertilizable {
-    private static final VoxelShape ONE_SHAPE = Block.createCuboidShape(5d, 10d, 5d, 11d, 16d, 11d);
-    private static final VoxelShape TWO_SHAPE = Block.createCuboidShape(4d, 8d, 4d, 12d, 16d, 12d);
-    private static final VoxelShape THREE_SHAPE = Block.createCuboidShape(4d, 6d, 4d, 12d, 16d, 12d);
-    private static final VoxelShape FOUR_SHAPE = Block.createCuboidShape(4d, 4d, 4d, 12d, 16d, 12d);
-    private static final VoxelShape FIVE_SHAPE = Block.createCuboidShape(4d, 2d, 4d, 12d, 16d, 12d);
+    private static final VoxelShape BIG_NORTH_SHAPE = Block.createCuboidShape(4d, 6d, 8d, 12d, 16d, 16d);
+    private static final VoxelShape BIG_SOUTH_SHAPE = Block.createCuboidShape(4d, 6d, 0d, 12d, 16d, 8d);
+    private static final VoxelShape BIG_EAST_SHAPE = Block.createCuboidShape(0d, 6d, 4d, 8d, 16d, 12d);
+    private static final VoxelShape BIG_WEST_SHAPE = Block.createCuboidShape(8d, 6d, 4d, 16d, 16d, 12d);
+    private static final VoxelShape SMALL_NORTH_SHAPE = Block.createCuboidShape(4d, 9d, 8d, 12d, 16d, 16d);
+    private static final VoxelShape SMALL_SOUTH_SHAPE = Block.createCuboidShape(4d, 9d, 0d, 12d, 16d, 8d);
+    private static final VoxelShape SMALL_EAST_SHAPE = Block.createCuboidShape(0d, 9d, 4d, 8d, 16d, 12d);
+    private static final VoxelShape SMALL_WEST_SHAPE = Block.createCuboidShape(8d, 9d, 4d, 16d, 16d, 12d);
     public static final IntProperty BERRIES = IntProperty.of("berries", 1, 5);
     public static final DirectionProperty HORIZONTAL_FACING = Properties.HORIZONTAL_FACING;
 
@@ -36,12 +39,12 @@ public class AcaiBerryClumpBlock extends Block implements Fertilizable {
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return switch (state.get(BERRIES)) {
-            case 2 -> TWO_SHAPE;
-            case 3 -> THREE_SHAPE;
-            case 4 -> FOUR_SHAPE;
-            case 5 -> FIVE_SHAPE;
-            default -> ONE_SHAPE;
+        int i = state.get(BERRIES);
+        return switch (state.get(HORIZONTAL_FACING)) {
+            case SOUTH -> i < 3 ? SMALL_SOUTH_SHAPE : BIG_SOUTH_SHAPE;
+            case EAST -> i < 3 ? SMALL_EAST_SHAPE : BIG_EAST_SHAPE;
+            case WEST -> i < 3 ? SMALL_WEST_SHAPE : BIG_WEST_SHAPE;
+            default -> i < 3 ? SMALL_NORTH_SHAPE : BIG_NORTH_SHAPE;
         };
     }
 
