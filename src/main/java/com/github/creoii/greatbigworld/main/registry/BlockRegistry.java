@@ -93,18 +93,24 @@ public class BlockRegistry implements Register {
     public static final Block WHITE_STAINED_CALCITE = new Block(FabricBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
     //region Thatch
-    public static final Block TRIMMED_BEACHGRASS_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final Block TRIMMED_BEACHGRASS_THATCH = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final Block BEACHGRASS_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH);
     public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
     public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
     public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH));
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BEACHGRASS_THATCH), TRIMMED_BEACHGRASS_THATCH_SLAB);
-    public static final Block TRIMMED_BAMBOO_THATCH = new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final Block TRIMMED_BAMBOO_THATCH = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
     public static final Block BAMBOO_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH), TRIMMED_BAMBOO_THATCH);
     public static final Block TRIMMED_BAMBOO_THATCH_STAIRS = new StairsBlock(TRIMMED_BAMBOO_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH));
     public static final Block BAMBOO_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(BAMBOO_THATCH), BAMBOO_THATCH.getDefaultState(), TRIMMED_BAMBOO_THATCH_STAIRS);
     public static final Block TRIMMED_BAMBOO_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_BAMBOO_THATCH));
     public static final Block BAMBOO_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(BAMBOO_THATCH), TRIMMED_BAMBOO_THATCH_SLAB);
+    public static final Block TRIMMED_GRASS_THATCH = new PillarBlock(FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque());
+    public static final Block GRASS_THATCH = new ThatchBlock(FabricBlockSettings.copy(TRIMMED_GRASS_THATCH), TRIMMED_GRASS_THATCH);
+    public static final Block TRIMMED_GRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_GRASS_THATCH.getDefaultState(), FabricBlockSettings.copy(TRIMMED_GRASS_THATCH));
+    public static final Block GRASS_THATCH_STAIRS = new ThatchStairsBlock(FabricBlockSettings.copy(GRASS_THATCH), GRASS_THATCH.getDefaultState(), TRIMMED_GRASS_THATCH_STAIRS);
+    public static final Block TRIMMED_GRASS_THATCH_SLAB = new SlabBlock(FabricBlockSettings.copy(TRIMMED_GRASS_THATCH));
+    public static final Block GRASS_THATCH_SLAB = new ThatchSlabBlock(FabricBlockSettings.copy(GRASS_THATCH), TRIMMED_GRASS_THATCH_SLAB);
     //endregion
     //region Lavarock
     public static final Block VOLCANIC_SAND = new SandBlock(2827557, FabricBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
@@ -136,10 +142,6 @@ public class BlockRegistry implements Register {
     public static final Block ELDER_PRISMARINE_BRICK_STAIRS = new StairsBlock(ELDER_PRISMARINE_BRICKS.getDefaultState(), FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
-    //endregion
-    //region Sacks
-    //public static final Block SACK = new SackBlock(new Identifier("air"));
-    //public static final Block BLUE_DYE_SACK = new SackBlock(new Identifier("blue_dye"));
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -220,6 +222,12 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, new ExtendedBlockSettings(0f, 80, 160, null), ItemGroups.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, new ExtendedBlockSettings(0f, 70, 140, null), ItemGroups.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, new ExtendedBlockSettings(0f, 80, 160, null));
+        registerBlock(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH, new ExtendedBlockSettings(0f, 70, 140, null));
+        registerBlock(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 80, 160, null));
+        registerBlock(new Identifier(NAMESPACE, "trimmed_grass_thatch_stairs"), TRIMMED_GRASS_THATCH_STAIRS, new ExtendedBlockSettings(0f, 70, 140, null));
+        registerBlock(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 80, 160, null));
+        registerBlock(new Identifier(NAMESPACE, "trimmed_grass_thatch_slab"), TRIMMED_GRASS_THATCH_SLAB, new ExtendedBlockSettings(0f, 70, 140, null));
 
         registerBlock(new Identifier(NAMESPACE, "volcanic_sand"), VOLCANIC_SAND, null, new ItemRegistry.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_SANDSTONE));
         registerBlock(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, null);
@@ -260,9 +268,6 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN, null);
         registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, null, Items.END_STONE, ItemGroups.NATURAL);
-
-        //registerBlock(new Identifier(NAMESPACE, "sack"), SACK, null, ItemGroups.FUNCTIONAL);
-        //registerBlock(new Identifier(NAMESPACE, "blue_dye_sack"), BLUE_DYE_SACK, null, ItemGroups.FUNCTIONAL);
     }
 
     @Override
@@ -294,6 +299,9 @@ public class BlockRegistry implements Register {
                 BAMBOO_THATCH,
                 BAMBOO_THATCH_SLAB,
                 BAMBOO_THATCH_STAIRS,
+                GRASS_THATCH,
+                GRASS_THATCH_SLAB,
+                GRASS_THATCH_STAIRS,
                 ANTLER,
                 HEATHER,
                 TALL_HEATHER,
@@ -318,7 +326,7 @@ public class BlockRegistry implements Register {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {

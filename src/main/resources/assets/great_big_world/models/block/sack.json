@@ -1,9 +1,0 @@
-{
-    "parent": "great_big_world:block/sack_template",
-    "textures": {
-        "top": "great_big_world:block/sack_top",
-        "side": "great_big_world:block/sack_side",
-        "bottom": "great_big_world:block/sack_bottom",
-        "handle": "great_big_world:block/sack_handle"
-    }
-}

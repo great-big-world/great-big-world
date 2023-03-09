@@ -3,6 +3,7 @@ package com.github.creoii.greatbigworld.block;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShearsItem;
@@ -16,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class ThatchBlock extends Block {
+public class ThatchBlock extends PillarBlock {
     private final Block trimmedBlock;
 
     public ThatchBlock(Settings settings, Block trimmedBlock) {

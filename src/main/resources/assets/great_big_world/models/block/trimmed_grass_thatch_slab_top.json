@@ -1,0 +1,8 @@
+{
+    "parent": "great_big_world:block/tinted_slab_top",
+    "textures": {
+        "bottom": "great_big_world:block/grass_thatch",
+        "top": "great_big_world:block/grass_thatch",
+        "side": "great_big_world:block/grass_thatch"
+    }
+}

@@ -1,7 +1,7 @@
 {
   "variants": {
-    "": {
-      "model": "great_big_world:block/trimmed_bamboo_thatch"
-    }
+    "axis=y": { "model": "great_big_world:block/trimmed_bamboo_thatch" },
+    "axis=z": { "model": "great_big_world:block/trimmed_bamboo_thatch", "x": 90 },
+    "axis=x": { "model": "great_big_world:block/trimmed_bamboo_thatch", "x": 90, "y": 90 }
   }
 }

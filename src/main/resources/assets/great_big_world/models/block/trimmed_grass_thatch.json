@@ -1,0 +1,6 @@
+{
+  "parent": "great_big_world:block/tinted_cube_all",
+  "textures": {
+    "all": "great_big_world:block/grass_thatch"
+  }
+}
