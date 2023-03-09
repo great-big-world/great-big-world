@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.main.mixin;
+package com.github.creoii.greatbigworld.main.mixin.enchantment;
 
 import com.github.creoii.greatbigworld.main.util.AllowEnchantments;
 import net.minecraft.enchantment.Enchantment;
@@ -13,7 +13,9 @@ public class EnchantmentMixin {
     @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
     private void great_big_world_acceptableEnchantments(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (stack.getItem() instanceof AllowEnchantments allowEnchantments) {
-            cir.setReturnValue(allowEnchantments.getAllowedEnchantments().test((Enchantment) (Object) this));
+            boolean bl = allowEnchantments.getAllowedEnchantments().test((Enchantment) (Object) this);
+            System.out.println(bl);
+            cir.setReturnValue(bl);
         }
     }
 }

@@ -23,16 +23,9 @@ public class WoodenMaskItem extends ArmorItem implements AllowEnchantments {
         WOODEN_MASKS.add(this);
     }
 
-    public WoodenMaskItem(WoodenMaskArmorMaterial material, Settings settings) {
-        super(material, EquipmentSlot.HEAD, settings.maxCount(1));
-        WOODEN_MASKS.add(this);
-    }
-
     @Override
     public Predicate<Enchantment> getAllowedEnchantments() {
-        return enchantment -> {
-            return Registries.ENCHANTMENT.getEntry(enchantment).isIn(Tags.EnchantmentTags.MASK_ALLOWED);
-        };
+        return enchantment -> Registries.ENCHANTMENT.getEntry(enchantment).isIn(Tags.EnchantmentTags.MASK_ALLOWED);
     }
 
     public static Item getRandomMask() {
