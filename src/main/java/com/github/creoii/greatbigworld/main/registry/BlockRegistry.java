@@ -125,7 +125,7 @@ public class BlockRegistry implements Register {
     public static final Block LAVAROCK_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
-    public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign(), GBWSignTypes.ACAI);
+    public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign(), GBWSignTypes.ACAI);
     public static final Block ACAI_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(ACAI_LEAVES));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(MAHOGANY_SAPLING));
