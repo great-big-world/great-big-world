@@ -2,6 +2,6 @@
   "parent": "block/cube_column",
   "textures": {
     "side": "great_big_world:block/wisteria_log",
-    "end": "great_big_world:block/aspen_log_top"
+    "end": "great_big_world:block/wisteria_log_top"
   }
 }

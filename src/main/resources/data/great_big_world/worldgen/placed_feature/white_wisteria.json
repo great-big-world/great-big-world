@@ -22,7 +22,7 @@
     },
     {
       "type": "great_big_world:noise",
-      "noise_parameters": "great_big_world:wisteria",
+      "noise_parameters": "great_big_world:wisteria_variation",
       "ranges": [
         {
           "min_inclusive": -2.0,

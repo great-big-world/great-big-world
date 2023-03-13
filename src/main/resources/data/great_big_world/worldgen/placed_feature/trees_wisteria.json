@@ -8,11 +8,11 @@
         "distribution": [
           {
             "data": 0,
-            "weight": 3
+            "weight": 8
           },
           {
             "data": 1,
-            "weight": 1
+            "weight": 3
           }
         ]
       }
@@ -21,7 +21,14 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "minecraft:biome"
+      "type": "great_big_world:noise",
+      "noise_parameters": "great_big_world:wisteria_trees",
+      "ranges": [
+        {
+          "min_inclusive": -2.0,
+          "max_exclusive": 1.0
+        }
+      ]
     },
     {
       "type": "minecraft:surface_water_depth_filter",
@@ -30,6 +37,21 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "minecraft:oak_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }
