@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @Mixin(BoatEntity.Type.class)
-public class BoatTypeMixin {
+public class BoatEntityTypeMixin {
     @SuppressWarnings("InvokerTarget")
     @Invoker("<init>")
     private static BoatEntity.Type create(String internalName, int internalId, Block baseBlock, String name) {
