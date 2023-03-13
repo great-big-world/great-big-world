@@ -29,6 +29,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> ACAI;
     public static RegistryKey<PlacedFeature> SPARSE_ACAI;
     public static RegistryKey<PlacedFeature> ORE_NAUTILUS_FOSSIL;
+    public static RegistryKey<PlacedFeature> TREES_WISTERIA;
 
     @Override
     public void register() {
@@ -47,6 +48,7 @@ public class PlacedFeatureRegistry implements Register {
         ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "acai"));
         SPARSE_ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "sparse_acai"));
         ORE_NAUTILUS_FOSSIL = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "ore_nautilus_fossil"));
+        TREES_WISTERIA = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_wisteria"));
         modifyGeneration();
     }
 

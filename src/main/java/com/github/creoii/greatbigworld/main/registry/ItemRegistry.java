@@ -46,6 +46,11 @@ public class ItemRegistry implements Register {
     public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
     public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new FabricItemSettings().food(GBWFoods.ACAI_BERRIES));
     //endregion
+    //region Wisteria Wood
+    public static final Item WISTERIA_SIGN = new SignItem(new FabricItemSettings().maxCount(16), WISTERIA.sign(), WISTERIA.wallSign());
+    public static final Item WISTERIA_BOAT = new BoatItem(false, GBWBoatTypes.WISTERIA, new FabricItemSettings().maxCount(1));
+    public static final Item WISTERIA_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.WISTERIA, new FabricItemSettings().maxCount(1));
+    //endregion
     //region Bamboo
     public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.BAMBOO_TORCH, BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
     public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
@@ -60,6 +65,7 @@ public class ItemRegistry implements Register {
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
     public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN.planks()));
+    public static final Item WISTERIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(WISTERIA.planks()));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
     public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(MAHOGANY.planks()));
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ACAI.planks()));
@@ -103,6 +109,9 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES, new ItemGroupSettings(ItemGroups.NATURAL, Items.GLOW_BERRIES), new ItemGroupSettings(ItemGroups.FOOD_AND_DRINK, Items.GLOW_BERRIES));
+        registerItem(new Identifier(NAMESPACE, "wisteria_sign"), WISTERIA_SIGN, ASPEN_SIGN, ItemGroups.FUNCTIONAL);
+        registerItem(new Identifier(NAMESPACE, "wisteria_boat"), WISTERIA_BOAT, ASPEN_CHEST_BOAT, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "wisteria_chest_boat"), WISTERIA_CHEST_BOAT, ASPEN_CHEST_BOAT, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
@@ -112,7 +121,8 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, OAK_MASK));
         registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, new ItemGroupSettings(ItemGroups.COMBAT, SPRUCE_MASK));
         registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BIRCH_MASK));
-        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ASPEN_MASK));
+        registerItem(new Identifier(NAMESPACE, "wisteria_mask"), WISTERIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ASPEN_MASK));
+        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, WISTERIA_MASK));
         registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, JUNGLE_MASK));
         registerItem(new Identifier(NAMESPACE, "acai_mask"), ACAI_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MAHOGANY_MASK));
         registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACAI_MASK));
@@ -174,6 +184,21 @@ public class ItemRegistry implements Register {
         CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH, .3f);
         CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH_SLAB, .3f);
         CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH_STAIRS, .3f);
+        CompostingChanceRegistry.INSTANCE.add(WHITE_WISTERIA_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_WHITE_WISTERIA_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(WHITE_WISTERIA_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(YELLOW_WISTERIA_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_YELLOW_WISTERIA_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(YELLOW_WISTERIA_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(BLUE_WISTERIA_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_BLUE_WISTERIA_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(BLUE_WISTERIA_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(PINK_WISTERIA_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_PINK_WISTERIA_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(PINK_WISTERIA_SAPLING, .3f);
+        CompostingChanceRegistry.INSTANCE.add(PURPLE_WISTERIA_LEAVES, .3f);
+        CompostingChanceRegistry.INSTANCE.add(HANGING_PURPLE_WISTERIA_LEAVES, .2f);
+        CompostingChanceRegistry.INSTANCE.add(PURPLE_WISTERIA_SAPLING, .3f);
     }
 
     @Override

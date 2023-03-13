@@ -124,7 +124,7 @@ public class BlockRegistry implements Register {
     public static final Block LAVAROCK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     public static final Block LAVAROCK_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
-    //region Acai
+    //region Acai Wood
     public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign(), GBWSignTypes.ACAI);
     public static final Block ACAI_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(ACAI_LEAVES));
@@ -143,6 +143,29 @@ public class BlockRegistry implements Register {
     public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
+    //region Wisteria Wood
+    public static DefaultBlockSets.WoodSet WISTERIA = DefaultBlockSets.createWoodSet("wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, ASPEN.button(), ASPEN.log(), ASPEN.sign(), GBWSignTypes.WISTERIA);
+    public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block PINK_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block PURPLE_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block HANGING_WHITE_WISTERIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block HANGING_YELLOW_WISTERIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block HANGING_BLUE_WISTERIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block HANGING_PINK_WISTERIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block HANGING_PURPLE_WISTERIA_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
+    public static final Block WHITE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block YELLOW_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block BLUE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block PINK_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block PURPLE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block POTTED_WHITE_WISTERIA_SAPLING = new FlowerPotBlock(WHITE_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block POTTED_YELLOW_WISTERIA_SAPLING = new FlowerPotBlock(YELLOW_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block POTTED_BLUE_WISTERIA_SAPLING = new FlowerPotBlock(BLUE_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block POTTED_PINK_WISTERIA_SAPLING = new FlowerPotBlock(PINK_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block POTTED_PURPLE_WISTERIA_SAPLING = new FlowerPotBlock(PURPLE_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
@@ -155,6 +178,12 @@ public class BlockRegistry implements Register {
     public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(FabricBlockSettings.copy(Blocks.LARGE_FERN));
     public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block NAUTILUS_FOSSIL = new Block(FabricBlockSettings.copy(Blocks.STONE));
+    public static final Block WHITE_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block YELLOW_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block BLUE_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block PINK_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
+    public static final Block GOLDEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW));
     //endregion
 
     public void register() {
@@ -257,6 +286,28 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, ELDER_PRISMARINE_BRICK_SLAB));
         registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
+        WISTERIA.register();
+        registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "pink_wisteria_leaves"), PINK_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "purple_wisteria_leaves"), PURPLE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "hanging_white_wisteria_leaves"), HANGING_WHITE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), WHITE_WISTERIA_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "hanging_yellow_wisteria_leaves"), HANGING_YELLOW_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), YELLOW_WISTERIA_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "hanging_blue_wisteria_leaves"), HANGING_BLUE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), BLUE_WISTERIA_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "hanging_pink_wisteria_leaves"), HANGING_PINK_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), PINK_WISTERIA_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "hanging_purple_wisteria_leaves"), HANGING_PURPLE_WISTERIA_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null), PURPLE_WISTERIA_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "white_wisteria_sapling"), WHITE_WISTERIA_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_sapling"), YELLOW_WISTERIA_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "blue_wisteria_sapling"), BLUE_WISTERIA_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "pink_wisteria_sapling"), PINK_WISTERIA_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "purple_wisteria_sapling"), PURPLE_WISTERIA_SAPLING, new ExtendedBlockSettings(0f, 0, 0, null), GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "potted_white_wisteria_sapling"), POTTED_WHITE_WISTERIA_SAPLING, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_yellow_wisteria_sapling"), POTTED_YELLOW_WISTERIA_SAPLING, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_blue_wisteria_sapling"), POTTED_BLUE_WISTERIA_SAPLING, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_pink_wisteria_sapling"), POTTED_PINK_WISTERIA_SAPLING, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_purple_wisteria_sapling"), POTTED_PURPLE_WISTERIA_SAPLING, null);
+
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, null, Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
@@ -268,60 +319,50 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, new ExtendedBlockSettings(0f, 60, 100, null));
         registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN, null);
         registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, null, Items.END_STONE, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "white_delphinium"), WHITE_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_delphinium"), YELLOW_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "blue_delphinium"), BLUE_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "pink_delphinium"), PINK_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "golden_leaves"), GOLDEN_LEAVES, new ExtendedBlockSettings(0f, 20, 25, null), Items.MANGROVE_LEAVES, ItemGroups.NATURAL);
     }
 
     @Override
     public void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                MAHOGANY.door(),
-                MAHOGANY.trapdoor(),
-                ASPEN.door(),
-                ASPEN.trapdoor(),
-                ACAI.door(),
-                ACAI.trapdoor(),
-                MAHOGANY_SAPLING,
-                POTTED_MAHOGANY_SAPLING,
-                YELLOW_ASPEN_SAPLING,
-                POTTED_YELLOW_ASPEN_SAPLING,
-                GREEN_ASPEN_SAPLING,
-                POTTED_GREEN_ASPEN_SAPLING,
-                ACAI_SAPLING,
-                POTTED_ACAI_SAPLING,
-                BAMBOO_TORCH,
-                BAMBOO_WALL_TORCH,
-                POTTED_BAMBOO_TORCH,
-                SOUL_BAMBOO_TORCH,
-                SOUL_BAMBOO_WALL_TORCH,
-                POTTED_SOUL_BAMBOO_TORCH,
-                BEACHGRASS_THATCH,
-                BEACHGRASS_THATCH_SLAB,
-                BEACHGRASS_THATCH_STAIRS,
-                BAMBOO_THATCH,
-                BAMBOO_THATCH_SLAB,
-                BAMBOO_THATCH_STAIRS,
-                GRASS_THATCH,
-                GRASS_THATCH_SLAB,
-                GRASS_THATCH_STAIRS,
+                MAHOGANY.door(), MAHOGANY.trapdoor(),
+                ASPEN.door(), ASPEN.trapdoor(),
+                ACAI.door(), ACAI.trapdoor(),
+                WISTERIA.door(), WISTERIA.trapdoor(),
+                MAHOGANY_SAPLING, POTTED_MAHOGANY_SAPLING,
+                YELLOW_ASPEN_SAPLING, POTTED_YELLOW_ASPEN_SAPLING,
+                GREEN_ASPEN_SAPLING, POTTED_GREEN_ASPEN_SAPLING,
+                ACAI_SAPLING, POTTED_ACAI_SAPLING,
+                WHITE_WISTERIA_SAPLING, POTTED_WHITE_WISTERIA_SAPLING,
+                YELLOW_WISTERIA_SAPLING, POTTED_YELLOW_WISTERIA_SAPLING,
+                BLUE_WISTERIA_SAPLING, POTTED_BLUE_WISTERIA_SAPLING,
+                PINK_WISTERIA_SAPLING, POTTED_PINK_WISTERIA_SAPLING,
+                PURPLE_WISTERIA_SAPLING, POTTED_PURPLE_WISTERIA_SAPLING,
+                BAMBOO_TORCH, BAMBOO_WALL_TORCH, POTTED_BAMBOO_TORCH,
+                SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, POTTED_SOUL_BAMBOO_TORCH,
+                BEACHGRASS_THATCH, BEACHGRASS_THATCH_SLAB, BEACHGRASS_THATCH_STAIRS,
+                BAMBOO_THATCH, BAMBOO_THATCH_SLAB, BAMBOO_THATCH_STAIRS,
+                GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS,
                 ANTLER,
-                HEATHER,
-                TALL_HEATHER,
-                POTTED_HEATHER,
-                BEACHGRASS,
-                TALL_BEACHGRASS,
-                POTTED_BEACHGRASS,
-                TROPICAL_FERN,
-                LARGE_TROPICAL_FERN,
-                POTTED_TROPICAL_FERN
+                HEATHER, TALL_HEATHER, POTTED_HEATHER,
+                BEACHGRASS, TALL_BEACHGRASS, POTTED_BEACHGRASS,
+                TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN,
+                WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
-                YELLOW_ASPEN_LEAVES,
-                YELLOW_ASPEN_LEAF_PILE,
-                GREEN_ASPEN_LEAVES,
-                GREEN_ASPEN_LEAF_PILE,
+                YELLOW_ASPEN_LEAVES, YELLOW_ASPEN_LEAF_PILE,
+                GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE,
                 GRASSY_LAVAROCK,
-                ACAI_LEAVES,
-                HANGING_ACAI_LEAVES
+                ACAI_LEAVES, HANGING_ACAI_LEAVES,
+                WHITE_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES,
+                HANGING_WHITE_WISTERIA_LEAVES, HANGING_YELLOW_WISTERIA_LEAVES, HANGING_BLUE_WISTERIA_LEAVES, HANGING_PINK_WISTERIA_LEAVES, HANGING_PURPLE_WISTERIA_LEAVES,
+                GOLDEN_LEAVES
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);

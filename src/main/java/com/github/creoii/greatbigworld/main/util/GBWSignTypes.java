@@ -9,4 +9,5 @@ public class GBWSignTypes {
     public static final SignType MAHOGANY = SignTypeRegistry.registerSignType(new Identifier(GreatBigWorld.NAMESPACE, "mahogany"));
     public static final SignType ASPEN = SignTypeRegistry.registerSignType(new Identifier(GreatBigWorld.NAMESPACE, "aspen"));
     public static final SignType ACAI = SignTypeRegistry.registerSignType(new Identifier(GreatBigWorld.NAMESPACE, "acai"));
+    public static final SignType WISTERIA = SignTypeRegistry.registerSignType(new Identifier(GreatBigWorld.NAMESPACE, "wisteria"));
 }

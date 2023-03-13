@@ -1,0 +1,106 @@
+{
+  "type": "great_big_world:composite_selector",
+  "config": {
+    "features": [
+      [
+        {
+          "feature": "great_big_world:white_wisteria",
+          "placement": [
+            {
+              "type": "great_big_world:noise",
+              "noise_parameters": "great_big_world:wisteria",
+              "ranges": [
+                {
+                  "min_inclusive": -2.0,
+                  "max_exclusive": -1.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "great_big_world:yellow_wisteria",
+          "placement": [
+            {
+              "type": "great_big_world:noise",
+              "noise_parameters": "great_big_world:wisteria",
+              "ranges": [
+                {
+                  "min_exclusive": -1.0,
+                  "max_inclusive": -0.44
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "great_big_world:blue_wisteria",
+          "placement": [
+            {
+              "type": "great_big_world:noise",
+              "noise_parameters": "great_big_world:wisteria",
+              "ranges": [
+                {
+                  "min_exclusive": -0.44,
+                  "max_inclusive": 0.44
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "great_big_world:pink_wisteria",
+          "placement": [
+            {
+              "type": "great_big_world:noise",
+              "noise_parameters": "great_big_world:wisteria",
+              "ranges": [
+                {
+                  "min_exclusive": 0.44,
+                  "max_inclusive": 1.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "feature": "great_big_world:purple_wisteria",
+          "placement": [
+            {
+              "type": "great_big_world:noise",
+              "noise_parameters": "great_big_world:wisteria",
+              "ranges": [
+                {
+                  "min_exclusive": 1.0,
+                  "max_inclusive": 2.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "feature": "great_big_world:patch_white_delphiniums",
+          "placement": []
+        },
+        {
+          "feature": "great_big_world:patch_yellow_delphiniums",
+          "placement": []
+        },
+        {
+          "feature": "great_big_world:patch_blue_delphiniums",
+          "placement": []
+        },
+        {
+          "feature": "great_big_world:patch_pink_delphiniums",
+          "placement": []
+        },
+        {
+          "feature": "great_big_world:patch_purple_delphiniums",
+          "placement": []
+        }
+      ]
+    ]
+  }
+}
