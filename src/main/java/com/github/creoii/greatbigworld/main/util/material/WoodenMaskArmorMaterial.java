@@ -10,7 +10,7 @@ import net.minecraft.sound.SoundEvents;
 public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements ArmorMaterial {
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return 110;
+        return 140;
     }
 
     @Override
@@ -20,7 +20,7 @@ public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements Arm
 
     @Override
     public int getEnchantability() {
-        return 12;
+        return 11;
     }
 
     @Override
