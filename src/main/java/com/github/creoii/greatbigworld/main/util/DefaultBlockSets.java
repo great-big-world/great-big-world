@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.data.family.BlockFamily;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.sound.BlockSoundGroup;
@@ -13,10 +14,21 @@ import net.minecraft.util.SignType;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
-import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.ExtendedBlockSettings;
+import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.*;
 
 public class DefaultBlockSets {
+    public static final BlockFamily COBBLESTONE_BRICKS = new BlockFamily.Builder(BlockRegistry.COBBLESTONE_BRICKS).slab(COBBLESTONE_BRICK_SLAB).stairs(COBBLESTONE_BRICK_STAIRS).wall(COBBLESTONE_BRICK_WALL).build();
+    public static final BlockFamily MOSSY_COBBLESTONE_BRICKS = new BlockFamily.Builder(BlockRegistry.MOSSY_COBBLESTONE_BRICKS).slab(MOSSY_COBBLESTONE_BRICK_SLAB).stairs(MOSSY_COBBLESTONE_BRICK_STAIRS).wall(MOSSY_COBBLESTONE_BRICK_WALL).build();
+    public static final BlockFamily LAVAROCK = new BlockFamily.Builder(BlockRegistry.LAVAROCK).slab(LAVAROCK_SLAB).stairs(LAVAROCK_STAIRS).wall(LAVAROCK_WALL).build();
+    public static final BlockFamily LAVAROCK_BRICKS = new BlockFamily.Builder(BlockRegistry.LAVAROCK_BRICKS).slab(LAVAROCK_BRICK_SLAB).stairs(LAVAROCK_BRICK_STAIRS).wall(LAVAROCK_BRICK_WALL).build();
+    public static final BlockFamily ELDER_PRISMARINE = new BlockFamily.Builder(BlockRegistry.ELDER_PRISMARINE).slab(ELDER_PRISMARINE_SLAB).stairs(ELDER_PRISMARINE_STAIRS).wall(ELDER_PRISMARINE_WALL).build();
+    public static final BlockFamily ELDER_PRISMARINE_BRICKS = new BlockFamily.Builder(BlockRegistry.ELDER_PRISMARINE_BRICKS).slab(ELDER_PRISMARINE_BRICK_SLAB).stairs(ELDER_PRISMARINE_BRICK_STAIRS).wall(ELDER_PRISMARINE_BRICK_WALL).build();
+    public static final Map<String, BlockFamily> FAMILIES = new HashMap<>();
+
     /**
      * Registers most blocks required in a wood set.
      *      Does not register leaves, saplings, or boats.
@@ -59,7 +71,12 @@ public class DefaultBlockSets {
     }
 
     public record WoodSet(String name, @Nullable ItemConvertible after, @Nullable ItemConvertible logAfter, @Nullable ItemConvertible signAfter, @Nullable Block log, @Nullable Block strippedLog, @Nullable Block wood, @Nullable Block strippedWood, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate, Block door, Block trapdoor, Block sign, Block wallSign, Block hangingSign, Block wallHangingSign) {
+        public BlockFamily family() {
+            return FAMILIES.get(name);
+        }
+
         public void register() {
+            FAMILIES.put(name, new BlockFamily.Builder(planks).button(button).fence(fence).fenceGate(fenceGate).pressurePlate(pressurePlate).sign(sign, wallSign).slab(slab).stairs(stairs).door(door).trapdoor(trapdoor).group("wooden").unlockCriterionName("has_planks").build());
             if (after != null) {
                 if (log != null)
                     if (logAfter != null) {
