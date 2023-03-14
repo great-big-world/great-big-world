@@ -12,7 +12,7 @@
               "ranges": [
                 {
                   "min_inclusive": -2.0,
-                  "max_exclusive": -1.0
+                  "max_exclusive": -0.9
                 }
               ]
             }
@@ -26,7 +26,7 @@
               "noise_parameters": "great_big_world:wisteria_variation",
               "ranges": [
                 {
-                  "min_exclusive": -1.0,
+                  "min_exclusive": -0.9,
                   "max_inclusive": -0.44
                 }
               ]

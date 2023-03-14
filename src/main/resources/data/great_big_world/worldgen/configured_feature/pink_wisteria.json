@@ -12,8 +12,8 @@
           }
         },
         "min_length": 1,
-        "max_length": 3,
-        "probability": 0.4
+        "max_length": 4,
+        "probability": 0.3
       }
     ],
     "dirt_provider": {
@@ -49,7 +49,7 @@
     },
     "trunk_placer": {
       "type": "minecraft:fancy_trunk_placer",
-      "base_height": 6,
+      "base_height": 5,
       "height_rand_a": 6,
       "height_rand_b": 3
     },

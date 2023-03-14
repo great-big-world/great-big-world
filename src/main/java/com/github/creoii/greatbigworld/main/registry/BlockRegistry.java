@@ -183,7 +183,7 @@ public class BlockRegistry implements Register {
     public static final Block BLUE_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block PINK_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
     public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(FabricBlockSettings.copy(Blocks.ROSE_BUSH));
-    public static final Block GOLDEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW));
+    public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW));
     //endregion
 
     public void register() {
@@ -324,7 +324,7 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "blue_delphinium"), BLUE_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "pink_delphinium"), PINK_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "golden_leaves"), GOLDEN_LEAVES, new ExtendedBlockSettings(0f, 20, 25, null), Items.MANGROVE_LEAVES, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, new ExtendedBlockSettings(0f, 20, 25, null), Items.MANGROVE_LEAVES, ItemGroups.NATURAL);
     }
 
     @Override
@@ -362,7 +362,7 @@ public class BlockRegistry implements Register {
                 ACAI_LEAVES, HANGING_ACAI_LEAVES,
                 WHITE_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES,
                 HANGING_WHITE_WISTERIA_LEAVES, HANGING_YELLOW_WISTERIA_LEAVES, HANGING_BLUE_WISTERIA_LEAVES, HANGING_PINK_WISTERIA_LEAVES, HANGING_PURPLE_WISTERIA_LEAVES,
-                GOLDEN_LEAVES
+                GOLDEN_APPLE_LEAVES
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);

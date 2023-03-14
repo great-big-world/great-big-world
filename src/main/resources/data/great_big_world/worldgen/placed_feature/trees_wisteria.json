@@ -8,11 +8,11 @@
         "distribution": [
           {
             "data": 0,
-            "weight": 8
+            "weight": 12
           },
           {
             "data": 1,
-            "weight": 3
+            "weight": 8
           }
         ]
       }
@@ -26,7 +26,7 @@
       "ranges": [
         {
           "min_inclusive": -2.0,
-          "max_exclusive": 1.0
+          "max_exclusive": 0
         }
       ]
     },

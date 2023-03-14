@@ -30,6 +30,7 @@ public class PlacedFeatureRegistry implements Register {
     public static RegistryKey<PlacedFeature> SPARSE_ACAI;
     public static RegistryKey<PlacedFeature> ORE_NAUTILUS_FOSSIL;
     public static RegistryKey<PlacedFeature> TREES_WISTERIA;
+    public static RegistryKey<PlacedFeature> GOLDEN_APPLE_TREE;
 
     @Override
     public void register() {
@@ -49,6 +50,7 @@ public class PlacedFeatureRegistry implements Register {
         SPARSE_ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "sparse_acai"));
         ORE_NAUTILUS_FOSSIL = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "ore_nautilus_fossil"));
         TREES_WISTERIA = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "trees_wisteria"));
+        GOLDEN_APPLE_TREE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "golden_apple_tree"));
         modifyGeneration();
     }
 
@@ -69,5 +71,6 @@ public class PlacedFeatureRegistry implements Register {
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, SPARSE_ACAI);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, ORE_NAUTILUS_FOSSIL);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, TREES_WISTERIA);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.GOLDEN_APPLE_TREE_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, GOLDEN_APPLE_TREE);
     }
 }

@@ -41,6 +41,7 @@ public class Tags {
         public static final TagKey<Biome> ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "acai_biomes"));
         public static final TagKey<Biome> SPARSE_ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "sparse_acai_biomes"));
         public static final TagKey<Biome> NAUTILUS_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "nautilus_spawnable"));
+        public static final TagKey<Biome> GOLDEN_APPLE_TREE_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "golden_apple_tree_biomes"));
     }
 
     public static final class EntityTypeTags {
