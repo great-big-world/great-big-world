@@ -224,7 +224,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public void attack(LivingEntity target, float pullProgress) {
         PersistentProjectileEntity persistentProjectileEntity = createArrowProjectile(Items.ARROW.getDefaultStack(), pullProgress);
-        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GLAZE, this);
+        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GAZE, this);
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));
         }

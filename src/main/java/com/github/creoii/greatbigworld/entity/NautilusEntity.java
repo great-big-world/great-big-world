@@ -1,8 +1,10 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.CriteriaRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -23,6 +25,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -124,6 +127,9 @@ public class NautilusEntity extends FishEntity {
 
     public void onOxidizing() {
         emitGameEvent(GameEvent.BLOCK_CHANGE);
+        if (world.getClosestPlayer(this, 8d) instanceof ServerPlayerEntity player) {
+            CriteriaRegistry.NAUTILUS_OXIDIZE_COPPER.trigger(player);
+        }
         playSound(SoundEvents.ITEM_HONEYCOMB_WAX_ON, getSoundVolume(), getSoundPitch());
     }
 

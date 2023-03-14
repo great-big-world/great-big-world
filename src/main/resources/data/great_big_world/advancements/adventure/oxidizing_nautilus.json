@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "nautilus_oxidize": {
+      "conditions": {},
+      "trigger": "great_big_world:nautilus_oxidize_copper"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "advancements.adventure.oxidizing_nautilus.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:nautilus_shell"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.oxidizing_nautilus.title"
+    }
+  },
+  "requirements": [
+    [
+      "nautilus_oxidize"
+    ]
+  ]
+}

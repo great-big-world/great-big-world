@@ -226,7 +226,7 @@
   "biome.great_big_world.volcanic_crater": "Volcanic Crater",
 
   "enchantment.great_big_world.diluting": "Diluting",
-  "enchantment.great_big_world.poison_glaze": "Poison Glaze",
+  "enchantment.great_big_world.poison_gaze": "Poison Gaze",
   "enchantment.great_big_world.illuminating": "Illuminating",
 
   "death.attack.moose": "%1$s was mauled to death by a Moose",
@@ -236,5 +236,7 @@
   "great_big_world.subtitles.entity.moose.warning": "Moose warns",
 
   "advancements.adventure.on_a_tropical_island.title": "On A Tropical Island",
-  "advancements.adventure.on_a_tropical_island.description": "Step foot onto a Tropical Island"
+  "advancements.adventure.on_a_tropical_island.description": "Step foot onto a Tropical Island",
+  "advancements.adventure.oxidizing_nautilus.title": "Oxidizing Nautilus",
+  "advancements.adventure.oxidizing_nautilus.description": "Oxidize Copper by means of a Nautilus"
 }

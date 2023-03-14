@@ -21,6 +21,10 @@
           }
         },
         "no_multi_vertical_placement": true
+      },
+      {
+        "type": "minecraft:beehive",
+        "probability": 0.002
       }
     ],
     "dirt_provider": {
@@ -69,7 +73,7 @@
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
       "base_height": 6,
-      "height_rand_a": 3,
+      "height_rand_a": 4,
       "height_rand_b": 1
     },
     "trunk_provider": {

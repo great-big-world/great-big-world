@@ -99,7 +99,7 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "description": {
       "translate": "advancements.adventure.on_a_tropical_island.description"
     },

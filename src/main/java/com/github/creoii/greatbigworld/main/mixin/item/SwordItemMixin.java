@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SwordItemMixin {
     @Inject(method = "postHit", at = @At("RETURN"))
     private void great_big_world_applyPoisonGlaze(ItemStack stack, LivingEntity target, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir) {
-        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GLAZE, attacker);
+        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GAZE, attacker);
         if (level > 0) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, level * 50, level));
         }
