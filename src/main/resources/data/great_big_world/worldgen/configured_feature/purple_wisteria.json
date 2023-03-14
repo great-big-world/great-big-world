@@ -11,6 +11,14 @@
             "waterlogged": "false"
           }
         },
+        "leaves_state": {
+          "Name": "great_big_world:purple_wisteria_leaves",
+          "Properties": {
+            "distance": "7",
+            "persistent": "false",
+            "waterlogged": "false"
+          }
+        },
         "min_length": 1,
         "max_length": 4,
         "probability": 0.3
