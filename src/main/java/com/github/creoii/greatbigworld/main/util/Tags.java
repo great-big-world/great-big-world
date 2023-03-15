@@ -41,6 +41,12 @@ public class Tags {
         public static final TagKey<Biome> ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "acai_biomes"));
         public static final TagKey<Biome> SPARSE_ACAI_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "sparse_acai_biomes"));
         public static final TagKey<Biome> NAUTILUS_SPAWNABLE = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "nautilus_spawnable"));
+        public static final TagKey<Biome> WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "wisteria_biomes"));
+        public static final TagKey<Biome> BLUE_WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "blue_wisteria_biomes"));
+        public static final TagKey<Biome> PINK_WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "pink_wisteria_biomes"));
+        public static final TagKey<Biome> PURPLE_WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "purple_wisteria_biomes"));
+        public static final TagKey<Biome> WHITE_WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "white_wisteria_biomes"));
+        public static final TagKey<Biome> YELLOW_WISTERIA_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "yellow_wisteria_biomes"));
         public static final TagKey<Biome> GOLDEN_APPLE_TREE_BIOMES = TagKey.of(RegistryKeys.BIOME, new Identifier(NAMESPACE, "golden_apple_tree_biomes"));
     }
 

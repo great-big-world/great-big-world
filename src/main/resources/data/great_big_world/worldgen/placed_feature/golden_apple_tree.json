@@ -2,13 +2,17 @@
   "feature": "great_big_world:golden_apple_tree",
   "placement": [
     {
+      "type": "minecraft:rarity_filter",
+      "chance": 64
+    },
+    {
       "type": "minecraft:count",
       "count": {
         "type": "minecraft:weighted_list",
         "distribution": [
           {
             "data": 0,
-            "weight": 199
+            "weight": 15
           },
           {
             "data": 1,

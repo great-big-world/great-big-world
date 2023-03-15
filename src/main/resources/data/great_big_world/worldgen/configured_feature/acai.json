@@ -11,6 +11,10 @@
             "waterlogged": "false"
           }
         },
+        "leaves_state": {
+          "Name": "minecraft:air",
+          "Properties": {}
+        },
         "min_length": 1,
         "max_length": 1,
         "probability": 0.6

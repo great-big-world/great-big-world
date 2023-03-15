@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 4,
-            "weight": 14
+            "data": 0,
+            "weight": 11
           },
           {
-            "data": 5,
+            "data": 1,
             "weight": 1
           }
         ]
@@ -19,16 +19,6 @@
     },
     {
       "type": "minecraft:in_square"
-    },
-    {
-      "type": "great_big_world:noise",
-      "noise_parameters": "great_big_world:wisteria_variation",
-      "ranges": [
-        {
-          "min_inclusive": -1.2,
-          "max_exclusive": -0.8
-        }
-      ]
     },
     {
       "type": "minecraft:surface_water_depth_filter",
@@ -43,7 +33,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:mangrove_propagule",
+          "Name": "great_big_world:white_wisteria_sapling",
           "Properties": {
             "stage": "0"
           }
