@@ -1,6 +1,8 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.greatbigworld.item.AuraPotionItem;
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
+import com.github.creoii.greatbigworld.main.util.AuraEffect;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import com.github.creoii.greatbigworld.main.util.GBWFoods;
 import com.github.creoii.greatbigworld.main.util.Register;
@@ -84,6 +86,7 @@ public class ItemRegistry implements Register {
     public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new FabricItemSettings());
     public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new FabricItemSettings());
     public static final Item NAUTILUS_BUCKET = new EntityBucketItem(EntityRegistry.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_FILL_FISH, new FabricItemSettings());
+    public static final Item AURA_POTION = new AuraPotionItem(new FabricItemSettings().maxCount(1));
     //endregion
 
     @Override
@@ -132,6 +135,7 @@ public class ItemRegistry implements Register {
         registerItem(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, Items.FERN, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
         registerItem(new Identifier(NAMESPACE, "nautilus_bucket"), NAUTILUS_BUCKET, Items.TROPICAL_FISH_BUCKET, ItemGroups.TOOLS);
+        registerItem(new Identifier(NAMESPACE, "aura_potion"), AURA_POTION, ItemGroups.FOOD_AND_DRINK, AuraEffect::addAuraPotions);
         compostables();
     }
 
@@ -191,6 +195,13 @@ public class ItemRegistry implements Register {
             } else {
                 ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
             }
+        }
+    }
+
+    public static void registerItem(Identifier id, Item item, @Nullable ItemGroup group, ItemGroupEvents.ModifyEntries entries) {
+        Registry.register(Registries.ITEM, id, item);
+        if (group != null) {
+            ItemGroupEvents.modifyEntriesEvent(group).register(entries);
         }
     }
 

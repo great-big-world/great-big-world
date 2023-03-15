@@ -35,7 +35,6 @@ public class PotionRegistry implements Register {
         Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "darkness"), DARKNESS);
         Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "long_darkness"), LONG_DARKNESS);
         Registry.register(Registries.POTION, new Identifier(GreatBigWorld.NAMESPACE, "strong_darkness"), STRONG_DARKNESS);
-
         registerPotionRecipes();
     }
 
