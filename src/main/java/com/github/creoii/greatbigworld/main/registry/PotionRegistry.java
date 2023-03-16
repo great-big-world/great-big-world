@@ -15,14 +15,14 @@ import net.minecraft.util.Identifier;
 
 public class PotionRegistry implements Register {
     public static final Potion GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 3600));
-    public static final Potion LONG_GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 9600));
-    public static final Potion STRONG_GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 1800, 1));
+    public static final Potion LONG_GLOWING = new Potion("glowing", new StatusEffectInstance(StatusEffects.GLOWING, 9600));
+    public static final Potion STRONG_GLOWING = new Potion("glowing", new StatusEffectInstance(StatusEffects.GLOWING, 1800, 1));
     public static final Potion BLINDNESS = new Potion(new StatusEffectInstance(StatusEffects.BLINDNESS, 3600));
-    public static final Potion LONG_BLINDNESS = new Potion(new StatusEffectInstance(StatusEffects.BLINDNESS, 9600));
-    public static final Potion STRONG_BLINDNESS = new Potion(new StatusEffectInstance(StatusEffects.BLINDNESS, 1800, 1));
+    public static final Potion LONG_BLINDNESS = new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, 9600));
+    public static final Potion STRONG_BLINDNESS = new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, 1800, 1));
     public static final Potion DARKNESS = new Potion(new StatusEffectInstance(StatusEffects.DARKNESS, 1800));
-    public static final Potion LONG_DARKNESS = new Potion(new StatusEffectInstance(StatusEffects.DARKNESS, 9600));
-    public static final Potion STRONG_DARKNESS = new Potion(new StatusEffectInstance(StatusEffects.DARKNESS, 800, 1));
+    public static final Potion LONG_DARKNESS = new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, 9600));
+    public static final Potion STRONG_DARKNESS = new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, 800, 1));
 
     @Override
     public void register() {

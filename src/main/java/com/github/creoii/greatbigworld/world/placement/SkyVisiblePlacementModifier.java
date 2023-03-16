@@ -5,6 +5,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LightType;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.FeaturePlacementContext;
 import net.minecraft.world.gen.placementmodifier.AbstractConditionalPlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
@@ -21,7 +22,11 @@ public class SkyVisiblePlacementModifier extends AbstractConditionalPlacementMod
 
     @Override
     public boolean shouldPlace(FeaturePlacementContext context, Random random, BlockPos pos) {
-        return context.getWorld().getLightLevel(LightType.SKY, pos) <= 7;
+        StructureWorldAccess world = context.getWorld();
+        for (BlockPos pos1 : BlockPos.iterate(pos.up(), new BlockPos(pos.getX(), world.getHeight(), pos.getZ()))) {
+            if (!world.isAir(pos1)) return true;
+        }
+        return false;
     }
 
     @Override
