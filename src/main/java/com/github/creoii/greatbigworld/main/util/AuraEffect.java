@@ -68,4 +68,8 @@ public interface AuraEffect {
             entries.add(PotionUtil.setPotion(ItemRegistry.AURA_POTION.getDefaultStack(), potion), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
+
+    static StatusEffectInstance transferAura(StatusEffectInstance o) {
+        return new StatusEffectInstance(o.getEffectType(), (int) (o.getDuration() / 2f), o.getAmplifier(), o.isAmbient(), o.shouldShowParticles(), o.shouldShowIcon());
+    }
 }

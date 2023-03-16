@@ -50,7 +50,7 @@ public abstract class LivingEntityMixin extends Entity {
                 if (entity.isRemoved() || !entity.isLiving()) continue;
                 activeStatusEffects.forEach((effect, instance) -> {
                     if (((AuraEffect) instance).isAura()) {
-                        ((LivingEntity) entity).addStatusEffect(instance, this);
+                        ((LivingEntity) entity).addStatusEffect(AuraEffect.transferAura(instance), this);
                     }
                 });
             }

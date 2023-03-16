@@ -4,7 +4,6 @@ import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import com.github.creoii.greatbigworld.main.registry.CriteriaRegistry;
 import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

@@ -4,6 +4,7 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "StatusEffectInstanceMixin",
     "block.BlockEntityTypeMixin",
     "block.PointedDripstoneBlockMixin",
     "enchantment.EnchantmentHelperMixin",
