@@ -7,6 +7,7 @@
     ]
   },
   "downfall": 0.8,
+  "has_precipitation": true,
   "effects": {
     "fog_color": 12638463,
     "mood_sound": {
@@ -91,7 +92,6 @@
       "minecraft:freeze_top_layer"
     ]
   ],
-  "precipitation": "rain",
   "spawn_costs": {},
   "spawners": {
     "ambient": [
