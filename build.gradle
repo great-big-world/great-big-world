@@ -6,6 +6,12 @@ plugins {
 repositories {
     maven { url 'https://maven.shedaniel.me/' }
     maven { url 'https://maven.minecraftforge.net/' }
+    maven {
+        url = uri "https://api.modrinth.com/maven"
+        content {
+            includeGroup("maven.modrinth")
+        }
+    }
 }
 
 version = project.mod_version
@@ -14,7 +20,6 @@ archivesBaseName = "${name}-${project.minecraft_version}"
 
 loom {
     accessWidenerPath = file("src/main/resources/great_big_world.accesswidener")
-
     runs {
         datagenClient {
             inherit client
@@ -33,6 +38,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.glitchfiend:TerraBlender-fabric:${minecraft_version}-${project.terrablender_version}"
+    modImplementation "maven.modrinth:creo-lib:${project.creo_lib_version}"
 }
 
 sourceSets {

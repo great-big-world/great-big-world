@@ -21,7 +21,7 @@ public class ThicketEntityRenderer<T extends ThicketEntity> extends BipedEntityR
     public ThicketEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new SkeletonEntityModel<>(context.getPart(RenderRegistry.THICKET_MODEL_LAYER)), .75f);
         addFeature(new ThicketOverlayFeatureRenderer<>(this, context.getModelLoader()));
-        addFeature(new ArmorFeatureRenderer<>(this, new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_INNER_ARMOR)), new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR))));
+        addFeature(new ArmorFeatureRenderer<>(this, new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_INNER_ARMOR)), new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
     }
 
     @Override

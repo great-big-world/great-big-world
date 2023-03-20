@@ -3,7 +3,6 @@ package com.github.creoii.greatbigworld.world.placer;
 import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -12,8 +11,6 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-
-import java.util.function.BiConsumer;
 
 public class AspenFoliagePlacer extends FoliagePlacer {
     public static final Codec<AspenFoliagePlacer> CODEC = RecordCodecBuilder.create(instance -> {
@@ -34,7 +31,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         int leafBottom = offset - foliageHeight;
 
         for (int y = offset; y >= leafBottom; --y) {
@@ -52,7 +49,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
                 int length = 2 + width + random.nextInt(6);
 
                 for (int j = 0; j < length && Math.abs(x - mutable.getX()) <= width && Math.abs(z - mutable.getZ()) <= width; ++j) {
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                     BlockPos.Mutable next = mutable.move(Direction.Type.HORIZONTAL.random(random));
                     while (!mutable.isWithinDistance(next, 2 + width)) {
                         next = mutable.move(Direction.Type.HORIZONTAL.random(random));

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.enchantment;
 
-import com.github.creoii.greatbigworld.main.util.AllowEnchantments;
+import com.github.creoii.creolib.api.enchantment.AllowEnchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;

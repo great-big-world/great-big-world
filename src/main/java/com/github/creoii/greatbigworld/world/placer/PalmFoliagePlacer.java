@@ -3,7 +3,6 @@ package com.github.creoii.greatbigworld.world.placer;
 import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.IntProvider;
@@ -12,8 +11,6 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-
-import java.util.function.BiConsumer;
 
 public class PalmFoliagePlacer extends FoliagePlacer {
     public static final Codec<PalmFoliagePlacer> CODEC = RecordCodecBuilder.create(instance -> {
@@ -34,13 +31,13 @@ public class PalmFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         BlockPos center = treeNode.getCenter().down();
         BlockPos.Mutable mutable = new BlockPos.Mutable();
         for (Direction direction : Direction.values()) {
             for (int i = 0; i < radius + 1; ++i) {
                 mutable.set(center.offset(direction, i));
-                placeFoliageBlock(world, replacer, random, config, mutable);
+                placeFoliageBlock(world, placer, random, config, mutable);
 
                 if (i <= radius) {
                     if (i == radius && random.nextBoolean()) continue;
@@ -49,13 +46,13 @@ public class PalmFoliagePlacer extends FoliagePlacer {
                         case Y -> mutable.set(center.offset(direction, i).offset(Direction.Axis.X, i).offset(Direction.Axis.Z, i));
                         case Z -> mutable.set(center.offset(direction, i).offset(Direction.Axis.X, i).offset(Direction.Axis.Y, i));
                     }
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                     switch (direction.getAxis()) {
                         case X -> mutable.set(center.offset(direction, i).offset(Direction.Axis.Y, -i).offset(Direction.Axis.Z, -i));
                         case Y -> mutable.set(center.offset(direction, i).offset(Direction.Axis.X, -i).offset(Direction.Axis.Z, -i));
                         case Z -> mutable.set(center.offset(direction, i).offset(Direction.Axis.X, -i).offset(Direction.Axis.Y, -i));
                     }
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                 }
             }
         }

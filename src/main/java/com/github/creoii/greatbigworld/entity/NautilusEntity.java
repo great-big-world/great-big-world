@@ -218,8 +218,8 @@ public class NautilusEntity extends FishEntity {
                 return;
             }
             Vec3d vec3d = new Vec3d(NautilusEntity.this.getX() - livingEntity.getX(), NautilusEntity.this.getY() - livingEntity.getY(), NautilusEntity.this.getZ() - livingEntity.getZ());
-            BlockState blockState = NautilusEntity.this.world.getBlockState(new BlockPos(NautilusEntity.this.getX() + vec3d.x, NautilusEntity.this.getY() + vec3d.y, NautilusEntity.this.getZ() + vec3d.z));
-            FluidState fluidState = NautilusEntity.this.world.getFluidState(new BlockPos(NautilusEntity.this.getX() + vec3d.x, NautilusEntity.this.getY() + vec3d.y, NautilusEntity.this.getZ() + vec3d.z));
+            BlockState blockState = NautilusEntity.this.world.getBlockState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
+            FluidState fluidState = NautilusEntity.this.world.getFluidState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
             if (fluidState.isIn(FluidTags.WATER) || blockState.isAir()) {
                 double d = vec3d.length();
                 if (d > 0d) {

@@ -28,7 +28,7 @@ public class BambooTorchBlock extends TorchBlock {
 	protected static final BooleanProperty LEAVES = BooleanProperty.of("leaves");
 
 	public BambooTorchBlock(ParticleEffect particle) {
-		super(FabricBlockSettings.copy(Blocks.TORCH).offsetType(OffsetType.XZ), particle);
+		super(FabricBlockSettings.copy(Blocks.TORCH).offset(OffsetType.XZ), particle);
 		setDefaultState(getStateManager().getDefaultState().with(LARGE, false).with(LEAVES, false));
 	}
 

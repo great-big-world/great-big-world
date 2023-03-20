@@ -23,7 +23,7 @@ public class ClusterFeature extends Feature<ClusterFeatureConfig> {
             Random random = context.getRandom();
             int range = config.range().get(random);
             for (int i = 0; i < config.count().get(random); ++i) {
-                BlockPos pos = origin.add(random.nextBetween(-range, range), 0d, random.nextBetween(-range, range));
+                BlockPos pos = origin.add(random.nextBetween(-range, range), 0, random.nextBetween(-range, range));
                 if (!entry.value().generateUnregistered(context.getWorld(), context.getGenerator(), random, pos)) {
                     return false;
                 }
