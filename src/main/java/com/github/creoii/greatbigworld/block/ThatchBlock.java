@@ -43,9 +43,7 @@ public class ThatchBlock extends PillarBlock {
         ItemStack held = player.getStackInHand(hand);
         if (held.getItem() instanceof ShearsItem) {
             if (!world.isClient) {
-                held.damage(1, player, p -> {
-                    p.sendToolBreakStatus(hand);
-                });
+                held.damage(1, player, p -> p.sendToolBreakStatus(hand));
                 world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1f, 1f);
                 if (player instanceof ServerPlayerEntity serverPlayerEntity) {
                     Criteria.ITEM_USED_ON_BLOCK.trigger(serverPlayerEntity, pos, held);

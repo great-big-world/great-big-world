@@ -277,11 +277,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return stack.isIn(Tags.ItemTags.MOOSE_FOOD_LIKES) || stack.isIn(Tags.ItemTags.MOOSE_FOOD_LOVES);
     }
 
-    @Override
-    public float getScaleFactor() {
-        return isBaby() ? .5f : 1f;
-    }
-
     public boolean tryAttack(Entity target) {
         if (hasLeftAntler() || hasRightAntler()) {
             ramCooldown = 30;

@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
 import com.github.creoii.greatbigworld.main.util.AuraEffect;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -26,6 +27,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected abstract void onStatusEffectApplied(StatusEffectInstance effect, @Nullable Entity source);
     @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
     @Shadow public abstract float getHealth();
+    @Shadow public abstract Box getBoundingBox(EntityPose pose);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -45,12 +47,12 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tickMovement", at = @At("TAIL"))
     private void great_big_world_applyAuraPotions(CallbackInfo ci) {
         if (getHealth() > 0f) {
-            Box box = hasVehicle() && !getVehicle().isRemoved() ? getBoundingBox().union(getVehicle().getBoundingBox()).expand(1d, 0d, 1d) : getBoundingBox().expand(1d, .5d, 1d);
-            for (Entity entity : world.getOtherEntities(this, box)) {
+            for (Entity entity : world.getOtherEntities(this, getBoundingBox().expand(.5d, .25d, .5d))) {
                 if (entity.isRemoved() || !entity.isLiving()) continue;
                 activeStatusEffects.forEach((effect, instance) -> {
+                    StatusEffectInstance transferred = AuraEffect.transferAura(instance);
                     if (((AuraEffect) instance).isAura()) {
-                        ((LivingEntity) entity).addStatusEffect(AuraEffect.transferAura(instance), this);
+                        ((LivingEntity) entity).addStatusEffect(transferred, this);
                     }
                 });
             }

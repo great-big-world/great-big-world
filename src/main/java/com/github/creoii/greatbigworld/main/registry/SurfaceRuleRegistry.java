@@ -28,7 +28,7 @@ public class SurfaceRuleRegistry implements Register {
     }
 
     public MaterialRules.MaterialRule createVolcanicBeachRule() {
-        return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_BEACH), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, LAVAROCK), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.4545d), BEACH_SAND), LAVAROCK));
+        return MaterialRules.condition(MaterialRules.biome(BiomeRegistry.VOLCANIC_BEACH), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, LAVAROCK), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.4545d), BEACH_SAND), MaterialRules.block(BlockRegistry.VOLCANIC_SAND.getDefaultState())));
     }
 
     public MaterialRules.MaterialRule createVolcanicSlopesRule() {
