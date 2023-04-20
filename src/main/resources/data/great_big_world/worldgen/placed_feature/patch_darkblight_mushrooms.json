@@ -2,6 +2,10 @@
   "feature": "great_big_world:patch_darkblight_mushrooms",
   "placement": [
     {
+      "type": "minecraft:rarity_filter",
+      "chance": 2
+    },
+    {
       "type": "minecraft:in_square"
     },
     {
@@ -21,7 +25,7 @@
       }
     },
     {
-      "type": "great_big_world:sky_visible"
+      "type": "creo:sky_visible"
     },
     {
       "type": "minecraft:biome"

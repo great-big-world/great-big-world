@@ -62,9 +62,7 @@ public interface AuraEffect {
     static void addAuraPotions(ItemGroup.Entries entries) {
         for (Potion potion : Registries.POTION) {
             if (potion == Potions.EMPTY) continue;
-            potion.getEffects().forEach(instance -> {
-                ((AuraEffect) instance).setAura(true);
-            });
+            potion.getEffects().forEach(instance -> ((AuraEffect) instance).setAura(true));
             entries.add(PotionUtil.setPotion(ItemRegistry.AURA_POTION.getDefaultStack(), potion), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
         }
     }

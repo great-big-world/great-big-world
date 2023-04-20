@@ -15,7 +15,7 @@
       "type": "minecraft:in_square"
     },
     {
-      "type": "great_big_world:noise",
+      "type": "creo:noise",
       "noise_parameters": "great_big_world:beachgrass",
       "ranges": [
         {

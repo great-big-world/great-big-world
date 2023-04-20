@@ -257,8 +257,8 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, null, new ItemRegistry.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistry.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, null, Items.TURTLE_EGG, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.PEONY, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER, null);
         registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.FERN, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new ExtendedBlockSettings(0f, 75, 120, null), Items.LARGE_FERN, ItemGroups.NATURAL);

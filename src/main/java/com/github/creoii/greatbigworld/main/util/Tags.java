@@ -24,6 +24,7 @@ public class Tags {
         public static final TagKey<Item> MOOSE_FOOD_LIKES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_likes"));
         public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
         public static final TagKey<Item> WOODEN_MASKS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "wooden_masks"));
+        public static final TagKey<Item> GLIMMERING_MUSHROOMS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "glimmering_mushrooms"));
         public static final TagKey<Item> COMMON_BOWS = TagKey.of(RegistryKeys.ITEM, new Identifier(COMMON_NAMESPACE, "bows"));
     }
 
