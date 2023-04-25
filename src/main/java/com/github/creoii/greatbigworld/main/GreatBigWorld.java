@@ -14,8 +14,6 @@ public class GreatBigWorld implements ModInitializer {
             new ItemRegistry(),
             new EntityRegistry(),
             new PlacerRegistry(),
-            new PlacementRegistry(),
-            new FeatureRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),
             new StructureRegistry(),

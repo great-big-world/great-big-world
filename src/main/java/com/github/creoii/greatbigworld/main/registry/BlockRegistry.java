@@ -377,6 +377,11 @@ public class BlockRegistry implements Register {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
+            if (tintIndex != 0) {
+                return (world == null || pos == null) ? GrassColors.getDefaultColor() : BiomeColors.getGrassColor(world, pos);
+            } return -1;
+        }, WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {

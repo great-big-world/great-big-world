@@ -1,5 +1,5 @@
 {
-  "type": "great_big_world:composite",
+  "type": "creo:composite",
   "config": {
     "features": [
       {
