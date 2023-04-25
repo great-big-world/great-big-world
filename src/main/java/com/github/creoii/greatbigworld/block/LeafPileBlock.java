@@ -43,7 +43,7 @@ public class LeafPileBlock extends Block implements Waterloggable {
             if (world.getLightLevel(LightType.BLOCK, pos) > 11) {
                 world.setBlockState(pos, state.with(SNOWY, false), 3);
             }
-        } else if (world.isSkyVisibleAllowingSea(pos) && world.isRaining() && world.getBiome(pos).value().getPrecipitation() == Biome.Precipitation.SNOW) {
+        } else if (world.isSkyVisibleAllowingSea(pos) && world.isRaining() && world.getBiome(pos).value().getPrecipitation(pos) == Biome.Precipitation.SNOW) {
             world.setBlockState(pos, state.with(SNOWY, true), 3);
         }
     }

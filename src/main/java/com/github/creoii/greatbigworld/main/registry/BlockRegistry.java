@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.creolib.api.util.registry.RegistrySets;
 import com.github.creoii.greatbigworld.block.*;
-import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
-import com.github.creoii.greatbigworld.main.util.GBWSignTypes;
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.sapling.AcaiSaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.GreenAspenSaplingGenerator;
@@ -35,13 +35,13 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class BlockRegistry implements Register {
     //region Mahogany Wood
-    public static DefaultBlockSets.WoodSet MAHOGANY = DefaultBlockSets.createWoodSet("mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, Items.JUNGLE_LOG, Items.JUNGLE_SIGN, GBWSignTypes.MAHOGANY);
+    public static RegistrySets.WoodSet MAHOGANY = RegistrySets.createWoodSet(NAMESPACE, "mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, Items.JUNGLE_LOG, Items.JUNGLE_SIGN);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), FabricBlockSettings.copy(Blocks.JUNGLE_SAPLING));
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Aspen Wood
-    public static DefaultBlockSets.WoodSet ASPEN = DefaultBlockSets.createWoodSet("aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN, GBWSignTypes.ASPEN);
+    public static RegistrySets.WoodSet ASPEN = RegistrySets.createWoodSet(NAMESPACE, "aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW));
     public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(FabricBlockSettings.of(Material.DECORATION, MapColor.YELLOW).strength(.1f).sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision());
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
@@ -125,7 +125,7 @@ public class BlockRegistry implements Register {
     public static final Block LAVAROCK_BRICK_WALL = new WallBlock(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai Wood
-    public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign(), GBWSignTypes.ACAI);
+    public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_PURPLE, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign());
     public static final Block ACAI_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.JUNGLE_LEAVES));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(ACAI_LEAVES));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(MAHOGANY_SAPLING));
@@ -144,7 +144,7 @@ public class BlockRegistry implements Register {
     public static final Block ELDER_SEA_LANTERN = new Block(FabricBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
     //region Wisteria Wood
-    public static DefaultBlockSets.WoodSet WISTERIA = DefaultBlockSets.createWoodSet("wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, ASPEN.button(), ASPEN.log(), ASPEN.sign(), GBWSignTypes.WISTERIA);
+    public static RegistrySets.WoodSet WISTERIA = RegistrySets.createWoodSet(NAMESPACE, "wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, ASPEN.button(), ASPEN.log(), ASPEN.sign());
     public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
     public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
     public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(FabricBlockSettings.copy(GREEN_ASPEN_LEAVES));
@@ -165,6 +165,10 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_BLUE_WISTERIA_SAPLING = new FlowerPotBlock(BLUE_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block POTTED_PINK_WISTERIA_SAPLING = new FlowerPotBlock(PINK_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block POTTED_PURPLE_WISTERIA_SAPLING = new FlowerPotBlock(PURPLE_WISTERIA_SAPLING, FabricBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block WHITE_PETALS = new FlowerbedBlock(FabricBlockSettings.of(Material.PLANT).noCollision().sounds(BlockSoundGroup.PINK_PETALS));
+    public static final Block YELLOW_PETALS = new FlowerbedBlock(FabricBlockSettings.copy(WHITE_PETALS));
+    public static final Block BLUE_PETALS = new FlowerbedBlock(FabricBlockSettings.copy(WHITE_PETALS));
+    public static final Block PURPLE_PETALS = new FlowerbedBlock(FabricBlockSettings.copy(WHITE_PETALS));
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -307,6 +311,10 @@ public class BlockRegistry implements Register {
         registerBlock(new Identifier(NAMESPACE, "potted_blue_wisteria_sapling"), POTTED_BLUE_WISTERIA_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "potted_pink_wisteria_sapling"), POTTED_PINK_WISTERIA_SAPLING, null);
         registerBlock(new Identifier(NAMESPACE, "potted_purple_wisteria_sapling"), POTTED_PURPLE_WISTERIA_SAPLING, null);
+        registerBlock(new Identifier(NAMESPACE, "white_petals"), WHITE_PETALS, new ExtendedBlockSettings(.3f, 60, 100, null), Items.PINK_PETALS, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "yellow_petals"), YELLOW_PETALS, new ExtendedBlockSettings(.3f, 60, 100, null), Items.PINK_PETALS, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "blue_petals"), BLUE_PETALS, new ExtendedBlockSettings(.3f, 60, 100, null), Items.PINK_PETALS, ItemGroups.NATURAL);
+        registerBlock(new Identifier(NAMESPACE, "purple_petals"), PURPLE_PETALS, new ExtendedBlockSettings(.3f, 60, 100, null), Items.PINK_PETALS, ItemGroups.NATURAL);
 
         registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, null, Items.TURTLE_EGG, ItemGroups.NATURAL);
         registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new ExtendedBlockSettings(0f, 60, 100, null), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
@@ -352,7 +360,8 @@ public class BlockRegistry implements Register {
                 HEATHER, TALL_HEATHER, POTTED_HEATHER,
                 BEACHGRASS, TALL_BEACHGRASS, POTTED_BEACHGRASS,
                 TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN,
-                WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM
+                WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM,
+                WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,

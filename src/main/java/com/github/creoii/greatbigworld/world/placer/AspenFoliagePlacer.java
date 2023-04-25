@@ -34,7 +34,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
+    protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         int leafBottom = offset - foliageHeight;
 
         for (int y = offset; y >= leafBottom; --y) {
@@ -52,7 +52,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
                 int length = 2 + width + random.nextInt(6);
 
                 for (int j = 0; j < length && Math.abs(x - mutable.getX()) <= width && Math.abs(z - mutable.getZ()) <= width; ++j) {
-                    placeFoliageBlock(world, replacer, random, config, mutable);
+                    placeFoliageBlock(world, placer, random, config, mutable);
                     BlockPos.Mutable next = mutable.move(Direction.Type.HORIZONTAL.random(random));
                     while (!mutable.isWithinDistance(next, 2 + width)) {
                         next = mutable.move(Direction.Type.HORIZONTAL.random(random));

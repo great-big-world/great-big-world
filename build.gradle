@@ -7,9 +7,9 @@ repositories {
     maven { url 'https://maven.shedaniel.me/' }
     maven { url 'https://maven.minecraftforge.net/' }
     maven {
-        url "https://cursemaven.com"
+        url = uri "https://api.modrinth.com/maven"
         content {
-            includeGroup "curse.maven"
+            includeGroup "maven.modrinth"
         }
     }
 }
@@ -39,7 +39,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.glitchfiend:TerraBlender-fabric:${minecraft_version}-${project.terrablender_version}"
-    //modImplementation "curse.maven:creo-lib-837262:4435596"
+    modImplementation "maven.modrinth:creo-lib:${creo_lib_version}"
 }
 
 sourceSets {

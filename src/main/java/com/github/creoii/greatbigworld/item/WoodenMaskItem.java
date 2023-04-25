@@ -19,7 +19,7 @@ public class WoodenMaskItem extends ArmorItem implements AllowEnchantments {
     public static final List<Item> WOODEN_MASKS = new ArrayList<>();
 
     public WoodenMaskItem(WoodenMaskArmorMaterial material) {
-        super(material, EquipmentSlot.HEAD, new FabricItemSettings().maxCount(1));
+        super(material, Type.HELMET, new FabricItemSettings().maxCount(1));
         WOODEN_MASKS.add(this);
     }
 

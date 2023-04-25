@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.main.util.datagen;
 
+import com.github.creoii.creolib.api.util.registry.RegistrySets;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.util.DefaultBlockSets;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -10,11 +10,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.family.BlockFamilies;
-import net.minecraft.data.family.BlockFamily;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -79,16 +76,6 @@ public class GBWDataGenerator implements DataGeneratorEntrypoint {
             blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.GRAY_STAINED_CALCITE);
             blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.LIGHT_GRAY_STAINED_CALCITE);
             blockStateModelGenerator.registerSimpleCubeAll(BlockRegistry.WHITE_STAINED_CALCITE);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.MAHOGANY.planks()).family(BlockRegistry.MAHOGANY.family());
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.ASPEN.planks()).family(BlockRegistry.ASPEN.family());
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.ACAI.planks()).family(BlockRegistry.ACAI.family());
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.WISTERIA.planks()).family(BlockRegistry.WISTERIA.family());
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.COBBLESTONE_BRICKS).family(DefaultBlockSets.COBBLESTONE_BRICKS);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.MOSSY_COBBLESTONE_BRICKS).family(DefaultBlockSets.MOSSY_COBBLESTONE_BRICKS);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.LAVAROCK).family(DefaultBlockSets.LAVAROCK);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.LAVAROCK_BRICKS).family(DefaultBlockSets.LAVAROCK_BRICKS);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.ELDER_PRISMARINE).family(DefaultBlockSets.ELDER_PRISMARINE);
-            blockStateModelGenerator.registerCubeAllModelTexturePool(BlockRegistry.ELDER_PRISMARINE_BRICKS).family(DefaultBlockSets.ELDER_PRISMARINE_BRICKS);
         }
 
         @Override

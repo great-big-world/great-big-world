@@ -43,6 +43,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
@@ -76,7 +77,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         setPathfindingPenalty(PathNodeType.WATER, 2f);
         lookControl = new LookControl(this);
         moveControl = new AquaticMoveControl(this, 85, 10, 2f, 1f, true);
-        stepHeight = 1.5f;
     }
 
     public static DefaultAttributeContainer.Builder createMooseAttributes() {
@@ -102,6 +102,11 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     public boolean isPushedByFluids() {
         return false;
+    }
+
+    @Override
+    public float getStepHeight() {
+        return 1.5f;
     }
 
     protected void initDataTracker() {
@@ -272,11 +277,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         return stack.isIn(Tags.ItemTags.MOOSE_FOOD_LIKES) || stack.isIn(Tags.ItemTags.MOOSE_FOOD_LOVES);
     }
 
-    @Override
-    public float getScaleFactor() {
-        return isBaby() ? .5f : 1f;
-    }
-
     public boolean tryAttack(Entity target) {
         if (hasLeftAntler() || hasRightAntler()) {
             ramCooldown = 30;
@@ -364,8 +364,8 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                     dropInventory();
                     updateSaddle();
                 }
-                if (getPrimaryPassenger() != null) {
-                    getPrimaryPassenger().dismountVehicle();
+                if (getFirstPassenger() != null) {
+                    getFirstPassenger().dismountVehicle();
                 }
             }
         }
@@ -609,7 +609,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public boolean canJump(PlayerEntity player) {
-        return getPrimaryPassenger() == player && super.canJump(player) && (hasRightAntler() || hasLeftAntler());
+        return getFirstPassenger() == player && super.canJump() && (hasRightAntler() || hasLeftAntler());
     }
 
     public void setJumpStrength(int strength) {
@@ -649,14 +649,10 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         }
     }
 
-    protected void jump(float strength, float sidewaysSpeed, float forwardSpeed) {
+    @Override
+    protected void jump(float strength, Vec3d movementInput) {
         ramCooldown = 30;
         setRamming(true);
-    }
-
-    @Override
-    public boolean canBeRiddenInWater() {
-        return true;
     }
 
     public boolean isRamming() {
@@ -682,6 +678,11 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Override
     public boolean disablesShield() {
         return true;
+    }
+
+    @Override
+    public EntityView method_48926() {
+        return world;
     }
 
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
