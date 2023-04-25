@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.item;
 
+import com.github.creoii.creolib.api.enchantment.AllowEnchantments;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.util.AllowEnchantments;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;

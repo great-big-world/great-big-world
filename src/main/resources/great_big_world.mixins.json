@@ -8,7 +8,6 @@
     "block.BlockEntityTypeMixin",
     "block.PointedDripstoneBlockMixin",
     "enchantment.EnchantmentHelperMixin",
-    "enchantment.EnchantmentMixin",
     "entity.AbstractSkeletonEntityMixin",
     "entity.BoatEntityMixin",
     "entity.ChestBoatEntityMixin",
