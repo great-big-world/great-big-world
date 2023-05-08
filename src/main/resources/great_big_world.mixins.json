@@ -20,9 +20,7 @@
     "item.BowItemMixin",
     "item.CrossbowItemMixin",
     "item.SwordItemMixin",
-    "world.FoliagePlacerTypeInvoker",
     "world.TreeDecoratorTypeInvoker",
-    "world.TrunkPlacerTypeInvoker",
     "world.VanillaBiomeParametersMixin"
   ],
   "client": [

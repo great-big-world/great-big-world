@@ -3,6 +3,7 @@ package com.github.creoii.greatbigworld.main.registry;
 import com.github.creoii.creolib.api.util.block.BlockRegistryHelper;
 import com.github.creoii.creolib.api.util.block.BlockUtil;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
+import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.creolib.api.util.registry.RegistrySets;
 import com.github.creoii.greatbigworld.block.*;
@@ -156,17 +157,17 @@ public class BlockRegistry implements Register {
     public void register() {
         MAHOGANY.register();
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, new CItemSettings().compostingChance(.1f), Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING);
 
         ASPEN.register();
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, Items.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, Items.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH);
@@ -176,18 +177,18 @@ public class BlockRegistry implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH);
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, new CItemSettings().compostingChance(.15f), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new CItemSettings().compostingChance(.15f), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new CItemSettings().compostingChance(.15f), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_MUSHROOM), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.INGREDIENTS, Items.PHANTOM_MEMBRANE));
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, Items.COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, null, COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, null, COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, null, Items.MOSSY_COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, MOSSY_COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, MOSSY_COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, MOSSY_COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, Items.COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, Items.MOSSY_COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, MOSSY_COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_stained_calcite"), WHITE_STAINED_CALCITE, null, ItemGroups.COLORED_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "light_gray_stained_calcite"), LIGHT_GRAY_STAINED_CALCITE, null, ItemGroups.COLORED_BLOCKS);
@@ -206,18 +207,18 @@ public class BlockRegistry implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "magenta_stained_calcite"), MAGENTA_STAINED_CALCITE, null, ItemGroups.COLORED_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_stained_calcite"), PINK_STAINED_CALCITE, null, ItemGroups.COLORED_BLOCKS);
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch"), TRIMMED_BAMBOO_THATCH, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch"), BEACHGRASS_THATCH, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch"), TRIMMED_BEACHGRASS_THATCH, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_stairs"), BEACHGRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch"), TRIMMED_BAMBOO_THATCH, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS);
@@ -239,7 +240,7 @@ public class BlockRegistry implements Register {
         ACAI.register();
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, MAHOGANY_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, new CItemSettings().compostingChance(.3f), MAHOGANY_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_acai_sapling"), POTTED_ACAI_SAPLING);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_berry_clump"), ACAI_BERRY_CLUMP);
 
@@ -253,9 +254,9 @@ public class BlockRegistry implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ELDER_PRISMARINE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, Items.TURTLE_EGG, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, Items.PEONY, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new CItemSettings().compostingChance(.65f), Items.PEONY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, Items.FERN, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, Items.LARGE_FERN, ItemGroups.NATURAL);

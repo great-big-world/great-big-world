@@ -1,5 +1,7 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.creolib.api.util.VillagerTradesInjector;
+import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.greatbigworld.item.AuraPotionItem;
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
@@ -9,9 +11,7 @@ import com.github.creoii.greatbigworld.main.util.GBWFoods;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.fluid.Fluids;
@@ -23,6 +23,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.Direction;
+import net.minecraft.village.TradeOffers;
+import net.minecraft.village.VillagerProfession;
 import org.jetbrains.annotations.Nullable;
 
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
@@ -30,31 +32,31 @@ import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.*;
 
 public class ItemRegistry implements Register {
     //region Mahogany Wood
-    public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new FabricItemSettings());
-    public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
-    public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new FabricItemSettings().maxCount(1));
+    public static final Item MAHOGANY_LEAVES = new BlockItem(BlockRegistry.MAHOGANY_LEAVES, new CItemSettings().compostingChance(.3f));
+    public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new CItemSettings().maxCount(1));
+    public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new CItemSettings().maxCount(1));
     //endregion
     //region Aspen Wood
-    public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new FabricItemSettings());
-    public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAF_PILE, new FabricItemSettings());
-    public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
-    public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new FabricItemSettings().maxCount(1));
+    public static final Item GREEN_ASPEN_LEAVES = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f));
+    public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(BlockRegistry.GREEN_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f));
+    public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new CItemSettings().maxCount(1));
+    public static final Item ASPEN_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ASPEN, new CItemSettings().maxCount(1));
     //endregion
     //region Acai Wood
-    public static final Item ACAI_LEAVES = new BlockItem(BlockRegistry.ACAI_LEAVES, new FabricItemSettings());
-    public static final Item HANGING_ACAI_LEAVES = new BlockItem(BlockRegistry.HANGING_ACAI_LEAVES, new FabricItemSettings());
-    public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
-    public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new FabricItemSettings().maxCount(1));
-    public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new FabricItemSettings().food(GBWFoods.ACAI_BERRIES));
+    public static final Item ACAI_LEAVES = new BlockItem(BlockRegistry.ACAI_LEAVES, new CItemSettings().compostingChance(.3f));
+    public static final Item HANGING_ACAI_LEAVES = new BlockItem(BlockRegistry.HANGING_ACAI_LEAVES, new CItemSettings().compostingChance(.2f));
+    public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
+    public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
+    public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new CItemSettings().food(GBWFoods.ACAI_BERRIES));
     //endregion
     //region Bamboo
-    public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.BAMBOO_TORCH, BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
-    public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, new FabricItemSettings(), Direction.DOWN);
+    public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.BAMBOO_TORCH, BAMBOO_WALL_TORCH, new CItemSettings(), Direction.DOWN);
+    public static final Item SOUL_BAMBOO_TORCH = new VerticallyAttachableBlockItem(BlockRegistry.SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, new CItemSettings(), Direction.DOWN);
     //endregion
     //region Foods
-    public static final Item VENISON = new Item(new FabricItemSettings().food(GBWFoods.VENISON));
-    public static final Item COOKED_VENISON = new Item(new FabricItemSettings().food(GBWFoods.COOKED_VENISON));
-    public static final Item ACAI_BOWL = new Item(new FabricItemSettings().food(GBWFoods.ACAI_BOWL));
+    public static final Item VENISON = new Item(new CItemSettings().food(GBWFoods.VENISON));
+    public static final Item COOKED_VENISON = new Item(new CItemSettings().food(GBWFoods.COOKED_VENISON));
+    public static final Item ACAI_BOWL = new Item(new CItemSettings().food(GBWFoods.ACAI_BOWL));
     //endregion
     //region Wooden Masks
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
@@ -71,21 +73,21 @@ public class ItemRegistry implements Register {
     public static final Item WARPED_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.WARPED_PLANKS));
     //endregion
     //region Thatch
-    public static final Item GRASS_THATCH = new BlockItem(BlockRegistry.GRASS_THATCH, new FabricItemSettings());
-    public static final Item GRASS_THATCH_SLAB = new BlockItem(BlockRegistry.GRASS_THATCH_SLAB, new FabricItemSettings());
-    public static final Item GRASS_THATCH_STAIRS = new BlockItem(BlockRegistry.GRASS_THATCH_STAIRS, new FabricItemSettings());
-    public static final Item TRIMMED_GRASS_THATCH = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH, new FabricItemSettings());
-    public static final Item TRIMMED_GRASS_THATCH_SLAB = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH_SLAB, new FabricItemSettings());
-    public static final Item TRIMMED_GRASS_THATCH_STAIRS = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH_STAIRS, new FabricItemSettings());
+    public static final Item GRASS_THATCH = new BlockItem(BlockRegistry.GRASS_THATCH, new CItemSettings().compostingChance(.35f));
+    public static final Item GRASS_THATCH_SLAB = new BlockItem(BlockRegistry.GRASS_THATCH_SLAB, new CItemSettings().compostingChance(.35f));
+    public static final Item GRASS_THATCH_STAIRS = new BlockItem(BlockRegistry.GRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.35f));
+    public static final Item TRIMMED_GRASS_THATCH = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH, new CItemSettings().compostingChance(.3f));
+    public static final Item TRIMMED_GRASS_THATCH_SLAB = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH_SLAB, new CItemSettings().compostingChance(.3f));
+    public static final Item TRIMMED_GRASS_THATCH_STAIRS = new BlockItem(BlockRegistry.TRIMMED_GRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.3f));
     //endregion
     //region Miscellaneous
-    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
-    public static final Item MUSIC_DISC_PINA_COLADA = new MusicDiscItem(2, SoundRegistry.MUSIC_DISC_PINA_COLADA, new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 86);
-    public static final Item GRASSY_LAVAROCK = new BlockItem(BlockRegistry.GRASSY_LAVAROCK, new FabricItemSettings());
-    public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new FabricItemSettings());
-    public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new FabricItemSettings());
-    public static final Item NAUTILUS_BUCKET = new EntityBucketItem(EntityRegistry.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_FILL_FISH, new FabricItemSettings());
-    public static final Item AURA_POTION = new AuraPotionItem(new FabricItemSettings().maxCount(1));
+    public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, SoundRegistry.MUSIC_DISC_SUNRISE, new CItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
+    public static final Item MUSIC_DISC_PINA_COLADA = new MusicDiscItem(2, SoundRegistry.MUSIC_DISC_PINA_COLADA, new CItemSettings().maxCount(1).rarity(Rarity.RARE), 86);
+    public static final Item GRASSY_LAVAROCK = new BlockItem(BlockRegistry.GRASSY_LAVAROCK, new CItemSettings());
+    public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new CItemSettings().compostingChance(.65f));
+    public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new CItemSettings().compostingChance(.65f));
+    public static final Item NAUTILUS_BUCKET = new EntityBucketItem(EntityRegistry.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_FILL_FISH, new CItemSettings());
+    public static final Item AURA_POTION = new AuraPotionItem(new CItemSettings().maxCount(1));
     //endregion
 
     @Override
@@ -132,48 +134,18 @@ public class ItemRegistry implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "nautilus_bucket"), NAUTILUS_BUCKET, Items.TROPICAL_FISH_BUCKET, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "aura_potion"), AURA_POTION, ItemGroups.FOOD_AND_DRINK, AuraEffect::addAuraPotions);
-        compostables();
+        trades();
     }
 
-    private void compostables() {
-        CompostingChanceRegistry.INSTANCE.add(ANTLER, .7f);
-        CompostingChanceRegistry.INSTANCE.add(HEATHER, .65f);
-        CompostingChanceRegistry.INSTANCE.add(TALL_HEATHER, .65f);
-        CompostingChanceRegistry.INSTANCE.add(DAYLIGHT_MUSHROOM, .15f);
-        CompostingChanceRegistry.INSTANCE.add(MIDNIGHT_MUSHROOM, .15f);
-        CompostingChanceRegistry.INSTANCE.add(DARKBLIGHT_MUSHROOM, .15f);
-        CompostingChanceRegistry.INSTANCE.add(YELLOW_ASPEN_LEAVES, .3f);
-        CompostingChanceRegistry.INSTANCE.add(YELLOW_ASPEN_LEAF_PILE, .1f);
-        CompostingChanceRegistry.INSTANCE.add(YELLOW_ASPEN_SAPLING, .3f);
-        CompostingChanceRegistry.INSTANCE.add(GREEN_ASPEN_LEAVES, .3f);
-        CompostingChanceRegistry.INSTANCE.add(GREEN_ASPEN_LEAF_PILE, .1f);
-        CompostingChanceRegistry.INSTANCE.add(GREEN_ASPEN_SAPLING, .3f);
-        CompostingChanceRegistry.INSTANCE.add(MAHOGANY_LEAVES, .3f);
-        CompostingChanceRegistry.INSTANCE.add(MAHOGANY_SAPLING, .3f);
-        CompostingChanceRegistry.INSTANCE.add(ACAI_LEAVES, .3f);
-        CompostingChanceRegistry.INSTANCE.add(HANGING_ACAI_LEAVES, .2f);
-        CompostingChanceRegistry.INSTANCE.add(ACAI_SAPLING, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TROPICAL_FERN, .65f);
-        CompostingChanceRegistry.INSTANCE.add(LARGE_TROPICAL_FERN, .65f);
-        CompostingChanceRegistry.INSTANCE.add(ACAI_LEAVES, .3f);
-        CompostingChanceRegistry.INSTANCE.add(BEACHGRASS_THATCH, .35f);
-        CompostingChanceRegistry.INSTANCE.add(BEACHGRASS_THATCH_SLAB, .35f);
-        CompostingChanceRegistry.INSTANCE.add(BEACHGRASS_THATCH_STAIRS, .35f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BEACHGRASS_THATCH, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BEACHGRASS_THATCH_SLAB, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BEACHGRASS_THATCH_STAIRS, .3f);
-        CompostingChanceRegistry.INSTANCE.add(BAMBOO_THATCH, .35f);
-        CompostingChanceRegistry.INSTANCE.add(BAMBOO_THATCH_SLAB, .35f);
-        CompostingChanceRegistry.INSTANCE.add(BAMBOO_THATCH_STAIRS, .35f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BAMBOO_THATCH, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BAMBOO_THATCH_SLAB, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_BAMBOO_THATCH_STAIRS, .3f);
-        CompostingChanceRegistry.INSTANCE.add(GRASS_THATCH, .35f);
-        CompostingChanceRegistry.INSTANCE.add(GRASS_THATCH_SLAB, .35f);
-        CompostingChanceRegistry.INSTANCE.add(GRASS_THATCH_STAIRS, .35f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH_SLAB, .3f);
-        CompostingChanceRegistry.INSTANCE.add(TRIMMED_GRASS_THATCH_STAIRS, .3f);
+    private void trades() {
+        VillagerTradesInjector.injectWanderingTrader(1,
+                new TradeOffers.SellItemFactory(MAHOGANY_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(YELLOW_ASPEN_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(GREEN_ASPEN_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(ACAI_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(HEATHER, 1, 1, 12, 1)
+        );
+        VillagerTradesInjector.inject(VillagerProfession.BUTCHER, 3, new TradeOffers.BuyForOneEmeraldFactory(VENISON, 12, 16, 20));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.world.decorator;
 
 import com.github.creoii.greatbigworld.block.HangingLeavesBlock;
-import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
+import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -40,7 +40,7 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return PlacerRegistry.HANGING_LEAVES_TREE_DECORATOR;
+        return DecoratorRegistry.HANGING_LEAVES_TREE_DECORATOR;
     }
 
     @Override

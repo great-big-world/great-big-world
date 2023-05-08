@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.item;
 
 import com.github.creoii.creolib.api.enchantment.AllowEnchantments;
+import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
@@ -18,7 +19,7 @@ public class WoodenMaskItem extends ArmorItem implements AllowEnchantments {
     public static final List<Item> WOODEN_MASKS = new ArrayList<>();
 
     public WoodenMaskItem(WoodenMaskArmorMaterial material) {
-        super(material, Type.HELMET, new FabricItemSettings().maxCount(1));
+        super(material, Type.HELMET, new CItemSettings().maxCount(1));
         WOODEN_MASKS.add(this);
     }
 
