@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.greatbigworld.item.AuraPotionItem;
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
 import com.github.creoii.greatbigworld.main.util.AuraEffect;
@@ -89,47 +90,47 @@ public class ItemRegistry implements Register {
 
     @Override
     public void register() {
-        registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, MAHOGANY_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, ACAI_LEAVES, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES, new ItemGroupSettings(ItemGroups.NATURAL, Items.GLOW_BERRIES), new ItemGroupSettings(ItemGroups.FOOD_AND_DRINK, Items.GLOW_BERRIES));
-        registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
-        registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "acai_bowl"), ACAI_BOWL, Items.RABBIT_STEW, ItemGroups.FOOD_AND_DRINK);
-        registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, Items.TURTLE_HELMET));
-        registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, OAK_MASK));
-        registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, new ItemGroupSettings(ItemGroups.COMBAT, SPRUCE_MASK));
-        registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, new ItemGroupSettings(ItemGroups.COMBAT, BIRCH_MASK));
-        registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ASPEN_MASK));
-        registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, new ItemGroupSettings(ItemGroups.COMBAT, JUNGLE_MASK));
-        registerItem(new Identifier(NAMESPACE, "acai_mask"), ACAI_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MAHOGANY_MASK));
-        registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACAI_MASK));
-        registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, new ItemGroupSettings(ItemGroups.COMBAT, ACACIA_MASK));
-        registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, new ItemGroupSettings(ItemGroups.COMBAT, DARK_OAK_MASK));
-        registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, new ItemGroupSettings(ItemGroups.COMBAT, MANGROVE_MASK));
-        registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, new ItemGroupSettings(ItemGroups.COMBAT, CRIMSON_MASK));
-        registerItem(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_slab"), TRIMMED_GRASS_THATCH_SLAB, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_stairs"), TRIMMED_GRASS_THATCH_STAIRS, new ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null));
-        registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "music_disc_pina_colada"), MUSIC_DISC_PINA_COLADA, MUSIC_DISC_SUNRISE, ItemGroups.TOOLS);
-        registerItem(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, new ItemGroupSettings(ItemGroups.NATURAL, BlockRegistry.VOLCANIC_SAND));
-        registerItem(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, Items.FERN, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
-        registerItem(new Identifier(NAMESPACE, "nautilus_bucket"), NAUTILUS_BUCKET, Items.TROPICAL_FISH_BUCKET, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, MAHOGANY_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, ACAI_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.GLOW_BERRIES), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FOOD_AND_DRINK, Items.GLOW_BERRIES));
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "cooked_venison"), COOKED_VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_bowl"), ACAI_BOWL, Items.RABBIT_STEW, ItemGroups.FOOD_AND_DRINK);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, Items.TURTLE_HELMET, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, OAK_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, SPRUCE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, BIRCH_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ASPEN_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, JUNGLE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_mask"), ACAI_MASK, MAHOGANY_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ACAI_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ACACIA_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, DARK_OAK_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, MANGROVE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, CRIMSON_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_slab"), TRIMMED_GRASS_THATCH_SLAB, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_stairs"), TRIMMED_GRASS_THATCH_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_pina_colada"), MUSIC_DISC_PINA_COLADA, MUSIC_DISC_SUNRISE, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grassy_lavarock"), GRASSY_LAVAROCK, BlockRegistry.VOLCANIC_SAND, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN, Items.FERN, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN, Items.LARGE_FERN, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "nautilus_bucket"), NAUTILUS_BUCKET, Items.TROPICAL_FISH_BUCKET, ItemGroups.TOOLS);
         registerItem(new Identifier(NAMESPACE, "aura_potion"), AURA_POTION, ItemGroups.FOOD_AND_DRINK, AuraEffect::addAuraPotions);
         compostables();
     }
@@ -183,36 +184,10 @@ public class ItemRegistry implements Register {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? PotionUtil.getColor(stack) : -1, AURA_POTION);
     }
 
-    public static void registerItem(Identifier id, Item item, @Nullable ItemConvertible after, @Nullable ItemGroup group) {
-        Registry.register(Registries.ITEM, id, item);
-        if (group != null) {
-            if (after != null) {
-                ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(after, item));
-            } else {
-                ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
-            }
-        }
-    }
-
     public static void registerItem(Identifier id, Item item, @Nullable ItemGroup group, ItemGroupEvents.ModifyEntries entries) {
         Registry.register(Registries.ITEM, id, item);
         if (group != null) {
             ItemGroupEvents.modifyEntriesEvent(group).register(entries);
         }
     }
-
-    public static void registerItem(Identifier id, Item item, ItemGroupSettings... groups) {
-        Registry.register(Registries.ITEM, id, item);
-        if (groups != null) {
-            for (ItemGroupSettings settings : groups) {
-                if (settings.after() != null) {
-                    ItemGroupEvents.modifyEntriesEvent(settings.group()).register(entries -> entries.addAfter(settings.after(), item));
-                } else {
-                    ItemGroupEvents.modifyEntriesEvent(settings.group()).register(entries -> entries.add(item));
-                }
-            }
-        }
-    }
-
-    public record ItemGroupSettings(ItemGroup group, @Nullable ItemConvertible after) { }
 }

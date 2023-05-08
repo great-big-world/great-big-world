@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
+import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.greatbigworld.entity.MooseEntity;
 import com.github.creoii.greatbigworld.entity.NautilusEntity;
 import com.github.creoii.greatbigworld.entity.ThicketEntity;
@@ -48,7 +49,7 @@ public class EntityRegistry implements Register {
             if (biomeSelector != null)
                 BiomeModifications.addSpawn(biomeSelector, group, entityType, weight, minGroupSize, maxGroupSize);
             Item spawnEgg = new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new FabricItemSettings());
-            ItemRegistry.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registries.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), spawnEgg, after, ItemGroups.SPAWN_EGGS);
+            ItemRegistryHelper.registerItem(new Identifier(GreatBigWorld.NAMESPACE, Registries.ENTITY_TYPE.getId(entityType).getPath() + "_spawn_egg"), spawnEgg, after, ItemGroups.SPAWN_EGGS);
         }
     }
 }

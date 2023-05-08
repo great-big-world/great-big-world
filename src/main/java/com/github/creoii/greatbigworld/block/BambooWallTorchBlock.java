@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -22,7 +22,7 @@ public class BambooWallTorchBlock extends WallTorchBlock {
 	private static final Map<Direction, VoxelShape> SHAPES = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(5.5d, 3d, 11d, 10.5d, 16d, 16d), Direction.SOUTH, Block.createCuboidShape(5.5d, 3d, 0d, 10.5d, 16d, 5d), Direction.WEST, Block.createCuboidShape(11d, 3d, 5.5d, 16d, 16d, 10.5d), Direction.EAST, Block.createCuboidShape(0d, 3d, 5.5d, 16d, 16d, 10.5d)));
 
 	public BambooWallTorchBlock(ParticleEffect particle) {
-		super(FabricBlockSettings.copy(Blocks.WALL_TORCH), particle);
+		super(CBlockSettings.copy(Blocks.WALL_TORCH), particle);
 	}
 
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

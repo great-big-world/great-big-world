@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BambooLeaves;
 import net.minecraft.item.ItemPlacementContext;
@@ -28,7 +28,7 @@ public class BambooTorchBlock extends TorchBlock {
 	protected static final BooleanProperty LEAVES = BooleanProperty.of("leaves");
 
 	public BambooTorchBlock(ParticleEffect particle) {
-		super(FabricBlockSettings.copy(Blocks.TORCH).offset(OffsetType.XZ), particle);
+		super(CBlockSettings.copy(Blocks.TORCH).offset(OffsetType.XZ), particle);
 		setDefaultState(getStateManager().getDefaultState().with(LARGE, false).with(LEAVES, false));
 	}
 

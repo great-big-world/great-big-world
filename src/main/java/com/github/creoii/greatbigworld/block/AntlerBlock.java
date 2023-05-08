@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.google.common.collect.ImmutableMap;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
@@ -28,7 +28,7 @@ public class AntlerBlock extends HorizontalFacingBlock {
             .build();
 
     public AntlerBlock() {
-        super(FabricBlockSettings.copy(Blocks.BONE_BLOCK).nonOpaque().noCollision());
+        super(CBlockSettings.copy(Blocks.BONE_BLOCK).nonOpaque().noCollision());
         setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }
 

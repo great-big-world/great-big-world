@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import com.github.creoii.creolib.api.util.block.BlockUtil;
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
@@ -10,7 +11,7 @@ import net.minecraft.world.BlockView;
 
 public class TallBeachgrassBlock extends TallPlantBlock {
     public TallBeachgrassBlock() {
-        super(FabricBlockSettings.copy(Blocks.TALL_GRASS));
+        super(CBlockSettings.copy(Blocks.TALL_GRASS).fireSettings(new BlockUtil.FireSettings(75, 120)));
     }
 
     @Override

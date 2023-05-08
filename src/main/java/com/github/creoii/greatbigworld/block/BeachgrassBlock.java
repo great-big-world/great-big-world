@@ -1,7 +1,8 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.creolib.api.util.block.BlockUtil;
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FernBlock;
@@ -14,7 +15,7 @@ import net.minecraft.world.BlockView;
 
 public class BeachgrassBlock extends FernBlock {
     public BeachgrassBlock() {
-        super(FabricBlockSettings.copy(Blocks.GRASS));
+        super(CBlockSettings.copy(Blocks.GRASS).fireSettings(new BlockUtil.FireSettings(75, 120)));
     }
 
     @Override

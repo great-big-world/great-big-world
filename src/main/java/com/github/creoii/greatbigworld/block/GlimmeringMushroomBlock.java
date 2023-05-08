@@ -1,9 +1,9 @@
 package com.github.creoii.greatbigworld.block;
 
+import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -36,7 +36,7 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     private final int cloudColor;
 
     public GlimmeringMushroomBlock(ParticleEffect particleEffect, StatusEffectInstance statusEffect, int light, int cloudColor) {
-        super(FabricBlockSettings.of(Material.PLANT, MapColor.CLEAR).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> light).ticksRandomly().nonOpaque().noCollision().emissiveLighting((state, world, pos) -> true));
+        super(CBlockSettings.of(Material.PLANT, MapColor.CLEAR).strength(.1f).sounds(BlockSoundGroup.WOOD).luminance(state -> light).ticksRandomly().nonOpaque().noCollision().emissiveLighting((state, world, pos) -> true));
         setDefaultState(getStateManager().getDefaultState().with(MUSHROOMS, 1).with(WATERLOGGED, false));
         this.particleEffect = particleEffect;
         this.statusEffect = statusEffect;
