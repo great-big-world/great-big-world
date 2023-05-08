@@ -145,7 +145,7 @@ public class ItemRegistry implements Register {
                 new TradeOffers.SellItemFactory(ACAI_SAPLING, 5, 1, 8, 1),
                 new TradeOffers.SellItemFactory(HEATHER, 1, 1, 12, 1)
         );
-        VillagerTradesInjector.inject(VillagerProfession.BUTCHER, 3, new TradeOffers.BuyForOneEmeraldFactory(VENISON, 12, 16, 20));
+        VillagerTradesInjector.inject(VillagerProfession.BUTCHER, 3, new TradeOffers.BuyForOneEmeraldFactory(VENISON, 5, 16, 20));
     }
 
     @Override
