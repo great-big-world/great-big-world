@@ -86,7 +86,7 @@ public class ItemRegistry implements Register {
     public static final Item GRASSY_LAVAROCK = new BlockItem(BlockRegistry.GRASSY_LAVAROCK, new CItemSettings());
     public static final Item TROPICAL_FERN = new BlockItem(BlockRegistry.TROPICAL_FERN, new CItemSettings().compostingChance(.65f));
     public static final Item LARGE_TROPICAL_FERN = new BlockItem(BlockRegistry.LARGE_TROPICAL_FERN, new CItemSettings().compostingChance(.65f));
-    public static final Item NAUTILUS_BUCKET = new EntityBucketItem(EntityRegistry.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_FILL_FISH, new CItemSettings());
+    public static final Item NAUTILUS_BUCKET = new EntityBucketItem(EntityTypeRegistry.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_FILL_FISH, new CItemSettings());
     public static final Item AURA_POTION = new AuraPotionItem(new CItemSettings().maxCount(1));
     //endregion
 

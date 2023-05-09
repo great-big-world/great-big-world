@@ -16,7 +16,7 @@ public class GreatBigWorldClient implements ClientModInitializer {
     public static final Register[] CLIENT_REGISTERS = new Register[]{
             new BlockRegistry(),
             new ItemRegistry(),
-            new EntityRegistry(),
+            new EntityTypeRegistry(),
             new ParticleRegistry(),
             new RenderRegistry()
     };

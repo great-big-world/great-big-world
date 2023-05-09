@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
 
-public class EntityRegistry implements Register {
+public class EntityTypeRegistry implements Register {
     public static final EntityType<MooseEntity> MOOSE = FabricEntityTypeBuilder.<MooseEntity>createMob().entityFactory(MooseEntity::new).spawnGroup(SpawnGroup.CREATURE).defaultAttributes(MooseEntity::createMooseAttributes).dimensions(EntityDimensions.changing(1.6f, 2.1f)).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn).trackRangeChunks(10).build();
     public static final EntityType<ThicketEntity> THICKET = FabricEntityTypeBuilder.<ThicketEntity>createMob().entityFactory(ThicketEntity::new).spawnGroup(SpawnGroup.CREATURE).defaultAttributes(ThicketEntity::createThicketAttributes).dimensions(EntityDimensions.fixed(.6f, 2.2f)).spawnRestriction(SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn).trackRangeChunks(8).build();
     public static final EntityType<NautilusEntity> NAUTILUS = FabricEntityTypeBuilder.<NautilusEntity>createMob().entityFactory(NautilusEntity::new).spawnGroup(SpawnGroup.WATER_CREATURE).defaultAttributes(NautilusEntity::createNautilusAttributes).dimensions(EntityDimensions.fixed(.6f, .75f)).spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, NautilusEntity::canSpawn).trackRangeChunks(8).build();

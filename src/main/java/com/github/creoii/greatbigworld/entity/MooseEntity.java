@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
+import com.github.creoii.greatbigworld.main.registry.EntityTypeRegistry;
 import com.github.creoii.greatbigworld.main.registry.GameEventRegistry;
 import com.github.creoii.greatbigworld.main.registry.SoundRegistry;
 import com.github.creoii.greatbigworld.main.util.Tags;
@@ -241,7 +241,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Nullable @Override
     public MooseEntity createChild(ServerWorld world, PassiveEntity entity) {
-        MooseEntity mooseEntity = EntityRegistry.MOOSE.create(world);
+        MooseEntity mooseEntity = EntityTypeRegistry.MOOSE.create(world);
         if (mooseEntity != null) {
             mooseEntity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
             mooseEntity.setLeftAntler(false);
@@ -625,7 +625,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (!entities.isEmpty()) {
             setAttacking(true);
             for (Entity entity : entities) {
-                if ((entity.getType() == EntityRegistry.MOOSE && getOwnerUuid() != null) && entity instanceof LivingEntity livingEntity) {
+                if ((entity.getType() == EntityTypeRegistry.MOOSE && getOwnerUuid() != null) && entity instanceof LivingEntity livingEntity) {
                     tryAttack(livingEntity);
                 }
             }
@@ -688,7 +688,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
             super(MooseEntity.this, LivingEntity.class, 20, true, true, livingEntity -> {
-                return !livingEntity.isBaby() && livingEntity.getType() != EntityRegistry.MOOSE && !MooseEntity.this.isOwner(livingEntity);
+                return !livingEntity.isBaby() && livingEntity.getType() != EntityTypeRegistry.MOOSE && !MooseEntity.this.isOwner(livingEntity);
             });
         }
 

@@ -15,7 +15,7 @@ import net.minecraft.world.BlockView;
 
 public class BeachgrassBlock extends FernBlock {
     public BeachgrassBlock() {
-        super(CBlockSettings.copy(Blocks.GRASS).fireSettings(new BlockUtil.FireSettings(75, 120)));
+        super(CBlockSettings.copyOf(Blocks.GRASS).fireSettings(new BlockUtil.FireSettings(75, 120)));
     }
 
     @Override

@@ -12,7 +12,8 @@ public class GreatBigWorld implements ModInitializer {
     public static final Register[] REGISTERS = new Register[]{
             new BlockRegistry(),
             new ItemRegistry(),
-            new EntityRegistry(),
+            new EntityTypeRegistry(),
+            new LootRegistry(),
             new DecoratorRegistry(),
             new ConfiguredFeatureRegistry(),
             new PlacedFeatureRegistry(),

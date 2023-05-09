@@ -26,9 +26,9 @@ public class RenderRegistry implements Register {
 
     @Override
     public void registerClient() {
-        EntityRendererRegistry.register(EntityRegistry.MOOSE, MooseEntityRenderer::new);
-        EntityRendererRegistry.register(EntityRegistry.THICKET, ThicketEntityRenderer::new);
-        EntityRendererRegistry.register(EntityRegistry.NAUTILUS, NautilusEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypeRegistry.MOOSE, MooseEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypeRegistry.THICKET, ThicketEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypeRegistry.NAUTILUS, NautilusEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MOOSE_MODEL_LAYER, MooseEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MOOSE_SADDLE_MODEL_LAYER, MooseEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(THICKET_MODEL_LAYER, SkeletonEntityModel::getTexturedModelData);
