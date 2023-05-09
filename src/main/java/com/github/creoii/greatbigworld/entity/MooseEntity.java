@@ -362,6 +362,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
                 setTame(false);
                 if (isSaddled()) {
                     dropInventory();
+                    items.setStack(0, ItemStack.EMPTY);
                     updateSaddle();
                 }
                 if (getFirstPassenger() != null) {
