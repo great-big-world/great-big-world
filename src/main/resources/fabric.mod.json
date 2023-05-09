@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "great_big_world",
-  "version": "1.2.0-beta.3",
+  "version": "1.2.0-beta.4",
   "name": "Great Big World",
   "description": "There's a whole world out there to explore",
   "authors": [
@@ -32,6 +32,6 @@
     "fabricloader": ">=0.14.0",
     "minecraft": "1.19.4",
     "terrablender": ">=2.1.0.134",
-    "creo": ">=0.0.1-alpha.25"
+    "creo": ">=0.0.1-alpha.27"
   }
 }
