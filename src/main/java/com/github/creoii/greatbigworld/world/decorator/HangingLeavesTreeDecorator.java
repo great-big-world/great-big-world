@@ -6,6 +6,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.block.BlockState;
+import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
@@ -70,6 +71,20 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
                     }
                 }
             }
+        }
+    }
+
+    public enum PositionInclusion implements StringIdentifiable {
+        LOGS,
+        LEAVES,
+        ALL;
+
+        @SuppressWarnings("deprecation")
+        public static final StringIdentifiable.Codec<PositionInclusion> CODEC = StringIdentifiable.createCodec(PositionInclusion::values);
+
+        @Override
+        public String asString() {
+            return name().toLowerCase();
         }
     }
 }
