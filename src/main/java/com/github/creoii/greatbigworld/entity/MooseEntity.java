@@ -592,6 +592,9 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
 
     @Override
     public boolean shouldAngerAt(LivingEntity entity) {
+        if (entity instanceof MooseEntity moose && moose.getOwnerUuid() != null && entity.getType() == getType() && getOwnerUuid() != null) {
+            return !moose.getOwnerUuid().equals(getOwnerUuid());
+        }
         return isAngryAt(entity) && squaredDistanceTo(entity) <= 3d && entity.getType() != getType();
     }
 

@@ -25,7 +25,8 @@ public class GreatBigWorld implements ModInitializer {
             new SoundRegistry(),
             new GameEventRegistry(),
             new ParticleRegistry(),
-            new CriteriaRegistry()
+            new CriteriaRegistry(),
+            new AdvancementRegistry()
     };
 
     @Override
