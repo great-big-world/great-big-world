@@ -16,13 +16,18 @@ public class VolcanicSandBlock extends SandBlock {
     @Override
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (random.nextFloat() > .8f) return;
         BlockState upState = world.getBlockState(pos.up());
         if (upState.isOf(Blocks.FARMLAND) && FarmlandBlockInvoker.hasCrop(world, pos.up()) && FarmlandBlockInvoker.isWaterNearby(world, pos.up())) {
             BlockPos.Mutable mutable = pos.mutableCopy();
             for (int i = 1; i < 4; ++i) {
                 mutable.setY(pos.getY() - i);
-                if (world.getBlockState(mutable).isOf(Blocks.DIRT) && (world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(BlockRegistry.LAVAROCK))) {
+                BlockState atState = world.getBlockState(mutable);
+                boolean passUp = world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(BlockRegistry.VOLCANIC_SAND);
+                if (atState.isOf(Blocks.DIRT) && passUp) {
                     world.setBlockState(mutable, Blocks.ROOTED_DIRT.getDefaultState(), 3);
+                } else if (atState.isOf(Blocks.ROOTED_DIRT) && passUp && world.getBlockState(mutable.down()).isAir()) {
+                    world.setBlockState(mutable.down(), Blocks.HANGING_ROOTS.getDefaultState(), 3);
                 }
             }
         }
