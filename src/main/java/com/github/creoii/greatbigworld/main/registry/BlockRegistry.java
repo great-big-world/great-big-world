@@ -110,7 +110,7 @@ public class BlockRegistry implements Register {
     public static final Block GRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_GRASS_THATCH_SLAB);
     //endregion
     //region Lavarock
-    public static final Block VOLCANIC_SAND = new SandBlock(2827557, CBlockSettings.copy(Blocks.SAND).mapColor(MapColor.BLACK));
+    public static final Block VOLCANIC_SAND = new VolcanicSandBlock();
     public static final Block LAVAROCK = new Block(CBlockSettings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
     public static final Block GRASSY_LAVAROCK = new GrassBlock(CBlockSettings.copy(BlockRegistry.LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), CBlockSettings.copy(LAVAROCK));

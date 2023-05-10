@@ -6,6 +6,7 @@
   "mixins": [
     "StatusEffectInstanceMixin",
     "block.BlockEntityTypeMixin",
+    "block.FarmlandBlockInvoker",
     "block.PointedDripstoneBlockMixin",
     "block.SpreadableBlockMixin",
     "enchantment.EnchantmentHelperMixin",
