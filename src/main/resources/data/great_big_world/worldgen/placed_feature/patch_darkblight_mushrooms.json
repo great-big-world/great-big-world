@@ -25,7 +25,10 @@
       }
     },
     {
-      "type": "creo:sky_visible"
+      "type": "creo:inverted",
+      "to_invert": {
+        "type": "creo:sky_visible"
+      }
     },
     {
       "type": "minecraft:biome"
