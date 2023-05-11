@@ -154,6 +154,7 @@ public class BlockRegistry implements Register {
     public static final Block NAUTILUS_FOSSIL = new Block(CBlockSettings.copy(Blocks.STONE));
     //endregion
 
+    @Override
     public void register() {
         MAHOGANY.register();
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);

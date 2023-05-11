@@ -12,6 +12,7 @@ public class DecoratorRegistry implements Register {
     public static TreeDecoratorType<AcaiBerriesTreeDecorator> ACAI_BERRIES_TREE_DECORATOR;
     public static TreeDecoratorType<HangingLeavesTreeDecorator> HANGING_LEAVES_TREE_DECORATOR;
 
+    @Override
     public void register() {
         BRANCH_TREE_DECORATOR = TreeDecoratorTypeInvoker.callRegister("branch", BranchTreeDecorator.CODEC);
         ACAI_BERRIES_TREE_DECORATOR = TreeDecoratorTypeInvoker.callRegister("acai_berries", AcaiBerriesTreeDecorator.CODEC);
