@@ -11,7 +11,7 @@ import net.minecraft.world.BlockView;
 
 public class TallBeachgrassBlock extends TallPlantBlock {
     public TallBeachgrassBlock() {
-        super(CBlockSettings.copy(Blocks.TALL_GRASS).fireSettings(new BlockUtil.FireSettings(75, 120)));
+        super(CBlockSettings.copy(Blocks.TALL_GRASS).fireSettings(70, 120));
     }
 
     @Override

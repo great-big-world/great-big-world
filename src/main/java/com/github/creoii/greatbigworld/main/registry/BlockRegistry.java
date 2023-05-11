@@ -1,7 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.creolib.api.util.block.BlockRegistryHelper;
-import com.github.creoii.creolib.api.util.block.BlockUtil;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
@@ -33,15 +32,15 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 public class BlockRegistry implements Register {
     //region Mahogany Wood
     public static RegistrySets.WoodSet MAHOGANY = RegistrySets.createWoodSet(NAMESPACE, "mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, Items.JUNGLE_LOG, Items.JUNGLE_SIGN);
-    public static final Block MAHOGANY_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(new BlockUtil.FireSettings(30, 60)));
+    public static final Block MAHOGANY_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), CBlockSettings.copy(Blocks.JUNGLE_SAPLING));
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Aspen Wood
     public static RegistrySets.WoodSet ASPEN = RegistrySets.createWoodSet(NAMESPACE, "aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
-    public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(new BlockUtil.FireSettings(30, 60)));
-    public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(CBlockSettings.of(Material.DECORATION, MapColor.YELLOW).strength(.1f).sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().fireSettings(new BlockUtil.FireSettings(30, 60)));
-    public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(new BlockUtil.FireSettings(30, 60)));
+    public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(30, 60));
+    public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(CBlockSettings.of(Material.DECORATION, MapColor.YELLOW).strength(.1f).sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().fireSettings(30, 60));
+    public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
     public static final Block GREEN_ASPEN_LEAF_PILE = new LeafPileBlock(CBlockSettings.copy(YELLOW_ASPEN_LEAF_PILE).mapColor(MapColor.DARK_GREEN));
     public static final Block YELLOW_ASPEN_SAPLING = new SaplingBlock(new YellowAspenSaplingGenerator(), CBlockSettings.copy(Blocks.BIRCH_SAPLING));
     public static final Block POTTED_YELLOW_ASPEN_SAPLING = new FlowerPotBlock(YELLOW_ASPEN_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
@@ -90,24 +89,24 @@ public class BlockRegistry implements Register {
     public static final Block WHITE_STAINED_CALCITE = new Block(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
     //region Thatch
-    public static final Block TRIMMED_BEACHGRASS_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BEACHGRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_BEACHGRASS_THATCH);
-    public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
-    public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_BEACHGRASS_THATCH_SLAB);
-    public static final Block TRIMMED_BAMBOO_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BAMBOO_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_BAMBOO_THATCH);
-    public static final Block TRIMMED_BAMBOO_THATCH_STAIRS = new StairsBlock(TRIMMED_BAMBOO_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BAMBOO_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), BAMBOO_THATCH.getDefaultState(), TRIMMED_BAMBOO_THATCH_STAIRS);
-    public static final Block TRIMMED_BAMBOO_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block BAMBOO_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_BAMBOO_THATCH_SLAB);
-    public static final Block TRIMMED_GRASS_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block GRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_GRASS_THATCH);
-    public static final Block TRIMMED_GRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_GRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block GRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), GRASS_THATCH.getDefaultState(), TRIMMED_GRASS_THATCH_STAIRS);
-    public static final Block TRIMMED_GRASS_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(70, 140)));
-    public static final Block GRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(new BlockUtil.FireSettings(80, 160)), TRIMMED_GRASS_THATCH_SLAB);
+    public static final Block TRIMMED_BEACHGRASS_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block BEACHGRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(80, 160), TRIMMED_BEACHGRASS_THATCH);
+    public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(70, 140));
+    public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(80, 160), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
+    public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(70, 140));
+    public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(80, 160), TRIMMED_BEACHGRASS_THATCH_SLAB);
+    public static final Block TRIMMED_BAMBOO_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block BAMBOO_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(80, 160), TRIMMED_BAMBOO_THATCH);
+    public static final Block TRIMMED_BAMBOO_THATCH_STAIRS = new StairsBlock(TRIMMED_BAMBOO_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(70, 140));
+    public static final Block BAMBOO_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(80, 160), BAMBOO_THATCH.getDefaultState(), TRIMMED_BAMBOO_THATCH_STAIRS);
+    public static final Block TRIMMED_BAMBOO_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(70, 140));
+    public static final Block BAMBOO_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(80, 160), TRIMMED_BAMBOO_THATCH_SLAB);
+    public static final Block TRIMMED_GRASS_THATCH = new PillarBlock(CBlockSettings.of(Material.SOLID_ORGANIC, MapColor.PALE_GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block GRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(80, 160), TRIMMED_GRASS_THATCH);
+    public static final Block TRIMMED_GRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_GRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(70, 140));
+    public static final Block GRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(80, 160), GRASS_THATCH.getDefaultState(), TRIMMED_GRASS_THATCH_STAIRS);
+    public static final Block TRIMMED_GRASS_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(70, 140));
+    public static final Block GRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(80, 160), TRIMMED_GRASS_THATCH_SLAB);
     //endregion
     //region Lavarock
     public static final Block VOLCANIC_SAND = new VolcanicSandBlock();
@@ -123,8 +122,8 @@ public class BlockRegistry implements Register {
     //endregion
     //region Acai
     public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign());
-    public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(new BlockUtil.FireSettings(30, 60)));
-    public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(new BlockUtil.FireSettings(30, 60)));
+    public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(30, 60));
+    public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(30, 60));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(MAHOGANY_SAPLING));
     public static final Block POTTED_ACAI_SAPLING = new FlowerPotBlock(ACAI_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block ACAI_BERRY_CLUMP = new AcaiBerryClumpBlock(CBlockSettings.copy(Blocks.MUSHROOM_STEM).mapColor(MapColor.TERRACOTTA_PURPLE).ticksRandomly());
@@ -142,14 +141,14 @@ public class BlockRegistry implements Register {
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
-    public static final Block TALL_HEATHER = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(new BlockUtil.FireSettings(60, 100)));
-    public static final Block HEATHER = new FernBlock(CBlockSettings.copy(Blocks.POPPY).fireSettings(new BlockUtil.FireSettings(60, 100)));
+    public static final Block TALL_HEATHER = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
+    public static final Block HEATHER = new FernBlock(CBlockSettings.copy(Blocks.POPPY).fireSettings(60, 100));
     public static final Block POTTED_HEATHER = new FlowerPotBlock(HEATHER, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block BEACHGRASS = new BeachgrassBlock();
     public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
     public static final Block POTTED_BEACHGRASS = new FlowerPotBlock(BEACHGRASS, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block TROPICAL_FERN = new FernBlock(CBlockSettings.copy(Blocks.FERN).fireSettings(new BlockUtil.FireSettings(60, 100)));
-    public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(CBlockSettings.copy(Blocks.LARGE_FERN).fireSettings(new BlockUtil.FireSettings(60, 100)));
+    public static final Block TROPICAL_FERN = new FernBlock(CBlockSettings.copy(Blocks.FERN).fireSettings(60, 100));
+    public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(CBlockSettings.copy(Blocks.LARGE_FERN).fireSettings(60, 100));
     public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block NAUTILUS_FOSSIL = new Block(CBlockSettings.copy(Blocks.STONE));
     //endregion
@@ -259,8 +258,8 @@ public class BlockRegistry implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new CItemSettings().compostingChance(.65f), Items.PEONY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, Items.FERN, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, Items.LARGE_FERN, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new CItemSettings().compostingChance(.15f), Items.FERN, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new CItemSettings().compostingChance(.2f), Items.LARGE_FERN, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_beachgrass"), POTTED_BEACHGRASS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tropical_fern"), TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN);
