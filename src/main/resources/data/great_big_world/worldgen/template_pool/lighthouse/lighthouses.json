@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:lighthouse/lighthouse_striped",
+        "location": "great_big_world:lighthouse/striped",
         "processors": {
           "processors": []
         },
@@ -14,7 +14,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "great_big_world:lighthouse/lighthouse_white",
+        "location": "great_big_world:lighthouse/white",
         "processors": {
           "processors": []
         },
