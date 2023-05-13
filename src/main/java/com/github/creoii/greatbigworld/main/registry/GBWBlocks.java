@@ -114,7 +114,7 @@ public class GBWBlocks implements Register {
     //region Lavarock
     public static final Block VOLCANIC_SAND = new VolcanicSandBlock();
     public static final Block LAVAROCK = new Block(CBlockSettings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
-    public static final Block GRASSY_LAVAROCK = new GrassBlock(CBlockSettings.copy(GBWBlocks.LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
+    public static final Block GRASSY_LAVAROCK = new GrassyLavarockBlock();
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), CBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_SLAB = new SlabBlock(CBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK));
