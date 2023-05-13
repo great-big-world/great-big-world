@@ -11,6 +11,7 @@
     }
   },
   "result": {
-    "item": "great_big_world:lavarock"
+    "item": "great_big_world:lavarock",
+    "count": 2
   }
 }
