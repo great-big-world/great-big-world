@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:acai_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "great_big_world:stripped_acai_log"
+    }
+  ],
+  "processingTime": 50
+}

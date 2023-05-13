@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:mahogany_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "great_big_world:stripped_mahogany_log"
+    }
+  ],
+  "processingTime": 50
+}

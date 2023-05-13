@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:aspen_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "great_big_world:stripped_aspen_log"
+    }
+  ],
+  "processingTime": 50
+}

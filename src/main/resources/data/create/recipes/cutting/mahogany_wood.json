@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "great_big_world:mahogany_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "great_big_world:stripped_mahogany_wood"
+    }
+  ],
+  "processingTime": 50
+}
