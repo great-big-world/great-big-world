@@ -7,7 +7,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
-public class BiomeRegistry implements Register {
+public class GBWBiomes implements Register {
     public static RegistryKey<Biome> ASPEN_FOREST;
     public static RegistryKey<Biome> SNOWY_ASPEN_FOREST;
     public static RegistryKey<Biome> ISLAND_JUNGLE;

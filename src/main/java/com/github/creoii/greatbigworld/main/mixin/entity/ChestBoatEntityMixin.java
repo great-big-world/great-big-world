@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWItems;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
@@ -15,10 +15,10 @@ public class ChestBoatEntityMixin {
     @Inject(method = "asItem", at = @At("HEAD"), cancellable = true)
     public void asItem(CallbackInfoReturnable<Item> ci) {
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.MAHOGANY)
-            ci.setReturnValue(ItemRegistry.MAHOGANY_CHEST_BOAT);
+            ci.setReturnValue(GBWItems.MAHOGANY_CHEST_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ASPEN)
-            ci.setReturnValue(ItemRegistry.ASPEN_CHEST_BOAT);
+            ci.setReturnValue(GBWItems.ASPEN_CHEST_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ACAI)
-            ci.setReturnValue(ItemRegistry.ACAI_CHEST_BOAT);
+            ci.setReturnValue(GBWItems.ACAI_CHEST_BOAT);
     }
 }

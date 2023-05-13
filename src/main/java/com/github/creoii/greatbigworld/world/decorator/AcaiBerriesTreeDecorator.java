@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.world.decorator;
 
 import com.github.creoii.greatbigworld.block.AcaiBerryClumpBlock;
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.registry.GBWDecorators;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.collection.DataPool;
@@ -18,16 +18,16 @@ public class AcaiBerriesTreeDecorator extends TreeDecorator {
     private static final AcaiBerriesTreeDecorator INSTANCE = new AcaiBerriesTreeDecorator();
     public static final Codec<AcaiBerriesTreeDecorator> CODEC = Codec.unit(() -> INSTANCE);
     private static final DataPool<BlockState> BERRY_STATES = DataPool.<BlockState>builder()
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 2), 5)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 3), 4)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 4), 3)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 2)
-            .add(BlockRegistry.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 1)
+            .add(GBWBlocks.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 2), 5)
+            .add(GBWBlocks.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 3), 4)
+            .add(GBWBlocks.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 4), 3)
+            .add(GBWBlocks.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 2)
+            .add(GBWBlocks.ACAI_BERRY_CLUMP.getDefaultState().with(AcaiBerryClumpBlock.BERRIES, 5), 1)
             .build();
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return DecoratorRegistry.ACAI_BERRIES_TREE_DECORATOR;
+        return GBWDecorators.ACAI_BERRIES_TREE_DECORATOR;
     }
 
     @Override

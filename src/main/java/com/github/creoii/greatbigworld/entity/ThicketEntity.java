@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.item.WoodenMaskItem;
-import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -224,7 +224,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public void attack(LivingEntity target, float pullProgress) {
         PersistentProjectileEntity persistentProjectileEntity = createArrowProjectile(Items.ARROW.getDefaultStack(), pullProgress);
-        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GAZE, this);
+        int level = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.POISON_GAZE, this);
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));
         }

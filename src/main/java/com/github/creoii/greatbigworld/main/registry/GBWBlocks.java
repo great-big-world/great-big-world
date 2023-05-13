@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.main.registry;
 
 import com.github.creoii.creolib.api.util.block.BlockRegistryHelper;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
+import com.github.creoii.creolib.api.util.block.Spreadable;
 import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.creolib.api.util.registry.RegistrySets;
@@ -27,9 +28,11 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
+
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
-public class BlockRegistry implements Register {
+public class GBWBlocks implements Register {
     //region Mahogany Wood
     public static RegistrySets.WoodSet MAHOGANY = RegistrySets.createWoodSet(NAMESPACE, "mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, Items.JUNGLE_LOG, Items.JUNGLE_SIGN);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
@@ -56,9 +59,9 @@ public class BlockRegistry implements Register {
     public static final Block POTTED_SOUL_BAMBOO_TORCH = new FlowerPotBlock(SOUL_BAMBOO_TORCH, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Glimmering Mushrooms
-    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DAY_GLIMMER, new StatusEffectInstance(StatusEffects.GLOWING, 100), 4, 16765440);
-    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.NIGHT_GLIMMER, new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 8, 9558015);
-    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(ParticleRegistry.DARK_GLIMMER, new StatusEffectInstance(StatusEffects.DARKNESS, 150), 12, 0);
+    public static final Block DAYLIGHT_MUSHROOM = new GlimmeringMushroomBlock(GBWParticles.DAY_GLIMMER, new StatusEffectInstance(StatusEffects.GLOWING, 100), 4, 16765440);
+    public static final Block MIDNIGHT_MUSHROOM = new GlimmeringMushroomBlock(GBWParticles.NIGHT_GLIMMER, new StatusEffectInstance(StatusEffects.BLINDNESS, 100), 8, 9558015);
+    public static final Block DARKBLIGHT_MUSHROOM = new GlimmeringMushroomBlock(GBWParticles.DARK_GLIMMER, new StatusEffectInstance(StatusEffects.DARKNESS, 150), 12, 0);
     //endregion
     //region Cobblestone Bricks
     public static final Block COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(Blocks.COBBLESTONE));
@@ -111,7 +114,7 @@ public class BlockRegistry implements Register {
     //region Lavarock
     public static final Block VOLCANIC_SAND = new VolcanicSandBlock();
     public static final Block LAVAROCK = new Block(CBlockSettings.copy(Blocks.STONE).mapColor(MapColor.BLACK));
-    public static final Block GRASSY_LAVAROCK = new GrassBlock(CBlockSettings.copy(BlockRegistry.LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
+    public static final Block GRASSY_LAVAROCK = new GrassBlock(CBlockSettings.copy(GBWBlocks.LAVAROCK).ticksRandomly().sounds(BlockSoundGroup.GRASS));
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), CBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_SLAB = new SlabBlock(CBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK));
@@ -265,6 +268,15 @@ public class BlockRegistry implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, Items.END_STONE, ItemGroups.NATURAL);
+
+        Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, List.of(
+                Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),
+                Spreadable.Spread.of(LAVAROCK)
+        ), (state, serverWorld, pos, random) -> {
+            if (serverWorld.getBlockState(pos.up()).isOf(Blocks.SNOW)) {
+                serverWorld.setBlockState(pos, state.with(SnowyBlock.SNOWY, true));
+            }
+        });
     }
 
     @Override

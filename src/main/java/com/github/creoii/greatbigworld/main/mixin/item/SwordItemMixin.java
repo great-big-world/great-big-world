@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.item;
 
-import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class SwordItemMixin {
     @Inject(method = "postHit", at = @At("RETURN"))
     private void great_big_world_applyPoisonGlaze(ItemStack stack, LivingEntity target, LivingEntity attacker, CallbackInfoReturnable<Boolean> cir) {
-        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GAZE, attacker);
+        int level = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.POISON_GAZE, attacker);
         if (level > 0) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, level * 50, level));
         }

@@ -17,7 +17,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class PotionRegistry implements Register {
+public class GBWPotions implements Register {
     public static final Potion GLOWING = new Potion(new StatusEffectInstance(StatusEffects.GLOWING, 3600));
     public static final Potion LONG_GLOWING = new Potion("glowing", new StatusEffectInstance(StatusEffects.GLOWING, 9600));
     public static final Potion STRONG_GLOWING = new Potion("glowing", new StatusEffectInstance(StatusEffects.GLOWING, 1800, 1));
@@ -83,17 +83,17 @@ public class PotionRegistry implements Register {
     }
 
     public void registerPotionRecipes() {
-        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(BlockRegistry.DAYLIGHT_MUSHROOM), GLOWING);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(GBWBlocks.DAYLIGHT_MUSHROOM), GLOWING);
         FabricBrewingRecipeRegistry.registerPotionRecipe(GLOWING, Ingredient.ofItems(Items.REDSTONE), LONG_GLOWING);
         FabricBrewingRecipeRegistry.registerPotionRecipe(GLOWING, Ingredient.ofItems(Items.GLOWSTONE_DUST), STRONG_GLOWING);
-        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(BlockRegistry.MIDNIGHT_MUSHROOM), BLINDNESS);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(GBWBlocks.MIDNIGHT_MUSHROOM), BLINDNESS);
         FabricBrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Ingredient.ofItems(Items.REDSTONE), LONG_BLINDNESS);
         FabricBrewingRecipeRegistry.registerPotionRecipe(BLINDNESS, Ingredient.ofItems(Items.GLOWSTONE_DUST), STRONG_BLINDNESS);
-        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(BlockRegistry.DARKBLIGHT_MUSHROOM), DARKNESS);
+        FabricBrewingRecipeRegistry.registerPotionRecipe(Potions.AWKWARD, Ingredient.ofItems(GBWBlocks.DARKBLIGHT_MUSHROOM), DARKNESS);
         FabricBrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Ingredient.ofItems(Items.REDSTONE), LONG_DARKNESS);
         FabricBrewingRecipeRegistry.registerPotionRecipe(DARKNESS, Ingredient.ofItems(Items.GLOWSTONE_DUST), STRONG_DARKNESS);
 
-        BrewingRecipeRegistry.registerPotionType(ItemRegistry.AURA_POTION);
-        FabricBrewingRecipeRegistry.registerItemRecipe((PotionItem) Items.POTION, Ingredient.fromTag(Tags.ItemTags.GLIMMERING_MUSHROOMS), (PotionItem) ItemRegistry.AURA_POTION);
+        BrewingRecipeRegistry.registerPotionType(GBWItems.AURA_POTION);
+        FabricBrewingRecipeRegistry.registerItemRecipe((PotionItem) Items.POTION, Ingredient.fromTag(Tags.ItemTags.GLIMMERING_MUSHROOMS), (PotionItem) GBWItems.AURA_POTION);
     }
 }

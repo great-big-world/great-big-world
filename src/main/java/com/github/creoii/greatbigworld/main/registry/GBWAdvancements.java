@@ -9,12 +9,12 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.util.Identifier;
 
-public class AdvancementRegistry implements Register {
+public class GBWAdvancements implements Register {
     @Override
     public void register() {
         AdvancementInjection.register(new Identifier("minecraft", "husbandry/bred_all_animals"),
-                new CriteriaInjector(EntityType.getId(EntityTypeRegistry.MOOSE).toString(), BredAnimalsCriterion.Conditions.create(EntityPredicate.Builder.create().type(EntityTypeRegistry.MOOSE))),
-                new RequirementsInjector(EntityType.getId(EntityTypeRegistry.MOOSE).toString())
+                new CriteriaInjector(EntityType.getId(GBWEntityTypes.MOOSE).toString(), BredAnimalsCriterion.Conditions.create(EntityPredicate.Builder.create().type(GBWEntityTypes.MOOSE))),
+                new RequirementsInjector(EntityType.getId(GBWEntityTypes.MOOSE).toString())
         );
     }
 }

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
-import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import com.github.creoii.greatbigworld.main.util.AuraEffect;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -35,7 +35,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At(value = "INVOKE", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"), cancellable = true)
     private void great_big_world_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
-        int i = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.DILUTING, (LivingEntity) (Object) this);
+        int i = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.DILUTING, (LivingEntity) (Object) this);
         if (i > 0) {
             StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * .5f))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
             activeStatusEffects.put(statusEffect.getEffectType(), statusEffect);

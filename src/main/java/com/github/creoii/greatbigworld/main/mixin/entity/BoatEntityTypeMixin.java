@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import com.github.creoii.greatbigworld.main.util.GBWBoatTypes;
 import net.minecraft.block.Block;
 import net.minecraft.entity.vehicle.BoatEntity;
@@ -33,9 +33,9 @@ public class BoatEntityTypeMixin {
         ArrayList<BoatEntity.Type> types = new ArrayList<>(Arrays.asList(field_7724));
         BoatEntity.Type last = types.get(types.size() - 1);
 
-        BoatEntity.Type mahogany = create("GBW_MAHOGANY", last.ordinal() + 1, BlockRegistry.MAHOGANY.planks(), "gbw_mahogany");
-        BoatEntity.Type aspen = create("GBW_ASPEN", last.ordinal() + 2, BlockRegistry.ASPEN.planks(), "gbw_aspen");
-        BoatEntity.Type acai = create("GBW_ACAI", last.ordinal() + 3, BlockRegistry.ACAI.planks(), "gbw_acai");
+        BoatEntity.Type mahogany = create("GBW_MAHOGANY", last.ordinal() + 1, GBWBlocks.MAHOGANY.planks(), "gbw_mahogany");
+        BoatEntity.Type aspen = create("GBW_ASPEN", last.ordinal() + 2, GBWBlocks.ASPEN.planks(), "gbw_aspen");
+        BoatEntity.Type acai = create("GBW_ACAI", last.ordinal() + 3, GBWBlocks.ACAI.planks(), "gbw_acai");
         GBWBoatTypes.MAHOGANY = mahogany;
         GBWBoatTypes.ASPEN = aspen;
         GBWBoatTypes.ACAI = acai;

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.block;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +29,7 @@ public class PointedDripstoneBlockMixin {
     @Inject(method = "dripTick", at = @At(value = "INVOKE", target = "Ljava/util/Optional;get()Ljava/lang/Object;", ordinal = 1, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void great_big_world_convertToElderPrismarine(BlockState state, ServerWorld world, BlockPos pos, float dripChance, CallbackInfo ci, Optional<PointedDripstoneBlock.DrippingFluid> optional, Fluid fluid, float f, BlockPos blockPos) {
         if (optional.get().sourceState().isOf(Blocks.PRISMARINE) && fluid == Fluids.WATER) {
-            BlockState blockState = BlockRegistry.ELDER_PRISMARINE.getDefaultState();
+            BlockState blockState = GBWBlocks.ELDER_PRISMARINE.getDefaultState();
             world.setBlockState(optional.get().pos(), blockState);
             Block.pushEntitiesUpBeforeBlockChange(optional.get().sourceState(), blockState, world, optional.get().pos());
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, optional.get().pos(), GameEvent.Emitter.of(blockState));

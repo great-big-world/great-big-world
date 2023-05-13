@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.world.processor;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.StructureRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.registry.GBWStructures;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
@@ -24,10 +24,10 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     public static final SwampPyramidStructureProcessor INSTANCE = new SwampPyramidStructureProcessor();
     public static final Codec<SwampPyramidStructureProcessor> CODEC = Codec.unit(() -> INSTANCE);
     private final Map<Block, BlockStateProvider> replacementMap = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(BlockRegistry.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 5).build()));
-        replacements.put(BlockRegistry.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
-        replacements.put(BlockRegistry.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
-        replacements.put(BlockRegistry.COBBLESTONE_BRICK_WALL, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_WALL.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_WALL.getDefaultState(), 3).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_WALL.getDefaultState(), 5).build()));
+        replacements.put(GBWBlocks.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 5).build()));
+        replacements.put(GBWBlocks.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
+        replacements.put(GBWBlocks.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
+        replacements.put(GBWBlocks.COBBLESTONE_BRICK_WALL, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_WALL.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_WALL.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_WALL.getDefaultState(), 5).build()));
     });
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
@@ -63,6 +63,6 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     }
 
     protected StructureProcessorType<?> getType() {
-        return StructureRegistry.SWAMP_PYRAMID_PROCESSOR;
+        return GBWStructures.SWAMP_PYRAMID_PROCESSOR;
     }
 }

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.sapling;
 
-import com.github.creoii.greatbigworld.main.registry.ConfiguredFeatureRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.random.Random;
@@ -11,6 +11,6 @@ public class YellowAspenSaplingGenerator extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ConfiguredFeatureRegistry.YELLOW_ASPEN;
+        return GBWConfiguredFeatures.YELLOW_ASPEN;
     }
 }

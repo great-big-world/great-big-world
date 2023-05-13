@@ -7,7 +7,7 @@ import com.github.creoii.greatbigworld.world.decorator.BranchTreeDecorator;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
-public class DecoratorRegistry implements Register {
+public class GBWDecorators implements Register {
     public static TreeDecoratorType<BranchTreeDecorator> BRANCH_TREE_DECORATOR;
     public static TreeDecoratorType<AcaiBerriesTreeDecorator> ACAI_BERRIES_TREE_DECORATOR;
     public static TreeDecoratorType<HangingLeavesTreeDecorator> HANGING_LEAVES_TREE_DECORATOR;

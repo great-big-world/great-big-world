@@ -8,7 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.event.GameEvent;
 
-public class GameEventRegistry implements Register {
+public class GBWGameEvents implements Register {
     public static GameEvent SHED_ANTLERS;
 
     @Override

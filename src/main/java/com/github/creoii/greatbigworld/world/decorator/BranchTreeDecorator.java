@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.decorator;
 
-import com.github.creoii.greatbigworld.main.registry.DecoratorRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWDecorators;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.Block;
@@ -55,7 +55,7 @@ public class BranchTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return DecoratorRegistry.BRANCH_TREE_DECORATOR;
+        return GBWDecorators.BRANCH_TREE_DECORATOR;
     }
 
     @Override

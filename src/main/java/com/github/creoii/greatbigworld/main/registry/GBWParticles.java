@@ -10,7 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class ParticleRegistry implements Register {
+public class GBWParticles implements Register {
     public static final DefaultParticleType DAY_GLIMMER = FabricParticleTypes.simple(true);
     public static final DefaultParticleType NIGHT_GLIMMER = FabricParticleTypes.simple(true);
     public static final DefaultParticleType DARK_GLIMMER = FabricParticleTypes.simple(true);

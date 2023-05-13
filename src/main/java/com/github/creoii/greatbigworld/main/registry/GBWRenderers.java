@@ -16,7 +16,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SkeletonEntityModel;
 import net.minecraft.util.Identifier;
 
-public class RenderRegistry implements Register {
+public class GBWRenderers implements Register {
     public static final EntityModelLayer MOOSE_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "moose"), "main");
     public static final EntityModelLayer MOOSE_SADDLE_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "moose"), "saddle");
     public static final EntityModelLayer THICKET_MODEL_LAYER = new EntityModelLayer(new Identifier(GreatBigWorld.NAMESPACE, "thicket"), "main");
@@ -26,15 +26,15 @@ public class RenderRegistry implements Register {
 
     @Override
     public void registerClient() {
-        EntityRendererRegistry.register(EntityTypeRegistry.MOOSE, MooseEntityRenderer::new);
-        EntityRendererRegistry.register(EntityTypeRegistry.THICKET, ThicketEntityRenderer::new);
-        EntityRendererRegistry.register(EntityTypeRegistry.NAUTILUS, NautilusEntityRenderer::new);
+        EntityRendererRegistry.register(GBWEntityTypes.MOOSE, MooseEntityRenderer::new);
+        EntityRendererRegistry.register(GBWEntityTypes.THICKET, ThicketEntityRenderer::new);
+        EntityRendererRegistry.register(GBWEntityTypes.NAUTILUS, NautilusEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(MOOSE_MODEL_LAYER, MooseEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MOOSE_SADDLE_MODEL_LAYER, MooseEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(THICKET_MODEL_LAYER, SkeletonEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(THICKET_OUTER_MODEL_LAYER, SkeletonEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(NAUTILUS_MODEL_LAYER, NautilusEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(WOODEN_MASK_MODEL_LAYER, WoodenMaskModel::getTexturedModelData);
-        ArmorRenderer.register(new WoodenMaskRenderer(), ItemRegistry.OAK_MASK, ItemRegistry.SPRUCE_MASK, ItemRegistry.BIRCH_MASK, ItemRegistry.ASPEN_MASK, ItemRegistry.JUNGLE_MASK, ItemRegistry.MAHOGANY_MASK, ItemRegistry.ACAI_MASK, ItemRegistry.ACACIA_MASK, ItemRegistry.DARK_OAK_MASK, ItemRegistry.MANGROVE_MASK, ItemRegistry.CRIMSON_MASK, ItemRegistry.WARPED_MASK);
+        ArmorRenderer.register(new WoodenMaskRenderer(), GBWItems.OAK_MASK, GBWItems.SPRUCE_MASK, GBWItems.BIRCH_MASK, GBWItems.ASPEN_MASK, GBWItems.JUNGLE_MASK, GBWItems.MAHOGANY_MASK, GBWItems.ACAI_MASK, GBWItems.ACACIA_MASK, GBWItems.DARK_OAK_MASK, GBWItems.MANGROVE_MASK, GBWItems.CRIMSON_MASK, GBWItems.WARPED_MASK);
     }
 }

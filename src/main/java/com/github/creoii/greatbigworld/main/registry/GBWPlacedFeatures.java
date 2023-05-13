@@ -13,7 +13,7 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.PlacedFeature;
 
-public class PlacedFeatureRegistry implements Register {
+public class GBWPlacedFeatures implements Register {
     public static RegistryKey<PlacedFeature> MAHOGANY;
     public static RegistryKey<PlacedFeature> SPARSE_MAHOGANY;
     public static RegistryKey<PlacedFeature> TREES_ASPEN_GREEN;

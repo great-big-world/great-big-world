@@ -8,7 +8,7 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 
 import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
-public class ConfiguredFeatureRegistry implements Register {
+public class GBWConfiguredFeatures implements Register {
     public static RegistryKey<ConfiguredFeature<?, ?>> MAHOGANY;
     public static RegistryKey<ConfiguredFeature<?, ?>> GREEN_ASPEN;
     public static RegistryKey<ConfiguredFeature<?, ?>> YELLOW_ASPEN;

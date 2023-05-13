@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.client;
 
-import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -17,6 +17,6 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class LightmapTextureManagerMixin {
     @Redirect(method = "update",  at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;hasStatusEffect(Lnet/minecraft/entity/effect/StatusEffect;)Z", ordinal = 0))
     private boolean great_big_world_applyIlluminating(ClientPlayerEntity instance, StatusEffect effect) {
-        return instance.hasStatusEffect(StatusEffects.NIGHT_VISION) || EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.ILLUMINATING, instance) > 0;
+        return instance.hasStatusEffect(StatusEffects.NIGHT_VISION) || EnchantmentHelper.getEquipmentLevel(GBWEnchantments.ILLUMINATING, instance) > 0;
     }
 }

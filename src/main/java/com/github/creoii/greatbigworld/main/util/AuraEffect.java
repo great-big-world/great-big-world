@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.util;
 
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWItems;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemGroup;
@@ -63,7 +63,7 @@ public interface AuraEffect {
         for (Potion potion : Registries.POTION) {
             if (potion == Potions.EMPTY) continue;
             potion.getEffects().forEach(instance -> ((AuraEffect) instance).setAura(true));
-            entries.add(PotionUtil.setPotion(ItemRegistry.AURA_POTION.getDefaultStack(), potion), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
+            entries.add(PotionUtil.setPotion(GBWItems.AURA_POTION.getDefaultStack(), potion), ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 

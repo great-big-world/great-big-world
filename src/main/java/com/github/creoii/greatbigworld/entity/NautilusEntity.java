@@ -1,8 +1,8 @@
 package com.github.creoii.greatbigworld.entity;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.CriteriaRegistry;
-import com.github.creoii.greatbigworld.main.registry.ItemRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.registry.GBWCriteria;
+import com.github.creoii.greatbigworld.main.registry.GBWItems;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -46,9 +46,9 @@ public class NautilusEntity extends FishEntity {
             .put(Blocks.CUT_COPPER, Blocks.EXPOSED_CUT_COPPER)
             .put(Blocks.EXPOSED_CUT_COPPER, Blocks.WEATHERED_CUT_COPPER)
             .put(Blocks.WEATHERED_CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER)
-            .put(Blocks.PRISMARINE, BlockRegistry.ELDER_PRISMARINE)
-            .put(Blocks.PRISMARINE_BRICKS, BlockRegistry.ELDER_PRISMARINE_BRICKS)
-            .put(Blocks.SEA_LANTERN, BlockRegistry.ELDER_SEA_LANTERN)
+            .put(Blocks.PRISMARINE, GBWBlocks.ELDER_PRISMARINE)
+            .put(Blocks.PRISMARINE_BRICKS, GBWBlocks.ELDER_PRISMARINE_BRICKS)
+            .put(Blocks.SEA_LANTERN, GBWBlocks.ELDER_SEA_LANTERN)
             .build();
     private int oxidizeTimer;
     private NautilusOxidizeGoal oxidizeGoal;
@@ -111,7 +111,7 @@ public class NautilusEntity extends FishEntity {
 
     @Override
     public ItemStack getBucketItem() {
-        return new ItemStack(ItemRegistry.NAUTILUS_BUCKET);
+        return new ItemStack(GBWItems.NAUTILUS_BUCKET);
     }
 
     @Override
@@ -127,7 +127,7 @@ public class NautilusEntity extends FishEntity {
     public void onOxidizing() {
         emitGameEvent(GameEvent.BLOCK_CHANGE);
         if (world.getClosestPlayer(this, 8d) instanceof ServerPlayerEntity player) {
-            CriteriaRegistry.NAUTILUS_OXIDIZE_COPPER.trigger(player);
+            GBWCriteria.NAUTILUS_OXIDIZE_COPPER.trigger(player);
         }
         playSound(SoundEvents.ITEM_HONEYCOMB_WAX_ON, getSoundVolume(), getSoundPitch());
     }

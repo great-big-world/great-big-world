@@ -7,7 +7,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
-public class SoundRegistry implements Register {
+public class GBWSoundEvents implements Register {
     public static final SoundEvent ENTITY_MOOSE_HURT = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.hurt"));
     public static final SoundEvent ENTITY_MOOSE_DEATH = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.death"));
     public static final SoundEvent ENTITY_MOOSE_WARNING = SoundEvent.of(new Identifier(GreatBigWorld.NAMESPACE, "entity.moose.warning"));

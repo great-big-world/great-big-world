@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.world.processor;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.StructureRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.registry.GBWStructures;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -36,8 +36,8 @@ public class MoaiStructureProcessor extends StructureProcessor {
         replacements.put(Blocks.STONE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.POLISHED_ANDESITE_STAIRS.getDefaultState(), 1).build()));
     });
     private final Map<Block, BlockStateProvider> mossyReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(Blocks.MOSSY_COBBLESTONE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(BlockRegistry.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 2).add(BlockRegistry.COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
-        replacements.put(Blocks.MOSSY_COBBLESTONE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 2).add(BlockRegistry.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 2).add(BlockRegistry.COBBLESTONE_BRICK_STAIRS.getDefaultState(), 1).build()));
+        replacements.put(Blocks.MOSSY_COBBLESTONE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 2).add(GBWBlocks.COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
+        replacements.put(Blocks.MOSSY_COBBLESTONE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 2).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 2).add(GBWBlocks.COBBLESTONE_BRICK_STAIRS.getDefaultState(), 1).build()));
     });
     private final Map<Block, BlockStateProvider> volcanicReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
         replacements.put(Blocks.COBBLED_DEEPSLATE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.POLISHED_DEEPSLATE.getDefaultState(), 1).add(Blocks.SMOOTH_BASALT.getDefaultState(), 3).build()));
@@ -92,6 +92,6 @@ public class MoaiStructureProcessor extends StructureProcessor {
     }
 
     protected StructureProcessorType<?> getType() {
-        return StructureRegistry.MOAI_PROCESSOR;
+        return GBWStructures.MOAI_PROCESSOR;
     }
 }

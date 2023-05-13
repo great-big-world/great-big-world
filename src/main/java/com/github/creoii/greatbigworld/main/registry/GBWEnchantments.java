@@ -10,7 +10,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class EnchantmentRegistry implements Register {
+public class GBWEnchantments implements Register {
     public static final Enchantment DILUTING = new DilutingEnchantment();
     public static final Enchantment POISON_GAZE = new PoisonGazeEnchantment();
     public static final Enchantment ILLUMINATING = new IlluminatingEnchantment();

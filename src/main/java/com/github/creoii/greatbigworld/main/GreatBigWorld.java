@@ -8,25 +8,25 @@ import net.minecraft.util.math.random.Random;
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
-    public static final String VERSION = "1.2.0";
+    public static final String VERSION = "1.2.1";
     public static final Register[] REGISTERS = new Register[]{
-            new BlockRegistry(),
-            new ItemRegistry(),
-            new EntityTypeRegistry(),
-            new LootRegistry(),
-            new DecoratorRegistry(),
-            new ConfiguredFeatureRegistry(),
-            new PlacedFeatureRegistry(),
-            new StructureRegistry(),
-            new BiomeRegistry(),
-            new SurfaceRuleRegistry(),
-            new EnchantmentRegistry(),
-            new PotionRegistry(),
-            new SoundRegistry(),
-            new GameEventRegistry(),
-            new ParticleRegistry(),
-            new CriteriaRegistry(),
-            new AdvancementRegistry()
+            new GBWBlocks(),
+            new GBWItems(),
+            new GBWEntityTypes(),
+            new GBWLootTables(),
+            new GBWDecorators(),
+            new GBWConfiguredFeatures(),
+            new GBWPlacedFeatures(),
+            new GBWStructures(),
+            new GBWBiomes(),
+            new GBWSurfaceRules(),
+            new GBWEnchantments(),
+            new GBWPotions(),
+            new GBWSoundEvents(),
+            new GBWGameEvents(),
+            new GBWParticles(),
+            new GBWCriteria(),
+            new GBWAdvancements()
     };
 
     @Override

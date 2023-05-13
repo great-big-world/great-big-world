@@ -12,7 +12,7 @@ import net.minecraft.structure.processor.StructureProcessorType;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.structure.Structure;
 
-public class StructureRegistry implements Register {
+public class GBWStructures implements Register {
     public static RegistryKey<Structure> SWAMP_PYRAMID;
     public static RegistryKey<Structure> LIGHTHOUSE;
     public static RegistryKey<Structure> MOAI;

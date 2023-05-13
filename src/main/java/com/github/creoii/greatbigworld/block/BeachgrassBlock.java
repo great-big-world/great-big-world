@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FernBlock;
@@ -24,7 +24,7 @@ public class BeachgrassBlock extends FernBlock {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        TallPlantBlock tallPlantBlock = (TallPlantBlock) BlockRegistry.TALL_BEACHGRASS;
+        TallPlantBlock tallPlantBlock = (TallPlantBlock) GBWBlocks.TALL_BEACHGRASS;
         if (tallPlantBlock.getDefaultState().canPlaceAt(world, pos) && world.isAir(pos.up())) {
             TallPlantBlock.placeAt(world, tallPlantBlock.getDefaultState(), pos, 2);
         }

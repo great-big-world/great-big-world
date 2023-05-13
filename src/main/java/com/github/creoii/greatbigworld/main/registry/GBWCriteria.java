@@ -4,7 +4,7 @@ import com.github.creoii.greatbigworld.advancement.NautilusOxidizeCopperCriterio
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.minecraft.advancement.criterion.Criteria;
 
-public class CriteriaRegistry implements Register {
+public class GBWCriteria implements Register {
     public static NautilusOxidizeCopperCriterion NAUTILUS_OXIDIZE_COPPER;
 
     @Override

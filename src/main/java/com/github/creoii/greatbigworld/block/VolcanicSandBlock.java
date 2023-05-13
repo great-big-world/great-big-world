@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.mixin.block.FarmlandBlockInvoker;
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -23,7 +23,7 @@ public class VolcanicSandBlock extends SandBlock {
             for (int i = 1; i < 4; ++i) {
                 mutable.setY(pos.getY() - i);
                 BlockState atState = world.getBlockState(mutable);
-                boolean passUp = world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(BlockRegistry.VOLCANIC_SAND);
+                boolean passUp = world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(GBWBlocks.VOLCANIC_SAND);
                 if (atState.isOf(Blocks.DIRT) && passUp) {
                     world.setBlockState(mutable, Blocks.ROOTED_DIRT.getDefaultState(), 3);
                 } else if (atState.isOf(Blocks.ROOTED_DIRT) && passUp && world.getBlockState(mutable.down()).isAir()) {

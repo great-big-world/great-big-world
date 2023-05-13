@@ -3,7 +3,7 @@ package com.github.creoii.greatbigworld.client.render;
 import com.github.creoii.greatbigworld.client.model.NautilusEntityModel;
 import com.github.creoii.greatbigworld.entity.NautilusEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWRenderers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -16,7 +16,7 @@ public class NautilusEntityRenderer<T extends NautilusEntity> extends MobEntityR
     private static final Identifier TEXTURE = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/nautilus/nautilus.png");
 
     public NautilusEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new NautilusEntityModel<>(context.getPart(RenderRegistry.NAUTILUS_MODEL_LAYER)), .3f);
+        super(context, new NautilusEntityModel<>(context.getPart(GBWRenderers.NAUTILUS_MODEL_LAYER)), .3f);
     }
 
     @Override
