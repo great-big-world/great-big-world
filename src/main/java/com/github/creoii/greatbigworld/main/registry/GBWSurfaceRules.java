@@ -10,7 +10,7 @@ import terrablender.api.SurfaceRuleManager;
 public class GBWSurfaceRules implements Register {
     private static final MaterialRules.MaterialRule LAVAROCK = MaterialRules.block(GBWBlocks.LAVAROCK.getDefaultState());
     private static final MaterialRules.MaterialRule GRASSY_LAVAROCK = MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, MaterialRules.condition(MaterialRules.water(0, 0), MaterialRules.block(GBWBlocks.GRASSY_LAVAROCK.getDefaultState())));
-    private static final MaterialRules.MaterialRule BEACH_SAND = MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.SAND.getDefaultState()));
+    private static final MaterialRules.MaterialRule BEACH_SAND = MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.SAND.getDefaultState())));
     private static final MaterialRules.MaterialRule SMOOTH_BASALT = MaterialRules.block(Blocks.SMOOTH_BASALT.getDefaultState());
 
     @Override

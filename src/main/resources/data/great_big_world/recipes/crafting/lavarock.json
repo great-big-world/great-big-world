@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "VV",
+    "VV"
+  ],
+  "key": {
+    "V": {
+      "item": "great_big_world:volcanic_sand"
+    }
+  },
+  "result": {
+    "item": "great_big_world:lavarock"
+  }
+}
