@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "translate": "advancements.adventure.wooden_mask.description"
+      "translate": "advancements.adventure.a_mask_of_wood.description"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.adventure.wooden_mask.title"
+      "translate": "advancements.adventure.a_mask_of_wood.title"
     }
   },
   "requirements": [
