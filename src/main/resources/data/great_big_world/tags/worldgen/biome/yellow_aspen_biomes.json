@@ -15,10 +15,6 @@
       "required": false
     },
     {
-      "id": "traverse:coniferous_forest",
-      "required": false
-    },
-    {
       "id": "byg:canadian_shield",
       "required": false
     },
