@@ -12,7 +12,7 @@ public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
     public static final String VERSION = "1.2.2";
-    public static GBWConfig CONFIG;
+    public static GBWConfig CONFIG = new GBWConfig();
     public static final Register[] REGISTERS = new Register[]{
             new GBWBlocks(),
             new GBWItems(),
@@ -35,10 +35,9 @@ public class GreatBigWorld implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        AutoConfig.register(GBWConfig.class, JanksonConfigSerializer::new);
         for (Register register : REGISTERS) {
             register.register();
         }
-        AutoConfig.register(GBWConfig.class, JanksonConfigSerializer::new);
-        CONFIG = AutoConfig.getConfigHolder(GBWConfig.class).getConfig();
     }
 }
