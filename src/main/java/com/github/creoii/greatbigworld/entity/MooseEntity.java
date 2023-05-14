@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.entity;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import com.github.creoii.greatbigworld.main.registry.GBWEntityTypes;
 import com.github.creoii.greatbigworld.main.registry.GBWGameEvents;
@@ -59,7 +60,6 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     private static final TrackedData<Integer> SHED_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> REGROW_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(MooseEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final int SHED_REGROW_TIME_BASE = 4800;
     private static final int SHED_REGROW_TIME_MOD = 9600;
     public final AnimationState walkingAnimationState = new AnimationState();
     public final AnimationState swimmingAnimationState = new AnimationState();
@@ -114,7 +114,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         dataTracker.startTracking(RIGHT_ANTLER, true);
         dataTracker.startTracking(LEFT_ANTLER, true);
         dataTracker.startTracking(RAMMING, false);
-        dataTracker.startTracking(SHED_TIME, SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        dataTracker.startTracking(SHED_TIME, GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
         dataTracker.startTracking(REGROW_TIME, 0);
         dataTracker.startTracking(ANGER_TIME, 0);
     }
@@ -218,7 +218,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void shedAntlers() {
-        setRegrowTime(SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        setRegrowTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
         setLeftAntler(false);
         setRightAntler(false);
         if (!world.isClient) {
@@ -230,7 +230,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void regrowAntlers() {
-        setShedTime(SHED_REGROW_TIME_BASE + random.nextInt(SHED_REGROW_TIME_MOD));
+        setShedTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
         setLeftAntler(true);
         setRightAntler(true);
         if (!world.isClient) {
@@ -387,7 +387,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             }
         }
 
-        if (isAlive() && !isBaby()) {
+        if (isAlive() && !isBaby() && GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime != -1) {
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) {
                     decrementRegrowTime();

@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
 import com.github.creoii.greatbigworld.entity.MooseEntity;
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.minecraft.entity.CrossbowUser;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.InventoryOwner;
@@ -22,7 +23,9 @@ public abstract class PillagerEntityMixin extends IllagerEntity implements Cross
 
     @Inject(method = "initGoals", at = @At("TAIL"))
     private void great_big_world_injectMooseTarget(CallbackInfo ci) {
-        goalSelector.add(10, new LookAtEntityGoal(this, MooseEntity.class, 15f, .75f));
-        targetSelector.add(3, new ActiveTargetGoal<>(this, MooseEntity.class, true));
+        if (GreatBigWorld.CONFIG.pillagersAttackMoose) {
+            goalSelector.add(10, new LookAtEntityGoal(this, MooseEntity.class, 15f, .75f));
+            targetSelector.add(3, new ActiveTargetGoal<>(this, MooseEntity.class, true));
+        }
     }
 }

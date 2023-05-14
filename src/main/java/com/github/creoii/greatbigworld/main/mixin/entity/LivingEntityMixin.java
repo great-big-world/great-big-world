@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import com.github.creoii.greatbigworld.main.util.AuraEffect;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -27,7 +28,6 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow protected abstract void onStatusEffectApplied(StatusEffectInstance effect, @Nullable Entity source);
     @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
     @Shadow public abstract float getHealth();
-    @Shadow public abstract Box getBoundingBox(EntityPose pose);
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -37,7 +37,7 @@ public abstract class LivingEntityMixin extends Entity {
     private void great_big_world_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
         int i = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.DILUTING, (LivingEntity) (Object) this);
         if (i > 0) {
-            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * .5f))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
+            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * GreatBigWorld.CONFIG.dilutingModifier))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
             activeStatusEffects.put(statusEffect.getEffectType(), statusEffect);
             onStatusEffectApplied(statusEffect, source);
             cir.setReturnValue(true);

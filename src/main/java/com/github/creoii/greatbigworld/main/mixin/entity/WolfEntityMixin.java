@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWEntityTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -18,7 +19,7 @@ public class WolfEntityMixin {
     static {
         FOLLOW_TAMED_PREDICATE = entity -> {
             EntityType<?> entityType = entity.getType();
-            return entityType == EntityType.SHEEP || entityType == EntityType.RABBIT || entityType == EntityType.FOX || entityType == GBWEntityTypes.MOOSE;
+            return entityType == EntityType.SHEEP || entityType == EntityType.RABBIT || entityType == EntityType.FOX || (GreatBigWorld.CONFIG.wolvesAttackMoose && entityType == GBWEntityTypes.MOOSE);
         };
     }
 }

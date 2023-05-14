@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.util.material;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemConvertible;
@@ -10,17 +11,17 @@ import net.minecraft.sound.SoundEvents;
 public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements ArmorMaterial {
     @Override
     public int getDurability(ArmorItem.Type type) {
-        return 140;
+        return GreatBigWorld.CONFIG.woodenMaskDurability;
     }
 
     @Override
     public int getProtection(ArmorItem.Type type) {
-        return 2;
+        return GreatBigWorld.CONFIG.woodenMaskProtection;
     }
 
     @Override
     public int getEnchantability() {
-        return 11;
+        return GreatBigWorld.CONFIG.woodenMaskEnchantability;
     }
 
     @Override
@@ -40,7 +41,7 @@ public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements Arm
 
     @Override
     public float getToughness() {
-        return 0f;
+        return GreatBigWorld.CONFIG.woodenMaskToughness;
     }
 
     @Override

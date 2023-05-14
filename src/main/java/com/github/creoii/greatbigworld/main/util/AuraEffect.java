@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.util;
 
+import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWItems;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -68,6 +69,6 @@ public interface AuraEffect {
     }
 
     static StatusEffectInstance transferAura(StatusEffectInstance o) {
-        return createAuraStatusEffectInstance(o.getEffectType(), (int) (o.getDuration() / 2f), o.getAmplifier(), o.isAmbient(), o.shouldShowParticles(), o.shouldShowIcon());
+        return createAuraStatusEffectInstance(o.getEffectType(), (int) (o.getDuration()  * GreatBigWorld.CONFIG.auraTransferModifier), o.getAmplifier(), o.isAmbient(), o.shouldShowParticles(), o.shouldShowIcon());
     }
 }
