@@ -24,6 +24,7 @@ public class GBWPlacedFeatures implements Register {
     public static RegistryKey<PlacedFeature> PATCH_DAYLIGHT_MUSHROOMS;
     public static RegistryKey<PlacedFeature> PATCH_DARKBLIGHT_MUSHROOMS;
     public static RegistryKey<PlacedFeature> PATCH_HEATHER;
+    public static RegistryKey<PlacedFeature> PATCH_SPARSE_HEATHER;
     public static RegistryKey<PlacedFeature> PATCH_BEACHGRASS;
     public static RegistryKey<PlacedFeature> PATCH_TROPICAL_FERN;
     public static RegistryKey<PlacedFeature> ACAI;
@@ -42,6 +43,7 @@ public class GBWPlacedFeatures implements Register {
         PATCH_DAYLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_daylight_mushrooms"));
         PATCH_DARKBLIGHT_MUSHROOMS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_darkblight_mushrooms"));
         PATCH_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_heather"));
+        PATCH_SPARSE_HEATHER = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_sparse_heather"));
         PATCH_BEACHGRASS = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_beachgrass"));
         PATCH_TROPICAL_FERN = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "patch_tropical_fern"));
         ACAI = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(GreatBigWorld.NAMESPACE, "acai"));
@@ -66,5 +68,6 @@ public class GBWPlacedFeatures implements Register {
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, ACAI);
         BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_ACAI_BIOMES), GenerationStep.Feature.VEGETAL_DECORATION, SPARSE_ACAI);
         BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_OCEAN), GenerationStep.Feature.UNDERGROUND_ORES, ORE_NAUTILUS_FOSSIL);
+        BiomeModifications.addFeature(BiomeSelectors.tag(Tags.BiomeTags.SPARSE_HEATHER_BIOMES), GenerationStep.Feature.UNDERGROUND_ORES, PATCH_SPARSE_HEATHER);
     }
 }

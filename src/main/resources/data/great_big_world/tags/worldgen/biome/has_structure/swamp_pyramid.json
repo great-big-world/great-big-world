@@ -1,5 +1,9 @@
 {
   "values": [
-    "minecraft:mangrove_swamp"
+    "minecraft:mangrove_swamp",
+    {
+      "id": "regions_unexplored:flooded_plains",
+      "required": false
+    }
   ]
 }

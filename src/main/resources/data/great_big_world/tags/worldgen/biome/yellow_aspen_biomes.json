@@ -29,6 +29,18 @@
     {
       "id": "wilderwild:mixed_forest",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:boreal_forest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:golden_boreal_forest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silver_birch_forest",
+      "required": false
     }
   ]
 }

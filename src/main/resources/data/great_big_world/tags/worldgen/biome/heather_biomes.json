@@ -1,8 +1,6 @@
 {
   "values": [
     "minecraft:meadow",
-    "minecraft:old_growth_pine_taiga",
-    "minecraft:old_growth_spruce_taiga",
     "minecraft:stony_peaks",
     "minecraft:windswept_gravelly_hills",
     "minecraft:windswept_hills",
@@ -19,19 +17,31 @@
       "required": false
     },
     {
-      "id": "terralith:siberian_taiga",
-      "required": false
-    },
-    {
-      "id": "terralith:siberian_grove",
-      "required": false
-    },
-    {
-      "id": "terrestria:redwood_forest",
-      "required": false
-    },
-    {
       "id": "byg:cardinal_tundra",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:steppe",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:frozen_tundra",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:meadow",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:mountains",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:highland_fields",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:lush_hills",
       "required": false
     }
   ]
