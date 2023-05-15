@@ -33,13 +33,13 @@ public class GBWConfig implements ConfigData {
 
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.RequiresRestart(value = false)
-    @ConfigEntry.BoundedDiscrete(min = -1, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = -1, max = 24000)
     @ConfigEntry.Category("general_settings")
     public int shedAntlerBaseRegrowTime = 4800;
 
     @ConfigEntry.Gui.Tooltip
     @ConfigEntry.Gui.RequiresRestart(value = false)
-    @ConfigEntry.BoundedDiscrete(min = -1, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = -1, max = 9999)
     @ConfigEntry.Category("general_settings")
     public int nautilusOxidizeChance = 1200;
 
@@ -53,25 +53,25 @@ public class GBWConfig implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart(value = false)
     @ConfigEntry.BoundedDiscrete(min = 0, max = 16)
     @ConfigEntry.Category("general_settings")
-    public float auraTransferModifier = .5f;
+    public float auraEffectTransferModifier = .5f;
 
     @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.BoundedDiscrete(min = 0, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 4800)
     @ConfigEntry.Category("general_settings")
     public int woodenMaskDurability = 140;
 
     @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.BoundedDiscrete(min = 0, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 200)
     @ConfigEntry.Category("general_settings")
     public int woodenMaskProtection = 2;
 
     @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.BoundedDiscrete(min = 0, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 32)
     @ConfigEntry.Category("general_settings")
     public float woodenMaskToughness = 0f;
 
     @ConfigEntry.Gui.Tooltip
-    @ConfigEntry.BoundedDiscrete(min = 0, max = Integer.MAX_VALUE)
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 200)
     @ConfigEntry.Category("general_settings")
     public int woodenMaskEnchantability = 11;
 }

@@ -36,6 +36,7 @@ public class GreatBigWorld implements ModInitializer {
     @Override
     public void onInitialize() {
         AutoConfig.register(GBWConfig.class, JanksonConfigSerializer::new);
+        CONFIG = AutoConfig.getConfigHolder(GBWConfig.class).getConfig();
         for (Register register : REGISTERS) {
             register.register();
         }
