@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.world.region;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWBiomes;
+import com.github.creoii.greatbigworld.main.registry.GBWSurfaceRules;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -22,6 +23,7 @@ public class GBWOverworldRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
+        new GBWSurfaceRules().register();
         addModifiedVanillaOverworldBiomes(mapper, builder -> {
             new ParameterUtils.ParameterPointListBuilder()
                     .temperature(Temperature.COOL)

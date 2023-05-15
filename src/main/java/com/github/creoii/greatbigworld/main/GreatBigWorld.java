@@ -23,7 +23,6 @@ public class GreatBigWorld implements ModInitializer {
             new GBWPlacedFeatures(),
             new GBWStructures(),
             new GBWBiomes(),
-            new GBWSurfaceRules(),
             new GBWEnchantments(),
             new GBWPotions(),
             new GBWSoundEvents(),
