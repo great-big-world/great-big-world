@@ -7,6 +7,7 @@
     "StatusEffectInstanceMixin",
     "block.BlockEntityTypeMixin",
     "block.FarmlandBlockInvoker",
+    "block.MagmaBlockMixin",
     "block.PointedDripstoneBlockMixin",
     "block.SpreadableBlockMixin",
     "enchantment.EnchantmentHelperMixin",
@@ -22,6 +23,7 @@
     "item.CrossbowItemMixin",
     "item.SwordItemMixin",
     "world.TreeDecoratorTypeInvoker",
+    "world.UnderwaterMagmaFeatureMixin",
     "world.VanillaBiomeParametersMixin",
     "world.chunk.BlendingDataMixin"
   ],

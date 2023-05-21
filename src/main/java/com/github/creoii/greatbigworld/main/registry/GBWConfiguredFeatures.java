@@ -13,6 +13,7 @@ public class GBWConfiguredFeatures implements Register {
     public static RegistryKey<ConfiguredFeature<?, ?>> GREEN_ASPEN;
     public static RegistryKey<ConfiguredFeature<?, ?>> YELLOW_ASPEN;
     public static RegistryKey<ConfiguredFeature<?, ?>> ACAI;
+    public static RegistryKey<ConfiguredFeature<?, ?>> ORE_LAVAROCK;
 
     @Override
     public void register() {
@@ -20,5 +21,6 @@ public class GBWConfiguredFeatures implements Register {
         GREEN_ASPEN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "green_aspen"));
         YELLOW_ASPEN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "yellow_aspen"));
         ACAI = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "acai"));
+        ORE_LAVAROCK = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "ore_lavarock"));
     }
 }
