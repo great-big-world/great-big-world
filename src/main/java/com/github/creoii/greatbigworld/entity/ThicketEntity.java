@@ -242,7 +242,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     }
 
     public boolean canUseRangedWeapon(RangedWeaponItem weapon) {
-        return weapon.getDefaultStack().isIn(Tags.ItemTags.COMMON_BOWS);
+        return true;
     }
 
     public void equipStack(EquipmentSlot slot, ItemStack stack) {

@@ -6,11 +6,11 @@
   ],
   "key": {
     "T": {
-      "item": "great_big_world:grass_thatch"
+      "item": "great_big_world:bamboo_thatch"
     }
   },
   "result": {
-    "item": "great_big_world:grass_thatch_slab",
+    "item": "great_big_world:bamboo_thatch_slab",
     "count": 6
   }
 }

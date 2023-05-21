@@ -15,8 +15,13 @@ public class Tags {
     public static final String COMMON_NAMESPACE = "c";
 
     public static class BlockTags {
+        public static final TagKey<Block> MAHOGANY_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "mahogany_logs"));
+        public static final TagKey<Block> ASPEN_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "aspen_logs"));
+        public static final TagKey<Block> ACAI_LOGS = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "acai_logs"));
         public static final TagKey<Block> MOOSE_EDIBLES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "moose_edibles"));
+        public static final TagKey<Block> MUD_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "mud_replaceable"));
         public static final TagKey<Block> ACAI_BERRY_PLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "acai_berry_placeable"));
+        public static final TagKey<Block> THATCH = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "thatch"));
     }
 
     public static class ItemTags {
@@ -25,7 +30,6 @@ public class Tags {
         public static final TagKey<Item> MOOSE_FOOD_LOVES = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "moose_food_loves"));
         public static final TagKey<Item> WOODEN_MASKS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "wooden_masks"));
         public static final TagKey<Item> GLIMMERING_MUSHROOMS = TagKey.of(RegistryKeys.ITEM, new Identifier(NAMESPACE, "glimmering_mushrooms"));
-        public static final TagKey<Item> COMMON_BOWS = TagKey.of(RegistryKeys.ITEM, new Identifier(COMMON_NAMESPACE, "bows"));
     }
 
     public static class BiomeTags {
