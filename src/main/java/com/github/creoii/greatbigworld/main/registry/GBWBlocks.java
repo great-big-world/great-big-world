@@ -216,12 +216,12 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_stairs"), TRIMMED_BEACHGRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass_thatch_slab"), BEACHGRASS_THATCH_SLAB, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_beachgrass_thatch_slab"), TRIMMED_BEACHGRASS_THATCH_SLAB, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch"), TRIMMED_BAMBOO_THATCH, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, new CItemSettings().compostingChance(.35f), null, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, new CItemSettings().compostingChance(.3f), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch"), BAMBOO_THATCH, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch"), TRIMMED_BAMBOO_THATCH, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_stairs"), BAMBOO_THATCH_STAIRS, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_stairs"), TRIMMED_BAMBOO_THATCH_STAIRS, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "bamboo_thatch_slab"), BAMBOO_THATCH_SLAB, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_bamboo_thatch_slab"), TRIMMED_BAMBOO_THATCH_SLAB, new CItemSettings(), null, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS);

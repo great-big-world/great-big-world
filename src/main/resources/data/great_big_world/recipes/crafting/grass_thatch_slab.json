@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:grass_thatch"
+    }
+  },
+  "result": {
+    "item": "great_big_world:grass_thatch_slab",
+    "count": 6
+  }
+}
