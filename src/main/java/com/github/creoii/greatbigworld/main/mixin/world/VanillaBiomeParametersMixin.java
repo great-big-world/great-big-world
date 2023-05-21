@@ -29,10 +29,10 @@ public abstract class VanillaBiomeParametersMixin {
 
     @Inject(method = "writeOceanBiomes", at = @At("HEAD"))
     private void great_big_world_writeIslandBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
-        writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.13f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, GBWBiomes.ISLAND_JUNGLE);
-        writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.13f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-1, -.3f), 0f, GBWBiomes.ISLAND_SPARSE_JUNGLE);
+        writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.135f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, GBWBiomes.ISLAND_JUNGLE);
+        writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.135f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-1, -.3f), 0f, GBWBiomes.ISLAND_SPARSE_JUNGLE);
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.LOW_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.VALLEY.parameter()}) {
-            writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.13f, -1.05f), MultiNoiseUtil.ParameterRange.of(-1f, .4f), weirdness, 0f, GBWBiomes.ISLAND_BEACH);
+            writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.14f, -1.025f), MultiNoiseUtil.ParameterRange.of(-1f, .4f), weirdness, 0f, GBWBiomes.ISLAND_BEACH);
             writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.19f, -1.175f), defaultParameter, weirdness, 0f, GBWBiomes.VOLCANIC_BEACH);
         }
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.VALLEY.parameter(), ParameterUtils.Weirdness.LOW_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_ASCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_VARIANT_DESCENDING.parameter()}) {
