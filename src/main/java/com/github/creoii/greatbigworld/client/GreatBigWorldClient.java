@@ -14,11 +14,11 @@ public class GreatBigWorldClient implements ClientModInitializer {
     public static final ParticleFactoryRegistry PARTICLE_FACTORY_REGISTRY = ParticleFactoryRegistry.getInstance();
     public static final boolean gbwTitle = false;
     public static final Register[] CLIENT_REGISTERS = new Register[]{
-            new BlockRegistry(),
-            new ItemRegistry(),
-            new EntityRegistry(),
-            new ParticleRegistry(),
-            new RenderRegistry()
+            new GBWBlocks(),
+            new GBWItems(),
+            new GBWEntityTypes(),
+            new GBWParticles(),
+            new GBWRenderers()
     };
 
     @Override

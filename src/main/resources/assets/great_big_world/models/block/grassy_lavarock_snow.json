@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "great_big_world:block/lavarock",
+    "particle": "great_big_world:block/lavarock",
+    "side": "great_big_world:block/grassy_lavarock_snow",
+    "top": "block/grass_block_top"
+  }
+}

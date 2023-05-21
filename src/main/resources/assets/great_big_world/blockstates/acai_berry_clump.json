@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "berries=1,facing=north": { "model": "great_big_world:block/one_acai_berry", "y": 180 },
+    "berries=1,facing=south": { "model": "great_big_world:block/one_acai_berry" },
+    "berries=1,facing=east": { "model": "great_big_world:block/one_acai_berry", "y": 270 },
+    "berries=1,facing=west": { "model": "great_big_world:block/one_acai_berry", "y": 90 },
+    "berries=2,facing=north": { "model": "great_big_world:block/two_acai_berries", "y": 180 },
+    "berries=2,facing=south": { "model": "great_big_world:block/two_acai_berries" },
+    "berries=2,facing=east": { "model": "great_big_world:block/two_acai_berries", "y": 270 },
+    "berries=2,facing=west": { "model": "great_big_world:block/two_acai_berries", "y": 90 },
+    "berries=3,facing=north": { "model": "great_big_world:block/three_acai_berries", "y": 180 },
+    "berries=3,facing=south": { "model": "great_big_world:block/three_acai_berries" },
+    "berries=3,facing=east": { "model": "great_big_world:block/three_acai_berries", "y": 270 },
+    "berries=3,facing=west": { "model": "great_big_world:block/three_acai_berries", "y": 90 },
+    "berries=4,facing=north": { "model": "great_big_world:block/four_acai_berries", "y": 180 },
+    "berries=4,facing=south": { "model": "great_big_world:block/four_acai_berries" },
+    "berries=4,facing=east": { "model": "great_big_world:block/four_acai_berries", "y": 270 },
+    "berries=4,facing=west": { "model": "great_big_world:block/four_acai_berries", "y": 90 },
+    "berries=5,facing=north": { "model": "great_big_world:block/five_acai_berries", "y": 180 },
+    "berries=5,facing=south": { "model": "great_big_world:block/five_acai_berries" },
+    "berries=5,facing=east": { "model": "great_big_world:block/five_acai_berries", "y": 270 },
+    "berries=5,facing=west": { "model": "great_big_world:block/five_acai_berries", "y": 90 }
+  }
+}

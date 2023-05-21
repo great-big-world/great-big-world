@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.sapling;
 
-import com.github.creoii.greatbigworld.main.registry.ConfiguredFeatureRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWConfiguredFeatures;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
@@ -11,6 +11,6 @@ public class MahoganySaplingGenerator extends SaplingGenerator {
     @Nullable
     @Override
     protected RegistryEntry<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
-        return ConfiguredFeatureRegistry.MAHOGANY;
+        return GBWConfiguredFeatures.MAHOGANY;
     }
 }

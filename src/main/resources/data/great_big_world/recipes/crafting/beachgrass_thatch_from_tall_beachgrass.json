@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "beachgrass_thatch",
+  "pattern": [
+    "GG",
+    "GG"
+  ],
+  "key": {
+    "G": {
+      "item": "great_big_world:beachgrass"
+    }
+  },
+  "result": {
+    "item": "great_big_world:beachgrass_thatch",
+    "count": 6
+  }
+}

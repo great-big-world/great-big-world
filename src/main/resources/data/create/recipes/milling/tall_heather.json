@@ -1,0 +1,33 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "great_big_world:tall_heather"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:magenta_dye",
+      "count": 3
+    },
+    {
+      "item": "minecraft:purple_dye",
+      "count": 2,
+      "chance": 0.1
+    },
+    {
+      "item": "minecraft:pink_dye",
+      "count": 2,
+      "chance": 0.1
+    }
+  ],
+  "processingTime": 50
+}

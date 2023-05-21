@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.block;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -81,11 +81,11 @@ public class GlimmeringMushroomBlock extends Block implements Waterloggable {
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (world.getLightLevel(LightType.SKY, pos) == 0) {
-            world.setBlockState(pos, BlockRegistry.DARKBLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
+            world.setBlockState(pos, GBWBlocks.DARKBLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
         } else if (world.getLightLevel(LightType.SKY, pos) - world.getAmbientDarkness() < 7 || world.isRaining()) {
-            world.setBlockState(pos, BlockRegistry.MIDNIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
+            world.setBlockState(pos, GBWBlocks.MIDNIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
         } else {
-            world.setBlockState(pos, BlockRegistry.DAYLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
+            world.setBlockState(pos, GBWBlocks.DAYLIGHT_MUSHROOM.getDefaultState().with(MUSHROOMS, state.get(MUSHROOMS)).with(WATERLOGGED, state.get(WATERLOGGED)), 3);
         }
     }
 

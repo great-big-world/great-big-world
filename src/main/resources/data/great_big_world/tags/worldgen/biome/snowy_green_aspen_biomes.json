@@ -28,6 +28,10 @@
     {
       "id": "byg:howling_peaks",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:cold_boreal_forest",
+      "required": false
     }
   ]
 }

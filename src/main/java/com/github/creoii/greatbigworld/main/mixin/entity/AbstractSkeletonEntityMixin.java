@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
-import com.github.creoii.greatbigworld.main.registry.EnchantmentRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -27,7 +27,7 @@ public abstract class AbstractSkeletonEntityMixin extends HostileEntity implemen
 
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private void great_big_world_applyPoisonGlaze(LivingEntity target, float pullProgress, CallbackInfo ci, ItemStack itemStack, PersistentProjectileEntity persistentProjectileEntity, double d, double e, double f, double g) {
-        int level = EnchantmentHelper.getEquipmentLevel(EnchantmentRegistry.POISON_GLAZE, this);
+        int level = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.POISON_GLAZE, this);
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));
         }

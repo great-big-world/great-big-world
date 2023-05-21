@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.placer;
 
-import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWPlacers;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -53,7 +53,7 @@ public class TwistingTrunkPlacer extends TrunkPlacer {
     }
 
     protected TrunkPlacerType<?> getType() {
-        return PlacerRegistry.TWISTING_TRUNK_PLACER;
+        return GBWPlacers.TWISTING_TRUNK_PLACER;
     }
 
     /**

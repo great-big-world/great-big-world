@@ -4,10 +4,12 @@
   "package": "com.github.creoii.greatbigworld.main.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "BlockEntityTypeMixin",
     "BoatTypeMixin",
     "BowItemMixin",
     "EnchantmentMixin",
+    "block.BlockEntityTypeMixin",
+    "block.FarmlandBlockInvoker",
+    "block.PointedDripstoneBlockMixin",
     "entity.AbstractSkeletonEntityMixin",
     "entity.BoatEntityMixin",
     "entity.ChestBoatEntityMixin",
@@ -15,9 +17,11 @@
     "entity.LivingEntityMixin",
     "entity.PillagerEntityMixin",
     "entity.WolfEntityMixin",
+    "world.BlendingDataMixin",
     "world.FoliagePlacerTypeInvoker",
     "world.TreeDecoratorTypeInvoker",
-    "world.TrunkPlacerTypeInvoker"
+    "world.TrunkPlacerTypeInvoker",
+    "world.VanillaBiomeParametersMixin"
   ],
   "client": [
     "MinecraftClientMixin"

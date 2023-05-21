@@ -1,9 +1,9 @@
 package com.github.creoii.greatbigworld.entity;
 
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
-import com.github.creoii.greatbigworld.main.registry.EntityRegistry;
-import com.github.creoii.greatbigworld.main.registry.GameEventRegistry;
-import com.github.creoii.greatbigworld.main.registry.SoundRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.registry.GBWEntityTypes;
+import com.github.creoii.greatbigworld.main.registry.GBWGameEvents;
+import com.github.creoii.greatbigworld.main.registry.GBWSoundEvents;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
@@ -154,13 +154,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundRegistry.ENTITY_MOOSE_HURT;
+        return GBWSoundEvents.ENTITY_MOOSE_HURT;
     }
 
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundRegistry.ENTITY_MOOSE_DEATH;
+        return GBWSoundEvents.ENTITY_MOOSE_DEATH;
     }
 
     public boolean hasLeftAntler() {
@@ -216,10 +216,10 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         setLeftAntler(false);
         setRightAntler(false);
         if (!world.isClient) {
-            dropItem(BlockRegistry.ANTLER);
-            dropItem(BlockRegistry.ANTLER);
+            dropItem(GBWBlocks.ANTLER);
+            dropItem(GBWBlocks.ANTLER);
             playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
-            emitGameEvent(GameEventRegistry.SHED_ANTLERS);
+            emitGameEvent(GBWGameEvents.SHED_ANTLERS);
         }
     }
 
@@ -229,13 +229,13 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         setRightAntler(true);
         if (!world.isClient) {
             playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
-            emitGameEvent(GameEventRegistry.SHED_ANTLERS);
+            emitGameEvent(GBWGameEvents.SHED_ANTLERS);
         }
     }
 
     @Nullable @Override
     public MooseEntity createChild(ServerWorld world, PassiveEntity entity) {
-        MooseEntity mooseEntity = EntityRegistry.MOOSE.create(world);
+        MooseEntity mooseEntity = GBWEntityTypes.MOOSE.create(world);
         if (mooseEntity != null) {
             mooseEntity.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(25f);
             mooseEntity.setLeftAntler(false);
@@ -375,7 +375,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (ramCooldown > 0) {
             --ramCooldown;
             if (ramCooldown == 0) {
-                world.playSound(null, getBlockPos(), SoundRegistry.ENTITY_MOOSE_WARNING, SoundCategory.PLAYERS, 1f, 1f);
+                world.playSound(null, getBlockPos(), GBWSoundEvents.ENTITY_MOOSE_WARNING, SoundCategory.PLAYERS, 1f, 1f);
             }
         }
 
@@ -455,7 +455,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         if (hasAngerTime() && !isBaby()) {
             showEmoteParticle(false);
             if (!world.isClient) {
-                playSound(SoundRegistry.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
+                playSound(GBWSoundEvents.ENTITY_MOOSE_WARNING, getSoundVolume(), getSoundPitch());
             }
             return ActionResult.success(world.isClient);
         }
@@ -574,7 +574,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public void setAngryAt(@Nullable UUID angryAt) {
         this.angryAt = angryAt;
         if (!world.isClient) {
-            playSound(SoundRegistry.ENTITY_MOOSE_WARNING, 1f, getSoundPitch());
+            playSound(GBWSoundEvents.ENTITY_MOOSE_WARNING, 1f, getSoundPitch());
         }
         if (isLogicalSideForUpdatingMovement() || canMoveVoluntarily()) {
             setAngry(true);
@@ -683,7 +683,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     public class ProtectBabiesGoal extends ActiveTargetGoal<LivingEntity> {
         public ProtectBabiesGoal() {
             super(MooseEntity.this, LivingEntity.class, 20, true, true, livingEntity -> {
-                return !livingEntity.isBaby() && livingEntity.getType() != EntityRegistry.MOOSE && !MooseEntity.this.isOwner(livingEntity);
+                return !livingEntity.isBaby() && livingEntity.getType() != GBWEntityTypes.MOOSE && !MooseEntity.this.isOwner(livingEntity);
             });
         }
 

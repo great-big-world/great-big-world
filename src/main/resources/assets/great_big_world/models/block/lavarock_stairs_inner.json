@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "great_big_world:block/lavarock",
+        "top": "great_big_world:block/lavarock",
+        "side": "great_big_world:block/lavarock"
+    }
+}

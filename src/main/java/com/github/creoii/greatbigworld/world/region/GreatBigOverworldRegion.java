@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.world.region;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.BiomeRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBiomes;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -32,7 +32,7 @@ public class GreatBigOverworldRegion extends Region {
                     .depth(Depth.SURFACE, Depth.FLOOR)
                     .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
                     .build();
-            aspenForestPoints.forEach(point -> builder.replaceBiome(point, BiomeRegistry.ASPEN_FOREST));
+            aspenForestPoints.forEach(point -> builder.replaceBiome(point, GBWBiomes.ASPEN_FOREST));
 
             List<MultiNoiseUtil.NoiseHypercube> snowyAspenForestPoints = new ParameterUtils.ParameterPointListBuilder()
                     .temperature(Temperature.ICY)
@@ -42,7 +42,7 @@ public class GreatBigOverworldRegion extends Region {
                     .depth(Depth.SURFACE, Depth.FLOOR)
                     .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.VALLEY, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
                     .build();
-            snowyAspenForestPoints.forEach(point -> builder.replaceBiome(point, BiomeRegistry.SNOWY_ASPEN_FOREST));
+            snowyAspenForestPoints.forEach(point -> builder.replaceBiome(point, GBWBiomes.SNOWY_ASPEN_FOREST));
         });
     }
 }

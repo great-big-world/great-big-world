@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.main.util;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.BlockRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemGroup;
@@ -13,7 +13,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-import static com.github.creoii.greatbigworld.main.registry.BlockRegistry.ExtendedBlockSettings;
+import static com.github.creoii.greatbigworld.main.registry.GBWBlocks.ExtendedBlockSettings;
 
 public class DefaultBlockSets {
     /**
@@ -119,22 +119,22 @@ public class DefaultBlockSets {
     public static record WoodSet(String name, @Nullable Block log, @Nullable Block strippedLog, @Nullable Block wood, @Nullable Block strippedWood, Block planks, Block stairs, Block slab, Block fence, Block fenceGate, Block button, Block pressurePlate, Block door, Block trapdoor) {
         public void register() {
             if (log != null)
-                BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_log"), log, new ExtendedBlockSettings(0f, 0, 0, strippedLog), ItemGroup.BUILDING_BLOCKS);
+                GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_log"), log, new ExtendedBlockSettings(0f, 0, 0, strippedLog), ItemGroup.BUILDING_BLOCKS);
             if (strippedLog != null)
-                BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, "stripped_" + name + "_log"), strippedLog, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
+                GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, "stripped_" + name + "_log"), strippedLog, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
             if (wood != null)
-                BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_wood"), wood, new ExtendedBlockSettings(0f, 0, 0, strippedWood), ItemGroup.BUILDING_BLOCKS);
+                GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_wood"), wood, new ExtendedBlockSettings(0f, 0, 0, strippedWood), ItemGroup.BUILDING_BLOCKS);
             if (strippedWood != null)
-                BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, "stripped_" + name + "_wood"), strippedWood, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_planks"), planks, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_stairs"), stairs, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_slab"), slab, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_fence"), fence, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_fence_gate"), fenceGate, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_door"), door, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_trapdoor"), trapdoor, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_pressure_plate"), pressurePlate, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
-            BlockRegistry.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_button"), button, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
+                GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, "stripped_" + name + "_wood"), strippedWood, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_planks"), planks, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_stairs"), stairs, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_slab"), slab, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_fence"), fence, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_fence_gate"), fenceGate, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_door"), door, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_trapdoor"), trapdoor, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_pressure_plate"), pressurePlate, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
+            GBWBlocks.registerBlock(new Identifier(GreatBigWorld.NAMESPACE, name + "_button"), button, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.REDSTONE);
         }
     }
 }

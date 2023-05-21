@@ -9,6 +9,8 @@
     "minecraft:thorns",
     "minecraft:vanishing_curse",
     "minecraft:binding_curse",
-    "great_big_world:diluting"
+    "great_big_world:diluting",
+    "great_big_world:illuminating",
+    "great_big_world:poison_gaze"
   ]
 }

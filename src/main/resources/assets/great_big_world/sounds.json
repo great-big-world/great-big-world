@@ -24,5 +24,13 @@
         "stream": true
       }
     ]
+  },
+  "music_disc.pina_colada": {
+    "sounds": [
+      {
+        "name": "great_big_world:records/pina_colada",
+        "stream": true
+      }
+    ]
   }
 }

@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.world.placer;
 
-import com.github.creoii.greatbigworld.main.registry.PlacerRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWPlacers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
@@ -30,7 +30,7 @@ public class AspenFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected FoliagePlacerType<?> getType() {
-        return PlacerRegistry.ASPEN_FOLIAGE_PLACER;
+        return GBWPlacers.ASPEN_FOLIAGE_PLACER;
     }
 
     @Override

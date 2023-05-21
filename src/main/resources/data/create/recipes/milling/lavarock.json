@@ -1,0 +1,22 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "great_big_world:lavarock"
+    }
+  ],
+  "results": [
+    {
+      "item": "great_big_world:volcanic_sand"
+    }
+  ],
+  "processingTime": 150
+}

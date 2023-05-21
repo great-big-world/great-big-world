@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "lighthouse": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "great_big_world:lighthouse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.find_lighthouse.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.find_lighthouse.title"
+    }
+  },
+  "requirements": [
+    [
+      "lighthouse"
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "great_big_world:block/large_tropical_fern_top"
+    }
+}

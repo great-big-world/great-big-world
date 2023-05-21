@@ -1,0 +1,23 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "create"
+      ]
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "great_big_world:tropical_fern"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:melon_seeds",
+      "chance": 0.25
+    }
+  ],
+  "processingTime": 50
+}

@@ -6,8 +6,8 @@
       "minecraft:canyon"
     ]
   },
-  "downfall": 0.6,
-  "precipitation": "snow",
+  "downfall": 0.5,
+  "precipitation": "rain",
   "temperature": -0.4,
   "effects": {
     "fog_color": 12638463,
@@ -79,8 +79,8 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_large_fern",
       "minecraft:forest_flowers",
+      "minecraft:patch_large_fern",
       "great_big_world:trees_aspen_mixed_snowy",
       "minecraft:flower_default",
       "minecraft:patch_grass_taiga_2",

@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#minecraft:is_jungle",
+    "#great_big_world:is_tropical_island",
+    {
+      "id": "regions_unexplored:tropics",
+      "required": false
+    }
+  ]
+}

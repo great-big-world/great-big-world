@@ -44,6 +44,11 @@
             {
               "type": "minecraft:item",
               "weight": 2,
+              "name": "great_big_world:acai_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
               "name": "great_big_world:acacia_mask"
             },
             {

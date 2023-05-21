@@ -26,7 +26,7 @@ public class WoodenMaskItem extends ArmorItem implements AllowEnchantments {
     @Override
     public Predicate<Enchantment> getAllowedEnchantments() {
         return enchantment -> {
-            return Tags.isEnchantmentIn(enchantment, Tags.EnchantmentTags.MASK_ALLOWED.id());
+            return Tags.isEnchantmentIn(enchantment, Tags.EnchantmentTags.MASK_ALLOWED);
         };
     }
 

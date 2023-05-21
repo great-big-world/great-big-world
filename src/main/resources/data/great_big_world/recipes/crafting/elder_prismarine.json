@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PPP",
+    "PSP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:prismarine"
+    },
+    "S": {
+      "item": "minecraft:nautilus_shell"
+    }
+  },
+  "result": {
+    "item": "great_big_world:elder_prismarine",
+    "count": 8
+  }
+}

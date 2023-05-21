@@ -3,7 +3,7 @@ package com.github.creoii.greatbigworld.client.render;
 import com.github.creoii.greatbigworld.client.model.MooseEntityModel;
 import com.github.creoii.greatbigworld.entity.MooseEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWRenderers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -16,8 +16,8 @@ public class MooseEntityRenderer<T extends MooseEntity> extends MobEntityRendere
     private static final Identifier TEXTURE = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/moose/moose.png");
 
     public MooseEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new MooseEntityModel<>(context.getPart(RenderRegistry.MOOSE_MODEL_LAYER)), .7f);
-        addFeature(new SaddleFeatureRenderer<>(this, new MooseEntityModel<>(context.getPart(RenderRegistry.MOOSE_SADDLE_MODEL_LAYER)), new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/moose/moose_saddle.png")));
+        super(context, new MooseEntityModel<>(context.getPart(GBWRenderers.MOOSE_MODEL_LAYER)), .7f);
+        addFeature(new SaddleFeatureRenderer<>(this, new MooseEntityModel<>(context.getPart(GBWRenderers.MOOSE_SADDLE_MODEL_LAYER)), new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/moose/moose_saddle.png")));
     }
 
     public Identifier getTexture(MooseEntity mooseEntity) {

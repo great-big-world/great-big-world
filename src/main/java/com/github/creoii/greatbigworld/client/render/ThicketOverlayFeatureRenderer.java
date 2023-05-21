@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.client.render;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWRenderers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -22,7 +22,7 @@ public class ThicketOverlayFeatureRenderer<T extends MobEntity & RangedAttackMob
 
     public ThicketOverlayFeatureRenderer(FeatureRendererContext<T, M> context, EntityModelLoader loader) {
         super(context);
-        model = new SkeletonEntityModel<>(loader.getModelPart(RenderRegistry.THICKET_OUTER_MODEL_LAYER));
+        model = new SkeletonEntityModel<>(loader.getModelPart(GBWRenderers.THICKET_OUTER_MODEL_LAYER));
     }
 
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T mobEntity, float f, float g, float h, float j, float k, float l) {

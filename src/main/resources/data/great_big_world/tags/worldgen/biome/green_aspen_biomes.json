@@ -46,6 +46,38 @@
     {
       "id": "wilderwild:mixed_forest",
       "required": false
+    },
+    {
+      "id": "regions_unexplored:boreal_forest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:temperate_grove",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:pine_forest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:pine_slopes",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:redwoods",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:sparse_redwoods",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:silver_birch_forest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:temperate_grove",
+      "required": false
     }
   ]
 }

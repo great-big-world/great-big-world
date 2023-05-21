@@ -1,0 +1,20 @@
+{
+  "values": [
+    "minecraft:jungle",
+    "minecraft:mangrove_swamp",
+    "great_big_world:island_sparse_jungle",
+    "great_big_world:volcanic_slopes",
+    {
+      "id": "regions_unexplored:tropics",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:rainforest",
+      "required": false
+    },
+    {
+      "id": "regions_unexplored:old_growth_rainforest",
+      "required": false
+    }
+  ]
+}

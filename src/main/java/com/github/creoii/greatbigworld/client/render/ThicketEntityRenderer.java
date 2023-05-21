@@ -2,7 +2,7 @@ package com.github.creoii.greatbigworld.client.render;
 
 import com.github.creoii.greatbigworld.entity.ThicketEntity;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
-import com.github.creoii.greatbigworld.main.registry.RenderRegistry;
+import com.github.creoii.greatbigworld.main.registry.GBWRenderers;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.BipedEntityRenderer;
@@ -19,7 +19,7 @@ public class ThicketEntityRenderer<T extends ThicketEntity> extends BipedEntityR
     private static final Identifier TEXTURE = new Identifier(GreatBigWorld.NAMESPACE, "textures/entity/thicket/thicket.png");
 
     public ThicketEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new SkeletonEntityModel<>(context.getPart(RenderRegistry.THICKET_MODEL_LAYER)), .75f);
+        super(context, new SkeletonEntityModel<>(context.getPart(GBWRenderers.THICKET_MODEL_LAYER)), .75f);
         addFeature(new ThicketOverlayFeatureRenderer<>(this, context.getModelLoader()));
         addFeature(new ArmorFeatureRenderer<>(this, new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_INNER_ARMOR)), new BipedEntityModel<>(context.getPart(EntityModelLayers.PLAYER_OUTER_ARMOR))));
     }

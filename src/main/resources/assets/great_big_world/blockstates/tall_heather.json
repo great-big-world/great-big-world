@@ -1,6 +1,6 @@
 {
   "variants": {
-    "half=upper": { "model": "great_big_world:block/heather_upper" },
-    "half=lower": { "model": "great_big_world:block/heather_lower" }
+    "half=upper": { "model": "great_big_world:block/tall_heather_upper" },
+    "half=lower": { "model": "great_big_world:block/tall_heather_lower" }
   }
 }

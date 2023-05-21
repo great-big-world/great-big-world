@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "mossy_cobblestone_bricks",
+  "ingredients": [
+    {
+      "item": "great_big_world:cobblestone_bricks"
+    },
+    {
+      "item": "minecraft:moss_block"
+    }
+  ],
+  "result": {
+    "item": "great_big_world:mossy_cobblestone_bricks"
+  }
+}

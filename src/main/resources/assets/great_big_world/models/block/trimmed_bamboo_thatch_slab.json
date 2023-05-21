@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "great_big_world:block/bamboo_thatch",
+        "top": "great_big_world:block/bamboo_thatch",
+        "side": "great_big_world:block/bamboo_thatch"
+    }
+}

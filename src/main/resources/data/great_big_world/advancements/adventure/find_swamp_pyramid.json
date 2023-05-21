@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "swamp_pyramid": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structure": "great_big_world:swamp_pyramid"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.adventure.find_swamp_pyramid.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "great_big_world:mossy_cobblestone_bricks"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.adventure.find_swamp_pyramid.title"
+    }
+  },
+  "requirements": [
+    [
+      "swamp_pyramid"
+    ]
+  ]
+}
