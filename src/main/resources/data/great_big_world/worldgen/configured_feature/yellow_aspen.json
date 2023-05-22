@@ -10,6 +10,7 @@
             "axis": "y"
           }
         },
+        "branch_length": 1,
         "chance": 0.2,
         "random_facing": false,
         "replaceable": "minecraft:leaves",
