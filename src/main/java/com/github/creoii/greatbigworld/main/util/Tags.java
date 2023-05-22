@@ -22,6 +22,8 @@ public class Tags {
         public static final TagKey<Block> MUD_REPLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "mud_replaceable"));
         public static final TagKey<Block> ACAI_BERRY_PLACEABLE = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "acai_berry_placeable"));
         public static final TagKey<Block> THATCH = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "thatch"));
+        public static final TagKey<Block> ERODES_INTO_LAVAROCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "erodes_into_lavarock"));
+        public static final TagKey<Block> ERODES_INTO_VOLCANIC_SAND = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "erodes_into_volcanic_sand"));
     }
 
     public static class ItemTags {

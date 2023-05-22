@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.mixin.block;
 
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.*;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
@@ -25,9 +26,9 @@ public class MagmaBlockMixin {
         if (!world.getBlockState(checkPos.up()).isOf(Blocks.WATER)) return;
 
         BlockState checkState = world.getBlockState(checkPos);
-        if (checkState.isIn(BlockTags.BASE_STONE_OVERWORLD)) {
+        if (!checkState.isOf(GBWBlocks.LAVAROCK) && checkState.isIn(Tags.BlockTags.ERODES_INTO_LAVAROCK)) {
             world.setBlockState(checkPos, GBWBlocks.LAVAROCK.getDefaultState(), Block.NOTIFY_ALL);
-        } else if (checkState.isIn(BlockTags.SAND)) {
+        } else if (!checkState.isOf(GBWBlocks.VOLCANIC_SAND) && checkState.isIn(Tags.BlockTags.ERODES_INTO_VOLCANIC_SAND)) {
             world.setBlockState(checkPos, GBWBlocks.VOLCANIC_SAND.getDefaultState(), Block.NOTIFY_ALL);
         }
     }
