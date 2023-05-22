@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.block;
 
-import com.github.creoii.creolib.api.util.block.BlockUtil;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
