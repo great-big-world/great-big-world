@@ -14,5 +14,6 @@
   "result": {
     "item": "great_big_world:grass_thatch_stairs",
     "count": 4
-  }
+  },
+  "show_notification": true
 }

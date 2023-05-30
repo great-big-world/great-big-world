@@ -17,5 +17,6 @@
   "result": {
     "item": "great_big_world:aspen_fence",
     "count": 3
-  }
+  },
+  "show_notification": true
 }

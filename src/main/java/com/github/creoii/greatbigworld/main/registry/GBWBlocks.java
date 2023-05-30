@@ -68,6 +68,7 @@ public class GBWBlocks implements Register {
     public static final Block COBBLESTONE_BRICK_STAIRS = new StairsBlock(COBBLESTONE_BRICKS.getDefaultState(), CBlockSettings.copy(Blocks.COBBLESTONE_STAIRS));
     public static final Block COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.COBBLESTONE_SLAB));
     public static final Block COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.COBBLESTONE_WALL));
+    public static final Block CHISELED_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(COBBLESTONE_BRICKS));
     public static final Block MOSSY_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE));
     public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_STAIRS));
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_SLAB));
@@ -188,6 +189,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_cobblestone_bricks`"), CHISELED_COBBLESTONE_BRICKS, COBBLESTONE_BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, Items.MOSSY_COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);

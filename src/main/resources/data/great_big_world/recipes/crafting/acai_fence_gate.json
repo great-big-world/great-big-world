@@ -16,5 +16,6 @@
   },
   "result": {
     "item": "great_big_world:acai_fence_gate"
-  }
+  },
+  "show_notification": true
 }

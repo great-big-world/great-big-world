@@ -20,5 +20,6 @@
   },
   "result": {
     "item": "great_big_world:bamboo_torch"
-  }
+  },
+  "show_notification": true
 }

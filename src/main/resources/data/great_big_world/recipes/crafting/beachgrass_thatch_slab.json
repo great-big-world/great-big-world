@@ -12,5 +12,6 @@
   "result": {
     "item": "great_big_world:beachgrass_thatch_slab",
     "count": 6
-  }
+  },
+  "show_notification": true
 }

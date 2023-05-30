@@ -13,5 +13,6 @@
   "result": {
     "item": "great_big_world:acai_pressure_plate",
     "count": 1
-  }
+  },
+  "show_notification": true
 }

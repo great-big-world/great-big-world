@@ -13,5 +13,6 @@
   "result": {
     "item": "great_big_world:lavarock_wall",
     "count": 6
-  }
+  },
+  "show_notification": true
 }

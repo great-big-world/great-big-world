@@ -16,5 +16,6 @@
   },
   "result": {
     "item": "great_big_world:mahogany_fence_gate"
-  }
+  },
+  "show_notification": true
 }

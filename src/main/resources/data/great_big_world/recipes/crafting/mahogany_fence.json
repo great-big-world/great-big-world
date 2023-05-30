@@ -17,5 +17,6 @@
   "result": {
     "item": "great_big_world:mahogany_fence",
     "count": 3
-  }
+  },
+  "show_notification": true
 }

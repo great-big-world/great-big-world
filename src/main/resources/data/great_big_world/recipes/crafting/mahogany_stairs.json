@@ -15,5 +15,6 @@
   "result": {
     "item": "great_big_world:mahogany_stairs",
     "count": 4
-  }
+  },
+  "show_notification": true
 }

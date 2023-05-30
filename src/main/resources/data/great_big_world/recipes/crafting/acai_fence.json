@@ -17,5 +17,6 @@
   "result": {
     "item": "great_big_world:acai_fence",
     "count": 3
-  }
+  },
+  "show_notification": true
 }

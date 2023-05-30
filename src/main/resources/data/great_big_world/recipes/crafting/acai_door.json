@@ -15,5 +15,6 @@
   "result": {
     "item": "great_big_world:acai_door",
     "count": 3
-  }
+  },
+  "show_notification": true
 }

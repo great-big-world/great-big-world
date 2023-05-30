@@ -14,5 +14,6 @@
   "result": {
     "item": "great_big_world:elder_prismarine_stairs",
     "count": 4
-  }
+  },
+  "show_notification": true
 }

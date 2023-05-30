@@ -12,5 +12,6 @@
   "result": {
     "item": "great_big_world:lavarock_brick_slab",
     "count": 3
-  }
+  },
+  "show_notification": true
 }

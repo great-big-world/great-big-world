@@ -24,5 +24,6 @@
   },
   "result": {
     "item": "great_big_world:soul_bamboo_torch"
-  }
+  },
+  "show_notification": true
 }

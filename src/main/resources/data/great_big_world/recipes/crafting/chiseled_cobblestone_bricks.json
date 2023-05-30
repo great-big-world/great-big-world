@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
-  "group": "bark",
   "pattern": [
-    "LL",
-    "LL"
+    "S",
+    "S"
   ],
   "key": {
-    "L": {
-      "item": "great_big_world:acai_log"
+    "S": {
+      "item": "great_big_world:cobblestone_brick_slab"
     }
   },
   "result": {
-    "item": "great_big_world:acai_wood",
-    "count": 3
+    "item": "great_big_world:chiseled_cobblestone_bricks"
   },
   "show_notification": true
 }
