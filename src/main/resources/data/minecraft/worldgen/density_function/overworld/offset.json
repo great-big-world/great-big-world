@@ -4649,7 +4649,7 @@
 																	{
 																		"location": 1,
 																		"derivative": 0.049,
-																		"value": 0.1
+																		"value": 0.05
 																	}
 																]
 															}
@@ -4683,7 +4683,7 @@
 																	{
 																		"location": 1,
 																		"derivative": 0.049,
-																		"value": 0.1
+																		"value": 0
 																	}
 																]
 															}
@@ -4717,7 +4717,7 @@
 																	{
 																		"location": 1,
 																		"derivative": 0.049,
-																		"value": 0.1
+																		"value": 0.05
 																	}
 																]
 															}
@@ -6339,7 +6339,7 @@
 																	{
 																		"location": 1,
 																		"derivative": 0,
-																		"value": 0
+																		"value": 0.01
 																	}
 																]
 															}
@@ -6350,7 +6350,7 @@
 											{
 												"location": -1.1,
 												"derivative": 0,
-												"value": -0.1
+												"value": -0.0222
 											},
 											{
 												"location": -1.05,
