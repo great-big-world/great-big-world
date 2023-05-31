@@ -27,6 +27,11 @@ import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.WorldView;
+import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 import java.util.List;
 
@@ -271,7 +276,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, Items.END_STONE, ItemGroups.NATURAL);
 
-        Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, List.of(
+        Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(
                 Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),
                 Spreadable.Spread.of(LAVAROCK)
         ), (state, serverWorld, pos, random) -> {

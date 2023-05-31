@@ -2,14 +2,17 @@ package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
+import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.*;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.minecraft.world.chunk.light.ChunkLightProvider;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
@@ -59,5 +62,22 @@ public class GrassyLavarockBlock extends SnowyBlock implements Fertilizable {
             }
             registryEntry.value().generateUnregistered(world, world.getChunkManager().getChunkGenerator(), random, blockPos2);
         }
+    }
+
+    public static boolean canSurvive(BlockState state, WorldView world, BlockPos pos, Random random) {
+        BlockPos blockPos = pos.up();
+        BlockState blockState = world.getBlockState(blockPos);
+        if (blockState.isOf(Blocks.SNOW) && blockState.get(SnowBlock.LAYERS) == 1) {
+            return true;
+        } else if (blockState.getFluidState().getLevel() == 8) {
+            return false;
+        } else {
+            int i = ChunkLightProvider.getRealisticOpacity(world, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(world, blockPos));
+            return i < world.getMaxLightLevel();
+        }
+    }
+
+    public static boolean canSpread(BlockState state, WorldView world, BlockPos pos, Random random) {
+        return world.getLightLevel(pos.up()) >= 9 && !world.getBiome(pos).isIn(Tags.BiomeTags.IS_VOLCANIC);
     }
 }
