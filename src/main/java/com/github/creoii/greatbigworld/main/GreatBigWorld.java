@@ -11,7 +11,7 @@ import net.minecraft.util.math.random.Random;
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
-    public static final String VERSION = "1.2.2";
+    public static final String VERSION = "1.2.3";
     public static GBWConfig CONFIG = new GBWConfig();
     public static final Register[] REGISTERS = new Register[]{
             new GBWBlocks(),
