@@ -3,7 +3,6 @@ package com.github.creoii.greatbigworld.main.mixin.block;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.*;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
