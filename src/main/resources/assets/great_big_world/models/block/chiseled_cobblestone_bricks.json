@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_column",
   "textures": {
-    "end": "hallow:block/cobblestone_bricks",
-    "side": "hallow:block/chiseled_cobblestone_bricks"
+    "end": "great_big_world:block/cobblestone_bricks",
+    "side": "great_big_world:block/chiseled_cobblestone_bricks"
   }
 }
