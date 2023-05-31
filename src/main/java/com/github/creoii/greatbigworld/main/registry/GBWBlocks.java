@@ -123,6 +123,7 @@ public class GBWBlocks implements Register {
     public static final Block LAVAROCK_BRICK_STAIRS = new StairsBlock(LAVAROCK_BRICKS.getDefaultState(), CBlockSettings.copy(LAVAROCK_BRICKS));
     public static final Block LAVAROCK_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(LAVAROCK_BRICKS));
     public static final Block LAVAROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK_BRICKS));
+    public static final Block CHISELED_LAVAROCK_BRICKS = new Block(CBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
     public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign());
@@ -241,6 +242,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_lavarock_bricks"), CHISELED_LAVAROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
 
         ACAI.register();
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES);
