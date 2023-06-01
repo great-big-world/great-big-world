@@ -36,7 +36,7 @@ public class MoaiStructureProcessor extends StructureProcessor {
         replacements.put(Blocks.STONE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.POLISHED_ANDESITE_STAIRS.getDefaultState(), 1).build()));
     });
     private final Map<Block, BlockStateProvider> mossyReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(Blocks.MOSSY_COBBLESTONE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 2).add(GBWBlocks.COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
+        replacements.put(Blocks.MOSSY_COBBLESTONE, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 6).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 6).add(GBWBlocks.COBBLESTONE_BRICKS.getDefaultState(), 3).add(GBWBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
         replacements.put(Blocks.MOSSY_COBBLESTONE_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 2).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 2).add(GBWBlocks.COBBLESTONE_BRICK_STAIRS.getDefaultState(), 1).build()));
     });
     private final Map<Block, BlockStateProvider> volcanicReplacementMap = Util.make(Maps.newHashMap(), replacements -> {
@@ -64,7 +64,7 @@ public class MoaiStructureProcessor extends StructureProcessor {
             default -> .5f;
         };
         if (random.nextFloat() < chance && replacementMap.containsKey(block)) {
-            BlockState state = replacementMap.get(block).getBlockState(random, currentBlockInfo.pos);
+            BlockState state = replacementMap.get(block).get(random, currentBlockInfo.pos);
             BlockState blockState = currentBlockInfo.state;
             if (blockState.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, blockState.get(StairsBlock.FACING));

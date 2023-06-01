@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "key": {
+    "S": {
+      "item": "great_big_world:lavarock_brick_slab"
+    }
+  },
+  "result": {
+    "item": "great_big_world:chiseled_lavarock_bricks"
+  },
+  "show_notification": true
+}

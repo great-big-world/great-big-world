@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "grass_thatch",
+  "pattern": [
+    "GG",
+    "GG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:grass"
+    }
+  },
+  "result": {
+    "item": "great_big_world:grass_thatch",
+    "count": 6
+  }
+}

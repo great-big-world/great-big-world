@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "T  ",
+    "TT ",
+    "TTT"
+  ],
+  "key": {
+    "T": {
+      "item": "great_big_world:grass_thatch"
+    }
+  },
+  "result": {
+    "item": "great_big_world:grass_thatch_stairs",
+    "count": 4
+  },
+  "show_notification": true
+}

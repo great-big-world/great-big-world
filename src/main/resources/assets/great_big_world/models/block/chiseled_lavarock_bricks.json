@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "great_big_world:block/lavarock_bricks",
+    "side": "great_big_world:block/chiseled_lavarock_bricks"
+  }
+}

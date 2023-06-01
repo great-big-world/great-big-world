@@ -116,6 +116,7 @@ public class GBWBlocks implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.DEEPSLATE_TILE_WALL);
         }
     };
+    public static final Block CHISELED_COBBLESTONE_BRICKS = new Block(FabricBlockSettings.copy(COBBLESTONE_BRICKS));
     public static final Block MOSSY_COBBLESTONE_BRICKS = new Block(FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE));
     public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_STAIRS));
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_SLAB));
@@ -185,6 +186,7 @@ public class GBWBlocks implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.DEEPSLATE_TILE_WALL);
         }
     };
+    public static final Block CHISELED_LAVAROCK_BRICKS = new Block(FabricBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
     public static DefaultBlockSets.WoodSet ACAI = DefaultBlockSets.createWoodSet("acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW);
@@ -269,25 +271,26 @@ public class GBWBlocks implements Register {
         registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "aspen_wall_sign"), ASPEN_WALL_SIGN, null);
 
-        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
-        registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, new ExtendedBlockSettings(0f, 0, 0, null));
+        registerBlock(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "bamboo_wall_torch"), BAMBOO_WALL_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "soul_bamboo_wall_torch"), SOUL_BAMBOO_WALL_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_bamboo_torch"), POTTED_BAMBOO_TORCH, null);
+        registerBlock(new Identifier(NAMESPACE, "potted_soul_bamboo_torch"), POTTED_SOUL_BAMBOO_TORCH, null);
 
-        registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(NAMESPACE, "daylight_mushroom"), DAYLIGHT_MUSHROOM, null, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(NAMESPACE, "midnight_mushroom"), MIDNIGHT_MUSHROOM, null, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(NAMESPACE, "darkblight_mushroom"), DARKBLIGHT_MUSHROOM, null, ItemGroup.DECORATIONS);
 
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.BUILDING_BLOCKS);
-        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, new ExtendedBlockSettings(0f, 0, 0, null), ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_bricks"), COBBLESTONE_BRICKS, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_stairs"), COBBLESTONE_BRICK_STAIRS, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, null, ItemGroup.DECORATIONS);
+        registerBlock(new Identifier(NAMESPACE, "chiseled_cobblestone_bricks"), CHISELED_COBBLESTONE_BRICKS, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, null, ItemGroup.DECORATIONS);
 
         registerBlock(new Identifier(NAMESPACE, "white_stained_calcite"), WHITE_STAINED_CALCITE, null, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "light_gray_stained_calcite"), LIGHT_GRAY_STAINED_CALCITE, null, ItemGroup.BUILDING_BLOCKS);
@@ -335,6 +338,7 @@ public class GBWBlocks implements Register {
         registerBlock(new Identifier(NAMESPACE, "lavarock_brick_stairs"), LAVAROCK_BRICK_STAIRS, null, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "lavarock_brick_slab"), LAVAROCK_BRICK_SLAB, null, ItemGroup.BUILDING_BLOCKS);
         registerBlock(new Identifier(NAMESPACE, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, null, ItemGroup.BUILDING_BLOCKS);
+        registerBlock(new Identifier(NAMESPACE, "chiseled_lavarock_bricks"), CHISELED_LAVAROCK_BRICKS, null, ItemGroup.BUILDING_BLOCKS);
 
         ACAI.register();
         registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));

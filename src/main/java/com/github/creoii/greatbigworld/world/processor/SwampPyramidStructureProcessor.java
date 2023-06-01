@@ -5,6 +5,8 @@ import com.github.creoii.greatbigworld.main.registry.GBWStructures;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.StructureTemplate;
@@ -23,38 +25,45 @@ import java.util.Map;
 public class SwampPyramidStructureProcessor extends StructureProcessor {
     public static final SwampPyramidStructureProcessor INSTANCE = new SwampPyramidStructureProcessor();
     public static final Codec<SwampPyramidStructureProcessor> CODEC = Codec.unit(() -> INSTANCE);
-    private final Map<Block, BlockStateProvider> replacementMap = Util.make(Maps.newHashMap(), replacements -> {
-        replacements.put(GBWBlocks.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 5).build()));
+    private static final RegistryEntryList<Block> STAIRS = RegistryEntryList.of(RegistryEntry::of, Blocks.COBBLESTONE_STAIRS, GBWBlocks.COBBLESTONE_BRICK_STAIRS, Blocks.MOSSY_COBBLESTONE_STAIRS, GBWBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS);
+    private static final Map<Block, BlockStateProvider> REPLACEMENT_MAP = Util.make(Maps.newHashMap(), replacements -> {
+        replacements.put(GBWBlocks.COBBLESTONE_BRICKS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE.getDefaultState(), 2).add(Blocks.MOSSY_COBBLESTONE.getDefaultState(), 5).add(GBWBlocks.MOSSY_COBBLESTONE_BRICKS.getDefaultState(), 9).add(GBWBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), 1).build()));
         replacements.put(GBWBlocks.COBBLESTONE_BRICK_SLAB, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_SLAB.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_SLAB.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_SLAB.getDefaultState(), 5).build()));
         replacements.put(GBWBlocks.COBBLESTONE_BRICK_STAIRS, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_STAIRS.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_STAIRS.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_STAIRS.getDefaultState(), 5).build()));
         replacements.put(GBWBlocks.COBBLESTONE_BRICK_WALL, new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(Blocks.COBBLESTONE_WALL.getDefaultState(), 1).add(Blocks.MOSSY_COBBLESTONE_WALL.getDefaultState(), 3).add(GBWBlocks.MOSSY_COBBLESTONE_BRICK_WALL.getDefaultState(), 5).build()));
     });
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
-        Random random = data.getRandom(currentBlockInfo.pos);
-        Block block = currentBlockInfo.state.getBlock();
-        if (random.nextFloat() < .6f && replacementMap.containsKey(block)) {
-            if (random.nextFloat() < .1f) return null;
-            BlockState state = replacementMap.get(block).getBlockState(random, currentBlockInfo.pos);
-            BlockState blockState = currentBlockInfo.state;
-            if (blockState.contains(StairsBlock.FACING)) {
-                state = state.with(StairsBlock.FACING, blockState.get(StairsBlock.FACING));
+        Random random = data.getRandom(currentBlockInfo.pos.up());
+        if (random.nextFloat() < .95f && world.getBlockState(currentBlockInfo.pos.up()).isIn(STAIRS)) {
+            if (currentBlockInfo.state.isOf(GBWBlocks.COBBLESTONE_BRICKS)) {
+                return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, GBWBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt);
+            }
+        }
+        random = data.getRandom(currentBlockInfo.pos);
+        BlockState current = currentBlockInfo.state;
+        Block block = current.getBlock();
+        if (random.nextFloat() < .6f && REPLACEMENT_MAP.containsKey(block)) {
+            if (random.nextFloat() < .08f) return null;
+            BlockState state = REPLACEMENT_MAP.get(block).get(random, currentBlockInfo.pos);
+            if (current.contains(StairsBlock.FACING)) {
+                state = state.with(StairsBlock.FACING, current.get(StairsBlock.FACING));
             }
 
-            if (blockState.contains(StairsBlock.HALF)) {
-                state = state.with(StairsBlock.HALF, blockState.get(StairsBlock.HALF));
+            if (current.contains(StairsBlock.HALF)) {
+                state = state.with(StairsBlock.HALF, current.get(StairsBlock.HALF));
             }
 
-            if (blockState.contains(StairsBlock.SHAPE)) {
-                state = state.with(StairsBlock.SHAPE, blockState.get(StairsBlock.SHAPE));
+            if (current.contains(StairsBlock.SHAPE)) {
+                state = state.with(StairsBlock.SHAPE, current.get(StairsBlock.SHAPE));
             }
 
-            if (blockState.contains(SlabBlock.TYPE)) {
-                state = state.with(SlabBlock.TYPE, blockState.get(SlabBlock.TYPE));
+            if (current.contains(SlabBlock.TYPE)) {
+                state = state.with(SlabBlock.TYPE, current.get(SlabBlock.TYPE));
             }
 
-            if (blockState.contains(Properties.WATERLOGGED)) {
-                state = state.with(Properties.WATERLOGGED, blockState.get(Properties.WATERLOGGED));
+            if (current.contains(Properties.WATERLOGGED)) {
+                state = state.with(Properties.WATERLOGGED, current.get(Properties.WATERLOGGED));
             }
 
             return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, state, currentBlockInfo.nbt);
