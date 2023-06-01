@@ -5,8 +5,6 @@ import com.github.creoii.greatbigworld.main.registry.GBWStructures;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.*;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.StructureTemplate;
@@ -16,6 +14,8 @@ import net.minecraft.util.Util;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.util.registry.RegistryEntryList;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
@@ -45,7 +45,7 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
         Block block = current.getBlock();
         if (random.nextFloat() < .6f && REPLACEMENT_MAP.containsKey(block)) {
             if (random.nextFloat() < .08f) return null;
-            BlockState state = REPLACEMENT_MAP.get(block).get(random, currentBlockInfo.pos);
+            BlockState state = REPLACEMENT_MAP.get(block).getBlockState(random, currentBlockInfo.pos);
             if (current.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, current.get(StairsBlock.FACING));
             }
