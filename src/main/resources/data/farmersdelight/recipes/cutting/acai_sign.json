@@ -10,7 +10,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "great_big_world:mahogany_sign"
+      "item": "great_big_world:acai_sign"
     }
   ],
   "tool": {
@@ -19,7 +19,7 @@
   },
   "result": [
     {
-      "item": "great_big_world:mahogany_planks"
+      "item": "great_big_world:acai_planks"
     }
   ]
 }

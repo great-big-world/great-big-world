@@ -10,7 +10,7 @@
   "type": "farmersdelight:cutting",
   "ingredients": [
     {
-      "item": "great_big_world:mahogany_sign"
+      "item": "great_big_world:acai_log"
     }
   ],
   "tool": {
@@ -19,7 +19,11 @@
   },
   "result": [
     {
-      "item": "great_big_world:mahogany_planks"
+      "item": "great_big_world:stripped_acai_log"
+    },
+    {
+      "item": "farmersdelight:tree_bark"
     }
-  ]
+  ],
+  "sound": "minecraft:item.axe.strip"
 }

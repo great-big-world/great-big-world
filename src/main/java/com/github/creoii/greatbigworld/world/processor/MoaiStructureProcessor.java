@@ -64,7 +64,7 @@ public class MoaiStructureProcessor extends StructureProcessor {
             default -> .5f;
         };
         if (random.nextFloat() < chance && replacementMap.containsKey(block)) {
-            BlockState state = replacementMap.get(block).get(random, currentBlockInfo.pos);
+            BlockState state = replacementMap.get(block).getBlockState(random, currentBlockInfo.pos);
             BlockState blockState = currentBlockInfo.state;
             if (blockState.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, blockState.get(StairsBlock.FACING));
