@@ -50,8 +50,8 @@ public class MoaiStructureProcessor extends StructureProcessor {
     }
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
-        Random random = data.getRandom(currentBlockInfo.pos);
-        Block block = currentBlockInfo.state.getBlock();
+        Random random = data.getRandom(currentBlockInfo.pos());
+        Block block = currentBlockInfo.state().getBlock();
         Map<Block, BlockStateProvider> replacementMap = switch (type) {
             case "stone" -> stoneReplacementMap;
             case "mossy" -> mossyReplacementMap;
@@ -64,8 +64,8 @@ public class MoaiStructureProcessor extends StructureProcessor {
             default -> .5f;
         };
         if (random.nextFloat() < chance && replacementMap.containsKey(block)) {
-            BlockState state = replacementMap.get(block).get(random, currentBlockInfo.pos);
-            BlockState blockState = currentBlockInfo.state;
+            BlockState state = replacementMap.get(block).get(random, currentBlockInfo.pos());
+            BlockState blockState = currentBlockInfo.state();
             if (blockState.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, blockState.get(StairsBlock.FACING));
             }
@@ -86,7 +86,7 @@ public class MoaiStructureProcessor extends StructureProcessor {
                 state = state.with(Properties.WATERLOGGED, blockState.get(Properties.WATERLOGGED));
             }
 
-            return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, state, currentBlockInfo.nbt);
+            return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), state, currentBlockInfo.nbt());
         }
         return currentBlockInfo;
     }

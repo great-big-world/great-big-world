@@ -34,18 +34,18 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
     });
 
     public StructureTemplate.StructureBlockInfo process(WorldView world, BlockPos pos, BlockPos pivot, StructureTemplate.StructureBlockInfo originalBlockInfo, StructureTemplate.StructureBlockInfo currentBlockInfo, StructurePlacementData data) {
-        Random random = data.getRandom(currentBlockInfo.pos.up());
-        if (random.nextFloat() < .95f && world.getBlockState(currentBlockInfo.pos.up()).isIn(STAIRS)) {
-            if (currentBlockInfo.state.isOf(GBWBlocks.COBBLESTONE_BRICKS)) {
-                return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, GBWBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt);
+        Random random = data.getRandom(currentBlockInfo.pos().up());
+        if (random.nextFloat() < .95f && world.getBlockState(currentBlockInfo.pos().up()).isIn(STAIRS)) {
+            if (currentBlockInfo.state().isOf(GBWBlocks.COBBLESTONE_BRICKS)) {
+                return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), GBWBlocks.CHISELED_COBBLESTONE_BRICKS.getDefaultState(), currentBlockInfo.nbt());
             }
         }
-        random = data.getRandom(currentBlockInfo.pos);
-        BlockState current = currentBlockInfo.state;
+        random = data.getRandom(currentBlockInfo.pos());
+        BlockState current = currentBlockInfo.state();
         Block block = current.getBlock();
         if (random.nextFloat() < .6f && REPLACEMENT_MAP.containsKey(block)) {
             if (random.nextFloat() < .08f) return null;
-            BlockState state = REPLACEMENT_MAP.get(block).get(random, currentBlockInfo.pos);
+            BlockState state = REPLACEMENT_MAP.get(block).get(random, currentBlockInfo.pos());
             if (current.contains(StairsBlock.FACING)) {
                 state = state.with(StairsBlock.FACING, current.get(StairsBlock.FACING));
             }
@@ -66,7 +66,7 @@ public class SwampPyramidStructureProcessor extends StructureProcessor {
                 state = state.with(Properties.WATERLOGGED, current.get(Properties.WATERLOGGED));
             }
 
-            return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos, state, currentBlockInfo.nbt);
+            return new StructureTemplate.StructureBlockInfo(currentBlockInfo.pos(), state, currentBlockInfo.nbt());
         }
         return currentBlockInfo;
     }

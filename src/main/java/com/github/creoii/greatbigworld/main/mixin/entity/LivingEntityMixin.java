@@ -45,7 +45,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "tickMovement", at = @At("TAIL"))
     private void great_big_world_applyAuraPotions(CallbackInfo ci) {
         if (getHealth() > 0f) {
-            for (Entity entity : world.getOtherEntities(this, getBoundingBox().expand(.5d, .25d, .5d))) {
+            for (Entity entity : getWorld().getOtherEntities(this, getBoundingBox().expand(.5d, .25d, .5d))) {
                 if (entity.isRemoved() || !entity.isLiving()) continue;
                 activeStatusEffects.forEach((effect, instance) -> {
                     StatusEffectInstance transferred = AuraEffect.transferAura(instance);

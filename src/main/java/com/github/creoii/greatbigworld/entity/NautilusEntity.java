@@ -80,7 +80,7 @@ public class NautilusEntity extends FishEntity {
 
     @Override
     public void tickMovement() {
-        if (world.isClient) {
+        if (getWorld().isClient) {
             if (oxidizeTimer > 0)  --oxidizeTimer;
         }
         super.tickMovement();
@@ -91,8 +91,8 @@ public class NautilusEntity extends FishEntity {
         super.tick();
         if (random.nextFloat() < .03f && isSubmergedInWater()) {
             Vec3d rotation = getOppositeRotationVector(0f);
-            if (world.getTime() % 2 == 0) {
-                world.addParticle(ParticleTypes.BUBBLE, getX() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.x * .75d, getY() + random.nextDouble() * (double) getHeight() - rotation.y, getZ() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.z * .75d, 0d, 0d, 0d);
+            if (getWorld().getTime() % 2 == 0) {
+                getWorld().addParticle(ParticleTypes.BUBBLE, getX() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.x * .75d, getY() + random.nextDouble() * (double) getHeight() - rotation.y, getZ() + (random.nextDouble() - .5d) * (double) getWidth() - rotation.z * .75d, 0d, 0d, 0d);
             }
         }
     }
@@ -127,7 +127,7 @@ public class NautilusEntity extends FishEntity {
 
     public void onOxidizing() {
         emitGameEvent(GameEvent.BLOCK_CHANGE);
-        if (world.getClosestPlayer(this, 8d) instanceof ServerPlayerEntity player) {
+        if (getWorld().getClosestPlayer(this, 8d) instanceof ServerPlayerEntity player) {
             GBWCriteria.NAUTILUS_OXIDIZE_COPPER.trigger(player);
         }
         playSound(SoundEvents.ITEM_HONEYCOMB_WAX_ON, getSoundVolume(), getSoundPitch());
@@ -140,7 +140,7 @@ public class NautilusEntity extends FishEntity {
 
         public NautilusOxidizeGoal(NautilusEntity nautilus) {
             this.nautilus = nautilus;
-            world = nautilus.world;
+            world = nautilus.getWorld();
             setControls(EnumSet.of(Goal.Control.MOVE, Goal.Control.LOOK, Goal.Control.JUMP));
         }
 
@@ -220,8 +220,8 @@ public class NautilusEntity extends FishEntity {
                 return;
             }
             Vec3d vec3d = new Vec3d(NautilusEntity.this.getX() - livingEntity.getX(), NautilusEntity.this.getY() - livingEntity.getY(), NautilusEntity.this.getZ() - livingEntity.getZ());
-            BlockState blockState = NautilusEntity.this.world.getBlockState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
-            FluidState fluidState = NautilusEntity.this.world.getFluidState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
+            BlockState blockState = NautilusEntity.this.getWorld().getBlockState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
+            FluidState fluidState = NautilusEntity.this.getWorld().getFluidState(new BlockPos(NautilusEntity.this.getBlockX() + (int) vec3d.x, NautilusEntity.this.getBlockY() + (int) vec3d.y, NautilusEntity.this.getBlockZ() + (int) vec3d.z));
             if (fluidState.isIn(FluidTags.WATER) || blockState.isAir()) {
                 double d = vec3d.length();
                 if (d > 0d) {
@@ -240,7 +240,7 @@ public class NautilusEntity extends FishEntity {
                 NautilusEntity.this.setVelocity((float)vec3d.x / 20f, (float)vec3d.y / 20f, (float)vec3d.z / 20f);
             }
             if (timer % 10 == 5) {
-                NautilusEntity.this.world.addParticle(ParticleTypes.BUBBLE, NautilusEntity.this.getX(), NautilusEntity.this.getY(), NautilusEntity.this.getZ(), 0d, 0d, 0d);
+                NautilusEntity.this.getWorld().addParticle(ParticleTypes.BUBBLE, NautilusEntity.this.getX(), NautilusEntity.this.getY(), NautilusEntity.this.getZ(), 0d, 0d, 0d);
             }
         }
     }

@@ -134,7 +134,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     @Override
     public void tick() {
         super.tick();
-        if (isThicketFrozen() && (world.getLightLevel(LightType.BLOCK, getBlockPos()) > 1 || getTarget() != null)) {
+        if (isThicketFrozen() && (getWorld().getLightLevel(LightType.BLOCK, getBlockPos()) > 1 || getTarget() != null)) {
             setThicketFrozen(false);
         }
     }
@@ -202,7 +202,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
     }
 
     public void updateAttackType() {
-        if (world != null && !world.isClient) {
+        if (getWorld() != null && !getWorld().isClient) {
             goalSelector.remove(meleeAttackGoal);
             goalSelector.remove(bowAttackGoal);
             Hand hand = ProjectileUtil.getHandPossiblyHolding(this, Items.BOW);
@@ -210,7 +210,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
                 ItemStack itemStack = getStackInHand(hand);
                 if (itemStack.isOf(Items.BOW)) {
                     int i = 18;
-                    if (world.getDifficulty() != Difficulty.HARD) {
+                    if (getWorld().getDifficulty() != Difficulty.HARD) {
                         i = 36;
                     }
                     bowAttackGoal.setAttackInterval(i);
@@ -232,9 +232,9 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
         double e = target.getBodyY(.3333333333333333d) - persistentProjectileEntity.getY();
         double f = target.getZ() - getZ();
         double g = Math.sqrt(d * d + f * f);
-        persistentProjectileEntity.setVelocity(d, e + g * .20000000298023224d, f, 1.6f, (float) (14 - world.getDifficulty().getId() * 4));
+        persistentProjectileEntity.setVelocity(d, e + g * .20000000298023224d, f, 1.6f, (float) (14 - getWorld().getDifficulty().getId() * 4));
         playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1f, 1f / (getRandom().nextFloat() * .4f + .8f));
-        world.spawnEntity(persistentProjectileEntity);
+        getWorld().spawnEntity(persistentProjectileEntity);
     }
 
     protected PersistentProjectileEntity createArrowProjectile(ItemStack arrow, float damageModifier) {
@@ -247,7 +247,7 @@ public class ThicketEntity extends HostileEntity implements RangedAttackMob {
 
     public void equipStack(EquipmentSlot slot, ItemStack stack) {
         super.equipStack(slot, stack);
-        if (!world.isClient) {
+        if (!getWorld().isClient) {
             updateAttackType();
         }
     }

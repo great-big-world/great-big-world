@@ -7,15 +7,21 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(MagmaBlock.class)
-public class MagmaBlockMixin {
-    @Inject(method = "randomTick", at = @At("TAIL"), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void great_big_world_magmaGeneratesLavarock(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci, BlockPos blockPos) {
+public class MagmaBlockMixin extends Block {
+    public MagmaBlockMixin(Settings settings) {
+        super(settings);
+    }
+
+    @Override
+    public boolean hasRandomTicks(BlockState state) {
+        return true;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(4) == 0) return;
 
         BlockState upState = world.getBlockState(pos.up());

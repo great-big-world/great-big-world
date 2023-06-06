@@ -31,7 +31,7 @@ public abstract class AbstractSkeletonEntityMixin extends HostileEntity implemen
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));
         }
-        world.spawnEntity(persistentProjectileEntity);
+        getWorld().spawnEntity(persistentProjectileEntity);
         ci.cancel();
     }
 }
