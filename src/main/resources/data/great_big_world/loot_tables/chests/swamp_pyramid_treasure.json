@@ -60,6 +60,16 @@
             },
             {
               "type": "minecraft:item",
+              "weight": 1,
+              "name": "great_big_world:cherry_mask"
+            },
+            {
+              "type": "minecraft:item",
+              "weight": 2,
+              "name": "great_big_world:bamboo_mask"
+            },
+            {
+              "type": "minecraft:item",
               "name": "great_big_world:crimson_mask"
             },
             {

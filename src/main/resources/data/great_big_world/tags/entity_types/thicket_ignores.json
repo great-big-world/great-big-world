@@ -1,7 +1,9 @@
 {
   "values": [
-    "minecraft:frog",
     "minecraft:bat",
+    "minecraft:skeleton",
+    "minecraft:stray",
+    "minecraft:frog",
     "great_big_world:nautilus",
     "great_big_world:thicket"
   ]

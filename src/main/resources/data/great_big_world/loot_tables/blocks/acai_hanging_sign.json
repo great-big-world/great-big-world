@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "great_big_world:acai_hanging_sign"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "great_big_world:blocks/acai_hanging_sign"
+}

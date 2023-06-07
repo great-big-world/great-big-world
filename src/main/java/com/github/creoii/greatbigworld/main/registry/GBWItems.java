@@ -65,6 +65,8 @@ public class GBWItems implements Register {
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
     public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
+    public static final Item CHERRY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CHERRY_PLANKS));
+    public static final Item BAMBOO_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BAMBOO_PLANKS));
     public static final Item CRIMSON_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CRIMSON_PLANKS));
     public static final Item WARPED_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.WARPED_PLANKS));
     //endregion
@@ -115,7 +117,9 @@ public class GBWItems implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ACAI_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ACACIA_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, DARK_OAK_MASK, ItemGroups.COMBAT);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, MANGROVE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "cherry_mask"), CHERRY_MASK, MANGROVE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "bamboo_mask"), BAMBOO_MASK, CHERRY_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, BAMBOO_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, CRIMSON_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, null, ItemGroups.BUILDING_BLOCKS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, null, ItemGroups.BUILDING_BLOCKS);
