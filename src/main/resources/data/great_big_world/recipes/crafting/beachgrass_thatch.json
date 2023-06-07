@@ -4,7 +4,7 @@
   "group": "beachgrass_thatch",
   "pattern": [
     "GGG",
-    "GGG",
+    "G G",
     "GGG"
   ],
   "key": {
@@ -14,6 +14,6 @@
   },
   "result": {
     "item": "great_big_world:beachgrass_thatch",
-    "count": 6
+    "count": 4
   }
 }

@@ -3,7 +3,7 @@
   "category": "building",
   "pattern": [
     "BBB",
-    "BBB",
+    "B B",
     "BBB"
   ],
   "key": {
@@ -13,6 +13,6 @@
   },
   "result": {
     "item": "great_big_world:bamboo_thatch",
-    "count": 6
+    "count": 4
   }
 }
