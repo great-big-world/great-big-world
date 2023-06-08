@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
@@ -93,19 +94,19 @@ public class GBWBlocks implements Register {
     public static final Block WHITE_STAINED_CALCITE = new Block(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
     //endregion
     //region Thatch
-    public static final Block TRIMMED_BEACHGRASS_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block TRIMMED_BEACHGRASS_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140).instrument(Instrument.BANJO));
     public static final Block BEACHGRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(80, 160), TRIMMED_BEACHGRASS_THATCH);
     public static final Block TRIMMED_BEACHGRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_BEACHGRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(70, 140));
     public static final Block BEACHGRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(80, 160), BEACHGRASS_THATCH.getDefaultState(), TRIMMED_BEACHGRASS_THATCH_STAIRS);
     public static final Block TRIMMED_BEACHGRASS_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BEACHGRASS_THATCH).fireSettings(70, 140));
     public static final Block BEACHGRASS_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BEACHGRASS_THATCH).fireSettings(80, 160), TRIMMED_BEACHGRASS_THATCH_SLAB);
-    public static final Block TRIMMED_BAMBOO_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block TRIMMED_BAMBOO_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140).instrument(Instrument.BANJO));
     public static final Block BAMBOO_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(80, 160), TRIMMED_BAMBOO_THATCH);
     public static final Block TRIMMED_BAMBOO_THATCH_STAIRS = new StairsBlock(TRIMMED_BAMBOO_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(70, 140));
     public static final Block BAMBOO_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(80, 160), BAMBOO_THATCH.getDefaultState(), TRIMMED_BAMBOO_THATCH_STAIRS);
     public static final Block TRIMMED_BAMBOO_THATCH_SLAB = new SlabBlock(CBlockSettings.copy(TRIMMED_BAMBOO_THATCH).fireSettings(70, 140));
     public static final Block BAMBOO_THATCH_SLAB = new ThatchSlabBlock(CBlockSettings.copy(BAMBOO_THATCH).fireSettings(80, 160), TRIMMED_BAMBOO_THATCH_SLAB);
-    public static final Block TRIMMED_GRASS_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140));
+    public static final Block TRIMMED_GRASS_THATCH = new PillarBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).strength(.5f).sounds(BlockSoundGroup.GRASS).nonOpaque().fireSettings(70, 140).instrument(Instrument.BANJO));
     public static final Block GRASS_THATCH = new ThatchBlock(CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(80, 160), TRIMMED_GRASS_THATCH);
     public static final Block TRIMMED_GRASS_THATCH_STAIRS = new StairsBlock(TRIMMED_GRASS_THATCH.getDefaultState(), CBlockSettings.copy(TRIMMED_GRASS_THATCH).fireSettings(70, 140));
     public static final Block GRASS_THATCH_STAIRS = new ThatchStairsBlock(CBlockSettings.copy(GRASS_THATCH).fireSettings(80, 160), GRASS_THATCH.getDefaultState(), TRIMMED_GRASS_THATCH_STAIRS);
