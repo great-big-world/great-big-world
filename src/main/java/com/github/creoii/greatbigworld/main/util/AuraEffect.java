@@ -69,6 +69,6 @@ public interface AuraEffect {
     }
 
     static StatusEffectInstance transferAura(StatusEffectInstance o) {
-        return createAuraStatusEffectInstance(o.getEffectType(), (int) (o.getDuration()  * GreatBigWorld.CONFIG.auraEffectTransferModifier), o.getAmplifier(), o.isAmbient(), o.shouldShowParticles(), o.shouldShowIcon());
+        return createAuraStatusEffectInstance(o.getEffectType(), (int) (o.getDuration()  * GreatBigWorld.CONFIG.auraEffectTransferModifier.floatValue()), o.getAmplifier(), o.isAmbient(), o.shouldShowParticles(), o.shouldShowIcon());
     }
 }

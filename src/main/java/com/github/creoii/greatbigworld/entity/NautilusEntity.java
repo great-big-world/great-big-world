@@ -146,8 +146,8 @@ public class NautilusEntity extends FishEntity {
 
         @Override
         public boolean canStart() {
-            if (GreatBigWorld.CONFIG.nautilusOxidizeChance == -1) return false;
-            if (nautilus.getRandom().nextInt(GreatBigWorld.CONFIG.nautilusOxidizeChance) != 0) return false;
+            if (GreatBigWorld.CONFIG.nautilusOxidizeChance.intValue() == -1) return false;
+            if (nautilus.getRandom().nextInt(GreatBigWorld.CONFIG.nautilusOxidizeChance.intValue()) != 0) return false;
             if (!nautilus.touchingWater) return false;
             return NAUTILUS_OXIDIZABLES.containsKey(world.getBlockState(nautilus.getBlockPos().down()).getBlock());
         }

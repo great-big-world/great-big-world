@@ -33,8 +33,9 @@
   ],
   "depends": {
     "fabricloader": ">=0.14.0",
-    "minecraft": "1.20-rc.1",
-    "terrablender": ">=2.1.0.134",
-    "creo": ">=1.0.0-beta.13"
+    "minecraft": "1.20",
+    "terrablender": ">=3.0.0.136",
+    "creo": ">=1.0.0-beta.13",
+    "yet_another_config_lib": "^3.0.0+1.20"
   }
 }

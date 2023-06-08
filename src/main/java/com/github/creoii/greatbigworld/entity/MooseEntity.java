@@ -114,7 +114,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
         dataTracker.startTracking(RIGHT_ANTLER, true);
         dataTracker.startTracking(LEFT_ANTLER, true);
         dataTracker.startTracking(RAMMING, false);
-        dataTracker.startTracking(SHED_TIME, GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
+        dataTracker.startTracking(SHED_TIME, GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime.intValue() + random.nextInt(SHED_REGROW_TIME_MOD));
         dataTracker.startTracking(REGROW_TIME, 0);
         dataTracker.startTracking(ANGER_TIME, 0);
     }
@@ -218,7 +218,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void shedAntlers() {
-        setRegrowTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
+        setRegrowTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime.intValue() + random.nextInt(SHED_REGROW_TIME_MOD));
         setLeftAntler(false);
         setRightAntler(false);
         if (!getWorld().isClient) {
@@ -230,7 +230,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
     }
 
     public void regrowAntlers() {
-        setShedTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime + random.nextInt(SHED_REGROW_TIME_MOD));
+        setShedTime(GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime.intValue() + random.nextInt(SHED_REGROW_TIME_MOD));
         setLeftAntler(true);
         setRightAntler(true);
         if (!getWorld().isClient) {
@@ -387,7 +387,7 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             }
         }
 
-        if (isAlive() && !isBaby() && GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime != -1) {
+        if (isAlive() && !isBaby() && GreatBigWorld.CONFIG.shedAntlerBaseRegrowTime.intValue() != -1) {
             if (!hasRightAntler() || !hasLeftAntler()) {
                 if (getRegrowTime() > 0) {
                     decrementRegrowTime();

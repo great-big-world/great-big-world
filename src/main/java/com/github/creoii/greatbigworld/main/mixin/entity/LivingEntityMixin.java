@@ -35,7 +35,7 @@ public abstract class LivingEntityMixin extends Entity {
     private void great_big_world_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
         int i = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.DILUTING, (LivingEntity) (Object) this);
         if (i > 0) {
-            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * GreatBigWorld.CONFIG.dilutingModifier))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
+            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * GreatBigWorld.CONFIG.dilutingModifier.floatValue()))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
             activeStatusEffects.put(statusEffect.getEffectType(), statusEffect);
             onStatusEffectApplied(statusEffect, source);
             cir.setReturnValue(true);

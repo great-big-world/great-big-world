@@ -20,11 +20,11 @@ public class VolcanicSandBlock extends SandBlock {
     @Override
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextFloat() > .8f || GreatBigWorld.CONFIG.maxDistanceForRootConversion == -1) return;
+        if (random.nextFloat() > .8f || GreatBigWorld.CONFIG.maxDistanceForRootConversion.intValue() == -1) return;
         BlockState upState = world.getBlockState(pos.up());
         if (upState.isOf(Blocks.FARMLAND) && FarmlandBlockInvoker.hasCrop(world, pos.up()) && FarmlandBlockInvoker.isWaterNearby(world, pos.up())) {
             BlockPos.Mutable mutable = pos.mutableCopy();
-            for (int i = 1; i < GreatBigWorld.CONFIG.maxDistanceForRootConversion; ++i) {
+            for (int i = 1; i < GreatBigWorld.CONFIG.maxDistanceForRootConversion.intValue(); ++i) {
                 mutable.setY(pos.getY() - i);
                 BlockState atState = world.getBlockState(mutable);
                 boolean passUp = world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(GBWBlocks.VOLCANIC_SAND);

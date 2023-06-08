@@ -3,8 +3,6 @@ package com.github.creoii.greatbigworld.main;
 import com.github.creoii.greatbigworld.main.integration.GBWConfig;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.math.random.Random;
 
@@ -17,7 +15,6 @@ public class GreatBigWorld implements ModInitializer {
             new GBWBlocks(),
             new GBWItems(),
             new GBWEntityTypes(),
-            new GBWLootTables(),
             new GBWDecorators(),
             new GBWConfiguredFeatures(),
             new GBWPlacedFeatures(),
@@ -29,13 +26,12 @@ public class GreatBigWorld implements ModInitializer {
             new GBWGameEvents(),
             new GBWParticles(),
             new GBWCriteria(),
-            new GBWAdvancements()
+            new GBWAdvancements(),
+            new GBWLootTables()
     };
 
     @Override
     public void onInitialize() {
-        AutoConfig.register(GBWConfig.class, JanksonConfigSerializer::new);
-        CONFIG = AutoConfig.getConfigHolder(GBWConfig.class).getConfig();
         for (Register register : REGISTERS) {
             register.register();
         }

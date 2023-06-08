@@ -11,17 +11,17 @@ import net.minecraft.sound.SoundEvents;
 public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements ArmorMaterial {
     @Override
     public int getDurability(ArmorItem.Type type) {
-        return GreatBigWorld.CONFIG.woodenMaskDurability;
+        return GreatBigWorld.CONFIG.woodenMaskDurability.intValue();
     }
 
     @Override
     public int getProtection(ArmorItem.Type type) {
-        return GreatBigWorld.CONFIG.woodenMaskProtection;
+        return GreatBigWorld.CONFIG.woodenMaskProtection.intValue();
     }
 
     @Override
     public int getEnchantability() {
-        return GreatBigWorld.CONFIG.woodenMaskEnchantability;
+        return GreatBigWorld.CONFIG.woodenMaskEnchantability.intValue();
     }
 
     @Override
@@ -41,7 +41,7 @@ public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements Arm
 
     @Override
     public float getToughness() {
-        return GreatBigWorld.CONFIG.woodenMaskToughness;
+        return GreatBigWorld.CONFIG.woodenMaskToughness.floatValue();
     }
 
     @Override

@@ -19,7 +19,7 @@ public class WolfEntityMixin {
     static {
         FOLLOW_TAMED_PREDICATE = entity -> {
             EntityType<?> entityType = entity.getType();
-            return entityType == EntityType.SHEEP || entityType == EntityType.RABBIT || entityType == EntityType.FOX || (GreatBigWorld.CONFIG.wolvesAttackMoose && entityType == GBWEntityTypes.MOOSE);
+            return entityType == EntityType.SHEEP || entityType == EntityType.RABBIT || entityType == EntityType.FOX || (GreatBigWorld.CONFIG.wolvesAttackMoose.booleanValue() && entityType == GBWEntityTypes.MOOSE);
         };
     }
 }
