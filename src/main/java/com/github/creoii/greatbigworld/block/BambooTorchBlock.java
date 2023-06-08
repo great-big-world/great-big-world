@@ -36,7 +36,7 @@ public class BambooTorchBlock extends TorchBlock {
 	@Override
 	public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
 		BlockState downState = worldIn.getBlockState(pos.down());
-		return sideCoversSmallSquare(worldIn, pos.down(), Direction.UP) || (GreatBigWorld.CONFIG.bambooTorchesOnLeaves.booleanValue() && downState.isIn(BlockTags.LEAVES)) || downState.getBlock() instanceof BambooBlock;
+		return sideCoversSmallSquare(worldIn, pos.down(), Direction.UP) || (GreatBigWorld.CONFIG.bambooTorchesOnLeaves.booleanValue() && downState.isIn(BlockTags.LEAVES)) || downState.isIn(BlockTags.BAMBOO_PLANTABLE_ON);
 	}
 
 	@Override
