@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lavarock": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "great_big_world:lavarock"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "great_big_world:crafting/lavarock_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lavarock",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "great_big_world:crafting/lavarock_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

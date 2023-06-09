@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lavarock_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "great_big_world:lavarock_bricks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "great_big_world:stonecutting/lavarock_brick_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lavarock_bricks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "great_big_world:stonecutting/lavarock_brick_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}
