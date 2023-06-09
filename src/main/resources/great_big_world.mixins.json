@@ -30,7 +30,6 @@
   "client": [
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
-    "client.HangingSignBlockEntityRendererMixin",
     "client.LightmapTextureManagerMixin",
     "client.MinecraftClientMixin"
   ],
