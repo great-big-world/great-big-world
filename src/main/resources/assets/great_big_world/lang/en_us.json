@@ -264,9 +264,9 @@
 
   "text.great_big_world.config.title": "Great Big World Configuration",
   "text.great_big_world.config.general": "General Settings",
-  "text.great_big_world.option.bambooTorchesOnLeaves": "Bamboo Torches Placeable On Leaves",
-  "text.great_big_world.option.bambooTorchesOnLeaves.@Tooltip": "Whether Bamboo Torches can be placed on Leaves.",
-  "text.great_big_world.option.masksAngerEndermen": "Masks Anger Endermen",
+  "text.great_big_world.config.option.bambooTorchesOnLeaves": "Bamboo Torches Placeable On Leaves",
+  "text.great_big_world.config.option.bambooTorchesOnLeaves.@Tooltip": "Whether Bamboo Torches can be placed on Leaves.",
+  "text.great_big_world.config.option.masksAngerEndermen": "Masks Anger Endermen",
   "text.great_big_world.config.option.masksAngerEndermen.@Tooltip": "Whether Wooden Masks anger Endermen.",
   "text.great_big_world.config.option.pillagersAttackMoose": "Pillagers Attack Moose",
   "text.great_big_world.config.option.pillagersAttackMoose.@Tooltip": "Whether Pillagers attack Moose.",
@@ -288,6 +288,6 @@
   "text.great_big_world.config.option.woodenMaskProtection.@Tooltip": "The amount of protection for a Wooden Mask.",
   "text.great_big_world.config.option.woodenMaskToughness": "Wooden Mask Toughness",
   "text.great_big_world.config.option.woodenMaskToughness.@Tooltip": "The amount of toughness for a Wooden Mask.",
-	"text.great_big_world.config.option.woodenMaskEnchantability": "Wooden Mask Enchantability",
+  "text.great_big_world.config.option.woodenMaskEnchantability": "Wooden Mask Enchantability",
   "text.great_big_world.config.option.woodenMaskEnchantability.@Tooltip": "The amount of enchantability for a Wooden Mask."
 }
