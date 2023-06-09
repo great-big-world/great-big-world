@@ -27,7 +27,7 @@ public class PointedDripstoneBlockMixin {
     @Shadow private static Optional<BlockPos> getSupportingPos(World world, BlockPos pos, BlockState state, int range) { return null; }
 
     @Inject(method = "dripTick", at = @At(value = "INVOKE", target = "Ljava/util/Optional;get()Ljava/lang/Object;", ordinal = 1, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private static void great_big_world_convertToElderPrismarine(BlockState state, ServerWorld world, BlockPos pos, float dripChance, CallbackInfo ci, Optional<PointedDripstoneBlock.DrippingFluid> optional, Fluid fluid, float f, BlockPos blockPos) {
+    private static void gbw_convertToElderPrismarine(BlockState state, ServerWorld world, BlockPos pos, float dripChance, CallbackInfo ci, Optional<PointedDripstoneBlock.DrippingFluid> optional, Fluid fluid, float f, BlockPos blockPos) {
         if (optional.get().sourceState().isOf(Blocks.PRISMARINE) && fluid == Fluids.WATER) {
             BlockState blockState = GBWBlocks.ELDER_PRISMARINE.getDefaultState();
             world.setBlockState(optional.get().pos(), blockState);
@@ -38,7 +38,7 @@ public class PointedDripstoneBlockMixin {
     }
 
     @Redirect(method = "dripTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/PointedDripstoneBlock;getFluid(Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)Ljava/util/Optional;"))
-    private static Optional<PointedDripstoneBlock.DrippingFluid> great_big_world_allowElderPrismarineCheck(World world, BlockPos pos, BlockState state) {
+    private static Optional<PointedDripstoneBlock.DrippingFluid> gbw_allowElderPrismarineCheck(World world, BlockPos pos, BlockState state) {
         Optional<BlockPos> supportingPos = getSupportingPos(world, pos, state, 11);
         if (supportingPos.isPresent()) {
             BlockState upState = world.getBlockState(supportingPos.get().up());

@@ -24,7 +24,7 @@ public abstract class SpreadableBlockMixin {
     }
 
     @Inject(method = "randomTick", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;getBlockState(Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/block/BlockState;", ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void creo_lib_injectGrassSpreadables(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci, BlockState blockState, int i, BlockPos blockPos) {
+    private void gbw_injectGrassSpreadables(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci, BlockState blockState, int i, BlockPos blockPos) {
         if (world.getBlockState(blockPos).isOf(GBWBlocks.LAVAROCK) && canSpread(blockState, world, blockPos)) {
             world.setBlockState(blockPos, GBWBlocks.GRASSY_LAVAROCK.getDefaultState().with(SnowyBlock.SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
         }

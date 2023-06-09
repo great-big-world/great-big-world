@@ -20,7 +20,7 @@ public abstract class MinecraftClientMixin {
     @Shadow @Final private Window window;
 
     @Inject(method = "onWindowFocusChanged", at = @At("TAIL"))
-    private void great_big_world_gbwWindowTitle(boolean focused, CallbackInfo ci) {
+    private void gbw_gbwWindowTitle(boolean focused, CallbackInfo ci) {
         if (GreatBigWorldClient.gbwTitle) {
             if (!focused) {
                 window.setTitle(getWindowTitle() + " | " + " Great Big World " + GreatBigWorld.VERSION);

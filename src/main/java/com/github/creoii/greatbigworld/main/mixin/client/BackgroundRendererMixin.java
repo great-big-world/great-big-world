@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(BackgroundRenderer.class)
 public class BackgroundRendererMixin {
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;hasStatusEffect(Lnet/minecraft/entity/effect/StatusEffect;)Z", ordinal = 0))
-    private static boolean great_big_world_applyIlluminatingEnchant(LivingEntity instance, StatusEffect effect) {
+    private static boolean gbw_applyIlluminatingEnchant(LivingEntity instance, StatusEffect effect) {
         return instance.hasStatusEffect(StatusEffects.NIGHT_VISION) || EnchantmentHelper.getEquipmentLevel(GBWEnchantments.ILLUMINATING, instance) > 0;
     }
 }

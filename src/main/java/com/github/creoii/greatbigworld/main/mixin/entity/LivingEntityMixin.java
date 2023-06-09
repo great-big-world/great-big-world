@@ -32,7 +32,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(method = "addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z", at = @At(value = "INVOKE", target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"), cancellable = true)
-    private void great_big_world_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
+    private void gbw_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
         int i = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.DILUTING, (LivingEntity) (Object) this);
         if (i > 0) {
             StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * GreatBigWorld.CONFIG.dilutingModifier.floatValue()))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
@@ -43,7 +43,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(method = "tickMovement", at = @At("TAIL"))
-    private void great_big_world_applyAuraPotions(CallbackInfo ci) {
+    private void gbw_applyAuraPotions(CallbackInfo ci) {
         if (getHealth() > 0f) {
             for (Entity entity : getWorld().getOtherEntities(this, getBoundingBox().expand(.5d, .25d, .5d))) {
                 if (entity.isRemoved() || !entity.isLiving()) continue;

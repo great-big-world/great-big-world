@@ -22,7 +22,7 @@ public abstract class PillagerEntityMixin extends IllagerEntity implements Cross
     }
 
     @Inject(method = "initGoals", at = @At("TAIL"))
-    private void great_big_world_injectMooseTarget(CallbackInfo ci) {
+    private void gbw_injectMooseTarget(CallbackInfo ci) {
         if (GreatBigWorld.CONFIG.pillagersAttackMoose.booleanValue()) {
             goalSelector.add(10, new LookAtEntityGoal(this, MooseEntity.class, 15f, .75f));
             targetSelector.add(3, new ActiveTargetGoal<>(this, MooseEntity.class, true));
