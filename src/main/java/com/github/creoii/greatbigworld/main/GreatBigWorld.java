@@ -9,7 +9,7 @@ import net.minecraft.util.math.random.Random;
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
     public static final Random RANDOM = Random.create();
-    public static final String VERSION = "1.2.5";
+    public static final String VERSION = "1.2.6";
     public static final boolean CONFIG_AVAILABLE = FabricLoader.getInstance().isModLoaded("modmenu") && FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
     public static final Register[] REGISTERS = new Register[]{
             new GBWBlocks(),
