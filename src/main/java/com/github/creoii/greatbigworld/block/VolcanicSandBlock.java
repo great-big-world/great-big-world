@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.mixin.block.FarmlandBlockInvoker;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.minecraft.block.BlockState;
@@ -20,11 +21,12 @@ public class VolcanicSandBlock extends SandBlock {
     @Override
     @SuppressWarnings("deprecation")
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextFloat() > .8f || GreatBigWorld.CONFIG.maxDistanceForRootConversion.intValue() == -1) return;
+        int value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.maxDistanceForRootConversion.intValue() : 4;
+        if (random.nextFloat() > .8f || value == -1) return;
         BlockState upState = world.getBlockState(pos.up());
         if (upState.isOf(Blocks.FARMLAND) && FarmlandBlockInvoker.hasCrop(world, pos.up()) && FarmlandBlockInvoker.isWaterNearby(world, pos.up())) {
             BlockPos.Mutable mutable = pos.mutableCopy();
-            for (int i = 1; i < GreatBigWorld.CONFIG.maxDistanceForRootConversion.intValue(); ++i) {
+            for (int i = 1; i < value; ++i) {
                 mutable.setY(pos.getY() - i);
                 BlockState atState = world.getBlockState(mutable);
                 boolean passUp = world.getBlockState(mutable.up()).isOf(Blocks.ROOTED_DIRT) || world.getBlockState(mutable.up()).isOf(GBWBlocks.VOLCANIC_SAND);

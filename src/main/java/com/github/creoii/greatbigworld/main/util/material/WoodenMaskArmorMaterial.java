@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.util.material;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemConvertible;
@@ -11,17 +12,20 @@ import net.minecraft.sound.SoundEvents;
 public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements ArmorMaterial {
     @Override
     public int getDurability(ArmorItem.Type type) {
-        return GreatBigWorld.CONFIG.woodenMaskDurability.intValue();
+        int value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.woodenMaskDurability.intValue() : 140;
+        return value;
     }
 
     @Override
     public int getProtection(ArmorItem.Type type) {
-        return GreatBigWorld.CONFIG.woodenMaskProtection.intValue();
+        int value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.woodenMaskProtection.intValue() : 2;
+        return value;
     }
 
     @Override
     public int getEnchantability() {
-        return GreatBigWorld.CONFIG.woodenMaskEnchantability.intValue();
+        int value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.woodenMaskEnchantability.intValue() : 11;
+        return value;
     }
 
     @Override
@@ -41,7 +45,8 @@ public record WoodenMaskArmorMaterial(ItemConvertible repairItem) implements Arm
 
     @Override
     public float getToughness() {
-        return GreatBigWorld.CONFIG.woodenMaskToughness.floatValue();
+        float value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.woodenMaskToughness.floatValue() : 0f;
+        return value;
     }
 
     @Override

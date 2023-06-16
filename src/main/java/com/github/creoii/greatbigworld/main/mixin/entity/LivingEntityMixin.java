@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main.mixin.entity;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.GBWEnchantments;
 import com.github.creoii.greatbigworld.main.util.AuraEffect;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -35,7 +36,8 @@ public abstract class LivingEntityMixin extends Entity {
     private void gbw_applyDiluting(StatusEffectInstance effect, Entity source, CallbackInfoReturnable<Boolean> cir) {
         int i = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.DILUTING, (LivingEntity) (Object) this);
         if (i > 0) {
-            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * GreatBigWorld.CONFIG.dilutingModifier.floatValue()))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
+            float value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.dilutingModifier.floatValue() : .5f;
+            StatusEffectInstance statusEffect = new StatusEffectInstance(effect.getEffectType(), (int)(effect.getDuration() / (i + (i * value))), effect.getAmplifier(), effect.isAmbient(), effect.shouldShowParticles(), effect.shouldShowIcon(), null, effect.getFactorCalculationData());
             activeStatusEffects.put(statusEffect.getEffectType(), statusEffect);
             onStatusEffectApplied(statusEffect, source);
             cir.setReturnValue(true);

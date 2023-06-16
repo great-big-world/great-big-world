@@ -2,6 +2,7 @@ package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.BambooLeaves;
 import net.minecraft.item.ItemPlacementContext;
@@ -36,7 +37,8 @@ public class BambooTorchBlock extends TorchBlock {
 	@Override
 	public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
 		BlockState downState = worldIn.getBlockState(pos.down());
-		return sideCoversSmallSquare(worldIn, pos.down(), Direction.UP) || (GreatBigWorld.CONFIG.bambooTorchesOnLeaves.booleanValue() && downState.isIn(BlockTags.LEAVES)) || downState.isIn(BlockTags.BAMBOO_PLANTABLE_ON);
+		boolean value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.bambooTorchesOnLeaves.booleanValue() : true;
+		return sideCoversSmallSquare(worldIn, pos.down(), Direction.UP) || (value && downState.isIn(BlockTags.LEAVES)) || downState.isIn(BlockTags.BAMBOO_PLANTABLE_ON);
 	}
 
 	@Override

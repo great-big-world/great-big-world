@@ -7,7 +7,11 @@
   "authors": [
     "creoii"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/great-big-world/great-big-world",
+    "sources": "https://github.com/great-big-world/great-big-world",
+    "issues": "https://github.com/great-big-world/great-big-world/issues"
+  },
   "license": "MIT",
   "icon": "assets/great_big_world/icon.png",
   "environment": "*",

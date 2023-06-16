@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import com.github.creoii.greatbigworld.main.registry.GBWCriteria;
 import com.github.creoii.greatbigworld.main.registry.GBWItems;
@@ -146,8 +147,9 @@ public class NautilusEntity extends FishEntity {
 
         @Override
         public boolean canStart() {
-            if (GreatBigWorld.CONFIG.nautilusOxidizeChance.intValue() == -1) return false;
-            if (nautilus.getRandom().nextInt(GreatBigWorld.CONFIG.nautilusOxidizeChance.intValue()) != 0) return false;
+            int value = GreatBigWorld.CONFIG_AVAILABLE ? ModMenuIntegration.CONFIG.nautilusOxidizeChance.intValue() : 1200;
+            if (value == -1) return false;
+            if (nautilus.getRandom().nextInt(value) != 0) return false;
             if (!nautilus.touchingWater) return false;
             return NAUTILUS_OXIDIZABLES.containsKey(world.getBlockState(nautilus.getBlockPos().down()).getBlock());
         }
