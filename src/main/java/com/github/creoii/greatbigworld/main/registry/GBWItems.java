@@ -93,6 +93,12 @@ public class GBWItems implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), ACAI_LEAVES);
         }
     };
+    public static final Item ACAI_SIGN = new SignItem(new FabricItemSettings().group(ItemGroup.DECORATIONS).maxCount(16), GBWBlocks.ACAI_SIGN, GBWBlocks.ACAI_WALL_SIGN) {
+        @Override
+        public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+            ItemUtil.appendStackInGroup(stacks, new ItemStack(this), Items.JUNGLE_SIGN);
+        }
+    };
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new FabricItemSettings().group(ItemGroup.TRANSPORTATION).maxCount(1)) {
         @Override
         public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
@@ -255,6 +261,7 @@ public class GBWItems implements Register {
         registerItem(new Identifier(NAMESPACE, "aspen_boat"), ASPEN_BOAT);
         registerItem(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES);
         registerItem(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES);
+        registerItem(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN);
         registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT);
         registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT);
         registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES);

@@ -4,8 +4,8 @@ import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
-public class PoisonGlazeEnchantment extends GBWEnchantment {
-    public PoisonGlazeEnchantment() {
+public class PoisonGazeEnchantment extends GBWEnchantment {
+    public PoisonGazeEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, new EquipmentSlot[]{EquipmentSlot.HEAD}, stack -> stack.isIn(Tags.ItemTags.WOODEN_MASKS));
     }
 

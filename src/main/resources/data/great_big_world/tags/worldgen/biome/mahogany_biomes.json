@@ -2,7 +2,6 @@
   "values": [
     "minecraft:jungle",
     "minecraft:bamboo_jungle",
-    "great_big_world:island_jungle",
     {
       "id": "regions_unexplored:rainforest",
       "required": false

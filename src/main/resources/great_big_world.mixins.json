@@ -20,8 +20,7 @@
     "world.BlendingDataMixin",
     "world.FoliagePlacerTypeInvoker",
     "world.TreeDecoratorTypeInvoker",
-    "world.TrunkPlacerTypeInvoker",
-    "world.VanillaBiomeParametersMixin"
+    "world.TrunkPlacerTypeInvoker"
   ],
   "client": [
     "MinecraftClientMixin"

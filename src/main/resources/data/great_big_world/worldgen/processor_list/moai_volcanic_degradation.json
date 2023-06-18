@@ -1,8 +1,0 @@
-{
-  "processors": [
-    {
-      "processor_type": "great_big_world:moai",
-      "type": "volcanic"
-    }
-  ]
-}

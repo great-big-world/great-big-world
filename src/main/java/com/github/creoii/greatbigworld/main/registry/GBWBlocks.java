@@ -16,8 +16,10 @@ import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
+import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -196,6 +198,8 @@ public class GBWBlocks implements Register {
             ItemUtil.appendStackInGroup(stacks, new ItemStack(this), GBWItems.MAHOGANY_LEAVES);
         }
     };
+    public static final Block ACAI_SIGN = new SignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD), GBWSignTypes.ACAI);
+    public static final Block ACAI_WALL_SIGN = new WallSignBlock(AbstractBlock.Settings.of(Material.WOOD).noCollision().strength(1f).sounds(BlockSoundGroup.WOOD).dropsLike(ACAI_SIGN), GBWSignTypes.ACAI);
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(FabricBlockSettings.copy(ACAI_LEAVES));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), FabricBlockSettings.copy(MAHOGANY_SAPLING)) {
         @Override
@@ -342,6 +346,8 @@ public class GBWBlocks implements Register {
 
         ACAI.register();
         registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
+        registerBlock(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN, null);
+        registerBlock(new Identifier(NAMESPACE, "acai_wall_sign"), ACAI_WALL_SIGN, null);
         registerBlock(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES, new ExtendedBlockSettings(0f, 30, 60, null));
         registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, null, ItemGroup.DECORATIONS);
         registerBlock(new Identifier(NAMESPACE, "potted_acai_sapling"), POTTED_ACAI_SAPLING, null);
@@ -377,30 +383,56 @@ public class GBWBlocks implements Register {
                 MAHOGANY.trapdoor(),
                 ASPEN.door(),
                 ASPEN.trapdoor(),
+                ACAI.door(),
+                ACAI.trapdoor(),
                 MAHOGANY_SAPLING,
                 POTTED_MAHOGANY_SAPLING,
                 YELLOW_ASPEN_SAPLING,
                 POTTED_YELLOW_ASPEN_SAPLING,
                 GREEN_ASPEN_SAPLING,
                 POTTED_GREEN_ASPEN_SAPLING,
+                ACAI_SAPLING,
+                POTTED_ACAI_SAPLING,
                 BAMBOO_TORCH,
                 BAMBOO_WALL_TORCH,
                 POTTED_BAMBOO_TORCH,
                 SOUL_BAMBOO_TORCH,
                 SOUL_BAMBOO_WALL_TORCH,
                 POTTED_SOUL_BAMBOO_TORCH,
+                BEACHGRASS_THATCH,
+                BEACHGRASS_THATCH_SLAB,
+                BEACHGRASS_THATCH_STAIRS,
+                BAMBOO_THATCH,
+                BAMBOO_THATCH_SLAB,
+                BAMBOO_THATCH_STAIRS,
+                GRASS_THATCH,
+                GRASS_THATCH_SLAB,
+                GRASS_THATCH_STAIRS,
+                ANTLER,
                 HEATHER,
                 TALL_HEATHER,
-                ANTLER
+                POTTED_HEATHER,
+                BEACHGRASS,
+                TALL_BEACHGRASS,
+                POTTED_BEACHGRASS,
+                TROPICAL_FERN,
+                LARGE_TROPICAL_FERN,
+                POTTED_TROPICAL_FERN
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
                 YELLOW_ASPEN_LEAVES,
                 YELLOW_ASPEN_LEAF_PILE,
                 GREEN_ASPEN_LEAVES,
-                GREEN_ASPEN_LEAF_PILE
+                GREEN_ASPEN_LEAF_PILE,
+                GRASSY_LAVAROCK,
+                ACAI_LEAVES,
+                HANGING_ACAI_LEAVES
         );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
     }
 
     public static void registerBlock(Identifier id, Block block, @Nullable ExtendedBlockSettings extension) {
