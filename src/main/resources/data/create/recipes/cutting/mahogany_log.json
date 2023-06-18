@@ -3,27 +3,20 @@
     {
       "condition": "fabric:all_mods_loaded",
       "values": [
-        "farmersdelight"
+        "create"
       ]
     }
   ],
-  "type": "farmersdelight:cutting",
+  "type": "create:cutting",
   "ingredients": [
     {
       "item": "great_big_world:mahogany_log"
     }
   ],
-  "result": [
+  "results": [
     {
       "item": "great_big_world:stripped_mahogany_log"
-    },
-    {
-      "item": "farmersdelight:tree_bark"
     }
   ],
-  "sound": "minecraft:item.axe.strip",
-  "tool": {
-    "type": "farmersdelight:tool_action",
-    "action": "axe_strip"
-  }
+  "processingTime": 50
 }
