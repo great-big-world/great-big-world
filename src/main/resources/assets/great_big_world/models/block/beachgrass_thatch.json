@@ -1,0 +1,7 @@
+{
+  "parent": "great_big_world:block/thatch",
+  "textures": {
+    "all": "great_big_world:block/beachgrass_thatch",
+    "thatch": "great_big_world:block/beachgrass_thatches"
+  }
+}
