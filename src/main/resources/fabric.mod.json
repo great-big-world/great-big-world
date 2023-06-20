@@ -25,9 +25,6 @@
     "terrablender": [
       "com.github.creoii.greatbigworld.main.integration.TerraBlenderIntegration"
     ],
-    "fabric-datagen": [
-      "com.github.creoii.greatbigworld.main.util.datagen.GBWDataGenerator"
-    ],
     "modmenu": [
       "com.github.creoii.greatbigworld.main.integration.ModMenuIntegration"
     ]

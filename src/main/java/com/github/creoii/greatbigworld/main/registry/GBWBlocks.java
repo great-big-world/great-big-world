@@ -310,21 +310,21 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
         WISTERIA.register();
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_leaves"), PINK_WISTERIA_LEAVES, YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_leaves"), PURPLE_WISTERIA_LEAVES, YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_leaves"), PINK_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_leaves"), PURPLE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_white_wisteria_leaves"), HANGING_WHITE_WISTERIA_LEAVES, WHITE_WISTERIA_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_yellow_wisteria_leaves"), HANGING_YELLOW_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_blue_wisteria_leaves"), HANGING_BLUE_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_pink_wisteria_leaves"), HANGING_PINK_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_purple_wisteria_leaves"), HANGING_PURPLE_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_sapling"), WHITE_WISTERIA_SAPLING, GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_sapling"), YELLOW_WISTERIA_SAPLING, GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_sapling"), BLUE_WISTERIA_SAPLING, GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_sapling"), PINK_WISTERIA_SAPLING, GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_sapling"), PURPLE_WISTERIA_SAPLING, GREEN_ASPEN_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_sapling"), WHITE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_sapling"), YELLOW_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_sapling"), BLUE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_sapling"), PINK_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_sapling"), PURPLE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_white_wisteria_sapling"), POTTED_WHITE_WISTERIA_SAPLING);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_yellow_wisteria_sapling"), POTTED_YELLOW_WISTERIA_SAPLING);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_blue_wisteria_sapling"), POTTED_BLUE_WISTERIA_SAPLING);
@@ -335,9 +335,9 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_petals"), BLUE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_petals"), PURPLE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine"), POLISHED_PEACH_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine"), POLISHED_GOLDEN_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine"), POLISHED_IVORY_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
@@ -362,7 +362,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_delphinium"), BLUE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_delphinium"), PINK_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.MANGROVE_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.CHERRY_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, ItemGroups.NATURAL);
 
         Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "great_big_world:block/wisteria_slab"
+    },
+    "type=double": {
+      "model": "great_big_world:block/wisteria_planks"
+    },
+    "type=top": {
+      "model": "great_big_world:block/wisteria_slab_top"
+    }
+  }
+}

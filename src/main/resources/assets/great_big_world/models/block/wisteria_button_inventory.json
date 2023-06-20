@@ -1,0 +1,6 @@
+{
+    "parent": "block/button_inventory",
+    "textures": {
+        "texture": "great_big_world:block/wisteria_planks"
+    }
+}
