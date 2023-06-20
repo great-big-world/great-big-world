@@ -40,7 +40,7 @@ public class GBWDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateTranslations(TranslationBuilder translationBuilder) {
-            Arrays.stream(BlockRegistry.class.getDeclaredFields()).forEach(field -> {
+            Arrays.stream(GBWBlocks.class.getDeclaredFields()).forEach(field -> {
                 try {
                     Object obj = field.get(null);
                     if (obj instanceof Block block) {

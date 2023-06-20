@@ -22,7 +22,6 @@
     "item.BowItemMixin",
     "item.CrossbowItemMixin",
     "item.SwordItemMixin",
-    "world.TreeDecoratorTypeInvoker",
     "world.UnderwaterMagmaFeatureMixin",
     "world.VanillaBiomeParametersMixin",
     "world.chunk.BlendingDataMixin"

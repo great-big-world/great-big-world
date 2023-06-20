@@ -53,15 +53,14 @@ public class GBWOverworldRegion extends Region {
                     .offset(0f)
                     .build().forEach(point -> builder.replaceBiome(point, BiomeRegistry.BLOOMING_FLOWER_FOREST));
              */
-            List<MultiNoiseUtil.NoiseHypercube> hotSpringsPoints = new ParameterUtils.ParameterPointListBuilder()
+            new ParameterUtils.ParameterPointListBuilder()
                     .temperature(Temperature.NEUTRAL)
                     .humidity(Humidity.ARID, Humidity.NEUTRAL)
                     .continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                     .erosion(Erosion.EROSION_2, Erosion.EROSION_3)
                     .depth(Depth.SURFACE, Depth.FLOOR)
                     .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
-                    .build();
-            hotSpringsPoints.forEach(point -> builder.replaceBiome(point, BiomeRegistry.HOT_SPRINGS));
+                    .build().forEach(point -> builder.replaceBiome(point, GBWBiomes.HOT_SPRINGS));
         });
     }
 }

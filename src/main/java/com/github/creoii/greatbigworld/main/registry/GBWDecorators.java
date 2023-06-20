@@ -1,6 +1,6 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.main.mixin.world.TreeDecoratorTypeInvoker;
+import com.github.creoii.creolib.mixin.world.TreeDecoratorTypeInvoker;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.decorator.AcaiBerriesTreeDecorator;
 import com.github.creoii.greatbigworld.world.decorator.HangingLeavesTreeDecorator;

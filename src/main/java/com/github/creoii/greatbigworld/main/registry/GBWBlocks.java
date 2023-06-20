@@ -148,21 +148,21 @@ public class GBWBlocks implements Register {
     //endregion
     //region Wisteria Wood
     public static RegistrySets.WoodSet WISTERIA = RegistrySets.createWoodSet(NAMESPACE, "wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
-    public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.OFF_WHITE));
-    public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PALE_YELLOW));
-    public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.LIGHT_BLUE));
-    public static final Block PINK_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PINK));
-    public static final Block PURPLE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PURPLE));
+    public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.CHERRY_LEAVES));
+    public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CHERRY_LEAVES));
+    public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.CHERRY_LEAVES));
+    public static final Block PINK_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PINK).sounds(BlockSoundGroup.CHERRY_LEAVES));
+    public static final Block PURPLE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.CHERRY_LEAVES));
     public static final Block HANGING_WHITE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(WHITE_WISTERIA_LEAVES));
     public static final Block HANGING_YELLOW_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(YELLOW_WISTERIA_LEAVES));
     public static final Block HANGING_BLUE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(BLUE_WISTERIA_LEAVES));
     public static final Block HANGING_PINK_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(PINK_WISTERIA_LEAVES));
     public static final Block HANGING_PURPLE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(PURPLE_WISTERIA_LEAVES));
-    public static final Block WHITE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING));
-    public static final Block YELLOW_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING));
-    public static final Block BLUE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING));
-    public static final Block PINK_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING));
-    public static final Block PURPLE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING));
+    public static final Block WHITE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
+    public static final Block YELLOW_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
+    public static final Block BLUE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
+    public static final Block PINK_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
+    public static final Block PURPLE_WISTERIA_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
     public static final Block POTTED_WHITE_WISTERIA_SAPLING = new FlowerPotBlock(WHITE_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block POTTED_YELLOW_WISTERIA_SAPLING = new FlowerPotBlock(YELLOW_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block POTTED_BLUE_WISTERIA_SAPLING = new FlowerPotBlock(BLUE_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
@@ -172,6 +172,18 @@ public class GBWBlocks implements Register {
     public static final Block YELLOW_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
     public static final Block BLUE_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
     public static final Block PURPLE_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
+    //endregion
+    //region Travertine
+    public static final Block PEACH_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
+    public static final Block GOLDEN_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
+    public static final Block IVORY_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE));
+    public static final Block POLISHED_PEACH_TRAVERTINE = new Block(CBlockSettings.copy(PEACH_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_GOLDEN_TRAVERTINE = new Block(CBlockSettings.copy(GOLDEN_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_IVORY_TRAVERTINE = new Block(CBlockSettings.copy(IVORY_TRAVERTINE).strength(1f));
+    public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
+    public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
+    public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
+    public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -191,7 +203,8 @@ public class GBWBlocks implements Register {
     public static final Block PINK_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
     public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
     public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(20, 25));
-//endregion
+    public static final Block SULFUR_BLOCK = new SulfurBlock();
+    //endregion
 
     @Override
     public void register() {
@@ -322,6 +335,17 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_petals"), BLUE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_petals"), PURPLE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
 
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine"), POLISHED_PEACH_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine"), POLISHED_GOLDEN_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine"), POLISHED_IVORY_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine_tiles"), POLISHED_PEACH_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new CItemSettings().compostingChance(.65f), Items.PEONY, ItemGroups.NATURAL);
@@ -339,6 +363,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_delphinium"), PINK_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.MANGROVE_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, ItemGroups.NATURAL);
 
         Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(
                 Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),
@@ -422,5 +447,6 @@ public class GBWBlocks implements Register {
                 return (world == null || pos == null) ? GrassColors.getDefaultColor() : BiomeColors.getGrassColor(world, pos);
             } return -1;
         }, WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> state != null ? SulfurBlock.getEffectFromProperty(state.get(SulfurBlock.EFFECT)).getColor() : 1, SULFUR_BLOCK);
     }
 }

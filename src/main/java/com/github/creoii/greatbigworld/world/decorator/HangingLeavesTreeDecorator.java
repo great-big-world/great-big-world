@@ -5,13 +5,12 @@ import com.github.creoii.greatbigworld.main.registry.GBWDecorators;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import org.jetbrains.annotations.Nullable;
 
 public class HangingLeavesTreeDecorator extends TreeDecorator {
     public static final Codec<HangingLeavesTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> {

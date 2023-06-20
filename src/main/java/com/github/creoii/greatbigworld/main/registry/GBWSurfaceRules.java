@@ -20,7 +20,8 @@ public class GBWSurfaceRules implements Register {
                 createIslandBeachRule(),
                 createVolcanicBeachRule(),
                 createVolcanicSlopesRule(),
-                createVolcanicCraterRule()
+                createVolcanicCraterRule(),
+                createHotSpringsRule()
         )));
     }
 
@@ -38,5 +39,9 @@ public class GBWSurfaceRules implements Register {
 
     public MaterialRules.MaterialRule createVolcanicCraterRule() {
         return MaterialRules.condition(MaterialRules.biome(GBWBiomes.VOLCANIC_CRATER), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, LAVAROCK), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.SURFACE, -.909d, -.5454d), GRASSY_LAVAROCK), MaterialRules.condition(MaterialRules.steepSlope(), GRASSY_LAVAROCK)), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.CALCITE, -.0125d, .0125d), SMOOTH_BASALT), LAVAROCK));
+    }
+
+    public MaterialRules.MaterialRule createHotSpringsRule() {
+        return MaterialRules.condition(MaterialRules.biome(GBWBiomes.HOT_SPRINGS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING_WITH_SURFACE_DEPTH, MaterialRules.block(GBWBlocks.PEACH_TRAVERTINE.getDefaultState())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -.012d), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_STATE_SELECTOR, 0d), MaterialRules.block(Blocks.CALCITE.getDefaultState()))), MaterialRules.block(GBWBlocks.IVORY_TRAVERTINE.getDefaultState())))));
     }
 }
