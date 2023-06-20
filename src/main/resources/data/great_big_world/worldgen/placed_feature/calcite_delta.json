@@ -1,0 +1,12 @@
+{
+  "feature": "great_big_world:calcite_delta",
+  "placement": [
+    {
+      "type": "minecraft:count_on_every_layer",
+      "count": 16
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
