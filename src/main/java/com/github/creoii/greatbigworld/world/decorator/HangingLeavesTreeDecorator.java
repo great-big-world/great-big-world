@@ -5,16 +5,20 @@ import com.github.creoii.greatbigworld.main.registry.GBWDecorators;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+import org.jetbrains.annotations.Nullable;
 
 public class HangingLeavesTreeDecorator extends TreeDecorator {
     public static final Codec<HangingLeavesTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> {
         return instance.group(BlockState.CODEC.fieldOf("state").forGetter(config -> {
             return config.state;
+        }), BlockState.CODEC.optionalFieldOf("leaves_state", Blocks.AIR.getDefaultState()).forGetter(config -> {
+            return config.leavesState;
         }), Codec.intRange(0, 10).fieldOf("min_length").forGetter(config -> {
             return config.minLength;
         }), Codec.intRange(0, 10).fieldOf("max_length").forGetter(config -> {
@@ -26,17 +30,23 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
         })).apply(instance, HangingLeavesTreeDecorator::new);
     });
     private final BlockState state;
+    private final BlockState leavesState;
     private final int minLength;
     private final int maxLength;
     private final float probability;
     private final PositionInclusion positionInclusion;
 
-    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability, PositionInclusion positionInclusion) {
+    public HangingLeavesTreeDecorator(BlockState state, BlockState leavesState, int minLength, int maxLength, float probability, PositionInclusion positionInclusion) {
         this.state = state;
+        this.leavesState = leavesState;
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.probability = probability;
         this.positionInclusion = positionInclusion;
+    }
+
+    public HangingLeavesTreeDecorator(BlockState state, int minLength, int maxLength, float probability, PositionInclusion positionInclusion) {
+        this(state, Blocks.AIR.getDefaultState(), minLength, maxLength, probability, positionInclusion);
     }
 
     @Override
@@ -61,13 +71,30 @@ public class HangingLeavesTreeDecorator extends TreeDecorator {
         for (BlockPos pos : positions) {
             if (!(generator.getRandom().nextFloat() >= probability)) {
                 if (generator.isAir(pos.down()) && state.getBlock() instanceof HangingLeavesBlock) {
-                    blockstate = state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);
+                    boolean placeLeaves = leavesState != Blocks.AIR.getDefaultState();
+                    blockstate = placeLeaves ? leavesState : state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);
                     length = (generator.getRandom().nextInt(maxLength) + minLength) - 1;
-                    for (int j = pos.down().getY(); j >= pos.down().getY() - length; --j) {
-                        if (j == pos.down().getY() - length)
-                            blockstate = blockstate.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.SMALL);
-                        place = new BlockPos(pos.getX(), j, pos.getZ());
-                        if (generator.isAir(place)) generator.replace(place, blockstate);
+                    int j, bottom = pos.down().getY() - length;
+                    if (placeLeaves) {
+                        for (j = pos.down().getY(); j >= bottom; --j) {
+                            if (j == bottom) {
+                                blockstate = state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);
+                            } else if (j == bottom + 1) {
+                                blockstate = state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);
+                            }
+                            place = new BlockPos(pos.getX(), j, pos.getZ());
+                            if (generator.isAir(place)) generator.replace(place, blockstate);
+                            else break;
+                        }
+                    } else {
+                        for (j = pos.down().getY(); j >= bottom; --j) {
+                            if (j == bottom) {
+                                blockstate = state.with(HangingLeavesBlock.HALF, HangingLeavesBlock.Half.LARGE);
+                            }
+                            place = new BlockPos(pos.getX(), j, pos.getZ());
+                            if (generator.isAir(place)) generator.replace(place, blockstate);
+                            else break;
+                        }
                     }
                 }
             }

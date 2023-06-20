@@ -1,5 +1,6 @@
 package com.github.creoii.greatbigworld.main.util.datagen;
 
+import com.github.creoii.creolib.api.util.registry.RegistrySets;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -8,6 +9,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.item.ItemConvertible;
@@ -17,7 +19,9 @@ import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.util.Identifier;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.Arrays;
 import java.util.function.BiConsumer;
 
 public class GBWDataGenerator implements DataGeneratorEntrypoint {
@@ -36,22 +40,16 @@ public class GBWDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateTranslations(TranslationBuilder translationBuilder) {
-            translationBuilder.add(GBWBlocks.BROWN_STAINED_CALCITE, "Brown Stained Calcite");
-            translationBuilder.add(GBWBlocks.RED_STAINED_CALCITE, "Red Stained Calcite");
-            translationBuilder.add(GBWBlocks.ORANGE_STAINED_CALCITE, "Orange Stained Calcite");
-            translationBuilder.add(GBWBlocks.YELLOW_STAINED_CALCITE, "Yellow Stained Calcite");
-            translationBuilder.add(GBWBlocks.LIME_STAINED_CALCITE, "Lime Stained Calcite");
-            translationBuilder.add(GBWBlocks.GREEN_STAINED_CALCITE, "Green Stained Calcite");
-            translationBuilder.add(GBWBlocks.CYAN_STAINED_CALCITE, "Cyan Stained Calcite");
-            translationBuilder.add(GBWBlocks.BLUE_STAINED_CALCITE, "Blue Stained Calcite");
-            translationBuilder.add(GBWBlocks.LIGHT_BLUE_STAINED_CALCITE, "Light Blue Stained Calcite");
-            translationBuilder.add(GBWBlocks.PINK_STAINED_CALCITE, "Pink Stained Calcite");
-            translationBuilder.add(GBWBlocks.MAGENTA_STAINED_CALCITE, "Magenta Stained Calcite");
-            translationBuilder.add(GBWBlocks.PURPLE_STAINED_CALCITE, "Purple Stained Calcite");
-            translationBuilder.add(GBWBlocks.BLACK_STAINED_CALCITE, "Black Stained Calcite");
-            translationBuilder.add(GBWBlocks.GRAY_STAINED_CALCITE, "Gray Stained Calcite");
-            translationBuilder.add(GBWBlocks.LIGHT_GRAY_STAINED_CALCITE, "Light Gray Stained Calcite");
-            translationBuilder.add(GBWBlocks.WHITE_STAINED_CALCITE, "White Stained Calcite");
+            Arrays.stream(BlockRegistry.class.getDeclaredFields()).forEach(field -> {
+                try {
+                    Object obj = field.get(null);
+                    if (obj instanceof Block block) {
+                        translationBuilder.add(block, StringUtils.remove(capitalizeAfterAll(field.getName(), '_'), '_'));
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 
@@ -113,5 +111,23 @@ public class GBWDataGenerator implements DataGeneratorEntrypoint {
         public LootTable.Builder drops(ItemConvertible drop) {
             return LootTable.builder().pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1f)).with(ItemEntry.builder(drop)).getThisConditionConsumingBuilder());
         }
+    }
+
+    public static String capitalizeAfterAll(String str, char after) {
+        str = StringUtils.capitalize(str);
+        StringBuilder builder = new StringBuilder();
+        boolean capitalize = false;
+        for (int i = 0; i < str.length(); ++i) {
+            if (str.charAt(i) == after) {
+                builder.append(str.charAt(i));
+                capitalize = true;
+            } else if (capitalize) {
+                builder.append(Character.toUpperCase(str.charAt(i)));
+                capitalize = false;
+            } else {
+                builder.append(str.charAt(i));
+            }
+        }
+        return builder.toString();
     }
 }

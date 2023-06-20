@@ -1,0 +1,6 @@
+{
+  "parent": "great_big_world:block/hanging_leaves_top",
+  "textures": {
+    "all": "great_big_world:block/pink_wisteria_leaves"
+  }
+}

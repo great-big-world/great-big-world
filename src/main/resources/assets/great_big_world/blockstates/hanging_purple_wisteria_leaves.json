@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "half=small": { "model": "great_big_world:block/hanging_purple_wisteria_leaves_bottom" },
+    "half=large": { "model": "great_big_world:block/hanging_purple_wisteria_leaves_top" }
+  }
+}
