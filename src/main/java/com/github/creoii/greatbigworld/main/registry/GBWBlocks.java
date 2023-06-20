@@ -14,7 +14,6 @@ import com.github.creoii.greatbigworld.world.sapling.MahoganySaplingGenerator;
 import com.github.creoii.greatbigworld.world.sapling.YellowAspenSaplingGenerator;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.Instrument;
@@ -185,6 +184,23 @@ public class GBWBlocks implements Register {
     public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
     public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
     //endregion
+    //region Red Rock
+    public static final Block RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block POLISHED_RED_ROCK = new Block(CBlockSettings.copy(RED_ROCK));
+    public static final Block POLISHED_RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
+    public static final Block POLISHED_RED_ROCK_STAIRS = new StairsBlock(POLISHED_RED_ROCK.getDefaultState(), CBlockSettings.copy(POLISHED_RED_ROCK));
+    public static final Block POLISHED_RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
+    public static final Block RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK));
+    public static final Block RED_ROCK_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block RED_ROCK_BRICK_STAIRS = new StairsBlock(RED_ROCK_BRICKS.getDefaultState(), CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block RED_ROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block CRACKED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block CHISELED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block RED_ROCK_PILLAR = new PillarBlock(CBlockSettings.copy(RED_ROCK));
+    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
@@ -345,6 +361,22 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_stairs"), RED_ROCK_STAIRS, RED_ROCK, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_slab"), RED_ROCK_SLAB, RED_ROCK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_wall"), RED_ROCK_WALL, RED_ROCK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock"), POLISHED_RED_ROCK, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_stairs"), POLISHED_RED_ROCK_STAIRS, POLISHED_RED_ROCK, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_slab"), POLISHED_RED_ROCK_SLAB, POLISHED_RED_ROCK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_wall"), POLISHED_RED_ROCK_WALL, POLISHED_RED_ROCK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_bricks"), RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_slab"), RED_ROCK_BRICK_SLAB, RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_stairs"), RED_ROCK_BRICK_STAIRS, RED_ROCK_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_wall"), RED_ROCK_BRICK_WALL, RED_ROCK_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cracked_red_rock_bricks"), CRACKED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_red_rock_bricks"), CHISELED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_pillar"), RED_ROCK_PILLAR, ItemGroups.BUILDING_BLOCKS);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);

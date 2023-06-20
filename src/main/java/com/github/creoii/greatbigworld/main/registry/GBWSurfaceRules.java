@@ -13,6 +13,8 @@ public class GBWSurfaceRules implements Register {
     private static final MaterialRules.MaterialRule BEACH_SAND = MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(Blocks.SANDSTONE.getDefaultState())), MaterialRules.block(Blocks.SAND.getDefaultState())));
     private static final MaterialRules.MaterialRule VOLCANIC_BEACH_SAND = MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING, MaterialRules.block(GBWBlocks.LAVAROCK.getDefaultState())), MaterialRules.block(GBWBlocks.VOLCANIC_SAND.getDefaultState())));
     private static final MaterialRules.MaterialRule SMOOTH_BASALT = MaterialRules.block(Blocks.SMOOTH_BASALT.getDefaultState());
+    private static final MaterialRules.MaterialRule RED_ROCK = MaterialRules.block(GBWBlocks.RED_ROCK.getDefaultState());
+    private static final MaterialRules.MaterialRule RED_ROCK_DIRT = MaterialRules.sequence(MaterialRules.sequence(MaterialRules.condition(MaterialRules.steepSlope(), MaterialRules.block(GBWBlocks.RED_ROCK.getDefaultState()))), MaterialRules.block(Blocks.COARSE_DIRT.getDefaultState()));
 
     @Override
     public void register() {
@@ -21,7 +23,9 @@ public class GBWSurfaceRules implements Register {
                 createVolcanicBeachRule(),
                 createVolcanicSlopesRule(),
                 createVolcanicCraterRule(),
-                createHotSpringsRule()
+                createHotSpringsRule(),
+                createRedRockSlopesRule(),
+                createRedRockPeaksRule()
         )));
     }
 
@@ -43,5 +47,13 @@ public class GBWSurfaceRules implements Register {
 
     public MaterialRules.MaterialRule createHotSpringsRule() {
         return MaterialRules.condition(MaterialRules.biome(GBWBiomes.HOT_SPRINGS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_CEILING_WITH_SURFACE_DEPTH, MaterialRules.block(GBWBlocks.PEACH_TRAVERTINE.getDefaultState())), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -.012d), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_STATE_SELECTOR, 0d), MaterialRules.block(Blocks.CALCITE.getDefaultState()))), MaterialRules.block(GBWBlocks.IVORY_TRAVERTINE.getDefaultState())))));
+    }
+
+    public MaterialRules.MaterialRule createRedRockSlopesRule() {
+        return MaterialRules.condition(MaterialRules.biome(GBWBiomes.RED_ROCK_SLOPES), RED_ROCK_DIRT);
+    }
+
+    public MaterialRules.MaterialRule createRedRockPeaksRule() {
+        return MaterialRules.condition(MaterialRules.biome(GBWBiomes.RED_ROCK_PEAKS), RED_ROCK);
     }
 }
