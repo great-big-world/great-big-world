@@ -11,6 +11,7 @@ import com.github.creoii.greatbigworld.main.util.GBWFoods;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.fluid.Fluids;
@@ -44,6 +45,10 @@ public class GBWItems implements Register {
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
     public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
     public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new CItemSettings().food(GBWFoods.ACAI_BERRIES));
+    //endregion
+    //region Wisteria Wood
+    public static final Item WISTERIA_BOAT = new BoatItem(false, GBWBoatTypes.WISTERIA, new FabricItemSettings().maxCount(1));
+    public static final Item WISTERIA_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.WISTERIA, new FabricItemSettings().maxCount(1));
     //endregion
     //region Bamboo
     public static final Item BAMBOO_TORCH = new VerticallyAttachableBlockItem(GBWBlocks.BAMBOO_TORCH, BAMBOO_WALL_TORCH, new CItemSettings(), Direction.DOWN);
@@ -102,6 +107,8 @@ public class GBWItems implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_boat"), ACAI_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_chest_boat"), ACAI_CHEST_BOAT, MAHOGANY_CHEST_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_berries"), ACAI_BERRIES, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.GLOW_BERRIES), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FOOD_AND_DRINK, Items.GLOW_BERRIES));
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "wisteria_boat"), WISTERIA_BOAT, ASPEN_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "wisteria_chest_boat"), WISTERIA_CHEST_BOAT, ASPEN_CHEST_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "bamboo_torch"), BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH, Items.REDSTONE_TORCH, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "venison"), VENISON, Items.COOKED_RABBIT, ItemGroups.FOOD_AND_DRINK);
