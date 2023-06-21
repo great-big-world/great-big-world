@@ -8,6 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 import terrablender.api.ParameterUtils;
 import terrablender.api.ParameterUtils.*;
@@ -48,32 +49,17 @@ public class GBWOverworldRegion extends Region {
                     .humidity(Humidity.ARID, Humidity.NEUTRAL)
                     .continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                     .erosion(Erosion.EROSION_2, Erosion.EROSION_3)
-                    .depth(Depth.SURFACE, Depth.FLOOR)
+                    .depth(Depth.SURFACE, Depth.FLOOR, Depth.UNDERGROUND)
                     .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)
                     .build().forEach(point -> builder.replaceBiome(point, GBWBiomes.HOT_SPRINGS));
+            builder.replaceBiome(BiomeKeys.FLOWER_FOREST, GBWBiomes.BLOOMING_FLOWER_FOREST);
             new ParameterUtils.ParameterPointListBuilder()
-                    .temperature(Temperature.NEUTRAL)
+                    .temperature(Temperature.HOT)
                     .humidity(Humidity.ARID)
-                    .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND, Continentalness.FAR_INLAND, Continentalness.COAST).continentalness(Continentalness.span(Continentalness.COAST, Continentalness.NEAR_INLAND)).continentalness(Continentalness.span(Continentalness.NEAR_INLAND, Continentalness.FAR_INLAND)).continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_3, Erosion.FULL_RANGE, Erosion.EROSION_6, Erosion.EROSION_4).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_5)).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_4)).erosion(Erosion.span(Erosion.EROSION_3, Erosion.EROSION_4)).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_6)).erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_5))
+                    .continentalness(Continentalness.FAR_INLAND).continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
+                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_2))
                     .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING).weirdness(Weirdness.span(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.PEAK_NORMAL, Weirdness.HIGH_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.LOW_SLICE_NORMAL_DESCENDING))
-                    .build().forEach(point -> builder.replaceBiome(point, GBWBiomes.BLOOMING_FLOWER_FOREST));
-            new ParameterUtils.ParameterPointListBuilder()
-                    .temperature(Temperature.HOT)
-                    .humidity(Humidity.span(Humidity.ARID, Humidity.NEUTRAL)).humidity(Humidity.DRY)
-                    .continentalness(Continentalness.NEAR_INLAND, Continentalness.MID_INLAND, Continentalness.FAR_INLAND).continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND)).continentalness(Continentalness.span(Continentalness.NEAR_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1, Erosion.EROSION_2).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_2)).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_3))
-                    .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING).weirdness(Weirdness.span(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.MID_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.PEAK_NORMAL, Weirdness.HIGH_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_ASCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.HIGH_SLICE_VARIANT_DESCENDING)).weirdness(Weirdness.span(Weirdness.PEAK_VARIANT, Weirdness.HIGH_SLICE_VARIANT_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_VARIANT_DESCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)).weirdness(Weirdness.span(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING))
-                    .build().forEach(point -> builder.replaceBiome(point, GBWBiomes.RED_ROCK_SLOPES));
-            new ParameterUtils.ParameterPointListBuilder()
-                    .temperature(Temperature.HOT)
-                    .humidity(Humidity.FULL_RANGE, Humidity.ARID)
-                    .continentalness(Continentalness.FAR_INLAND, Continentalness.MID_INLAND, Continentalness.NEAR_INLAND).continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND)).continentalness(Continentalness.span(Continentalness.NEAR_INLAND, Continentalness.FAR_INLAND))
-                    .erosion(Erosion.EROSION_0, Erosion.EROSION_1).erosion(Erosion.span(Erosion.EROSION_0, Erosion.EROSION_1)).erosion(Erosion.span(Erosion.EROSION_2, Erosion.EROSION_3)).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_3))
-                    .depth(Depth.SURFACE, Depth.FLOOR)
-                    .weirdness(Weirdness.MID_SLICE_NORMAL_ASCENDING, Weirdness.PEAK_NORMAL, Weirdness.MID_SLICE_NORMAL_DESCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.PEAK_VARIANT, Weirdness.MID_SLICE_VARIANT_DESCENDING, Weirdness.LOW_SLICE_VARIANT_ASCENDING).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_NORMAL_ASCENDING, Weirdness.HIGH_SLICE_NORMAL_DESCENDING)).weirdness(Weirdness.span(Weirdness.HIGH_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING)).weirdness(Weirdness.span(Weirdness.LOW_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_ASCENDING)).weirdness(Weirdness.span(Weirdness.MID_SLICE_VARIANT_ASCENDING, Weirdness.MID_SLICE_VARIANT_DESCENDING))
+                    .weirdness(Weirdness.PEAK_NORMAL, Weirdness.PEAK_VARIANT)
                     .build().forEach(point -> builder.replaceBiome(point, GBWBiomes.RED_ROCK_PEAKS));
         });
     }

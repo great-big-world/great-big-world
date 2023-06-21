@@ -5,78 +5,23 @@
       [
         {
           "feature": "great_big_world:white_wisteria",
-          "placement": [
-            {
-              "type": "creo:noise",
-              "noise_parameters": "great_big_world:wisteria_variation",
-              "ranges": [
-                {
-                  "min_inclusive": -1.0,
-                  "max_exclusive": -0.1
-                }
-              ]
-            }
-          ]
+          "placement": []
         },
         {
           "feature": "great_big_world:yellow_wisteria",
-          "placement": [
-            {
-              "type": "creo:noise",
-              "noise_parameters": "great_big_world:wisteria_variation",
-              "ranges": [
-                {
-                  "min_exclusive": -0.1,
-                  "max_inclusive": -0.2
-                }
-              ]
-            }
-          ]
+          "placement": []
         },
         {
           "feature": "great_big_world:blue_wisteria",
-          "placement": [
-            {
-              "type": "creo:noise",
-              "noise_parameters": "great_big_world:wisteria_variation",
-              "ranges": [
-                {
-                  "min_exclusive": 0.2,
-                  "max_inclusive": 0.5
-                }
-              ]
-            }
-          ]
+          "placement": []
         },
         {
           "feature": "great_big_world:pink_wisteria",
-          "placement": [
-            {
-              "type": "creo:noise",
-              "noise_parameters": "great_big_world:wisteria_variation",
-              "ranges": [
-                {
-                  "min_exclusive": 0.5,
-                  "max_inclusive": 0.8
-                }
-              ]
-            }
-          ]
+          "placement": []
         },
         {
           "feature": "great_big_world:purple_wisteria",
-          "placement": [
-            {
-              "type": "creo:noise",
-              "noise_parameters": "great_big_world:wisteria_variation",
-              "ranges": [
-                {
-                  "min_exclusive": 0.8,
-                  "max_inclusive": 2.0
-                }
-              ]
-            }
-          ]
+          "placement": []
         }
       ],
       [

@@ -27,6 +27,10 @@ public abstract class VanillaBiomeParametersMixin {
     @Shadow @Final private MultiNoiseUtil.ParameterRange defaultParameter;
     @Shadow @Final private MultiNoiseUtil.ParameterRange mushroomFieldsContinentalness;
 
+    @Shadow protected abstract RegistryKey<Biome> getBadlandsBiome(int humidity, MultiNoiseUtil.ParameterRange weirdness);
+
+    @Shadow @Final private MultiNoiseUtil.ParameterRange[] humidityParameters;
+
     @Inject(method = "writeOceanBiomes", at = @At("HEAD"))
     private void great_big_world_writeIslandBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
         writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.135f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, GBWBiomes.ISLAND_JUNGLE);
@@ -48,5 +52,13 @@ public abstract class VanillaBiomeParametersMixin {
     @Redirect(method = "writeOceanBiomes", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/biome/source/util/VanillaBiomeParameters;writeBiomeParameters(Ljava/util/function/Consumer;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;FLnet/minecraft/registry/RegistryKey;)V", ordinal = 0))
     private void great_big_world_overrideMushroomIslands(VanillaBiomeParameters instance, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, MultiNoiseUtil.ParameterRange temperature, MultiNoiseUtil.ParameterRange humidity, MultiNoiseUtil.ParameterRange continentalness, MultiNoiseUtil.ParameterRange erosion, MultiNoiseUtil.ParameterRange weirdness, float offset, RegistryKey<Biome> biome) {
         writeBiomeParameters(parameters, mushroomIslandRange, defaultParameter, mushroomFieldsContinentalness, defaultParameter, defaultParameter, 0f, BiomeKeys.MUSHROOM_FIELDS);
+    }
+
+    @Redirect(method = "getPeakBiome", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/biome/source/util/VanillaBiomeParameters;getBadlandsBiome(ILnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;)Lnet/minecraft/registry/RegistryKey;"))
+    private RegistryKey<Biome> gbw_injectRedRockPeaks(VanillaBiomeParameters instance, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
+        if (humidityParameters[humidity].getDistance(ParameterUtils.Humidity.ARID.parameter()) <= 0L && (weirdness.getDistance(ParameterUtils.Weirdness.PEAK_NORMAL.parameter()) <= 0L || weirdness.getDistance(ParameterUtils.Weirdness.PEAK_VARIANT.parameter()) <= 0L)) {
+            return GBWBiomes.RED_ROCK_PEAKS;
+        }
+        return getBadlandsBiome(humidity, weirdness);
     }
 }
