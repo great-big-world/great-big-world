@@ -1,0 +1,6 @@
+{
+  "parent": "block/wall_inventory",
+  "textures": {
+    "wall": "great_big_world:block/red_rock_bricks"
+  }
+}
