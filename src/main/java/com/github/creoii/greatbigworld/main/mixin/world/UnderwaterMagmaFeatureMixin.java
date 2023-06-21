@@ -22,7 +22,7 @@ import java.util.OptionalInt;
 @Mixin(UnderwaterMagmaFeature.class)
 public class UnderwaterMagmaFeatureMixin {
     @Inject(method = "generate", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/BlockPos;stream(Lnet/minecraft/util/math/Box;)Ljava/util/stream/Stream;", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void great_big_world_generateLavarockWithMagma(FeatureContext<UnderwaterMagmaFeatureConfig> context, CallbackInfoReturnable<Boolean> cir, StructureWorldAccess structureWorldAccess, BlockPos blockPos, UnderwaterMagmaFeatureConfig underwaterMagmaFeatureConfig, Random random, OptionalInt optionalInt, BlockPos blockPos2, Vec3i vec3i, Box box) {
+    private void gbw_generateLavarockWithMagma(FeatureContext<UnderwaterMagmaFeatureConfig> context, CallbackInfoReturnable<Boolean> cir, StructureWorldAccess structureWorldAccess, BlockPos blockPos, UnderwaterMagmaFeatureConfig underwaterMagmaFeatureConfig, Random random, OptionalInt optionalInt, BlockPos blockPos2, Vec3i vec3i, Box box) {
         ConfiguredFeature<?, ?> oreLavarock = structureWorldAccess.getRegistryManager().get(RegistryKeys.CONFIGURED_FEATURE).get(GBWConfiguredFeatures.ORE_LAVAROCK);
         if (oreLavarock != null)
             oreLavarock.generate(structureWorldAccess, context.getGenerator(), random, blockPos2);

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BoatEntity.class)
 public class BoatEntityMixin {
     @Inject(method = "asItem", at = @At("HEAD"), cancellable = true)
-    public void asItem(CallbackInfoReturnable<Item> ci) {
+    public void gbw_injectGBWBoatItems(CallbackInfoReturnable<Item> ci) {
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.MAHOGANY)
             ci.setReturnValue(GBWItems.MAHOGANY_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ASPEN)

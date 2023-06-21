@@ -185,6 +185,8 @@ public class GBWBlocks implements Register {
     public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
     //endregion
     //region Red Rock
+    //public static final Block GRASSY_RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    //public static final Block RED_ROCK_SOIL = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
@@ -220,6 +222,10 @@ public class GBWBlocks implements Register {
     public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
     public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(20, 25));
     public static final Block SULFUR_BLOCK = new SulfurBlock();
+    public static final Block BLANCHED_BRICKS = new Block(CBlockSettings.copy(Blocks.BRICKS).mapColor(MapColor.TERRACOTTA_WHITE));
+    public static final Block BLANCHED_BRICK_STAIRS = new StairsBlock(BLANCHED_BRICKS.getDefaultState(), CBlockSettings.copy(BLANCHED_BRICKS));
+    public static final Block BLANCHED_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(BLANCHED_BRICKS));
+    public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS));
     //endregion
 
     @Override
@@ -396,6 +402,10 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.CHERRY_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_bricks"), BLANCHED_BRICKS, Items.BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_stairs"), BLANCHED_BRICK_STAIRS, BLANCHED_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_slab"), BLANCHED_BRICK_SLAB, BLANCHED_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_wall"), BLANCHED_BRICK_WALL, BLANCHED_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
 
         Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(
                 Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),

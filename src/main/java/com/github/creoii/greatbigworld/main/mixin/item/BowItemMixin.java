@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(BowItem.class)
 public class BowItemMixin {
     @Inject(method = "onStoppedUsing", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"), cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void great_big_world_applyPoisonGlaze(ItemStack stack, World world, LivingEntity user, int remainingUseTicks, CallbackInfo ci, PlayerEntity playerEntity, boolean bl, ItemStack itemStack, int i, float f, boolean bl2, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
+    private void gbw_applyPoisonGlaze(ItemStack stack, World world, LivingEntity user, int remainingUseTicks, CallbackInfo ci, PlayerEntity playerEntity, boolean bl, ItemStack itemStack, int i, float f, boolean bl2, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
         int level = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.POISON_GAZE, user);
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));

@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(CrossbowItem.class)
 public class CrossbowItemMixin {
     @Inject(method = "createArrow", at = @At(value = "RETURN"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-    private static void great_big_world_applyPoisonGlaze(World world, LivingEntity entity, ItemStack crossbow, ItemStack arrow, CallbackInfoReturnable<PersistentProjectileEntity> cir, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
+    private static void gbw_applyPoisonGlaze(World world, LivingEntity entity, ItemStack crossbow, ItemStack arrow, CallbackInfoReturnable<PersistentProjectileEntity> cir, ArrowItem arrowItem, PersistentProjectileEntity persistentProjectileEntity) {
         int level = EnchantmentHelper.getEquipmentLevel(GBWEnchantments.POISON_GAZE, entity);
         if (level > 0 && persistentProjectileEntity instanceof ArrowEntity arrowEntity) {
             arrowEntity.addEffect(new StatusEffectInstance(StatusEffects.POISON, level * 250, level));

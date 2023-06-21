@@ -32,7 +32,7 @@ public abstract class VanillaBiomeParametersMixin {
     @Shadow @Final private MultiNoiseUtil.ParameterRange[] humidityParameters;
 
     @Inject(method = "writeOceanBiomes", at = @At("HEAD"))
-    private void great_big_world_writeIslandBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
+    private void gbw_writeIslandBiomes(Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, CallbackInfo ci) {
         writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.135f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-.3f, 1f), 0f, GBWBiomes.ISLAND_JUNGLE);
         writeBiomeParameters(parameters, tropicalIslandRange, defaultParameter, MultiNoiseUtil.ParameterRange.of(-1.18f, -1.135f), defaultParameter, MultiNoiseUtil.ParameterRange.of(-1, -.3f), 0f, GBWBiomes.ISLAND_SPARSE_JUNGLE);
         for (MultiNoiseUtil.ParameterRange weirdness : new MultiNoiseUtil.ParameterRange[]{ParameterUtils.Weirdness.LOW_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.MID_SLICE_NORMAL_DESCENDING.parameter(), ParameterUtils.Weirdness.VALLEY.parameter()}) {
@@ -50,7 +50,7 @@ public abstract class VanillaBiomeParametersMixin {
     }
 
     @Redirect(method = "writeOceanBiomes", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/biome/source/util/VanillaBiomeParameters;writeBiomeParameters(Ljava/util/function/Consumer;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;Lnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;FLnet/minecraft/registry/RegistryKey;)V", ordinal = 0))
-    private void great_big_world_overrideMushroomIslands(VanillaBiomeParameters instance, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, MultiNoiseUtil.ParameterRange temperature, MultiNoiseUtil.ParameterRange humidity, MultiNoiseUtil.ParameterRange continentalness, MultiNoiseUtil.ParameterRange erosion, MultiNoiseUtil.ParameterRange weirdness, float offset, RegistryKey<Biome> biome) {
+    private void gbw_overrideMushroomIslands(VanillaBiomeParameters instance, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, MultiNoiseUtil.ParameterRange temperature, MultiNoiseUtil.ParameterRange humidity, MultiNoiseUtil.ParameterRange continentalness, MultiNoiseUtil.ParameterRange erosion, MultiNoiseUtil.ParameterRange weirdness, float offset, RegistryKey<Biome> biome) {
         writeBiomeParameters(parameters, mushroomIslandRange, defaultParameter, mushroomFieldsContinentalness, defaultParameter, defaultParameter, 0f, BiomeKeys.MUSHROOM_FIELDS);
     }
 

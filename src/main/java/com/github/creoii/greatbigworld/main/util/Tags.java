@@ -25,6 +25,7 @@ public class Tags {
         public static final TagKey<Block> ERODES_INTO_LAVAROCK = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "erodes_into_lavarock"));
         public static final TagKey<Block> ERODES_INTO_VOLCANIC_SAND = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "erodes_into_volcanic_sand"));
         public static final TagKey<Block> LEAF_PILES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "leaf_piles"));
+        public static final TagKey<Block> SOLAR_HEAT_TRANSFERRABLES = TagKey.of(RegistryKeys.BLOCK, new Identifier(NAMESPACE, "solar_heat_transferrables"));
     }
 
     public static class ItemTags {
