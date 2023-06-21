@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "side": "great_big_world:block/red_rock_pillar",
+    "end": "great_big_world:block/red_rock_pillar_top"
+  }
+}

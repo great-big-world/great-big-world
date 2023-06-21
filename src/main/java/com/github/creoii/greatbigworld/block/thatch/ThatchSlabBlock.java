@@ -1,4 +1,4 @@
-package com.github.creoii.greatbigworld.block;
+package com.github.creoii.greatbigworld.block.thatch;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "great_big_world:block/red_rock_pillar" },
+    "axis=z": { "model": "great_big_world:block/red_rock_pillar", "x": 90 },
+    "axis=x": { "model": "great_big_world:block/red_rock_pillar", "x": 90, "y": 90 }
+  }
+}
