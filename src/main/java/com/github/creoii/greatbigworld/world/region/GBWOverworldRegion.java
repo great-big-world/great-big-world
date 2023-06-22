@@ -51,7 +51,7 @@ public class GBWOverworldRegion extends Region {
                 builder.replaceBiome(BiomeKeys.FLOWER_FOREST, GBWBiomes.BLOOMING_FLOWER_FOREST);
                 new ParameterUtils.ParameterPointListBuilder()
                         .temperature(Temperature.HOT)
-                        .humidity(Humidity.ARID)
+                        .humidity(Humidity.ARID, Humidity.NEUTRAL).humidity(Humidity.span(Humidity.NEUTRAL, Humidity.WET))
                         .continentalness(Continentalness.FAR_INLAND).continentalness(Continentalness.span(Continentalness.MID_INLAND, Continentalness.FAR_INLAND))
                         .erosion(Erosion.EROSION_0, Erosion.EROSION_1).erosion(Erosion.span(Erosion.EROSION_1, Erosion.EROSION_2))
                         .depth(Depth.SURFACE, Depth.FLOOR)

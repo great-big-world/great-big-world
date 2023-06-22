@@ -20,7 +20,6 @@ public class GBWBiomes implements Register {
     public static RegistryKey<Biome> BLOOMING_FLOWER_FOREST;
     public static RegistryKey<Biome> HOT_SPRINGS;
     public static RegistryKey<Biome> RED_ROCK_PEAKS;
-    public static RegistryKey<Biome> RED_ROCK_SLOPES;
 
     @Override
     public void register() {
@@ -35,6 +34,5 @@ public class GBWBiomes implements Register {
         BLOOMING_FLOWER_FOREST = RegistryKey.of(RegistryKeys.BIOME, new Identifier(GreatBigWorld.NAMESPACE, "blooming_flower_forest"));
         HOT_SPRINGS = RegistryKey.of(RegistryKeys.BIOME, new Identifier(GreatBigWorld.NAMESPACE, "hot_springs"));
         RED_ROCK_PEAKS = RegistryKey.of(RegistryKeys.BIOME, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_peaks"));
-        RED_ROCK_SLOPES = RegistryKey.of(RegistryKeys.BIOME, new Identifier(GreatBigWorld.NAMESPACE, "red_rock_slopes"));
     }
 }
