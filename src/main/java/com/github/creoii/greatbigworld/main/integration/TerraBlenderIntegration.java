@@ -7,6 +7,7 @@ import terrablender.api.TerraBlenderApi;
 public class TerraBlenderIntegration implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
-        Regions.register(new GBWOverworldRegion(5));
+        Regions.register(new GBWOverworldRegion(GBWOverworldRegion.Type.NORMAL));
+        Regions.register(new GBWOverworldRegion(GBWOverworldRegion.Type.RARE));
     }
 }

@@ -12,7 +12,8 @@ public class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parent -> {
-            if (CONFIG != null) return CONFIG.getYACL().generateScreen(parent);
+            if (CONFIG != null)
+                return CONFIG.getYACL().generateScreen(parent);
             return null;
         };
     }
