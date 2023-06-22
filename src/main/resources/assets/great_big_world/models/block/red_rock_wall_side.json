@@ -1,6 +1,0 @@
-{
-  "parent": "block/template_wall_side",
-  "textures": {
-    "wall": "great_big_world:block/red_rock"
-  }
-}

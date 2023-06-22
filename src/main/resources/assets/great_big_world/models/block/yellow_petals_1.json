@@ -1,7 +1,0 @@
-{
-  "parent": "block/flowerbed_1",
-  "textures": {
-    "flowerbed": "great_big_world:block/yellow_petals",
-    "stem": "block/pink_petals_stem"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "great_big_world:block/hanging_leaves_bottom",
-  "textures": {
-    "all": "great_big_world:block/hanging_blue_wisteria_leaves"
-  }
-}

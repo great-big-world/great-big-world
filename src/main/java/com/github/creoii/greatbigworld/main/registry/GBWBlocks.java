@@ -145,64 +145,6 @@ public class GBWBlocks implements Register {
     public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(CBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_SEA_LANTERN = new Block(CBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
-    //region Wisteria Wood
-    public static RegistrySets.WoodSet WISTERIA = RegistrySets.createWoodSet(NAMESPACE, "wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
-    public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.CHERRY_LEAVES));
-    public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CHERRY_LEAVES));
-    public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.CHERRY_LEAVES));
-    public static final Block PINK_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PINK).sounds(BlockSoundGroup.CHERRY_LEAVES));
-    public static final Block PURPLE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PURPLE).sounds(BlockSoundGroup.CHERRY_LEAVES));
-    public static final Block HANGING_WHITE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(WHITE_WISTERIA_LEAVES));
-    public static final Block HANGING_YELLOW_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(YELLOW_WISTERIA_LEAVES));
-    public static final Block HANGING_BLUE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(BLUE_WISTERIA_LEAVES));
-    public static final Block HANGING_PINK_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(PINK_WISTERIA_LEAVES));
-    public static final Block HANGING_PURPLE_WISTERIA_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(PURPLE_WISTERIA_LEAVES));
-    public static final Block WHITE_WISTERIA_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(0), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
-    public static final Block YELLOW_WISTERIA_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(1), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
-    public static final Block BLUE_WISTERIA_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(2), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
-    public static final Block PINK_WISTERIA_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(3), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
-    public static final Block PURPLE_WISTERIA_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(4), CBlockSettings.copy(GREEN_ASPEN_SAPLING).sounds(BlockSoundGroup.CHERRY_SAPLING));
-    public static final Block POTTED_WHITE_WISTERIA_SAPLING = new FlowerPotBlock(WHITE_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block POTTED_YELLOW_WISTERIA_SAPLING = new FlowerPotBlock(YELLOW_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block POTTED_BLUE_WISTERIA_SAPLING = new FlowerPotBlock(BLUE_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block POTTED_PINK_WISTERIA_SAPLING = new FlowerPotBlock(PINK_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block POTTED_PURPLE_WISTERIA_SAPLING = new FlowerPotBlock(PURPLE_WISTERIA_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
-    public static final Block WHITE_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
-    public static final Block YELLOW_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
-    public static final Block BLUE_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
-    public static final Block PURPLE_PETALS = new FlowerbedBlock(CBlockSettings.copy(Blocks.PINK_PETALS).fireSettings(60, 100));
-    //endregion
-    //region Travertine
-    public static final Block PEACH_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.ORANGE));
-    public static final Block GOLDEN_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.PALE_YELLOW));
-    public static final Block IVORY_TRAVERTINE = new PillarBlock(CBlockSettings.copy(Blocks.CALCITE));
-    public static final Block POLISHED_PEACH_TRAVERTINE = new Block(CBlockSettings.copy(PEACH_TRAVERTINE).strength(1f));
-    public static final Block POLISHED_GOLDEN_TRAVERTINE = new Block(CBlockSettings.copy(GOLDEN_TRAVERTINE).strength(1f));
-    public static final Block POLISHED_IVORY_TRAVERTINE = new Block(CBlockSettings.copy(IVORY_TRAVERTINE).strength(1f));
-    public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
-    public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
-    public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
-    public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
-    //endregion
-    //region Red Rock
-    //public static final Block GRASSY_RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    //public static final Block RED_ROCK_SOIL = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block POLISHED_RED_ROCK = new Block(CBlockSettings.copy(RED_ROCK));
-    public static final Block POLISHED_RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
-    public static final Block POLISHED_RED_ROCK_STAIRS = new StairsBlock(POLISHED_RED_ROCK.getDefaultState(), CBlockSettings.copy(POLISHED_RED_ROCK));
-    public static final Block POLISHED_RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
-    public static final Block RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK));
-    public static final Block RED_ROCK_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block RED_ROCK_BRICK_STAIRS = new StairsBlock(RED_ROCK_BRICKS.getDefaultState(), CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block RED_ROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block CRACKED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block CHISELED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block RED_ROCK_PILLAR = new PillarBlock(CBlockSettings.copy(RED_ROCK));
-    //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
@@ -215,17 +157,6 @@ public class GBWBlocks implements Register {
     public static final Block LARGE_TROPICAL_FERN = new TallPlantBlock(CBlockSettings.copy(Blocks.LARGE_FERN).fireSettings(60, 100));
     public static final Block POTTED_TROPICAL_FERN = new FlowerPotBlock(TROPICAL_FERN, CBlockSettings.copy(Blocks.FLOWER_POT));
     public static final Block NAUTILUS_FOSSIL = new Block(CBlockSettings.copy(Blocks.STONE));
-    public static final Block WHITE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block YELLOW_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block BLUE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block PINK_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(20, 25));
-    public static final Block SULFUR_BLOCK = new SulfurBlock();
-    public static final Block BLANCHED_BRICKS = new Block(CBlockSettings.copy(Blocks.BRICKS).mapColor(MapColor.TERRACOTTA_WHITE));
-    public static final Block BLANCHED_BRICK_STAIRS = new StairsBlock(BLANCHED_BRICKS.getDefaultState(), CBlockSettings.copy(BLANCHED_BRICKS));
-    public static final Block BLANCHED_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(BLANCHED_BRICKS));
-    public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS));
     //endregion
 
     @Override
@@ -331,59 +262,6 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ELDER_PRISMARINE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
-        WISTERIA.register();
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_leaves"), PINK_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_leaves"), PURPLE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_white_wisteria_leaves"), HANGING_WHITE_WISTERIA_LEAVES, WHITE_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_yellow_wisteria_leaves"), HANGING_YELLOW_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_blue_wisteria_leaves"), HANGING_BLUE_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_pink_wisteria_leaves"), HANGING_PINK_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_purple_wisteria_leaves"), HANGING_PURPLE_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_sapling"), WHITE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_sapling"), YELLOW_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_sapling"), BLUE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_wisteria_sapling"), PINK_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_wisteria_sapling"), PURPLE_WISTERIA_SAPLING, Blocks.BIRCH_SAPLING, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_white_wisteria_sapling"), POTTED_WHITE_WISTERIA_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_yellow_wisteria_sapling"), POTTED_YELLOW_WISTERIA_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_blue_wisteria_sapling"), POTTED_BLUE_WISTERIA_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_pink_wisteria_sapling"), POTTED_PINK_WISTERIA_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_purple_wisteria_sapling"), POTTED_PURPLE_WISTERIA_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_petals"), WHITE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_petals"), YELLOW_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_petals"), BLUE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_petals"), PURPLE_PETALS, new CItemSettings().compostingChance(.3f), Items.PINK_PETALS, ItemGroups.NATURAL);
-
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "peach_travertine"), PEACH_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_travertine"), GOLDEN_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "ivory_travertine"), IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.POINTED_DRIPSTONE));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine"), POLISHED_PEACH_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine"), POLISHED_GOLDEN_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine"), POLISHED_IVORY_TRAVERTINE, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_peach_travertine_tiles"), POLISHED_PEACH_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_golden_travertine_tiles"), POLISHED_GOLDEN_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
-
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_stairs"), RED_ROCK_STAIRS, RED_ROCK, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_slab"), RED_ROCK_SLAB, RED_ROCK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_wall"), RED_ROCK_WALL, RED_ROCK_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock"), POLISHED_RED_ROCK, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_stairs"), POLISHED_RED_ROCK_STAIRS, POLISHED_RED_ROCK, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_slab"), POLISHED_RED_ROCK_SLAB, POLISHED_RED_ROCK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_red_rock_wall"), POLISHED_RED_ROCK_WALL, POLISHED_RED_ROCK_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_bricks"), RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_slab"), RED_ROCK_BRICK_SLAB, RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_stairs"), RED_ROCK_BRICK_STAIRS, RED_ROCK_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_brick_wall"), RED_ROCK_BRICK_WALL, RED_ROCK_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cracked_red_rock_bricks"), CRACKED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_red_rock_bricks"), CHISELED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_pillar"), RED_ROCK_PILLAR, ItemGroups.BUILDING_BLOCKS);
-
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new CItemSettings().compostingChance(.65f), Items.PEONY, ItemGroups.NATURAL);
@@ -395,17 +273,6 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "large_tropical_fern"), LARGE_TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_tropical_fern"), POTTED_TROPICAL_FERN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "nautilus_fossil"), NAUTILUS_FOSSIL, Items.END_STONE, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_delphinium"), WHITE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_delphinium"), YELLOW_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_delphinium"), BLUE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pink_delphinium"), PINK_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.CHERRY_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_bricks"), BLANCHED_BRICKS, Items.BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_stairs"), BLANCHED_BRICK_STAIRS, BLANCHED_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_slab"), BLANCHED_BRICK_SLAB, BLANCHED_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_wall"), BLANCHED_BRICK_WALL, BLANCHED_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
 
         Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(
                 Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),
@@ -434,11 +301,6 @@ public class GBWBlocks implements Register {
                 POTTED_GREEN_ASPEN_SAPLING,
                 ACAI_SAPLING,
                 POTTED_ACAI_SAPLING,
-                WHITE_WISTERIA_SAPLING, POTTED_WHITE_WISTERIA_SAPLING,
-                YELLOW_WISTERIA_SAPLING, POTTED_YELLOW_WISTERIA_SAPLING,
-                BLUE_WISTERIA_SAPLING, POTTED_BLUE_WISTERIA_SAPLING,
-                PINK_WISTERIA_SAPLING, POTTED_PINK_WISTERIA_SAPLING,
-                PURPLE_WISTERIA_SAPLING, POTTED_PURPLE_WISTERIA_SAPLING,
                 BAMBOO_TORCH,
                 BAMBOO_WALL_TORCH,
                 POTTED_BAMBOO_TORCH,
@@ -463,9 +325,7 @@ public class GBWBlocks implements Register {
                 POTTED_BEACHGRASS,
                 TROPICAL_FERN,
                 LARGE_TROPICAL_FERN,
-                POTTED_TROPICAL_FERN,
-                WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM,
-                WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS
+                POTTED_TROPICAL_FERN
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
@@ -475,20 +335,11 @@ public class GBWBlocks implements Register {
                 GREEN_ASPEN_LEAF_PILE,
                 GRASSY_LAVAROCK,
                 ACAI_LEAVES,
-                HANGING_ACAI_LEAVES,
-                WHITE_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES,
-                HANGING_WHITE_WISTERIA_LEAVES, HANGING_YELLOW_WISTERIA_LEAVES, HANGING_BLUE_WISTERIA_LEAVES, HANGING_PINK_WISTERIA_LEAVES, HANGING_PURPLE_WISTERIA_LEAVES,
-                GOLDEN_APPLE_LEAVES
+                HANGING_ACAI_LEAVES
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
-            if (tintIndex != 0) {
-                return (world == null || pos == null) ? GrassColors.getDefaultColor() : BiomeColors.getGrassColor(world, pos);
-            } return -1;
-        }, WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> state != null ? SulfurBlock.getEffectFromProperty(state.get(SulfurBlock.EFFECT)).getColor() : 1, SULFUR_BLOCK);
     }
 }

@@ -14,11 +14,6 @@ public class GBWConfiguredFeatures implements Register {
     public static RegistryKey<ConfiguredFeature<?, ?>> YELLOW_ASPEN;
     public static RegistryKey<ConfiguredFeature<?, ?>> ACAI;
     public static RegistryKey<ConfiguredFeature<?, ?>> ORE_LAVAROCK;
-    public static RegistryKey<ConfiguredFeature<?, ?>> WHITE_WISTERIA;
-    public static RegistryKey<ConfiguredFeature<?, ?>> YELLOW_WISTERIA;
-    public static RegistryKey<ConfiguredFeature<?, ?>> BLUE_WISTERIA;
-    public static RegistryKey<ConfiguredFeature<?, ?>> PINK_WISTERIA;
-    public static RegistryKey<ConfiguredFeature<?, ?>> PURPLE_WISTERIA;
 
     @Override
     public void register() {
@@ -27,10 +22,5 @@ public class GBWConfiguredFeatures implements Register {
         YELLOW_ASPEN = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "yellow_aspen"));
         ACAI = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "acai"));
         ORE_LAVAROCK = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "ore_lavarock"));
-        WHITE_WISTERIA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "white_wisteria"));
-        YELLOW_WISTERIA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "yellow_wisteria"));
-        BLUE_WISTERIA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "blue_wisteria"));
-        PINK_WISTERIA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "pink_wisteria"));
-        PURPLE_WISTERIA = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(NAMESPACE, "purple_wisteria"));
     }
 }

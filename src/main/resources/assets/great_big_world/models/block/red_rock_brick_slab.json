@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "great_big_world:block/red_rock_bricks",
-        "top": "great_big_world:block/red_rock_bricks",
-        "side": "great_big_world:block/red_rock_bricks"
-    }
-}

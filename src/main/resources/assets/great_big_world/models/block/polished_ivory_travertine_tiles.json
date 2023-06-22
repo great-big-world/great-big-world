@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "great_big_world:block/polished_ivory_travertine_tiles"
-  }
-}

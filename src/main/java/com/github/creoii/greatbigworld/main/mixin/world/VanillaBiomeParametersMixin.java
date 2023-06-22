@@ -53,12 +53,4 @@ public abstract class VanillaBiomeParametersMixin {
     private void gbw_overrideMushroomIslands(VanillaBiomeParameters instance, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> parameters, MultiNoiseUtil.ParameterRange temperature, MultiNoiseUtil.ParameterRange humidity, MultiNoiseUtil.ParameterRange continentalness, MultiNoiseUtil.ParameterRange erosion, MultiNoiseUtil.ParameterRange weirdness, float offset, RegistryKey<Biome> biome) {
         writeBiomeParameters(parameters, mushroomIslandRange, defaultParameter, mushroomFieldsContinentalness, defaultParameter, defaultParameter, 0f, BiomeKeys.MUSHROOM_FIELDS);
     }
-
-    @Redirect(method = "getPeakBiome", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/biome/source/util/VanillaBiomeParameters;getBadlandsBiome(ILnet/minecraft/world/biome/source/util/MultiNoiseUtil$ParameterRange;)Lnet/minecraft/registry/RegistryKey;"))
-    private RegistryKey<Biome> gbw_injectRedRockPeaks(VanillaBiomeParameters instance, int humidity, MultiNoiseUtil.ParameterRange weirdness) {
-        if (humidityParameters[humidity].getDistance(ParameterUtils.Humidity.ARID.parameter()) <= 0L && (weirdness.getDistance(ParameterUtils.Weirdness.PEAK_NORMAL.parameter()) <= 0L || weirdness.getDistance(ParameterUtils.Weirdness.PEAK_VARIANT.parameter()) <= 0L)) {
-            return GBWBiomes.RED_ROCK_PEAKS;
-        }
-        return getBadlandsBiome(humidity, weirdness);
-    }
 }
