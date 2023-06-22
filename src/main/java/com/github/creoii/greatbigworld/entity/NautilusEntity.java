@@ -51,8 +51,6 @@ public class NautilusEntity extends FishEntity {
             .put(Blocks.PRISMARINE, GBWBlocks.ELDER_PRISMARINE)
             .put(Blocks.PRISMARINE_BRICKS, GBWBlocks.ELDER_PRISMARINE_BRICKS)
             .put(Blocks.SEA_LANTERN, GBWBlocks.ELDER_SEA_LANTERN)
-            .put(GBWBlocks.RED_ROCK, Blocks.COBBLESTONE)
-            .put(GBWBlocks.BLANCHED_BRICKS, Blocks.BRICKS)
             .build();
     private int oxidizeTimer;
     private NautilusOxidizeGoal oxidizeGoal;

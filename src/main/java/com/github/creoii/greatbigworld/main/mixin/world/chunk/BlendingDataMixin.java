@@ -17,6 +17,6 @@ public class BlendingDataMixin {
     @Shadow @Final private static List<Block> SURFACE_BLOCKS;
 
     static {
-        SURFACE_BLOCKS = List.of(Blocks.PODZOL, Blocks.GRAVEL, Blocks.GRASS_BLOCK, Blocks.STONE, Blocks.COARSE_DIRT, Blocks.SAND, Blocks.RED_SAND, Blocks.MYCELIUM, Blocks.SNOW_BLOCK, Blocks.TERRACOTTA, Blocks.DIRT, GBWBlocks.LAVAROCK, GBWBlocks.GRASSY_LAVAROCK, GBWBlocks.RED_ROCK);
+        SURFACE_BLOCKS = List.of(Blocks.PODZOL, Blocks.GRAVEL, Blocks.GRASS_BLOCK, Blocks.STONE, Blocks.COARSE_DIRT, Blocks.SAND, Blocks.RED_SAND, Blocks.MYCELIUM, Blocks.SNOW_BLOCK, Blocks.TERRACOTTA, Blocks.DIRT, GBWBlocks.LAVAROCK, GBWBlocks.GRASSY_LAVAROCK);
     }
 }

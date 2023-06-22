@@ -26,7 +26,6 @@ public class GreatBigWorld implements ModInitializer {
             new GBWPlacedFeatures(),
             new GBWStructures(),
             new GBWBiomes(),
-            new GBWNoiseParameters(),
             new GBWEnchantments(),
             new GBWPotions(),
             new GBWSoundEvents(),
@@ -36,17 +35,6 @@ public class GreatBigWorld implements ModInitializer {
             new GBWAdvancements(),
             new GBWLootTables()
     };
-
-    public static final Map<Block, Block> HEAT_CONVERSIONS = new ImmutableMap.Builder<Block, Block>()
-            .put(Blocks.COBBLESTONE, GBWBlocks.RED_ROCK)
-            .put(Blocks.BRICKS, GBWBlocks.BLANCHED_BRICKS)
-            .put(Blocks.COBBLESTONE_STAIRS, GBWBlocks.RED_ROCK_STAIRS)
-            .put(Blocks.COBBLESTONE_SLAB, GBWBlocks.RED_ROCK_SLAB)
-            .put(Blocks.COBBLESTONE_WALL, GBWBlocks.RED_ROCK_WALL)
-            .put(Blocks.BRICK_STAIRS, GBWBlocks.BLANCHED_BRICK_STAIRS)
-            .put(Blocks.BRICK_SLAB, GBWBlocks.BLANCHED_BRICK_SLAB)
-            .put(Blocks.BRICK_WALL, GBWBlocks.BLANCHED_BRICK_WALL)
-            .build();
 
     @Override
     public void onInitialize() {
