@@ -1,5 +1,8 @@
 package com.github.creoii.greatbigworld.main.integration;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import dev.isxander.yacl3.api.ConfigCategory;
 import dev.isxander.yacl3.api.Option;
 import dev.isxander.yacl3.api.OptionDescription;
@@ -13,7 +16,14 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.mutable.MutableInt;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class GBWConfig {
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private Path configPath = Path.of("config", "great_big_world.json");
+    private boolean preloaded = false;
+
     @ConfigEntry
     public MutableBoolean bambooTorchesOnLeaves = new MutableBoolean(true);
 
@@ -114,7 +124,64 @@ public class GBWConfig {
                                 Text.translatable("text.great_big_world.config.option.woodenMaskEnchantability.@Tooltip"),
                                 woodenMaskEnchantability, 11, 0, 50, 1))
                         .build())
+                .save(this::save)
                 .build();
+    }
+
+    public void preload() {
+        if (preloaded) return;
+        preloaded = true;
+
+        if (!Files.exists(configPath))
+            return;
+
+        try {
+            String jsonString = Files.readString(configPath);
+            JsonObject json = gson.fromJson(jsonString, JsonObject.class);
+
+            bambooTorchesOnLeaves.setValue(json.get("bamboo_torches_on_leaves").getAsBoolean());
+            masksAngerEndermen.setValue(json.get("masks_anger_endermen").getAsBoolean());
+            pillagersAttackMoose.setValue(json.get("pillagers_attack_moose").getAsBoolean());
+            wolvesAttackMoose.setValue(json.get("wolves_attack_moose").getAsBoolean());
+            maxDistanceForRootConversion.setValue(json.get("max_distance_for_root_conversion").getAsInt());
+            shedAntlerBaseRegrowTime.setValue(json.get("shed_antler_base_regrow_time").getAsInt());
+            nautilusOxidizeChance.setValue(json.get("nautilus_oxidize_chance").getAsInt());
+            dilutingModifier.setValue(json.get("diluting_modifier").getAsFloat());
+            auraEffectTransferModifier.setValue(json.get("aura_effect_transfer_modifier").getAsFloat());
+            woodenMaskDurability.setValue(json.get("wooden_mask_durability").getAsInt());
+            woodenMaskProtection.setValue(json.get("wooden_mask_protection").getAsInt());
+            woodenMaskToughness.setValue(json.get("wooden_mask_toughness").getAsInt());
+            woodenMaskEnchantability.setValue(json.get("wooden_mask_enchantability").getAsInt());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void save() {
+        try {
+            Files.deleteIfExists(configPath);
+
+            JsonObject json = new JsonObject();
+            json.addProperty("bamboo_torches_on_leaves", bambooTorchesOnLeaves.booleanValue());
+            json.addProperty("masks_anger_endermen", masksAngerEndermen.booleanValue());
+            json.addProperty("pillagers_attack_moose", pillagersAttackMoose.booleanValue());
+            json.addProperty("wolves_attack_moose", wolvesAttackMoose.booleanValue());
+            json.addProperty("max_distance_for_root_conversion", maxDistanceForRootConversion.intValue());
+            json.addProperty("shed_antler_base_regrow_time", shedAntlerBaseRegrowTime.intValue());
+            json.addProperty("nautilus_oxidize_chance", nautilusOxidizeChance.intValue());
+            json.addProperty("diluting_modifier", dilutingModifier.floatValue());
+            json.addProperty("aura_effect_transfer_modifier", auraEffectTransferModifier.floatValue());
+            json.addProperty("wooden_mask_durability", woodenMaskDurability.intValue());
+            json.addProperty("wooden_mask_protection", woodenMaskProtection.intValue());
+            json.addProperty("wooden_mask_toughness", woodenMaskToughness.intValue());
+            json.addProperty("wooden_mask_enchantability", woodenMaskEnchantability.intValue());
+
+            Files.createFile(configPath);
+            Files.writeString(configPath, gson.toJson(json));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @SuppressWarnings("deprecation")

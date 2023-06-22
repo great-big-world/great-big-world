@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.main;
 
 import com.github.creoii.creolib.api.util.block.BlockUtil;
+import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
 import com.google.common.collect.ImmutableMap;
@@ -49,6 +50,10 @@ public class GreatBigWorld implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        if (CONFIG_AVAILABLE && ModMenuIntegration.CONFIG != null) {
+            ModMenuIntegration.CONFIG.preload();
+        }
+
         for (Register register : REGISTERS) {
             register.register();
         }
