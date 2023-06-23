@@ -1,17 +1,11 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.creolib.api.util.misc.MathUtil;
-import com.github.creoii.creolib.api.world.surface.FastNoiseThresholdMaterialCondition;
-import com.github.creoii.creolib.core.noise.FastNoiseLite;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.world.gen.noise.NoiseParametersKeys;
 import net.minecraft.world.gen.surfacebuilder.MaterialRules;
 import terrablender.api.SurfaceRuleManager;
-
-import java.util.List;
 
 public class GBWSurfaceRules implements Register {
     private static final MaterialRules.MaterialRule LAVAROCK = MaterialRules.block(GBWBlocks.LAVAROCK.getDefaultState());

@@ -4,14 +4,10 @@ import com.github.creoii.creolib.api.util.block.BlockUtil;
 import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
 import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Register;
-import com.google.common.collect.ImmutableMap;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.random.Random;
-
-import java.util.Map;
 
 public class GreatBigWorld implements ModInitializer {
     public static final String NAMESPACE = "great_big_world";
