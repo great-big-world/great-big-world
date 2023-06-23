@@ -20,8 +20,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class GBWConfig {
-    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private Path configPath = Path.of("config", "great_big_world.json");
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final Path configPath = Path.of("config", "great_big_world.json");
     private boolean preloaded = false;
 
     @ConfigEntry
