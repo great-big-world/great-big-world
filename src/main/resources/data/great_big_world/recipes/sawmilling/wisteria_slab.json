@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 2,
+  "ingredient": {
+    "item": "minecraft:wisteria_planks"
+  },
+  "result": "minecraft:wisteria_slab"
+}

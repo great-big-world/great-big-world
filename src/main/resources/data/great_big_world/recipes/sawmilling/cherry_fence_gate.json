@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:cherry_planks"
+  },
+  "result": "minecraft:cherry_fence_gate"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "great_big_world:firing",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.3,
+  "ingredient": {
+    "item": "minecraft:clay_ball"
+  },
+  "result": "minecraft:brick"
+}

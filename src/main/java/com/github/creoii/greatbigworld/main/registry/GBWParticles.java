@@ -1,9 +1,9 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.greatbigworld.client.GreatBigWorldClient;
 import com.github.creoii.greatbigworld.client.particle.GlimmerParticle;
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Register;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
@@ -24,8 +24,8 @@ public class GBWParticles implements Register {
 
     @Override
     public void registerClient() {
-        GreatBigWorldClient.PARTICLE_FACTORY_REGISTRY.register(DAY_GLIMMER, GlimmerParticle.Factory::new);
-        GreatBigWorldClient.PARTICLE_FACTORY_REGISTRY.register(NIGHT_GLIMMER, GlimmerParticle.Factory::new);
-        GreatBigWorldClient.PARTICLE_FACTORY_REGISTRY.register(DARK_GLIMMER, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(DAY_GLIMMER, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(NIGHT_GLIMMER, GlimmerParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(DARK_GLIMMER, GlimmerParticle.Factory::new);
     }
 }

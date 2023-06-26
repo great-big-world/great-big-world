@@ -20,6 +20,7 @@ public class GreatBigWorld implements ModInitializer {
     public static final boolean CONFIG_AVAILABLE = FabricLoader.getInstance().isModLoaded("modmenu") && FabricLoader.getInstance().isModLoaded("yet_another_config_lib_v3");
     public static final Register[] REGISTERS = new Register[]{
             new GBWBlocks(),
+            new GBWBlockEntities(),
             new GBWItems(),
             new GBWEntityTypes(),
             new GBWDecorators(),
@@ -27,6 +28,8 @@ public class GreatBigWorld implements ModInitializer {
             new GBWPlacedFeatures(),
             new GBWStructures(),
             new GBWBiomes(),
+            new GBWScreens(),
+            new GBWRecipes(),
             new GBWEnchantments(),
             new GBWPotions(),
             new GBWSoundEvents(),

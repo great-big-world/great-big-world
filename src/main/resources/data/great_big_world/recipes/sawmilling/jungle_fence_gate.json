@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:jungle_planks"
+  },
+  "result": "minecraft:jungle_fence_gate"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 2,
+  "ingredient": {
+    "item": "minecraft:mahogany_planks"
+  },
+  "result": "minecraft:mahogany_slab"
+}

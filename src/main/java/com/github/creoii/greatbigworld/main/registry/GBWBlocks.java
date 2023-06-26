@@ -226,6 +226,8 @@ public class GBWBlocks implements Register {
     public static final Block BLANCHED_BRICK_STAIRS = new StairsBlock(BLANCHED_BRICKS.getDefaultState(), CBlockSettings.copy(BLANCHED_BRICKS));
     public static final Block BLANCHED_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(BLANCHED_BRICKS));
     public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS));
+    public static final Block SAWMILL = new SawmillBlock();
+    public static final Block KILN = new KilnBlock();
     //endregion
 
     @Override
@@ -406,6 +408,8 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_stairs"), BLANCHED_BRICK_STAIRS, BLANCHED_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_slab"), BLANCHED_BRICK_SLAB, BLANCHED_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_wall"), BLANCHED_BRICK_WALL, BLANCHED_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sawmill"), SAWMILL, Items.STONECUTTER, ItemGroups.FUNCTIONAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "kiln"), KILN, Items.BLAST_FURNACE, ItemGroups.FUNCTIONAL);
 
         Spreadable.register(GRASSY_LAVAROCK, LAVAROCK, GrassyLavarockBlock::canSurvive, GrassyLavarockBlock::canSpread, List.of(
                 Spreadable.Spread.of(Blocks.DIRT, Blocks.GRASS_BLOCK),

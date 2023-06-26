@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 1,
+  "ingredient": {
+    "item": "minecraft:aspen_planks"
+  },
+  "result": "minecraft:aspen_fence_gate"
+}

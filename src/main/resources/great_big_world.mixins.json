@@ -23,6 +23,8 @@
     "item.BowItemMixin",
     "item.CrossbowItemMixin",
     "item.SwordItemMixin",
+    "recipe.RecipeBookCategoryMixin",
+    "recipe.RecipeBookOptionsMixin",
     "world.UnderwaterMagmaFeatureMixin",
     "world.VanillaBiomeParametersMixin",
     "world.chunk.BlendingDataMixin"
@@ -31,7 +33,9 @@
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
     "client.LightmapTextureManagerMixin",
-    "client.MinecraftClientMixin"
+    "client.MinecraftClientMixin",
+    "recipe.ClientRecipeBookMixin",
+    "recipe.RecipeBookGroupMixin"
   ],
   "injectors": {
     "defaultRequire": 1

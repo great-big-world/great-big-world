@@ -225,6 +225,8 @@
   "block.great_big_world.purple_petals": "Purple Petals",
   "block.great_big_world.golden_apple_leaves": "Golden Apple Leaves",
   "block.great_big_world.sulfur_block": "Sulfur Block",
+  "block.great_big_world.kiln": "Kiln",
+  "block.great_big_world.sawmill": "Sawmill",
 
   "item.great_big_world.mahogany_boat": "Mahogany Boat",
   "item.great_big_world.mahogany_chest_boat": "Mahogany Chest Boat",
@@ -326,6 +328,10 @@
   "enchantment.great_big_world.diluting": "Diluting",
   "enchantment.great_big_world.poison_gaze": "Poison Gaze",
   "enchantment.great_big_world.illuminating": "Illuminating",
+
+  "container.kiln": "Kiln",
+  "container.sawmill": "Sawmill",
+  "gui.recipebook.toggleRecipes.fireable": "Showing Fireable",
 
   "death.attack.moose": "%1$s was mauled to death by a Moose",
 

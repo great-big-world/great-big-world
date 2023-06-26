@@ -1,0 +1,8 @@
+{
+  "type": "great_big_world:sawmilling",
+  "count": 2,
+  "ingredient": {
+    "item": "minecraft:birch_planks"
+  },
+  "result": "minecraft:birch_slab"
+}
