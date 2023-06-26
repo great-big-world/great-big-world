@@ -2,7 +2,7 @@
   "type": "great_big_world:sawmilling",
   "count": 1,
   "ingredient": {
-    "item": "minecraft:acai_planks"
+    "item": "great_big_world:acai_planks"
   },
-  "result": "minecraft:acai_stairs"
+  "result": "great_big_world:acai_stairs"
 }

@@ -2,7 +2,7 @@
   "type": "great_big_world:sawmilling",
   "count": 2,
   "ingredient": {
-    "item": "minecraft:aspen_planks"
+    "item": "great_big_world:aspen_planks"
   },
-  "result": "minecraft:aspen_slab"
+  "result": "great_big_world:aspen_slab"
 }
