@@ -44,8 +44,8 @@ public class RecipeBookGroupMixin {
         RecipeBookGroup last = types.get(types.size() - 1);
 
         RecipeBookGroup kilnMisc = create("GBW_KILN_MISC", last.ordinal() + 1, new ItemStack(Items.BRICK));
-        RecipeBookGroup kilnBlocks = create("GBW_KILN_BLOCKS", last.ordinal() + 1, new ItemStack(Blocks.BROWN_GLAZED_TERRACOTTA));
-        RecipeBookGroup sawmill = create("GBW_SAWMILL", last.ordinal() + 1, new ItemStack(Blocks.OAK_PLANKS));
+        RecipeBookGroup kilnBlocks = create("GBW_KILN_BLOCKS", last.ordinal() + 2, new ItemStack(Blocks.BROWN_GLAZED_TERRACOTTA));
+        RecipeBookGroup sawmill = create("GBW_SAWMILL", last.ordinal() + 3, new ItemStack(Blocks.OAK_PLANKS));
         GBWRecipeBookGroups.KILN_MISC = kilnMisc;
         GBWRecipeBookGroups.KILN_BLOCKS = kilnBlocks;
         GBWRecipeBookGroups.SAWMILL = sawmill;
