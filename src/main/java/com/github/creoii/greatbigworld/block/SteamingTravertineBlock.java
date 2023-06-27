@@ -28,7 +28,7 @@ public class SteamingTravertineBlock extends Block {
 
             if (!world.isClient) {
                 for (int i = 0; i < 2; ++i) {
-                    world.spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, 0d, 0d, 1d);
+                    world.spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, 0d, 0d, .6d);
                     world.spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, .01d, 0d, .2d);
                 }
             }

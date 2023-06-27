@@ -19,6 +19,7 @@
     "entity.EndermanEntityMixin",
     "entity.LivingEntityMixin",
     "entity.PillagerEntityMixin",
+    "entity.PlayerEntityMixin",
     "entity.WolfEntityMixin",
     "item.BowItemMixin",
     "item.CrossbowItemMixin",

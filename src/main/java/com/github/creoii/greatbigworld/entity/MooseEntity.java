@@ -2,13 +2,11 @@ package com.github.creoii.greatbigworld.entity;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.integration.ModMenuIntegration;
-import com.github.creoii.greatbigworld.main.registry.GBWBlocks;
-import com.github.creoii.greatbigworld.main.registry.GBWEntityTypes;
-import com.github.creoii.greatbigworld.main.registry.GBWGameEvents;
-import com.github.creoii.greatbigworld.main.registry.GBWSoundEvents;
+import com.github.creoii.greatbigworld.main.registry.*;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.NoPenaltyTargeting;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
 import net.minecraft.entity.ai.control.LookControl;
 import net.minecraft.entity.ai.goal.*;
@@ -230,6 +228,12 @@ public class MooseEntity extends AbstractHorseEntity implements Angerable, Jumpi
             playSound(SoundEvents.ENTITY_GOAT_HORN_BREAK, getSoundVolume(), getSoundPitch());
             emitGameEvent(GBWGameEvents.SHED_ANTLERS);
         }
+
+        getWorld().getPlayers(TargetPredicate.DEFAULT, this, getBoundingBox().expand(64d)).forEach(playerEntity -> {
+            if (playerEntity.canSee(this)) {
+                playerEntity.incrementStat(GBWStats.INTERACT_WITH_KILN);
+            }
+        });
     }
 
     public void regrowAntlers() {

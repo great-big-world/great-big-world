@@ -4,6 +4,7 @@ import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Tags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +20,10 @@ public class AbstractBlockMixin {
     @Inject(method = "randomTick", at = @At("HEAD"))
     private void gbw_bleachCobblestone(BlockState state, ServerWorld world, BlockPos pos, Random random, CallbackInfo ci) {
         if (GreatBigWorld.HEAT_CONVERSIONS.containsKey(state.getBlock())) {
-            if (random.nextInt(5) != 0 || !world.isDay() || !canHeatConvert(world, pos)) return;
+            if (!world.isDay() || !canHeatConvert(world, pos)) return;
+
+            world.spawnParticles(ParticleTypes.SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, 0d, 0d, 0d);
+            if (random.nextInt(5) != 0) return;
 
             RegistryEntry<Biome> biomeEntry = world.getBiome(pos);
             if (!biomeEntry.hasKeyAndValue()) return;

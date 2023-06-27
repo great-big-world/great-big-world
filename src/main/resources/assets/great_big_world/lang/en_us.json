@@ -339,6 +339,11 @@
   "great_big_world.subtitles.entity.moose.death": "Moose dies",
   "great_big_world.subtitles.entity.moose.warning": "Moose warns",
 
+  "stat.great_big_world.antler_sheds_seen": "Antler Sheds Seen",
+  "stat.great_big_world.interact_with_kiln": "Interactions with Kiln",
+  "stat.great_big_world.interact_with_sawmill": "Interactions with Sawmill",
+  "stat.great_big_world.moose_one_cm": "Distance by Moose",
+
   "advancements.adventure.on_a_tropical_island.title": "On A Tropical Island",
   "advancements.adventure.on_a_tropical_island.description": "Step foot onto a Tropical Island",
   "advancements.adventure.oxidizing_nautilus.title": "Oxidizing Nautilus",

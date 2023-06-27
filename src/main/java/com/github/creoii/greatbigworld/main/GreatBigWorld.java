@@ -35,6 +35,7 @@ public class GreatBigWorld implements ModInitializer {
             new GBWSoundEvents(),
             new GBWGameEvents(),
             new GBWParticles(),
+            new GBWStats(),
             new GBWCriteria(),
             new GBWAdvancements(),
             new GBWLootTables()

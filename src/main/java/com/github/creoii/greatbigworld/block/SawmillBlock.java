@@ -1,7 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
-import com.github.creoii.greatbigworld.main.util.GBWStats;
+import com.github.creoii.greatbigworld.main.registry.GBWStats;
 import com.github.creoii.greatbigworld.screen.SawmillScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

@@ -3,7 +3,7 @@ package com.github.creoii.greatbigworld.block;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.greatbigworld.block.entity.KilnBlockEntity;
 import com.github.creoii.greatbigworld.main.registry.GBWBlockEntities;
-import com.github.creoii.greatbigworld.main.util.GBWStats;
+import com.github.creoii.greatbigworld.main.registry.GBWStats;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
