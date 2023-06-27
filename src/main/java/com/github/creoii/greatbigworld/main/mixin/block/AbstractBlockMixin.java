@@ -26,23 +26,23 @@ public class AbstractBlockMixin {
             if (biomeEntry.value().getTemperature() < .55f) return;
 
             world.setBlockState(pos, GreatBigWorld.HEAT_CONVERSIONS.get(state.getBlock()).getDefaultState());
-
         }
     }
 
     private boolean canHeatConvert(ServerWorld world, BlockPos pos) {
-        int glass = 0;
+        boolean glass = false;
         BlockPos.Mutable mutable = pos.mutableCopy();
         // add one so we don't iterate over the heatable block
         for (int i = pos.getY() + 1; i < world.getHeight(); ++i) {
             mutable.setY(i);
             BlockState state = world.getBlockState(mutable);
-            if (state.isIn(Tags.BlockTags.SOLAR_HEAT_TRANSFERRABLES)) {
-                ++glass;
+            if (!glass && state.isIn(Tags.BlockTags.SOLAR_HEAT_TRANSFERRABLES)) {
+                glass = true;
                 continue;
             }
+
             if (!state.isAir()) return false;
         }
-        return glass > 0;
+        return glass;
     }
 }
