@@ -1,6 +1,7 @@
 package com.github.creoii.greatbigworld.block;
 
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
+import com.github.creoii.greatbigworld.main.util.GBWStats;
 import com.github.creoii.greatbigworld.screen.SawmillScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -10,7 +11,6 @@ import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -23,7 +23,7 @@ public class SawmillBlock extends StonecutterBlock {
     private static final Text TITLE = Text.translatable("container.sawmill");
 
     public SawmillBlock() {
-        super(CBlockSettings.copy(Blocks.STONECUTTER).sounds(BlockSoundGroup.WOOD));
+        super(CBlockSettings.copy(Blocks.STONECUTTER).strength(2.5f).sounds(BlockSoundGroup.WOOD));
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SawmillBlock extends StonecutterBlock {
             return ActionResult.SUCCESS;
         }
         player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-        player.incrementStat(Stats.INTERACT_WITH_STONECUTTER);
+        player.incrementStat(GBWStats.INTERACT_WITH_SAWMILL);
         return ActionResult.CONSUME;
     }
 

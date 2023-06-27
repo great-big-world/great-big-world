@@ -19,12 +19,19 @@ public class SteamingTravertineBlock extends Block {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
         if (random.nextInt(20) == 0) {
-            System.out.println("explode");
             world.syncWorldEvent(5000, pos, 0);
             world.getEntitiesByClass(LivingEntity.class, Box.from(BlockBox.create(pos.subtract(new Vec3i(-1, 0, -1)), pos.add(new Vec3i(1, 4, 1)))), livingEntity -> true).forEach(livingEntity -> {
-                System.out.println(livingEntity.getType().toString());
-                livingEntity.addVelocity(new Vec3d(0d, 4d, 0d));
+                Vec3d vec3d = livingEntity.getVelocity();
+                livingEntity.setVelocity(vec3d.x, Math.min(.7d, vec3d.y + .06d), vec3d.z);
+                livingEntity.fallDistance = 0f;
             });
+
+            if (!world.isClient) {
+                for (int i = 0; i < 2; ++i) {
+                    world.spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, 0d, 0d, 1d);
+                    world.spawnParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, (double)pos.getX() + world.random.nextDouble(), pos.getY() + 1d, (double)pos.getZ() + world.random.nextDouble(), 1, 0d, .01d, 0d, .2d);
+                }
+            }
         }
     }
 

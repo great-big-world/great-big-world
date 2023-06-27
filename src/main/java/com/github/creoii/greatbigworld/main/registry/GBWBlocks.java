@@ -68,12 +68,12 @@ public class GBWBlocks implements Register {
     public static final Block COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_BRICK_STAIRS = new StairsBlock(COBBLESTONE_BRICKS.getDefaultState(), CBlockSettings.copy(Blocks.COBBLESTONE_STAIRS));
     public static final Block COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.COBBLESTONE_SLAB));
-    public static final Block COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.COBBLESTONE_WALL));
+    public static final Block COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.COBBLESTONE_WALL).solid());
     public static final Block CHISELED_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(COBBLESTONE_BRICKS));
     public static final Block MOSSY_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE));
     public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_STAIRS));
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_SLAB));
-    public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_WALL));
+    public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_WALL).solid());
     //endregion
     //region Stained Calcite
     public static final Block BROWN_STAINED_CALCITE = new Block(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_BROWN));
@@ -119,11 +119,11 @@ public class GBWBlocks implements Register {
     public static final Block GRASSY_LAVAROCK = new GrassyLavarockBlock();
     public static final Block LAVAROCK_STAIRS = new StairsBlock(LAVAROCK.getDefaultState(), CBlockSettings.copy(LAVAROCK));
     public static final Block LAVAROCK_SLAB = new SlabBlock(CBlockSettings.copy(LAVAROCK));
-    public static final Block LAVAROCK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK));
+    public static final Block LAVAROCK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK).solid());
     public static final Block LAVAROCK_BRICKS = new Block(CBlockSettings.copy(Blocks.STONE_BRICKS).mapColor(MapColor.BLACK));
     public static final Block LAVAROCK_BRICK_STAIRS = new StairsBlock(LAVAROCK_BRICKS.getDefaultState(), CBlockSettings.copy(LAVAROCK_BRICKS));
     public static final Block LAVAROCK_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(LAVAROCK_BRICKS));
-    public static final Block LAVAROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK_BRICKS));
+    public static final Block LAVAROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(LAVAROCK_BRICKS).solid());
     public static final Block CHISELED_LAVAROCK_BRICKS = new Block(CBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
@@ -138,11 +138,11 @@ public class GBWBlocks implements Register {
     public static final Block ELDER_PRISMARINE = new Block(CBlockSettings.copy(Blocks.PRISMARINE).mapColor(MapColor.PALE_YELLOW));
     public static final Block ELDER_PRISMARINE_SLAB = new SlabBlock(CBlockSettings.copy(ELDER_PRISMARINE));
     public static final Block ELDER_PRISMARINE_STAIRS = new StairsBlock(ELDER_PRISMARINE.getDefaultState(), CBlockSettings.copy(ELDER_PRISMARINE));
-    public static final Block ELDER_PRISMARINE_WALL = new WallBlock(CBlockSettings.copy(ELDER_PRISMARINE));
+    public static final Block ELDER_PRISMARINE_WALL = new WallBlock(CBlockSettings.copy(ELDER_PRISMARINE).solid());
     public static final Block ELDER_PRISMARINE_BRICKS = new Block(CBlockSettings.copy(Blocks.PRISMARINE_BRICKS).mapColor(MapColor.PALE_YELLOW));
     public static final Block ELDER_PRISMARINE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
     public static final Block ELDER_PRISMARINE_BRICK_STAIRS = new StairsBlock(ELDER_PRISMARINE_BRICKS.getDefaultState(), CBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
-    public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(CBlockSettings.copy(ELDER_PRISMARINE_BRICKS));
+    public static final Block ELDER_PRISMARINE_BRICK_WALL = new WallBlock(CBlockSettings.copy(ELDER_PRISMARINE_BRICKS).solid());
     public static final Block ELDER_SEA_LANTERN = new Block(CBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
     //region Wisteria Wood
@@ -188,17 +188,17 @@ public class GBWBlocks implements Register {
     //public static final Block GRASSY_RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     //public static final Block RED_ROCK_SOIL = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    public static final Block RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
+    public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(RED_ROCK));
+    public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(RED_ROCK));
+    public static final Block RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(RED_ROCK).solid());
     public static final Block POLISHED_RED_ROCK = new Block(CBlockSettings.copy(RED_ROCK));
     public static final Block POLISHED_RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
     public static final Block POLISHED_RED_ROCK_STAIRS = new StairsBlock(POLISHED_RED_ROCK.getDefaultState(), CBlockSettings.copy(POLISHED_RED_ROCK));
-    public static final Block POLISHED_RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(POLISHED_RED_ROCK));
+    public static final Block POLISHED_RED_ROCK_WALL = new WallBlock(CBlockSettings.copy(POLISHED_RED_ROCK).solid());
     public static final Block RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK));
     public static final Block RED_ROCK_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block RED_ROCK_BRICK_STAIRS = new StairsBlock(RED_ROCK_BRICKS.getDefaultState(), CBlockSettings.copy(RED_ROCK_BRICKS));
-    public static final Block RED_ROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(RED_ROCK_BRICKS));
+    public static final Block RED_ROCK_BRICK_WALL = new WallBlock(CBlockSettings.copy(RED_ROCK_BRICKS).solid());
     public static final Block CRACKED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block CHISELED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block RED_ROCK_PILLAR = new PillarBlock(CBlockSettings.copy(RED_ROCK));
@@ -222,10 +222,10 @@ public class GBWBlocks implements Register {
     public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
     public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(20, 25));
     public static final Block SULFUR_BLOCK = new SulfurBlock();
-    public static final Block BLANCHED_BRICKS = new Block(CBlockSettings.copy(Blocks.BRICKS).mapColor(MapColor.TERRACOTTA_WHITE));
+    public static final Block BLANCHED_BRICKS = new Block(CBlockSettings.copy(Blocks.BRICKS).mapColor(MapColor.TERRACOTTA_WHITE).strength(2f).mapColor(MapColor.TERRACOTTA_WHITE));
     public static final Block BLANCHED_BRICK_STAIRS = new StairsBlock(BLANCHED_BRICKS.getDefaultState(), CBlockSettings.copy(BLANCHED_BRICKS));
     public static final Block BLANCHED_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(BLANCHED_BRICKS));
-    public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS));
+    public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS).solid());
     public static final Block SAWMILL = new SawmillBlock();
     public static final Block KILN = new KilnBlock();
     //endregion

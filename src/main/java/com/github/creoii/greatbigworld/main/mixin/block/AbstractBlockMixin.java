@@ -2,7 +2,6 @@ package com.github.creoii.greatbigworld.main.mixin.block;
 
 import com.github.creoii.greatbigworld.main.GreatBigWorld;
 import com.github.creoii.greatbigworld.main.util.Tags;
-import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.entry.RegistryEntry;

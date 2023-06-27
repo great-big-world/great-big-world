@@ -7,15 +7,13 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Identifier;
 
 public class GBWStats {
-    /*public static final Identifier INTERACT_WITH_KILN = Stats.register("interact_with_smoker", StatFormatter.DEFAULT);
-    public static final Identifier INTERACT_WITH_SAWMILL = Stats.register("interact_with_smoker", StatFormatter.DEFAULT);
+    public static final Identifier INTERACT_WITH_KILN = registerStat("interact_with_kiln", StatFormatter.DEFAULT);
+    public static final Identifier INTERACT_WITH_SAWMILL = registerStat("interact_with_sawmill", StatFormatter.DEFAULT);
 
-
-
-    private static void registerStat(String id, StatFormatter formatter) {
+    private static Identifier registerStat(String id, StatFormatter formatter) {
         Identifier identifier = new Identifier(id);
         Registry.register(Registries.CUSTOM_STAT, id, identifier);
-        CUSTOM.getOrCreateStat(identifier, formatter);
+        Stats.CUSTOM.getOrCreateStat(identifier, formatter);
         return identifier;
-    }*/
+    }
 }
