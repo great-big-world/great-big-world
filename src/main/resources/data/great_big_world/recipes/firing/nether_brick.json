@@ -1,0 +1,10 @@
+{
+  "type": "great_big_world:firing",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "minecraft:netherrack"
+  },
+  "result": "minecraft:nether_brick"
+}
