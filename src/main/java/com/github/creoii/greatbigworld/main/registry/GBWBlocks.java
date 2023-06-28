@@ -182,7 +182,7 @@ public class GBWBlocks implements Register {
     public static final Block POLISHED_PEACH_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_PEACH_TRAVERTINE));
     public static final Block POLISHED_GOLDEN_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_GOLDEN_TRAVERTINE));
     public static final Block POLISHED_IVORY_TRAVERTINE_TILES = new Block(CBlockSettings.copy(POLISHED_IVORY_TRAVERTINE));
-    public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE).ticksRandomly());
+    public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE));
     //endregion
     //region Red Rock
     //public static final Block GRASSY_RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
