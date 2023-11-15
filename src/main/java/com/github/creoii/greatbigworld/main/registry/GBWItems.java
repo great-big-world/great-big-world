@@ -29,6 +29,8 @@ import static com.github.creoii.greatbigworld.main.registry.GBWBlocks.*;
 
 public class GBWItems implements Register {
     //region Mahogany Wood
+    public static final Item MAHOGANY_SIGN = new SignItem((new CItemSettings()).maxCount(16), GBWBlocks.MAHOGANY_SIGN, MAHOGANY_WALL_SIGN);
+    public static final Item MAHOGANY_HANGING_SIGN = new HangingSignItem(GBWBlocks.MAHOGANY_HANGING_SIGN, MAHOGANY_WALL_HANGING_SIGN, (new CItemSettings()).maxCount(16));
     public static final Item MAHOGANY_LEAVES = new BlockItem(GBWBlocks.MAHOGANY_LEAVES, new CItemSettings().compostingChance(.3f));
     public static final Item MAHOGANY_BOAT = new BoatItem(false, GBWBoatTypes.MAHOGANY, new CItemSettings().maxCount(1));
     public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new CItemSettings().maxCount(1));
@@ -65,7 +67,7 @@ public class GBWItems implements Register {
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
     public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN.planks()));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
-    public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(MAHOGANY.planks()));
+    public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(MAHOGANY_PLANKS));
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ACAI.planks()));
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
@@ -95,6 +97,8 @@ public class GBWItems implements Register {
 
     @Override
     public void register() {
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_hanging_sign"), MAHOGANY_HANGING_SIGN, MAHOGANY_SIGN, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);

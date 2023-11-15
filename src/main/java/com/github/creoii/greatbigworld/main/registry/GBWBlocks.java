@@ -14,20 +14,23 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.sapling.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 
 import java.util.List;
 
@@ -35,7 +38,29 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class GBWBlocks implements Register {
     //region Mahogany Wood
-    public static RegistrySets.WoodSet MAHOGANY = RegistrySets.createWoodSet(NAMESPACE, "mahogany", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.JUNGLE_BUTTON, Items.JUNGLE_LOG, Items.JUNGLE_SIGN);
+    public static final BlockSetType MAHOGANY = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "mahogany"));
+    public static final WoodType MAHOGANY_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "mahogany"), MAHOGANY);
+    public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
+    public static final Block MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_ORANGE : MapColor.TERRACOTTA_BROWN;
+    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_MAHOGANY_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_MAHOGANY_LOG));
+    public static final Block MAHOGANY_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_MAHOGANY_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block MAHOGANY_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block MAHOGANY_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block MAHOGANY_STAIRS = new StairsBlock(MAHOGANY_PLANKS.getDefaultState(), CBlockSettings.copy(MAHOGANY_PLANKS));
+    public static final Block MAHOGANY_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block MAHOGANY_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), MAHOGANY_TYPE);
+    public static final Block MAHOGANY_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), MAHOGANY, 30, true);
+    public static final Block MAHOGANY_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), MAHOGANY);
+    public static final Block MAHOGANY_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), MAHOGANY);
+    public static final Block MAHOGANY_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), MAHOGANY);
+    public static final Block MAHOGANY_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), MAHOGANY_TYPE);
+    public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE).dropsLike(MAHOGANY_SIGN), MAHOGANY_TYPE);
+    public static final Block MAHOGANY_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), MAHOGANY_TYPE);
+    public static final Block MAHOGANY_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(MAHOGANY_HANGING_SIGN).dropsLike(MAHOGANY_HANGING_SIGN), MAHOGANY_TYPE);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), CBlockSettings.copy(Blocks.JUNGLE_SAPLING));
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
@@ -127,7 +152,7 @@ public class GBWBlocks implements Register {
     public static final Block CHISELED_LAVAROCK_BRICKS = new Block(CBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
-    public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY.button(), MAHOGANY.log(), MAHOGANY.sign());
+    public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY_BUTTON, MAHOGANY_LOG, MAHOGANY_SIGN);
     public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(30, 60));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(30, 60));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(MAHOGANY_SAPLING));
@@ -232,19 +257,35 @@ public class GBWBlocks implements Register {
 
     @Override
     public void register() {
-        MAHOGANY.register();
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_log"), MAHOGANY_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.JUNGLE_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.JUNGLE_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, MAHOGANY_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_wood"), MAHOGANY_WOOD, STRIPPED_MAHOGANY_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_wood"), STRIPPED_MAHOGANY_WOOD, MAHOGANY_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_planks"), MAHOGANY_PLANKS, STRIPPED_MAHOGANY_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_stairs"), MAHOGANY_STAIRS, MAHOGANY_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_slab"), MAHOGANY_SLAB, MAHOGANY_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_fence"), MAHOGANY_FENCE, MAHOGANY_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_fence_gate"), MAHOGANY_FENCE_GATE, MAHOGANY_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_door"), MAHOGANY_DOOR, MAHOGANY_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_trapdoor"), MAHOGANY_TRAPDOOR, MAHOGANY_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_pressure_plate"), MAHOGANY_PRESSURE_PLATE, MAHOGANY_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_button"), MAHOGANY_BUTTON, MAHOGANY_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_wall_sign"), MAHOGANY_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_hanging_sign"), MAHOGANY_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_wall_hanging_sign"), MAHOGANY_WALL_HANGING_SIGN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, new CItemSettings().compostingChance(.1f), Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING);
 
         ASPEN.register();
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH);
@@ -424,8 +465,8 @@ public class GBWBlocks implements Register {
     @Override
     public void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                MAHOGANY.door(),
-                MAHOGANY.trapdoor(),
+                MAHOGANY_DOOR,
+                MAHOGANY_TRAPDOOR,
                 ASPEN.door(),
                 ASPEN.trapdoor(),
                 ACAI.door(),
