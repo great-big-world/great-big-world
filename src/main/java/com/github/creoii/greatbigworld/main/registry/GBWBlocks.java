@@ -194,9 +194,9 @@ public class GBWBlocks implements Register {
     public static final Block ACAI_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
     }).burnable(), ACAI);
-    public static final Block ACAI_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), ACAI_TYPE);
-    public static final Block ACAI_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE).dropsLike(ACAI_SIGN), ACAI_TYPE);
-    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), ACAI_TYPE);
+    public static final Block ACAI_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), ACAI_TYPE);
+    public static final Block ACAI_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW).dropsLike(ACAI_SIGN), ACAI_TYPE);
+    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), ACAI_TYPE);
     public static final Block ACAI_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ACAI_HANGING_SIGN).dropsLike(ACAI_HANGING_SIGN), ACAI_TYPE);
     public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(30, 60));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(30, 60));
@@ -216,7 +216,29 @@ public class GBWBlocks implements Register {
     public static final Block ELDER_SEA_LANTERN = new Block(CBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
     //region Wisteria Wood
-    public static RegistrySets.WoodSet WISTERIA = RegistrySets.createWoodSet(NAMESPACE, "wisteria", MapColor.TERRACOTTA_GRAY, MapColor.OFF_WHITE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
+    public static final BlockSetType WISTERIA = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "wisteria"));
+    public static final WoodType WISTERIA_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "wisteria"), WISTERIA);
+    public static final Block STRIPPED_WISTERIA_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
+    public static final Block WISTERIA_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.OFF_WHITE : MapColor.TERRACOTTA_GRAY;
+    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_WISTERIA_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_WISTERIA_LOG));
+    public static final Block WISTERIA_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_WISTERIA_LOG).mapColor(MapColor.TERRACOTTA_GRAY));
+    public static final Block WISTERIA_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block WISTERIA_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block WISTERIA_STAIRS = new StairsBlock(WISTERIA_PLANKS.getDefaultState(), CBlockSettings.copy(WISTERIA_PLANKS));
+    public static final Block WISTERIA_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block WISTERIA_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), WISTERIA_TYPE);
+    public static final Block WISTERIA_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), WISTERIA, 30, true);
+    public static final Block WISTERIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), WISTERIA);
+    public static final Block WISTERIA_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), WISTERIA);
+    public static final Block WISTERIA_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), WISTERIA);
+    public static final Block WISTERIA_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.OFF_WHITE), WISTERIA_TYPE);
+    public static final Block WISTERIA_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.OFF_WHITE).dropsLike(WISTERIA_SIGN), WISTERIA_TYPE);
+    public static final Block WISTERIA_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.OFF_WHITE), WISTERIA_TYPE);
+    public static final Block WISTERIA_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(WISTERIA_HANGING_SIGN).dropsLike(WISTERIA_HANGING_SIGN), WISTERIA_TYPE);
     public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.CHERRY_LEAVES));
     public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CHERRY_LEAVES));
     public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.CHERRY_LEAVES));
@@ -457,9 +479,25 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_prismarine_brick_wall"), ELDER_PRISMARINE_BRICK_WALL, ELDER_PRISMARINE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
-        WISTERIA.register();
-        StrippableBlockRegistry.register(WISTERIA.log(), WISTERIA.strippedLog());
-        StrippableBlockRegistry.register(WISTERIA.wood(), WISTERIA.strippedWood());
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_log"), WISTERIA_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.BIRCH_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.BIRCH_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_wisteria_log"), STRIPPED_WISTERIA_LOG, ACAI_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_wood"), WISTERIA_WOOD, STRIPPED_WISTERIA_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_wisteria_wood"), STRIPPED_WISTERIA_WOOD, WISTERIA_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(WISTERIA_LOG, STRIPPED_WISTERIA_LOG);
+        StrippableBlockRegistry.register(WISTERIA_WOOD, STRIPPED_WISTERIA_WOOD);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_planks"), WISTERIA_PLANKS, STRIPPED_WISTERIA_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_stairs"), WISTERIA_STAIRS, WISTERIA_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_slab"), WISTERIA_SLAB, WISTERIA_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_fence"), WISTERIA_FENCE, WISTERIA_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_fence_gate"), WISTERIA_FENCE_GATE, WISTERIA_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_door"), WISTERIA_DOOR, WISTERIA_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_trapdoor"), WISTERIA_TRAPDOOR, WISTERIA_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_pressure_plate"), WISTERIA_PRESSURE_PLATE, WISTERIA_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_button"), WISTERIA_BUTTON, WISTERIA_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_sign"), WISTERIA_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_wall_sign"), WISTERIA_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_hanging_sign"), WISTERIA_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "wisteria_wall_hanging_sign"), WISTERIA_WALL_HANGING_SIGN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
