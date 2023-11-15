@@ -175,7 +175,29 @@ public class GBWBlocks implements Register {
     public static final Block CHISELED_LAVAROCK_BRICKS = new Block(CBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
-    public static RegistrySets.WoodSet ACAI = RegistrySets.createWoodSet(NAMESPACE, "acai", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_YELLOW, MAHOGANY_BUTTON, MAHOGANY_LOG, MAHOGANY_SIGN);
+    public static final BlockSetType ACAI = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "acai"));
+    public static final WoodType ACAI_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "acai"), ACAI);
+    public static final Block STRIPPED_ACAI_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
+    public static final Block ACAI_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_YELLOW : MapColor.TERRACOTTA_BROWN;
+    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_ACAI_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ACAI_LOG));
+    public static final Block ACAI_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ACAI_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block ACAI_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block ACAI_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block ACAI_STAIRS = new StairsBlock(ACAI_PLANKS.getDefaultState(), CBlockSettings.copy(ACAI_PLANKS));
+    public static final Block ACAI_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block ACAI_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), ACAI_TYPE);
+    public static final Block ACAI_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), ACAI, 30, true);
+    public static final Block ACAI_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), ACAI);
+    public static final Block ACAI_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), ACAI);
+    public static final Block ACAI_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), ACAI);
+    public static final Block ACAI_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), ACAI_TYPE);
+    public static final Block ACAI_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE).dropsLike(ACAI_SIGN), ACAI_TYPE);
+    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), ACAI_TYPE);
+    public static final Block ACAI_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ACAI_HANGING_SIGN).dropsLike(ACAI_HANGING_SIGN), ACAI_TYPE);
     public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(30, 60));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(30, 60));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(MAHOGANY_SAPLING));
@@ -400,9 +422,25 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "lavarock_brick_wall"), LAVAROCK_BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_lavarock_bricks"), CHISELED_LAVAROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
 
-        ACAI.register();
-        StrippableBlockRegistry.register(ACAI.log(), ACAI.strippedLog());
-        StrippableBlockRegistry.register(ACAI.wood(), ACAI.strippedWood());
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_log"), ACAI_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MAHOGANY_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, MAHOGANY_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_acai_log"), STRIPPED_ACAI_LOG, ACAI_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_wood"), ACAI_WOOD, STRIPPED_ACAI_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_acai_wood"), STRIPPED_ACAI_WOOD, ACAI_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(ACAI_LOG, STRIPPED_ACAI_LOG);
+        StrippableBlockRegistry.register(ACAI_WOOD, STRIPPED_ACAI_WOOD);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_planks"), ACAI_PLANKS, STRIPPED_ACAI_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_stairs"), ACAI_STAIRS, ACAI_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_slab"), ACAI_SLAB, ACAI_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_fence"), ACAI_FENCE, ACAI_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_fence_gate"), ACAI_FENCE_GATE, ACAI_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_door"), ACAI_DOOR, ACAI_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_trapdoor"), ACAI_TRAPDOOR, ACAI_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_pressure_plate"), ACAI_PRESSURE_PLATE, ACAI_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_button"), ACAI_BUTTON, ACAI_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_sign"), ACAI_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_wall_sign"), ACAI_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_hanging_sign"), ACAI_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_wall_hanging_sign"), ACAI_WALL_HANGING_SIGN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, new CItemSettings().compostingChance(.3f), MAHOGANY_SAPLING, ItemGroups.NATURAL);
