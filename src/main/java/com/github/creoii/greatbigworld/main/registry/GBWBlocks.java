@@ -5,7 +5,6 @@ import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.creolib.api.util.block.Spreadable;
 import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
-import com.github.creoii.creolib.api.util.registry.RegistrySets;
 import com.github.creoii.greatbigworld.block.*;
 import com.github.creoii.greatbigworld.block.thatch.ThatchBlock;
 import com.github.creoii.greatbigworld.block.thatch.ThatchSlabBlock;
@@ -14,8 +13,6 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.world.sapling.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
@@ -39,8 +36,6 @@ import static com.github.creoii.greatbigworld.main.GreatBigWorld.NAMESPACE;
 
 public class GBWBlocks implements Register {
     //region Mahogany Wood
-    public static final BlockSetType MAHOGANY = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "mahogany"));
-    public static final WoodType MAHOGANY_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "mahogany"), MAHOGANY);
     public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
     public static final Block MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_ORANGE : MapColor.TERRACOTTA_BROWN;
@@ -51,24 +46,22 @@ public class GBWBlocks implements Register {
     public static final Block MAHOGANY_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block MAHOGANY_STAIRS = new StairsBlock(MAHOGANY_PLANKS.getDefaultState(), CBlockSettings.copy(MAHOGANY_PLANKS));
     public static final Block MAHOGANY_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
-    public static final Block MAHOGANY_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), MAHOGANY_TYPE);
-    public static final Block MAHOGANY_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), MAHOGANY, 30, true);
-    public static final Block MAHOGANY_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), MAHOGANY);
-    public static final Block MAHOGANY_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), MAHOGANY);
+    public static final Block MAHOGANY_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.MAHOGANY);
+    public static final Block MAHOGANY_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.MAHOGANY, 30, true);
+    public static final Block MAHOGANY_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.MAHOGANY);
+    public static final Block MAHOGANY_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.MAHOGANY);
     public static final Block MAHOGANY_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
-    }).burnable(), MAHOGANY);
-    public static final Block MAHOGANY_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), MAHOGANY_TYPE);
-    public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE).dropsLike(MAHOGANY_SIGN), MAHOGANY_TYPE);
-    public static final Block MAHOGANY_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), MAHOGANY_TYPE);
-    public static final Block MAHOGANY_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(MAHOGANY_HANGING_SIGN).dropsLike(MAHOGANY_HANGING_SIGN), MAHOGANY_TYPE);
+    }).burnable(), GBWBlockSetTypes.MAHOGANY);
+    public static final Block MAHOGANY_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), GBWWoodTypes.MAHOGANY);
+    public static final Block MAHOGANY_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE).dropsLike(MAHOGANY_SIGN), GBWWoodTypes.MAHOGANY);
+    public static final Block MAHOGANY_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_ORANGE), GBWWoodTypes.MAHOGANY);
+    public static final Block MAHOGANY_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(MAHOGANY_HANGING_SIGN).dropsLike(MAHOGANY_HANGING_SIGN), GBWWoodTypes.MAHOGANY);
     public static final Block MAHOGANY_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
     public static final Block MAHOGANY_SAPLING = new SaplingBlock(new MahoganySaplingGenerator(), CBlockSettings.copy(Blocks.JUNGLE_SAPLING));
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Aspen Wood
-    public static final BlockSetType ASPEN = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "aspen"));
-    public static final WoodType ASPEN_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "aspen"), MAHOGANY);
     public static final Block STRIPPED_ASPEN_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
     public static final Block ASPEN_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.PALE_YELLOW : MapColor.OFF_WHITE;
@@ -79,17 +72,17 @@ public class GBWBlocks implements Register {
     public static final Block ASPEN_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block ASPEN_STAIRS = new StairsBlock(ASPEN_PLANKS.getDefaultState(), CBlockSettings.copy(ASPEN_PLANKS));
     public static final Block ASPEN_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
-    public static final Block ASPEN_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), ASPEN_TYPE);
-    public static final Block ASPEN_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), ASPEN, 30, true);
-    public static final Block ASPEN_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), ASPEN);
-    public static final Block ASPEN_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), ASPEN);
+    public static final Block ASPEN_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.ASPEN);
+    public static final Block ASPEN_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN, 30, true);
+    public static final Block ASPEN_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN);
+    public static final Block ASPEN_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN);
     public static final Block ASPEN_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
-    }).burnable(), ASPEN);
-    public static final Block ASPEN_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.PALE_YELLOW), ASPEN_TYPE);
-    public static final Block ASPEN_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.PALE_YELLOW).dropsLike(ASPEN_SIGN), ASPEN_TYPE);
-    public static final Block ASPEN_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.PALE_YELLOW), ASPEN_TYPE);
-    public static final Block ASPEN_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ASPEN_HANGING_SIGN).dropsLike(ASPEN_HANGING_SIGN), ASPEN_TYPE);
+    }).burnable(), GBWBlockSetTypes.ASPEN);
+    public static final Block ASPEN_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.PALE_YELLOW), GBWWoodTypes.ASPEN);
+    public static final Block ASPEN_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.PALE_YELLOW).dropsLike(ASPEN_SIGN), GBWWoodTypes.ASPEN);
+    public static final Block ASPEN_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.PALE_YELLOW), GBWWoodTypes.ASPEN);
+    public static final Block ASPEN_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ASPEN_HANGING_SIGN).dropsLike(ASPEN_HANGING_SIGN), GBWWoodTypes.ASPEN);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(30, 60));
     public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(CBlockSettings.create().mapColor(MapColor.YELLOW).strength(.1f).sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().fireSettings(30, 60));
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
@@ -175,8 +168,6 @@ public class GBWBlocks implements Register {
     public static final Block CHISELED_LAVAROCK_BRICKS = new Block(CBlockSettings.copy(LAVAROCK_BRICKS));
     //endregion
     //region Acai
-    public static final BlockSetType ACAI = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "acai"));
-    public static final WoodType ACAI_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "acai"), ACAI);
     public static final Block STRIPPED_ACAI_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
     public static final Block ACAI_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_YELLOW : MapColor.TERRACOTTA_BROWN;
@@ -187,17 +178,17 @@ public class GBWBlocks implements Register {
     public static final Block ACAI_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block ACAI_STAIRS = new StairsBlock(ACAI_PLANKS.getDefaultState(), CBlockSettings.copy(ACAI_PLANKS));
     public static final Block ACAI_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
-    public static final Block ACAI_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), ACAI_TYPE);
-    public static final Block ACAI_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), ACAI, 30, true);
-    public static final Block ACAI_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), ACAI);
-    public static final Block ACAI_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), ACAI);
+    public static final Block ACAI_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.ACAI);
+    public static final Block ACAI_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ACAI, 30, true);
+    public static final Block ACAI_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ACAI);
+    public static final Block ACAI_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ACAI);
     public static final Block ACAI_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
-    }).burnable(), ACAI);
-    public static final Block ACAI_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), ACAI_TYPE);
-    public static final Block ACAI_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW).dropsLike(ACAI_SIGN), ACAI_TYPE);
-    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), ACAI_TYPE);
-    public static final Block ACAI_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ACAI_HANGING_SIGN).dropsLike(ACAI_HANGING_SIGN), ACAI_TYPE);
+    }).burnable(), GBWBlockSetTypes.ACAI);
+    public static final Block ACAI_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), GBWWoodTypes.ACAI);
+    public static final Block ACAI_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW).dropsLike(ACAI_SIGN), GBWWoodTypes.ACAI);
+    public static final Block ACAI_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_YELLOW), GBWWoodTypes.ACAI);
+    public static final Block ACAI_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ACAI_HANGING_SIGN).dropsLike(ACAI_HANGING_SIGN), GBWWoodTypes.ACAI);
     public static final Block ACAI_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.JUNGLE_LEAVES).fireSettings(30, 60));
     public static final Block HANGING_ACAI_LEAVES = new HangingLeavesBlock(CBlockSettings.copy(ACAI_LEAVES).fireSettings(30, 60));
     public static final Block ACAI_SAPLING = new SaplingBlock(new AcaiSaplingGenerator(), CBlockSettings.copy(MAHOGANY_SAPLING));
@@ -216,8 +207,6 @@ public class GBWBlocks implements Register {
     public static final Block ELDER_SEA_LANTERN = new Block(CBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
     //region Wisteria Wood
-    public static final BlockSetType WISTERIA = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "wisteria"));
-    public static final WoodType WISTERIA_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "wisteria"), WISTERIA);
     public static final Block STRIPPED_WISTERIA_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
     public static final Block WISTERIA_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.OFF_WHITE : MapColor.TERRACOTTA_GRAY;
@@ -228,17 +217,17 @@ public class GBWBlocks implements Register {
     public static final Block WISTERIA_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block WISTERIA_STAIRS = new StairsBlock(WISTERIA_PLANKS.getDefaultState(), CBlockSettings.copy(WISTERIA_PLANKS));
     public static final Block WISTERIA_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
-    public static final Block WISTERIA_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), WISTERIA_TYPE);
-    public static final Block WISTERIA_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), WISTERIA, 30, true);
-    public static final Block WISTERIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), WISTERIA);
-    public static final Block WISTERIA_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), WISTERIA);
+    public static final Block WISTERIA_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.WISTERIA);
+    public static final Block WISTERIA_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA, 30, true);
+    public static final Block WISTERIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA);
+    public static final Block WISTERIA_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA);
     public static final Block WISTERIA_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
-    }).burnable(), WISTERIA);
-    public static final Block WISTERIA_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.OFF_WHITE), WISTERIA_TYPE);
-    public static final Block WISTERIA_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.OFF_WHITE).dropsLike(WISTERIA_SIGN), WISTERIA_TYPE);
-    public static final Block WISTERIA_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.OFF_WHITE), WISTERIA_TYPE);
-    public static final Block WISTERIA_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(WISTERIA_HANGING_SIGN).dropsLike(WISTERIA_HANGING_SIGN), WISTERIA_TYPE);
+    }).burnable(), GBWBlockSetTypes.WISTERIA);
+    public static final Block WISTERIA_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.OFF_WHITE), GBWWoodTypes.WISTERIA);
+    public static final Block WISTERIA_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.OFF_WHITE).dropsLike(WISTERIA_SIGN), GBWWoodTypes.WISTERIA);
+    public static final Block WISTERIA_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.OFF_WHITE), GBWWoodTypes.WISTERIA);
+    public static final Block WISTERIA_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(WISTERIA_HANGING_SIGN).dropsLike(WISTERIA_HANGING_SIGN), GBWWoodTypes.WISTERIA);
     public static final Block WHITE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.CHERRY_LEAVES));
     public static final Block YELLOW_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.PALE_YELLOW).sounds(BlockSoundGroup.CHERRY_LEAVES));
     public static final Block BLUE_WISTERIA_LEAVES = new LeavesBlock(CBlockSettings.copy(GREEN_ASPEN_LEAVES).mapColor(MapColor.LIGHT_BLUE).sounds(BlockSoundGroup.CHERRY_LEAVES));
