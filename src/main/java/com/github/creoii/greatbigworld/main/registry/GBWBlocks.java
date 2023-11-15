@@ -16,6 +16,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.BlockSetTypeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.Instrument;
@@ -66,7 +67,29 @@ public class GBWBlocks implements Register {
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Aspen Wood
-    public static RegistrySets.WoodSet ASPEN = RegistrySets.createWoodSet(NAMESPACE, "aspen", MapColor.TERRACOTTA_BROWN, MapColor.TERRACOTTA_ORANGE, Items.BIRCH_BUTTON, Items.BIRCH_LOG, Items.BIRCH_SIGN);
+    public static final BlockSetType ASPEN = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "aspen"));
+    public static final WoodType ASPEN_TYPE = WoodTypeRegistry.register(new Identifier(NAMESPACE, "aspen"), MAHOGANY);
+    public static final Block STRIPPED_ASPEN_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
+    public static final Block ASPEN_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.PALE_YELLOW : MapColor.OFF_WHITE;
+    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_ASPEN_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ASPEN_LOG));
+    public static final Block ASPEN_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ASPEN_LOG).mapColor(MapColor.OFF_WHITE));
+    public static final Block ASPEN_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block ASPEN_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block ASPEN_STAIRS = new StairsBlock(ASPEN_PLANKS.getDefaultState(), CBlockSettings.copy(ASPEN_PLANKS));
+    public static final Block ASPEN_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block ASPEN_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), ASPEN_TYPE);
+    public static final Block ASPEN_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), ASPEN, 30, true);
+    public static final Block ASPEN_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), ASPEN);
+    public static final Block ASPEN_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), ASPEN);
+    public static final Block ASPEN_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), ASPEN);
+    public static final Block ASPEN_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.PALE_YELLOW), ASPEN_TYPE);
+    public static final Block ASPEN_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.PALE_YELLOW).dropsLike(ASPEN_SIGN), ASPEN_TYPE);
+    public static final Block ASPEN_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.PALE_YELLOW), ASPEN_TYPE);
+    public static final Block ASPEN_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(ASPEN_HANGING_SIGN).dropsLike(ASPEN_HANGING_SIGN), ASPEN_TYPE);
     public static final Block YELLOW_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(30, 60));
     public static final Block YELLOW_ASPEN_LEAF_PILE = new LeafPileBlock(CBlockSettings.create().mapColor(MapColor.YELLOW).strength(.1f).sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().fireSettings(30, 60));
     public static final Block GREEN_ASPEN_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).fireSettings(30, 60));
@@ -261,6 +284,8 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_log"), STRIPPED_MAHOGANY_LOG, MAHOGANY_LOG, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_wood"), MAHOGANY_WOOD, STRIPPED_MAHOGANY_LOG, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_mahogany_wood"), STRIPPED_MAHOGANY_WOOD, MAHOGANY_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(MAHOGANY_LOG, STRIPPED_MAHOGANY_LOG);
+        StrippableBlockRegistry.register(MAHOGANY_WOOD, STRIPPED_MAHOGANY_WOOD);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_planks"), MAHOGANY_PLANKS, STRIPPED_MAHOGANY_WOOD, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_stairs"), MAHOGANY_STAIRS, MAHOGANY_PLANKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_slab"), MAHOGANY_SLAB, MAHOGANY_STAIRS, ItemGroups.BUILDING_BLOCKS);
@@ -278,14 +303,32 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mahogany_sapling"), MAHOGANY_SAPLING, new CItemSettings().compostingChance(.1f), Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_mahogany_sapling"), POTTED_MAHOGANY_SAPLING);
 
-        ASPEN.register();
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_log"), ASPEN_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.BIRCH_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.BIRCH_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_aspen_log"), STRIPPED_ASPEN_LOG, ASPEN_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_wood"), ASPEN_WOOD, STRIPPED_ASPEN_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_aspen_wood"), STRIPPED_ASPEN_WOOD, ASPEN_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(ASPEN_LOG, STRIPPED_ASPEN_LOG);
+        StrippableBlockRegistry.register(ASPEN_WOOD, STRIPPED_ASPEN_WOOD);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_planks"), ASPEN_PLANKS, STRIPPED_ASPEN_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_stairs"), ASPEN_STAIRS, ASPEN_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_slab"), ASPEN_SLAB, ASPEN_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_fence"), ASPEN_FENCE, ASPEN_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_fence_gate"), ASPEN_FENCE_GATE, ASPEN_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_door"), ASPEN_DOOR, ASPEN_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_trapdoor"), ASPEN_TRAPDOOR, ASPEN_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_pressure_plate"), ASPEN_PRESSURE_PLATE, ASPEN_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_button"), ASPEN_BUTTON, ASPEN_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_wall_sign"), ASPEN_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_hanging_sign"), ASPEN_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aspen_wall_hanging_sign"), ASPEN_WALL_HANGING_SIGN);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaves"), YELLOW_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f), Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_leaf_pile"), YELLOW_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_aspen_sapling"), YELLOW_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), Items.BIRCH_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_yellow_aspen_sapling"), POTTED_YELLOW_ASPEN_SAPLING);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f), YELLOW_ASPEN_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f), GREEN_ASPEN_LEAVES, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "green_aspen_sapling"), GREEN_ASPEN_SAPLING, new CItemSettings().compostingChance(.3f), YELLOW_ASPEN_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_green_aspen_sapling"), POTTED_GREEN_ASPEN_SAPLING);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "soul_bamboo_torch"), SOUL_BAMBOO_TORCH);
@@ -358,6 +401,8 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_lavarock_bricks"), CHISELED_LAVAROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
 
         ACAI.register();
+        StrippableBlockRegistry.register(ACAI.log(), ACAI.strippedLog());
+        StrippableBlockRegistry.register(ACAI.wood(), ACAI.strippedWood());
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_leaves"), ACAI_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "hanging_acai_leaves"), HANGING_ACAI_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "acai_sapling"), ACAI_SAPLING, new CItemSettings().compostingChance(.3f), MAHOGANY_SAPLING, ItemGroups.NATURAL);
@@ -375,6 +420,8 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "elder_sea_lantern"), ELDER_SEA_LANTERN, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SEA_LANTERN), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, Items.SEA_LANTERN));
 
         WISTERIA.register();
+        StrippableBlockRegistry.register(WISTERIA.log(), WISTERIA.strippedLog());
+        StrippableBlockRegistry.register(WISTERIA.wood(), WISTERIA.strippedWood());
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_wisteria_leaves"), WHITE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "yellow_wisteria_leaves"), YELLOW_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blue_wisteria_leaves"), BLUE_WISTERIA_LEAVES, Blocks.BIRCH_LEAVES, ItemGroups.NATURAL);
@@ -465,62 +512,36 @@ public class GBWBlocks implements Register {
     @Override
     public void registerClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                MAHOGANY_DOOR,
-                MAHOGANY_TRAPDOOR,
-                ASPEN.door(),
-                ASPEN.trapdoor(),
-                ACAI.door(),
-                ACAI.trapdoor(),
-                MAHOGANY_SAPLING,
-                POTTED_MAHOGANY_SAPLING,
-                YELLOW_ASPEN_SAPLING,
-                POTTED_YELLOW_ASPEN_SAPLING,
-                GREEN_ASPEN_SAPLING,
-                POTTED_GREEN_ASPEN_SAPLING,
-                ACAI_SAPLING,
-                POTTED_ACAI_SAPLING,
+                MAHOGANY_DOOR, MAHOGANY_TRAPDOOR,
+                ASPEN_DOOR, ASPEN_TRAPDOOR,
+                ACAI.door(), ACAI.trapdoor(),
+                MAHOGANY_SAPLING, POTTED_MAHOGANY_SAPLING,
+                YELLOW_ASPEN_SAPLING, POTTED_YELLOW_ASPEN_SAPLING,
+                GREEN_ASPEN_SAPLING, POTTED_GREEN_ASPEN_SAPLING,
+                ACAI_SAPLING, POTTED_ACAI_SAPLING,
                 WHITE_WISTERIA_SAPLING, POTTED_WHITE_WISTERIA_SAPLING,
                 YELLOW_WISTERIA_SAPLING, POTTED_YELLOW_WISTERIA_SAPLING,
                 BLUE_WISTERIA_SAPLING, POTTED_BLUE_WISTERIA_SAPLING,
                 PINK_WISTERIA_SAPLING, POTTED_PINK_WISTERIA_SAPLING,
                 PURPLE_WISTERIA_SAPLING, POTTED_PURPLE_WISTERIA_SAPLING,
-                BAMBOO_TORCH,
-                BAMBOO_WALL_TORCH,
-                POTTED_BAMBOO_TORCH,
-                SOUL_BAMBOO_TORCH,
-                SOUL_BAMBOO_WALL_TORCH,
-                POTTED_SOUL_BAMBOO_TORCH,
-                BEACHGRASS_THATCH,
-                BEACHGRASS_THATCH_SLAB,
-                BEACHGRASS_THATCH_STAIRS,
-                BAMBOO_THATCH,
-                BAMBOO_THATCH_SLAB,
-                BAMBOO_THATCH_STAIRS,
-                GRASS_THATCH,
-                GRASS_THATCH_SLAB,
-                GRASS_THATCH_STAIRS,
+                BAMBOO_TORCH, BAMBOO_WALL_TORCH, POTTED_BAMBOO_TORCH,
+                SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, POTTED_SOUL_BAMBOO_TORCH,
+                BEACHGRASS_THATCH, BEACHGRASS_THATCH_SLAB, BEACHGRASS_THATCH_STAIRS,
+                BAMBOO_THATCH, BAMBOO_THATCH_SLAB, BAMBOO_THATCH_STAIRS,
+                GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS,
                 ANTLER,
-                HEATHER,
-                TALL_HEATHER,
-                POTTED_HEATHER,
-                BEACHGRASS,
-                TALL_BEACHGRASS,
-                POTTED_BEACHGRASS,
-                TROPICAL_FERN,
-                LARGE_TROPICAL_FERN,
-                POTTED_TROPICAL_FERN,
+                HEATHER, TALL_HEATHER, POTTED_HEATHER,
+                BEACHGRASS, TALL_BEACHGRASS, POTTED_BEACHGRASS,
+                TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN,
                 WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM,
                 WHITE_PETALS, YELLOW_PETALS, BLUE_PETALS, PURPLE_PETALS
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
                 MAHOGANY_LEAVES,
-                YELLOW_ASPEN_LEAVES,
-                YELLOW_ASPEN_LEAF_PILE,
-                GREEN_ASPEN_LEAVES,
-                GREEN_ASPEN_LEAF_PILE,
+                YELLOW_ASPEN_LEAVES, YELLOW_ASPEN_LEAF_PILE,
+                GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE,
                 GRASSY_LAVAROCK,
-                ACAI_LEAVES,
-                HANGING_ACAI_LEAVES,
+                ACAI_LEAVES, HANGING_ACAI_LEAVES,
                 WHITE_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES,
                 HANGING_WHITE_WISTERIA_LEAVES, HANGING_YELLOW_WISTERIA_LEAVES, HANGING_BLUE_WISTERIA_LEAVES, HANGING_PINK_WISTERIA_LEAVES, HANGING_PURPLE_WISTERIA_LEAVES,
                 GOLDEN_APPLE_LEAVES

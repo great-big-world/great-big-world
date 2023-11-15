@@ -36,6 +36,8 @@ public class GBWItems implements Register {
     public static final Item MAHOGANY_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.MAHOGANY, new CItemSettings().maxCount(1));
     //endregion
     //region Aspen Wood
+    public static final Item ASPEN_SIGN = new SignItem((new CItemSettings()).maxCount(16), GBWBlocks.ASPEN_SIGN, ASPEN_WALL_SIGN);
+    public static final Item ASPEN_HANGING_SIGN = new HangingSignItem(GBWBlocks.ASPEN_HANGING_SIGN, ASPEN_WALL_HANGING_SIGN, (new CItemSettings()).maxCount(16));
     public static final Item GREEN_ASPEN_LEAVES = new BlockItem(GBWBlocks.GREEN_ASPEN_LEAVES, new CItemSettings().compostingChance(.3f));
     public static final Item GREEN_ASPEN_LEAF_PILE = new BlockItem(GBWBlocks.GREEN_ASPEN_LEAF_PILE, new CItemSettings().compostingChance(.1f));
     public static final Item ASPEN_BOAT = new BoatItem(false, GBWBoatTypes.ASPEN, new CItemSettings().maxCount(1));
@@ -46,7 +48,7 @@ public class GBWItems implements Register {
     public static final Item HANGING_ACAI_LEAVES = new BlockItem(GBWBlocks.HANGING_ACAI_LEAVES, new CItemSettings().compostingChance(.2f));
     public static final Item ACAI_BOAT = new BoatItem(false, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
     public static final Item ACAI_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.ACAI, new CItemSettings().maxCount(1));
-    public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new CItemSettings().food(GBWFoods.ACAI_BERRIES));
+    public static final Item ACAI_BERRIES = new AliasedBlockItem(ACAI_BERRY_CLUMP, new CItemSettings().compostingChance(.3f).food(GBWFoods.ACAI_BERRIES));
     //endregion
     //region Wisteria Wood
     public static final Item WISTERIA_BOAT = new BoatItem(false, GBWBoatTypes.WISTERIA, new FabricItemSettings().maxCount(1));
@@ -65,7 +67,7 @@ public class GBWItems implements Register {
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
-    public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN.planks()));
+    public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN_PLANKS));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
     public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(MAHOGANY_PLANKS));
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ACAI.planks()));
@@ -97,11 +99,13 @@ public class GBWItems implements Register {
 
     @Override
     public void register() {
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_sign"), MAHOGANY_SIGN, Items.JUNGLE_HANGING_SIGN, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_hanging_sign"), MAHOGANY_HANGING_SIGN, MAHOGANY_SIGN, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_leaves"), MAHOGANY_LEAVES, Items.JUNGLE_LEAVES, ItemGroups.NATURAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_chest_boat"), MAHOGANY_CHEST_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_boat"), MAHOGANY_BOAT, Items.JUNGLE_CHEST_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_sign"), ASPEN_SIGN, Items.BIRCH_HANGING_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_hanging_sign"), ASPEN_HANGING_SIGN, ASPEN_SIGN, ItemGroups.FUNCTIONAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "green_aspen_leaves"), GREEN_ASPEN_LEAVES, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "green_aspen_leaf_pile"), GREEN_ASPEN_LEAF_PILE, Items.BIRCH_LEAVES, ItemGroups.NATURAL);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_chest_boat"), ASPEN_CHEST_BOAT, Items.BIRCH_CHEST_BOAT, ItemGroups.TOOLS);
