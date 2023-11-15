@@ -62,7 +62,7 @@ public class GBWBlocks implements Register {
     public static final Block POTTED_MAHOGANY_SAPLING = new FlowerPotBlock(MAHOGANY_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Aspen Wood
-    public static final Block STRIPPED_ASPEN_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
+    public static final Block STRIPPED_ASPEN_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.PALE_YELLOW).burnable());
     public static final Block ASPEN_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.PALE_YELLOW : MapColor.OFF_WHITE;
     }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
@@ -74,7 +74,7 @@ public class GBWBlocks implements Register {
     public static final Block ASPEN_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
     public static final Block ASPEN_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.ASPEN);
     public static final Block ASPEN_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN, 30, true);
-    public static final Block ASPEN_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_ORANGE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN);
+    public static final Block ASPEN_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN);
     public static final Block ASPEN_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.ASPEN);
     public static final Block ASPEN_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
@@ -111,10 +111,13 @@ public class GBWBlocks implements Register {
     public static final Block COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.COBBLESTONE_SLAB));
     public static final Block COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.COBBLESTONE_WALL).solid());
     public static final Block CHISELED_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(COBBLESTONE_BRICKS));
+    public static final Block COBBLESTONE_BRICK_PILLAR = new PillarBlock(CBlockSettings.copy(COBBLESTONE_BRICKS));
+    public static final Block COBBLESTONE_TILES = new Block(CBlockSettings.copy(COBBLESTONE_BRICKS));
     public static final Block MOSSY_COBBLESTONE_BRICKS = new Block(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE));
     public static final Block MOSSY_COBBLESTONE_BRICK_STAIRS = new StairsBlock(MOSSY_COBBLESTONE_BRICKS.getDefaultState(), CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_STAIRS));
     public static final Block MOSSY_COBBLESTONE_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_SLAB));
     public static final Block MOSSY_COBBLESTONE_BRICK_WALL = new WallBlock(CBlockSettings.copy(Blocks.MOSSY_COBBLESTONE_WALL).solid());
+    public static final Block MOSSY_COBBLESTONE_TILES = new Block(CBlockSettings.copy(MOSSY_COBBLESTONE_BRICKS));
     //endregion
     //region Stained Calcite
     public static final Block WHITE_STAINED_CALCITE = new Block(CBlockSettings.copy(Blocks.CALCITE).mapColor(MapColor.TERRACOTTA_RED));
@@ -207,7 +210,7 @@ public class GBWBlocks implements Register {
     public static final Block ELDER_SEA_LANTERN = new Block(CBlockSettings.copy(Blocks.SEA_LANTERN).mapColor(MapColor.PALE_YELLOW).luminance(state -> 14));
     //endregion
     //region Wisteria Wood
-    public static final Block STRIPPED_WISTERIA_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
+    public static final Block STRIPPED_WISTERIA_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.OFF_WHITE).burnable());
     public static final Block WISTERIA_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.OFF_WHITE : MapColor.TERRACOTTA_GRAY;
     }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
@@ -219,7 +222,7 @@ public class GBWBlocks implements Register {
     public static final Block WISTERIA_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
     public static final Block WISTERIA_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.WISTERIA);
     public static final Block WISTERIA_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA, 30, true);
-    public static final Block WISTERIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA);
+    public static final Block WISTERIA_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.OFF_WHITE).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA);
     public static final Block WISTERIA_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.WISTERIA);
     public static final Block WISTERIA_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
@@ -266,8 +269,6 @@ public class GBWBlocks implements Register {
     public static final Block STEAMING_IVORY_TRAVERTINE = new SteamingTravertineBlock(CBlockSettings.copy(IVORY_TRAVERTINE));
     //endregion
     //region Red Rock
-    //public static final Block GRASSY_RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
-    //public static final Block RED_ROCK_SOIL = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK = new Block(CBlockSettings.copy(Blocks.TUFF).mapColor(MapColor.TERRACOTTA_RED));
     public static final Block RED_ROCK_SLAB = new SlabBlock(CBlockSettings.copy(RED_ROCK));
     public static final Block RED_ROCK_STAIRS = new StairsBlock(RED_ROCK.getDefaultState(), CBlockSettings.copy(RED_ROCK));
@@ -283,6 +284,35 @@ public class GBWBlocks implements Register {
     public static final Block CRACKED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block CHISELED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block RED_ROCK_PILLAR = new PillarBlock(CBlockSettings.copy(RED_ROCK));
+    public static final Block RED_ROCK_DIRT = new Block(CBlockSettings.copy(RED_ROCK));
+    //endregion
+    //region Pine Wood
+    public static final Block STRIPPED_PINE_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_BROWN).burnable());
+    public static final Block PINE_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_BROWN : MapColor.BROWN;
+    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_PINE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PINE_LOG));
+    public static final Block PINE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PINE_LOG).mapColor(MapColor.BROWN));
+    public static final Block PINE_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PINE_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PINE_STAIRS = new StairsBlock(PINE_PLANKS.getDefaultState(), CBlockSettings.copy(PINE_PLANKS));
+    public static final Block PINE_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block PINE_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.PINE);
+    public static final Block PINE_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PINE, 30, true);
+    public static final Block PINE_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PINE);
+    public static final Block PINE_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PINE);
+    public static final Block PINE_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), GBWBlockSetTypes.PINE);
+    public static final Block PINE_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PINE);
+    public static final Block PINE_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_BROWN).dropsLike(PINE_SIGN), GBWWoodTypes.PINE);
+    public static final Block PINE_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PINE);
+    public static final Block PINE_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(PINE_HANGING_SIGN).dropsLike(PINE_HANGING_SIGN), GBWWoodTypes.PINE);
+    public static final Block PINE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block PINE_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(4), CBlockSettings.copy(Blocks.OAK_SAPLING));
+    public static final Block POTTED_PINE_SAPLING = new FlowerPotBlock(PINE_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
+    //endregion
+    //region Palo Verde Wood
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -380,10 +410,13 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_slab"), COBBLESTONE_BRICK_SLAB, COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_wall"), COBBLESTONE_BRICK_WALL, COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_cobblestone_bricks"), CHISELED_COBBLESTONE_BRICKS, COBBLESTONE_BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_brick_pillar"), COBBLESTONE_BRICK_PILLAR, CHISELED_COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cobblestone_tiles"), COBBLESTONE_TILES, COBBLESTONE_BRICK_PILLAR, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_bricks"), MOSSY_COBBLESTONE_BRICKS, Items.MOSSY_COBBLESTONE_WALL, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_stairs"), MOSSY_COBBLESTONE_BRICK_STAIRS, MOSSY_COBBLESTONE_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_slab"), MOSSY_COBBLESTONE_BRICK_SLAB, MOSSY_COBBLESTONE_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_brick_wall"), MOSSY_COBBLESTONE_BRICK_WALL, MOSSY_COBBLESTONE_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "mossy_cobblestone_tiles"), MOSSY_COBBLESTONE_TILES, MOSSY_COBBLESTONE_BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "white_stained_calcite"), WHITE_STAINED_CALCITE, null, ItemGroups.COLORED_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "light_gray_stained_calcite"), LIGHT_GRAY_STAINED_CALCITE, WHITE_STAINED_CALCITE, ItemGroups.COLORED_BLOCKS);
@@ -538,6 +571,30 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "cracked_red_rock_bricks"), CRACKED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_red_rock_bricks"), CHISELED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_pillar"), RED_ROCK_PILLAR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_dirt"), RED_ROCK_DIRT, ItemGroups.BUILDING_BLOCKS);
+
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_log"), PINE_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MAHOGANY_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, MAHOGANY_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_pine_log"), STRIPPED_PINE_LOG, PINE_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_wood"), PINE_WOOD, STRIPPED_PINE_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_pine_wood"), STRIPPED_PINE_WOOD, PINE_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(PINE_LOG, STRIPPED_PINE_LOG);
+        StrippableBlockRegistry.register(PINE_WOOD, STRIPPED_PINE_WOOD);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_planks"), PINE_PLANKS, STRIPPED_PINE_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_stairs"), PINE_STAIRS, PINE_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_slab"), PINE_SLAB, PINE_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_fence"), PINE_FENCE, PINE_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_fence_gate"), PINE_FENCE_GATE, PINE_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_door"), PINE_DOOR, PINE_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_trapdoor"), PINE_TRAPDOOR, PINE_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_pressure_plate"), PINE_PRESSURE_PLATE, PINE_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_button"), PINE_BUTTON, PINE_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_sign"), PINE_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_wall_sign"), PINE_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_hanging_sign"), PINE_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_wall_hanging_sign"), PINE_WALL_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_leaves"), PINE_LEAVES);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_sapling"), PINE_SAPLING, new CItemSettings().compostingChance(.3f), MAHOGANY_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_pine_sapling"), POTTED_PINE_SAPLING);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);

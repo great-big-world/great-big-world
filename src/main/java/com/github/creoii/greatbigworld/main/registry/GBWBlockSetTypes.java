@@ -11,4 +11,5 @@ public final class GBWBlockSetTypes {
     public static final BlockSetType ASPEN = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "aspen"));
     public static final BlockSetType ACAI = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "acai"));
     public static final BlockSetType WISTERIA = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "wisteria"));
+    public static final BlockSetType PINE = BlockSetTypeRegistry.registerWood(new Identifier(NAMESPACE, "pine"));
 }
