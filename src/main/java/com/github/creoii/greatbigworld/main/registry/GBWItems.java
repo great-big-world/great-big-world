@@ -70,6 +70,7 @@ public class GBWItems implements Register {
     //region Wooden Masks
     public static final Item OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.OAK_PLANKS));
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
+    public static final Item PINE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(PINE_PLANKS));
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
     public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN_PLANKS));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
@@ -90,6 +91,13 @@ public class GBWItems implements Register {
     public static final Item TRIMMED_GRASS_THATCH = new BlockItem(GBWBlocks.TRIMMED_GRASS_THATCH, new CItemSettings().compostingChance(.3f));
     public static final Item TRIMMED_GRASS_THATCH_SLAB = new BlockItem(GBWBlocks.TRIMMED_GRASS_THATCH_SLAB, new CItemSettings().compostingChance(.3f));
     public static final Item TRIMMED_GRASS_THATCH_STAIRS = new BlockItem(GBWBlocks.TRIMMED_GRASS_THATCH_STAIRS, new CItemSettings().compostingChance(.3f));
+    //endregion
+    //region Pine Wood
+    public static final Item PINE_SIGN = new SignItem((new CItemSettings()).maxCount(16), GBWBlocks.PINE_SIGN, PINE_WALL_SIGN);
+    public static final Item PINE_HANGING_SIGN = new HangingSignItem(GBWBlocks.PINE_HANGING_SIGN, PINE_WALL_HANGING_SIGN, (new CItemSettings()).maxCount(16));
+    public static final Item PINE_LEAVES = new BlockItem(GBWBlocks.PINE_LEAVES, new CItemSettings().compostingChance(.3f));
+    public static final Item PINE_BOAT = new BoatItem(false, GBWBoatTypes.PINE, new CItemSettings().maxCount(1));
+    public static final Item PINE_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.PINE, new CItemSettings().maxCount(1));
     //endregion
     //region Miscellaneous
     public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, GBWSoundEvents.MUSIC_DISC_SUNRISE, new CItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
@@ -139,7 +147,8 @@ public class GBWItems implements Register {
 
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "oak_mask"), OAK_MASK, Items.TURTLE_HELMET, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, OAK_MASK, ItemGroups.COMBAT);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, SPRUCE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_mask"), PINE_MASK, SPRUCE_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, PINE_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, BIRCH_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ASPEN_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, JUNGLE_MASK, ItemGroups.COMBAT);
@@ -152,12 +161,18 @@ public class GBWItems implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "crimson_mask"), CRIMSON_MASK, BAMBOO_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "warped_mask"), WARPED_MASK, CRIMSON_MASK, ItemGroups.COMBAT);
 
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, null, ItemGroups.BUILDING_BLOCKS);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, null, ItemGroups.BUILDING_BLOCKS);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH, null, ItemGroups.BUILDING_BLOCKS);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_slab"), TRIMMED_GRASS_THATCH_SLAB, null, ItemGroups.BUILDING_BLOCKS);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_stairs"), TRIMMED_GRASS_THATCH_STAIRS, null, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch"), GRASS_THATCH, TRIMMED_BAMBOO_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_slab"), GRASS_THATCH_SLAB, GRASS_THATCH, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "grass_thatch_stairs"), GRASS_THATCH_STAIRS, GRASS_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch"), TRIMMED_GRASS_THATCH, GRASS_THATCH_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_slab"), TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH, ItemGroups.BUILDING_BLOCKS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "trimmed_grass_thatch_stairs"), TRIMMED_GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH_SLAB, ItemGroups.BUILDING_BLOCKS);
+
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_sign"), PINE_SIGN, Items.SPRUCE_HANGING_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_hanging_sign"), PINE_HANGING_SIGN, PINE_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_leaves"), PINE_LEAVES, Items.SPRUCE_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_boat"), PINE_BOAT, Items.SPRUCE_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_chest_boat"), PINE_CHEST_BOAT, Items.SPRUCE_CHEST_BOAT, ItemGroups.TOOLS);
 
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_pina_colada"), MUSIC_DISC_PINA_COLADA, MUSIC_DISC_SUNRISE, ItemGroups.TOOLS);

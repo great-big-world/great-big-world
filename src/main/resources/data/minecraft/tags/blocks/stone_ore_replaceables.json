@@ -1,6 +1,8 @@
 {
   "values": [
     "great_big_world:lavarock",
-    "great_big_world:grassy_lavarock"
+    "great_big_world:grassy_lavarock",
+    "great_big_world:red_rock",
+    "great_big_world:red_rock_dirt"
   ]
 }

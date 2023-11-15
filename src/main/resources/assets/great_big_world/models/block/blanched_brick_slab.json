@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "great_big_world:block/blanched_bricks",
-        "top": "great_big_world:block/blanched_bricks",
-        "side": "great_big_world:block/blanched_bricks"
-    }
-}

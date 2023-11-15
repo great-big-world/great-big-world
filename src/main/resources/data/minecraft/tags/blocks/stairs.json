@@ -7,6 +7,10 @@
     "great_big_world:lavarock_stairs",
     "great_big_world:lavarock_brick_stairs",
     "great_big_world:elder_prismarine_stairs",
-    "great_big_world:elder_prismarine_brick_stairs"
+    "great_big_world:elder_prismarine_brick_stairs",
+    "great_big_world:red_rock_stairs",
+    "great_big_world:polished_red_rock_stairs",
+    "great_big_world:red_rock_brick_stairs"
+
   ]
 }

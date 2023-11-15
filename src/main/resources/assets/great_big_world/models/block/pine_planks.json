@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "great_big_world:block/pine_planks"
+  }
+}

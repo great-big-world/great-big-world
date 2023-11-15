@@ -5,6 +5,9 @@
     "great_big_world:lavarock_wall",
     "great_big_world:lavarock_brick_wall",
     "great_big_world:elder_prismarine_wall",
-    "great_big_world:elder_prismarine_brick_wall"
+    "great_big_world:elder_prismarine_brick_wall",
+    "great_big_world:red_rock_wall",
+    "great_big_world:polished_red_rock_wall",
+    "great_big_world:red_rock_brick_wall"
   ]
 }

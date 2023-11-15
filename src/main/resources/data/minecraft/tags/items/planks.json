@@ -1,8 +1,9 @@
 {
-  "replace": false,
   "values": [
     "great_big_world:mahogany_planks",
     "great_big_world:aspen_planks",
-    "great_big_world:acai_planks"
+    "great_big_world:acai_planks",
+    "great_big_world:wisteria_planks",
+    "great_big_world:pine_planks"
   ]
 }

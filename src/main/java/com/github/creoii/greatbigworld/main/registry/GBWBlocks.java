@@ -39,7 +39,7 @@ public class GBWBlocks implements Register {
     public static final Block STRIPPED_MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_ORANGE).burnable());
     public static final Block MAHOGANY_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_ORANGE : MapColor.TERRACOTTA_BROWN;
-    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_MAHOGANY_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_MAHOGANY_LOG));
     public static final Block MAHOGANY_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_MAHOGANY_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
     public static final Block MAHOGANY_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
@@ -65,7 +65,7 @@ public class GBWBlocks implements Register {
     public static final Block STRIPPED_ASPEN_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.PALE_YELLOW).burnable());
     public static final Block ASPEN_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.PALE_YELLOW : MapColor.OFF_WHITE;
-    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_ASPEN_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ASPEN_LOG));
     public static final Block ASPEN_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ASPEN_LOG).mapColor(MapColor.OFF_WHITE));
     public static final Block ASPEN_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
@@ -174,7 +174,7 @@ public class GBWBlocks implements Register {
     public static final Block STRIPPED_ACAI_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_YELLOW).burnable());
     public static final Block ACAI_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_YELLOW : MapColor.TERRACOTTA_BROWN;
-    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_ACAI_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ACAI_LOG));
     public static final Block ACAI_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_ACAI_LOG).mapColor(MapColor.TERRACOTTA_BROWN));
     public static final Block ACAI_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_YELLOW).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
@@ -213,7 +213,7 @@ public class GBWBlocks implements Register {
     public static final Block STRIPPED_WISTERIA_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.OFF_WHITE).burnable());
     public static final Block WISTERIA_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.OFF_WHITE : MapColor.TERRACOTTA_GRAY;
-    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_WISTERIA_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_WISTERIA_LOG));
     public static final Block WISTERIA_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_WISTERIA_LOG).mapColor(MapColor.TERRACOTTA_GRAY));
     public static final Block WISTERIA_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.OFF_WHITE).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
@@ -285,12 +285,13 @@ public class GBWBlocks implements Register {
     public static final Block CHISELED_RED_ROCK_BRICKS = new Block(CBlockSettings.copy(RED_ROCK_BRICKS));
     public static final Block RED_ROCK_PILLAR = new PillarBlock(CBlockSettings.copy(RED_ROCK));
     public static final Block RED_ROCK_DIRT = new Block(CBlockSettings.copy(RED_ROCK));
+    public static final Block DRY_DIRT = new Block(CBlockSettings.copy(Blocks.PACKED_MUD));
     //endregion
     //region Pine Wood
     public static final Block STRIPPED_PINE_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_BROWN).burnable());
     public static final Block PINE_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
         return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_BROWN : MapColor.BROWN;
-    }).strength(2.0F).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_PINE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PINE_LOG));
     public static final Block PINE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PINE_LOG).mapColor(MapColor.BROWN));
     public static final Block PINE_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
@@ -333,10 +334,6 @@ public class GBWBlocks implements Register {
     public static final Block PURPLE_DELPHINIUM = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
     public static final Block GOLDEN_APPLE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.YELLOW).fireSettings(20, 25));
     public static final Block SULFUR_BLOCK = new SulfurBlock();
-    public static final Block BLANCHED_BRICKS = new Block(CBlockSettings.copy(Blocks.BRICKS).mapColor(MapColor.TERRACOTTA_WHITE).strength(2f).mapColor(MapColor.TERRACOTTA_WHITE));
-    public static final Block BLANCHED_BRICK_STAIRS = new StairsBlock(BLANCHED_BRICKS.getDefaultState(), CBlockSettings.copy(BLANCHED_BRICKS));
-    public static final Block BLANCHED_BRICK_SLAB = new SlabBlock(CBlockSettings.copy(BLANCHED_BRICKS));
-    public static final Block BLANCHED_BRICK_WALL = new WallBlock(CBlockSettings.copy(BLANCHED_BRICKS).solid());
     public static final Block SAWMILL = new SawmillBlock();
     public static final Block KILN = new KilnBlock();
     //endregion
@@ -556,7 +553,7 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "polished_ivory_travertine_tiles"), POLISHED_IVORY_TRAVERTINE_TILES, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "steaming_ivory_travertine"), STEAMING_IVORY_TRAVERTINE, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.FUNCTIONAL, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, null), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, null));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock"), RED_ROCK, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.CUT_RED_SANDSTONE_SLAB), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.RED_SANDSTONE));
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_stairs"), RED_ROCK_STAIRS, RED_ROCK, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_slab"), RED_ROCK_SLAB, RED_ROCK_STAIRS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_wall"), RED_ROCK_WALL, RED_ROCK_SLAB, ItemGroups.BUILDING_BLOCKS);
@@ -572,8 +569,9 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "chiseled_red_rock_bricks"), CHISELED_RED_ROCK_BRICKS, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_pillar"), RED_ROCK_PILLAR, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "red_rock_dirt"), RED_ROCK_DIRT, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "dry_dirt"), DRY_DIRT, ItemGroups.BUILDING_BLOCKS);
 
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_log"), PINE_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, MAHOGANY_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, MAHOGANY_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_log"), PINE_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.SPRUCE_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.SPRUCE_LOG));
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_pine_log"), STRIPPED_PINE_LOG, PINE_LOG, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_wood"), PINE_WOOD, STRIPPED_PINE_LOG, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_pine_wood"), STRIPPED_PINE_WOOD, PINE_WOOD, ItemGroups.BUILDING_BLOCKS);
@@ -614,10 +612,6 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "purple_delphinium"), PURPLE_DELPHINIUM, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "golden_apple_leaves"), GOLDEN_APPLE_LEAVES, Items.CHERRY_LEAVES, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sulfur_block"), SULFUR_BLOCK, ItemGroups.NATURAL);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_bricks"), BLANCHED_BRICKS, Items.BRICK_WALL, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_stairs"), BLANCHED_BRICK_STAIRS, BLANCHED_BRICKS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_slab"), BLANCHED_BRICK_SLAB, BLANCHED_BRICK_STAIRS, ItemGroups.BUILDING_BLOCKS);
-        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "blanched_brick_wall"), BLANCHED_BRICK_WALL, BLANCHED_BRICK_SLAB, ItemGroups.BUILDING_BLOCKS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "sawmill"), SAWMILL, Items.STONECUTTER, ItemGroups.FUNCTIONAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "kiln"), KILN, Items.BLAST_FURNACE, ItemGroups.FUNCTIONAL);
 
@@ -670,7 +664,7 @@ public class GBWBlocks implements Register {
         );
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(0.5, 1.0), TROPICAL_FERN, POTTED_TROPICAL_FERN);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             if (tintIndex != 0) {

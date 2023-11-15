@@ -7,6 +7,9 @@
     "great_big_world:lavarock_slab",
     "great_big_world:lavarock_brick_slab",
     "great_big_world:elder_prismarine_slab",
-    "great_big_world:elder_prismarine_brick_slab"
+    "great_big_world:elder_prismarine_brick_slab",
+    "great_big_world:red_rock_slab",
+    "great_big_world:polished_red_rock_slab",
+    "great_big_world:red_rock_brick_slab"
   ]
 }

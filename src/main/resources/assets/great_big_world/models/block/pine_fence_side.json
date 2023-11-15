@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "great_big_world:block/pine_planks"
+    }
+}

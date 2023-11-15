@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "great_big_world:block/pine_log" },
+    "axis=z": { "model": "great_big_world:block/pine_log", "x": 90 },
+    "axis=x": { "model": "great_big_world:block/pine_log", "x": 90, "y": 90 }
+  }
+}
