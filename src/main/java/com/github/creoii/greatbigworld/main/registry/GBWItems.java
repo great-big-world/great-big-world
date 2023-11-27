@@ -1,6 +1,5 @@
 package com.github.creoii.greatbigworld.main.registry;
 
-import com.github.creoii.creolib.api.util.entity.VillagerTradesInjector;
 import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.greatbigworld.item.AuraPotionItem;
@@ -12,6 +11,7 @@ import com.github.creoii.greatbigworld.main.util.Register;
 import com.github.creoii.greatbigworld.main.util.material.WoodenMaskArmorMaterial;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.fluid.Fluids;
@@ -203,21 +203,19 @@ public class GBWItems implements Register {
     }
 
     private void trades() {
-        VillagerTradesInjector.injectWanderingTrader(1,
-                new TradeOffers.SellItemFactory(MAHOGANY_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(YELLOW_ASPEN_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(GREEN_ASPEN_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(ACAI_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(BLUE_WISTERIA_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(PINK_WISTERIA_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(PURPLE_WISTERIA_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(WHITE_WISTERIA_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(YELLOW_WISTERIA_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(PINE_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(PALO_VERDE_SAPLING, 5, 1, 8, 1),
-                new TradeOffers.SellItemFactory(HEATHER, 1, 1, 12, 1)
-        );
-        VillagerTradesInjector.inject(VillagerProfession.BUTCHER, 3, new TradeOffers.BuyForOneEmeraldFactory(VENISON, 5, 16, 20));
+        TradeOfferHelper.registerVillagerOffers(VillagerProfession.BUTCHER, 3, factories -> new TradeOffers.BuyForOneEmeraldFactory(VENISON, 5, 16, 20));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(MAHOGANY_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(YELLOW_ASPEN_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(GREEN_ASPEN_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(ACAI_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(BLUE_WISTERIA_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(PINK_WISTERIA_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(PURPLE_WISTERIA_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(WHITE_WISTERIA_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(YELLOW_WISTERIA_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(PINE_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(PALO_VERDE_SAPLING, 5, 1, 8, 1));
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> new TradeOffers.SellItemFactory(HEATHER, 1, 1, 12, 1));
     }
 
     @Override

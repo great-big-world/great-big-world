@@ -3,6 +3,7 @@ package com.github.creoii.greatbigworld.main.registry;
 import com.github.creoii.creolib.api.util.block.BlockRegistryHelper;
 import com.github.creoii.creolib.api.util.block.CBlockSettings;
 import com.github.creoii.creolib.api.util.block.Spreadable;
+import com.github.creoii.creolib.api.util.entity.VillagerTradesInjector;
 import com.github.creoii.creolib.api.util.item.CItemSettings;
 import com.github.creoii.creolib.api.util.item.ItemRegistryHelper;
 import com.github.creoii.greatbigworld.block.*;
@@ -677,6 +678,7 @@ public class GBWBlocks implements Register {
                 serverWorld.setBlockState(pos, state.with(SnowyBlock.SNOWY, true));
             }
         });
+        VillagerTradesInjector
     }
 
     @Override
