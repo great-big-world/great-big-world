@@ -316,26 +316,26 @@ public class GBWBlocks implements Register {
     //region Palo Verde Wood
     public static final Block STRIPPED_PALO_VERDE_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_BROWN).burnable());
     public static final Block PALO_VERDE_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
-        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_BROWN : MapColor.BROWN;
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.PALE_GREEN : MapColor.EMERALD_GREEN;
     }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block STRIPPED_PALO_VERDE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PALO_VERDE_LOG));
-    public static final Block PALO_VERDE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PALO_VERDE_LOG).mapColor(MapColor.BROWN));
-    public static final Block PALO_VERDE_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
-    public static final Block PALO_VERDE_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PALO_VERDE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PALO_VERDE_LOG).mapColor(MapColor.EMERALD_GREEN));
+    public static final Block PALO_VERDE_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PALO_VERDE_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
     public static final Block PALO_VERDE_STAIRS = new StairsBlock(PALO_VERDE_PLANKS.getDefaultState(), CBlockSettings.copy(PALO_VERDE_PLANKS));
-    public static final Block PALO_VERDE_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
-    public static final Block PALO_VERDE_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block PALO_VERDE_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.PALO_VERDE);
     public static final Block PALO_VERDE_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE, 30, true);
-    public static final Block PALO_VERDE_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+    public static final Block PALO_VERDE_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.PALE_GREEN).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.PALE_GREEN).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
         return false;
     }).burnable(), GBWBlockSetTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_BROWN).dropsLike(PALO_VERDE_SIGN), GBWWoodTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.PALE_GREEN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.PALE_GREEN).dropsLike(PALO_VERDE_SIGN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.PALE_GREEN), GBWWoodTypes.PALO_VERDE);
     public static final Block PALO_VERDE_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(PALO_VERDE_HANGING_SIGN).dropsLike(PALO_VERDE_HANGING_SIGN), GBWWoodTypes.PALO_VERDE);
-    public static final Block PALO_VERDE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block PALO_VERDE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.PALE_GREEN));
     public static final Block PALO_VERDE_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(4), CBlockSettings.copy(Blocks.OAK_SAPLING));
     public static final Block POTTED_PALO_VERDE_SAPLING = new FlowerPotBlock(PALO_VERDE_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
