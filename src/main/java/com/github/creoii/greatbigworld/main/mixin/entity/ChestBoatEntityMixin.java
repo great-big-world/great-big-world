@@ -20,5 +20,12 @@ public class ChestBoatEntityMixin {
             ci.setReturnValue(GBWItems.ASPEN_CHEST_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ACAI)
             ci.setReturnValue(GBWItems.ACAI_CHEST_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.WISTERIA)
+            ci.setReturnValue(GBWItems.WISTERIA_CHEST_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.PINE)
+            ci.setReturnValue(GBWItems.PINE_CHEST_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.PALO_VERDE)
+            ci.setReturnValue(GBWItems.PALO_VERDE_CHEST_BOAT);
+
     }
 }

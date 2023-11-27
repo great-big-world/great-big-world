@@ -314,6 +314,30 @@ public class GBWBlocks implements Register {
     public static final Block POTTED_PINE_SAPLING = new FlowerPotBlock(PINE_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Palo Verde Wood
+    public static final Block STRIPPED_PALO_VERDE_LOG = new PillarBlock(CBlockSettings.create().strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).mapColor(MapColor.TERRACOTTA_BROWN).burnable());
+    public static final Block PALO_VERDE_LOG = new PillarBlock(CBlockSettings.create().mapColor((state) -> {
+        return state.get(PillarBlock.AXIS) == Direction.Axis.Y ? MapColor.TERRACOTTA_BROWN : MapColor.BROWN;
+    }).strength(2f).instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block STRIPPED_PALO_VERDE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PALO_VERDE_LOG));
+    public static final Block PALO_VERDE_WOOD = new PillarBlock(CBlockSettings.copy(STRIPPED_PALO_VERDE_LOG).mapColor(MapColor.BROWN));
+    public static final Block PALO_VERDE_PLANKS = new Block(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PALO_VERDE_SLAB = new SlabBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).sounds(BlockSoundGroup.WOOD).burnable());
+    public static final Block PALO_VERDE_STAIRS = new StairsBlock(PALO_VERDE_PLANKS.getDefaultState(), CBlockSettings.copy(PALO_VERDE_PLANKS));
+    public static final Block PALO_VERDE_FENCE = new FenceBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(2f, 3f).burnable().sounds(BlockSoundGroup.WOOD));
+    public static final Block PALO_VERDE_FENCE_GATE = new FenceGateBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).strength(2f, 3f).burnable(), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_BUTTON = new ButtonBlock(CBlockSettings.create().strength(.5f).noCollision().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE, 30, true);
+    public static final Block PALO_VERDE_PRESSURE_PLATE = new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).solid().instrument(Instrument.BASS).burnable().noCollision().strength(.5f).pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_DOOR = new DoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY), GBWBlockSetTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_TRAPDOOR = new TrapdoorBlock(CBlockSettings.create().mapColor(MapColor.TERRACOTTA_BROWN).instrument(Instrument.BASS).strength(3f).nonOpaque().allowsSpawning((state, world, pos, type) -> {
+        return false;
+    }).burnable(), GBWBlockSetTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_SIGN = new SignBlock(CBlockSettings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_WALL_SIGN = new WallSignBlock(CBlockSettings.copy(Blocks.OAK_WALL_SIGN).mapColor(MapColor.TERRACOTTA_BROWN).dropsLike(PALO_VERDE_SIGN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_HANGING_SIGN = new HangingSignBlock(CBlockSettings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_BROWN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_WALL_HANGING_SIGN = new WallHangingSignBlock(CBlockSettings.copy(PALO_VERDE_HANGING_SIGN).dropsLike(PALO_VERDE_HANGING_SIGN), GBWWoodTypes.PALO_VERDE);
+    public static final Block PALO_VERDE_LEAVES = new LeavesBlock(CBlockSettings.copy(Blocks.OAK_LEAVES).mapColor(MapColor.TERRACOTTA_BROWN));
+    public static final Block PALO_VERDE_SAPLING = new SaplingBlock(new WisteriaSaplingGenerator(4), CBlockSettings.copy(Blocks.OAK_SAPLING));
+    public static final Block POTTED_PALO_VERDE_SAPLING = new FlowerPotBlock(PALO_VERDE_SAPLING, CBlockSettings.copy(Blocks.FLOWER_POT));
     //endregion
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
@@ -593,6 +617,29 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_leaves"), PINE_LEAVES);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "pine_sapling"), PINE_SAPLING, new CItemSettings().compostingChance(.3f), MAHOGANY_SAPLING, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_pine_sapling"), POTTED_PINE_SAPLING);
+
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_log"), PALO_VERDE_LOG, new ItemRegistryHelper.ItemGroupSettings(ItemGroups.BUILDING_BLOCKS, Items.ACACIA_BUTTON), new ItemRegistryHelper.ItemGroupSettings(ItemGroups.NATURAL, Items.ACACIA_LOG));
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_palo_verde_log"), STRIPPED_PALO_VERDE_LOG, PALO_VERDE_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_wood"), PALO_VERDE_WOOD, STRIPPED_PALO_VERDE_LOG, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "stripped_palo_verde_wood"), STRIPPED_PALO_VERDE_WOOD, PALO_VERDE_WOOD, ItemGroups.BUILDING_BLOCKS);
+        StrippableBlockRegistry.register(PALO_VERDE_LOG, STRIPPED_PALO_VERDE_LOG);
+        StrippableBlockRegistry.register(PALO_VERDE_WOOD, STRIPPED_PALO_VERDE_WOOD);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_planks"), PALO_VERDE_PLANKS, STRIPPED_PALO_VERDE_WOOD, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_stairs"), PALO_VERDE_STAIRS, PALO_VERDE_PLANKS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_slab"), PALO_VERDE_SLAB, PALO_VERDE_STAIRS, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_fence"), PALO_VERDE_FENCE, PALO_VERDE_SLAB, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_fence_gate"), PALO_VERDE_FENCE_GATE, PALO_VERDE_FENCE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_door"), PALO_VERDE_DOOR, PALO_VERDE_FENCE_GATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_trapdoor"), PALO_VERDE_TRAPDOOR, PALO_VERDE_DOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_pressure_plate"), PALO_VERDE_PRESSURE_PLATE, PALO_VERDE_TRAPDOOR, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_button"), PALO_VERDE_BUTTON, PALO_VERDE_PRESSURE_PLATE, ItemGroups.BUILDING_BLOCKS);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_sign"), PALO_VERDE_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_wall_sign"), PALO_VERDE_WALL_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_hanging_sign"), PALO_VERDE_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_wall_hanging_sign"), PALO_VERDE_WALL_HANGING_SIGN);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_leaves"), PALO_VERDE_LEAVES);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "palo_verde_sapling"), PALO_VERDE_SAPLING, new CItemSettings().compostingChance(.1f), Items.JUNGLE_SAPLING, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_palo_verde_sapling"), POTTED_PALO_VERDE_SAPLING);
 
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "antler"), ANTLER, new CItemSettings().compostingChance(.7f), Items.TURTLE_EGG, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);

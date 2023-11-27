@@ -72,11 +72,13 @@ public class GBWItems implements Register {
     public static final Item SPRUCE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.SPRUCE_PLANKS));
     public static final Item PINE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(PINE_PLANKS));
     public static final Item BIRCH_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.BIRCH_PLANKS));
+    public static final Item WISTERIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(WISTERIA_PLANKS));
     public static final Item ASPEN_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ASPEN_PLANKS));
     public static final Item JUNGLE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.JUNGLE_PLANKS));
     public static final Item MAHOGANY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(MAHOGANY_PLANKS));
     public static final Item ACAI_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(ACAI_PLANKS));
     public static final Item ACACIA_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.ACACIA_PLANKS));
+    public static final Item PALO_VERDE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(PALO_VERDE_PLANKS));
     public static final Item DARK_OAK_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.DARK_OAK_PLANKS));
     public static final Item MANGROVE_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.MANGROVE_PLANKS));
     public static final Item CHERRY_MASK = new WoodenMaskItem(new WoodenMaskArmorMaterial(Items.CHERRY_PLANKS));
@@ -98,6 +100,13 @@ public class GBWItems implements Register {
     public static final Item PINE_LEAVES = new BlockItem(GBWBlocks.PINE_LEAVES, new CItemSettings().compostingChance(.3f));
     public static final Item PINE_BOAT = new BoatItem(false, GBWBoatTypes.PINE, new CItemSettings().maxCount(1));
     public static final Item PINE_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.PINE, new CItemSettings().maxCount(1));
+    //endregion
+    //region Palo Verde Wood
+    public static final Item PALO_VERDE_SIGN = new SignItem((new CItemSettings()).maxCount(16), GBWBlocks.PALO_VERDE_SIGN, PALO_VERDE_WALL_SIGN);
+    public static final Item PALO_VERDE_HANGING_SIGN = new HangingSignItem(GBWBlocks.PALO_VERDE_HANGING_SIGN, PALO_VERDE_WALL_HANGING_SIGN, (new CItemSettings()).maxCount(16));
+    public static final Item PALO_VERDE_LEAVES = new BlockItem(GBWBlocks.PALO_VERDE_LEAVES, new CItemSettings().compostingChance(.3f));
+    public static final Item PALO_VERDE_BOAT = new BoatItem(false, GBWBoatTypes.PALO_VERDE, new CItemSettings().maxCount(1));
+    public static final Item PALO_VERDE_CHEST_BOAT = new BoatItem(true, GBWBoatTypes.PALO_VERDE, new CItemSettings().maxCount(1));
     //endregion
     //region Miscellaneous
     public static final Item MUSIC_DISC_SUNRISE = new MusicDiscItem(4, GBWSoundEvents.MUSIC_DISC_SUNRISE, new CItemSettings().maxCount(1).rarity(Rarity.RARE), 70);
@@ -149,12 +158,14 @@ public class GBWItems implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "spruce_mask"), SPRUCE_MASK, OAK_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_mask"), PINE_MASK, SPRUCE_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "birch_mask"), BIRCH_MASK, PINE_MASK, ItemGroups.COMBAT);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, BIRCH_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "wisteria_mask"), WISTERIA_MASK, BIRCH_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "aspen_mask"), ASPEN_MASK, WISTERIA_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "jungle_mask"), JUNGLE_MASK, ASPEN_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mahogany_mask"), MAHOGANY_MASK, JUNGLE_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acai_mask"), ACAI_MASK, MAHOGANY_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "acacia_mask"), ACACIA_MASK, ACAI_MASK, ItemGroups.COMBAT);
-        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, ACACIA_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_mask"), PALO_VERDE_MASK, ACACIA_MASK, ItemGroups.COMBAT);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "dark_oak_mask"), DARK_OAK_MASK, PALO_VERDE_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "mangrove_mask"), MANGROVE_MASK, DARK_OAK_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "cherry_mask"), CHERRY_MASK, MANGROVE_MASK, ItemGroups.COMBAT);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "bamboo_mask"), BAMBOO_MASK, CHERRY_MASK, ItemGroups.COMBAT);
@@ -174,6 +185,12 @@ public class GBWItems implements Register {
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_boat"), PINE_BOAT, Items.SPRUCE_BOAT, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "pine_chest_boat"), PINE_CHEST_BOAT, Items.SPRUCE_CHEST_BOAT, ItemGroups.TOOLS);
 
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_sign"), PALO_VERDE_SIGN, Items.ACACIA_HANGING_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_hanging_sign"), PALO_VERDE_HANGING_SIGN, PALO_VERDE_SIGN, ItemGroups.FUNCTIONAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_leaves"), PALO_VERDE_LEAVES, Items.ACACIA_LEAVES, ItemGroups.NATURAL);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_boat"), PALO_VERDE_BOAT, Items.ACACIA_BOAT, ItemGroups.TOOLS);
+        ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "palo_verde_chest_boat"), PALO_VERDE_CHEST_BOAT, Items.ACACIA_CHEST_BOAT, ItemGroups.TOOLS);
+
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_sunrise"), MUSIC_DISC_SUNRISE, Items.MUSIC_DISC_OTHERSIDE, ItemGroups.TOOLS);
         ItemRegistryHelper.registerItem(new Identifier(NAMESPACE, "music_disc_pina_colada"), MUSIC_DISC_PINA_COLADA, MUSIC_DISC_SUNRISE, ItemGroups.TOOLS);
 
@@ -191,6 +208,13 @@ public class GBWItems implements Register {
                 new TradeOffers.SellItemFactory(YELLOW_ASPEN_SAPLING, 5, 1, 8, 1),
                 new TradeOffers.SellItemFactory(GREEN_ASPEN_SAPLING, 5, 1, 8, 1),
                 new TradeOffers.SellItemFactory(ACAI_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(BLUE_WISTERIA_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(PINK_WISTERIA_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(PURPLE_WISTERIA_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(WHITE_WISTERIA_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(YELLOW_WISTERIA_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(PINE_SAPLING, 5, 1, 8, 1),
+                new TradeOffers.SellItemFactory(PALO_VERDE_SAPLING, 5, 1, 8, 1),
                 new TradeOffers.SellItemFactory(HEATHER, 1, 1, 12, 1)
         );
         VillagerTradesInjector.inject(VillagerProfession.BUTCHER, 3, new TradeOffers.BuyForOneEmeraldFactory(VENISON, 5, 16, 20));
@@ -198,7 +222,7 @@ public class GBWItems implements Register {
 
     @Override
     public void registerClient() {
-        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
+        ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES, PINE_LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GrassColors.getColor(.5d, 1d), TROPICAL_FERN, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.ITEM.register((itemStack, tintIndex) -> FoliageColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? PotionUtil.getColor(stack) : -1, AURA_POTION);

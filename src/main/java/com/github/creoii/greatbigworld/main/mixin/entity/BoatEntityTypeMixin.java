@@ -38,16 +38,19 @@ public class BoatEntityTypeMixin {
         BoatEntity.Type acai = create("GBW_ACAI", last.ordinal() + 3, GBWBlocks.ACAI_PLANKS, "gbw_acai");
         BoatEntity.Type wisteria = create("GBW_WISTERIA", last.ordinal() + 4, GBWBlocks.WISTERIA_PLANKS, "gbw_wisteria");
         BoatEntity.Type pine = create("GBW_PINE", last.ordinal() + 5, GBWBlocks.PINE_PLANKS, "gbw_pine");
+        BoatEntity.Type paloVerde = create("GBW_PALO_VERDE", last.ordinal() + 6, GBWBlocks.PALO_VERDE_PLANKS, "gbw_palo_verde");
         GBWBoatTypes.MAHOGANY = mahogany;
         GBWBoatTypes.ASPEN = aspen;
         GBWBoatTypes.ACAI = acai;
         GBWBoatTypes.WISTERIA = wisteria;
         GBWBoatTypes.PINE = pine;
+        GBWBoatTypes.PALO_VERDE = paloVerde;
         types.add(mahogany);
         types.add(aspen);
         types.add(acai);
         types.add(wisteria);
         types.add(pine);
+        types.add(paloVerde);
 
         field_7724 = types.toArray(new BoatEntity.Type[0]);
     }

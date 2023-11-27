@@ -19,5 +19,11 @@ public class BoatEntityMixin {
             ci.setReturnValue(GBWItems.ASPEN_BOAT);
         if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.ACAI)
             ci.setReturnValue(GBWItems.ACAI_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.WISTERIA)
+            ci.setReturnValue(GBWItems.WISTERIA_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.PINE)
+            ci.setReturnValue(GBWItems.PINE_BOAT);
+        if (((BoatEntity)(Object)this).getVariant() == GBWBoatTypes.PALO_VERDE)
+            ci.setReturnValue(GBWItems.PALO_VERDE_BOAT);
     }
 }

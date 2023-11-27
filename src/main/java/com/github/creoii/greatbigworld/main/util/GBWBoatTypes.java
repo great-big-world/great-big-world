@@ -8,6 +8,7 @@ public class GBWBoatTypes {
     public static BoatEntity.Type ACAI;
     public static BoatEntity.Type WISTERIA;
     public static BoatEntity.Type PINE;
+    public static BoatEntity.Type PALO_VERDE;
 
     static {
         BoatEntity.Type.values();

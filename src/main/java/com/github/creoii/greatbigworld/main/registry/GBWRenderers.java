@@ -35,6 +35,6 @@ public class GBWRenderers implements Register {
         EntityModelLayerRegistry.registerModelLayer(THICKET_OUTER_MODEL_LAYER, SkeletonEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(NAUTILUS_MODEL_LAYER, NautilusEntityModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(WOODEN_MASK_MODEL_LAYER, WoodenMaskModel::getTexturedModelData);
-        ArmorRenderer.register(new WoodenMaskRenderer(), GBWItems.OAK_MASK, GBWItems.SPRUCE_MASK, GBWItems.BIRCH_MASK, GBWItems.ASPEN_MASK, GBWItems.JUNGLE_MASK, GBWItems.MAHOGANY_MASK, GBWItems.ACAI_MASK, GBWItems.ACACIA_MASK, GBWItems.DARK_OAK_MASK, GBWItems.MANGROVE_MASK, GBWItems.CHERRY_MASK, GBWItems.BAMBOO_MASK, GBWItems.CRIMSON_MASK, GBWItems.WARPED_MASK);
+        ArmorRenderer.register(new WoodenMaskRenderer(), GBWItems.OAK_MASK, GBWItems.SPRUCE_MASK, GBWItems.PINE_MASK, GBWItems.BIRCH_MASK, GBWItems.WISTERIA_MASK, GBWItems.ASPEN_MASK, GBWItems.JUNGLE_MASK, GBWItems.MAHOGANY_MASK, GBWItems.ACAI_MASK, GBWItems.ACACIA_MASK, GBWItems.PALO_VERDE_MASK, GBWItems.DARK_OAK_MASK, GBWItems.MANGROVE_MASK, GBWItems.CHERRY_MASK, GBWItems.BAMBOO_MASK, GBWItems.CRIMSON_MASK, GBWItems.WARPED_MASK);
     }
 }
