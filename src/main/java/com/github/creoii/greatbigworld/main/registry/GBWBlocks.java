@@ -22,6 +22,7 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -342,8 +343,11 @@ public class GBWBlocks implements Register {
     //region Miscellaneous
     public static final Block ANTLER = new AntlerBlock();
     public static final Block TALL_HEATHER = new TallFlowerBlock(CBlockSettings.copy(Blocks.ROSE_BUSH).fireSettings(60, 100));
-    public static final Block HEATHER = new FernBlock(CBlockSettings.copy(Blocks.POPPY).fireSettings(60, 100));
+    public static final Block HEATHER = new FlowerBlock(StatusEffects.STRENGTH, 4, CBlockSettings.copy(Blocks.POPPY).fireSettings(60, 100));
     public static final Block POTTED_HEATHER = new FlowerPotBlock(HEATHER, CBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block ASTER = new FlowerBlock(StatusEffects.SATURATION, 7, CBlockSettings.copy(Blocks.POPPY).fireSettings(60, 100));
+    public static final Block POTTED_ASTER = new FlowerPotBlock(ASTER, CBlockSettings.copy(Blocks.FLOWER_POT));
+    public static final Block DRY_GRASS = new FernBlock(CBlockSettings.copy(Blocks.GRASS));
     public static final Block BEACHGRASS = new BeachgrassBlock();
     public static final Block TALL_BEACHGRASS = new TallBeachgrassBlock();
     public static final Block POTTED_BEACHGRASS = new FlowerPotBlock(BEACHGRASS, CBlockSettings.copy(Blocks.FLOWER_POT));
@@ -645,6 +649,9 @@ public class GBWBlocks implements Register {
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "heather"), HEATHER, new CItemSettings().compostingChance(.65f), Items.LILY_OF_THE_VALLEY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_heather"), TALL_HEATHER, new CItemSettings().compostingChance(.65f), Items.PEONY, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_heather"), POTTED_HEATHER);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "aster"), ASTER, new CItemSettings().compostingChance(.65f), HEATHER, ItemGroups.NATURAL);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_aster"), POTTED_ASTER);
+        BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "dry_grass"), DRY_GRASS);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "beachgrass"), BEACHGRASS, new CItemSettings().compostingChance(.15f), Items.FERN, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "tall_beachgrass"), TALL_BEACHGRASS, new CItemSettings().compostingChance(.2f), Items.LARGE_FERN, ItemGroups.NATURAL);
         BlockRegistryHelper.registerBlock(new Identifier(NAMESPACE, "potted_beachgrass"), POTTED_BEACHGRASS);
@@ -687,13 +694,20 @@ public class GBWBlocks implements Register {
                 BLUE_WISTERIA_SAPLING, POTTED_BLUE_WISTERIA_SAPLING,
                 PINK_WISTERIA_SAPLING, POTTED_PINK_WISTERIA_SAPLING,
                 PURPLE_WISTERIA_SAPLING, POTTED_PURPLE_WISTERIA_SAPLING,
+                WISTERIA_DOOR, WISTERIA_TRAPDOOR,
                 BAMBOO_TORCH, BAMBOO_WALL_TORCH, POTTED_BAMBOO_TORCH,
                 SOUL_BAMBOO_TORCH, SOUL_BAMBOO_WALL_TORCH, POTTED_SOUL_BAMBOO_TORCH,
                 BEACHGRASS_THATCH, BEACHGRASS_THATCH_SLAB, BEACHGRASS_THATCH_STAIRS,
                 BAMBOO_THATCH, BAMBOO_THATCH_SLAB, BAMBOO_THATCH_STAIRS,
                 GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS,
+                PINE_SAPLING, POTTED_PINE_SAPLING,
+                PINE_DOOR, PINE_TRAPDOOR,
+                PALO_VERDE_SAPLING, POTTED_PALO_VERDE_SAPLING,
+                PALO_VERDE_DOOR, PALO_VERDE_TRAPDOOR,
                 ANTLER,
                 HEATHER, TALL_HEATHER, POTTED_HEATHER,
+                ASTER, POTTED_ASTER,
+                DRY_GRASS,
                 BEACHGRASS, TALL_BEACHGRASS, POTTED_BEACHGRASS,
                 TROPICAL_FERN, LARGE_TROPICAL_FERN, POTTED_TROPICAL_FERN,
                 WHITE_DELPHINIUM, YELLOW_DELPHINIUM, BLUE_DELPHINIUM, PINK_DELPHINIUM, PURPLE_DELPHINIUM,
@@ -707,9 +721,11 @@ public class GBWBlocks implements Register {
                 ACAI_LEAVES, HANGING_ACAI_LEAVES,
                 WHITE_WISTERIA_LEAVES, YELLOW_WISTERIA_LEAVES, BLUE_WISTERIA_LEAVES, PINK_WISTERIA_LEAVES, PURPLE_WISTERIA_LEAVES,
                 HANGING_WHITE_WISTERIA_LEAVES, HANGING_YELLOW_WISTERIA_LEAVES, HANGING_BLUE_WISTERIA_LEAVES, HANGING_PINK_WISTERIA_LEAVES, HANGING_PURPLE_WISTERIA_LEAVES,
+                PINE_LEAVES,
+                PALO_VERDE_LEAVES,
                 GOLDEN_APPLE_LEAVES
         );
-        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES);
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getFoliageColor(world, pos) : FoliageColors.getDefaultColor(), MAHOGANY_LEAVES, GREEN_ASPEN_LEAVES, GREEN_ASPEN_LEAF_PILE, ACAI_LEAVES, HANGING_ACAI_LEAVES, PINE_LEAVES);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, state.get(TallPlantBlock.HALF) == DoubleBlockHalf.UPPER ? pos.down() : pos) : -1, LARGE_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), TROPICAL_FERN, POTTED_TROPICAL_FERN);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ? BiomeColors.getGrassColor(world, pos) : GrassColors.getColor(.5d, 1d), GRASSY_LAVAROCK, GRASS_THATCH, GRASS_THATCH_SLAB, GRASS_THATCH_STAIRS, TRIMMED_GRASS_THATCH, TRIMMED_GRASS_THATCH_SLAB, TRIMMED_GRASS_THATCH_STAIRS);
