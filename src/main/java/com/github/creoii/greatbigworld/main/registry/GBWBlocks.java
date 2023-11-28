@@ -678,7 +678,6 @@ public class GBWBlocks implements Register {
                 serverWorld.setBlockState(pos, state.with(SnowyBlock.SNOWY, true));
             }
         });
-        VillagerTradesInjector
     }
 
     @Override

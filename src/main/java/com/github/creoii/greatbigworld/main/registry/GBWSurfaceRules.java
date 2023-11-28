@@ -49,6 +49,6 @@ public class GBWSurfaceRules implements Register {
     }
 
     public MaterialRules.MaterialRule createRedRockPeaksRule() {
-        return MaterialRules.condition(MaterialRules.biome(GBWBiomes.RED_ROCK_PEAKS), RED_ROCK);
+        return MaterialRules.condition(MaterialRules.biome(GBWBiomes.RED_ROCK_PEAKS), MaterialRules.sequence(MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -.012d), MaterialRules.condition(MaterialRules.noiseThreshold(NoiseParametersKeys.NETHER_STATE_SELECTOR, 0d), MaterialRules.block(GBWBlocks.RED_ROCK_DIRT.getDefaultState()))), RED_ROCK));
     }
 }

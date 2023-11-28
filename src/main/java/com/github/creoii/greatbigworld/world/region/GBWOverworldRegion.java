@@ -74,7 +74,7 @@ public class GBWOverworldRegion extends Region {
 
     public enum Type {
         NORMAL("normal", 4),
-        RARE("rare", 2);
+        RARE("rare", 1);
 
         private final String suffix;
         private final int weight;

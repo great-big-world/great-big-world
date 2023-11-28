@@ -4,6 +4,6 @@
     "bottom": "great_big_world:block/red_rock",
     "particle": "great_big_world:block/red_rock",
     "side": "great_big_world:block/red_rock_dirt",
-    "top": "block/dry_dirt"
+    "top": "great_big_world:block/dry_dirt_top"
   }
 }
